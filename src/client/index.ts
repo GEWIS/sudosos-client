@@ -833,9 +833,9 @@ export class InvoicesAPI {
       /** Filter on Id of the debtor */
       toId?: number;
       /** Filter on invoice ID */
-      invoiceId?: invoiceId;
+      invoiceId?: number;
       /** Filter based on Invoice State */
-      state?: InvoiceState;
+      state?: any | null;
       /** Boolean if invoice entries should be returned */
       returnEntries?: boolean;
       /** Start date for selected invoices (inclusive) */
@@ -1945,7 +1945,7 @@ export class UsersAPI {
       /** Filter based on user ID */
       id?: number;
       /** Filter based on user type. */
-      type?: type;
+      type?: any | null;
     } = {} as any,
     options: IRequestOptions = {}
   ): Promise<PaginatedUserResponse> {
@@ -2742,7 +2742,7 @@ export interface LDAPAuthenticator {
   User: User;
 
   /** The associated AD account name */
-  accountName: UUID;
+  accountName: string;
 }
 
 export interface LocalAuthenticator {

@@ -9,7 +9,7 @@
     "build": "tsc",
     "gen": "ts-node-dev src/gen.ts",
     "serve": "ts-node-dev src/gen.ts",
-    "prepare": "tsc",
+    "prepare": "npm run gen && tsc",
     "semantic-release": "semantic-release"
   },
   "dependencies": {
@@ -20,6 +20,7 @@
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/gitlab": "^9.4.1",
     "@semantic-release/npm": "^9.0.1",
+    "@types/node": "^18.7.7",
     "@typescript-eslint/eslint-plugin": "^5.33.0",
     "@typescript-eslint/parser": "^5.33.0",
     "eslint": "^8.21.0",
