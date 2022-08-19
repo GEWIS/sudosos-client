@@ -38,7 +38,8 @@
   },
   "files": [
     "src",
-    "out"
+    "dist",
+    "index.js"
   ],
   "author": "SudoSOS WG",
   "bugs": {
