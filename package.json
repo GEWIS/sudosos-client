@@ -40,7 +40,8 @@
   "files": [
     "src",
     "dist",
-    "index.js"
+    "index.js",
+    "swagger.json"
   ],
   "author": "SudoSOS WG",
   "bugs": {
