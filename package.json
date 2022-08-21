@@ -7,7 +7,7 @@
   "license": "AGPL-3.0-or-later",
   "scripts": {
     "build": "tsc",
-    "gen": "sta -p ./swagger.json -o ./src/ --patch",
+    "gen": "sta -p ./swagger.json -o ./src/ --patch --axios --name client.ts",
     "prepare": "npm run gen && tsc",
     "semantic-release": "semantic-release"
   },
