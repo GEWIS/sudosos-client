@@ -3,20 +3,14 @@
   "description": "Frontend client for the SudoSOS barsystem",
   "version": "1.1.2",
   "private": true,
-  "main": "out/main.js",
+  "main": "dist/index.js",
   "license": "AGPL-3.0-or-later",
   "scripts": {
     "build": "tsc",
-    "gen": "sta -p ./swagger.json -o ./src/ --patch --axios --name client.ts",
-    "prepare": "npm run gen && tsc",
-    "semantic-release": "semantic-release"
-  },
-  "dependencies": {
-    "@nesto-software/json-schema-ref-parser": "^9.0.10",
-    "axios": "^0.27.2",
-    "swagger-axios-codegen": "^0.13.3"
+    "gen": "openapi-generator-cli generate -i swagger.json -g typescript-fetch -o ./out"
   },
   "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.6.0",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/gitlab": "^9.4.1",
     "@semantic-release/npm": "^9.0.1",
@@ -47,5 +41,10 @@
   "bugs": {
     "url": "https://gitlab.com/sudosos/sudosos-client/issues"
   },
-  "homepage": "https://gitlab.com/sudosos/sudosos-client#readme"
+  "homepage": "https://gitlab.com/sudosos/sudosos-client#readme",
+  "dependencies": {
+    "@nesto-software/json-schema-ref-parser": "^9.0.10",
+    "axios": "^0.27.2",
+    "swagger-axios-codegen": "^0.13.3"
+  }
 }
