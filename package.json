@@ -32,8 +32,8 @@
     "url": "git+https://gitlab.com/sudosos/sudosos-client.git"
   },
   "files": [
-    "src",
-    "dist",
+    "src/",
+    "dist/",
     "index.js",
     "swagger.json"
   ],
