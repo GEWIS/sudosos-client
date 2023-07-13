@@ -7,13 +7,10 @@
   "license": "AGPL-3.0-or-later",
   "scripts": {
     "build": "tsc",
-    "gen": "openapi-generator-cli generate -i swagger.json -g typescript-fetch -o ./out"
+    "gen": "openapi-generator-cli generate -i swagger.json -g typescript-fetch -o ./dist"
   },
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.6.0",
-    "@semantic-release/git": "^10.0.1",
-    "@semantic-release/gitlab": "^9.4.1",
-    "@semantic-release/npm": "^9.0.1",
     "@types/node": "^18.7.7",
     "@typescript-eslint/eslint-plugin": "^5.33.0",
     "@typescript-eslint/parser": "^5.33.0",
@@ -23,8 +20,6 @@
     "eslint-plugin-chai-friendly": "^0.7.1",
     "eslint-plugin-header": "^3.1.1",
     "eslint-plugin-import": "^2.23.4",
-    "semantic-release": "^19.0.3",
-    "swagger-typescript-api-nextgen": "^10.0.1",
     "ts-node-dev": "^2.0.0"
   },
   "repository": {
