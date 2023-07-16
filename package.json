@@ -7,7 +7,7 @@
   "license": "AGPL-3.0-or-later",
   "scripts": {
     "build": "tsc",
-    "gen": "openapi-generator-cli generate -i swagger.json -g typescript-fetch -o ./dist"
+    "gen": "openapi-generator-cli generate -i swagger.json  -g typescript-axios -o ./src --openapi-normalizer REFACTOR_ALLOF_WITH_PROPERTIES_ONLY=true  tsc"
   },
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.6.0",
@@ -19,8 +19,7 @@
     "eslint-plugin-chai-expect": "^3.0.0",
     "eslint-plugin-chai-friendly": "^0.7.1",
     "eslint-plugin-header": "^3.1.1",
-    "eslint-plugin-import": "^2.23.4",
-    "ts-node-dev": "^2.0.0"
+    "eslint-plugin-import": "^2.23.4"
   },
   "repository": {
     "type": "git",
@@ -38,6 +37,7 @@
   },
   "homepage": "https://gitlab.com/sudosos/sudosos-client#readme",
   "dependencies": {
+    "@apidevtools/json-schema-ref-parser": "^10.1.0",
     "@nesto-software/json-schema-ref-parser": "^9.0.10",
     "axios": "^0.27.2",
     "swagger-axios-codegen": "^0.13.3"

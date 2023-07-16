@@ -6659,7 +6659,7 @@
       },
       "allOf": [
         {
-          "$ref": "#/definitions/UpdatedProductResponse",
+          "$ref": "#/definitions/UpdatedProductResponse"
         }
       ]
     },
