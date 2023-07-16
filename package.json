@@ -37,8 +37,6 @@
   },
   "homepage": "https://gitlab.com/sudosos/sudosos-client#readme",
   "dependencies": {
-    "@apidevtools/json-schema-ref-parser": "^10.1.0",
-    "@nesto-software/json-schema-ref-parser": "^9.0.10",
     "axios": "^0.27.2",
     "swagger-axios-codegen": "^0.13.3"
   }
