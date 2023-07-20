@@ -37,64 +37,6 @@ const base_1 = require("./base");
 const AuthenticateApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         *  Key login and hand out token.
-         * @param {AuthenticationKeyRequest} req The key login.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        authenticationKeyPost: (req, options = {}) => __awaiter(this, void 0, void 0, function* () {
-            // verify required parameter 'req' is not null or undefined
-            (0, common_1.assertParamExists)('authenticationKeyPost', 'req', req);
-            const localVarPath = `/authentication/key`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(req, localVarRequestOptions, configuration);
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         *  NFC login and hand out token
-         * @param {AuthenticationNfcRequest} req The NFC login.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        authenticationNfcPost: (req, options = {}) => __awaiter(this, void 0, void 0, function* () {
-            // verify required parameter 'req' is not null or undefined
-            (0, common_1.assertParamExists)('authenticationNfcPost', 'req', req);
-            const localVarPath = `/authentication/nfc`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(req, localVarRequestOptions, configuration);
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
          *  EAN login and hand out token
          * @param {AuthenticationEanRequest} req The EAN login.
          * @param {*} [options] Override http request option.
@@ -211,6 +153,35 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
+         *  Key login and hand out token.
+         * @param {AuthenticationKeyRequest} req The key login.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        keyAuthentication: (req, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            // verify required parameter 'req' is not null or undefined
+            (0, common_1.assertParamExists)('keyAuthentication', 'req', req);
+            const localVarPath = `/authentication/key`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(req, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
          *  LDAP login and hand out token If user has never signed in before this also creates an account.
          * @param {AuthenticationLDAPRequest} req The LDAP login.
          * @param {*} [options] Override http request option.
@@ -278,6 +249,35 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
             // verify required parameter 'req' is not null or undefined
             (0, common_1.assertParamExists)('mockAuthentication', 'req', req);
             const localVarPath = `/authentication/mock`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(req, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *  NFC login and hand out token
+         * @param {AuthenticationNfcRequest} req The NFC login.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        nfcAuthentication: (req, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            // verify required parameter 'req' is not null or undefined
+            (0, common_1.assertParamExists)('nfcAuthentication', 'req', req);
+            const localVarPath = `/authentication/nfc`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
             let baseOptions;
@@ -421,30 +421,6 @@ const AuthenticateApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.AuthenticateApiAxiosParamCreator)(configuration);
     return {
         /**
-         *  Key login and hand out token.
-         * @param {AuthenticationKeyRequest} req The key login.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        authenticationKeyPost(req, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.authenticationKeyPost(req, options);
-                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
-            });
-        },
-        /**
-         *  NFC login and hand out token
-         * @param {AuthenticationNfcRequest} req The NFC login.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        authenticationNfcPost(req, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.authenticationNfcPost(req, options);
-                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
-            });
-        },
-        /**
          *  EAN login and hand out token
          * @param {AuthenticationEanRequest} req The EAN login.
          * @param {*} [options] Override http request option.
@@ -493,6 +469,18 @@ const AuthenticateApiFp = function (configuration) {
             });
         },
         /**
+         *  Key login and hand out token.
+         * @param {AuthenticationKeyRequest} req The key login.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        keyAuthentication(req, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.keyAuthentication(req, options);
+                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
+            });
+        },
+        /**
          *  LDAP login and hand out token If user has never signed in before this also creates an account.
          * @param {AuthenticationLDAPRequest} req The LDAP login.
          * @param {*} [options] Override http request option.
@@ -525,6 +513,18 @@ const AuthenticateApiFp = function (configuration) {
         mockAuthentication(req, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.mockAuthentication(req, options);
+                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
+            });
+        },
+        /**
+         *  NFC login and hand out token
+         * @param {AuthenticationNfcRequest} req The NFC login.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        nfcAuthentication(req, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.nfcAuthentication(req, options);
                 return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
             });
         },
@@ -586,24 +586,6 @@ const AuthenticateApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.AuthenticateApiFp)(configuration);
     return {
         /**
-         *  Key login and hand out token.
-         * @param {AuthenticationKeyRequest} req The key login.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        authenticationKeyPost(req, options) {
-            return localVarFp.authenticationKeyPost(req, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  NFC login and hand out token
-         * @param {AuthenticationNfcRequest} req The NFC login.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        authenticationNfcPost(req, options) {
-            return localVarFp.authenticationNfcPost(req, options).then((request) => request(axios, basePath));
-        },
-        /**
          *  EAN login and hand out token
          * @param {AuthenticationEanRequest} req The EAN login.
          * @param {*} [options] Override http request option.
@@ -640,6 +622,15 @@ const AuthenticateApiFactory = function (configuration, basePath, axios) {
             return localVarFp.gewisWebAuthentication(req, options).then((request) => request(axios, basePath));
         },
         /**
+         *  Key login and hand out token.
+         * @param {AuthenticationKeyRequest} req The key login.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        keyAuthentication(req, options) {
+            return localVarFp.keyAuthentication(req, options).then((request) => request(axios, basePath));
+        },
+        /**
          *  LDAP login and hand out token If user has never signed in before this also creates an account.
          * @param {AuthenticationLDAPRequest} req The LDAP login.
          * @param {*} [options] Override http request option.
@@ -665,6 +656,15 @@ const AuthenticateApiFactory = function (configuration, basePath, axios) {
          */
         mockAuthentication(req, options) {
             return localVarFp.mockAuthentication(req, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *  NFC login and hand out token
+         * @param {AuthenticationNfcRequest} req The NFC login.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        nfcAuthentication(req, options) {
+            return localVarFp.nfcAuthentication(req, options).then((request) => request(axios, basePath));
         },
         /**
          *  PIN login and hand out token
@@ -712,26 +712,6 @@ exports.AuthenticateApiFactory = AuthenticateApiFactory;
  */
 class AuthenticateApi extends base_1.BaseAPI {
     /**
-     *  Key login and hand out token.
-     * @param {AuthenticationKeyRequest} req The key login.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AuthenticateApi
-     */
-    authenticationKeyPost(req, options) {
-        return (0, exports.AuthenticateApiFp)(this.configuration).authenticationKeyPost(req, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *  NFC login and hand out token
-     * @param {AuthenticationNfcRequest} req The NFC login.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AuthenticateApi
-     */
-    authenticationNfcPost(req, options) {
-        return (0, exports.AuthenticateApiFp)(this.configuration).authenticationNfcPost(req, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
      *  EAN login and hand out token
      * @param {AuthenticationEanRequest} req The EAN login.
      * @param {*} [options] Override http request option.
@@ -772,6 +752,16 @@ class AuthenticateApi extends base_1.BaseAPI {
         return (0, exports.AuthenticateApiFp)(this.configuration).gewisWebAuthentication(req, options).then((request) => request(this.axios, this.basePath));
     }
     /**
+     *  Key login and hand out token.
+     * @param {AuthenticationKeyRequest} req The key login.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    keyAuthentication(req, options) {
+        return (0, exports.AuthenticateApiFp)(this.configuration).keyAuthentication(req, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
      *  LDAP login and hand out token If user has never signed in before this also creates an account.
      * @param {AuthenticationLDAPRequest} req The LDAP login.
      * @param {*} [options] Override http request option.
@@ -800,6 +790,16 @@ class AuthenticateApi extends base_1.BaseAPI {
      */
     mockAuthentication(req, options) {
         return (0, exports.AuthenticateApiFp)(this.configuration).mockAuthentication(req, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *  NFC login and hand out token
+     * @param {AuthenticationNfcRequest} req The NFC login.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    nfcAuthentication(req, options) {
+        return (0, exports.AuthenticateApiFp)(this.configuration).nfcAuthentication(req, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *  PIN login and hand out token
@@ -860,7 +860,7 @@ const BalanceApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        balancesAllGet: (date, minBalance, maxBalance, orderBy, orderDirection, take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
+        getAllBalance: (date, minBalance, maxBalance, orderBy, orderDirection, take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/balances/all`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -903,12 +903,16 @@ const BalanceApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         *  Get balance of the current user
+         *  Retrieves the requested balance
+         * @param {number} id The id of the user for which the saldo is requested
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getBalance: (options = {}) => __awaiter(this, void 0, void 0, function* () {
-            const localVarPath = `/balances`;
+        getBalanceId: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('getBalanceId', 'id', id);
+            const localVarPath = `/balances/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
             let baseOptions;
@@ -929,16 +933,12 @@ const BalanceApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         *  Retrieves the requested balance
-         * @param {number} id The id of the user for which the saldo is requested
+         *  Get balance of the current user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getBalanceId: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
-            // verify required parameter 'id' is not null or undefined
-            (0, common_1.assertParamExists)('getBalanceId', 'id', id);
-            const localVarPath = `/balances/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+        getBalances: (options = {}) => __awaiter(this, void 0, void 0, function* () {
+            const localVarPath = `/balances`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
             let baseOptions;
@@ -980,20 +980,9 @@ const BalanceApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        balancesAllGet(date, minBalance, maxBalance, orderBy, orderDirection, take, skip, options) {
+        getAllBalance(date, minBalance, maxBalance, orderBy, orderDirection, take, skip, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.balancesAllGet(date, minBalance, maxBalance, orderBy, orderDirection, take, skip, options);
-                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
-            });
-        },
-        /**
-         *  Get balance of the current user
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getBalance(options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getBalance(options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllBalance(date, minBalance, maxBalance, orderBy, orderDirection, take, skip, options);
                 return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
             });
         },
@@ -1006,6 +995,17 @@ const BalanceApiFp = function (configuration) {
         getBalanceId(id, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getBalanceId(id, options);
+                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
+            });
+        },
+        /**
+         *  Get balance of the current user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBalances(options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getBalances(options);
                 return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
             });
         },
@@ -1031,16 +1031,8 @@ const BalanceApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        balancesAllGet(date, minBalance, maxBalance, orderBy, orderDirection, take, skip, options) {
-            return localVarFp.balancesAllGet(date, minBalance, maxBalance, orderBy, orderDirection, take, skip, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Get balance of the current user
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getBalance(options) {
-            return localVarFp.getBalance(options).then((request) => request(axios, basePath));
+        getAllBalance(date, minBalance, maxBalance, orderBy, orderDirection, take, skip, options) {
+            return localVarFp.getAllBalance(date, minBalance, maxBalance, orderBy, orderDirection, take, skip, options).then((request) => request(axios, basePath));
         },
         /**
          *  Retrieves the requested balance
@@ -1050,6 +1042,14 @@ const BalanceApiFactory = function (configuration, basePath, axios) {
          */
         getBalanceId(id, options) {
             return localVarFp.getBalanceId(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *  Get balance of the current user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBalances(options) {
+            return localVarFp.getBalances(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -1074,17 +1074,8 @@ class BalanceApi extends base_1.BaseAPI {
      * @throws {RequiredError}
      * @memberof BalanceApi
      */
-    balancesAllGet(date, minBalance, maxBalance, orderBy, orderDirection, take, skip, options) {
-        return (0, exports.BalanceApiFp)(this.configuration).balancesAllGet(date, minBalance, maxBalance, orderBy, orderDirection, take, skip, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *  Get balance of the current user
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BalanceApi
-     */
-    getBalance(options) {
-        return (0, exports.BalanceApiFp)(this.configuration).getBalance(options).then((request) => request(this.axios, this.basePath));
+    getAllBalance(date, minBalance, maxBalance, orderBy, orderDirection, take, skip, options) {
+        return (0, exports.BalanceApiFp)(this.configuration).getAllBalance(date, minBalance, maxBalance, orderBy, orderDirection, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *  Retrieves the requested balance
@@ -1095,6 +1086,15 @@ class BalanceApi extends base_1.BaseAPI {
      */
     getBalanceId(id, options) {
         return (0, exports.BalanceApiFp)(this.configuration).getBalanceId(id, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *  Get balance of the current user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BalanceApi
+     */
+    getBalances(options) {
+        return (0, exports.BalanceApiFp)(this.configuration).getBalances(options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.BalanceApi = BalanceApi;
@@ -1126,40 +1126,6 @@ const BannersApiAxiosParamCreator = function (configuration) {
             const localVarQueryParameter = {};
             // authentication JWT required
             yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         *  Returns all existing banners
-         * @param {number} [take] How many banners the endpoint should return
-         * @param {number} [skip] How many banners should be skipped (for pagination)
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        bannersGet: (take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
-            const localVarPath = `/banners`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication JWT required
-            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
-            if (take !== undefined) {
-                localVarQueryParameter['take'] = take;
-            }
-            if (skip !== undefined) {
-                localVarQueryParameter['skip'] = skip;
-            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
@@ -1234,6 +1200,72 @@ const BannersApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
+         *  Returns all existing banners
+         * @param {number} [take] How many banners the endpoint should return
+         * @param {number} [skip] How many banners should be skipped (for pagination)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllBanners: (take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            const localVarPath = `/banners`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
+            if (take !== undefined) {
+                localVarQueryParameter['take'] = take;
+            }
+            if (skip !== undefined) {
+                localVarQueryParameter['skip'] = skip;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *  Returns all existing banners
+         * @param {number} [take] How many banners the endpoint should return
+         * @param {number} [skip] How many banners should be skipped (for pagination)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllOpenBanners: (take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            const localVarPath = `/open/banners`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            if (take !== undefined) {
+                localVarQueryParameter['take'] = take;
+            }
+            if (skip !== undefined) {
+                localVarQueryParameter['skip'] = skip;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
          *  Returns the requested banner
          * @param {number} id The id of the banner which should be returned
          * @param {*} [options] Override http request option.
@@ -1255,38 +1287,6 @@ const BannersApiAxiosParamCreator = function (configuration) {
             const localVarQueryParameter = {};
             // authentication JWT required
             yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         *  Returns all existing banners
-         * @param {number} [take] How many banners the endpoint should return
-         * @param {number} [skip] How many banners should be skipped (for pagination)
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        openBannersGet: (take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
-            const localVarPath = `/open/banners`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            if (take !== undefined) {
-                localVarQueryParameter['take'] = take;
-            }
-            if (skip !== undefined) {
-                localVarQueryParameter['skip'] = skip;
-            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
@@ -1390,19 +1390,6 @@ const BannersApiFp = function (configuration) {
             });
         },
         /**
-         *  Returns all existing banners
-         * @param {number} [take] How many banners the endpoint should return
-         * @param {number} [skip] How many banners should be skipped (for pagination)
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        bannersGet(take, skip, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.bannersGet(take, skip, options);
-                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
-            });
-        },
-        /**
          *  Saves a banner to the database
          * @param {BannerRequest} banner The banner which should be created
          * @param {*} [options] Override http request option.
@@ -1428,14 +1415,15 @@ const BannersApiFp = function (configuration) {
             });
         },
         /**
-         *  Returns the requested banner
-         * @param {number} id The id of the banner which should be returned
+         *  Returns all existing banners
+         * @param {number} [take] How many banners the endpoint should return
+         * @param {number} [skip] How many banners should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getBanner(id, options) {
+        getAllBanners(take, skip, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getBanner(id, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllBanners(take, skip, options);
                 return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
             });
         },
@@ -1446,9 +1434,21 @@ const BannersApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        openBannersGet(take, skip, options) {
+        getAllOpenBanners(take, skip, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.openBannersGet(take, skip, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllOpenBanners(take, skip, options);
+                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
+            });
+        },
+        /**
+         *  Returns the requested banner
+         * @param {number} id The id of the banner which should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBanner(id, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getBanner(id, options);
                 return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
             });
         },
@@ -1498,16 +1498,6 @@ const BannersApiFactory = function (configuration, basePath, axios) {
             return localVarFp._delete(id, options).then((request) => request(axios, basePath));
         },
         /**
-         *  Returns all existing banners
-         * @param {number} [take] How many banners the endpoint should return
-         * @param {number} [skip] How many banners should be skipped (for pagination)
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        bannersGet(take, skip, options) {
-            return localVarFp.bannersGet(take, skip, options).then((request) => request(axios, basePath));
-        },
-        /**
          *  Saves a banner to the database
          * @param {BannerRequest} banner The banner which should be created
          * @param {*} [options] Override http request option.
@@ -1527,13 +1517,14 @@ const BannersApiFactory = function (configuration, basePath, axios) {
             return localVarFp.getActive(take, skip, options).then((request) => request(axios, basePath));
         },
         /**
-         *  Returns the requested banner
-         * @param {number} id The id of the banner which should be returned
+         *  Returns all existing banners
+         * @param {number} [take] How many banners the endpoint should return
+         * @param {number} [skip] How many banners should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getBanner(id, options) {
-            return localVarFp.getBanner(id, options).then((request) => request(axios, basePath));
+        getAllBanners(take, skip, options) {
+            return localVarFp.getAllBanners(take, skip, options).then((request) => request(axios, basePath));
         },
         /**
          *  Returns all existing banners
@@ -1542,8 +1533,17 @@ const BannersApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        openBannersGet(take, skip, options) {
-            return localVarFp.openBannersGet(take, skip, options).then((request) => request(axios, basePath));
+        getAllOpenBanners(take, skip, options) {
+            return localVarFp.getAllOpenBanners(take, skip, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *  Returns the requested banner
+         * @param {number} id The id of the banner which should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBanner(id, options) {
+            return localVarFp.getBanner(id, options).then((request) => request(axios, basePath));
         },
         /**
          *  Updates the requested banner
@@ -1586,17 +1586,6 @@ class BannersApi extends base_1.BaseAPI {
         return (0, exports.BannersApiFp)(this.configuration)._delete(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *  Returns all existing banners
-     * @param {number} [take] How many banners the endpoint should return
-     * @param {number} [skip] How many banners should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BannersApi
-     */
-    bannersGet(take, skip, options) {
-        return (0, exports.BannersApiFp)(this.configuration).bannersGet(take, skip, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
      *  Saves a banner to the database
      * @param {BannerRequest} banner The banner which should be created
      * @param {*} [options] Override http request option.
@@ -1618,14 +1607,15 @@ class BannersApi extends base_1.BaseAPI {
         return (0, exports.BannersApiFp)(this.configuration).getActive(take, skip, options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *  Returns the requested banner
-     * @param {number} id The id of the banner which should be returned
+     *  Returns all existing banners
+     * @param {number} [take] How many banners the endpoint should return
+     * @param {number} [skip] How many banners should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BannersApi
      */
-    getBanner(id, options) {
-        return (0, exports.BannersApiFp)(this.configuration).getBanner(id, options).then((request) => request(this.axios, this.basePath));
+    getAllBanners(take, skip, options) {
+        return (0, exports.BannersApiFp)(this.configuration).getAllBanners(take, skip, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *  Returns all existing banners
@@ -1635,8 +1625,18 @@ class BannersApi extends base_1.BaseAPI {
      * @throws {RequiredError}
      * @memberof BannersApi
      */
-    openBannersGet(take, skip, options) {
-        return (0, exports.BannersApiFp)(this.configuration).openBannersGet(take, skip, options).then((request) => request(this.axios, this.basePath));
+    getAllOpenBanners(take, skip, options) {
+        return (0, exports.BannersApiFp)(this.configuration).getAllOpenBanners(take, skip, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *  Returns the requested banner
+     * @param {number} id The id of the banner which should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BannersApi
+     */
+    getBanner(id, options) {
+        return (0, exports.BannersApiFp)(this.configuration).getBanner(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *  Updates the requested banner
@@ -1669,13 +1669,44 @@ exports.BannersApi = BannersApi;
 const BorrelkaartgroupsApiAxiosParamCreator = function (configuration) {
     return {
         /**
+         *  Creates a new borrelkaart group
+         * @param {BorrelkaartGroupRequest} borrelkaartgroup The borrelkaart group which should be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createBorrelkaartgroup: (borrelkaartgroup, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            // verify required parameter 'borrelkaartgroup' is not null or undefined
+            (0, common_1.assertParamExists)('createBorrelkaartgroup', 'borrelkaartgroup', borrelkaartgroup);
+            const localVarPath = `/borrelkaartgroups`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(borrelkaartgroup, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
          *  Returns all existing borrelkaart groups
          * @param {number} [take] How many borrelkaart groups the endpoint should return
          * @param {number} [skip] How many borrelkaart groups should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        borrelkaartgroupsGet: (take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
+        getALlBorrelkaartgroups: (take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/borrelkaartgroups`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -1708,9 +1739,9 @@ const BorrelkaartgroupsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        borrelkaartgroupsIdGet: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
+        getBorrelkaartgroupId: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
-            (0, common_1.assertParamExists)('borrelkaartgroupsIdGet', 'id', id);
+            (0, common_1.assertParamExists)('getBorrelkaartgroupId', 'id', id);
             const localVarPath = `/borrelkaartgroups/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -1739,11 +1770,11 @@ const BorrelkaartgroupsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        borrelkaartgroupsIdPatch: (id, borrelkaartgroup, options = {}) => __awaiter(this, void 0, void 0, function* () {
+        updateBorrelkaartGroup: (id, borrelkaartgroup, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
-            (0, common_1.assertParamExists)('borrelkaartgroupsIdPatch', 'id', id);
+            (0, common_1.assertParamExists)('updateBorrelkaartGroup', 'id', id);
             // verify required parameter 'borrelkaartgroup' is not null or undefined
-            (0, common_1.assertParamExists)('borrelkaartgroupsIdPatch', 'borrelkaartgroup', borrelkaartgroup);
+            (0, common_1.assertParamExists)('updateBorrelkaartGroup', 'borrelkaartgroup', borrelkaartgroup);
             const localVarPath = `/borrelkaartgroups/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -1753,37 +1784,6 @@ const BorrelkaartgroupsApiAxiosParamCreator = function (configuration) {
                 baseOptions = configuration.baseOptions;
             }
             const localVarRequestOptions = Object.assign(Object.assign({ method: 'PATCH' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication JWT required
-            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(borrelkaartgroup, localVarRequestOptions, configuration);
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         *  Creates a new borrelkaart group
-         * @param {BorrelkaartGroupRequest} borrelkaartgroup The borrelkaart group which should be created
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        borrelkaartgroupsPost: (borrelkaartgroup, options = {}) => __awaiter(this, void 0, void 0, function* () {
-            // verify required parameter 'borrelkaartgroup' is not null or undefined
-            (0, common_1.assertParamExists)('borrelkaartgroupsPost', 'borrelkaartgroup', borrelkaartgroup);
-            const localVarPath = `/borrelkaartgroups`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
             // authentication JWT required
@@ -1809,15 +1809,27 @@ const BorrelkaartgroupsApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.BorrelkaartgroupsApiAxiosParamCreator)(configuration);
     return {
         /**
+         *  Creates a new borrelkaart group
+         * @param {BorrelkaartGroupRequest} borrelkaartgroup The borrelkaart group which should be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createBorrelkaartgroup(borrelkaartgroup, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.createBorrelkaartgroup(borrelkaartgroup, options);
+                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
+            });
+        },
+        /**
          *  Returns all existing borrelkaart groups
          * @param {number} [take] How many borrelkaart groups the endpoint should return
          * @param {number} [skip] How many borrelkaart groups should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        borrelkaartgroupsGet(take, skip, options) {
+        getALlBorrelkaartgroups(take, skip, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.borrelkaartgroupsGet(take, skip, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getALlBorrelkaartgroups(take, skip, options);
                 return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
             });
         },
@@ -1827,9 +1839,9 @@ const BorrelkaartgroupsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        borrelkaartgroupsIdGet(id, options) {
+        getBorrelkaartgroupId(id, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.borrelkaartgroupsIdGet(id, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getBorrelkaartgroupId(id, options);
                 return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
             });
         },
@@ -1840,21 +1852,9 @@ const BorrelkaartgroupsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        borrelkaartgroupsIdPatch(id, borrelkaartgroup, options) {
+        updateBorrelkaartGroup(id, borrelkaartgroup, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.borrelkaartgroupsIdPatch(id, borrelkaartgroup, options);
-                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
-            });
-        },
-        /**
-         *  Creates a new borrelkaart group
-         * @param {BorrelkaartGroupRequest} borrelkaartgroup The borrelkaart group which should be created
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        borrelkaartgroupsPost(borrelkaartgroup, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.borrelkaartgroupsPost(borrelkaartgroup, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.updateBorrelkaartGroup(id, borrelkaartgroup, options);
                 return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
             });
         },
@@ -1869,14 +1869,23 @@ const BorrelkaartgroupsApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.BorrelkaartgroupsApiFp)(configuration);
     return {
         /**
+         *  Creates a new borrelkaart group
+         * @param {BorrelkaartGroupRequest} borrelkaartgroup The borrelkaart group which should be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createBorrelkaartgroup(borrelkaartgroup, options) {
+            return localVarFp.createBorrelkaartgroup(borrelkaartgroup, options).then((request) => request(axios, basePath));
+        },
+        /**
          *  Returns all existing borrelkaart groups
          * @param {number} [take] How many borrelkaart groups the endpoint should return
          * @param {number} [skip] How many borrelkaart groups should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        borrelkaartgroupsGet(take, skip, options) {
-            return localVarFp.borrelkaartgroupsGet(take, skip, options).then((request) => request(axios, basePath));
+        getALlBorrelkaartgroups(take, skip, options) {
+            return localVarFp.getALlBorrelkaartgroups(take, skip, options).then((request) => request(axios, basePath));
         },
         /**
          *  Returns the requested borrelkaart group
@@ -1884,8 +1893,8 @@ const BorrelkaartgroupsApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        borrelkaartgroupsIdGet(id, options) {
-            return localVarFp.borrelkaartgroupsIdGet(id, options).then((request) => request(axios, basePath));
+        getBorrelkaartgroupId(id, options) {
+            return localVarFp.getBorrelkaartgroupId(id, options).then((request) => request(axios, basePath));
         },
         /**
          *  Updates the requested borrelkaart group
@@ -1894,17 +1903,8 @@ const BorrelkaartgroupsApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        borrelkaartgroupsIdPatch(id, borrelkaartgroup, options) {
-            return localVarFp.borrelkaartgroupsIdPatch(id, borrelkaartgroup, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Creates a new borrelkaart group
-         * @param {BorrelkaartGroupRequest} borrelkaartgroup The borrelkaart group which should be created
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        borrelkaartgroupsPost(borrelkaartgroup, options) {
-            return localVarFp.borrelkaartgroupsPost(borrelkaartgroup, options).then((request) => request(axios, basePath));
+        updateBorrelkaartGroup(id, borrelkaartgroup, options) {
+            return localVarFp.updateBorrelkaartGroup(id, borrelkaartgroup, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -1917,6 +1917,16 @@ exports.BorrelkaartgroupsApiFactory = BorrelkaartgroupsApiFactory;
  */
 class BorrelkaartgroupsApi extends base_1.BaseAPI {
     /**
+     *  Creates a new borrelkaart group
+     * @param {BorrelkaartGroupRequest} borrelkaartgroup The borrelkaart group which should be created
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BorrelkaartgroupsApi
+     */
+    createBorrelkaartgroup(borrelkaartgroup, options) {
+        return (0, exports.BorrelkaartgroupsApiFp)(this.configuration).createBorrelkaartgroup(borrelkaartgroup, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
      *  Returns all existing borrelkaart groups
      * @param {number} [take] How many borrelkaart groups the endpoint should return
      * @param {number} [skip] How many borrelkaart groups should be skipped (for pagination)
@@ -1924,8 +1934,8 @@ class BorrelkaartgroupsApi extends base_1.BaseAPI {
      * @throws {RequiredError}
      * @memberof BorrelkaartgroupsApi
      */
-    borrelkaartgroupsGet(take, skip, options) {
-        return (0, exports.BorrelkaartgroupsApiFp)(this.configuration).borrelkaartgroupsGet(take, skip, options).then((request) => request(this.axios, this.basePath));
+    getALlBorrelkaartgroups(take, skip, options) {
+        return (0, exports.BorrelkaartgroupsApiFp)(this.configuration).getALlBorrelkaartgroups(take, skip, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *  Returns the requested borrelkaart group
@@ -1934,8 +1944,8 @@ class BorrelkaartgroupsApi extends base_1.BaseAPI {
      * @throws {RequiredError}
      * @memberof BorrelkaartgroupsApi
      */
-    borrelkaartgroupsIdGet(id, options) {
-        return (0, exports.BorrelkaartgroupsApiFp)(this.configuration).borrelkaartgroupsIdGet(id, options).then((request) => request(this.axios, this.basePath));
+    getBorrelkaartgroupId(id, options) {
+        return (0, exports.BorrelkaartgroupsApiFp)(this.configuration).getBorrelkaartgroupId(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *  Updates the requested borrelkaart group
@@ -1945,18 +1955,8 @@ class BorrelkaartgroupsApi extends base_1.BaseAPI {
      * @throws {RequiredError}
      * @memberof BorrelkaartgroupsApi
      */
-    borrelkaartgroupsIdPatch(id, borrelkaartgroup, options) {
-        return (0, exports.BorrelkaartgroupsApiFp)(this.configuration).borrelkaartgroupsIdPatch(id, borrelkaartgroup, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *  Creates a new borrelkaart group
-     * @param {BorrelkaartGroupRequest} borrelkaartgroup The borrelkaart group which should be created
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BorrelkaartgroupsApi
-     */
-    borrelkaartgroupsPost(borrelkaartgroup, options) {
-        return (0, exports.BorrelkaartgroupsApiFp)(this.configuration).borrelkaartgroupsPost(borrelkaartgroup, options).then((request) => request(this.axios, this.basePath));
+    updateBorrelkaartGroup(id, borrelkaartgroup, options) {
+        return (0, exports.BorrelkaartgroupsApiFp)(this.configuration).updateBorrelkaartGroup(id, borrelkaartgroup, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.BorrelkaartgroupsApi = BorrelkaartgroupsApi;
@@ -1972,9 +1972,9 @@ const ContainersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        containersIdApprovePost: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
+        approveContainer: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
-            (0, common_1.assertParamExists)('containersIdApprovePost', 'id', id);
+            (0, common_1.assertParamExists)('approveContainer', 'id', id);
             const localVarPath = `/containers/{id}/approve`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2278,9 +2278,9 @@ const ContainersApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        containersIdApprovePost(id, options) {
+        approveContainer(id, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.containersIdApprovePost(id, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.approveContainer(id, options);
                 return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
             });
         },
@@ -2402,8 +2402,8 @@ const ContainersApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        containersIdApprovePost(id, options) {
-            return localVarFp.containersIdApprovePost(id, options).then((request) => request(axios, basePath));
+        approveContainer(id, options) {
+            return localVarFp.approveContainer(id, options).then((request) => request(axios, basePath));
         },
         /**
          *  Create a new container.
@@ -2500,8 +2500,8 @@ class ContainersApi extends base_1.BaseAPI {
      * @throws {RequiredError}
      * @memberof ContainersApi
      */
-    containersIdApprovePost(id, options) {
-        return (0, exports.ContainersApiFp)(this.configuration).containersIdApprovePost(id, options).then((request) => request(this.axios, this.basePath));
+    approveContainer(id, options) {
+        return (0, exports.ContainersApiFp)(this.configuration).approveContainer(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *  Create a new container.
@@ -3556,6 +3556,36 @@ exports.PayoutRequestsApi = PayoutRequestsApi;
 const PointofsaleApiAxiosParamCreator = function (configuration) {
     return {
         /**
+         *  Approve a Point of Sale update.
+         * @param {number} id The id of the Point of Sale update to approve
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        approvePointOfSale: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('approvePointOfSale', 'id', id);
+            const localVarPath = `/pointsofsale/{id}/approve`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
          *  Create a new Point of Sale.
          * @param {CreatePointOfSaleRequest} pointofsale The point of sale which should be created
          * @param {*} [options] Override http request option.
@@ -3829,36 +3859,6 @@ const PointofsaleApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         *  Approve a Point of Sale update.
-         * @param {number} id The id of the Point of Sale update to approve
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        pointsofsaleIdApprovePost: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
-            // verify required parameter 'id' is not null or undefined
-            (0, common_1.assertParamExists)('pointsofsaleIdApprovePost', 'id', id);
-            const localVarPath = `/pointsofsale/{id}/approve`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication JWT required
-            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
          *  Update an existing Point of Sale.
          * @param {number} id The id of the Point of Sale which should be updated
          * @param {UpdatePointOfSaleRequest} pointofsale    The Point of Sale which should be updated
@@ -3903,6 +3903,18 @@ exports.PointofsaleApiAxiosParamCreator = PointofsaleApiAxiosParamCreator;
 const PointofsaleApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.PointofsaleApiAxiosParamCreator)(configuration);
     return {
+        /**
+         *  Approve a Point of Sale update.
+         * @param {number} id The id of the Point of Sale update to approve
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        approvePointOfSale(id, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.approvePointOfSale(id, options);
+                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
+            });
+        },
         /**
          *  Create a new Point of Sale.
          * @param {CreatePointOfSaleRequest} pointofsale The point of sale which should be created
@@ -4008,18 +4020,6 @@ const PointofsaleApiFp = function (configuration) {
             });
         },
         /**
-         *  Approve a Point of Sale update.
-         * @param {number} id The id of the Point of Sale update to approve
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        pointsofsaleIdApprovePost(id, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.pointsofsaleIdApprovePost(id, options);
-                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
-            });
-        },
-        /**
          *  Update an existing Point of Sale.
          * @param {number} id The id of the Point of Sale which should be updated
          * @param {UpdatePointOfSaleRequest} pointofsale    The Point of Sale which should be updated
@@ -4042,6 +4042,15 @@ exports.PointofsaleApiFp = PointofsaleApiFp;
 const PointofsaleApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.PointofsaleApiFp)(configuration);
     return {
+        /**
+         *  Approve a Point of Sale update.
+         * @param {number} id The id of the Point of Sale update to approve
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        approvePointOfSale(id, options) {
+            return localVarFp.approvePointOfSale(id, options).then((request) => request(axios, basePath));
+        },
         /**
          *  Create a new Point of Sale.
          * @param {CreatePointOfSaleRequest} pointofsale The point of sale which should be created
@@ -4123,15 +4132,6 @@ const PointofsaleApiFactory = function (configuration, basePath, axios) {
             return localVarFp.getUpdated(take, skip, options).then((request) => request(axios, basePath));
         },
         /**
-         *  Approve a Point of Sale update.
-         * @param {number} id The id of the Point of Sale update to approve
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        pointsofsaleIdApprovePost(id, options) {
-            return localVarFp.pointsofsaleIdApprovePost(id, options).then((request) => request(axios, basePath));
-        },
-        /**
          *  Update an existing Point of Sale.
          * @param {number} id The id of the Point of Sale which should be updated
          * @param {UpdatePointOfSaleRequest} pointofsale    The Point of Sale which should be updated
@@ -4151,6 +4151,16 @@ exports.PointofsaleApiFactory = PointofsaleApiFactory;
  * @extends {BaseAPI}
  */
 class PointofsaleApi extends base_1.BaseAPI {
+    /**
+     *  Approve a Point of Sale update.
+     * @param {number} id The id of the Point of Sale update to approve
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PointofsaleApi
+     */
+    approvePointOfSale(id, options) {
+        return (0, exports.PointofsaleApiFp)(this.configuration).approvePointOfSale(id, options).then((request) => request(this.axios, this.basePath));
+    }
     /**
      *  Create a new Point of Sale.
      * @param {CreatePointOfSaleRequest} pointofsale The point of sale which should be created
@@ -4238,16 +4248,6 @@ class PointofsaleApi extends base_1.BaseAPI {
      */
     getUpdated(take, skip, options) {
         return (0, exports.PointofsaleApiFp)(this.configuration).getUpdated(take, skip, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *  Approve a Point of Sale update.
-     * @param {number} id The id of the Point of Sale update to approve
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PointofsaleApi
-     */
-    pointsofsaleIdApprovePost(id, options) {
-        return (0, exports.PointofsaleApiFp)(this.configuration).pointsofsaleIdApprovePost(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *  Update an existing Point of Sale.
@@ -4567,6 +4567,36 @@ exports.ProductCategoriesApi = ProductCategoriesApi;
 const ProductsApiAxiosParamCreator = function (configuration) {
     return {
         /**
+         *  Approve a product update.
+         * @param {number} id The id of the product update to approve
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        approveProduct: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('approveProduct', 'id', id);
+            const localVarPath = `/products/{id}/approve`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
          *  Create a new product.
          * @param {CreateProductRequest} product The product which should be created
          * @param {*} [options] Override http request option.
@@ -4726,36 +4756,6 @@ const ProductsApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         *  Approve a product update.
-         * @param {number} id The id of the product update to approve
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        productsIdApprovePost: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
-            // verify required parameter 'id' is not null or undefined
-            (0, common_1.assertParamExists)('productsIdApprovePost', 'id', id);
-            const localVarPath = `/products/{id}/approve`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication JWT required
-            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
          *  Update an existing product.
          * @param {number} id The id of the product which should be updated
          * @param {UpdateProductRequest} product The product which should be updated
@@ -4838,6 +4838,18 @@ const ProductsApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.ProductsApiAxiosParamCreator)(configuration);
     return {
         /**
+         *  Approve a product update.
+         * @param {number} id The id of the product update to approve
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        approveProduct(id, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.approveProduct(id, options);
+                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
+            });
+        },
+        /**
          *  Create a new product.
          * @param {CreateProductRequest} product The product which should be created
          * @param {*} [options] Override http request option.
@@ -4900,18 +4912,6 @@ const ProductsApiFp = function (configuration) {
             });
         },
         /**
-         *  Approve a product update.
-         * @param {number} id The id of the product update to approve
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        productsIdApprovePost(id, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.productsIdApprovePost(id, options);
-                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
-            });
-        },
-        /**
          *  Update an existing product.
          * @param {number} id The id of the product which should be updated
          * @param {UpdateProductRequest} product The product which should be updated
@@ -4947,6 +4947,15 @@ exports.ProductsApiFp = ProductsApiFp;
 const ProductsApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.ProductsApiFp)(configuration);
     return {
+        /**
+         *  Approve a product update.
+         * @param {number} id The id of the product update to approve
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        approveProduct(id, options) {
+            return localVarFp.approveProduct(id, options).then((request) => request(axios, basePath));
+        },
         /**
          *  Create a new product.
          * @param {CreateProductRequest} product The product which should be created
@@ -4995,15 +5004,6 @@ const ProductsApiFactory = function (configuration, basePath, axios) {
             return localVarFp.getUpdatedProducts(take, skip, options).then((request) => request(axios, basePath));
         },
         /**
-         *  Approve a product update.
-         * @param {number} id The id of the product update to approve
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        productsIdApprovePost(id, options) {
-            return localVarFp.productsIdApprovePost(id, options).then((request) => request(axios, basePath));
-        },
-        /**
          *  Update an existing product.
          * @param {number} id The id of the product which should be updated
          * @param {UpdateProductRequest} product The product which should be updated
@@ -5033,6 +5033,16 @@ exports.ProductsApiFactory = ProductsApiFactory;
  * @extends {BaseAPI}
  */
 class ProductsApi extends base_1.BaseAPI {
+    /**
+     *  Approve a product update.
+     * @param {number} id The id of the product update to approve
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProductsApi
+     */
+    approveProduct(id, options) {
+        return (0, exports.ProductsApiFp)(this.configuration).approveProduct(id, options).then((request) => request(this.axios, this.basePath));
+    }
     /**
      *  Create a new product.
      * @param {CreateProductRequest} product The product which should be created
@@ -5084,16 +5094,6 @@ class ProductsApi extends base_1.BaseAPI {
      */
     getUpdatedProducts(take, skip, options) {
         return (0, exports.ProductsApiFp)(this.configuration).getUpdatedProducts(take, skip, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *  Approve a product update.
-     * @param {number} id The id of the product update to approve
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ProductsApi
-     */
-    productsIdApprovePost(id, options) {
-        return (0, exports.ProductsApiFp)(this.configuration).productsIdApprovePost(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *  Update an existing product.
@@ -5222,7 +5222,7 @@ const RootApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pingGet: (options = {}) => __awaiter(this, void 0, void 0, function* () {
+        ping: (options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/ping`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -5256,9 +5256,9 @@ const RootApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pingGet(options) {
+        ping(options) {
             return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.pingGet(options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.ping(options);
                 return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
             });
         },
@@ -5277,8 +5277,8 @@ const RootApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pingGet(options) {
-            return localVarFp.pingGet(options).then((request) => request(axios, basePath));
+        ping(options) {
+            return localVarFp.ping(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -5296,8 +5296,8 @@ class RootApi extends base_1.BaseAPI {
      * @throws {RequiredError}
      * @memberof RootApi
      */
-    pingGet(options) {
-        return (0, exports.RootApiFp)(this.configuration).pingGet(options).then((request) => request(this.axios, this.basePath));
+    ping(options) {
+        return (0, exports.RootApiFp)(this.configuration).ping(options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.RootApi = RootApi;
@@ -5709,35 +5709,6 @@ const TransactionsApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         *  Function to validate the transaction immediatly after it is created
-         * @param {TransactionRequest} transaction The transaction which should be validated
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        transactionsValidatePost: (transaction, options = {}) => __awaiter(this, void 0, void 0, function* () {
-            // verify required parameter 'transaction' is not null or undefined
-            (0, common_1.assertParamExists)('transactionsValidatePost', 'transaction', transaction);
-            const localVarPath = `/transactions/validate`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(transaction, localVarRequestOptions, configuration);
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
          *  Updates the requested transaction
          * @param {number} id The id of the transaction which should be updated
          * @param {TransactionRequest} transaction The updated transaction
@@ -5758,6 +5729,37 @@ const TransactionsApiAxiosParamCreator = function (configuration) {
                 baseOptions = configuration.baseOptions;
             }
             const localVarRequestOptions = Object.assign(Object.assign({ method: 'PATCH' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(transaction, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *  Function to validate the transaction immediatly after it is created
+         * @param {TransactionRequest} transaction The transaction which should be validated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        validateTransaction: (transaction, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            // verify required parameter 'transaction' is not null or undefined
+            (0, common_1.assertParamExists)('validateTransaction', 'transaction', transaction);
+            const localVarPath = `/transactions/validate`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
             // authentication JWT required
@@ -5840,18 +5842,6 @@ const TransactionsApiFp = function (configuration) {
             });
         },
         /**
-         *  Function to validate the transaction immediatly after it is created
-         * @param {TransactionRequest} transaction The transaction which should be validated
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        transactionsValidatePost(transaction, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.transactionsValidatePost(transaction, options);
-                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
-            });
-        },
-        /**
          *  Updates the requested transaction
          * @param {number} id The id of the transaction which should be updated
          * @param {TransactionRequest} transaction The updated transaction
@@ -5861,6 +5851,18 @@ const TransactionsApiFp = function (configuration) {
         updateTransaction(id, transaction, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.updateTransaction(id, transaction, options);
+                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
+            });
+        },
+        /**
+         *  Function to validate the transaction immediatly after it is created
+         * @param {TransactionRequest} transaction The transaction which should be validated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        validateTransaction(transaction, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.validateTransaction(transaction, options);
                 return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
             });
         },
@@ -5920,15 +5922,6 @@ const TransactionsApiFactory = function (configuration, basePath, axios) {
             return localVarFp.getSingleTransaction(id, options).then((request) => request(axios, basePath));
         },
         /**
-         *  Function to validate the transaction immediatly after it is created
-         * @param {TransactionRequest} transaction The transaction which should be validated
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        transactionsValidatePost(transaction, options) {
-            return localVarFp.transactionsValidatePost(transaction, options).then((request) => request(axios, basePath));
-        },
-        /**
          *  Updates the requested transaction
          * @param {number} id The id of the transaction which should be updated
          * @param {TransactionRequest} transaction The updated transaction
@@ -5937,6 +5930,15 @@ const TransactionsApiFactory = function (configuration, basePath, axios) {
          */
         updateTransaction(id, transaction, options) {
             return localVarFp.updateTransaction(id, transaction, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *  Function to validate the transaction immediatly after it is created
+         * @param {TransactionRequest} transaction The transaction which should be validated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        validateTransaction(transaction, options) {
+            return localVarFp.validateTransaction(transaction, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -5998,16 +6000,6 @@ class TransactionsApi extends base_1.BaseAPI {
         return (0, exports.TransactionsApiFp)(this.configuration).getSingleTransaction(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *  Function to validate the transaction immediatly after it is created
-     * @param {TransactionRequest} transaction The transaction which should be validated
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof TransactionsApi
-     */
-    transactionsValidatePost(transaction, options) {
-        return (0, exports.TransactionsApiFp)(this.configuration).transactionsValidatePost(transaction, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
      *  Updates the requested transaction
      * @param {number} id The id of the transaction which should be updated
      * @param {TransactionRequest} transaction The updated transaction
@@ -6017,6 +6009,16 @@ class TransactionsApi extends base_1.BaseAPI {
      */
     updateTransaction(id, transaction, options) {
         return (0, exports.TransactionsApiFp)(this.configuration).updateTransaction(id, transaction, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *  Function to validate the transaction immediatly after it is created
+     * @param {TransactionRequest} transaction The transaction which should be validated
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TransactionsApi
+     */
+    validateTransaction(transaction, options) {
+        return (0, exports.TransactionsApiFp)(this.configuration).validateTransaction(transaction, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.TransactionsApi = TransactionsApi;
@@ -6898,6 +6900,52 @@ const UsersApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
+         *  Get transaction report for the given user
+         * @param {number} id The id of the user to get the transaction report from
+         * @param {string} [fromDate] Start date for selected transactions (inclusive)
+         * @param {string} [tillDate] End date for selected transactions (exclusive)
+         * @param {number} [fromId] From-user for selected transactions
+         * @param {number} [toId] To-user for selected transactions
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUsersTransactionsReport: (id, fromDate, tillDate, fromId, toId, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('getUsersTransactionsReport', 'id', id);
+            const localVarPath = `/users/{id}/transactions/report`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
+            if (fromDate !== undefined) {
+                localVarQueryParameter['fromDate'] = fromDate;
+            }
+            if (tillDate !== undefined) {
+                localVarQueryParameter['tillDate'] = tillDate;
+            }
+            if (fromId !== undefined) {
+                localVarQueryParameter['fromId'] = fromId;
+            }
+            if (toId !== undefined) {
+                localVarQueryParameter['toId'] = toId;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
          *  Get an user\'s transfers
          * @param {number} id The id of the user that should be involved in all returned transfers
          * @param {number} [take] How many transfers the endpoint should return
@@ -7231,52 +7279,6 @@ const UsersApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         }),
-        /**
-         *  Get transaction report for the given user
-         * @param {number} id The id of the user to get the transaction report from
-         * @param {string} [fromDate] Start date for selected transactions (inclusive)
-         * @param {string} [tillDate] End date for selected transactions (exclusive)
-         * @param {number} [fromId] From-user for selected transactions
-         * @param {number} [toId] To-user for selected transactions
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersIdTransactionsReportGet: (id, fromDate, tillDate, fromId, toId, options = {}) => __awaiter(this, void 0, void 0, function* () {
-            // verify required parameter 'id' is not null or undefined
-            (0, common_1.assertParamExists)('usersIdTransactionsReportGet', 'id', id);
-            const localVarPath = `/users/{id}/transactions/report`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication JWT required
-            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
-            if (fromDate !== undefined) {
-                localVarQueryParameter['fromDate'] = fromDate;
-            }
-            if (tillDate !== undefined) {
-                localVarQueryParameter['tillDate'] = tillDate;
-            }
-            if (fromId !== undefined) {
-                localVarQueryParameter['fromId'] = fromId;
-            }
-            if (toId !== undefined) {
-                localVarQueryParameter['toId'] = toId;
-            }
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
     };
 };
 exports.UsersApiAxiosParamCreator = UsersApiAxiosParamCreator;
@@ -7529,6 +7531,22 @@ const UsersApiFp = function (configuration) {
             });
         },
         /**
+         *  Get transaction report for the given user
+         * @param {number} id The id of the user to get the transaction report from
+         * @param {string} [fromDate] Start date for selected transactions (inclusive)
+         * @param {string} [tillDate] End date for selected transactions (exclusive)
+         * @param {number} [fromId] From-user for selected transactions
+         * @param {number} [toId] To-user for selected transactions
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUsersTransactionsReport(id, fromDate, tillDate, fromId, toId, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUsersTransactionsReport(id, fromDate, tillDate, fromId, toId, options);
+                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
+            });
+        },
+        /**
          *  Get an user\'s transfers
          * @param {number} id The id of the user that should be involved in all returned transfers
          * @param {number} [take] How many transfers the endpoint should return
@@ -7648,22 +7666,6 @@ const UsersApiFp = function (configuration) {
         updateUserPin(id, update, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.updateUserPin(id, update, options);
-                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
-            });
-        },
-        /**
-         *  Get transaction report for the given user
-         * @param {number} id The id of the user to get the transaction report from
-         * @param {string} [fromDate] Start date for selected transactions (inclusive)
-         * @param {string} [tillDate] End date for selected transactions (exclusive)
-         * @param {number} [fromId] From-user for selected transactions
-         * @param {number} [toId] To-user for selected transactions
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersIdTransactionsReportGet(id, fromDate, tillDate, fromId, toId, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.usersIdTransactionsReportGet(id, fromDate, tillDate, fromId, toId, options);
                 return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
             });
         },
@@ -7865,6 +7867,19 @@ const UsersApiFactory = function (configuration, basePath, axios) {
             return localVarFp.getUsersTransactions(id, fromId, createdById, toId, productId, productRevision, fromDate, tillDate, take, skip, options).then((request) => request(axios, basePath));
         },
         /**
+         *  Get transaction report for the given user
+         * @param {number} id The id of the user to get the transaction report from
+         * @param {string} [fromDate] Start date for selected transactions (inclusive)
+         * @param {string} [tillDate] End date for selected transactions (exclusive)
+         * @param {number} [fromId] From-user for selected transactions
+         * @param {number} [toId] To-user for selected transactions
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUsersTransactionsReport(id, fromDate, tillDate, fromId, toId, options) {
+            return localVarFp.getUsersTransactionsReport(id, fromDate, tillDate, fromId, toId, options).then((request) => request(axios, basePath));
+        },
+        /**
          *  Get an user\'s transfers
          * @param {number} id The id of the user that should be involved in all returned transfers
          * @param {number} [take] How many transfers the endpoint should return
@@ -7959,19 +7974,6 @@ const UsersApiFactory = function (configuration, basePath, axios) {
          */
         updateUserPin(id, update, options) {
             return localVarFp.updateUserPin(id, update, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Get transaction report for the given user
-         * @param {number} id The id of the user to get the transaction report from
-         * @param {string} [fromDate] Start date for selected transactions (inclusive)
-         * @param {string} [tillDate] End date for selected transactions (exclusive)
-         * @param {number} [fromId] From-user for selected transactions
-         * @param {number} [toId] To-user for selected transactions
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersIdTransactionsReportGet(id, fromDate, tillDate, fromId, toId, options) {
-            return localVarFp.usersIdTransactionsReportGet(id, fromDate, tillDate, fromId, toId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -8189,6 +8191,20 @@ class UsersApi extends base_1.BaseAPI {
         return (0, exports.UsersApiFp)(this.configuration).getUsersTransactions(id, fromId, createdById, toId, productId, productRevision, fromDate, tillDate, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
     /**
+     *  Get transaction report for the given user
+     * @param {number} id The id of the user to get the transaction report from
+     * @param {string} [fromDate] Start date for selected transactions (inclusive)
+     * @param {string} [tillDate] End date for selected transactions (exclusive)
+     * @param {number} [fromId] From-user for selected transactions
+     * @param {number} [toId] To-user for selected transactions
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    getUsersTransactionsReport(id, fromDate, tillDate, fromId, toId, options) {
+        return (0, exports.UsersApiFp)(this.configuration).getUsersTransactionsReport(id, fromDate, tillDate, fromId, toId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
      *  Get an user\'s transfers
      * @param {number} id The id of the user that should be involved in all returned transfers
      * @param {number} [take] How many transfers the endpoint should return
@@ -8292,20 +8308,6 @@ class UsersApi extends base_1.BaseAPI {
      */
     updateUserPin(id, update, options) {
         return (0, exports.UsersApiFp)(this.configuration).updateUserPin(id, update, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *  Get transaction report for the given user
-     * @param {number} id The id of the user to get the transaction report from
-     * @param {string} [fromDate] Start date for selected transactions (inclusive)
-     * @param {string} [tillDate] End date for selected transactions (exclusive)
-     * @param {number} [fromId] From-user for selected transactions
-     * @param {number} [toId] To-user for selected transactions
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    usersIdTransactionsReportGet(id, fromDate, tillDate, fromId, toId, options) {
-        return (0, exports.UsersApiFp)(this.configuration).usersIdTransactionsReportGet(id, fromDate, tillDate, fromId, toId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.UsersApi = UsersApi;

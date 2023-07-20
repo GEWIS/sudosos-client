@@ -7608,20 +7608,6 @@ export interface VatGroupRequestAllOf {
  */
 export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *  Key login and hand out token.
-     * @param {AuthenticationKeyRequest} req The key login.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    authenticationKeyPost: (req: AuthenticationKeyRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *  NFC login and hand out token
-     * @param {AuthenticationNfcRequest} req The NFC login.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    authenticationNfcPost: (req: AuthenticationNfcRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
      *  EAN login and hand out token
      * @param {AuthenticationEanRequest} req The EAN login.
      * @param {*} [options] Override http request option.
@@ -7650,6 +7636,13 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
      */
     gewisWebAuthentication: (req: GewiswebAuthenticationRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
+     *  Key login and hand out token.
+     * @param {AuthenticationKeyRequest} req The key login.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    keyAuthentication: (req: AuthenticationKeyRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
      *  LDAP login and hand out token If user has never signed in before this also creates an account.
      * @param {AuthenticationLDAPRequest} req The LDAP login.
      * @param {*} [options] Override http request option.
@@ -7670,6 +7663,13 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
      * @throws {RequiredError}
      */
     mockAuthentication: (req: AuthenticationMockRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *  NFC login and hand out token
+     * @param {AuthenticationNfcRequest} req The NFC login.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    nfcAuthentication: (req: AuthenticationNfcRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *  PIN login and hand out token
      * @param {AuthenticationPinRequest} req The PIN login.
@@ -7704,20 +7704,6 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
  */
 export declare const AuthenticateApiFp: (configuration?: Configuration) => {
     /**
-     *  Key login and hand out token.
-     * @param {AuthenticationKeyRequest} req The key login.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    authenticationKeyPost(req: AuthenticationKeyRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
-    /**
-     *  NFC login and hand out token
-     * @param {AuthenticationNfcRequest} req The NFC login.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    authenticationNfcPost(req: AuthenticationNfcRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
-    /**
      *  EAN login and hand out token
      * @param {AuthenticationEanRequest} req The EAN login.
      * @param {*} [options] Override http request option.
@@ -7746,6 +7732,13 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
      */
     gewisWebAuthentication(req: GewiswebAuthenticationRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
     /**
+     *  Key login and hand out token.
+     * @param {AuthenticationKeyRequest} req The key login.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    keyAuthentication(req: AuthenticationKeyRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
+    /**
      *  LDAP login and hand out token If user has never signed in before this also creates an account.
      * @param {AuthenticationLDAPRequest} req The LDAP login.
      * @param {*} [options] Override http request option.
@@ -7766,6 +7759,13 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     mockAuthentication(req: AuthenticationMockRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
+    /**
+     *  NFC login and hand out token
+     * @param {AuthenticationNfcRequest} req The NFC login.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    nfcAuthentication(req: AuthenticationNfcRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
     /**
      *  PIN login and hand out token
      * @param {AuthenticationPinRequest} req The PIN login.
@@ -7800,20 +7800,6 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
  */
 export declare const AuthenticateApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *  Key login and hand out token.
-     * @param {AuthenticationKeyRequest} req The key login.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    authenticationKeyPost(req: AuthenticationKeyRequest, options?: any): AxiosPromise<AuthenticationResponse>;
-    /**
-     *  NFC login and hand out token
-     * @param {AuthenticationNfcRequest} req The NFC login.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    authenticationNfcPost(req: AuthenticationNfcRequest, options?: any): AxiosPromise<AuthenticationResponse>;
-    /**
      *  EAN login and hand out token
      * @param {AuthenticationEanRequest} req The EAN login.
      * @param {*} [options] Override http request option.
@@ -7842,6 +7828,13 @@ export declare const AuthenticateApiFactory: (configuration?: Configuration, bas
      */
     gewisWebAuthentication(req: GewiswebAuthenticationRequest, options?: any): AxiosPromise<AuthenticationResponse>;
     /**
+     *  Key login and hand out token.
+     * @param {AuthenticationKeyRequest} req The key login.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    keyAuthentication(req: AuthenticationKeyRequest, options?: any): AxiosPromise<AuthenticationResponse>;
+    /**
      *  LDAP login and hand out token If user has never signed in before this also creates an account.
      * @param {AuthenticationLDAPRequest} req The LDAP login.
      * @param {*} [options] Override http request option.
@@ -7862,6 +7855,13 @@ export declare const AuthenticateApiFactory: (configuration?: Configuration, bas
      * @throws {RequiredError}
      */
     mockAuthentication(req: AuthenticationMockRequest, options?: any): AxiosPromise<AuthenticationResponse>;
+    /**
+     *  NFC login and hand out token
+     * @param {AuthenticationNfcRequest} req The NFC login.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    nfcAuthentication(req: AuthenticationNfcRequest, options?: any): AxiosPromise<AuthenticationResponse>;
     /**
      *  PIN login and hand out token
      * @param {AuthenticationPinRequest} req The PIN login.
@@ -7898,22 +7898,6 @@ export declare const AuthenticateApiFactory: (configuration?: Configuration, bas
  */
 export declare class AuthenticateApi extends BaseAPI {
     /**
-     *  Key login and hand out token.
-     * @param {AuthenticationKeyRequest} req The key login.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AuthenticateApi
-     */
-    authenticationKeyPost(req: AuthenticationKeyRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
-    /**
-     *  NFC login and hand out token
-     * @param {AuthenticationNfcRequest} req The NFC login.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AuthenticateApi
-     */
-    authenticationNfcPost(req: AuthenticationNfcRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
-    /**
      *  EAN login and hand out token
      * @param {AuthenticationEanRequest} req The EAN login.
      * @param {*} [options] Override http request option.
@@ -7946,6 +7930,14 @@ export declare class AuthenticateApi extends BaseAPI {
      */
     gewisWebAuthentication(req: GewiswebAuthenticationRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
     /**
+     *  Key login and hand out token.
+     * @param {AuthenticationKeyRequest} req The key login.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    keyAuthentication(req: AuthenticationKeyRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
+    /**
      *  LDAP login and hand out token If user has never signed in before this also creates an account.
      * @param {AuthenticationLDAPRequest} req The LDAP login.
      * @param {*} [options] Override http request option.
@@ -7969,6 +7961,14 @@ export declare class AuthenticateApi extends BaseAPI {
      * @memberof AuthenticateApi
      */
     mockAuthentication(req: AuthenticationMockRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
+    /**
+     *  NFC login and hand out token
+     * @param {AuthenticationNfcRequest} req The NFC login.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    nfcAuthentication(req: AuthenticationNfcRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
     /**
      *  PIN login and hand out token
      * @param {AuthenticationPinRequest} req The PIN login.
@@ -8018,13 +8018,7 @@ export declare const BalanceApiAxiosParamCreator: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    balancesAllGet: (date?: string, minBalance?: number, maxBalance?: number, orderBy?: 'id' | 'amount', orderDirection?: 'ASC' | 'DESC', take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *  Get balance of the current user
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getBalance: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getAllBalance: (date?: string, minBalance?: number, maxBalance?: number, orderBy?: 'id' | 'amount', orderDirection?: 'ASC' | 'DESC', take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *  Retrieves the requested balance
      * @param {number} id The id of the user for which the saldo is requested
@@ -8032,6 +8026,12 @@ export declare const BalanceApiAxiosParamCreator: (configuration?: Configuration
      * @throws {RequiredError}
      */
     getBalanceId: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *  Get balance of the current user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getBalances: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * BalanceApi - functional programming interface
@@ -8050,13 +8050,7 @@ export declare const BalanceApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    balancesAllGet(date?: string, minBalance?: number, maxBalance?: number, orderBy?: 'id' | 'amount', orderDirection?: 'ASC' | 'DESC', take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BalanceResponse>>>;
-    /**
-     *  Get balance of the current user
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getBalance(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BalanceResponse>>;
+    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, orderBy?: 'id' | 'amount', orderDirection?: 'ASC' | 'DESC', take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BalanceResponse>>>;
     /**
      *  Retrieves the requested balance
      * @param {number} id The id of the user for which the saldo is requested
@@ -8064,6 +8058,12 @@ export declare const BalanceApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     getBalanceId(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BalanceResponse>>;
+    /**
+     *  Get balance of the current user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getBalances(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BalanceResponse>>;
 };
 /**
  * BalanceApi - factory interface
@@ -8082,13 +8082,7 @@ export declare const BalanceApiFactory: (configuration?: Configuration, basePath
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    balancesAllGet(date?: string, minBalance?: number, maxBalance?: number, orderBy?: 'id' | 'amount', orderDirection?: 'ASC' | 'DESC', take?: number, skip?: number, options?: any): AxiosPromise<Array<BalanceResponse>>;
-    /**
-     *  Get balance of the current user
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getBalance(options?: any): AxiosPromise<BalanceResponse>;
+    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, orderBy?: 'id' | 'amount', orderDirection?: 'ASC' | 'DESC', take?: number, skip?: number, options?: any): AxiosPromise<Array<BalanceResponse>>;
     /**
      *  Retrieves the requested balance
      * @param {number} id The id of the user for which the saldo is requested
@@ -8096,6 +8090,12 @@ export declare const BalanceApiFactory: (configuration?: Configuration, basePath
      * @throws {RequiredError}
      */
     getBalanceId(id: number, options?: any): AxiosPromise<BalanceResponse>;
+    /**
+     *  Get balance of the current user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getBalances(options?: any): AxiosPromise<BalanceResponse>;
 };
 /**
  * BalanceApi - object-oriented interface
@@ -8117,14 +8117,7 @@ export declare class BalanceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BalanceApi
      */
-    balancesAllGet(date?: string, minBalance?: number, maxBalance?: number, orderBy?: 'id' | 'amount', orderDirection?: 'ASC' | 'DESC', take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<BalanceResponse[], any>>;
-    /**
-     *  Get balance of the current user
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BalanceApi
-     */
-    getBalance(options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<BalanceResponse, any>>;
+    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, orderBy?: 'id' | 'amount', orderDirection?: 'ASC' | 'DESC', take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<BalanceResponse[], any>>;
     /**
      *  Retrieves the requested balance
      * @param {number} id The id of the user for which the saldo is requested
@@ -8133,6 +8126,13 @@ export declare class BalanceApi extends BaseAPI {
      * @memberof BalanceApi
      */
     getBalanceId(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<BalanceResponse, any>>;
+    /**
+     *  Get balance of the current user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BalanceApi
+     */
+    getBalances(options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<BalanceResponse, any>>;
 }
 /**
  * BannersApi - axios parameter creator
@@ -8146,14 +8146,6 @@ export declare const BannersApiAxiosParamCreator: (configuration?: Configuration
      * @throws {RequiredError}
      */
     _delete: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *  Returns all existing banners
-     * @param {number} [take] How many banners the endpoint should return
-     * @param {number} [skip] How many banners should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    bannersGet: (take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *  Saves a banner to the database
      * @param {BannerRequest} banner The banner which should be created
@@ -8170,12 +8162,13 @@ export declare const BannersApiAxiosParamCreator: (configuration?: Configuration
      */
     getActive: (take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *  Returns the requested banner
-     * @param {number} id The id of the banner which should be returned
+     *  Returns all existing banners
+     * @param {number} [take] How many banners the endpoint should return
+     * @param {number} [skip] How many banners should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getBanner: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getAllBanners: (take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *  Returns all existing banners
      * @param {number} [take] How many banners the endpoint should return
@@ -8183,7 +8176,14 @@ export declare const BannersApiAxiosParamCreator: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    openBannersGet: (take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getAllOpenBanners: (take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *  Returns the requested banner
+     * @param {number} id The id of the banner which should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getBanner: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *  Updates the requested banner
      * @param {number} id The id of the banner which should be updated
@@ -8214,14 +8214,6 @@ export declare const BannersApiFp: (configuration?: Configuration) => {
      */
     _delete(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BannerResponse>>;
     /**
-     *  Returns all existing banners
-     * @param {number} [take] How many banners the endpoint should return
-     * @param {number} [skip] How many banners should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    bannersGet(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBannerResponse>>;
-    /**
      *  Saves a banner to the database
      * @param {BannerRequest} banner The banner which should be created
      * @param {*} [options] Override http request option.
@@ -8237,12 +8229,13 @@ export declare const BannersApiFp: (configuration?: Configuration) => {
      */
     getActive(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBannerResponse>>;
     /**
-     *  Returns the requested banner
-     * @param {number} id The id of the banner which should be returned
+     *  Returns all existing banners
+     * @param {number} [take] How many banners the endpoint should return
+     * @param {number} [skip] How many banners should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getBanner(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BannerResponse>>;
+    getAllBanners(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBannerResponse>>;
     /**
      *  Returns all existing banners
      * @param {number} [take] How many banners the endpoint should return
@@ -8250,7 +8243,14 @@ export declare const BannersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    openBannersGet(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBannerResponse>>;
+    getAllOpenBanners(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBannerResponse>>;
+    /**
+     *  Returns the requested banner
+     * @param {number} id The id of the banner which should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getBanner(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BannerResponse>>;
     /**
      *  Updates the requested banner
      * @param {number} id The id of the banner which should be updated
@@ -8281,14 +8281,6 @@ export declare const BannersApiFactory: (configuration?: Configuration, basePath
      */
     _delete(id: number, options?: any): AxiosPromise<BannerResponse>;
     /**
-     *  Returns all existing banners
-     * @param {number} [take] How many banners the endpoint should return
-     * @param {number} [skip] How many banners should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    bannersGet(take?: number, skip?: number, options?: any): AxiosPromise<PaginatedBannerResponse>;
-    /**
      *  Saves a banner to the database
      * @param {BannerRequest} banner The banner which should be created
      * @param {*} [options] Override http request option.
@@ -8304,12 +8296,13 @@ export declare const BannersApiFactory: (configuration?: Configuration, basePath
      */
     getActive(take?: number, skip?: number, options?: any): AxiosPromise<PaginatedBannerResponse>;
     /**
-     *  Returns the requested banner
-     * @param {number} id The id of the banner which should be returned
+     *  Returns all existing banners
+     * @param {number} [take] How many banners the endpoint should return
+     * @param {number} [skip] How many banners should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getBanner(id: number, options?: any): AxiosPromise<BannerResponse>;
+    getAllBanners(take?: number, skip?: number, options?: any): AxiosPromise<PaginatedBannerResponse>;
     /**
      *  Returns all existing banners
      * @param {number} [take] How many banners the endpoint should return
@@ -8317,7 +8310,14 @@ export declare const BannersApiFactory: (configuration?: Configuration, basePath
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    openBannersGet(take?: number, skip?: number, options?: any): AxiosPromise<PaginatedBannerResponse>;
+    getAllOpenBanners(take?: number, skip?: number, options?: any): AxiosPromise<PaginatedBannerResponse>;
+    /**
+     *  Returns the requested banner
+     * @param {number} id The id of the banner which should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getBanner(id: number, options?: any): AxiosPromise<BannerResponse>;
     /**
      *  Updates the requested banner
      * @param {number} id The id of the banner which should be updated
@@ -8351,15 +8351,6 @@ export declare class BannersApi extends BaseAPI {
      */
     _delete(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<BannerResponse, any>>;
     /**
-     *  Returns all existing banners
-     * @param {number} [take] How many banners the endpoint should return
-     * @param {number} [skip] How many banners should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BannersApi
-     */
-    bannersGet(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBannerResponse, any>>;
-    /**
      *  Saves a banner to the database
      * @param {BannerRequest} banner The banner which should be created
      * @param {*} [options] Override http request option.
@@ -8377,13 +8368,14 @@ export declare class BannersApi extends BaseAPI {
      */
     getActive(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBannerResponse, any>>;
     /**
-     *  Returns the requested banner
-     * @param {number} id The id of the banner which should be returned
+     *  Returns all existing banners
+     * @param {number} [take] How many banners the endpoint should return
+     * @param {number} [skip] How many banners should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BannersApi
      */
-    getBanner(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<BannerResponse, any>>;
+    getAllBanners(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBannerResponse, any>>;
     /**
      *  Returns all existing banners
      * @param {number} [take] How many banners the endpoint should return
@@ -8392,7 +8384,15 @@ export declare class BannersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BannersApi
      */
-    openBannersGet(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBannerResponse, any>>;
+    getAllOpenBanners(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBannerResponse, any>>;
+    /**
+     *  Returns the requested banner
+     * @param {number} id The id of the banner which should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BannersApi
+     */
+    getBanner(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<BannerResponse, any>>;
     /**
      *  Updates the requested banner
      * @param {number} id The id of the banner which should be updated
@@ -8418,20 +8418,27 @@ export declare class BannersApi extends BaseAPI {
  */
 export declare const BorrelkaartgroupsApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
+     *  Creates a new borrelkaart group
+     * @param {BorrelkaartGroupRequest} borrelkaartgroup The borrelkaart group which should be created
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createBorrelkaartgroup: (borrelkaartgroup: BorrelkaartGroupRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
      *  Returns all existing borrelkaart groups
      * @param {number} [take] How many borrelkaart groups the endpoint should return
      * @param {number} [skip] How many borrelkaart groups should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    borrelkaartgroupsGet: (take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getALlBorrelkaartgroups: (take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *  Returns the requested borrelkaart group
      * @param {number} id The id of the borrelkaart group which should be returned
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    borrelkaartgroupsIdGet: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getBorrelkaartgroupId: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *  Updates the requested borrelkaart group
      * @param {number} id The id of the borrelkaart group which should be updated
@@ -8439,14 +8446,7 @@ export declare const BorrelkaartgroupsApiAxiosParamCreator: (configuration?: Con
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    borrelkaartgroupsIdPatch: (id: number, borrelkaartgroup: BorrelkaartGroupRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *  Creates a new borrelkaart group
-     * @param {BorrelkaartGroupRequest} borrelkaartgroup The borrelkaart group which should be created
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    borrelkaartgroupsPost: (borrelkaartgroup: BorrelkaartGroupRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    updateBorrelkaartGroup: (id: number, borrelkaartgroup: BorrelkaartGroupRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * BorrelkaartgroupsApi - functional programming interface
@@ -8454,20 +8454,27 @@ export declare const BorrelkaartgroupsApiAxiosParamCreator: (configuration?: Con
  */
 export declare const BorrelkaartgroupsApiFp: (configuration?: Configuration) => {
     /**
+     *  Creates a new borrelkaart group
+     * @param {BorrelkaartGroupRequest} borrelkaartgroup The borrelkaart group which should be created
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createBorrelkaartgroup(borrelkaartgroup: BorrelkaartGroupRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BorrelkaartGroupResponse>>;
+    /**
      *  Returns all existing borrelkaart groups
      * @param {number} [take] How many borrelkaart groups the endpoint should return
      * @param {number} [skip] How many borrelkaart groups should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    borrelkaartgroupsGet(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBorrelkaartGroupResponse>>;
+    getALlBorrelkaartgroups(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBorrelkaartGroupResponse>>;
     /**
      *  Returns the requested borrelkaart group
      * @param {number} id The id of the borrelkaart group which should be returned
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    borrelkaartgroupsIdGet(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BorrelkaartGroupResponse>>;
+    getBorrelkaartgroupId(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BorrelkaartGroupResponse>>;
     /**
      *  Updates the requested borrelkaart group
      * @param {number} id The id of the borrelkaart group which should be updated
@@ -8475,14 +8482,7 @@ export declare const BorrelkaartgroupsApiFp: (configuration?: Configuration) => 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    borrelkaartgroupsIdPatch(id: number, borrelkaartgroup: BorrelkaartGroupRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BorrelkaartGroupResponse>>;
-    /**
-     *  Creates a new borrelkaart group
-     * @param {BorrelkaartGroupRequest} borrelkaartgroup The borrelkaart group which should be created
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    borrelkaartgroupsPost(borrelkaartgroup: BorrelkaartGroupRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BorrelkaartGroupResponse>>;
+    updateBorrelkaartGroup(id: number, borrelkaartgroup: BorrelkaartGroupRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BorrelkaartGroupResponse>>;
 };
 /**
  * BorrelkaartgroupsApi - factory interface
@@ -8490,20 +8490,27 @@ export declare const BorrelkaartgroupsApiFp: (configuration?: Configuration) => 
  */
 export declare const BorrelkaartgroupsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
+     *  Creates a new borrelkaart group
+     * @param {BorrelkaartGroupRequest} borrelkaartgroup The borrelkaart group which should be created
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createBorrelkaartgroup(borrelkaartgroup: BorrelkaartGroupRequest, options?: any): AxiosPromise<BorrelkaartGroupResponse>;
+    /**
      *  Returns all existing borrelkaart groups
      * @param {number} [take] How many borrelkaart groups the endpoint should return
      * @param {number} [skip] How many borrelkaart groups should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    borrelkaartgroupsGet(take?: number, skip?: number, options?: any): AxiosPromise<PaginatedBorrelkaartGroupResponse>;
+    getALlBorrelkaartgroups(take?: number, skip?: number, options?: any): AxiosPromise<PaginatedBorrelkaartGroupResponse>;
     /**
      *  Returns the requested borrelkaart group
      * @param {number} id The id of the borrelkaart group which should be returned
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    borrelkaartgroupsIdGet(id: number, options?: any): AxiosPromise<BorrelkaartGroupResponse>;
+    getBorrelkaartgroupId(id: number, options?: any): AxiosPromise<BorrelkaartGroupResponse>;
     /**
      *  Updates the requested borrelkaart group
      * @param {number} id The id of the borrelkaart group which should be updated
@@ -8511,14 +8518,7 @@ export declare const BorrelkaartgroupsApiFactory: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    borrelkaartgroupsIdPatch(id: number, borrelkaartgroup: BorrelkaartGroupRequest, options?: any): AxiosPromise<BorrelkaartGroupResponse>;
-    /**
-     *  Creates a new borrelkaart group
-     * @param {BorrelkaartGroupRequest} borrelkaartgroup The borrelkaart group which should be created
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    borrelkaartgroupsPost(borrelkaartgroup: BorrelkaartGroupRequest, options?: any): AxiosPromise<BorrelkaartGroupResponse>;
+    updateBorrelkaartGroup(id: number, borrelkaartgroup: BorrelkaartGroupRequest, options?: any): AxiosPromise<BorrelkaartGroupResponse>;
 };
 /**
  * BorrelkaartgroupsApi - object-oriented interface
@@ -8528,6 +8528,14 @@ export declare const BorrelkaartgroupsApiFactory: (configuration?: Configuration
  */
 export declare class BorrelkaartgroupsApi extends BaseAPI {
     /**
+     *  Creates a new borrelkaart group
+     * @param {BorrelkaartGroupRequest} borrelkaartgroup The borrelkaart group which should be created
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BorrelkaartgroupsApi
+     */
+    createBorrelkaartgroup(borrelkaartgroup: BorrelkaartGroupRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<BorrelkaartGroupResponse, any>>;
+    /**
      *  Returns all existing borrelkaart groups
      * @param {number} [take] How many borrelkaart groups the endpoint should return
      * @param {number} [skip] How many borrelkaart groups should be skipped (for pagination)
@@ -8535,7 +8543,7 @@ export declare class BorrelkaartgroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BorrelkaartgroupsApi
      */
-    borrelkaartgroupsGet(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBorrelkaartGroupResponse, any>>;
+    getALlBorrelkaartgroups(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBorrelkaartGroupResponse, any>>;
     /**
      *  Returns the requested borrelkaart group
      * @param {number} id The id of the borrelkaart group which should be returned
@@ -8543,7 +8551,7 @@ export declare class BorrelkaartgroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BorrelkaartgroupsApi
      */
-    borrelkaartgroupsIdGet(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<BorrelkaartGroupResponse, any>>;
+    getBorrelkaartgroupId(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<BorrelkaartGroupResponse, any>>;
     /**
      *  Updates the requested borrelkaart group
      * @param {number} id The id of the borrelkaart group which should be updated
@@ -8552,15 +8560,7 @@ export declare class BorrelkaartgroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BorrelkaartgroupsApi
      */
-    borrelkaartgroupsIdPatch(id: number, borrelkaartgroup: BorrelkaartGroupRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<BorrelkaartGroupResponse, any>>;
-    /**
-     *  Creates a new borrelkaart group
-     * @param {BorrelkaartGroupRequest} borrelkaartgroup The borrelkaart group which should be created
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BorrelkaartgroupsApi
-     */
-    borrelkaartgroupsPost(borrelkaartgroup: BorrelkaartGroupRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<BorrelkaartGroupResponse, any>>;
+    updateBorrelkaartGroup(id: number, borrelkaartgroup: BorrelkaartGroupRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<BorrelkaartGroupResponse, any>>;
 }
 /**
  * ContainersApi - axios parameter creator
@@ -8573,7 +8573,7 @@ export declare const ContainersApiAxiosParamCreator: (configuration?: Configurat
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    containersIdApprovePost: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    approveContainer: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *  Create a new container.
      * @param {CreateContainerRequest} container    The container which should be created
@@ -8648,7 +8648,7 @@ export declare const ContainersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    containersIdApprovePost(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContainerWithProductsResponse>>;
+    approveContainer(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContainerWithProductsResponse>>;
     /**
      *  Create a new container.
      * @param {CreateContainerRequest} container    The container which should be created
@@ -8723,7 +8723,7 @@ export declare const ContainersApiFactory: (configuration?: Configuration, baseP
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    containersIdApprovePost(id: number, options?: any): AxiosPromise<ContainerWithProductsResponse>;
+    approveContainer(id: number, options?: any): AxiosPromise<ContainerWithProductsResponse>;
     /**
      *  Create a new container.
      * @param {CreateContainerRequest} container    The container which should be created
@@ -8801,7 +8801,7 @@ export declare class ContainersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ContainersApi
      */
-    containersIdApprovePost(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ContainerWithProductsResponse, any>>;
+    approveContainer(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ContainerWithProductsResponse, any>>;
     /**
      *  Create a new container.
      * @param {CreateContainerRequest} container    The container which should be created
@@ -9365,6 +9365,13 @@ export declare class PayoutRequestsApi extends BaseAPI {
  */
 export declare const PointofsaleApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
+     *  Approve a Point of Sale update.
+     * @param {number} id The id of the Point of Sale update to approve
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    approvePointOfSale: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
      *  Create a new Point of Sale.
      * @param {CreatePointOfSaleRequest} pointofsale The point of sale which should be created
      * @param {*} [options] Override http request option.
@@ -9429,13 +9436,6 @@ export declare const PointofsaleApiAxiosParamCreator: (configuration?: Configura
      */
     getUpdated: (take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *  Approve a Point of Sale update.
-     * @param {number} id The id of the Point of Sale update to approve
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    pointsofsaleIdApprovePost: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
      *  Update an existing Point of Sale.
      * @param {number} id The id of the Point of Sale which should be updated
      * @param {UpdatePointOfSaleRequest} pointofsale    The Point of Sale which should be updated
@@ -9449,6 +9449,13 @@ export declare const PointofsaleApiAxiosParamCreator: (configuration?: Configura
  * @export
  */
 export declare const PointofsaleApiFp: (configuration?: Configuration) => {
+    /**
+     *  Approve a Point of Sale update.
+     * @param {number} id The id of the Point of Sale update to approve
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    approvePointOfSale(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleResponse>>;
     /**
      *  Create a new Point of Sale.
      * @param {CreatePointOfSaleRequest} pointofsale The point of sale which should be created
@@ -9514,13 +9521,6 @@ export declare const PointofsaleApiFp: (configuration?: Configuration) => {
      */
     getUpdated(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUpdatedPointOfSaleResponse>>;
     /**
-     *  Approve a Point of Sale update.
-     * @param {number} id The id of the Point of Sale update to approve
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    pointsofsaleIdApprovePost(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleResponse>>;
-    /**
      *  Update an existing Point of Sale.
      * @param {number} id The id of the Point of Sale which should be updated
      * @param {UpdatePointOfSaleRequest} pointofsale    The Point of Sale which should be updated
@@ -9534,6 +9534,13 @@ export declare const PointofsaleApiFp: (configuration?: Configuration) => {
  * @export
  */
 export declare const PointofsaleApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     *  Approve a Point of Sale update.
+     * @param {number} id The id of the Point of Sale update to approve
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    approvePointOfSale(id: number, options?: any): AxiosPromise<PointOfSaleResponse>;
     /**
      *  Create a new Point of Sale.
      * @param {CreatePointOfSaleRequest} pointofsale The point of sale which should be created
@@ -9599,13 +9606,6 @@ export declare const PointofsaleApiFactory: (configuration?: Configuration, base
      */
     getUpdated(take?: number, skip?: number, options?: any): AxiosPromise<PaginatedUpdatedPointOfSaleResponse>;
     /**
-     *  Approve a Point of Sale update.
-     * @param {number} id The id of the Point of Sale update to approve
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    pointsofsaleIdApprovePost(id: number, options?: any): AxiosPromise<PointOfSaleResponse>;
-    /**
      *  Update an existing Point of Sale.
      * @param {number} id The id of the Point of Sale which should be updated
      * @param {UpdatePointOfSaleRequest} pointofsale    The Point of Sale which should be updated
@@ -9621,6 +9621,14 @@ export declare const PointofsaleApiFactory: (configuration?: Configuration, base
  * @extends {BaseAPI}
  */
 export declare class PointofsaleApi extends BaseAPI {
+    /**
+     *  Approve a Point of Sale update.
+     * @param {number} id The id of the Point of Sale update to approve
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PointofsaleApi
+     */
+    approvePointOfSale(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PointOfSaleResponse, any>>;
     /**
      *  Create a new Point of Sale.
      * @param {CreatePointOfSaleRequest} pointofsale The point of sale which should be created
@@ -9693,14 +9701,6 @@ export declare class PointofsaleApi extends BaseAPI {
      * @memberof PointofsaleApi
      */
     getUpdated(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedUpdatedPointOfSaleResponse, any>>;
-    /**
-     *  Approve a Point of Sale update.
-     * @param {number} id The id of the Point of Sale update to approve
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PointofsaleApi
-     */
-    pointsofsaleIdApprovePost(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PointOfSaleResponse, any>>;
     /**
      *  Update an existing Point of Sale.
      * @param {number} id The id of the Point of Sale which should be updated
@@ -9867,6 +9867,13 @@ export declare class ProductCategoriesApi extends BaseAPI {
  */
 export declare const ProductsApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
+     *  Approve a product update.
+     * @param {number} id The id of the product update to approve
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    approveProduct: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
      *  Create a new product.
      * @param {CreateProductRequest} product The product which should be created
      * @param {*} [options] Override http request option.
@@ -9904,13 +9911,6 @@ export declare const ProductsApiAxiosParamCreator: (configuration?: Configuratio
      */
     getUpdatedProducts: (take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *  Approve a product update.
-     * @param {number} id The id of the product update to approve
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    productsIdApprovePost: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
      *  Update an existing product.
      * @param {number} id The id of the product which should be updated
      * @param {UpdateProductRequest} product The product which should be updated
@@ -9932,6 +9932,13 @@ export declare const ProductsApiAxiosParamCreator: (configuration?: Configuratio
  * @export
  */
 export declare const ProductsApiFp: (configuration?: Configuration) => {
+    /**
+     *  Approve a product update.
+     * @param {number} id The id of the product update to approve
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    approveProduct(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductResponse>>;
     /**
      *  Create a new product.
      * @param {CreateProductRequest} product The product which should be created
@@ -9970,13 +9977,6 @@ export declare const ProductsApiFp: (configuration?: Configuration) => {
      */
     getUpdatedProducts(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductResponse>>;
     /**
-     *  Approve a product update.
-     * @param {number} id The id of the product update to approve
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    productsIdApprovePost(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductResponse>>;
-    /**
      *  Update an existing product.
      * @param {number} id The id of the product which should be updated
      * @param {UpdateProductRequest} product The product which should be updated
@@ -9998,6 +9998,13 @@ export declare const ProductsApiFp: (configuration?: Configuration) => {
  * @export
  */
 export declare const ProductsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     *  Approve a product update.
+     * @param {number} id The id of the product update to approve
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    approveProduct(id: number, options?: any): AxiosPromise<ProductResponse>;
     /**
      *  Create a new product.
      * @param {CreateProductRequest} product The product which should be created
@@ -10036,13 +10043,6 @@ export declare const ProductsApiFactory: (configuration?: Configuration, basePat
      */
     getUpdatedProducts(take?: number, skip?: number, options?: any): AxiosPromise<PaginatedProductResponse>;
     /**
-     *  Approve a product update.
-     * @param {number} id The id of the product update to approve
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    productsIdApprovePost(id: number, options?: any): AxiosPromise<ProductResponse>;
-    /**
      *  Update an existing product.
      * @param {number} id The id of the product which should be updated
      * @param {UpdateProductRequest} product The product which should be updated
@@ -10066,6 +10066,14 @@ export declare const ProductsApiFactory: (configuration?: Configuration, basePat
  * @extends {BaseAPI}
  */
 export declare class ProductsApi extends BaseAPI {
+    /**
+     *  Approve a product update.
+     * @param {number} id The id of the product update to approve
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProductsApi
+     */
+    approveProduct(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductResponse, any>>;
     /**
      *  Create a new product.
      * @param {CreateProductRequest} product The product which should be created
@@ -10108,14 +10116,6 @@ export declare class ProductsApi extends BaseAPI {
      * @memberof ProductsApi
      */
     getUpdatedProducts(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedProductResponse, any>>;
-    /**
-     *  Approve a product update.
-     * @param {number} id The id of the product update to approve
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ProductsApi
-     */
-    productsIdApprovePost(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductResponse, any>>;
     /**
      *  Update an existing product.
      * @param {number} id The id of the product which should be updated
@@ -10196,7 +10196,7 @@ export declare const RootApiAxiosParamCreator: (configuration?: Configuration) =
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    pingGet: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    ping: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * RootApi - functional programming interface
@@ -10208,7 +10208,7 @@ export declare const RootApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    pingGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    ping(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
 };
 /**
  * RootApi - factory interface
@@ -10220,7 +10220,7 @@ export declare const RootApiFactory: (configuration?: Configuration, basePath?: 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    pingGet(options?: any): AxiosPromise<void>;
+    ping(options?: any): AxiosPromise<void>;
 };
 /**
  * RootApi - object-oriented interface
@@ -10235,7 +10235,7 @@ export declare class RootApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof RootApi
      */
-    pingGet(options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    ping(options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
 }
 /**
  * StripeApi - axios parameter creator
@@ -10411,13 +10411,6 @@ export declare const TransactionsApiAxiosParamCreator: (configuration?: Configur
      */
     getSingleTransaction: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *  Function to validate the transaction immediatly after it is created
-     * @param {TransactionRequest} transaction The transaction which should be validated
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    transactionsValidatePost: (transaction: TransactionRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
      *  Updates the requested transaction
      * @param {number} id The id of the transaction which should be updated
      * @param {TransactionRequest} transaction The updated transaction
@@ -10425,6 +10418,13 @@ export declare const TransactionsApiAxiosParamCreator: (configuration?: Configur
      * @throws {RequiredError}
      */
     updateTransaction: (id: number, transaction: TransactionRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *  Function to validate the transaction immediatly after it is created
+     * @param {TransactionRequest} transaction The transaction which should be validated
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    validateTransaction: (transaction: TransactionRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * TransactionsApi - functional programming interface
@@ -10469,13 +10469,6 @@ export declare const TransactionsApiFp: (configuration?: Configuration) => {
      */
     getSingleTransaction(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionResponse>>;
     /**
-     *  Function to validate the transaction immediatly after it is created
-     * @param {TransactionRequest} transaction The transaction which should be validated
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    transactionsValidatePost(transaction: TransactionRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
-    /**
      *  Updates the requested transaction
      * @param {number} id The id of the transaction which should be updated
      * @param {TransactionRequest} transaction The updated transaction
@@ -10483,6 +10476,13 @@ export declare const TransactionsApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     updateTransaction(id: number, transaction: TransactionRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionResponse>>;
+    /**
+     *  Function to validate the transaction immediatly after it is created
+     * @param {TransactionRequest} transaction The transaction which should be validated
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    validateTransaction(transaction: TransactionRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
 };
 /**
  * TransactionsApi - factory interface
@@ -10527,13 +10527,6 @@ export declare const TransactionsApiFactory: (configuration?: Configuration, bas
      */
     getSingleTransaction(id: number, options?: any): AxiosPromise<TransactionResponse>;
     /**
-     *  Function to validate the transaction immediatly after it is created
-     * @param {TransactionRequest} transaction The transaction which should be validated
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    transactionsValidatePost(transaction: TransactionRequest, options?: any): AxiosPromise<void>;
-    /**
      *  Updates the requested transaction
      * @param {number} id The id of the transaction which should be updated
      * @param {TransactionRequest} transaction The updated transaction
@@ -10541,6 +10534,13 @@ export declare const TransactionsApiFactory: (configuration?: Configuration, bas
      * @throws {RequiredError}
      */
     updateTransaction(id: number, transaction: TransactionRequest, options?: any): AxiosPromise<TransactionResponse>;
+    /**
+     *  Function to validate the transaction immediatly after it is created
+     * @param {TransactionRequest} transaction The transaction which should be validated
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    validateTransaction(transaction: TransactionRequest, options?: any): AxiosPromise<void>;
 };
 /**
  * TransactionsApi - object-oriented interface
@@ -10591,14 +10591,6 @@ export declare class TransactionsApi extends BaseAPI {
      */
     getSingleTransaction(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionResponse, any>>;
     /**
-     *  Function to validate the transaction immediatly after it is created
-     * @param {TransactionRequest} transaction The transaction which should be validated
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof TransactionsApi
-     */
-    transactionsValidatePost(transaction: TransactionRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
-    /**
      *  Updates the requested transaction
      * @param {number} id The id of the transaction which should be updated
      * @param {TransactionRequest} transaction The updated transaction
@@ -10607,6 +10599,14 @@ export declare class TransactionsApi extends BaseAPI {
      * @memberof TransactionsApi
      */
     updateTransaction(id: number, transaction: TransactionRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionResponse, any>>;
+    /**
+     *  Function to validate the transaction immediatly after it is created
+     * @param {TransactionRequest} transaction The transaction which should be validated
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TransactionsApi
+     */
+    validateTransaction(transaction: TransactionRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
 }
 /**
  * TransfersApi - axios parameter creator
@@ -10882,6 +10882,17 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      */
     getUsersTransactions: (id: number, fromId?: number, createdById?: number, toId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
+     *  Get transaction report for the given user
+     * @param {number} id The id of the user to get the transaction report from
+     * @param {string} [fromDate] Start date for selected transactions (inclusive)
+     * @param {string} [tillDate] End date for selected transactions (exclusive)
+     * @param {number} [fromId] From-user for selected transactions
+     * @param {number} [toId] To-user for selected transactions
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUsersTransactionsReport: (id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
      *  Get an user\'s transfers
      * @param {number} id The id of the user that should be involved in all returned transfers
      * @param {number} [take] How many transfers the endpoint should return
@@ -10959,17 +10970,6 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @throws {RequiredError}
      */
     updateUserPin: (id: number, update: UpdatePinRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *  Get transaction report for the given user
-     * @param {number} id The id of the user to get the transaction report from
-     * @param {string} [fromDate] Start date for selected transactions (inclusive)
-     * @param {string} [tillDate] End date for selected transactions (exclusive)
-     * @param {number} [fromId] From-user for selected transactions
-     * @param {number} [toId] To-user for selected transactions
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    usersIdTransactionsReportGet: (id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * UsersApi - functional programming interface
@@ -11128,6 +11128,17 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      */
     getUsersTransactions(id: number, fromId?: number, createdById?: number, toId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBaseTransactionResponse>>;
     /**
+     *  Get transaction report for the given user
+     * @param {number} id The id of the user to get the transaction report from
+     * @param {string} [fromDate] Start date for selected transactions (inclusive)
+     * @param {string} [tillDate] End date for selected transactions (exclusive)
+     * @param {number} [fromId] From-user for selected transactions
+     * @param {number} [toId] To-user for selected transactions
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUsersTransactionsReport(id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TransactionReportResponse>>>;
+    /**
      *  Get an user\'s transfers
      * @param {number} id The id of the user that should be involved in all returned transfers
      * @param {number} [take] How many transfers the endpoint should return
@@ -11205,17 +11216,6 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     updateUserPin(id: number, update: UpdatePinRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
-    /**
-     *  Get transaction report for the given user
-     * @param {number} id The id of the user to get the transaction report from
-     * @param {string} [fromDate] Start date for selected transactions (inclusive)
-     * @param {string} [tillDate] End date for selected transactions (exclusive)
-     * @param {number} [fromId] From-user for selected transactions
-     * @param {number} [toId] To-user for selected transactions
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    usersIdTransactionsReportGet(id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TransactionReportResponse>>>;
 };
 /**
  * UsersApi - factory interface
@@ -11374,6 +11374,17 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
      */
     getUsersTransactions(id: number, fromId?: number, createdById?: number, toId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedBaseTransactionResponse>;
     /**
+     *  Get transaction report for the given user
+     * @param {number} id The id of the user to get the transaction report from
+     * @param {string} [fromDate] Start date for selected transactions (inclusive)
+     * @param {string} [tillDate] End date for selected transactions (exclusive)
+     * @param {number} [fromId] From-user for selected transactions
+     * @param {number} [toId] To-user for selected transactions
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUsersTransactionsReport(id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, options?: any): AxiosPromise<Array<TransactionReportResponse>>;
+    /**
      *  Get an user\'s transfers
      * @param {number} id The id of the user that should be involved in all returned transfers
      * @param {number} [take] How many transfers the endpoint should return
@@ -11451,17 +11462,6 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
      * @throws {RequiredError}
      */
     updateUserPin(id: number, update: UpdatePinRequest, options?: any): AxiosPromise<void>;
-    /**
-     *  Get transaction report for the given user
-     * @param {number} id The id of the user to get the transaction report from
-     * @param {string} [fromDate] Start date for selected transactions (inclusive)
-     * @param {string} [tillDate] End date for selected transactions (exclusive)
-     * @param {number} [fromId] From-user for selected transactions
-     * @param {number} [toId] To-user for selected transactions
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    usersIdTransactionsReportGet(id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, options?: any): AxiosPromise<Array<TransactionReportResponse>>;
 };
 /**
  * UsersApi - object-oriented interface
@@ -11640,6 +11640,18 @@ export declare class UsersApi extends BaseAPI {
      */
     getUsersTransactions(id: number, fromId?: number, createdById?: number, toId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBaseTransactionResponse, any>>;
     /**
+     *  Get transaction report for the given user
+     * @param {number} id The id of the user to get the transaction report from
+     * @param {string} [fromDate] Start date for selected transactions (inclusive)
+     * @param {string} [tillDate] End date for selected transactions (exclusive)
+     * @param {number} [fromId] From-user for selected transactions
+     * @param {number} [toId] To-user for selected transactions
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    getUsersTransactionsReport(id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionReportResponse[], any>>;
+    /**
      *  Get an user\'s transfers
      * @param {number} id The id of the user that should be involved in all returned transfers
      * @param {number} [take] How many transfers the endpoint should return
@@ -11726,18 +11738,6 @@ export declare class UsersApi extends BaseAPI {
      * @memberof UsersApi
      */
     updateUserPin(id: number, update: UpdatePinRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
-    /**
-     *  Get transaction report for the given user
-     * @param {number} id The id of the user to get the transaction report from
-     * @param {string} [fromDate] Start date for selected transactions (inclusive)
-     * @param {string} [tillDate] End date for selected transactions (exclusive)
-     * @param {number} [fromId] From-user for selected transactions
-     * @param {number} [toId] To-user for selected transactions
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    usersIdTransactionsReportGet(id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionReportResponse[], any>>;
 }
 /**
  * VatGroupsApi - axios parameter creator
