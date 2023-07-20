@@ -312,31 +312,31 @@ export interface AuthenticationResponse {
      * @type {UserResponse}
      * @memberof AuthenticationResponse
      */
-    'user'?: UserResponse;
+    'user': UserResponse;
     /**
      * 
      * @type {Array<string>}
      * @memberof AuthenticationResponse
      */
-    'roles'?: Array<string>;
+    'roles': Array<string>;
     /**
      * 
      * @type {Array<UserResponse>}
      * @memberof AuthenticationResponse
      */
-    'organs'?: Array<UserResponse>;
+    'organs': Array<UserResponse>;
     /**
      * The JWT token that can be used as Bearer token for authentication.
      * @type {string}
      * @memberof AuthenticationResponse
      */
-    'token'?: string;
+    'token': string;
     /**
      * Whether the related user has accepted the Terms of Service  or is not required to.
      * @type {string}
      * @memberof AuthenticationResponse
      */
-    'acceptedToS'?: string;
+    'acceptedToS': string;
 }
 /**
  * 
@@ -441,13 +441,13 @@ export interface BalanceResponse {
      * @type {number}
      * @memberof BalanceResponse
      */
-    'lastTransactionId'?: number;
+    'lastTransactionId': number;
     /**
      * The ID of the last transfer that was present when the balance was cached
      * @type {number}
      * @memberof BalanceResponse
      */
-    'lastTransferId'?: number;
+    'lastTransferId': number;
 }
 /**
  * 
@@ -668,37 +668,37 @@ export interface BannerResponse {
      * @type {string}
      * @memberof BannerResponse
      */
-    'name'?: string;
+    'name': string;
     /**
      * Location of the image
      * @type {string}
      * @memberof BannerResponse
      */
-    'image'?: string;
+    'image': string;
     /**
      * How long the banner should be shown (in seconds)
      * @type {number}
      * @memberof BannerResponse
      */
-    'duration'?: number;
+    'duration': number;
     /**
      * Whether the banner is active. Overrides start and end date
      * @type {boolean}
      * @memberof BannerResponse
      */
-    'active'?: boolean;
+    'active': boolean;
     /**
      * The starting date from which the banner should be shown
      * @type {string}
      * @memberof BannerResponse
      */
-    'startDate'?: string;
+    'startDate': string;
     /**
      * The end date from which the banner should no longer be shown
      * @type {string}
      * @memberof BannerResponse
      */
-    'endDate'?: string;
+    'endDate': string;
 }
 /**
  * 
@@ -711,37 +711,37 @@ export interface BannerResponseAllOf {
      * @type {string}
      * @memberof BannerResponseAllOf
      */
-    'name'?: string;
+    'name': string;
     /**
      * Location of the image
      * @type {string}
      * @memberof BannerResponseAllOf
      */
-    'image'?: string;
+    'image': string;
     /**
      * How long the banner should be shown (in seconds)
      * @type {number}
      * @memberof BannerResponseAllOf
      */
-    'duration'?: number;
+    'duration': number;
     /**
      * Whether the banner is active. Overrides start and end date
      * @type {boolean}
      * @memberof BannerResponseAllOf
      */
-    'active'?: boolean;
+    'active': boolean;
     /**
      * The starting date from which the banner should be shown
      * @type {string}
      * @memberof BannerResponseAllOf
      */
-    'startDate'?: string;
+    'startDate': string;
     /**
      * The end date from which the banner should no longer be shown
      * @type {string}
      * @memberof BannerResponseAllOf
      */
-    'endDate'?: string;
+    'endDate': string;
 }
 /**
  * 
@@ -834,7 +834,7 @@ export interface BaseContainerResponse {
      * @type {number}
      * @memberof BaseContainerResponse
      */
-    'revision'?: number;
+    'revision': number;
 }
 /**
  * 
@@ -859,7 +859,7 @@ export interface BaseContainerResponseAllOf {
      * @type {number}
      * @memberof BaseContainerResponseAllOf
      */
-    'revision'?: number;
+    'revision': number;
 }
 /**
  * 
@@ -1472,13 +1472,13 @@ export interface BaseTransactionResponse {
      * @type {BasePointOfSaleResponse}
      * @memberof BaseTransactionResponse
      */
-    'pointOfSale'?: BasePointOfSaleResponse;
+    'pointOfSale': BasePointOfSaleResponse;
     /**
      * 
      * @type {Dinero}
      * @memberof BaseTransactionResponse
      */
-    'value'?: Dinero;
+    'value': Dinero;
 }
 /**
  * 
@@ -1503,13 +1503,13 @@ export interface BaseTransactionResponseAllOf {
      * @type {BasePointOfSaleResponse}
      * @memberof BaseTransactionResponseAllOf
      */
-    'pointOfSale'?: BasePointOfSaleResponse;
+    'pointOfSale': BasePointOfSaleResponse;
     /**
      * 
      * @type {Dinero}
      * @memberof BaseTransactionResponseAllOf
      */
-    'value'?: Dinero;
+    'value': Dinero;
 }
 /**
  * 
@@ -1552,7 +1552,7 @@ export interface BaseUserResponse {
      * @type {string}
      * @memberof BaseUserResponse
      */
-    'lastName'?: string;
+    'lastName': string;
 }
 /**
  * 
@@ -1571,7 +1571,7 @@ export interface BaseUserResponseAllOf {
      * @type {string}
      * @memberof BaseUserResponseAllOf
      */
-    'lastName'?: string;
+    'lastName': string;
 }
 /**
  * 
@@ -2063,7 +2063,7 @@ export interface ContainerResponse {
      * @type {number}
      * @memberof ContainerResponse
      */
-    'revision'?: number;
+    'revision': number;
     /**
      * 
      * @type {BaseUserResponse}
@@ -2205,7 +2205,7 @@ export interface ContainerWithProductsResponse {
      * @type {number}
      * @memberof ContainerWithProductsResponse
      */
-    'revision'?: number;
+    'revision': number;
     /**
      * 
      * @type {BaseUserResponse}
@@ -2720,7 +2720,7 @@ export interface GewisUserResponse {
      * @type {string}
      * @memberof GewisUserResponse
      */
-    'lastName'?: string;
+    'lastName': string;
     /**
      * Whether the user activated
      * @type {boolean}
@@ -3187,7 +3187,7 @@ export interface InvoiceResponse {
      * @type {Array<InvoiceEntryResponse>}
      * @memberof InvoiceResponse
      */
-    'invoiceEntries'?: Array<InvoiceEntryResponse>;
+    'invoiceEntries': Array<InvoiceEntryResponse>;
 }
 /**
  * 
@@ -3200,7 +3200,7 @@ export interface InvoiceResponseAllOf {
      * @type {Array<InvoiceEntryResponse>}
      * @memberof InvoiceResponseAllOf
      */
-    'invoiceEntries'?: Array<InvoiceEntryResponse>;
+    'invoiceEntries': Array<InvoiceEntryResponse>;
 }
 /**
  * 
@@ -3712,13 +3712,13 @@ export interface PaginatedBasePayoutRequestResponse {
      * @type {PaginationResult}
      * @memberof PaginatedBasePayoutRequestResponse
      */
-    '_pagination'?: PaginationResult;
+    '_pagination': PaginationResult;
     /**
      * 
      * @type {Array<BasePayoutRequestResponse>}
      * @memberof PaginatedBasePayoutRequestResponse
      */
-    'records'?: Array<BasePayoutRequestResponse>;
+    'records': Array<BasePayoutRequestResponse>;
 }
 /**
  * 
@@ -3731,13 +3731,13 @@ export interface PaginatedBaseTransactionResponse {
      * @type {PaginationResult}
      * @memberof PaginatedBaseTransactionResponse
      */
-    '_pagination'?: PaginationResult;
+    '_pagination': PaginationResult;
     /**
      * 
      * @type {Array<BaseTransactionResponse>}
      * @memberof PaginatedBaseTransactionResponse
      */
-    'records'?: Array<BaseTransactionResponse>;
+    'records': Array<BaseTransactionResponse>;
 }
 /**
  * 
@@ -3750,13 +3750,13 @@ export interface PaginatedBorrelkaartGroupResponse {
      * @type {PaginationResult}
      * @memberof PaginatedBorrelkaartGroupResponse
      */
-    '_pagination'?: PaginationResult;
+    '_pagination': PaginationResult;
     /**
      * 
      * @type {Array<BorrelkaartGroupResponse>}
      * @memberof PaginatedBorrelkaartGroupResponse
      */
-    'records'?: Array<BorrelkaartGroupResponse>;
+    'records': Array<BorrelkaartGroupResponse>;
 }
 /**
  * 
@@ -3769,13 +3769,13 @@ export interface PaginatedContainerResponse {
      * @type {PaginationResult}
      * @memberof PaginatedContainerResponse
      */
-    '_pagination'?: PaginationResult;
+    '_pagination': PaginationResult;
     /**
      * 
      * @type {Array<ContainerResponse>}
      * @memberof PaginatedContainerResponse
      */
-    'records'?: Array<ContainerResponse>;
+    'records': Array<ContainerResponse>;
 }
 /**
  * 
@@ -3788,13 +3788,13 @@ export interface PaginatedContainerWithProductResponse {
      * @type {PaginationResult}
      * @memberof PaginatedContainerWithProductResponse
      */
-    '_pagination'?: PaginationResult;
+    '_pagination': PaginationResult;
     /**
      * 
      * @type {Array<ContainerWithProductsResponse>}
      * @memberof PaginatedContainerWithProductResponse
      */
-    'records'?: Array<ContainerWithProductsResponse>;
+    'records': Array<ContainerWithProductsResponse>;
 }
 /**
  * 
@@ -3807,13 +3807,13 @@ export interface PaginatedFinancialMutationResponse {
      * @type {PaginationResult}
      * @memberof PaginatedFinancialMutationResponse
      */
-    '_pagination'?: PaginationResult;
+    '_pagination': PaginationResult;
     /**
      * 
      * @type {Array<PaginatedFinancialMutationResponse>}
      * @memberof PaginatedFinancialMutationResponse
      */
-    'records'?: Array<PaginatedFinancialMutationResponse>;
+    'records': Array<PaginatedFinancialMutationResponse>;
 }
 /**
  * 
@@ -3826,13 +3826,13 @@ export interface PaginatedInvoiceResponse {
      * @type {PaginationResult}
      * @memberof PaginatedInvoiceResponse
      */
-    '_pagination'?: PaginationResult;
+    '_pagination': PaginationResult;
     /**
      * 
      * @type {Array<object>}
      * @memberof PaginatedInvoiceResponse
      */
-    'records'?: Array<object>;
+    'records': Array<object>;
 }
 /**
  * 
@@ -3845,13 +3845,13 @@ export interface PaginatedPointOfSaleResponse {
      * @type {PaginationResult}
      * @memberof PaginatedPointOfSaleResponse
      */
-    '_pagination'?: PaginationResult;
+    '_pagination': PaginationResult;
     /**
      * 
      * @type {Array<PointOfSaleResponse>}
      * @memberof PaginatedPointOfSaleResponse
      */
-    'records'?: Array<PointOfSaleResponse>;
+    'records': Array<PointOfSaleResponse>;
 }
 /**
  * 
@@ -3864,13 +3864,13 @@ export interface PaginatedProductCategoryResponse {
      * @type {PaginationResult}
      * @memberof PaginatedProductCategoryResponse
      */
-    '_pagination'?: PaginationResult;
+    '_pagination': PaginationResult;
     /**
      * 
      * @type {Array<ProductCategoryResponse>}
      * @memberof PaginatedProductCategoryResponse
      */
-    'records'?: Array<ProductCategoryResponse>;
+    'records': Array<ProductCategoryResponse>;
 }
 /**
  * 
@@ -3883,13 +3883,13 @@ export interface PaginatedProductResponse {
      * @type {PaginationResult}
      * @memberof PaginatedProductResponse
      */
-    '_pagination'?: PaginationResult;
+    '_pagination': PaginationResult;
     /**
      * 
      * @type {Array<ProductResponse>}
      * @memberof PaginatedProductResponse
      */
-    'records'?: Array<ProductResponse>;
+    'records': Array<ProductResponse>;
 }
 /**
  * 
@@ -3902,13 +3902,13 @@ export interface PaginatedTransferResponse {
      * @type {PaginationResult}
      * @memberof PaginatedTransferResponse
      */
-    '_pagination'?: PaginationResult;
+    '_pagination': PaginationResult;
     /**
      * 
      * @type {Array<TransferResponse>}
      * @memberof PaginatedTransferResponse
      */
-    'records'?: Array<TransferResponse>;
+    'records': Array<TransferResponse>;
 }
 /**
  * 
@@ -3921,13 +3921,13 @@ export interface PaginatedUpdatedPointOfSaleResponse {
      * @type {PaginationResult}
      * @memberof PaginatedUpdatedPointOfSaleResponse
      */
-    '_pagination'?: PaginationResult;
+    '_pagination': PaginationResult;
     /**
      * 
      * @type {Array<object>}
      * @memberof PaginatedUpdatedPointOfSaleResponse
      */
-    'records'?: Array<object>;
+    'records': Array<object>;
 }
 /**
  * 
@@ -3940,13 +3940,13 @@ export interface PaginatedUserResponse {
      * @type {PaginationResult}
      * @memberof PaginatedUserResponse
      */
-    '_pagination'?: PaginationResult;
+    '_pagination': PaginationResult;
     /**
      * 
      * @type {Array<UserResponse>}
      * @memberof PaginatedUserResponse
      */
-    'records'?: Array<UserResponse>;
+    'records': Array<UserResponse>;
 }
 /**
  * 
@@ -4070,19 +4070,19 @@ export interface PayoutRequestResponse {
      * @type {Array<PayoutRequestStatusResponse>}
      * @memberof PayoutRequestResponse
      */
-    'status'?: Array<PayoutRequestStatusResponse>;
+    'status': Array<PayoutRequestStatusResponse>;
     /**
      * Bank account number
      * @type {string}
      * @memberof PayoutRequestResponse
      */
-    'bankAccountNumber'?: string;
+    'bankAccountNumber': string;
     /**
      * Name of the account owner
      * @type {string}
      * @memberof PayoutRequestResponse
      */
-    'bankAccountName'?: string;
+    'bankAccountName': string;
 }
 /**
  * 
@@ -4095,19 +4095,19 @@ export interface PayoutRequestResponseAllOf {
      * @type {Array<PayoutRequestStatusResponse>}
      * @memberof PayoutRequestResponseAllOf
      */
-    'status'?: Array<PayoutRequestStatusResponse>;
+    'status': Array<PayoutRequestStatusResponse>;
     /**
      * Bank account number
      * @type {string}
      * @memberof PayoutRequestResponseAllOf
      */
-    'bankAccountNumber'?: string;
+    'bankAccountNumber': string;
     /**
      * Name of the account owner
      * @type {string}
      * @memberof PayoutRequestResponseAllOf
      */
-    'bankAccountName'?: string;
+    'bankAccountName': string;
 }
 /**
  * 
@@ -4157,7 +4157,7 @@ export interface PayoutRequestStatusResponse {
      * @type {string}
      * @memberof PayoutRequestStatusResponse
      */
-    'state'?: string;
+    'state': string;
 }
 /**
  * 
@@ -4170,7 +4170,7 @@ export interface PayoutRequestStatusResponseAllOf {
      * @type {string}
      * @memberof PayoutRequestStatusResponseAllOf
      */
-    'state'?: string;
+    'state': string;
 }
 /**
  * 
@@ -4850,13 +4850,13 @@ export interface ProductResponse {
      * @type {string}
      * @memberof ProductResponse
      */
-    'image'?: string;
+    'image': string;
     /**
      * The percentage of alcohol in this product.
      * @type {number}
      * @memberof ProductResponse
      */
-    'alcoholPercentage'?: number;
+    'alcoholPercentage': number;
 }
 /**
  * 
@@ -6131,7 +6131,7 @@ export interface TransactionResponse {
      * @type {BasePointOfSaleResponse}
      * @memberof TransactionResponse
      */
-    'pointOfSale'?: BasePointOfSaleResponse;
+    'pointOfSale': BasePointOfSaleResponse;
     /**
      * 
      * @type {DineroObjectResponse}
@@ -6168,7 +6168,7 @@ export interface TransactionResponseAllOf {
      * @type {BasePointOfSaleResponse}
      * @memberof TransactionResponseAllOf
      */
-    'pointOfSale'?: BasePointOfSaleResponse;
+    'pointOfSale': BasePointOfSaleResponse;
     /**
      * 
      * @type {DineroObjectResponse}
@@ -7033,7 +7033,7 @@ export interface UpdatedProductResponse {
      * @type {number}
      * @memberof UpdatedProductResponse
      */
-    'revision'?: number;
+    'revision': number;
     /**
      * 
      * @type {BaseUserResponse}
@@ -7057,13 +7057,13 @@ export interface UpdatedProductResponse {
      * @type {string}
      * @memberof UpdatedProductResponse
      */
-    'image'?: string;
+    'image': string;
     /**
      * The percentage of alcohol in this product.
      * @type {number}
      * @memberof UpdatedProductResponse
      */
-    'alcoholPercentage'?: number;
+    'alcoholPercentage': number;
 }
 /**
  * 
@@ -7076,7 +7076,7 @@ export interface UpdatedProductResponseAllOf {
      * @type {number}
      * @memberof UpdatedProductResponseAllOf
      */
-    'revision'?: number;
+    'revision': number;
     /**
      * 
      * @type {BaseUserResponse}
@@ -7100,13 +7100,13 @@ export interface UpdatedProductResponseAllOf {
      * @type {string}
      * @memberof UpdatedProductResponseAllOf
      */
-    'image'?: string;
+    'image': string;
     /**
      * The percentage of alcohol in this product.
      * @type {number}
      * @memberof UpdatedProductResponseAllOf
      */
-    'alcoholPercentage'?: number;
+    'alcoholPercentage': number;
 }
 /**
  * 
@@ -7229,12 +7229,6 @@ export interface UserAllOf {
      * @memberof UserAllOf
      */
     'type': string;
-    /**
-     * The auto-generated object id.
-     * @type {number}
-     * @memberof UserAllOf
-     */
-    'id': number;
 }
 /**
  * 
@@ -7339,7 +7333,7 @@ export interface UserResponse {
      * @type {string}
      * @memberof UserResponse
      */
-    'lastName'?: string;
+    'lastName': string;
     /**
      * Whether the user activated
      * @type {boolean}
@@ -7443,19 +7437,19 @@ export interface VatDeclarationResponse {
      * @type {number}
      * @memberof VatDeclarationResponse
      */
-    'calendarYear'?: number;
+    'calendarYear': number;
     /**
      * The used VAT declaration period the rows below are based upon
      * @type {string}
      * @memberof VatDeclarationResponse
      */
-    'period'?: string;
+    'period': string;
     /**
      * 
      * @type {Array<VatDeclarationRow>}
      * @memberof VatDeclarationResponse
      */
-    'rows'?: Array<VatDeclarationRow>;
+    'rows': Array<VatDeclarationRow>;
 }
 /**
  * 
@@ -7468,25 +7462,25 @@ export interface VatDeclarationRow {
      * @type {number}
      * @memberof VatDeclarationRow
      */
-    'id'?: number;
+    'id': number;
     /**
      * Name of the VAT group
      * @type {string}
      * @memberof VatDeclarationRow
      */
-    'name'?: string;
+    'name': string;
     /**
      * Percentage of VAT in this group
      * @type {number}
      * @memberof VatDeclarationRow
      */
-    'percentage'?: number;
+    'percentage': number;
     /**
      * 
      * @type {Array<DineroObject>}
      * @memberof VatDeclarationRow
      */
-    'values'?: Array<DineroObject>;
+    'values': Array<DineroObject>;
 }
 /**
  * 

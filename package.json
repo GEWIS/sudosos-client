@@ -7,7 +7,7 @@
   "license": "AGPL-3.0-or-later",
   "scripts": {
     "build": "tsc",
-    "gen": "openapi-generator-cli generate -i swagger.json  -g typescript-axios -o ./src --openapi-normalizer REFACTOR_ALLOF_WITH_PROPERTIES_ONLY=true  tsc"
+    "gen": "openapi-generator-cli generate -i swagger.json  -g typescript-axios -o ./src --openapi-normalizer REFACTOR_ALLOF_WITH_PROPERTIES_ONLY=true"
   },
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.6.0",
