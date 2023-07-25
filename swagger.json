@@ -6262,7 +6262,7 @@
           "description": "Type of mutation ('transfer' or 'transaction') (Optional)"
         },
         "mutation": {
-          "type": "any",
+          "type": "object",
           "description": "Details of mutation, this can be either of type TransferResponse or BaseTransactionResponse"
         }
       }

@@ -2600,6 +2600,12 @@ export interface FinancialMutationResponse {
      * @memberof FinancialMutationResponse
      */
     'type': string;
+    /**
+     * Details of mutation, this can be either of type TransferResponse or BaseTransactionResponse
+     * @type {object}
+     * @memberof FinancialMutationResponse
+     */
+    'mutation'?: object;
 }
 /**
  *
