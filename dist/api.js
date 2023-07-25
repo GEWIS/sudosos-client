@@ -6906,10 +6906,11 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {string} [tillDate] End date for selected transactions (exclusive)
          * @param {number} [fromId] From-user for selected transactions
          * @param {number} [toId] To-user for selected transactions
+         * @param {boolean} [exclusiveToId] If all sub-transactions should be to the toId user, default true
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersTransactionsReport: (id, fromDate, tillDate, fromId, toId, options = {}) => __awaiter(this, void 0, void 0, function* () {
+        getUsersTransactionsReport: (id, fromDate, tillDate, fromId, toId, exclusiveToId, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getUsersTransactionsReport', 'id', id);
             const localVarPath = `/users/{id}/transactions/report`
@@ -6936,6 +6937,9 @@ const UsersApiAxiosParamCreator = function (configuration) {
             }
             if (toId !== undefined) {
                 localVarQueryParameter['toId'] = toId;
+            }
+            if (exclusiveToId !== undefined) {
+                localVarQueryParameter['exclusiveToId'] = exclusiveToId;
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -7537,12 +7541,13 @@ const UsersApiFp = function (configuration) {
          * @param {string} [tillDate] End date for selected transactions (exclusive)
          * @param {number} [fromId] From-user for selected transactions
          * @param {number} [toId] To-user for selected transactions
+         * @param {boolean} [exclusiveToId] If all sub-transactions should be to the toId user, default true
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersTransactionsReport(id, fromDate, tillDate, fromId, toId, options) {
+        getUsersTransactionsReport(id, fromDate, tillDate, fromId, toId, exclusiveToId, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUsersTransactionsReport(id, fromDate, tillDate, fromId, toId, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUsersTransactionsReport(id, fromDate, tillDate, fromId, toId, exclusiveToId, options);
                 return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
             });
         },
@@ -7873,11 +7878,12 @@ const UsersApiFactory = function (configuration, basePath, axios) {
          * @param {string} [tillDate] End date for selected transactions (exclusive)
          * @param {number} [fromId] From-user for selected transactions
          * @param {number} [toId] To-user for selected transactions
+         * @param {boolean} [exclusiveToId] If all sub-transactions should be to the toId user, default true
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersTransactionsReport(id, fromDate, tillDate, fromId, toId, options) {
-            return localVarFp.getUsersTransactionsReport(id, fromDate, tillDate, fromId, toId, options).then((request) => request(axios, basePath));
+        getUsersTransactionsReport(id, fromDate, tillDate, fromId, toId, exclusiveToId, options) {
+            return localVarFp.getUsersTransactionsReport(id, fromDate, tillDate, fromId, toId, exclusiveToId, options).then((request) => request(axios, basePath));
         },
         /**
          *  Get an user\'s transfers
@@ -8197,12 +8203,13 @@ class UsersApi extends base_1.BaseAPI {
      * @param {string} [tillDate] End date for selected transactions (exclusive)
      * @param {number} [fromId] From-user for selected transactions
      * @param {number} [toId] To-user for selected transactions
+     * @param {boolean} [exclusiveToId] If all sub-transactions should be to the toId user, default true
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUsersTransactionsReport(id, fromDate, tillDate, fromId, toId, options) {
-        return (0, exports.UsersApiFp)(this.configuration).getUsersTransactionsReport(id, fromDate, tillDate, fromId, toId, options).then((request) => request(this.axios, this.basePath));
+    getUsersTransactionsReport(id, fromDate, tillDate, fromId, toId, exclusiveToId, options) {
+        return (0, exports.UsersApiFp)(this.configuration).getUsersTransactionsReport(id, fromDate, tillDate, fromId, toId, exclusiveToId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *  Get an user\'s transfers
