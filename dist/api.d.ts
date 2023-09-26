@@ -431,13 +431,13 @@ export interface BalanceResponse {
      * @type {number}
      * @memberof BalanceResponse
      */
-    'lastTransactionId': number;
+    'lastTransactionId'?: number;
     /**
      * The ID of the last transfer that was present when the balance was cached
      * @type {number}
      * @memberof BalanceResponse
      */
-    'lastTransferId': number;
+    'lastTransferId'?: number;
 }
 /**
  *
@@ -664,7 +664,7 @@ export interface BannerResponse {
      * @type {string}
      * @memberof BannerResponse
      */
-    'image': string;
+    'image'?: string;
     /**
      * How long the banner should be shown (in seconds)
      * @type {number}
@@ -707,7 +707,7 @@ export interface BannerResponseAllOf {
      * @type {string}
      * @memberof BannerResponseAllOf
      */
-    'image': string;
+    'image'?: string;
     /**
      * How long the banner should be shown (in seconds)
      * @type {number}
@@ -824,7 +824,7 @@ export interface BaseContainerResponse {
      * @type {number}
      * @memberof BaseContainerResponse
      */
-    'revision': number;
+    'revision'?: number;
 }
 /**
  *
@@ -849,7 +849,7 @@ export interface BaseContainerResponseAllOf {
      * @type {number}
      * @memberof BaseContainerResponseAllOf
      */
-    'revision': number;
+    'revision'?: number;
 }
 /**
  *
@@ -2053,7 +2053,7 @@ export interface ContainerResponse {
      * @type {number}
      * @memberof ContainerResponse
      */
-    'revision': number;
+    'revision'?: number;
     /**
      *
      * @type {BaseUserResponse}
@@ -2195,7 +2195,7 @@ export interface ContainerWithProductsResponse {
      * @type {number}
      * @memberof ContainerWithProductsResponse
      */
-    'revision': number;
+    'revision'?: number;
     /**
      *
      * @type {BaseUserResponse}
@@ -2302,7 +2302,7 @@ export interface CreateInvoiceRequest {
      */
     'fromDate'?: string;
     /**
-     * If the invoice is an credit Invoice
+     * If the invoice is an credit Invoice  If an invoice is a credit invoice the relevant subtransactions are defined as all the sub transactions which have `subTransaction.toId == forId`.
      * @type {boolean}
      * @memberof CreateInvoiceRequest
      */
@@ -2587,6 +2587,25 @@ export interface EntityResponse {
      * @memberof EntityResponse
      */
     'actions'?: Array<ActionResponse>;
+}
+/**
+ *
+ * @export
+ * @interface FinancialMutationResponse
+ */
+export interface FinancialMutationResponse {
+    /**
+     * Type of mutation (\'transfer\' or \'transaction\') (Optional)
+     * @type {string}
+     * @memberof FinancialMutationResponse
+     */
+    'type': string;
+    /**
+     * Details of mutation, this can be either of type TransferResponse or BaseTransactionResponse
+     * @type {object}
+     * @memberof FinancialMutationResponse
+     */
+    'mutation'?: object;
 }
 /**
  *
@@ -3191,6 +3210,86 @@ export interface InvoiceResponseAllOf {
      * @memberof InvoiceResponseAllOf
      */
     'invoiceEntries': Array<InvoiceEntryResponse>;
+}
+/**
+ *
+ * @export
+ * @interface InvoiceResponseTypes
+ */
+export interface InvoiceResponseTypes {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof InvoiceResponseTypes
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof InvoiceResponseTypes
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof InvoiceResponseTypes
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof InvoiceResponseTypes
+     */
+    'version'?: number;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof InvoiceResponseTypes
+     */
+    'to': BaseUserResponse;
+    /**
+     * Name of the addressed.
+     * @type {string}
+     * @memberof InvoiceResponseTypes
+     */
+    'addressee': string;
+    /**
+     * Description of the invoice.
+     * @type {string}
+     * @memberof InvoiceResponseTypes
+     */
+    'description': string;
+    /**
+     *
+     * @type {InvoiceStatusResponse}
+     * @memberof InvoiceResponseTypes
+     */
+    'currentState': InvoiceStatusResponse;
+    /**
+     *
+     * @type {TransferResponse}
+     * @memberof InvoiceResponseTypes
+     */
+    'transfer'?: TransferResponse;
+    /**
+     *
+     * @type {Array<InvoiceEntryResponse>}
+     * @memberof InvoiceResponseTypes
+     */
+    'invoiceEntries'?: Array<InvoiceEntryResponse>;
+}
+/**
+ *
+ * @export
+ * @interface InvoiceResponseTypesAllOf
+ */
+export interface InvoiceResponseTypesAllOf {
+    /**
+     *
+     * @type {Array<InvoiceEntryResponse>}
+     * @memberof InvoiceResponseTypesAllOf
+     */
+    'invoiceEntries'?: Array<InvoiceEntryResponse>;
 }
 /**
  *
@@ -3800,10 +3899,10 @@ export interface PaginatedFinancialMutationResponse {
     '_pagination': PaginationResult;
     /**
      *
-     * @type {Array<PaginatedFinancialMutationResponse>}
+     * @type {Array<FinancialMutationResponse>}
      * @memberof PaginatedFinancialMutationResponse
      */
-    'records': Array<PaginatedFinancialMutationResponse>;
+    'records': Array<FinancialMutationResponse>;
 }
 /**
  *
@@ -3819,10 +3918,10 @@ export interface PaginatedInvoiceResponse {
     '_pagination': PaginationResult;
     /**
      *
-     * @type {Array<object>}
+     * @type {Array<InvoiceResponseTypes>}
      * @memberof PaginatedInvoiceResponse
      */
-    'records': Array<object>;
+    'records': Array<InvoiceResponseTypes>;
 }
 /**
  *
@@ -3918,6 +4017,25 @@ export interface PaginatedUpdatedPointOfSaleResponse {
      * @memberof PaginatedUpdatedPointOfSaleResponse
      */
     'records': Array<object>;
+}
+/**
+ *
+ * @export
+ * @interface PaginatedUpdatedProductResponse
+ */
+export interface PaginatedUpdatedProductResponse {
+    /**
+     *
+     * @type {PaginationResult}
+     * @memberof PaginatedUpdatedProductResponse
+     */
+    '_pagination': PaginationResult;
+    /**
+     *
+     * @type {Array<UpdatedProductResponse>}
+     * @memberof PaginatedUpdatedProductResponse
+     */
+    'records': Array<UpdatedProductResponse>;
 }
 /**
  *
@@ -4812,12 +4930,6 @@ export interface ProductResponse {
      */
     'vat': BaseVatGroupResponse;
     /**
-     * The product revision ID
-     * @type {number}
-     * @memberof ProductResponse
-     */
-    'revision': number;
-    /**
      *
      * @type {BaseUserResponse}
      * @memberof ProductResponse
@@ -4840,13 +4952,19 @@ export interface ProductResponse {
      * @type {string}
      * @memberof ProductResponse
      */
-    'image': string;
+    'image'?: string;
     /**
      * The percentage of alcohol in this product.
      * @type {number}
      * @memberof ProductResponse
      */
     'alcoholPercentage': number;
+    /**
+     * The product revision ID
+     * @type {number}
+     * @memberof ProductResponse
+     */
+    'revision': number;
 }
 /**
  *
@@ -5259,11 +5377,11 @@ export interface StripeDepositStatusResponse {
      */
     'version'?: number;
     /**
-     *
-     * @type {string}
+     * State of the Stripe deposit. It can be 1 (\'CREATED\'), 2 (\'PROCESSING\'), 3 (\'SUCCEEDED\'), or 4 (\'FAILED\')
+     * @type {number}
      * @memberof StripeDepositStatusResponse
      */
-    'depositStatus': string;
+    'state': number;
 }
 /**
  *
@@ -5272,11 +5390,11 @@ export interface StripeDepositStatusResponse {
  */
 export interface StripeDepositStatusResponseAllOf {
     /**
-     *
-     * @type {string}
+     * State of the Stripe deposit. It can be 1 (\'CREATED\'), 2 (\'PROCESSING\'), 3 (\'SUCCEEDED\'), or 4 (\'FAILED\')
+     * @type {number}
      * @memberof StripeDepositStatusResponseAllOf
      */
-    'depositStatus': string;
+    'state': number;
 }
 /**
  *
@@ -5511,7 +5629,7 @@ export interface SubTransactionResponse {
      * @type {Array<SubTransactionRowResponse>}
      * @memberof SubTransactionResponse
      */
-    'subTransactionsRows': Array<SubTransactionRowResponse>;
+    'subTransactionRows': Array<SubTransactionRowResponse>;
     /**
      *
      * @type {DineroObjectResponse}
@@ -5542,7 +5660,7 @@ export interface SubTransactionResponseAllOf {
      * @type {Array<SubTransactionRowResponse>}
      * @memberof SubTransactionResponseAllOf
      */
-    'subTransactionsRows': Array<SubTransactionRowResponse>;
+    'subTransactionRows': Array<SubTransactionRowResponse>;
     /**
      *
      * @type {DineroObjectResponse}
@@ -5839,6 +5957,12 @@ export interface TransactionFilterParameters {
      * @memberof TransactionFilterParameters
      */
     'toId'?: number;
+    /**
+     *
+     * @type {boolean}
+     * @memberof TransactionFilterParameters
+     */
+    'exclusiveToId'?: boolean;
     /**
      *
      * @type {number}
@@ -7019,12 +7143,6 @@ export interface UpdatedProductResponse {
      */
     'vat': BaseVatGroupResponse;
     /**
-     * The revision of the product.
-     * @type {number}
-     * @memberof UpdatedProductResponse
-     */
-    'revision': number;
-    /**
      *
      * @type {BaseUserResponse}
      * @memberof UpdatedProductResponse
@@ -7047,7 +7165,7 @@ export interface UpdatedProductResponse {
      * @type {string}
      * @memberof UpdatedProductResponse
      */
-    'image': string;
+    'image'?: string;
     /**
      * The percentage of alcohol in this product.
      * @type {number}
@@ -7062,12 +7180,6 @@ export interface UpdatedProductResponse {
  */
 export interface UpdatedProductResponseAllOf {
     /**
-     * The revision of the product.
-     * @type {number}
-     * @memberof UpdatedProductResponseAllOf
-     */
-    'revision': number;
-    /**
      *
      * @type {BaseUserResponse}
      * @memberof UpdatedProductResponseAllOf
@@ -7090,7 +7202,7 @@ export interface UpdatedProductResponseAllOf {
      * @type {string}
      * @memberof UpdatedProductResponseAllOf
      */
-    'image': string;
+    'image'?: string;
     /**
      * The percentage of alcohol in this product.
      * @type {number}
@@ -10888,10 +11000,11 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {string} [tillDate] End date for selected transactions (exclusive)
      * @param {number} [fromId] From-user for selected transactions
      * @param {number} [toId] To-user for selected transactions
+     * @param {boolean} [exclusiveToId] If all sub-transactions should be to the toId user, default true
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUsersTransactionsReport: (id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getUsersTransactionsReport: (id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, exclusiveToId?: boolean, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *  Get an user\'s transfers
      * @param {number} id The id of the user that should be involved in all returned transfers
@@ -11134,10 +11247,11 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {string} [tillDate] End date for selected transactions (exclusive)
      * @param {number} [fromId] From-user for selected transactions
      * @param {number} [toId] To-user for selected transactions
+     * @param {boolean} [exclusiveToId] If all sub-transactions should be to the toId user, default true
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUsersTransactionsReport(id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TransactionReportResponse>>>;
+    getUsersTransactionsReport(id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, exclusiveToId?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TransactionReportResponse>>>;
     /**
      *  Get an user\'s transfers
      * @param {number} id The id of the user that should be involved in all returned transfers
@@ -11380,10 +11494,11 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
      * @param {string} [tillDate] End date for selected transactions (exclusive)
      * @param {number} [fromId] From-user for selected transactions
      * @param {number} [toId] To-user for selected transactions
+     * @param {boolean} [exclusiveToId] If all sub-transactions should be to the toId user, default true
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUsersTransactionsReport(id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, options?: any): AxiosPromise<Array<TransactionReportResponse>>;
+    getUsersTransactionsReport(id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, exclusiveToId?: boolean, options?: any): AxiosPromise<Array<TransactionReportResponse>>;
     /**
      *  Get an user\'s transfers
      * @param {number} id The id of the user that should be involved in all returned transfers
@@ -11646,11 +11761,12 @@ export declare class UsersApi extends BaseAPI {
      * @param {string} [tillDate] End date for selected transactions (exclusive)
      * @param {number} [fromId] From-user for selected transactions
      * @param {number} [toId] To-user for selected transactions
+     * @param {boolean} [exclusiveToId] If all sub-transactions should be to the toId user, default true
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUsersTransactionsReport(id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionReportResponse[], any>>;
+    getUsersTransactionsReport(id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, exclusiveToId?: boolean, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionReportResponse[], any>>;
     /**
      *  Get an user\'s transfers
      * @param {number} id The id of the user that should be involved in all returned transfers
