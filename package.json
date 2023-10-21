@@ -8,7 +8,8 @@
   "scripts": {
     "build": "tsc",
     "gen-build": "npm run gen && npm run build && (git add ./src && git add ./dist)",
-    "gen": "openapi-generator-cli generate -i swagger.json  -g typescript-axios -o ./src --openapi-normalizer REFACTOR_ALLOF_WITH_PROPERTIES_ONLY=true"
+    "gen": "openapi-generator-cli generate -i swagger.json  -g typescript-axios -o ./src --openapi-normalizer REFACTOR_ALLOF_WITH_PROPERTIES_ONLY=true",
+    "update-swagger": "cd ./node_modules/@sudosos/sudosos-backend && npx npm install && npx npm run swagger && cd ../../../ &&  cp ./node_modules/@sudosos/sudosos-backend/out/swagger.json ./swagger.json"
   },
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.6.0",
@@ -20,7 +21,8 @@
     "eslint-plugin-chai-expect": "^3.0.0",
     "eslint-plugin-chai-friendly": "^0.7.1",
     "eslint-plugin-header": "^3.1.1",
-    "eslint-plugin-import": "^2.23.4"
+    "eslint-plugin-import": "^2.23.4",
+    "@sudosos/sudosos-backend": "github:GEWIS/sudosos-backend#main"
   },
   "repository": {
     "type": "git",
