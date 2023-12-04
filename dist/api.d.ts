@@ -427,6 +427,18 @@ export interface BalanceResponse {
      */
     'amount': DineroObjectResponse;
     /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof BalanceResponse
+     */
+    'fine'?: DineroObjectResponse;
+    /**
+     * Timestamp of the first fine
+     * @type {string}
+     * @memberof BalanceResponse
+     */
+    'fineSince'?: string;
+    /**
      * The ID of the last transaction that was present when the balance was cached
      * @type {number}
      * @memberof BalanceResponse
@@ -736,50 +748,6 @@ export interface BannerResponseAllOf {
 /**
  *
  * @export
- * @interface BaseContainer
- */
-export interface BaseContainer {
-    /**
-     * The creation date of the object.
-     * @type {string}
-     * @memberof BaseContainer
-     */
-    'createdAt'?: string;
-    /**
-     * The last update date of the object.
-     * @type {string}
-     * @memberof BaseContainer
-     */
-    'updatedAt'?: string;
-    /**
-     * The current version of the object.
-     * @type {number}
-     * @memberof BaseContainer
-     */
-    'version'?: number;
-    /**
-     * The unique name of the container.
-     * @type {string}
-     * @memberof BaseContainer
-     */
-    'name': string;
-}
-/**
- *
- * @export
- * @interface BaseContainerAllOf
- */
-export interface BaseContainerAllOf {
-    /**
-     * The unique name of the container.
-     * @type {string}
-     * @memberof BaseContainerAllOf
-     */
-    'name': string;
-}
-/**
- *
- * @export
  * @interface BaseContainerResponse
  */
 export interface BaseContainerResponse {
@@ -997,6 +965,68 @@ export interface BaseFileAllOf {
 /**
  *
  * @export
+ * @interface BaseFineHandoutEventResponse
+ */
+export interface BaseFineHandoutEventResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof BaseFineHandoutEventResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof BaseFineHandoutEventResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof BaseFineHandoutEventResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof BaseFineHandoutEventResponse
+     */
+    'version'?: number;
+    /**
+     * Reference date of fines
+     * @type {string}
+     * @memberof BaseFineHandoutEventResponse
+     */
+    'referenceDate': string;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof BaseFineHandoutEventResponse
+     */
+    'createdBy'?: BaseUserResponse;
+}
+/**
+ *
+ * @export
+ * @interface BaseFineHandoutEventResponseAllOf
+ */
+export interface BaseFineHandoutEventResponseAllOf {
+    /**
+     * Reference date of fines
+     * @type {string}
+     * @memberof BaseFineHandoutEventResponseAllOf
+     */
+    'referenceDate': string;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof BaseFineHandoutEventResponseAllOf
+     */
+    'createdBy'?: BaseUserResponse;
+}
+/**
+ *
+ * @export
  * @interface BaseInvoiceResponse
  */
 export interface BaseInvoiceResponse {
@@ -1163,50 +1193,6 @@ export interface BasePayoutRequestResponseAllOf {
 /**
  *
  * @export
- * @interface BasePointOfSale
- */
-export interface BasePointOfSale {
-    /**
-     * The creation date of the object.
-     * @type {string}
-     * @memberof BasePointOfSale
-     */
-    'createdAt'?: string;
-    /**
-     * The last update date of the object.
-     * @type {string}
-     * @memberof BasePointOfSale
-     */
-    'updatedAt'?: string;
-    /**
-     * The current version of the object.
-     * @type {number}
-     * @memberof BasePointOfSale
-     */
-    'version'?: number;
-    /**
-     * The unique name of the pointOfSale.
-     * @type {string}
-     * @memberof BasePointOfSale
-     */
-    'name': string;
-}
-/**
- *
- * @export
- * @interface BasePointOfSaleAllOf
- */
-export interface BasePointOfSaleAllOf {
-    /**
-     * The unique name of the pointOfSale.
-     * @type {string}
-     * @memberof BasePointOfSaleAllOf
-     */
-    'name': string;
-}
-/**
- *
- * @export
  * @interface BasePointOfSaleResponse
  */
 export interface BasePointOfSaleResponse {
@@ -1253,62 +1239,6 @@ export interface BasePointOfSaleResponseAllOf {
      * @memberof BasePointOfSaleResponseAllOf
      */
     'name': string;
-}
-/**
- *
- * @export
- * @interface BaseProduct
- */
-export interface BaseProduct {
-    /**
-     * The creation date of the object.
-     * @type {string}
-     * @memberof BaseProduct
-     */
-    'createdAt'?: string;
-    /**
-     * The last update date of the object.
-     * @type {string}
-     * @memberof BaseProduct
-     */
-    'updatedAt'?: string;
-    /**
-     * The current version of the object.
-     * @type {number}
-     * @memberof BaseProduct
-     */
-    'version'?: number;
-    /**
-     * The unique name of the product.
-     * @type {string}
-     * @memberof BaseProduct
-     */
-    'name': string;
-    /**
-     *
-     * @type {Dinero}
-     * @memberof BaseProduct
-     */
-    'price': Dinero;
-}
-/**
- *
- * @export
- * @interface BaseProductAllOf
- */
-export interface BaseProductAllOf {
-    /**
-     * The unique name of the product.
-     * @type {string}
-     * @memberof BaseProductAllOf
-     */
-    'name': string;
-    /**
-     *
-     * @type {Dinero}
-     * @memberof BaseProductAllOf
-     */
-    'price': Dinero;
 }
 /**
  *
@@ -1543,6 +1473,12 @@ export interface BaseUserResponse {
      * @memberof BaseUserResponse
      */
     'lastName': string;
+    /**
+     * The nickname of the user
+     * @type {string}
+     * @memberof BaseUserResponse
+     */
+    'nickname'?: string;
 }
 /**
  *
@@ -1562,6 +1498,12 @@ export interface BaseUserResponseAllOf {
      * @memberof BaseUserResponseAllOf
      */
     'lastName': string;
+    /**
+     * The nickname of the user
+     * @type {string}
+     * @memberof BaseUserResponseAllOf
+     */
+    'nickname'?: string;
 }
 /**
  *
@@ -2099,12 +2041,6 @@ export interface ContainerRevision {
      */
     'version'?: number;
     /**
-     * The unique name of the container.
-     * @type {string}
-     * @memberof ContainerRevision
-     */
-    'name': string;
-    /**
      *
      * @type {Container}
      * @memberof ContainerRevision
@@ -2122,6 +2058,12 @@ export interface ContainerRevision {
      * @memberof ContainerRevision
      */
     'products': Array<ProductRevision>;
+    /**
+     * The name of the container.
+     * @type {string}
+     * @memberof ContainerRevision
+     */
+    'name': string;
 }
 /**
  *
@@ -2147,6 +2089,12 @@ export interface ContainerRevisionAllOf {
      * @memberof ContainerRevisionAllOf
      */
     'products': Array<ProductRevision>;
+    /**
+     * The name of the container.
+     * @type {string}
+     * @memberof ContainerRevisionAllOf
+     */
+    'name': string;
 }
 /**
  *
@@ -2610,6 +2558,130 @@ export interface FinancialMutationResponse {
 /**
  *
  * @export
+ * @interface FineHandoutEventResponse
+ */
+export interface FineHandoutEventResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof FineHandoutEventResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof FineHandoutEventResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof FineHandoutEventResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof FineHandoutEventResponse
+     */
+    'version'?: number;
+    /**
+     * Reference date of fines
+     * @type {string}
+     * @memberof FineHandoutEventResponse
+     */
+    'referenceDate': string;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof FineHandoutEventResponse
+     */
+    'createdBy'?: BaseUserResponse;
+    /**
+     *
+     * @type {Array<FineResponse>}
+     * @memberof FineHandoutEventResponse
+     */
+    'fines'?: Array<FineResponse>;
+}
+/**
+ *
+ * @export
+ * @interface FineHandoutEventResponseAllOf
+ */
+export interface FineHandoutEventResponseAllOf {
+    /**
+     *
+     * @type {Array<FineResponse>}
+     * @memberof FineHandoutEventResponseAllOf
+     */
+    'fines'?: Array<FineResponse>;
+}
+/**
+ *
+ * @export
+ * @interface FineResponse
+ */
+export interface FineResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof FineResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof FineResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof FineResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof FineResponse
+     */
+    'version'?: number;
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof FineResponse
+     */
+    'amount'?: DineroObjectResponse;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof FineResponse
+     */
+    'user'?: BaseUserResponse;
+}
+/**
+ *
+ * @export
+ * @interface FineResponseAllOf
+ */
+export interface FineResponseAllOf {
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof FineResponseAllOf
+     */
+    'amount'?: DineroObjectResponse;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof FineResponseAllOf
+     */
+    'user'?: BaseUserResponse;
+}
+/**
+ *
+ * @export
  * @interface GEWISAuthenticationPinRequest
  */
 export interface GEWISAuthenticationPinRequest {
@@ -2731,6 +2803,12 @@ export interface GewisUserResponse {
      */
     'lastName': string;
     /**
+     * The nickname of the user
+     * @type {string}
+     * @memberof GewisUserResponse
+     */
+    'nickname'?: string;
+    /**
      * Whether the user activated
      * @type {boolean}
      * @memberof GewisUserResponse
@@ -2810,6 +2888,25 @@ export interface GewiswebAuthenticationRequest {
      * @memberof GewiswebAuthenticationRequest
      */
     'nonce': string;
+}
+/**
+ *
+ * @export
+ * @interface HandoutFinesRequest
+ */
+export interface HandoutFinesRequest {
+    /**
+     *
+     * @type {Array<number>}
+     * @memberof HandoutFinesRequest
+     */
+    'userIds': Array<number>;
+    /**
+     * Reference date to calculate the balance and fine for (and \"now\", but that is always done and doesn\'t have to be explicitly specified)
+     * @type {string}
+     * @memberof HandoutFinesRequest
+     */
+    'referenceDate'?: string;
 }
 /**
  *
@@ -3907,6 +4004,25 @@ export interface PaginatedFinancialMutationResponse {
 /**
  *
  * @export
+ * @interface PaginatedFineHandoutEventResponse
+ */
+export interface PaginatedFineHandoutEventResponse {
+    /**
+     *
+     * @type {PaginationResult}
+     * @memberof PaginatedFineHandoutEventResponse
+     */
+    '_pagination'?: PaginationResult;
+    /**
+     *
+     * @type {Array<BaseFineHandoutEventResponse>}
+     * @memberof PaginatedFineHandoutEventResponse
+     */
+    'records'?: Array<BaseFineHandoutEventResponse>;
+}
+/**
+ *
+ * @export
  * @interface PaginatedInvoiceResponse
  */
 export interface PaginatedInvoiceResponse {
@@ -3998,44 +4114,6 @@ export interface PaginatedTransferResponse {
      * @memberof PaginatedTransferResponse
      */
     'records': Array<TransferResponse>;
-}
-/**
- *
- * @export
- * @interface PaginatedUpdatedPointOfSaleResponse
- */
-export interface PaginatedUpdatedPointOfSaleResponse {
-    /**
-     *
-     * @type {PaginationResult}
-     * @memberof PaginatedUpdatedPointOfSaleResponse
-     */
-    '_pagination': PaginationResult;
-    /**
-     *
-     * @type {Array<object>}
-     * @memberof PaginatedUpdatedPointOfSaleResponse
-     */
-    'records': Array<object>;
-}
-/**
- *
- * @export
- * @interface PaginatedUpdatedProductResponse
- */
-export interface PaginatedUpdatedProductResponse {
-    /**
-     *
-     * @type {PaginationResult}
-     * @memberof PaginatedUpdatedProductResponse
-     */
-    '_pagination': PaginationResult;
-    /**
-     *
-     * @type {Array<UpdatedProductResponse>}
-     * @memberof PaginatedUpdatedProductResponse
-     */
-    'records': Array<UpdatedProductResponse>;
 }
 /**
  *
@@ -4497,12 +4575,6 @@ export interface PointOfSaleRevision {
      */
     'version'?: number;
     /**
-     * The unique name of the pointOfSale.
-     * @type {string}
-     * @memberof PointOfSaleRevision
-     */
-    'name': string;
-    /**
      *
      * @type {PointOfSale}
      * @memberof PointOfSaleRevision
@@ -4520,6 +4592,18 @@ export interface PointOfSaleRevision {
      * @memberof PointOfSaleRevision
      */
     'containers': Array<ContainerRevision>;
+    /**
+     * The name of the pointOfSale.
+     * @type {string}
+     * @memberof PointOfSaleRevision
+     */
+    'name': string;
+    /**
+     * Whether this POS requires users to authenticate themselves before making a transaction
+     * @type {boolean}
+     * @memberof PointOfSaleRevision
+     */
+    'useAuthentication': boolean;
 }
 /**
  *
@@ -4545,6 +4629,18 @@ export interface PointOfSaleRevisionAllOf {
      * @memberof PointOfSaleRevisionAllOf
      */
     'containers': Array<ContainerRevision>;
+    /**
+     * The name of the pointOfSale.
+     * @type {string}
+     * @memberof PointOfSaleRevisionAllOf
+     */
+    'name': string;
+    /**
+     * Whether this POS requires users to authenticate themselves before making a transaction
+     * @type {boolean}
+     * @memberof PointOfSaleRevisionAllOf
+     */
+    'useAuthentication': boolean;
 }
 /**
  *
@@ -4930,6 +5026,12 @@ export interface ProductResponse {
      */
     'vat': BaseVatGroupResponse;
     /**
+     * The product revision ID
+     * @type {number}
+     * @memberof ProductResponse
+     */
+    'revision': number;
+    /**
      *
      * @type {BaseUserResponse}
      * @memberof ProductResponse
@@ -4959,12 +5061,6 @@ export interface ProductResponse {
      * @memberof ProductResponse
      */
     'alcoholPercentage': number;
-    /**
-     * The product revision ID
-     * @type {number}
-     * @memberof ProductResponse
-     */
-    'revision': number;
 }
 /**
  *
@@ -4978,6 +5074,36 @@ export interface ProductResponseAllOf {
      * @memberof ProductResponseAllOf
      */
     'revision': number;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof ProductResponseAllOf
+     */
+    'owner': BaseUserResponse;
+    /**
+     *
+     * @type {ProductCategoryResponse}
+     * @memberof ProductResponseAllOf
+     */
+    'category': ProductCategoryResponse;
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof ProductResponseAllOf
+     */
+    'priceExclVat': DineroObjectResponse;
+    /**
+     * The URL to the picture representing this product.
+     * @type {string}
+     * @memberof ProductResponseAllOf
+     */
+    'image'?: string;
+    /**
+     * The percentage of alcohol in this product.
+     * @type {number}
+     * @memberof ProductResponseAllOf
+     */
+    'alcoholPercentage': number;
 }
 /**
  *
@@ -5004,18 +5130,6 @@ export interface ProductRevision {
      */
     'version'?: number;
     /**
-     * The unique name of the product.
-     * @type {string}
-     * @memberof ProductRevision
-     */
-    'name': string;
-    /**
-     *
-     * @type {Dinero}
-     * @memberof ProductRevision
-     */
-    'price': Dinero;
-    /**
      *
      * @type {Product}
      * @memberof ProductRevision
@@ -5027,6 +5141,18 @@ export interface ProductRevision {
      * @memberof ProductRevision
      */
     'revision': number;
+    /**
+     * The unique name of the product.
+     * @type {string}
+     * @memberof ProductRevision
+     */
+    'name': string;
+    /**
+     *
+     * @type {Dinero}
+     * @memberof ProductRevision
+     */
+    'price': Dinero;
 }
 /**
  *
@@ -5046,6 +5172,18 @@ export interface ProductRevisionAllOf {
      * @memberof ProductRevisionAllOf
      */
     'revision': number;
+    /**
+     * The unique name of the product.
+     * @type {string}
+     * @memberof ProductRevisionAllOf
+     */
+    'name': string;
+    /**
+     *
+     * @type {Dinero}
+     * @memberof ProductRevisionAllOf
+     */
+    'price': Dinero;
 }
 /**
  *
@@ -6497,6 +6635,18 @@ export interface TransferResponse {
      * @memberof TransferResponse
      */
     'payoutRequest'?: BasePayoutRequestResponse;
+    /**
+     *
+     * @type {FineResponse}
+     * @memberof TransferResponse
+     */
+    'fine'?: FineResponse;
+    /**
+     *
+     * @type {UserFineGroupResponse}
+     * @memberof TransferResponse
+     */
+    'waivedFines'?: UserFineGroupResponse;
 }
 /**
  *
@@ -6546,6 +6696,18 @@ export interface TransferResponseAllOf {
      * @memberof TransferResponseAllOf
      */
     'payoutRequest'?: BasePayoutRequestResponse;
+    /**
+     *
+     * @type {FineResponse}
+     * @memberof TransferResponseAllOf
+     */
+    'fine'?: FineResponse;
+    /**
+     *
+     * @type {UserFineGroupResponse}
+     * @memberof TransferResponseAllOf
+     */
+    'waivedFines'?: UserFineGroupResponse;
 }
 /**
  *
@@ -6743,6 +6905,12 @@ export interface UpdateUserRequest {
     'lastName'?: string;
     /**
      *
+     * @type {string}
+     * @memberof UpdateUserRequest
+     */
+    'nickname'?: string;
+    /**
+     *
      * @type {boolean}
      * @memberof UpdateUserRequest
      */
@@ -6794,425 +6962,6 @@ export interface UpdateVatGroupRequest {
 /**
  *
  * @export
- * @interface UpdatedContainer
- */
-export interface UpdatedContainer {
-    /**
-     * The creation date of the object.
-     * @type {string}
-     * @memberof UpdatedContainer
-     */
-    'createdAt'?: string;
-    /**
-     * The last update date of the object.
-     * @type {string}
-     * @memberof UpdatedContainer
-     */
-    'updatedAt'?: string;
-    /**
-     * The current version of the object.
-     * @type {number}
-     * @memberof UpdatedContainer
-     */
-    'version'?: number;
-    /**
-     * The unique name of the container.
-     * @type {string}
-     * @memberof UpdatedContainer
-     */
-    'name': string;
-    /**
-     *
-     * @type {Container}
-     * @memberof UpdatedContainer
-     */
-    'container': Container;
-    /**
-     *
-     * @type {Array<Product>}
-     * @memberof UpdatedContainer
-     */
-    'products': Array<Product>;
-}
-/**
- *
- * @export
- * @interface UpdatedContainerAllOf
- */
-export interface UpdatedContainerAllOf {
-    /**
-     *
-     * @type {Container}
-     * @memberof UpdatedContainerAllOf
-     */
-    'container': Container;
-    /**
-     *
-     * @type {Array<Product>}
-     * @memberof UpdatedContainerAllOf
-     */
-    'products': Array<Product>;
-}
-/**
- *
- * @export
- * @interface UpdatedPointOfSale
- */
-export interface UpdatedPointOfSale {
-    /**
-     * The creation date of the object.
-     * @type {string}
-     * @memberof UpdatedPointOfSale
-     */
-    'createdAt'?: string;
-    /**
-     * The last update date of the object.
-     * @type {string}
-     * @memberof UpdatedPointOfSale
-     */
-    'updatedAt'?: string;
-    /**
-     * The current version of the object.
-     * @type {number}
-     * @memberof UpdatedPointOfSale
-     */
-    'version'?: number;
-    /**
-     * The unique name of the pointOfSale.
-     * @type {string}
-     * @memberof UpdatedPointOfSale
-     */
-    'name': string;
-    /**
-     *
-     * @type {PointOfSale}
-     * @memberof UpdatedPointOfSale
-     */
-    'pointOfSale': PointOfSale;
-    /**
-     *
-     * @type {Array<Container>}
-     * @memberof UpdatedPointOfSale
-     */
-    'containers': Array<Container>;
-}
-/**
- *
- * @export
- * @interface UpdatedPointOfSaleAllOf
- */
-export interface UpdatedPointOfSaleAllOf {
-    /**
-     *
-     * @type {PointOfSale}
-     * @memberof UpdatedPointOfSaleAllOf
-     */
-    'pointOfSale': PointOfSale;
-    /**
-     *
-     * @type {Array<Container>}
-     * @memberof UpdatedPointOfSaleAllOf
-     */
-    'containers': Array<Container>;
-}
-/**
- *
- * @export
- * @interface UpdatedPointOfSaleResponse
- */
-export interface UpdatedPointOfSaleResponse {
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof UpdatedPointOfSaleResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof UpdatedPointOfSaleResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof UpdatedPointOfSaleResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof UpdatedPointOfSaleResponse
-     */
-    'version'?: number;
-    /**
-     * The name of the point-of-sale.
-     * @type {string}
-     * @memberof UpdatedPointOfSaleResponse
-     */
-    'name': string;
-    /**
-     *
-     * @type {BaseUserResponse}
-     * @memberof UpdatedPointOfSaleResponse
-     */
-    'owner': BaseUserResponse;
-    /**
-     * Whether this POS requires users to authenticate themselves before making a transaction
-     * @type {boolean}
-     * @memberof UpdatedPointOfSaleResponse
-     */
-    'useAuthentication': boolean;
-}
-/**
- *
- * @export
- * @interface UpdatedPointOfSaleResponseAllOf
- */
-export interface UpdatedPointOfSaleResponseAllOf {
-    /**
-     *
-     * @type {BaseUserResponse}
-     * @memberof UpdatedPointOfSaleResponseAllOf
-     */
-    'owner': BaseUserResponse;
-    /**
-     * Whether this POS requires users to authenticate themselves before making a transaction
-     * @type {boolean}
-     * @memberof UpdatedPointOfSaleResponseAllOf
-     */
-    'useAuthentication': boolean;
-}
-/**
- *
- * @export
- * @interface UpdatedPointOfSaleWithContainersResponse
- */
-export interface UpdatedPointOfSaleWithContainersResponse {
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof UpdatedPointOfSaleWithContainersResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof UpdatedPointOfSaleWithContainersResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof UpdatedPointOfSaleWithContainersResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof UpdatedPointOfSaleWithContainersResponse
-     */
-    'version'?: number;
-    /**
-     * The name of the point-of-sale.
-     * @type {string}
-     * @memberof UpdatedPointOfSaleWithContainersResponse
-     */
-    'name': string;
-    /**
-     *
-     * @type {BaseUserResponse}
-     * @memberof UpdatedPointOfSaleWithContainersResponse
-     */
-    'owner': BaseUserResponse;
-    /**
-     * Whether this POS requires users to authenticate themselves before making a transaction
-     * @type {boolean}
-     * @memberof UpdatedPointOfSaleWithContainersResponse
-     */
-    'useAuthentication': boolean;
-    /**
-     *
-     * @type {Array<ContainerWithProductsResponse>}
-     * @memberof UpdatedPointOfSaleWithContainersResponse
-     */
-    'containers': Array<ContainerWithProductsResponse>;
-}
-/**
- *
- * @export
- * @interface UpdatedProduct
- */
-export interface UpdatedProduct {
-    /**
-     * The creation date of the object.
-     * @type {string}
-     * @memberof UpdatedProduct
-     */
-    'createdAt'?: string;
-    /**
-     * The last update date of the object.
-     * @type {string}
-     * @memberof UpdatedProduct
-     */
-    'updatedAt'?: string;
-    /**
-     * The current version of the object.
-     * @type {number}
-     * @memberof UpdatedProduct
-     */
-    'version'?: number;
-    /**
-     * The unique name of the product.
-     * @type {string}
-     * @memberof UpdatedProduct
-     */
-    'name': string;
-    /**
-     *
-     * @type {Dinero}
-     * @memberof UpdatedProduct
-     */
-    'price': Dinero;
-    /**
-     *
-     * @type {Product}
-     * @memberof UpdatedProduct
-     */
-    'product': Product;
-}
-/**
- *
- * @export
- * @interface UpdatedProductAllOf
- */
-export interface UpdatedProductAllOf {
-    /**
-     *
-     * @type {Product}
-     * @memberof UpdatedProductAllOf
-     */
-    'product': Product;
-}
-/**
- *
- * @export
- * @interface UpdatedProductResponse
- */
-export interface UpdatedProductResponse {
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof UpdatedProductResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof UpdatedProductResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof UpdatedProductResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof UpdatedProductResponse
-     */
-    'version'?: number;
-    /**
-     * The name of the product.
-     * @type {string}
-     * @memberof UpdatedProductResponse
-     */
-    'name': string;
-    /**
-     *
-     * @type {DineroObjectResponse}
-     * @memberof UpdatedProductResponse
-     */
-    'priceInclVat': DineroObjectResponse;
-    /**
-     *
-     * @type {BaseVatGroupResponse}
-     * @memberof UpdatedProductResponse
-     */
-    'vat': BaseVatGroupResponse;
-    /**
-     *
-     * @type {BaseUserResponse}
-     * @memberof UpdatedProductResponse
-     */
-    'owner': BaseUserResponse;
-    /**
-     *
-     * @type {ProductCategoryResponse}
-     * @memberof UpdatedProductResponse
-     */
-    'category': ProductCategoryResponse;
-    /**
-     *
-     * @type {DineroObjectResponse}
-     * @memberof UpdatedProductResponse
-     */
-    'priceExclVat': DineroObjectResponse;
-    /**
-     * The URL to the picture representing this product.
-     * @type {string}
-     * @memberof UpdatedProductResponse
-     */
-    'image'?: string;
-    /**
-     * The percentage of alcohol in this product.
-     * @type {number}
-     * @memberof UpdatedProductResponse
-     */
-    'alcoholPercentage': number;
-}
-/**
- *
- * @export
- * @interface UpdatedProductResponseAllOf
- */
-export interface UpdatedProductResponseAllOf {
-    /**
-     *
-     * @type {BaseUserResponse}
-     * @memberof UpdatedProductResponseAllOf
-     */
-    'owner': BaseUserResponse;
-    /**
-     *
-     * @type {ProductCategoryResponse}
-     * @memberof UpdatedProductResponseAllOf
-     */
-    'category': ProductCategoryResponse;
-    /**
-     *
-     * @type {DineroObjectResponse}
-     * @memberof UpdatedProductResponseAllOf
-     */
-    'priceExclVat': DineroObjectResponse;
-    /**
-     * The URL to the picture representing this product.
-     * @type {string}
-     * @memberof UpdatedProductResponseAllOf
-     */
-    'image'?: string;
-    /**
-     * The percentage of alcohol in this product.
-     * @type {number}
-     * @memberof UpdatedProductResponseAllOf
-     */
-    'alcoholPercentage': number;
-}
-/**
- *
- * @export
  * @interface User
  */
 export interface User {
@@ -7252,6 +7001,12 @@ export interface User {
      * @memberof User
      */
     'lastName'?: string;
+    /**
+     * Nickname of the user.
+     * @type {string}
+     * @memberof User
+     */
+    'nickname'?: string;
     /**
      * Whether the user has accepted the TOS. Defaults to false.
      * @type {boolean}
@@ -7301,6 +7056,12 @@ export interface UserAllOf {
      * @memberof UserAllOf
      */
     'lastName'?: string;
+    /**
+     * Nickname of the user.
+     * @type {string}
+     * @memberof UserAllOf
+     */
+    'nickname'?: string;
     /**
      * Whether the user has accepted the TOS. Defaults to false.
      * @type {boolean}
@@ -7397,6 +7158,19 @@ export interface UserBorrelkaartGroupAllOf {
 /**
  *
  * @export
+ * @interface UserFineGroupResponse
+ */
+export interface UserFineGroupResponse {
+    /**
+     *
+     * @type {Array<FineResponse>}
+     * @memberof UserFineGroupResponse
+     */
+    'fines'?: Array<FineResponse>;
+}
+/**
+ *
+ * @export
  * @interface UserResponse
  */
 export interface UserResponse {
@@ -7436,6 +7210,12 @@ export interface UserResponse {
      * @memberof UserResponse
      */
     'lastName': string;
+    /**
+     * The nickname of the user
+     * @type {string}
+     * @memberof UserResponse
+     */
+    'nickname'?: string;
     /**
      * Whether the user activated
      * @type {boolean}
@@ -7527,6 +7307,25 @@ export interface UserResponseAllOf {
      * @memberof UserResponseAllOf
      */
     'ofAge'?: boolean;
+}
+/**
+ *
+ * @export
+ * @interface UserToFineResponse
+ */
+export interface UserToFineResponse {
+    /**
+     * User ID
+     * @type {number}
+     * @memberof UserToFineResponse
+     */
+    'id'?: number;
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof UserToFineResponse
+     */
+    'amount'?: DineroObjectResponse;
 }
 /**
  *
@@ -8123,6 +7922,10 @@ export declare const BalanceApiAxiosParamCreator: (configuration?: Configuration
      * @param {string} [date] Timestamp to get balances for
      * @param {number} [minBalance] Minimum balance
      * @param {number} [maxBalance] Maximum balance
+     * @param {boolean} [hasFine] Only users with(out) fines
+     * @param {number} [minFine] Minimum fine
+     * @param {number} [maxFine] Maximum fine
+     * @param {string} [userType] {MEMBER,ORGAN,BORRELKAART,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
      * @param {'id' | 'amount'} [orderBy] Column to order balance by - eg: id,amount
      * @param {'ASC' | 'DESC'} [orderDirection] Order direction - eg: ASC,DESC
      * @param {number} [take] How many transactions the endpoint should return
@@ -8130,7 +7933,7 @@ export declare const BalanceApiAxiosParamCreator: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllBalance: (date?: string, minBalance?: number, maxBalance?: number, orderBy?: 'id' | 'amount', orderDirection?: 'ASC' | 'DESC', take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getAllBalance: (date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userType?: string, orderBy?: 'id' | 'amount', orderDirection?: 'ASC' | 'DESC', take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *  Retrieves the requested balance
      * @param {number} id The id of the user for which the saldo is requested
@@ -8155,6 +7958,10 @@ export declare const BalanceApiFp: (configuration?: Configuration) => {
      * @param {string} [date] Timestamp to get balances for
      * @param {number} [minBalance] Minimum balance
      * @param {number} [maxBalance] Maximum balance
+     * @param {boolean} [hasFine] Only users with(out) fines
+     * @param {number} [minFine] Minimum fine
+     * @param {number} [maxFine] Maximum fine
+     * @param {string} [userType] {MEMBER,ORGAN,BORRELKAART,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
      * @param {'id' | 'amount'} [orderBy] Column to order balance by - eg: id,amount
      * @param {'ASC' | 'DESC'} [orderDirection] Order direction - eg: ASC,DESC
      * @param {number} [take] How many transactions the endpoint should return
@@ -8162,7 +7969,7 @@ export declare const BalanceApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, orderBy?: 'id' | 'amount', orderDirection?: 'ASC' | 'DESC', take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BalanceResponse>>>;
+    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userType?: string, orderBy?: 'id' | 'amount', orderDirection?: 'ASC' | 'DESC', take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BalanceResponse>>>;
     /**
      *  Retrieves the requested balance
      * @param {number} id The id of the user for which the saldo is requested
@@ -8187,6 +7994,10 @@ export declare const BalanceApiFactory: (configuration?: Configuration, basePath
      * @param {string} [date] Timestamp to get balances for
      * @param {number} [minBalance] Minimum balance
      * @param {number} [maxBalance] Maximum balance
+     * @param {boolean} [hasFine] Only users with(out) fines
+     * @param {number} [minFine] Minimum fine
+     * @param {number} [maxFine] Maximum fine
+     * @param {string} [userType] {MEMBER,ORGAN,BORRELKAART,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
      * @param {'id' | 'amount'} [orderBy] Column to order balance by - eg: id,amount
      * @param {'ASC' | 'DESC'} [orderDirection] Order direction - eg: ASC,DESC
      * @param {number} [take] How many transactions the endpoint should return
@@ -8194,7 +8005,7 @@ export declare const BalanceApiFactory: (configuration?: Configuration, basePath
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, orderBy?: 'id' | 'amount', orderDirection?: 'ASC' | 'DESC', take?: number, skip?: number, options?: any): AxiosPromise<Array<BalanceResponse>>;
+    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userType?: string, orderBy?: 'id' | 'amount', orderDirection?: 'ASC' | 'DESC', take?: number, skip?: number, options?: any): AxiosPromise<Array<BalanceResponse>>;
     /**
      *  Retrieves the requested balance
      * @param {number} id The id of the user for which the saldo is requested
@@ -8221,6 +8032,10 @@ export declare class BalanceApi extends BaseAPI {
      * @param {string} [date] Timestamp to get balances for
      * @param {number} [minBalance] Minimum balance
      * @param {number} [maxBalance] Maximum balance
+     * @param {boolean} [hasFine] Only users with(out) fines
+     * @param {number} [minFine] Minimum fine
+     * @param {number} [maxFine] Maximum fine
+     * @param {string} [userType] {MEMBER,ORGAN,BORRELKAART,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
      * @param {'id' | 'amount'} [orderBy] Column to order balance by - eg: id,amount
      * @param {'ASC' | 'DESC'} [orderDirection] Order direction - eg: ASC,DESC
      * @param {number} [take] How many transactions the endpoint should return
@@ -8229,7 +8044,7 @@ export declare class BalanceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BalanceApi
      */
-    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, orderBy?: 'id' | 'amount', orderDirection?: 'ASC' | 'DESC', take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<BalanceResponse[], any>>;
+    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userType?: string, orderBy?: 'id' | 'amount', orderDirection?: 'ASC' | 'DESC', take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<BalanceResponse[], any>>;
     /**
      *  Retrieves the requested balance
      * @param {number} id The id of the user for which the saldo is requested
@@ -8543,7 +8358,7 @@ export declare const BorrelkaartgroupsApiAxiosParamCreator: (configuration?: Con
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getALlBorrelkaartgroups: (take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getAllBorrelkaartgroups: (take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *  Returns the requested borrelkaart group
      * @param {number} id The id of the borrelkaart group which should be returned
@@ -8579,7 +8394,7 @@ export declare const BorrelkaartgroupsApiFp: (configuration?: Configuration) => 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getALlBorrelkaartgroups(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBorrelkaartGroupResponse>>;
+    getAllBorrelkaartgroups(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBorrelkaartGroupResponse>>;
     /**
      *  Returns the requested borrelkaart group
      * @param {number} id The id of the borrelkaart group which should be returned
@@ -8615,7 +8430,7 @@ export declare const BorrelkaartgroupsApiFactory: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getALlBorrelkaartgroups(take?: number, skip?: number, options?: any): AxiosPromise<PaginatedBorrelkaartGroupResponse>;
+    getAllBorrelkaartgroups(take?: number, skip?: number, options?: any): AxiosPromise<PaginatedBorrelkaartGroupResponse>;
     /**
      *  Returns the requested borrelkaart group
      * @param {number} id The id of the borrelkaart group which should be returned
@@ -8655,7 +8470,7 @@ export declare class BorrelkaartgroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BorrelkaartgroupsApi
      */
-    getALlBorrelkaartgroups(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBorrelkaartGroupResponse, any>>;
+    getAllBorrelkaartgroups(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBorrelkaartGroupResponse, any>>;
     /**
      *  Returns the requested borrelkaart group
      * @param {number} id The id of the borrelkaart group which should be returned
@@ -8679,13 +8494,6 @@ export declare class BorrelkaartgroupsApi extends BaseAPI {
  * @export
  */
 export declare const ContainersApiAxiosParamCreator: (configuration?: Configuration) => {
-    /**
-     *  Approve a container update.
-     * @param {number} id The id of the container update to approve
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    approveContainer: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *  Create a new container.
      * @param {CreateContainerRequest} container    The container which should be created
@@ -8726,21 +8534,6 @@ export declare const ContainersApiAxiosParamCreator: (configuration?: Configurat
      */
     getSingleContainer: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *  Returns the requested updated container
-     * @param {number} id The id of the container which should be returned
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getSingleUpdatedContainer: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *  Returns all updated containers
-     * @param {number} [take] How many containers the endpoint should return
-     * @param {number} [skip] How many containers should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getUpdatedContainers: (take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
      *  Update an existing container.
      * @param {number} id The id of the container which should be updated
      * @param {UpdateContainerRequest} container    The container which should be updated
@@ -8754,13 +8547,6 @@ export declare const ContainersApiAxiosParamCreator: (configuration?: Configurat
  * @export
  */
 export declare const ContainersApiFp: (configuration?: Configuration) => {
-    /**
-     *  Approve a container update.
-     * @param {number} id The id of the container update to approve
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    approveContainer(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContainerWithProductsResponse>>;
     /**
      *  Create a new container.
      * @param {CreateContainerRequest} container    The container which should be created
@@ -8801,21 +8587,6 @@ export declare const ContainersApiFp: (configuration?: Configuration) => {
      */
     getSingleContainer(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContainerWithProductsResponse>>;
     /**
-     *  Returns the requested updated container
-     * @param {number} id The id of the container which should be returned
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getSingleUpdatedContainer(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContainerWithProductsResponse>>;
-    /**
-     *  Returns all updated containers
-     * @param {number} [take] How many containers the endpoint should return
-     * @param {number} [skip] How many containers should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getUpdatedContainers(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedContainerResponse>>;
-    /**
      *  Update an existing container.
      * @param {number} id The id of the container which should be updated
      * @param {UpdateContainerRequest} container    The container which should be updated
@@ -8829,13 +8600,6 @@ export declare const ContainersApiFp: (configuration?: Configuration) => {
  * @export
  */
 export declare const ContainersApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
-    /**
-     *  Approve a container update.
-     * @param {number} id The id of the container update to approve
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    approveContainer(id: number, options?: any): AxiosPromise<ContainerWithProductsResponse>;
     /**
      *  Create a new container.
      * @param {CreateContainerRequest} container    The container which should be created
@@ -8876,21 +8640,6 @@ export declare const ContainersApiFactory: (configuration?: Configuration, baseP
      */
     getSingleContainer(id: number, options?: any): AxiosPromise<ContainerWithProductsResponse>;
     /**
-     *  Returns the requested updated container
-     * @param {number} id The id of the container which should be returned
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getSingleUpdatedContainer(id: number, options?: any): AxiosPromise<ContainerWithProductsResponse>;
-    /**
-     *  Returns all updated containers
-     * @param {number} [take] How many containers the endpoint should return
-     * @param {number} [skip] How many containers should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getUpdatedContainers(take?: number, skip?: number, options?: any): AxiosPromise<PaginatedContainerResponse>;
-    /**
      *  Update an existing container.
      * @param {number} id The id of the container which should be updated
      * @param {UpdateContainerRequest} container    The container which should be updated
@@ -8906,14 +8655,6 @@ export declare const ContainersApiFactory: (configuration?: Configuration, baseP
  * @extends {BaseAPI}
  */
 export declare class ContainersApi extends BaseAPI {
-    /**
-     *  Approve a container update.
-     * @param {number} id The id of the container update to approve
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ContainersApi
-     */
-    approveContainer(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ContainerWithProductsResponse, any>>;
     /**
      *  Create a new container.
      * @param {CreateContainerRequest} container    The container which should be created
@@ -8959,23 +8700,6 @@ export declare class ContainersApi extends BaseAPI {
      */
     getSingleContainer(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ContainerWithProductsResponse, any>>;
     /**
-     *  Returns the requested updated container
-     * @param {number} id The id of the container which should be returned
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ContainersApi
-     */
-    getSingleUpdatedContainer(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ContainerWithProductsResponse, any>>;
-    /**
-     *  Returns all updated containers
-     * @param {number} [take] How many containers the endpoint should return
-     * @param {number} [skip] How many containers should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ContainersApi
-     */
-    getUpdatedContainers(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedContainerResponse, any>>;
-    /**
      *  Update an existing container.
      * @param {number} id The id of the container which should be updated
      * @param {UpdateContainerRequest} container    The container which should be updated
@@ -8984,6 +8708,240 @@ export declare class ContainersApi extends BaseAPI {
      * @memberof ContainersApi
      */
     updateContainer(id: number, container: UpdateContainerRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ContainerWithProductsResponse, any>>;
+}
+/**
+ * DebtorsApi - axios parameter creator
+ * @export
+ */
+export declare const DebtorsApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     *  Delete a fine
+     * @param {number} id The id of the fine which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteFine: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *  Handout fines to all given users.
+     * @param {HandoutFinesRequest} body null
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    handoutFines: (body: HandoutFinesRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *  Send an email to all given users about their possible future fine.
+     * @param {HandoutFinesRequest} body null
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    notifyAboutFutureFines: (body: HandoutFinesRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *  Get all fine handout events
+     * @param {number} [take] How many entries the endpoint should return
+     * @param {number} [skip] How many entries should be skipped (for pagination)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    returnAllFineHandoutEvents: (take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *  Get all fine handout events
+     * @param {number} id The id of the fine handout event which should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    returnSingleFineHandoutEvent: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+};
+/**
+ * DebtorsApi - functional programming interface
+ * @export
+ */
+export declare const DebtorsApiFp: (configuration?: Configuration) => {
+    /**
+     *  Delete a fine
+     * @param {number} id The id of the fine which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteFine(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     *  Handout fines to all given users.
+     * @param {HandoutFinesRequest} body null
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    handoutFines(body: HandoutFinesRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FineHandoutEventResponse>>;
+    /**
+     *  Send an email to all given users about their possible future fine.
+     * @param {HandoutFinesRequest} body null
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    notifyAboutFutureFines(body: HandoutFinesRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     *  Get all fine handout events
+     * @param {number} [take] How many entries the endpoint should return
+     * @param {number} [skip] How many entries should be skipped (for pagination)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    returnAllFineHandoutEvents(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedFineHandoutEventResponse>>;
+    /**
+     *  Get all fine handout events
+     * @param {number} id The id of the fine handout event which should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    returnSingleFineHandoutEvent(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FineHandoutEventResponse>>;
+};
+/**
+ * DebtorsApi - factory interface
+ * @export
+ */
+export declare const DebtorsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     *  Delete a fine
+     * @param {number} id The id of the fine which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteFine(id: number, options?: any): AxiosPromise<void>;
+    /**
+     *  Handout fines to all given users.
+     * @param {HandoutFinesRequest} body null
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    handoutFines(body: HandoutFinesRequest, options?: any): AxiosPromise<FineHandoutEventResponse>;
+    /**
+     *  Send an email to all given users about their possible future fine.
+     * @param {HandoutFinesRequest} body null
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    notifyAboutFutureFines(body: HandoutFinesRequest, options?: any): AxiosPromise<void>;
+    /**
+     *  Get all fine handout events
+     * @param {number} [take] How many entries the endpoint should return
+     * @param {number} [skip] How many entries should be skipped (for pagination)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    returnAllFineHandoutEvents(take?: number, skip?: number, options?: any): AxiosPromise<PaginatedFineHandoutEventResponse>;
+    /**
+     *  Get all fine handout events
+     * @param {number} id The id of the fine handout event which should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    returnSingleFineHandoutEvent(id: number, options?: any): AxiosPromise<FineHandoutEventResponse>;
+};
+/**
+ * DebtorsApi - object-oriented interface
+ * @export
+ * @class DebtorsApi
+ * @extends {BaseAPI}
+ */
+export declare class DebtorsApi extends BaseAPI {
+    /**
+     *  Delete a fine
+     * @param {number} id The id of the fine which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DebtorsApi
+     */
+    deleteFine(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    /**
+     *  Handout fines to all given users.
+     * @param {HandoutFinesRequest} body null
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DebtorsApi
+     */
+    handoutFines(body: HandoutFinesRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<FineHandoutEventResponse, any>>;
+    /**
+     *  Send an email to all given users about their possible future fine.
+     * @param {HandoutFinesRequest} body null
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DebtorsApi
+     */
+    notifyAboutFutureFines(body: HandoutFinesRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    /**
+     *  Get all fine handout events
+     * @param {number} [take] How many entries the endpoint should return
+     * @param {number} [skip] How many entries should be skipped (for pagination)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DebtorsApi
+     */
+    returnAllFineHandoutEvents(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedFineHandoutEventResponse, any>>;
+    /**
+     *  Get all fine handout events
+     * @param {number} id The id of the fine handout event which should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DebtorsApi
+     */
+    returnSingleFineHandoutEvent(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<FineHandoutEventResponse, any>>;
+}
+/**
+ * DefaultApi - axios parameter creator
+ * @export
+ */
+export declare const DefaultApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     *  Return all users that had at most -5 euros balance both now and on the reference date For all these users, also return their fine based on the reference date.
+     * @param {Array<string>} userTypes List of all user types fines should be calculated for
+     * @param {string} [referenceDate] Date to base fines on. If undefined, use the date of the last fine handout event. If that one also does not exist, use now.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    calculateFines: (userTypes: Array<string>, referenceDate?: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+};
+/**
+ * DefaultApi - functional programming interface
+ * @export
+ */
+export declare const DefaultApiFp: (configuration?: Configuration) => {
+    /**
+     *  Return all users that had at most -5 euros balance both now and on the reference date For all these users, also return their fine based on the reference date.
+     * @param {Array<string>} userTypes List of all user types fines should be calculated for
+     * @param {string} [referenceDate] Date to base fines on. If undefined, use the date of the last fine handout event. If that one also does not exist, use now.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    calculateFines(userTypes: Array<string>, referenceDate?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UserToFineResponse>>>;
+};
+/**
+ * DefaultApi - factory interface
+ * @export
+ */
+export declare const DefaultApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     *  Return all users that had at most -5 euros balance both now and on the reference date For all these users, also return their fine based on the reference date.
+     * @param {Array<string>} userTypes List of all user types fines should be calculated for
+     * @param {string} [referenceDate] Date to base fines on. If undefined, use the date of the last fine handout event. If that one also does not exist, use now.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    calculateFines(userTypes: Array<string>, referenceDate?: string, options?: any): AxiosPromise<Array<UserToFineResponse>>;
+};
+/**
+ * DefaultApi - object-oriented interface
+ * @export
+ * @class DefaultApi
+ * @extends {BaseAPI}
+ */
+export declare class DefaultApi extends BaseAPI {
+    /**
+     *  Return all users that had at most -5 euros balance both now and on the reference date For all these users, also return their fine based on the reference date.
+     * @param {Array<string>} userTypes List of all user types fines should be calculated for
+     * @param {string} [referenceDate] Date to base fines on. If undefined, use the date of the last fine handout event. If that one also does not exist, use now.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    calculateFines(userTypes: Array<string>, referenceDate?: string, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<UserToFineResponse[], any>>;
 }
 /**
  * FilesApi - axios parameter creator
@@ -9477,13 +9435,6 @@ export declare class PayoutRequestsApi extends BaseAPI {
  */
 export declare const PointofsaleApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *  Approve a Point of Sale update.
-     * @param {number} id The id of the Point of Sale update to approve
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    approvePointOfSale: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
      *  Create a new Point of Sale.
      * @param {CreatePointOfSaleRequest} pointofsale The point of sale which should be created
      * @param {*} [options] Override http request option.
@@ -9524,13 +9475,6 @@ export declare const PointofsaleApiAxiosParamCreator: (configuration?: Configura
      */
     getSinglePointOfSale: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *  Returns a single Points of Sale update
-     * @param {number} id The id of the Point of Sale which should be returned
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getSingleUpdatedPointOfSale: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
      *  Returns a Point of Sale transactions
      * @param {number} id          The id of the Point of Sale of which to get the transactions.
      * @param {number} [take] How many transactions the endpoint should return
@@ -9539,14 +9483,6 @@ export declare const PointofsaleApiAxiosParamCreator: (configuration?: Configura
      * @throws {RequiredError}
      */
     getTransactions: (id: number, take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *  Returns all updated Points of Sale
-     * @param {number} [take] How many points of sale the endpoint should return
-     * @param {number} [skip] How many points of sale should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getUpdated: (take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *  Update an existing Point of Sale.
      * @param {number} id The id of the Point of Sale which should be updated
@@ -9562,19 +9498,12 @@ export declare const PointofsaleApiAxiosParamCreator: (configuration?: Configura
  */
 export declare const PointofsaleApiFp: (configuration?: Configuration) => {
     /**
-     *  Approve a Point of Sale update.
-     * @param {number} id The id of the Point of Sale update to approve
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    approvePointOfSale(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleResponse>>;
-    /**
      *  Create a new Point of Sale.
      * @param {CreatePointOfSaleRequest} pointofsale The point of sale which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createPointOfSale(pointofsale: CreatePointOfSaleRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpdatedPointOfSaleResponse>>;
+    createPointOfSale(pointofsale: CreatePointOfSaleRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleWithContainersResponse>>;
     /**
      *  Returns the containers of the requested Point of Sale, empty list if POS does not exist
      * @param {number} id The id of the point of sale
@@ -9609,13 +9538,6 @@ export declare const PointofsaleApiFp: (configuration?: Configuration) => {
      */
     getSinglePointOfSale(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleWithContainersResponse>>;
     /**
-     *  Returns a single Points of Sale update
-     * @param {number} id The id of the Point of Sale which should be returned
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getSingleUpdatedPointOfSale(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpdatedPointOfSaleWithContainersResponse>>;
-    /**
      *  Returns a Point of Sale transactions
      * @param {number} id          The id of the Point of Sale of which to get the transactions.
      * @param {number} [take] How many transactions the endpoint should return
@@ -9625,21 +9547,13 @@ export declare const PointofsaleApiFp: (configuration?: Configuration) => {
      */
     getTransactions(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBaseTransactionResponse>>;
     /**
-     *  Returns all updated Points of Sale
-     * @param {number} [take] How many points of sale the endpoint should return
-     * @param {number} [skip] How many points of sale should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getUpdated(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUpdatedPointOfSaleResponse>>;
-    /**
      *  Update an existing Point of Sale.
      * @param {number} id The id of the Point of Sale which should be updated
      * @param {UpdatePointOfSaleRequest} pointofsale    The Point of Sale which should be updated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updatePointOfSale(id: number, pointofsale: UpdatePointOfSaleRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpdatedPointOfSaleResponse>>;
+    updatePointOfSale(id: number, pointofsale: UpdatePointOfSaleRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleWithContainersResponse>>;
 };
 /**
  * PointofsaleApi - factory interface
@@ -9647,19 +9561,12 @@ export declare const PointofsaleApiFp: (configuration?: Configuration) => {
  */
 export declare const PointofsaleApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *  Approve a Point of Sale update.
-     * @param {number} id The id of the Point of Sale update to approve
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    approvePointOfSale(id: number, options?: any): AxiosPromise<PointOfSaleResponse>;
-    /**
      *  Create a new Point of Sale.
      * @param {CreatePointOfSaleRequest} pointofsale The point of sale which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createPointOfSale(pointofsale: CreatePointOfSaleRequest, options?: any): AxiosPromise<UpdatedPointOfSaleResponse>;
+    createPointOfSale(pointofsale: CreatePointOfSaleRequest, options?: any): AxiosPromise<PointOfSaleWithContainersResponse>;
     /**
      *  Returns the containers of the requested Point of Sale, empty list if POS does not exist
      * @param {number} id The id of the point of sale
@@ -9694,13 +9601,6 @@ export declare const PointofsaleApiFactory: (configuration?: Configuration, base
      */
     getSinglePointOfSale(id: number, options?: any): AxiosPromise<PointOfSaleWithContainersResponse>;
     /**
-     *  Returns a single Points of Sale update
-     * @param {number} id The id of the Point of Sale which should be returned
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getSingleUpdatedPointOfSale(id: number, options?: any): AxiosPromise<UpdatedPointOfSaleWithContainersResponse>;
-    /**
      *  Returns a Point of Sale transactions
      * @param {number} id          The id of the Point of Sale of which to get the transactions.
      * @param {number} [take] How many transactions the endpoint should return
@@ -9710,21 +9610,13 @@ export declare const PointofsaleApiFactory: (configuration?: Configuration, base
      */
     getTransactions(id: number, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedBaseTransactionResponse>;
     /**
-     *  Returns all updated Points of Sale
-     * @param {number} [take] How many points of sale the endpoint should return
-     * @param {number} [skip] How many points of sale should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getUpdated(take?: number, skip?: number, options?: any): AxiosPromise<PaginatedUpdatedPointOfSaleResponse>;
-    /**
      *  Update an existing Point of Sale.
      * @param {number} id The id of the Point of Sale which should be updated
      * @param {UpdatePointOfSaleRequest} pointofsale    The Point of Sale which should be updated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updatePointOfSale(id: number, pointofsale: UpdatePointOfSaleRequest, options?: any): AxiosPromise<UpdatedPointOfSaleResponse>;
+    updatePointOfSale(id: number, pointofsale: UpdatePointOfSaleRequest, options?: any): AxiosPromise<PointOfSaleWithContainersResponse>;
 };
 /**
  * PointofsaleApi - object-oriented interface
@@ -9734,21 +9626,13 @@ export declare const PointofsaleApiFactory: (configuration?: Configuration, base
  */
 export declare class PointofsaleApi extends BaseAPI {
     /**
-     *  Approve a Point of Sale update.
-     * @param {number} id The id of the Point of Sale update to approve
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PointofsaleApi
-     */
-    approvePointOfSale(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PointOfSaleResponse, any>>;
-    /**
      *  Create a new Point of Sale.
      * @param {CreatePointOfSaleRequest} pointofsale The point of sale which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PointofsaleApi
      */
-    createPointOfSale(pointofsale: CreatePointOfSaleRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<UpdatedPointOfSaleResponse, any>>;
+    createPointOfSale(pointofsale: CreatePointOfSaleRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PointOfSaleWithContainersResponse, any>>;
     /**
      *  Returns the containers of the requested Point of Sale, empty list if POS does not exist
      * @param {number} id The id of the point of sale
@@ -9787,14 +9671,6 @@ export declare class PointofsaleApi extends BaseAPI {
      */
     getSinglePointOfSale(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PointOfSaleWithContainersResponse, any>>;
     /**
-     *  Returns a single Points of Sale update
-     * @param {number} id The id of the Point of Sale which should be returned
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PointofsaleApi
-     */
-    getSingleUpdatedPointOfSale(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<UpdatedPointOfSaleWithContainersResponse, any>>;
-    /**
      *  Returns a Point of Sale transactions
      * @param {number} id          The id of the Point of Sale of which to get the transactions.
      * @param {number} [take] How many transactions the endpoint should return
@@ -9805,15 +9681,6 @@ export declare class PointofsaleApi extends BaseAPI {
      */
     getTransactions(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBaseTransactionResponse, any>>;
     /**
-     *  Returns all updated Points of Sale
-     * @param {number} [take] How many points of sale the endpoint should return
-     * @param {number} [skip] How many points of sale should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PointofsaleApi
-     */
-    getUpdated(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedUpdatedPointOfSaleResponse, any>>;
-    /**
      *  Update an existing Point of Sale.
      * @param {number} id The id of the Point of Sale which should be updated
      * @param {UpdatePointOfSaleRequest} pointofsale    The Point of Sale which should be updated
@@ -9821,7 +9688,7 @@ export declare class PointofsaleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PointofsaleApi
      */
-    updatePointOfSale(id: number, pointofsale: UpdatePointOfSaleRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<UpdatedPointOfSaleResponse, any>>;
+    updatePointOfSale(id: number, pointofsale: UpdatePointOfSaleRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PointOfSaleWithContainersResponse, any>>;
 }
 /**
  * ProductCategoriesApi - axios parameter creator
@@ -9979,13 +9846,6 @@ export declare class ProductCategoriesApi extends BaseAPI {
  */
 export declare const ProductsApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *  Approve a product update.
-     * @param {number} id The id of the product update to approve
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    approveProduct: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
      *  Create a new product.
      * @param {CreateProductRequest} product The product which should be created
      * @param {*} [options] Override http request option.
@@ -10007,21 +9867,6 @@ export declare const ProductsApiAxiosParamCreator: (configuration?: Configuratio
      * @throws {RequiredError}
      */
     getSingleProduct: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *  Returns the requested updated product
-     * @param {number} id The id of the product which should be returned
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getUpdateProduct: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *  Returns all updated products
-     * @param {number} [take] How many products the endpoint should return
-     * @param {number} [skip] How many products should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getUpdatedProducts: (take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *  Update an existing product.
      * @param {number} id The id of the product which should be updated
@@ -10045,19 +9890,12 @@ export declare const ProductsApiAxiosParamCreator: (configuration?: Configuratio
  */
 export declare const ProductsApiFp: (configuration?: Configuration) => {
     /**
-     *  Approve a product update.
-     * @param {number} id The id of the product update to approve
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    approveProduct(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductResponse>>;
-    /**
      *  Create a new product.
      * @param {CreateProductRequest} product The product which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createProduct(product: CreateProductRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpdatedProductResponse>>;
+    createProduct(product: CreateProductRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductResponse>>;
     /**
      *  Returns all existing products
      * @param {number} [take] How many products the endpoint should return
@@ -10073,21 +9911,6 @@ export declare const ProductsApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     getSingleProduct(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductResponse>>;
-    /**
-     *  Returns the requested updated product
-     * @param {number} id The id of the product which should be returned
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getUpdateProduct(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductResponse>>;
-    /**
-     *  Returns all updated products
-     * @param {number} [take] How many products the endpoint should return
-     * @param {number} [skip] How many products should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getUpdatedProducts(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductResponse>>;
     /**
      *  Update an existing product.
      * @param {number} id The id of the product which should be updated
@@ -10111,19 +9934,12 @@ export declare const ProductsApiFp: (configuration?: Configuration) => {
  */
 export declare const ProductsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *  Approve a product update.
-     * @param {number} id The id of the product update to approve
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    approveProduct(id: number, options?: any): AxiosPromise<ProductResponse>;
-    /**
      *  Create a new product.
      * @param {CreateProductRequest} product The product which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createProduct(product: CreateProductRequest, options?: any): AxiosPromise<UpdatedProductResponse>;
+    createProduct(product: CreateProductRequest, options?: any): AxiosPromise<ProductResponse>;
     /**
      *  Returns all existing products
      * @param {number} [take] How many products the endpoint should return
@@ -10139,21 +9955,6 @@ export declare const ProductsApiFactory: (configuration?: Configuration, basePat
      * @throws {RequiredError}
      */
     getSingleProduct(id: number, options?: any): AxiosPromise<ProductResponse>;
-    /**
-     *  Returns the requested updated product
-     * @param {number} id The id of the product which should be returned
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getUpdateProduct(id: number, options?: any): AxiosPromise<ProductResponse>;
-    /**
-     *  Returns all updated products
-     * @param {number} [take] How many products the endpoint should return
-     * @param {number} [skip] How many products should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getUpdatedProducts(take?: number, skip?: number, options?: any): AxiosPromise<PaginatedProductResponse>;
     /**
      *  Update an existing product.
      * @param {number} id The id of the product which should be updated
@@ -10179,21 +9980,13 @@ export declare const ProductsApiFactory: (configuration?: Configuration, basePat
  */
 export declare class ProductsApi extends BaseAPI {
     /**
-     *  Approve a product update.
-     * @param {number} id The id of the product update to approve
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ProductsApi
-     */
-    approveProduct(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductResponse, any>>;
-    /**
      *  Create a new product.
      * @param {CreateProductRequest} product The product which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProductsApi
      */
-    createProduct(product: CreateProductRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<UpdatedProductResponse, any>>;
+    createProduct(product: CreateProductRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductResponse, any>>;
     /**
      *  Returns all existing products
      * @param {number} [take] How many products the endpoint should return
@@ -10211,23 +10004,6 @@ export declare class ProductsApi extends BaseAPI {
      * @memberof ProductsApi
      */
     getSingleProduct(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductResponse, any>>;
-    /**
-     *  Returns the requested updated product
-     * @param {number} id The id of the product which should be returned
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ProductsApi
-     */
-    getUpdateProduct(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductResponse, any>>;
-    /**
-     *  Returns all updated products
-     * @param {number} [take] How many products the endpoint should return
-     * @param {number} [skip] How many products should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ProductsApi
-     */
-    getUpdatedProducts(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedProductResponse, any>>;
     /**
      *  Update an existing product.
      * @param {number} id The id of the product which should be updated
@@ -10892,11 +10668,11 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {boolean} [active] Filter based if the user is active
      * @param {boolean} [ofAge] Filter based if the user is 18+
      * @param {number} [id] Filter based on user ID
-     * @param {number} [type] {1,2,3,4,5,6,7} - Filter based on user type. Possible values:      1 (MEMBER), 2 (ORGAN), 3 (BORRELKAART), 4 (LOCAL_USER), 5 (LOCAL_ADMIN), 6 (INVOICE), 7 (AUTOMATIC_INVOICE)
+     * @param {string} [type] {MEMBER,ORGAN,BORRELKAART,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllUsers: (take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getAllUsers: (take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *  Get all users of user type
      * @param {string} userType The userType of the requested users
@@ -11018,33 +10794,6 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      */
     getUsersTransfers: (id: number, take?: number, skip?: number, fromId?: number, toId?: number, id2?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *  Returns the user\'s updated containers
-     * @param {number} id The id of the user
-     * @param {number} [take] How many containers the endpoint should return
-     * @param {number} [skip] How many containers should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getUsersUpdatedContainers: (id: number, take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *  Returns the user\'s updated Points of Sale
-     * @param {number} id The id of the user
-     * @param {number} [take] How many points of sale the endpoint should return
-     * @param {number} [skip] How many points of sale should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getUsersUpdatedPointsOfSale: (id: number, take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *  Get an user\'s updated products
-     * @param {number} id The id of the user
-     * @param {number} [take] How many products the endpoint should return
-     * @param {number} [skip] How many products should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getUsersUpdatedProducts: (id: number, take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
      *  Update a user
      * @param {number} id The id of the user
      * @param {UpdateUserRequest} user The user which should be updated
@@ -11083,6 +10832,13 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @throws {RequiredError}
      */
     updateUserPin: (id: number, update: UpdatePinRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *  Waive all given user\'s fines
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    waiveUserFines: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * UsersApi - functional programming interface
@@ -11139,11 +10895,11 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {boolean} [active] Filter based if the user is active
      * @param {boolean} [ofAge] Filter based if the user is 18+
      * @param {number} [id] Filter based on user ID
-     * @param {number} [type] {1,2,3,4,5,6,7} - Filter based on user type. Possible values:      1 (MEMBER), 2 (ORGAN), 3 (BORRELKAART), 4 (LOCAL_USER), 5 (LOCAL_ADMIN), 6 (INVOICE), 7 (AUTOMATIC_INVOICE)
+     * @param {string} [type] {MEMBER,ORGAN,BORRELKAART,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllUsers(take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUserResponse>>;
+    getAllUsers(take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUserResponse>>;
     /**
      *  Get all users of user type
      * @param {string} userType The userType of the requested users
@@ -11265,33 +11021,6 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      */
     getUsersTransfers(id: number, take?: number, skip?: number, fromId?: number, toId?: number, id2?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedTransferResponse>>;
     /**
-     *  Returns the user\'s updated containers
-     * @param {number} id The id of the user
-     * @param {number} [take] How many containers the endpoint should return
-     * @param {number} [skip] How many containers should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getUsersUpdatedContainers(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedContainerResponse>>;
-    /**
-     *  Returns the user\'s updated Points of Sale
-     * @param {number} id The id of the user
-     * @param {number} [take] How many points of sale the endpoint should return
-     * @param {number} [skip] How many points of sale should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getUsersUpdatedPointsOfSale(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUpdatedPointOfSaleResponse>>;
-    /**
-     *  Get an user\'s updated products
-     * @param {number} id The id of the user
-     * @param {number} [take] How many products the endpoint should return
-     * @param {number} [skip] How many products should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getUsersUpdatedProducts(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductResponse>>;
-    /**
      *  Update a user
      * @param {number} id The id of the user
      * @param {UpdateUserRequest} user The user which should be updated
@@ -11330,6 +11059,13 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     updateUserPin(id: number, update: UpdatePinRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     *  Waive all given user\'s fines
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    waiveUserFines(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
 };
 /**
  * UsersApi - factory interface
@@ -11386,11 +11122,11 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
      * @param {boolean} [active] Filter based if the user is active
      * @param {boolean} [ofAge] Filter based if the user is 18+
      * @param {number} [id] Filter based on user ID
-     * @param {number} [type] {1,2,3,4,5,6,7} - Filter based on user type. Possible values:      1 (MEMBER), 2 (ORGAN), 3 (BORRELKAART), 4 (LOCAL_USER), 5 (LOCAL_ADMIN), 6 (INVOICE), 7 (AUTOMATIC_INVOICE)
+     * @param {string} [type] {MEMBER,ORGAN,BORRELKAART,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllUsers(take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: number, options?: any): AxiosPromise<PaginatedUserResponse>;
+    getAllUsers(take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: string, options?: any): AxiosPromise<PaginatedUserResponse>;
     /**
      *  Get all users of user type
      * @param {string} userType The userType of the requested users
@@ -11512,33 +11248,6 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
      */
     getUsersTransfers(id: number, take?: number, skip?: number, fromId?: number, toId?: number, id2?: number, options?: any): AxiosPromise<PaginatedTransferResponse>;
     /**
-     *  Returns the user\'s updated containers
-     * @param {number} id The id of the user
-     * @param {number} [take] How many containers the endpoint should return
-     * @param {number} [skip] How many containers should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getUsersUpdatedContainers(id: number, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedContainerResponse>;
-    /**
-     *  Returns the user\'s updated Points of Sale
-     * @param {number} id The id of the user
-     * @param {number} [take] How many points of sale the endpoint should return
-     * @param {number} [skip] How many points of sale should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getUsersUpdatedPointsOfSale(id: number, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedUpdatedPointOfSaleResponse>;
-    /**
-     *  Get an user\'s updated products
-     * @param {number} id The id of the user
-     * @param {number} [take] How many products the endpoint should return
-     * @param {number} [skip] How many products should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getUsersUpdatedProducts(id: number, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedProductResponse>;
-    /**
      *  Update a user
      * @param {number} id The id of the user
      * @param {UpdateUserRequest} user The user which should be updated
@@ -11577,6 +11286,13 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
      * @throws {RequiredError}
      */
     updateUserPin(id: number, update: UpdatePinRequest, options?: any): AxiosPromise<void>;
+    /**
+     *  Waive all given user\'s fines
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    waiveUserFines(id: number, options?: any): AxiosPromise<void>;
 };
 /**
  * UsersApi - object-oriented interface
@@ -11641,12 +11357,12 @@ export declare class UsersApi extends BaseAPI {
      * @param {boolean} [active] Filter based if the user is active
      * @param {boolean} [ofAge] Filter based if the user is 18+
      * @param {number} [id] Filter based on user ID
-     * @param {number} [type] {1,2,3,4,5,6,7} - Filter based on user type. Possible values:      1 (MEMBER), 2 (ORGAN), 3 (BORRELKAART), 4 (LOCAL_USER), 5 (LOCAL_ADMIN), 6 (INVOICE), 7 (AUTOMATIC_INVOICE)
+     * @param {string} [type] {MEMBER,ORGAN,BORRELKAART,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getAllUsers(take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedUserResponse, any>>;
+    getAllUsers(take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: string, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedUserResponse, any>>;
     /**
      *  Get all users of user type
      * @param {string} userType The userType of the requested users
@@ -11781,36 +11497,6 @@ export declare class UsersApi extends BaseAPI {
      */
     getUsersTransfers(id: number, take?: number, skip?: number, fromId?: number, toId?: number, id2?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedTransferResponse, any>>;
     /**
-     *  Returns the user\'s updated containers
-     * @param {number} id The id of the user
-     * @param {number} [take] How many containers the endpoint should return
-     * @param {number} [skip] How many containers should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    getUsersUpdatedContainers(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedContainerResponse, any>>;
-    /**
-     *  Returns the user\'s updated Points of Sale
-     * @param {number} id The id of the user
-     * @param {number} [take] How many points of sale the endpoint should return
-     * @param {number} [skip] How many points of sale should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    getUsersUpdatedPointsOfSale(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedUpdatedPointOfSaleResponse, any>>;
-    /**
-     *  Get an user\'s updated products
-     * @param {number} id The id of the user
-     * @param {number} [take] How many products the endpoint should return
-     * @param {number} [skip] How many products should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    getUsersUpdatedProducts(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedProductResponse, any>>;
-    /**
      *  Update a user
      * @param {number} id The id of the user
      * @param {UpdateUserRequest} user The user which should be updated
@@ -11854,6 +11540,14 @@ export declare class UsersApi extends BaseAPI {
      * @memberof UsersApi
      */
     updateUserPin(id: number, update: UpdatePinRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    /**
+     *  Waive all given user\'s fines
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    waiveUserFines(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
 }
 /**
  * VatGroupsApi - axios parameter creator

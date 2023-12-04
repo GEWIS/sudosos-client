@@ -22,20 +22,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProductsApi = exports.ProductsApiFactory = exports.ProductsApiFp = exports.ProductsApiAxiosParamCreator = exports.ProductCategoriesApi = exports.ProductCategoriesApiFactory = exports.ProductCategoriesApiFp = exports.ProductCategoriesApiAxiosParamCreator = exports.PointofsaleApi = exports.PointofsaleApiFactory = exports.PointofsaleApiFp = exports.PointofsaleApiAxiosParamCreator = exports.PayoutRequestsApi = exports.PayoutRequestsApiFactory = exports.PayoutRequestsApiFp = exports.PayoutRequestsApiAxiosParamCreator = exports.InvoicesApi = exports.InvoicesApiFactory = exports.InvoicesApiFp = exports.InvoicesApiAxiosParamCreator = exports.FilesApi = exports.FilesApiFactory = exports.FilesApiFp = exports.FilesApiAxiosParamCreator = exports.EventsApi = exports.EventsApiFactory = exports.EventsApiFp = exports.EventsApiAxiosParamCreator = exports.DebtorsApi = exports.DebtorsApiFactory = exports.DebtorsApiFp = exports.DebtorsApiAxiosParamCreator = exports.ContainersApi = exports.ContainersApiFactory = exports.ContainersApiFp = exports.ContainersApiAxiosParamCreator = exports.BannersApi = exports.BannersApiFactory = exports.BannersApiFp = exports.BannersApiAxiosParamCreator = exports.BalanceApi = exports.BalanceApiFactory = exports.BalanceApiFp = exports.BalanceApiAxiosParamCreator = exports.AuthenticateApi = exports.AuthenticateApiFactory = exports.AuthenticateApiFp = exports.AuthenticateApiAxiosParamCreator = exports.EventShiftAnswerAllOfAvailabilityEnum = exports.EventShiftAnswerAvailabilityEnum = void 0;
-exports.VouchergroupsApi = exports.VouchergroupsApiFactory = exports.VouchergroupsApiFp = exports.VouchergroupsApiAxiosParamCreator = exports.VatGroupsApi = exports.VatGroupsApiFactory = exports.VatGroupsApiFp = exports.VatGroupsApiAxiosParamCreator = exports.UsersApi = exports.UsersApiFactory = exports.UsersApiFp = exports.UsersApiAxiosParamCreator = exports.TransfersApi = exports.TransfersApiFactory = exports.TransfersApiFp = exports.TransfersApiAxiosParamCreator = exports.TransactionsApi = exports.TransactionsApiFactory = exports.TransactionsApiFp = exports.TransactionsApiAxiosParamCreator = exports.TestApi = exports.TestApiFactory = exports.TestApiFp = exports.TestApiAxiosParamCreator = exports.StripeApi = exports.StripeApiFactory = exports.StripeApiFp = exports.StripeApiAxiosParamCreator = exports.RootApi = exports.RootApiFactory = exports.RootApiFp = exports.RootApiAxiosParamCreator = exports.RbacApi = exports.RbacApiFactory = exports.RbacApiFp = exports.RbacApiAxiosParamCreator = void 0;
+exports.ProductsApiFp = exports.ProductsApiAxiosParamCreator = exports.ProductCategoriesApi = exports.ProductCategoriesApiFactory = exports.ProductCategoriesApiFp = exports.ProductCategoriesApiAxiosParamCreator = exports.PointofsaleApi = exports.PointofsaleApiFactory = exports.PointofsaleApiFp = exports.PointofsaleApiAxiosParamCreator = exports.PayoutRequestsApi = exports.PayoutRequestsApiFactory = exports.PayoutRequestsApiFp = exports.PayoutRequestsApiAxiosParamCreator = exports.InvoicesApi = exports.InvoicesApiFactory = exports.InvoicesApiFp = exports.InvoicesApiAxiosParamCreator = exports.FilesApi = exports.FilesApiFactory = exports.FilesApiFp = exports.FilesApiAxiosParamCreator = exports.DefaultApi = exports.DefaultApiFactory = exports.DefaultApiFp = exports.DefaultApiAxiosParamCreator = exports.DebtorsApi = exports.DebtorsApiFactory = exports.DebtorsApiFp = exports.DebtorsApiAxiosParamCreator = exports.ContainersApi = exports.ContainersApiFactory = exports.ContainersApiFp = exports.ContainersApiAxiosParamCreator = exports.BorrelkaartgroupsApi = exports.BorrelkaartgroupsApiFactory = exports.BorrelkaartgroupsApiFp = exports.BorrelkaartgroupsApiAxiosParamCreator = exports.BannersApi = exports.BannersApiFactory = exports.BannersApiFp = exports.BannersApiAxiosParamCreator = exports.BalanceApi = exports.BalanceApiFactory = exports.BalanceApiFp = exports.BalanceApiAxiosParamCreator = exports.AuthenticateApi = exports.AuthenticateApiFactory = exports.AuthenticateApiFp = exports.AuthenticateApiAxiosParamCreator = void 0;
+exports.VatGroupsApi = exports.VatGroupsApiFactory = exports.VatGroupsApiFp = exports.VatGroupsApiAxiosParamCreator = exports.UsersApi = exports.UsersApiFactory = exports.UsersApiFp = exports.UsersApiAxiosParamCreator = exports.TransfersApi = exports.TransfersApiFactory = exports.TransfersApiFp = exports.TransfersApiAxiosParamCreator = exports.TransactionsApi = exports.TransactionsApiFactory = exports.TransactionsApiFp = exports.TransactionsApiAxiosParamCreator = exports.TestApi = exports.TestApiFactory = exports.TestApiFp = exports.TestApiAxiosParamCreator = exports.StripeApi = exports.StripeApiFactory = exports.StripeApiFp = exports.StripeApiAxiosParamCreator = exports.RootApi = exports.RootApiFactory = exports.RootApiFp = exports.RootApiAxiosParamCreator = exports.RbacApi = exports.RbacApiFactory = exports.RbacApiFp = exports.RbacApiAxiosParamCreator = exports.ProductsApi = exports.ProductsApiFactory = void 0;
 const axios_1 = require("axios");
 // Some imports not used depending on template conditions
 // @ts-ignore
 const common_1 = require("./common");
 // @ts-ignore
 const base_1 = require("./base");
-exports.EventShiftAnswerAvailabilityEnum = {
-    Undefined: 'undefined'
-};
-exports.EventShiftAnswerAllOfAvailabilityEnum = {
-    Undefined: 'undefined'
-};
 /**
  * AuthenticateApi - axios parameter creator
  * @export
@@ -862,7 +856,7 @@ const BalanceApiAxiosParamCreator = function (configuration) {
          * @param {boolean} [hasFine] Only users with(out) fines
          * @param {number} [minFine] Minimum fine
          * @param {number} [maxFine] Maximum fine
-         * @param {string} [userType] {MEMBER,ORGAN,VOUCHER,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
+         * @param {string} [userType] {MEMBER,ORGAN,BORRELKAART,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
          * @param {'id' | 'amount'} [orderBy] Column to order balance by - eg: id,amount
          * @param {'ASC' | 'DESC'} [orderDirection] Order direction - eg: ASC,DESC
          * @param {number} [take] How many transactions the endpoint should return
@@ -998,7 +992,7 @@ const BalanceApiFp = function (configuration) {
          * @param {boolean} [hasFine] Only users with(out) fines
          * @param {number} [minFine] Minimum fine
          * @param {number} [maxFine] Maximum fine
-         * @param {string} [userType] {MEMBER,ORGAN,VOUCHER,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
+         * @param {string} [userType] {MEMBER,ORGAN,BORRELKAART,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
          * @param {'id' | 'amount'} [orderBy] Column to order balance by - eg: id,amount
          * @param {'ASC' | 'DESC'} [orderDirection] Order direction - eg: ASC,DESC
          * @param {number} [take] How many transactions the endpoint should return
@@ -1053,7 +1047,7 @@ const BalanceApiFactory = function (configuration, basePath, axios) {
          * @param {boolean} [hasFine] Only users with(out) fines
          * @param {number} [minFine] Minimum fine
          * @param {number} [maxFine] Maximum fine
-         * @param {string} [userType] {MEMBER,ORGAN,VOUCHER,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
+         * @param {string} [userType] {MEMBER,ORGAN,BORRELKAART,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
          * @param {'id' | 'amount'} [orderBy] Column to order balance by - eg: id,amount
          * @param {'ASC' | 'DESC'} [orderDirection] Order direction - eg: ASC,DESC
          * @param {number} [take] How many transactions the endpoint should return
@@ -1099,7 +1093,7 @@ class BalanceApi extends base_1.BaseAPI {
      * @param {boolean} [hasFine] Only users with(out) fines
      * @param {number} [minFine] Minimum fine
      * @param {number} [maxFine] Maximum fine
-     * @param {string} [userType] {MEMBER,ORGAN,VOUCHER,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
+     * @param {string} [userType] {MEMBER,ORGAN,BORRELKAART,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
      * @param {'id' | 'amount'} [orderBy] Column to order balance by - eg: id,amount
      * @param {'ASC' | 'DESC'} [orderDirection] Order direction - eg: ASC,DESC
      * @param {number} [take] How many transactions the endpoint should return
@@ -1697,6 +1691,304 @@ class BannersApi extends base_1.BaseAPI {
 }
 exports.BannersApi = BannersApi;
 /**
+ * BorrelkaartgroupsApi - axios parameter creator
+ * @export
+ */
+const BorrelkaartgroupsApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         *  Creates a new borrelkaart group
+         * @param {BorrelkaartGroupRequest} borrelkaartgroup The borrelkaart group which should be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createBorrelkaartgroup: (borrelkaartgroup, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            // verify required parameter 'borrelkaartgroup' is not null or undefined
+            (0, common_1.assertParamExists)('createBorrelkaartgroup', 'borrelkaartgroup', borrelkaartgroup);
+            const localVarPath = `/borrelkaartgroups`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(borrelkaartgroup, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *  Returns all existing borrelkaart groups
+         * @param {number} [take] How many borrelkaart groups the endpoint should return
+         * @param {number} [skip] How many borrelkaart groups should be skipped (for pagination)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllBorrelkaartgroups: (take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            const localVarPath = `/borrelkaartgroups`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
+            if (take !== undefined) {
+                localVarQueryParameter['take'] = take;
+            }
+            if (skip !== undefined) {
+                localVarQueryParameter['skip'] = skip;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *  Returns the requested borrelkaart group
+         * @param {number} id The id of the borrelkaart group which should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBorrelkaartgroupId: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('getBorrelkaartgroupId', 'id', id);
+            const localVarPath = `/borrelkaartgroups/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *  Updates the requested borrelkaart group
+         * @param {number} id The id of the borrelkaart group which should be updated
+         * @param {BorrelkaartGroupRequest} borrelkaartgroup The updated borrelkaart group
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateBorrelkaartGroup: (id, borrelkaartgroup, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('updateBorrelkaartGroup', 'id', id);
+            // verify required parameter 'borrelkaartgroup' is not null or undefined
+            (0, common_1.assertParamExists)('updateBorrelkaartGroup', 'borrelkaartgroup', borrelkaartgroup);
+            const localVarPath = `/borrelkaartgroups/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'PATCH' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(borrelkaartgroup, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+    };
+};
+exports.BorrelkaartgroupsApiAxiosParamCreator = BorrelkaartgroupsApiAxiosParamCreator;
+/**
+ * BorrelkaartgroupsApi - functional programming interface
+ * @export
+ */
+const BorrelkaartgroupsApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.BorrelkaartgroupsApiAxiosParamCreator)(configuration);
+    return {
+        /**
+         *  Creates a new borrelkaart group
+         * @param {BorrelkaartGroupRequest} borrelkaartgroup The borrelkaart group which should be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createBorrelkaartgroup(borrelkaartgroup, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.createBorrelkaartgroup(borrelkaartgroup, options);
+                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
+            });
+        },
+        /**
+         *  Returns all existing borrelkaart groups
+         * @param {number} [take] How many borrelkaart groups the endpoint should return
+         * @param {number} [skip] How many borrelkaart groups should be skipped (for pagination)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllBorrelkaartgroups(take, skip, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllBorrelkaartgroups(take, skip, options);
+                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
+            });
+        },
+        /**
+         *  Returns the requested borrelkaart group
+         * @param {number} id The id of the borrelkaart group which should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBorrelkaartgroupId(id, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getBorrelkaartgroupId(id, options);
+                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
+            });
+        },
+        /**
+         *  Updates the requested borrelkaart group
+         * @param {number} id The id of the borrelkaart group which should be updated
+         * @param {BorrelkaartGroupRequest} borrelkaartgroup The updated borrelkaart group
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateBorrelkaartGroup(id, borrelkaartgroup, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.updateBorrelkaartGroup(id, borrelkaartgroup, options);
+                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
+            });
+        },
+    };
+};
+exports.BorrelkaartgroupsApiFp = BorrelkaartgroupsApiFp;
+/**
+ * BorrelkaartgroupsApi - factory interface
+ * @export
+ */
+const BorrelkaartgroupsApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.BorrelkaartgroupsApiFp)(configuration);
+    return {
+        /**
+         *  Creates a new borrelkaart group
+         * @param {BorrelkaartGroupRequest} borrelkaartgroup The borrelkaart group which should be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createBorrelkaartgroup(borrelkaartgroup, options) {
+            return localVarFp.createBorrelkaartgroup(borrelkaartgroup, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *  Returns all existing borrelkaart groups
+         * @param {number} [take] How many borrelkaart groups the endpoint should return
+         * @param {number} [skip] How many borrelkaart groups should be skipped (for pagination)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllBorrelkaartgroups(take, skip, options) {
+            return localVarFp.getAllBorrelkaartgroups(take, skip, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *  Returns the requested borrelkaart group
+         * @param {number} id The id of the borrelkaart group which should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBorrelkaartgroupId(id, options) {
+            return localVarFp.getBorrelkaartgroupId(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *  Updates the requested borrelkaart group
+         * @param {number} id The id of the borrelkaart group which should be updated
+         * @param {BorrelkaartGroupRequest} borrelkaartgroup The updated borrelkaart group
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateBorrelkaartGroup(id, borrelkaartgroup, options) {
+            return localVarFp.updateBorrelkaartGroup(id, borrelkaartgroup, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+exports.BorrelkaartgroupsApiFactory = BorrelkaartgroupsApiFactory;
+/**
+ * BorrelkaartgroupsApi - object-oriented interface
+ * @export
+ * @class BorrelkaartgroupsApi
+ * @extends {BaseAPI}
+ */
+class BorrelkaartgroupsApi extends base_1.BaseAPI {
+    /**
+     *  Creates a new borrelkaart group
+     * @param {BorrelkaartGroupRequest} borrelkaartgroup The borrelkaart group which should be created
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BorrelkaartgroupsApi
+     */
+    createBorrelkaartgroup(borrelkaartgroup, options) {
+        return (0, exports.BorrelkaartgroupsApiFp)(this.configuration).createBorrelkaartgroup(borrelkaartgroup, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *  Returns all existing borrelkaart groups
+     * @param {number} [take] How many borrelkaart groups the endpoint should return
+     * @param {number} [skip] How many borrelkaart groups should be skipped (for pagination)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BorrelkaartgroupsApi
+     */
+    getAllBorrelkaartgroups(take, skip, options) {
+        return (0, exports.BorrelkaartgroupsApiFp)(this.configuration).getAllBorrelkaartgroups(take, skip, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *  Returns the requested borrelkaart group
+     * @param {number} id The id of the borrelkaart group which should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BorrelkaartgroupsApi
+     */
+    getBorrelkaartgroupId(id, options) {
+        return (0, exports.BorrelkaartgroupsApiFp)(this.configuration).getBorrelkaartgroupId(id, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *  Updates the requested borrelkaart group
+     * @param {number} id The id of the borrelkaart group which should be updated
+     * @param {BorrelkaartGroupRequest} borrelkaartgroup The updated borrelkaart group
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BorrelkaartgroupsApi
+     */
+    updateBorrelkaartGroup(id, borrelkaartgroup, options) {
+        return (0, exports.BorrelkaartgroupsApiFp)(this.configuration).updateBorrelkaartGroup(id, borrelkaartgroup, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+exports.BorrelkaartgroupsApi = BorrelkaartgroupsApi;
+/**
  * ContainersApi - axios parameter creator
  * @export
  */
@@ -2144,42 +2436,6 @@ exports.ContainersApi = ContainersApi;
 const DebtorsApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         *  Return all users that had at most -5 euros balance both now and on the reference date For all these users, also return their fine based on the reference date.
-         * @param {string} referenceDates Dates to base the fines on. Every returned user has at least five euros debt on every reference date. The height of the fine is based on the first date in the array.
-         * @param {string} [userTypes] List of all user types fines should be calculated for
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        calculateFines: (referenceDates, userTypes, options = {}) => __awaiter(this, void 0, void 0, function* () {
-            // verify required parameter 'referenceDates' is not null or undefined
-            (0, common_1.assertParamExists)('calculateFines', 'referenceDates', referenceDates);
-            const localVarPath = `/fines/eligible`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication JWT required
-            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
-            if (userTypes !== undefined) {
-                localVarQueryParameter['userTypes'] = userTypes;
-            }
-            if (referenceDates !== undefined) {
-                localVarQueryParameter['referenceDates'] = referenceDates;
-            }
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
          *  Delete a fine
          * @param {number} id The id of the fine which should be deleted
          * @param {*} [options] Override http request option.
@@ -2210,7 +2466,7 @@ const DebtorsApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         *  Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
+         *  Handout fines to all given users.
          * @param {HandoutFinesRequest} body null
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2346,19 +2602,6 @@ const DebtorsApiFp = function (configuration) {
     const localVarAxiosParamCreator = (0, exports.DebtorsApiAxiosParamCreator)(configuration);
     return {
         /**
-         *  Return all users that had at most -5 euros balance both now and on the reference date For all these users, also return their fine based on the reference date.
-         * @param {string} referenceDates Dates to base the fines on. Every returned user has at least five euros debt on every reference date. The height of the fine is based on the first date in the array.
-         * @param {string} [userTypes] List of all user types fines should be calculated for
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        calculateFines(referenceDates, userTypes, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.calculateFines(referenceDates, userTypes, options);
-                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
-            });
-        },
-        /**
          *  Delete a fine
          * @param {number} id The id of the fine which should be deleted
          * @param {*} [options] Override http request option.
@@ -2371,7 +2614,7 @@ const DebtorsApiFp = function (configuration) {
             });
         },
         /**
-         *  Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
+         *  Handout fines to all given users.
          * @param {HandoutFinesRequest} body null
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2430,16 +2673,6 @@ const DebtorsApiFactory = function (configuration, basePath, axios) {
     const localVarFp = (0, exports.DebtorsApiFp)(configuration);
     return {
         /**
-         *  Return all users that had at most -5 euros balance both now and on the reference date For all these users, also return their fine based on the reference date.
-         * @param {string} referenceDates Dates to base the fines on. Every returned user has at least five euros debt on every reference date. The height of the fine is based on the first date in the array.
-         * @param {string} [userTypes] List of all user types fines should be calculated for
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        calculateFines(referenceDates, userTypes, options) {
-            return localVarFp.calculateFines(referenceDates, userTypes, options).then((request) => request(axios, basePath));
-        },
-        /**
          *  Delete a fine
          * @param {number} id The id of the fine which should be deleted
          * @param {*} [options] Override http request option.
@@ -2449,7 +2682,7 @@ const DebtorsApiFactory = function (configuration, basePath, axios) {
             return localVarFp.deleteFine(id, options).then((request) => request(axios, basePath));
         },
         /**
-         *  Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
+         *  Handout fines to all given users.
          * @param {HandoutFinesRequest} body null
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2496,17 +2729,6 @@ exports.DebtorsApiFactory = DebtorsApiFactory;
  */
 class DebtorsApi extends base_1.BaseAPI {
     /**
-     *  Return all users that had at most -5 euros balance both now and on the reference date For all these users, also return their fine based on the reference date.
-     * @param {string} referenceDates Dates to base the fines on. Every returned user has at least five euros debt on every reference date. The height of the fine is based on the first date in the array.
-     * @param {string} [userTypes] List of all user types fines should be calculated for
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DebtorsApi
-     */
-    calculateFines(referenceDates, userTypes, options) {
-        return (0, exports.DebtorsApiFp)(this.configuration).calculateFines(referenceDates, userTypes, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
      *  Delete a fine
      * @param {number} id The id of the fine which should be deleted
      * @param {*} [options] Override http request option.
@@ -2517,7 +2739,7 @@ class DebtorsApi extends base_1.BaseAPI {
         return (0, exports.DebtorsApiFp)(this.configuration).deleteFine(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     *  Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
+     *  Handout fines to all given users.
      * @param {HandoutFinesRequest} body null
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2560,185 +2782,22 @@ class DebtorsApi extends base_1.BaseAPI {
 }
 exports.DebtorsApi = DebtorsApi;
 /**
- * EventsApi - axios parameter creator
+ * DefaultApi - axios parameter creator
  * @export
  */
-const EventsApiAxiosParamCreator = function (configuration) {
+const DefaultApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         *  Change the assignment of users to shifts on an event
-         * @param {number} eventId The id of the event
-         * @param {number} shiftId The id of the shift
-         * @param {number} userId The id of the user
-         * @param {EventAnswerAssignmentRequest} body null
+         *  Return all users that had at most -5 euros balance both now and on the reference date For all these users, also return their fine based on the reference date.
+         * @param {Array<string>} userTypes List of all user types fines should be calculated for
+         * @param {string} [referenceDate] Date to base fines on. If undefined, use the date of the last fine handout event. If that one also does not exist, use now.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        assignEventShift: (eventId, shiftId, userId, body, options = {}) => __awaiter(this, void 0, void 0, function* () {
-            // verify required parameter 'eventId' is not null or undefined
-            (0, common_1.assertParamExists)('assignEventShift', 'eventId', eventId);
-            // verify required parameter 'shiftId' is not null or undefined
-            (0, common_1.assertParamExists)('assignEventShift', 'shiftId', shiftId);
-            // verify required parameter 'userId' is not null or undefined
-            (0, common_1.assertParamExists)('assignEventShift', 'userId', userId);
-            // verify required parameter 'body' is not null or undefined
-            (0, common_1.assertParamExists)('assignEventShift', 'body', body);
-            const localVarPath = `/events/{eventId}/shift/{shiftId}/user/{userId}/assign`
-                .replace(`{${"eventId"}}`, encodeURIComponent(String(eventId)))
-                .replace(`{${"shiftId"}}`, encodeURIComponent(String(shiftId)))
-                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'PUT' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication JWT required
-            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(body, localVarRequestOptions, configuration);
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         *  Create an event with its corresponding answers objects
-         * @param {CreateEventRequest} body null
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        createEvent: (body, options = {}) => __awaiter(this, void 0, void 0, function* () {
-            // verify required parameter 'body' is not null or undefined
-            (0, common_1.assertParamExists)('createEvent', 'body', body);
-            const localVarPath = `/events`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication JWT required
-            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(body, localVarRequestOptions, configuration);
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         *  Create an event shift
-         * @param {CreateShiftRequest} body null
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        createEventShift: (body, options = {}) => __awaiter(this, void 0, void 0, function* () {
-            // verify required parameter 'body' is not null or undefined
-            (0, common_1.assertParamExists)('createEventShift', 'body', body);
-            const localVarPath = `/eventshifts`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication JWT required
-            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(body, localVarRequestOptions, configuration);
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         *  Delete an event with its answers
-         * @param {number} id The id of the event which should be deleted
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteEvent: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
-            // verify required parameter 'id' is not null or undefined
-            (0, common_1.assertParamExists)('deleteEvent', 'id', id);
-            const localVarPath = `/events/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'DELETE' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication JWT required
-            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         *  Delete an event shift with its answers
-         * @param {number} id The id of the event which should be deleted
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteEventShift: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
-            // verify required parameter 'id' is not null or undefined
-            (0, common_1.assertParamExists)('deleteEventShift', 'id', id);
-            const localVarPath = `/eventshifts/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'DELETE' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication JWT required
-            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         *  Get all event shifts
-         * @param {number} [take] How many entries the endpoint should return
-         * @param {number} [skip] How many entries should be skipped (for pagination)
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getAllEventShifts: (take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
-            const localVarPath = `/eventshifts`;
+        calculateFines: (userTypes, referenceDate, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            // verify required parameter 'userTypes' is not null or undefined
+            (0, common_1.assertParamExists)('calculateFines', 'userTypes', userTypes);
+            const localVarPath = `/fines/eligible`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
             let baseOptions;
@@ -2750,284 +2809,15 @@ const EventsApiAxiosParamCreator = function (configuration) {
             const localVarQueryParameter = {};
             // authentication JWT required
             yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
-            if (take !== undefined) {
-                localVarQueryParameter['take'] = take;
+            if (userTypes) {
+                localVarQueryParameter['userTypes'] = userTypes;
             }
-            if (skip !== undefined) {
-                localVarQueryParameter['skip'] = skip;
-            }
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         *  Get all events
-         * @param {string} [name] Name of the event
-         * @param {number} [createdById] ID of user that created the event
-         * @param {string} [beforeDate] Get only events that start after this date
-         * @param {string} [afterDate] Get only events that start before this date
-         * @param {string} [type] Get only events that are this type
-         * @param {number} [take] How many entries the endpoint should return
-         * @param {number} [skip] How many entries should be skipped (for pagination)
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getAllEvents: (name, createdById, beforeDate, afterDate, type, take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
-            const localVarPath = `/events`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication JWT required
-            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
-            if (name !== undefined) {
-                localVarQueryParameter['name'] = name;
-            }
-            if (createdById !== undefined) {
-                localVarQueryParameter['createdById'] = createdById;
-            }
-            if (beforeDate !== undefined) {
-                localVarQueryParameter['beforeDate'] = beforeDate;
-            }
-            if (afterDate !== undefined) {
-                localVarQueryParameter['afterDate'] = afterDate;
-            }
-            if (type !== undefined) {
-                localVarQueryParameter['type'] = type;
-            }
-            if (take !== undefined) {
-                localVarQueryParameter['take'] = take;
-            }
-            if (skip !== undefined) {
-                localVarQueryParameter['skip'] = skip;
+            if (referenceDate !== undefined) {
+                localVarQueryParameter['referenceDate'] = referenceDate;
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         *  Get the number of times a user has been selected for the given shift
-         * @param {number} id The id of the event which should be deleted
-         * @param {string} [eventType] Only include events of this type
-         * @param {string} [afterDate] Only include events after this date
-         * @param {string} [beforeDate] Only include events before this date
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getShiftSelectedCount: (id, eventType, afterDate, beforeDate, options = {}) => __awaiter(this, void 0, void 0, function* () {
-            // verify required parameter 'id' is not null or undefined
-            (0, common_1.assertParamExists)('getShiftSelectedCount', 'id', id);
-            const localVarPath = `/eventshifts/{id}/counts`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication JWT required
-            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
-            if (eventType !== undefined) {
-                localVarQueryParameter['eventType'] = eventType;
-            }
-            if (afterDate !== undefined) {
-                localVarQueryParameter['afterDate'] = afterDate;
-            }
-            if (beforeDate !== undefined) {
-                localVarQueryParameter['beforeDate'] = beforeDate;
-            }
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         *  Get a single event with its answers and shifts
-         * @param {number} id The id of the event which should be returned
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getSingleEvent: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
-            // verify required parameter 'id' is not null or undefined
-            (0, common_1.assertParamExists)('getSingleEvent', 'id', id);
-            const localVarPath = `/events/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication JWT required
-            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         *  Synchronize an event, so that EventShiftAnswers are created/deleted for users that are (no longer) part of a shift
-         * @param {number} id The id of the event which should be returned
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        syncEventShiftAnswers: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
-            // verify required parameter 'id' is not null or undefined
-            (0, common_1.assertParamExists)('syncEventShiftAnswers', 'id', id);
-            const localVarPath = `/events/{id}/sync`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication JWT required
-            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         *  Update an event with its corresponding answers objects
-         * @param {number} id The id of the event which should be returned
-         * @param {UpdateEventRequest} body null
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        updateEvent: (id, body, options = {}) => __awaiter(this, void 0, void 0, function* () {
-            // verify required parameter 'id' is not null or undefined
-            (0, common_1.assertParamExists)('updateEvent', 'id', id);
-            // verify required parameter 'body' is not null or undefined
-            (0, common_1.assertParamExists)('updateEvent', 'body', body);
-            const localVarPath = `/events/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'PATCH' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication JWT required
-            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(body, localVarRequestOptions, configuration);
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         *  Update an event shift
-         * @param {number} id The id of the event which should be returned
-         * @param {UpdateShiftRequest} body null
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        updateEventShift: (id, body, options = {}) => __awaiter(this, void 0, void 0, function* () {
-            // verify required parameter 'id' is not null or undefined
-            (0, common_1.assertParamExists)('updateEventShift', 'id', id);
-            // verify required parameter 'body' is not null or undefined
-            (0, common_1.assertParamExists)('updateEventShift', 'body', body);
-            const localVarPath = `/eventshifts/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'PATCH' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication JWT required
-            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(body, localVarRequestOptions, configuration);
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         *  Update the availability of a user for a shift in an event
-         * @param {number} eventId The id of the event
-         * @param {number} shiftId The id of the shift
-         * @param {number} userId The id of the user
-         * @param {EventAnswerAvailabilityRequest} body null
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        updateEventShiftAvailability: (eventId, shiftId, userId, body, options = {}) => __awaiter(this, void 0, void 0, function* () {
-            // verify required parameter 'eventId' is not null or undefined
-            (0, common_1.assertParamExists)('updateEventShiftAvailability', 'eventId', eventId);
-            // verify required parameter 'shiftId' is not null or undefined
-            (0, common_1.assertParamExists)('updateEventShiftAvailability', 'shiftId', shiftId);
-            // verify required parameter 'userId' is not null or undefined
-            (0, common_1.assertParamExists)('updateEventShiftAvailability', 'userId', userId);
-            // verify required parameter 'body' is not null or undefined
-            (0, common_1.assertParamExists)('updateEventShiftAvailability', 'body', body);
-            const localVarPath = `/events/{eventId}/shift/{shiftId}/user/{userId}/availability`
-                .replace(`{${"eventId"}}`, encodeURIComponent(String(eventId)))
-                .replace(`{${"shiftId"}}`, encodeURIComponent(String(shiftId)))
-                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication JWT required
-            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(body, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -3035,493 +2825,70 @@ const EventsApiAxiosParamCreator = function (configuration) {
         }),
     };
 };
-exports.EventsApiAxiosParamCreator = EventsApiAxiosParamCreator;
+exports.DefaultApiAxiosParamCreator = DefaultApiAxiosParamCreator;
 /**
- * EventsApi - functional programming interface
+ * DefaultApi - functional programming interface
  * @export
  */
-const EventsApiFp = function (configuration) {
-    const localVarAxiosParamCreator = (0, exports.EventsApiAxiosParamCreator)(configuration);
+const DefaultApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.DefaultApiAxiosParamCreator)(configuration);
     return {
         /**
-         *  Change the assignment of users to shifts on an event
-         * @param {number} eventId The id of the event
-         * @param {number} shiftId The id of the shift
-         * @param {number} userId The id of the user
-         * @param {EventAnswerAssignmentRequest} body null
+         *  Return all users that had at most -5 euros balance both now and on the reference date For all these users, also return their fine based on the reference date.
+         * @param {Array<string>} userTypes List of all user types fines should be calculated for
+         * @param {string} [referenceDate] Date to base fines on. If undefined, use the date of the last fine handout event. If that one also does not exist, use now.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        assignEventShift(eventId, shiftId, userId, body, options) {
+        calculateFines(userTypes, referenceDate, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.assignEventShift(eventId, shiftId, userId, body, options);
-                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
-            });
-        },
-        /**
-         *  Create an event with its corresponding answers objects
-         * @param {CreateEventRequest} body null
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        createEvent(body, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.createEvent(body, options);
-                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
-            });
-        },
-        /**
-         *  Create an event shift
-         * @param {CreateShiftRequest} body null
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        createEventShift(body, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.createEventShift(body, options);
-                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
-            });
-        },
-        /**
-         *  Delete an event with its answers
-         * @param {number} id The id of the event which should be deleted
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteEvent(id, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteEvent(id, options);
-                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
-            });
-        },
-        /**
-         *  Delete an event shift with its answers
-         * @param {number} id The id of the event which should be deleted
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteEventShift(id, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteEventShift(id, options);
-                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
-            });
-        },
-        /**
-         *  Get all event shifts
-         * @param {number} [take] How many entries the endpoint should return
-         * @param {number} [skip] How many entries should be skipped (for pagination)
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getAllEventShifts(take, skip, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllEventShifts(take, skip, options);
-                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
-            });
-        },
-        /**
-         *  Get all events
-         * @param {string} [name] Name of the event
-         * @param {number} [createdById] ID of user that created the event
-         * @param {string} [beforeDate] Get only events that start after this date
-         * @param {string} [afterDate] Get only events that start before this date
-         * @param {string} [type] Get only events that are this type
-         * @param {number} [take] How many entries the endpoint should return
-         * @param {number} [skip] How many entries should be skipped (for pagination)
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getAllEvents(name, createdById, beforeDate, afterDate, type, take, skip, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllEvents(name, createdById, beforeDate, afterDate, type, take, skip, options);
-                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
-            });
-        },
-        /**
-         *  Get the number of times a user has been selected for the given shift
-         * @param {number} id The id of the event which should be deleted
-         * @param {string} [eventType] Only include events of this type
-         * @param {string} [afterDate] Only include events after this date
-         * @param {string} [beforeDate] Only include events before this date
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getShiftSelectedCount(id, eventType, afterDate, beforeDate, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getShiftSelectedCount(id, eventType, afterDate, beforeDate, options);
-                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
-            });
-        },
-        /**
-         *  Get a single event with its answers and shifts
-         * @param {number} id The id of the event which should be returned
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getSingleEvent(id, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getSingleEvent(id, options);
-                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
-            });
-        },
-        /**
-         *  Synchronize an event, so that EventShiftAnswers are created/deleted for users that are (no longer) part of a shift
-         * @param {number} id The id of the event which should be returned
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        syncEventShiftAnswers(id, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.syncEventShiftAnswers(id, options);
-                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
-            });
-        },
-        /**
-         *  Update an event with its corresponding answers objects
-         * @param {number} id The id of the event which should be returned
-         * @param {UpdateEventRequest} body null
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        updateEvent(id, body, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.updateEvent(id, body, options);
-                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
-            });
-        },
-        /**
-         *  Update an event shift
-         * @param {number} id The id of the event which should be returned
-         * @param {UpdateShiftRequest} body null
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        updateEventShift(id, body, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.updateEventShift(id, body, options);
-                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
-            });
-        },
-        /**
-         *  Update the availability of a user for a shift in an event
-         * @param {number} eventId The id of the event
-         * @param {number} shiftId The id of the shift
-         * @param {number} userId The id of the user
-         * @param {EventAnswerAvailabilityRequest} body null
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        updateEventShiftAvailability(eventId, shiftId, userId, body, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.updateEventShiftAvailability(eventId, shiftId, userId, body, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.calculateFines(userTypes, referenceDate, options);
                 return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
             });
         },
     };
 };
-exports.EventsApiFp = EventsApiFp;
+exports.DefaultApiFp = DefaultApiFp;
 /**
- * EventsApi - factory interface
+ * DefaultApi - factory interface
  * @export
  */
-const EventsApiFactory = function (configuration, basePath, axios) {
-    const localVarFp = (0, exports.EventsApiFp)(configuration);
+const DefaultApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.DefaultApiFp)(configuration);
     return {
         /**
-         *  Change the assignment of users to shifts on an event
-         * @param {number} eventId The id of the event
-         * @param {number} shiftId The id of the shift
-         * @param {number} userId The id of the user
-         * @param {EventAnswerAssignmentRequest} body null
+         *  Return all users that had at most -5 euros balance both now and on the reference date For all these users, also return their fine based on the reference date.
+         * @param {Array<string>} userTypes List of all user types fines should be calculated for
+         * @param {string} [referenceDate] Date to base fines on. If undefined, use the date of the last fine handout event. If that one also does not exist, use now.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        assignEventShift(eventId, shiftId, userId, body, options) {
-            return localVarFp.assignEventShift(eventId, shiftId, userId, body, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Create an event with its corresponding answers objects
-         * @param {CreateEventRequest} body null
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        createEvent(body, options) {
-            return localVarFp.createEvent(body, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Create an event shift
-         * @param {CreateShiftRequest} body null
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        createEventShift(body, options) {
-            return localVarFp.createEventShift(body, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Delete an event with its answers
-         * @param {number} id The id of the event which should be deleted
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteEvent(id, options) {
-            return localVarFp.deleteEvent(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Delete an event shift with its answers
-         * @param {number} id The id of the event which should be deleted
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteEventShift(id, options) {
-            return localVarFp.deleteEventShift(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Get all event shifts
-         * @param {number} [take] How many entries the endpoint should return
-         * @param {number} [skip] How many entries should be skipped (for pagination)
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getAllEventShifts(take, skip, options) {
-            return localVarFp.getAllEventShifts(take, skip, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Get all events
-         * @param {string} [name] Name of the event
-         * @param {number} [createdById] ID of user that created the event
-         * @param {string} [beforeDate] Get only events that start after this date
-         * @param {string} [afterDate] Get only events that start before this date
-         * @param {string} [type] Get only events that are this type
-         * @param {number} [take] How many entries the endpoint should return
-         * @param {number} [skip] How many entries should be skipped (for pagination)
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getAllEvents(name, createdById, beforeDate, afterDate, type, take, skip, options) {
-            return localVarFp.getAllEvents(name, createdById, beforeDate, afterDate, type, take, skip, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Get the number of times a user has been selected for the given shift
-         * @param {number} id The id of the event which should be deleted
-         * @param {string} [eventType] Only include events of this type
-         * @param {string} [afterDate] Only include events after this date
-         * @param {string} [beforeDate] Only include events before this date
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getShiftSelectedCount(id, eventType, afterDate, beforeDate, options) {
-            return localVarFp.getShiftSelectedCount(id, eventType, afterDate, beforeDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Get a single event with its answers and shifts
-         * @param {number} id The id of the event which should be returned
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getSingleEvent(id, options) {
-            return localVarFp.getSingleEvent(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Synchronize an event, so that EventShiftAnswers are created/deleted for users that are (no longer) part of a shift
-         * @param {number} id The id of the event which should be returned
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        syncEventShiftAnswers(id, options) {
-            return localVarFp.syncEventShiftAnswers(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Update an event with its corresponding answers objects
-         * @param {number} id The id of the event which should be returned
-         * @param {UpdateEventRequest} body null
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        updateEvent(id, body, options) {
-            return localVarFp.updateEvent(id, body, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Update an event shift
-         * @param {number} id The id of the event which should be returned
-         * @param {UpdateShiftRequest} body null
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        updateEventShift(id, body, options) {
-            return localVarFp.updateEventShift(id, body, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Update the availability of a user for a shift in an event
-         * @param {number} eventId The id of the event
-         * @param {number} shiftId The id of the shift
-         * @param {number} userId The id of the user
-         * @param {EventAnswerAvailabilityRequest} body null
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        updateEventShiftAvailability(eventId, shiftId, userId, body, options) {
-            return localVarFp.updateEventShiftAvailability(eventId, shiftId, userId, body, options).then((request) => request(axios, basePath));
+        calculateFines(userTypes, referenceDate, options) {
+            return localVarFp.calculateFines(userTypes, referenceDate, options).then((request) => request(axios, basePath));
         },
     };
 };
-exports.EventsApiFactory = EventsApiFactory;
+exports.DefaultApiFactory = DefaultApiFactory;
 /**
- * EventsApi - object-oriented interface
+ * DefaultApi - object-oriented interface
  * @export
- * @class EventsApi
+ * @class DefaultApi
  * @extends {BaseAPI}
  */
-class EventsApi extends base_1.BaseAPI {
+class DefaultApi extends base_1.BaseAPI {
     /**
-     *  Change the assignment of users to shifts on an event
-     * @param {number} eventId The id of the event
-     * @param {number} shiftId The id of the shift
-     * @param {number} userId The id of the user
-     * @param {EventAnswerAssignmentRequest} body null
+     *  Return all users that had at most -5 euros balance both now and on the reference date For all these users, also return their fine based on the reference date.
+     * @param {Array<string>} userTypes List of all user types fines should be calculated for
+     * @param {string} [referenceDate] Date to base fines on. If undefined, use the date of the last fine handout event. If that one also does not exist, use now.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof EventsApi
+     * @memberof DefaultApi
      */
-    assignEventShift(eventId, shiftId, userId, body, options) {
-        return (0, exports.EventsApiFp)(this.configuration).assignEventShift(eventId, shiftId, userId, body, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *  Create an event with its corresponding answers objects
-     * @param {CreateEventRequest} body null
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof EventsApi
-     */
-    createEvent(body, options) {
-        return (0, exports.EventsApiFp)(this.configuration).createEvent(body, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *  Create an event shift
-     * @param {CreateShiftRequest} body null
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof EventsApi
-     */
-    createEventShift(body, options) {
-        return (0, exports.EventsApiFp)(this.configuration).createEventShift(body, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *  Delete an event with its answers
-     * @param {number} id The id of the event which should be deleted
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof EventsApi
-     */
-    deleteEvent(id, options) {
-        return (0, exports.EventsApiFp)(this.configuration).deleteEvent(id, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *  Delete an event shift with its answers
-     * @param {number} id The id of the event which should be deleted
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof EventsApi
-     */
-    deleteEventShift(id, options) {
-        return (0, exports.EventsApiFp)(this.configuration).deleteEventShift(id, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *  Get all event shifts
-     * @param {number} [take] How many entries the endpoint should return
-     * @param {number} [skip] How many entries should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof EventsApi
-     */
-    getAllEventShifts(take, skip, options) {
-        return (0, exports.EventsApiFp)(this.configuration).getAllEventShifts(take, skip, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *  Get all events
-     * @param {string} [name] Name of the event
-     * @param {number} [createdById] ID of user that created the event
-     * @param {string} [beforeDate] Get only events that start after this date
-     * @param {string} [afterDate] Get only events that start before this date
-     * @param {string} [type] Get only events that are this type
-     * @param {number} [take] How many entries the endpoint should return
-     * @param {number} [skip] How many entries should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof EventsApi
-     */
-    getAllEvents(name, createdById, beforeDate, afterDate, type, take, skip, options) {
-        return (0, exports.EventsApiFp)(this.configuration).getAllEvents(name, createdById, beforeDate, afterDate, type, take, skip, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *  Get the number of times a user has been selected for the given shift
-     * @param {number} id The id of the event which should be deleted
-     * @param {string} [eventType] Only include events of this type
-     * @param {string} [afterDate] Only include events after this date
-     * @param {string} [beforeDate] Only include events before this date
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof EventsApi
-     */
-    getShiftSelectedCount(id, eventType, afterDate, beforeDate, options) {
-        return (0, exports.EventsApiFp)(this.configuration).getShiftSelectedCount(id, eventType, afterDate, beforeDate, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *  Get a single event with its answers and shifts
-     * @param {number} id The id of the event which should be returned
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof EventsApi
-     */
-    getSingleEvent(id, options) {
-        return (0, exports.EventsApiFp)(this.configuration).getSingleEvent(id, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *  Synchronize an event, so that EventShiftAnswers are created/deleted for users that are (no longer) part of a shift
-     * @param {number} id The id of the event which should be returned
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof EventsApi
-     */
-    syncEventShiftAnswers(id, options) {
-        return (0, exports.EventsApiFp)(this.configuration).syncEventShiftAnswers(id, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *  Update an event with its corresponding answers objects
-     * @param {number} id The id of the event which should be returned
-     * @param {UpdateEventRequest} body null
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof EventsApi
-     */
-    updateEvent(id, body, options) {
-        return (0, exports.EventsApiFp)(this.configuration).updateEvent(id, body, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *  Update an event shift
-     * @param {number} id The id of the event which should be returned
-     * @param {UpdateShiftRequest} body null
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof EventsApi
-     */
-    updateEventShift(id, body, options) {
-        return (0, exports.EventsApiFp)(this.configuration).updateEventShift(id, body, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *  Update the availability of a user for a shift in an event
-     * @param {number} eventId The id of the event
-     * @param {number} shiftId The id of the shift
-     * @param {number} userId The id of the user
-     * @param {EventAnswerAvailabilityRequest} body null
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof EventsApi
-     */
-    updateEventShiftAvailability(eventId, shiftId, userId, body, options) {
-        return (0, exports.EventsApiFp)(this.configuration).updateEventShiftAvailability(eventId, shiftId, userId, body, options).then((request) => request(this.axios, this.basePath));
+    calculateFines(userTypes, referenceDate, options) {
+        return (0, exports.DefaultApiFp)(this.configuration).calculateFines(userTypes, referenceDate, options).then((request) => request(this.axios, this.basePath));
     }
 }
-exports.EventsApi = EventsApi;
+exports.DefaultApi = DefaultApi;
 /**
  * FilesApi - axios parameter creator
  * @export
@@ -3828,12 +3195,10 @@ const InvoicesApiAxiosParamCreator = function (configuration) {
          * @param {boolean} [returnEntries] Boolean if invoice entries should be returned
          * @param {string} [fromDate] Start date for selected invoices (inclusive)
          * @param {string} [tillDate] End date for selected invoices (exclusive)
-         * @param {number} [take] How many entries the endpoint should return
-         * @param {number} [skip] How many entries should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllInvoices: (toId, invoiceId, state, returnEntries, fromDate, tillDate, take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
+        getAllInvoices: (toId, invoiceId, state, returnEntries, fromDate, tillDate, options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/invoices`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -3863,12 +3228,6 @@ const InvoicesApiAxiosParamCreator = function (configuration) {
             }
             if (tillDate !== undefined) {
                 localVarQueryParameter['tillDate'] = tillDate;
-            }
-            if (take !== undefined) {
-                localVarQueryParameter['take'] = take;
-            }
-            if (skip !== undefined) {
-                localVarQueryParameter['skip'] = skip;
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -3989,14 +3348,12 @@ const InvoicesApiFp = function (configuration) {
          * @param {boolean} [returnEntries] Boolean if invoice entries should be returned
          * @param {string} [fromDate] Start date for selected invoices (inclusive)
          * @param {string} [tillDate] End date for selected invoices (exclusive)
-         * @param {number} [take] How many entries the endpoint should return
-         * @param {number} [skip] How many entries should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllInvoices(toId, invoiceId, state, returnEntries, fromDate, tillDate, take, skip, options) {
+        getAllInvoices(toId, invoiceId, state, returnEntries, fromDate, tillDate, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllInvoices(toId, invoiceId, state, returnEntries, fromDate, tillDate, take, skip, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllInvoices(toId, invoiceId, state, returnEntries, fromDate, tillDate, options);
                 return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
             });
         },
@@ -4062,13 +3419,11 @@ const InvoicesApiFactory = function (configuration, basePath, axios) {
          * @param {boolean} [returnEntries] Boolean if invoice entries should be returned
          * @param {string} [fromDate] Start date for selected invoices (inclusive)
          * @param {string} [tillDate] End date for selected invoices (exclusive)
-         * @param {number} [take] How many entries the endpoint should return
-         * @param {number} [skip] How many entries should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllInvoices(toId, invoiceId, state, returnEntries, fromDate, tillDate, take, skip, options) {
-            return localVarFp.getAllInvoices(toId, invoiceId, state, returnEntries, fromDate, tillDate, take, skip, options).then((request) => request(axios, basePath));
+        getAllInvoices(toId, invoiceId, state, returnEntries, fromDate, tillDate, options) {
+            return localVarFp.getAllInvoices(toId, invoiceId, state, returnEntries, fromDate, tillDate, options).then((request) => request(axios, basePath));
         },
         /**
          *  Returns a single invoice in the system.
@@ -4128,14 +3483,12 @@ class InvoicesApi extends base_1.BaseAPI {
      * @param {boolean} [returnEntries] Boolean if invoice entries should be returned
      * @param {string} [fromDate] Start date for selected invoices (inclusive)
      * @param {string} [tillDate] End date for selected invoices (exclusive)
-     * @param {number} [take] How many entries the endpoint should return
-     * @param {number} [skip] How many entries should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof InvoicesApi
      */
-    getAllInvoices(toId, invoiceId, state, returnEntries, fromDate, tillDate, take, skip, options) {
-        return (0, exports.InvoicesApiFp)(this.configuration).getAllInvoices(toId, invoiceId, state, returnEntries, fromDate, tillDate, take, skip, options).then((request) => request(this.axios, this.basePath));
+    getAllInvoices(toId, invoiceId, state, returnEntries, fromDate, tillDate, options) {
+        return (0, exports.InvoicesApiFp)(this.configuration).getAllInvoices(toId, invoiceId, state, returnEntries, fromDate, tillDate, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *  Returns a single invoice in the system.
@@ -7012,7 +6365,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {boolean} [active] Filter based if the user is active
          * @param {boolean} [ofAge] Filter based if the user is 18+
          * @param {number} [id] Filter based on user ID
-         * @param {string} [type] {MEMBER,ORGAN,VOUCHER,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
+         * @param {string} [type] {MEMBER,ORGAN,BORRELKAART,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -7129,12 +6482,10 @@ const UsersApiAxiosParamCreator = function (configuration) {
         /**
          *  Get an organs members
          * @param {number} id The id of the user
-         * @param {number} [take] How many members the endpoint should return
-         * @param {number} [skip] How many members should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getOrganMembers: (id, take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
+        getOrganMembers: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getOrganMembers', 'id', id);
             const localVarPath = `/users/{id}/members`
@@ -7150,12 +6501,6 @@ const UsersApiAxiosParamCreator = function (configuration) {
             const localVarQueryParameter = {};
             // authentication JWT required
             yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
-            if (take !== undefined) {
-                localVarQueryParameter['take'] = take;
-            }
-            if (skip !== undefined) {
-                localVarQueryParameter['skip'] = skip;
-            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
@@ -7575,7 +6920,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
         /**
          *  Update a user
          * @param {number} id The id of the user
-         * @param {UserRequest} user The user which should be updated
+         * @param {UpdateUserRequest} user The user which should be updated
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -7862,7 +7207,7 @@ const UsersApiFp = function (configuration) {
          * @param {boolean} [active] Filter based if the user is active
          * @param {boolean} [ofAge] Filter based if the user is 18+
          * @param {number} [id] Filter based on user ID
-         * @param {string} [type] {MEMBER,ORGAN,VOUCHER,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
+         * @param {string} [type] {MEMBER,ORGAN,BORRELKAART,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -7901,14 +7246,12 @@ const UsersApiFp = function (configuration) {
         /**
          *  Get an organs members
          * @param {number} id The id of the user
-         * @param {number} [take] How many members the endpoint should return
-         * @param {number} [skip] How many members should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getOrganMembers(id, take, skip, options) {
+        getOrganMembers(id, options) {
             return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getOrganMembers(id, take, skip, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getOrganMembers(id, options);
                 return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
             });
         },
@@ -8062,7 +7405,7 @@ const UsersApiFp = function (configuration) {
         /**
          *  Update a user
          * @param {number} id The id of the user
-         * @param {UserRequest} user The user which should be updated
+         * @param {UpdateUserRequest} user The user which should be updated
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -8207,7 +7550,7 @@ const UsersApiFactory = function (configuration, basePath, axios) {
          * @param {boolean} [active] Filter based if the user is active
          * @param {boolean} [ofAge] Filter based if the user is 18+
          * @param {number} [id] Filter based on user ID
-         * @param {string} [type] {MEMBER,ORGAN,VOUCHER,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
+         * @param {string} [type] {MEMBER,ORGAN,BORRELKAART,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -8237,13 +7580,11 @@ const UsersApiFactory = function (configuration, basePath, axios) {
         /**
          *  Get an organs members
          * @param {number} id The id of the user
-         * @param {number} [take] How many members the endpoint should return
-         * @param {number} [skip] How many members should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getOrganMembers(id, take, skip, options) {
-            return localVarFp.getOrganMembers(id, take, skip, options).then((request) => request(axios, basePath));
+        getOrganMembers(id, options) {
+            return localVarFp.getOrganMembers(id, options).then((request) => request(axios, basePath));
         },
         /**
          *  Get all users that the user can authenticate as
@@ -8365,7 +7706,7 @@ const UsersApiFactory = function (configuration, basePath, axios) {
         /**
          *  Update a user
          * @param {number} id The id of the user
-         * @param {UserRequest} user The user which should be updated
+         * @param {UpdateUserRequest} user The user which should be updated
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -8498,7 +7839,7 @@ class UsersApi extends base_1.BaseAPI {
      * @param {boolean} [active] Filter based if the user is active
      * @param {boolean} [ofAge] Filter based if the user is 18+
      * @param {number} [id] Filter based on user ID
-     * @param {string} [type] {MEMBER,ORGAN,VOUCHER,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
+     * @param {string} [type] {MEMBER,ORGAN,BORRELKAART,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
@@ -8531,14 +7872,12 @@ class UsersApi extends base_1.BaseAPI {
     /**
      *  Get an organs members
      * @param {number} id The id of the user
-     * @param {number} [take] How many members the endpoint should return
-     * @param {number} [skip] How many members should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getOrganMembers(id, take, skip, options) {
-        return (0, exports.UsersApiFp)(this.configuration).getOrganMembers(id, take, skip, options).then((request) => request(this.axios, this.basePath));
+    getOrganMembers(id, options) {
+        return (0, exports.UsersApiFp)(this.configuration).getOrganMembers(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *  Get all users that the user can authenticate as
@@ -8670,7 +8009,7 @@ class UsersApi extends base_1.BaseAPI {
     /**
      *  Update a user
      * @param {number} id The id of the user
-     * @param {UserRequest} user The user which should be updated
+     * @param {UpdateUserRequest} user The user which should be updated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
@@ -9131,302 +8470,4 @@ class VatGroupsApi extends base_1.BaseAPI {
     }
 }
 exports.VatGroupsApi = VatGroupsApi;
-/**
- * VouchergroupsApi - axios parameter creator
- * @export
- */
-const VouchergroupsApiAxiosParamCreator = function (configuration) {
-    return {
-        /**
-         *  Creates a new voucher group
-         * @param {VoucherGroupRequest} vouchergroup The voucher group which should be created
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        createVouchergroup: (vouchergroup, options = {}) => __awaiter(this, void 0, void 0, function* () {
-            // verify required parameter 'vouchergroup' is not null or undefined
-            (0, common_1.assertParamExists)('createVouchergroup', 'vouchergroup', vouchergroup);
-            const localVarPath = `/vouchergroups`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication JWT required
-            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(vouchergroup, localVarRequestOptions, configuration);
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         *  Returns all existing voucher groups
-         * @param {number} [take] How many voucher groups the endpoint should return
-         * @param {number} [skip] How many voucher groups should be skipped (for pagination)
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getAllVouchergroups: (take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
-            const localVarPath = `/vouchergroups`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication JWT required
-            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
-            if (take !== undefined) {
-                localVarQueryParameter['take'] = take;
-            }
-            if (skip !== undefined) {
-                localVarQueryParameter['skip'] = skip;
-            }
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         *  Returns the requested voucher group
-         * @param {number} id The id of the voucher group which should be returned
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getVouchergroupId: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
-            // verify required parameter 'id' is not null or undefined
-            (0, common_1.assertParamExists)('getVouchergroupId', 'id', id);
-            const localVarPath = `/vouchergroups/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication JWT required
-            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         *  Updates the requested voucher group
-         * @param {number} id The id of the voucher group which should be updated
-         * @param {VoucherGroupRequest} vouchergroup The updated voucher group
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        updateVoucherGroup: (id, vouchergroup, options = {}) => __awaiter(this, void 0, void 0, function* () {
-            // verify required parameter 'id' is not null or undefined
-            (0, common_1.assertParamExists)('updateVoucherGroup', 'id', id);
-            // verify required parameter 'vouchergroup' is not null or undefined
-            (0, common_1.assertParamExists)('updateVoucherGroup', 'vouchergroup', vouchergroup);
-            const localVarPath = `/vouchergroups/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'PATCH' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication JWT required
-            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "Authorization", configuration);
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(vouchergroup, localVarRequestOptions, configuration);
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-    };
-};
-exports.VouchergroupsApiAxiosParamCreator = VouchergroupsApiAxiosParamCreator;
-/**
- * VouchergroupsApi - functional programming interface
- * @export
- */
-const VouchergroupsApiFp = function (configuration) {
-    const localVarAxiosParamCreator = (0, exports.VouchergroupsApiAxiosParamCreator)(configuration);
-    return {
-        /**
-         *  Creates a new voucher group
-         * @param {VoucherGroupRequest} vouchergroup The voucher group which should be created
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        createVouchergroup(vouchergroup, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.createVouchergroup(vouchergroup, options);
-                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
-            });
-        },
-        /**
-         *  Returns all existing voucher groups
-         * @param {number} [take] How many voucher groups the endpoint should return
-         * @param {number} [skip] How many voucher groups should be skipped (for pagination)
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getAllVouchergroups(take, skip, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllVouchergroups(take, skip, options);
-                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
-            });
-        },
-        /**
-         *  Returns the requested voucher group
-         * @param {number} id The id of the voucher group which should be returned
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getVouchergroupId(id, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getVouchergroupId(id, options);
-                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
-            });
-        },
-        /**
-         *  Updates the requested voucher group
-         * @param {number} id The id of the voucher group which should be updated
-         * @param {VoucherGroupRequest} vouchergroup The updated voucher group
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        updateVoucherGroup(id, vouchergroup, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.updateVoucherGroup(id, vouchergroup, options);
-                return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration);
-            });
-        },
-    };
-};
-exports.VouchergroupsApiFp = VouchergroupsApiFp;
-/**
- * VouchergroupsApi - factory interface
- * @export
- */
-const VouchergroupsApiFactory = function (configuration, basePath, axios) {
-    const localVarFp = (0, exports.VouchergroupsApiFp)(configuration);
-    return {
-        /**
-         *  Creates a new voucher group
-         * @param {VoucherGroupRequest} vouchergroup The voucher group which should be created
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        createVouchergroup(vouchergroup, options) {
-            return localVarFp.createVouchergroup(vouchergroup, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Returns all existing voucher groups
-         * @param {number} [take] How many voucher groups the endpoint should return
-         * @param {number} [skip] How many voucher groups should be skipped (for pagination)
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getAllVouchergroups(take, skip, options) {
-            return localVarFp.getAllVouchergroups(take, skip, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Returns the requested voucher group
-         * @param {number} id The id of the voucher group which should be returned
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getVouchergroupId(id, options) {
-            return localVarFp.getVouchergroupId(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Updates the requested voucher group
-         * @param {number} id The id of the voucher group which should be updated
-         * @param {VoucherGroupRequest} vouchergroup The updated voucher group
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        updateVoucherGroup(id, vouchergroup, options) {
-            return localVarFp.updateVoucherGroup(id, vouchergroup, options).then((request) => request(axios, basePath));
-        },
-    };
-};
-exports.VouchergroupsApiFactory = VouchergroupsApiFactory;
-/**
- * VouchergroupsApi - object-oriented interface
- * @export
- * @class VouchergroupsApi
- * @extends {BaseAPI}
- */
-class VouchergroupsApi extends base_1.BaseAPI {
-    /**
-     *  Creates a new voucher group
-     * @param {VoucherGroupRequest} vouchergroup The voucher group which should be created
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VouchergroupsApi
-     */
-    createVouchergroup(vouchergroup, options) {
-        return (0, exports.VouchergroupsApiFp)(this.configuration).createVouchergroup(vouchergroup, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *  Returns all existing voucher groups
-     * @param {number} [take] How many voucher groups the endpoint should return
-     * @param {number} [skip] How many voucher groups should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VouchergroupsApi
-     */
-    getAllVouchergroups(take, skip, options) {
-        return (0, exports.VouchergroupsApiFp)(this.configuration).getAllVouchergroups(take, skip, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *  Returns the requested voucher group
-     * @param {number} id The id of the voucher group which should be returned
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VouchergroupsApi
-     */
-    getVouchergroupId(id, options) {
-        return (0, exports.VouchergroupsApiFp)(this.configuration).getVouchergroupId(id, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *  Updates the requested voucher group
-     * @param {number} id The id of the voucher group which should be updated
-     * @param {VoucherGroupRequest} vouchergroup The updated voucher group
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VouchergroupsApi
-     */
-    updateVoucherGroup(id, vouchergroup, options) {
-        return (0, exports.VouchergroupsApiFp)(this.configuration).updateVoucherGroup(id, vouchergroup, options).then((request) => request(this.axios, this.basePath));
-    }
-}
-exports.VouchergroupsApi = VouchergroupsApi;
 //# sourceMappingURL=api.js.map

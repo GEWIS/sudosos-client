@@ -431,12 +431,6 @@ export interface BalanceResponse {
      */
     'id': number;
     /**
-     * Date at which this user had this balance
-     * @type {string}
-     * @memberof BalanceResponse
-     */
-    'date': string;
-    /**
      * 
      * @type {DineroObjectResponse}
      * @memberof BalanceResponse
@@ -907,179 +901,6 @@ export interface BaseEntityWithoutId {
 /**
  * 
  * @export
- * @interface BaseEventAnswerResponse
- */
-export interface BaseEventAnswerResponse {
-    /**
-     * 
-     * @type {BaseUserResponse}
-     * @memberof BaseEventAnswerResponse
-     */
-    'user': BaseUserResponse;
-    /**
-     * Filled in availability per slot.
-     * @type {string}
-     * @memberof BaseEventAnswerResponse
-     */
-    'availability'?: string;
-    /**
-     * Whether this user is selected for the shift in the event
-     * @type {boolean}
-     * @memberof BaseEventAnswerResponse
-     */
-    'selected': boolean;
-}
-/**
- * 
- * @export
- * @interface BaseEventResponse
- */
-export interface BaseEventResponse {
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof BaseEventResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof BaseEventResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof BaseEventResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof BaseEventResponse
-     */
-    'version'?: number;
-    /**
-     * Name of the borrel.
-     * @type {string}
-     * @memberof BaseEventResponse
-     */
-    'name': string;
-    /**
-     * 
-     * @type {BaseUserResponse}
-     * @memberof BaseEventResponse
-     */
-    'createdBy': BaseUserResponse;
-    /**
-     * The starting date of the event.
-     * @type {string}
-     * @memberof BaseEventResponse
-     */
-    'startDate': string;
-    /**
-     * The end date of the event.
-     * @type {string}
-     * @memberof BaseEventResponse
-     */
-    'endDate': string;
-    /**
-     * The tpye of event.
-     * @type {string}
-     * @memberof BaseEventResponse
-     */
-    'type': string;
-}
-/**
- * 
- * @export
- * @interface BaseEventResponseAllOf
- */
-export interface BaseEventResponseAllOf {
-    /**
-     * Name of the borrel.
-     * @type {string}
-     * @memberof BaseEventResponseAllOf
-     */
-    'name': string;
-    /**
-     * 
-     * @type {BaseUserResponse}
-     * @memberof BaseEventResponseAllOf
-     */
-    'createdBy': BaseUserResponse;
-    /**
-     * The starting date of the event.
-     * @type {string}
-     * @memberof BaseEventResponseAllOf
-     */
-    'startDate': string;
-    /**
-     * The end date of the event.
-     * @type {string}
-     * @memberof BaseEventResponseAllOf
-     */
-    'endDate': string;
-    /**
-     * The tpye of event.
-     * @type {string}
-     * @memberof BaseEventResponseAllOf
-     */
-    'type': string;
-}
-/**
- * 
- * @export
- * @interface BaseEventShiftResponse
- */
-export interface BaseEventShiftResponse {
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof BaseEventShiftResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof BaseEventShiftResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof BaseEventShiftResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof BaseEventShiftResponse
-     */
-    'version'?: number;
-    /**
-     * Name of the shift.
-     * @type {string}
-     * @memberof BaseEventShiftResponse
-     */
-    'name': string;
-}
-/**
- * 
- * @export
- * @interface BaseEventShiftResponseAllOf
- */
-export interface BaseEventShiftResponseAllOf {
-    /**
-     * Name of the shift.
-     * @type {string}
-     * @memberof BaseEventShiftResponseAllOf
-     */
-    'name': string;
-}
-/**
- * 
- * @export
  * @interface BaseFile
  */
 export interface BaseFile {
@@ -1192,7 +1013,7 @@ export interface BaseFineHandoutEventResponse {
      * @type {BaseUserResponse}
      * @memberof BaseFineHandoutEventResponse
      */
-    'createdBy': BaseUserResponse;
+    'createdBy'?: BaseUserResponse;
 }
 /**
  * 
@@ -1211,7 +1032,7 @@ export interface BaseFineHandoutEventResponseAllOf {
      * @type {BaseUserResponse}
      * @memberof BaseFineHandoutEventResponseAllOf
      */
-    'createdBy': BaseUserResponse;
+    'createdBy'?: BaseUserResponse;
 }
 /**
  * 
@@ -1566,16 +1387,16 @@ export interface BaseTransactionResponse {
     'version'?: number;
     /**
      * 
-     * @type {BaseUserResponse}
+     * @type {UserResponse}
      * @memberof BaseTransactionResponse
      */
-    'from': BaseUserResponse;
+    'from': UserResponse;
     /**
      * 
-     * @type {BaseUserResponse}
+     * @type {UserResponse}
      * @memberof BaseTransactionResponse
      */
-    'createdBy'?: BaseUserResponse;
+    'createdBy'?: UserResponse;
     /**
      * 
      * @type {BasePointOfSaleResponse}
@@ -1597,16 +1418,16 @@ export interface BaseTransactionResponse {
 export interface BaseTransactionResponseAllOf {
     /**
      * 
-     * @type {BaseUserResponse}
+     * @type {UserResponse}
      * @memberof BaseTransactionResponseAllOf
      */
-    'from': BaseUserResponse;
+    'from': UserResponse;
     /**
      * 
-     * @type {BaseUserResponse}
+     * @type {UserResponse}
      * @memberof BaseTransactionResponseAllOf
      */
-    'createdBy'?: BaseUserResponse;
+    'createdBy'?: UserResponse;
     /**
      * 
      * @type {BasePointOfSaleResponse}
@@ -1829,6 +1650,239 @@ export interface BoilerPayoutRequestResponseAllOf {
      * @memberof BoilerPayoutRequestResponseAllOf
      */
     'amount': DineroObjectResponse;
+}
+/**
+ * 
+ * @export
+ * @interface BorrelkaartGroup
+ */
+export interface BorrelkaartGroup {
+    /**
+     * The creation date of the object.
+     * @type {string}
+     * @memberof BorrelkaartGroup
+     */
+    'createdAt'?: string;
+    /**
+     * The last update date of the object.
+     * @type {string}
+     * @memberof BorrelkaartGroup
+     */
+    'updatedAt'?: string;
+    /**
+     * The current version of the object.
+     * @type {number}
+     * @memberof BorrelkaartGroup
+     */
+    'version'?: number;
+    /**
+     * The auto-generated object id.
+     * @type {number}
+     * @memberof BorrelkaartGroup
+     */
+    'id': number;
+    /**
+     * Name of the group.
+     * @type {string}
+     * @memberof BorrelkaartGroup
+     */
+    'name': string;
+    /**
+     * Date after which the included cards are active.
+     * @type {string}
+     * @memberof BorrelkaartGroup
+     */
+    'activeStartDate': string;
+    /**
+     * Date after which cards are no longer active.
+     * @type {string}
+     * @memberof BorrelkaartGroup
+     */
+    'activeEndDate'?: string;
+    /**
+     * 
+     * @type {Array<User>}
+     * @memberof BorrelkaartGroup
+     */
+    'borrelkaarten': Array<User>;
+}
+/**
+ * 
+ * @export
+ * @interface BorrelkaartGroupAllOf
+ */
+export interface BorrelkaartGroupAllOf {
+    /**
+     * Name of the group.
+     * @type {string}
+     * @memberof BorrelkaartGroupAllOf
+     */
+    'name': string;
+    /**
+     * Date after which the included cards are active.
+     * @type {string}
+     * @memberof BorrelkaartGroupAllOf
+     */
+    'activeStartDate': string;
+    /**
+     * Date after which cards are no longer active.
+     * @type {string}
+     * @memberof BorrelkaartGroupAllOf
+     */
+    'activeEndDate'?: string;
+    /**
+     * 
+     * @type {Array<User>}
+     * @memberof BorrelkaartGroupAllOf
+     */
+    'borrelkaarten': Array<User>;
+}
+/**
+ * 
+ * @export
+ * @interface BorrelkaartGroupRequest
+ */
+export interface BorrelkaartGroupRequest {
+    /**
+     * Name of the group
+     * @type {string}
+     * @memberof BorrelkaartGroupRequest
+     */
+    'name': string;
+    /**
+     * Date from which the included cards are active
+     * @type {string}
+     * @memberof BorrelkaartGroupRequest
+     */
+    'activeStartDate': string;
+    /**
+     * Date from which cards are no longer active
+     * @type {string}
+     * @memberof BorrelkaartGroupRequest
+     */
+    'activeEndDate': string;
+    /**
+     * 
+     * @type {DineroObjectRequest}
+     * @memberof BorrelkaartGroupRequest
+     */
+    'balance': DineroObjectRequest;
+    /**
+     * Amount of users to be assigned to the borrelkaart group
+     * @type {number}
+     * @memberof BorrelkaartGroupRequest
+     */
+    'amount': number;
+}
+/**
+ * 
+ * @export
+ * @interface BorrelkaartGroupResponse
+ */
+export interface BorrelkaartGroupResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof BorrelkaartGroupResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof BorrelkaartGroupResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof BorrelkaartGroupResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof BorrelkaartGroupResponse
+     */
+    'version'?: number;
+    /**
+     * Name of the borrelkaart group
+     * @type {string}
+     * @memberof BorrelkaartGroupResponse
+     */
+    'name': string;
+    /**
+     * Start date of the borrelkaart group
+     * @type {string}
+     * @memberof BorrelkaartGroupResponse
+     */
+    'activeStartDate'?: string;
+    /**
+     * End date of the borrelkaart group
+     * @type {string}
+     * @memberof BorrelkaartGroupResponse
+     */
+    'activeEndDate': string;
+    /**
+     * 
+     * @type {Array<UserResponse>}
+     * @memberof BorrelkaartGroupResponse
+     */
+    'users': Array<UserResponse>;
+    /**
+     * 
+     * @type {DineroObjectRequest}
+     * @memberof BorrelkaartGroupResponse
+     */
+    'balance': DineroObjectRequest;
+    /**
+     * Amount of users to be assigned to the borrelkaart group
+     * @type {number}
+     * @memberof BorrelkaartGroupResponse
+     */
+    'amount': number;
+}
+/**
+ * 
+ * @export
+ * @interface BorrelkaartGroupResponseAllOf
+ */
+export interface BorrelkaartGroupResponseAllOf {
+    /**
+     * Name of the borrelkaart group
+     * @type {string}
+     * @memberof BorrelkaartGroupResponseAllOf
+     */
+    'name': string;
+    /**
+     * Start date of the borrelkaart group
+     * @type {string}
+     * @memberof BorrelkaartGroupResponseAllOf
+     */
+    'activeStartDate'?: string;
+    /**
+     * End date of the borrelkaart group
+     * @type {string}
+     * @memberof BorrelkaartGroupResponseAllOf
+     */
+    'activeEndDate': string;
+    /**
+     * 
+     * @type {Array<UserResponse>}
+     * @memberof BorrelkaartGroupResponseAllOf
+     */
+    'users': Array<UserResponse>;
+    /**
+     * 
+     * @type {DineroObjectRequest}
+     * @memberof BorrelkaartGroupResponseAllOf
+     */
+    'balance': DineroObjectRequest;
+    /**
+     * Amount of users to be assigned to the borrelkaart group
+     * @type {number}
+     * @memberof BorrelkaartGroupResponseAllOf
+     */
+    'amount': number;
 }
 /**
  * 
@@ -2160,43 +2214,6 @@ export interface CreateContainerRequest {
 /**
  * 
  * @export
- * @interface CreateEventRequest
- */
-export interface CreateEventRequest {
-    /**
-     * Name of the event.
-     * @type {string}
-     * @memberof CreateEventRequest
-     */
-    'name': string;
-    /**
-     * The starting date of the event.
-     * @type {string}
-     * @memberof CreateEventRequest
-     */
-    'startDate': string;
-    /**
-     * The end date of the event.
-     * @type {string}
-     * @memberof CreateEventRequest
-     */
-    'endDate': string;
-    /**
-     * The type of the event.
-     * @type {string}
-     * @memberof CreateEventRequest
-     */
-    'type'?: string;
-    /**
-     * 
-     * @type {Array<number>}
-     * @memberof CreateEventRequest
-     */
-    'shiftIds': Array<number>;
-}
-/**
- * 
- * @export
  * @interface CreateInvoiceRequest
  */
 export interface CreateInvoiceRequest {
@@ -2326,25 +2343,6 @@ export interface CreateProductRequest {
 /**
  * 
  * @export
- * @interface CreateShiftRequest
- */
-export interface CreateShiftRequest {
-    /**
-     * Name of the event
-     * @type {string}
-     * @memberof CreateShiftRequest
-     */
-    'name': string;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof CreateShiftRequest
-     */
-    'roles': Array<string>;
-}
-/**
- * 
- * @export
  * @interface CreateUserRequest
  */
 export interface CreateUserRequest {
@@ -2362,34 +2360,22 @@ export interface CreateUserRequest {
     'lastName'?: string;
     /**
      * 
-     * @type {string}
-     * @memberof CreateUserRequest
-     */
-    'nickname'?: string;
-    /**
-     * 
      * @type {boolean}
      * @memberof CreateUserRequest
      */
-    'canGoIntoDebt': boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CreateUserRequest
-     */
-    'ofAge': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateUserRequest
-     */
-    'email': string;
+    'active'?: boolean;
     /**
      * 
      * @type {number}
      * @memberof CreateUserRequest
      */
     'type': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateUserRequest
+     */
+    'email'?: string;
 }
 /**
  * 
@@ -2563,558 +2549,6 @@ export interface EntityResponse {
 /**
  * 
  * @export
- * @interface Event
- */
-export interface Event {
-    /**
-     * The creation date of the object.
-     * @type {string}
-     * @memberof Event
-     */
-    'createdAt'?: string;
-    /**
-     * The last update date of the object.
-     * @type {string}
-     * @memberof Event
-     */
-    'updatedAt'?: string;
-    /**
-     * The current version of the object.
-     * @type {number}
-     * @memberof Event
-     */
-    'version'?: number;
-    /**
-     * The auto-generated object id.
-     * @type {number}
-     * @memberof Event
-     */
-    'id': number;
-    /**
-     * Name of the event.
-     * @type {string}
-     * @memberof Event
-     */
-    'name'?: string;
-    /**
-     * 
-     * @type {User}
-     * @memberof Event
-     */
-    'createdBy'?: User;
-    /**
-     * The starting date from which the banner should be shown.
-     * @type {string}
-     * @memberof Event
-     */
-    'startDate'?: string;
-    /**
-     * The end date from which the banner should no longer be shown.
-     * @type {string}
-     * @memberof Event
-     */
-    'endDate'?: string;
-}
-/**
- * 
- * @export
- * @interface EventAllOf
- */
-export interface EventAllOf {
-    /**
-     * Name of the event.
-     * @type {string}
-     * @memberof EventAllOf
-     */
-    'name'?: string;
-    /**
-     * 
-     * @type {User}
-     * @memberof EventAllOf
-     */
-    'createdBy'?: User;
-    /**
-     * The starting date from which the banner should be shown.
-     * @type {string}
-     * @memberof EventAllOf
-     */
-    'startDate'?: string;
-    /**
-     * The end date from which the banner should no longer be shown.
-     * @type {string}
-     * @memberof EventAllOf
-     */
-    'endDate'?: string;
-}
-/**
- * 
- * @export
- * @interface EventAnswerAssignmentRequest
- */
-export interface EventAnswerAssignmentRequest {
-    /**
-     * Whether this user is selected for the given shift at the given event
-     * @type {boolean}
-     * @memberof EventAnswerAssignmentRequest
-     */
-    'selected': boolean;
-}
-/**
- * 
- * @export
- * @interface EventAnswerAvailabilityRequest
- */
-export interface EventAnswerAvailabilityRequest {
-    /**
-     * New availability of the given user for the given event (YES, NO, LATER, NA)
-     * @type {string}
-     * @memberof EventAnswerAvailabilityRequest
-     */
-    'availability': string;
-}
-/**
- * 
- * @export
- * @interface EventInShiftResponse
- */
-export interface EventInShiftResponse {
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof EventInShiftResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof EventInShiftResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof EventInShiftResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof EventInShiftResponse
-     */
-    'version'?: number;
-    /**
-     * Name of the shift.
-     * @type {string}
-     * @memberof EventInShiftResponse
-     */
-    'name': string;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof EventInShiftResponse
-     */
-    'roles': Array<string>;
-    /**
-     * 
-     * @type {Array<BaseEventAnswerResponse>}
-     * @memberof EventInShiftResponse
-     */
-    'answers'?: Array<BaseEventAnswerResponse>;
-}
-/**
- * 
- * @export
- * @interface EventInShiftResponseAllOf
- */
-export interface EventInShiftResponseAllOf {
-    /**
-     * 
-     * @type {Array<BaseEventAnswerResponse>}
-     * @memberof EventInShiftResponseAllOf
-     */
-    'answers'?: Array<BaseEventAnswerResponse>;
-}
-/**
- * 
- * @export
- * @interface EventPlanningSelectedCount
- */
-export interface EventPlanningSelectedCount {
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof EventPlanningSelectedCount
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof EventPlanningSelectedCount
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof EventPlanningSelectedCount
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof EventPlanningSelectedCount
-     */
-    'version'?: number;
-    /**
-     * The name of the user.
-     * @type {string}
-     * @memberof EventPlanningSelectedCount
-     */
-    'firstName': string;
-    /**
-     * The last name of the user
-     * @type {string}
-     * @memberof EventPlanningSelectedCount
-     */
-    'lastName': string;
-    /**
-     * The nickname of the user
-     * @type {string}
-     * @memberof EventPlanningSelectedCount
-     */
-    'nickname'?: string;
-    /**
-     * Number of times this user was selected for this shift
-     * @type {number}
-     * @memberof EventPlanningSelectedCount
-     */
-    'count': number;
-}
-/**
- * 
- * @export
- * @interface EventPlanningSelectedCountAllOf
- */
-export interface EventPlanningSelectedCountAllOf {
-    /**
-     * Number of times this user was selected for this shift
-     * @type {number}
-     * @memberof EventPlanningSelectedCountAllOf
-     */
-    'count': number;
-}
-/**
- * 
- * @export
- * @interface EventResponse
- */
-export interface EventResponse {
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof EventResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof EventResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof EventResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof EventResponse
-     */
-    'version'?: number;
-    /**
-     * Name of the borrel.
-     * @type {string}
-     * @memberof EventResponse
-     */
-    'name': string;
-    /**
-     * 
-     * @type {BaseUserResponse}
-     * @memberof EventResponse
-     */
-    'createdBy': BaseUserResponse;
-    /**
-     * The starting date of the event.
-     * @type {string}
-     * @memberof EventResponse
-     */
-    'startDate': string;
-    /**
-     * The end date of the event.
-     * @type {string}
-     * @memberof EventResponse
-     */
-    'endDate': string;
-    /**
-     * The tpye of event.
-     * @type {string}
-     * @memberof EventResponse
-     */
-    'type': string;
-    /**
-     * 
-     * @type {Array<EventInShiftResponse>}
-     * @memberof EventResponse
-     */
-    'shifts': Array<EventInShiftResponse>;
-}
-/**
- * 
- * @export
- * @interface EventResponseAllOf
- */
-export interface EventResponseAllOf {
-    /**
-     * 
-     * @type {Array<EventInShiftResponse>}
-     * @memberof EventResponseAllOf
-     */
-    'shifts': Array<EventInShiftResponse>;
-}
-/**
- * 
- * @export
- * @interface EventShift
- */
-export interface EventShift {
-    /**
-     * The creation date of the object.
-     * @type {string}
-     * @memberof EventShift
-     */
-    'createdAt'?: string;
-    /**
-     * The last update date of the object.
-     * @type {string}
-     * @memberof EventShift
-     */
-    'updatedAt'?: string;
-    /**
-     * The current version of the object.
-     * @type {number}
-     * @memberof EventShift
-     */
-    'version'?: number;
-    /**
-     * The auto-generated object id.
-     * @type {number}
-     * @memberof EventShift
-     */
-    'id': number;
-    /**
-     * Name of the shift.
-     * @type {string}
-     * @memberof EventShift
-     */
-    'name'?: string;
-    /**
-     * Indicator whether the shift is a regular shift.
-     * @type {boolean}
-     * @memberof EventShift
-     */
-    'default'?: boolean;
-}
-/**
- * 
- * @export
- * @interface EventShiftAllOf
- */
-export interface EventShiftAllOf {
-    /**
-     * Name of the shift.
-     * @type {string}
-     * @memberof EventShiftAllOf
-     */
-    'name'?: string;
-    /**
-     * Indicator whether the shift is a regular shift.
-     * @type {boolean}
-     * @memberof EventShiftAllOf
-     */
-    'default'?: boolean;
-}
-/**
- * 
- * @export
- * @interface EventShiftAnswer
- */
-export interface EventShiftAnswer {
-    /**
-     * The creation date of the object.
-     * @type {string}
-     * @memberof EventShiftAnswer
-     */
-    'createdAt'?: string;
-    /**
-     * The last update date of the object.
-     * @type {string}
-     * @memberof EventShiftAnswer
-     */
-    'updatedAt'?: string;
-    /**
-     * The current version of the object.
-     * @type {number}
-     * @memberof EventShiftAnswer
-     */
-    'version'?: number;
-    /**
-     * The auto-generated object id.
-     * @type {number}
-     * @memberof EventShiftAnswer
-     */
-    'id': number;
-    /**
-     * 
-     * @type {User}
-     * @memberof EventShiftAnswer
-     */
-    'user'?: User;
-    /**
-     * Filled in availability per slot.
-     * @type {string}
-     * @memberof EventShiftAnswer
-     */
-    'availability'?: EventShiftAnswerAvailabilityEnum;
-    /**
-     * Indicator whether the person has the related shift during the related borrel.
-     * @type {boolean}
-     * @memberof EventShiftAnswer
-     */
-    'selected'?: boolean;
-    /**
-     * 
-     * @type {EventShift}
-     * @memberof EventShiftAnswer
-     */
-    'shift'?: EventShift;
-    /**
-     * 
-     * @type {Event}
-     * @memberof EventShiftAnswer
-     */
-    'event'?: Event;
-}
-
-export const EventShiftAnswerAvailabilityEnum = {
-    Undefined: 'undefined'
-} as const;
-
-export type EventShiftAnswerAvailabilityEnum = typeof EventShiftAnswerAvailabilityEnum[keyof typeof EventShiftAnswerAvailabilityEnum];
-
-/**
- * 
- * @export
- * @interface EventShiftAnswerAllOf
- */
-export interface EventShiftAnswerAllOf {
-    /**
-     * 
-     * @type {User}
-     * @memberof EventShiftAnswerAllOf
-     */
-    'user'?: User;
-    /**
-     * Filled in availability per slot.
-     * @type {string}
-     * @memberof EventShiftAnswerAllOf
-     */
-    'availability'?: EventShiftAnswerAllOfAvailabilityEnum;
-    /**
-     * Indicator whether the person has the related shift during the related borrel.
-     * @type {boolean}
-     * @memberof EventShiftAnswerAllOf
-     */
-    'selected'?: boolean;
-    /**
-     * 
-     * @type {EventShift}
-     * @memberof EventShiftAnswerAllOf
-     */
-    'shift'?: EventShift;
-    /**
-     * 
-     * @type {Event}
-     * @memberof EventShiftAnswerAllOf
-     */
-    'event'?: Event;
-}
-
-export const EventShiftAnswerAllOfAvailabilityEnum = {
-    Undefined: 'undefined'
-} as const;
-
-export type EventShiftAnswerAllOfAvailabilityEnum = typeof EventShiftAnswerAllOfAvailabilityEnum[keyof typeof EventShiftAnswerAllOfAvailabilityEnum];
-
-/**
- * 
- * @export
- * @interface EventShiftResponse
- */
-export interface EventShiftResponse {
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof EventShiftResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof EventShiftResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof EventShiftResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof EventShiftResponse
-     */
-    'version'?: number;
-    /**
-     * Name of the shift.
-     * @type {string}
-     * @memberof EventShiftResponse
-     */
-    'name': string;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof EventShiftResponse
-     */
-    'roles': Array<string>;
-}
-/**
- * 
- * @export
- * @interface EventShiftResponseAllOf
- */
-export interface EventShiftResponseAllOf {
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof EventShiftResponseAllOf
-     */
-    'roles': Array<string>;
-}
-/**
- * 
- * @export
  * @interface FinancialMutationResponse
  */
 export interface FinancialMutationResponse {
@@ -3172,13 +2606,13 @@ export interface FineHandoutEventResponse {
      * @type {BaseUserResponse}
      * @memberof FineHandoutEventResponse
      */
-    'createdBy': BaseUserResponse;
+    'createdBy'?: BaseUserResponse;
     /**
      * 
      * @type {Array<FineResponse>}
      * @memberof FineHandoutEventResponse
      */
-    'fines': Array<FineResponse>;
+    'fines'?: Array<FineResponse>;
 }
 /**
  * 
@@ -3191,7 +2625,7 @@ export interface FineHandoutEventResponseAllOf {
      * @type {Array<FineResponse>}
      * @memberof FineHandoutEventResponseAllOf
      */
-    'fines': Array<FineResponse>;
+    'fines'?: Array<FineResponse>;
 }
 /**
  * 
@@ -3228,13 +2662,13 @@ export interface FineResponse {
      * @type {DineroObjectResponse}
      * @memberof FineResponse
      */
-    'amount': DineroObjectResponse;
+    'amount'?: DineroObjectResponse;
     /**
      * 
      * @type {BaseUserResponse}
      * @memberof FineResponse
      */
-    'user': BaseUserResponse;
+    'user'?: BaseUserResponse;
 }
 /**
  * 
@@ -3247,13 +2681,13 @@ export interface FineResponseAllOf {
      * @type {DineroObjectResponse}
      * @memberof FineResponseAllOf
      */
-    'amount': DineroObjectResponse;
+    'amount'?: DineroObjectResponse;
     /**
      * 
      * @type {BaseUserResponse}
      * @memberof FineResponseAllOf
      */
-    'user': BaseUserResponse;
+    'user'?: BaseUserResponse;
 }
 /**
  * 
@@ -3427,12 +2861,6 @@ export interface GewisUserResponse {
      */
     'ofAge'?: boolean;
     /**
-     * Whether this user can get a negative balance
-     * @type {boolean}
-     * @memberof GewisUserResponse
-     */
-    'canGoIntoDebt': boolean;
-    /**
      * The m-Number of the user
      * @type {number}
      * @memberof GewisUserResponse
@@ -3484,11 +2912,11 @@ export interface HandoutFinesRequest {
      */
     'userIds': Array<number>;
     /**
-     * Reference date to calculate the balance and thus the height of the fine for.
+     * Reference date to calculate the balance and fine for (and \"now\", but that is always done and doesn\'t have to be explicitly specified)
      * @type {string}
      * @memberof HandoutFinesRequest
      */
-    'referenceDate': string;
+    'referenceDate'?: string;
 }
 /**
  * 
@@ -4472,25 +3900,6 @@ export interface PaginatedBannerResponse {
 /**
  * 
  * @export
- * @interface PaginatedBaseEventResponse
- */
-export interface PaginatedBaseEventResponse {
-    /**
-     * 
-     * @type {PaginationResult}
-     * @memberof PaginatedBaseEventResponse
-     */
-    '_pagination': PaginationResult;
-    /**
-     * 
-     * @type {Array<BaseEventResponse>}
-     * @memberof PaginatedBaseEventResponse
-     */
-    'records': Array<BaseEventResponse>;
-}
-/**
- * 
- * @export
  * @interface PaginatedBasePayoutRequestResponse
  */
 export interface PaginatedBasePayoutRequestResponse {
@@ -4525,6 +3934,25 @@ export interface PaginatedBaseTransactionResponse {
      * @memberof PaginatedBaseTransactionResponse
      */
     'records': Array<BaseTransactionResponse>;
+}
+/**
+ * 
+ * @export
+ * @interface PaginatedBorrelkaartGroupResponse
+ */
+export interface PaginatedBorrelkaartGroupResponse {
+    /**
+     * 
+     * @type {PaginationResult}
+     * @memberof PaginatedBorrelkaartGroupResponse
+     */
+    '_pagination': PaginationResult;
+    /**
+     * 
+     * @type {Array<BorrelkaartGroupResponse>}
+     * @memberof PaginatedBorrelkaartGroupResponse
+     */
+    'records': Array<BorrelkaartGroupResponse>;
 }
 /**
  * 
@@ -4567,25 +3995,6 @@ export interface PaginatedContainerWithProductResponse {
 /**
  * 
  * @export
- * @interface PaginatedEventShiftResponse
- */
-export interface PaginatedEventShiftResponse {
-    /**
-     * 
-     * @type {PaginationResult}
-     * @memberof PaginatedEventShiftResponse
-     */
-    '_pagination': PaginationResult;
-    /**
-     * 
-     * @type {Array<EventShiftResponse>}
-     * @memberof PaginatedEventShiftResponse
-     */
-    'records': Array<EventShiftResponse>;
-}
-/**
- * 
- * @export
  * @interface PaginatedFinancialMutationResponse
  */
 export interface PaginatedFinancialMutationResponse {
@@ -4613,13 +4022,13 @@ export interface PaginatedFineHandoutEventResponse {
      * @type {PaginationResult}
      * @memberof PaginatedFineHandoutEventResponse
      */
-    '_pagination': PaginationResult;
+    '_pagination'?: PaginationResult;
     /**
      * 
      * @type {Array<BaseFineHandoutEventResponse>}
      * @memberof PaginatedFineHandoutEventResponse
      */
-    'records': Array<BaseFineHandoutEventResponse>;
+    'records'?: Array<BaseFineHandoutEventResponse>;
 }
 /**
  * 
@@ -4757,25 +4166,6 @@ export interface PaginatedVatGroupResponse {
 /**
  * 
  * @export
- * @interface PaginatedVoucherGroupResponse
- */
-export interface PaginatedVoucherGroupResponse {
-    /**
-     * 
-     * @type {PaginationResult}
-     * @memberof PaginatedVoucherGroupResponse
-     */
-    '_pagination': PaginationResult;
-    /**
-     * 
-     * @type {Array<VoucherGroupResponse>}
-     * @memberof PaginatedVoucherGroupResponse
-     */
-    'records': Array<VoucherGroupResponse>;
-}
-/**
- * 
- * @export
  * @interface PaginationResult
  */
 export interface PaginationResult {
@@ -4784,19 +4174,19 @@ export interface PaginationResult {
      * @type {number}
      * @memberof PaginationResult
      */
-    'take': number;
+    'take'?: number;
     /**
      * Number of skipped records
      * @type {number}
      * @memberof PaginationResult
      */
-    'skip': number;
+    'skip'?: number;
     /**
      * Total number of resulting records
      * @type {number}
      * @memberof PaginationResult
      */
-    'count': number;
+    'count'?: number;
 }
 /**
  * 
@@ -7357,43 +6747,6 @@ export interface UpdateContainerRequest {
 /**
  * 
  * @export
- * @interface UpdateEventRequest
- */
-export interface UpdateEventRequest {
-    /**
-     * Name of the event.
-     * @type {string}
-     * @memberof UpdateEventRequest
-     */
-    'name'?: string;
-    /**
-     * The starting date of the event.
-     * @type {string}
-     * @memberof UpdateEventRequest
-     */
-    'startDate'?: string;
-    /**
-     * The end date of the event.
-     * @type {string}
-     * @memberof UpdateEventRequest
-     */
-    'endDate'?: string;
-    /**
-     * The type of the event.
-     * @type {string}
-     * @memberof UpdateEventRequest
-     */
-    'type'?: string;
-    /**
-     * 
-     * @type {Array<number>}
-     * @memberof UpdateEventRequest
-     */
-    'shiftIds'?: Array<number>;
-}
-/**
- * 
- * @export
  * @interface UpdateInvoiceRequest
  */
 export interface UpdateInvoiceRequest {
@@ -7545,25 +6898,6 @@ export interface UpdateProductRequest {
 /**
  * 
  * @export
- * @interface UpdateShiftRequest
- */
-export interface UpdateShiftRequest {
-    /**
-     * Name of the event
-     * @type {string}
-     * @memberof UpdateShiftRequest
-     */
-    'name'?: string;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof UpdateShiftRequest
-     */
-    'roles'?: Array<string>;
-}
-/**
- * 
- * @export
  * @interface UpdateUserRequest
  */
 export interface UpdateUserRequest {
@@ -7590,7 +6924,7 @@ export interface UpdateUserRequest {
      * @type {boolean}
      * @memberof UpdateUserRequest
      */
-    'canGoIntoDebt'?: boolean;
+    'active'?: boolean;
     /**
      * 
      * @type {boolean}
@@ -7609,12 +6943,6 @@ export interface UpdateUserRequest {
      * @memberof UpdateUserRequest
      */
     'deleted'?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UpdateUserRequest
-     */
-    'active'?: boolean;
 }
 /**
  * 
@@ -7696,12 +7024,6 @@ export interface User {
      */
     'active'?: boolean;
     /**
-     * Whether the user can have a negative balance. Defaults to false
-     * @type {boolean}
-     * @memberof User
-     */
-    'canGoIntoDebt'?: boolean;
-    /**
      * Whether the user is 18+ or not.
      * @type {boolean}
      * @memberof User
@@ -7757,12 +7079,6 @@ export interface UserAllOf {
      */
     'active'?: boolean;
     /**
-     * Whether the user can have a negative balance. Defaults to false
-     * @type {boolean}
-     * @memberof UserAllOf
-     */
-    'canGoIntoDebt'?: boolean;
-    /**
      * Whether the user is 18+ or not.
      * @type {boolean}
      * @memberof UserAllOf
@@ -7790,6 +7106,68 @@ export interface UserAllOf {
 /**
  * 
  * @export
+ * @interface UserBorrelkaartGroup
+ */
+export interface UserBorrelkaartGroup {
+    /**
+     * The creation date of the object.
+     * @type {string}
+     * @memberof UserBorrelkaartGroup
+     */
+    'createdAt'?: string;
+    /**
+     * The last update date of the object.
+     * @type {string}
+     * @memberof UserBorrelkaartGroup
+     */
+    'updatedAt'?: string;
+    /**
+     * The current version of the object.
+     * @type {number}
+     * @memberof UserBorrelkaartGroup
+     */
+    'version'?: number;
+    /**
+     * The auto-generated object id.
+     * @type {number}
+     * @memberof UserBorrelkaartGroup
+     */
+    'id': number;
+    /**
+     * 
+     * @type {User}
+     * @memberof UserBorrelkaartGroup
+     */
+    'user': User;
+    /**
+     * 
+     * @type {BorrelkaartGroup}
+     * @memberof UserBorrelkaartGroup
+     */
+    'borrelkaartGroup': BorrelkaartGroup;
+}
+/**
+ * 
+ * @export
+ * @interface UserBorrelkaartGroupAllOf
+ */
+export interface UserBorrelkaartGroupAllOf {
+    /**
+     * 
+     * @type {User}
+     * @memberof UserBorrelkaartGroupAllOf
+     */
+    'user': User;
+    /**
+     * 
+     * @type {BorrelkaartGroup}
+     * @memberof UserBorrelkaartGroupAllOf
+     */
+    'borrelkaartGroup': BorrelkaartGroup;
+}
+/**
+ * 
+ * @export
  * @interface UserFineGroupResponse
  */
 export interface UserFineGroupResponse {
@@ -7798,7 +7176,7 @@ export interface UserFineGroupResponse {
      * @type {Array<FineResponse>}
      * @memberof UserFineGroupResponse
      */
-    'fines': Array<FineResponse>;
+    'fines'?: Array<FineResponse>;
 }
 /**
  * 
@@ -7890,12 +7268,6 @@ export interface UserResponse {
      * @memberof UserResponse
      */
     'ofAge'?: boolean;
-    /**
-     * Whether this user can get a negative balance
-     * @type {boolean}
-     * @memberof UserResponse
-     */
-    'canGoIntoDebt': boolean;
 }
 /**
  * 
@@ -7945,12 +7317,6 @@ export interface UserResponseAllOf {
      * @memberof UserResponseAllOf
      */
     'ofAge'?: boolean;
-    /**
-     * Whether this user can get a negative balance
-     * @type {boolean}
-     * @memberof UserResponseAllOf
-     */
-    'canGoIntoDebt': boolean;
 }
 /**
  * 
@@ -7963,81 +7329,13 @@ export interface UserToFineResponse {
      * @type {number}
      * @memberof UserToFineResponse
      */
-    'id': number;
+    'id'?: number;
     /**
      * 
      * @type {DineroObjectResponse}
      * @memberof UserToFineResponse
      */
-    'fineAmount': DineroObjectResponse;
-    /**
-     * 
-     * @type {Array<BalanceResponse>}
-     * @memberof UserToFineResponse
-     */
-    'balances': Array<BalanceResponse>;
-}
-/**
- * 
- * @export
- * @interface UserVoucherGroup
- */
-export interface UserVoucherGroup {
-    /**
-     * The creation date of the object.
-     * @type {string}
-     * @memberof UserVoucherGroup
-     */
-    'createdAt'?: string;
-    /**
-     * The last update date of the object.
-     * @type {string}
-     * @memberof UserVoucherGroup
-     */
-    'updatedAt'?: string;
-    /**
-     * The current version of the object.
-     * @type {number}
-     * @memberof UserVoucherGroup
-     */
-    'version'?: number;
-    /**
-     * The auto-generated object id.
-     * @type {number}
-     * @memberof UserVoucherGroup
-     */
-    'id': number;
-    /**
-     * 
-     * @type {User}
-     * @memberof UserVoucherGroup
-     */
-    'user': User;
-    /**
-     * 
-     * @type {VoucherGroup}
-     * @memberof UserVoucherGroup
-     */
-    'voucherGroup': VoucherGroup;
-}
-/**
- * 
- * @export
- * @interface UserVoucherGroupAllOf
- */
-export interface UserVoucherGroupAllOf {
-    /**
-     * 
-     * @type {User}
-     * @memberof UserVoucherGroupAllOf
-     */
-    'user': User;
-    /**
-     * 
-     * @type {VoucherGroup}
-     * @memberof UserVoucherGroupAllOf
-     */
-    'voucherGroup': VoucherGroup;
+    'amount'?: DineroObjectResponse;
 }
 /**
  * 
@@ -8224,239 +7522,6 @@ export interface VatGroupRequestAllOf {
      * @memberof VatGroupRequestAllOf
      */
     'percentage': number;
-}
-/**
- * 
- * @export
- * @interface VoucherGroup
- */
-export interface VoucherGroup {
-    /**
-     * The creation date of the object.
-     * @type {string}
-     * @memberof VoucherGroup
-     */
-    'createdAt'?: string;
-    /**
-     * The last update date of the object.
-     * @type {string}
-     * @memberof VoucherGroup
-     */
-    'updatedAt'?: string;
-    /**
-     * The current version of the object.
-     * @type {number}
-     * @memberof VoucherGroup
-     */
-    'version'?: number;
-    /**
-     * The auto-generated object id.
-     * @type {number}
-     * @memberof VoucherGroup
-     */
-    'id': number;
-    /**
-     * Name of the group.
-     * @type {string}
-     * @memberof VoucherGroup
-     */
-    'name': string;
-    /**
-     * Date after which the included cards are active.
-     * @type {string}
-     * @memberof VoucherGroup
-     */
-    'activeStartDate': string;
-    /**
-     * Date after which cards are no longer active.
-     * @type {string}
-     * @memberof VoucherGroup
-     */
-    'activeEndDate'?: string;
-    /**
-     * 
-     * @type {Array<User>}
-     * @memberof VoucherGroup
-     */
-    'vouchers': Array<User>;
-}
-/**
- * 
- * @export
- * @interface VoucherGroupAllOf
- */
-export interface VoucherGroupAllOf {
-    /**
-     * Name of the group.
-     * @type {string}
-     * @memberof VoucherGroupAllOf
-     */
-    'name': string;
-    /**
-     * Date after which the included cards are active.
-     * @type {string}
-     * @memberof VoucherGroupAllOf
-     */
-    'activeStartDate': string;
-    /**
-     * Date after which cards are no longer active.
-     * @type {string}
-     * @memberof VoucherGroupAllOf
-     */
-    'activeEndDate'?: string;
-    /**
-     * 
-     * @type {Array<User>}
-     * @memberof VoucherGroupAllOf
-     */
-    'vouchers': Array<User>;
-}
-/**
- * 
- * @export
- * @interface VoucherGroupRequest
- */
-export interface VoucherGroupRequest {
-    /**
-     * Name of the group
-     * @type {string}
-     * @memberof VoucherGroupRequest
-     */
-    'name': string;
-    /**
-     * Date from which the included cards are active
-     * @type {string}
-     * @memberof VoucherGroupRequest
-     */
-    'activeStartDate': string;
-    /**
-     * Date from which cards are no longer active
-     * @type {string}
-     * @memberof VoucherGroupRequest
-     */
-    'activeEndDate': string;
-    /**
-     * 
-     * @type {DineroObjectRequest}
-     * @memberof VoucherGroupRequest
-     */
-    'balance': DineroObjectRequest;
-    /**
-     * Amount of users to be assigned to the voucher group
-     * @type {number}
-     * @memberof VoucherGroupRequest
-     */
-    'amount': number;
-}
-/**
- * 
- * @export
- * @interface VoucherGroupResponse
- */
-export interface VoucherGroupResponse {
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof VoucherGroupResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof VoucherGroupResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof VoucherGroupResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof VoucherGroupResponse
-     */
-    'version'?: number;
-    /**
-     * Name of the voucher group
-     * @type {string}
-     * @memberof VoucherGroupResponse
-     */
-    'name': string;
-    /**
-     * Start date of the voucher group
-     * @type {string}
-     * @memberof VoucherGroupResponse
-     */
-    'activeStartDate'?: string;
-    /**
-     * End date of the voucher group
-     * @type {string}
-     * @memberof VoucherGroupResponse
-     */
-    'activeEndDate': string;
-    /**
-     * 
-     * @type {Array<UserResponse>}
-     * @memberof VoucherGroupResponse
-     */
-    'users': Array<UserResponse>;
-    /**
-     * 
-     * @type {DineroObjectRequest}
-     * @memberof VoucherGroupResponse
-     */
-    'balance': DineroObjectRequest;
-    /**
-     * Amount of users to be assigned to the voucher group
-     * @type {number}
-     * @memberof VoucherGroupResponse
-     */
-    'amount': number;
-}
-/**
- * 
- * @export
- * @interface VoucherGroupResponseAllOf
- */
-export interface VoucherGroupResponseAllOf {
-    /**
-     * Name of the voucher group
-     * @type {string}
-     * @memberof VoucherGroupResponseAllOf
-     */
-    'name': string;
-    /**
-     * Start date of the voucher group
-     * @type {string}
-     * @memberof VoucherGroupResponseAllOf
-     */
-    'activeStartDate'?: string;
-    /**
-     * End date of the voucher group
-     * @type {string}
-     * @memberof VoucherGroupResponseAllOf
-     */
-    'activeEndDate': string;
-    /**
-     * 
-     * @type {Array<UserResponse>}
-     * @memberof VoucherGroupResponseAllOf
-     */
-    'users': Array<UserResponse>;
-    /**
-     * 
-     * @type {DineroObjectRequest}
-     * @memberof VoucherGroupResponseAllOf
-     */
-    'balance': DineroObjectRequest;
-    /**
-     * Amount of users to be assigned to the voucher group
-     * @type {number}
-     * @memberof VoucherGroupResponseAllOf
-     */
-    'amount': number;
 }
 
 /**
@@ -9350,7 +8415,7 @@ export const BalanceApiAxiosParamCreator = function (configuration?: Configurati
          * @param {boolean} [hasFine] Only users with(out) fines
          * @param {number} [minFine] Minimum fine
          * @param {number} [maxFine] Maximum fine
-         * @param {string} [userType] {MEMBER,ORGAN,VOUCHER,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
+         * @param {string} [userType] {MEMBER,ORGAN,BORRELKAART,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
          * @param {'id' | 'amount'} [orderBy] Column to order balance by - eg: id,amount
          * @param {'ASC' | 'DESC'} [orderDirection] Order direction - eg: ASC,DESC
          * @param {number} [take] How many transactions the endpoint should return
@@ -9515,7 +8580,7 @@ export const BalanceApiFp = function(configuration?: Configuration) {
          * @param {boolean} [hasFine] Only users with(out) fines
          * @param {number} [minFine] Minimum fine
          * @param {number} [maxFine] Maximum fine
-         * @param {string} [userType] {MEMBER,ORGAN,VOUCHER,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
+         * @param {string} [userType] {MEMBER,ORGAN,BORRELKAART,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
          * @param {'id' | 'amount'} [orderBy] Column to order balance by - eg: id,amount
          * @param {'ASC' | 'DESC'} [orderDirection] Order direction - eg: ASC,DESC
          * @param {number} [take] How many transactions the endpoint should return
@@ -9564,7 +8629,7 @@ export const BalanceApiFactory = function (configuration?: Configuration, basePa
          * @param {boolean} [hasFine] Only users with(out) fines
          * @param {number} [minFine] Minimum fine
          * @param {number} [maxFine] Maximum fine
-         * @param {string} [userType] {MEMBER,ORGAN,VOUCHER,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
+         * @param {string} [userType] {MEMBER,ORGAN,BORRELKAART,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
          * @param {'id' | 'amount'} [orderBy] Column to order balance by - eg: id,amount
          * @param {'ASC' | 'DESC'} [orderDirection] Order direction - eg: ASC,DESC
          * @param {number} [take] How many transactions the endpoint should return
@@ -9610,7 +8675,7 @@ export class BalanceApi extends BaseAPI {
      * @param {boolean} [hasFine] Only users with(out) fines
      * @param {number} [minFine] Minimum fine
      * @param {number} [maxFine] Maximum fine
-     * @param {string} [userType] {MEMBER,ORGAN,VOUCHER,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
+     * @param {string} [userType] {MEMBER,ORGAN,BORRELKAART,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
      * @param {'id' | 'amount'} [orderBy] Column to order balance by - eg: id,amount
      * @param {'ASC' | 'DESC'} [orderDirection] Order direction - eg: ASC,DESC
      * @param {number} [take] How many transactions the endpoint should return
@@ -10260,6 +9325,328 @@ export class BannersApi extends BaseAPI {
 
 
 /**
+ * BorrelkaartgroupsApi - axios parameter creator
+ * @export
+ */
+export const BorrelkaartgroupsApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         *  Creates a new borrelkaart group
+         * @param {BorrelkaartGroupRequest} borrelkaartgroup The borrelkaart group which should be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createBorrelkaartgroup: async (borrelkaartgroup: BorrelkaartGroupRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'borrelkaartgroup' is not null or undefined
+            assertParamExists('createBorrelkaartgroup', 'borrelkaartgroup', borrelkaartgroup)
+            const localVarPath = `/borrelkaartgroups`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(borrelkaartgroup, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *  Returns all existing borrelkaart groups
+         * @param {number} [take] How many borrelkaart groups the endpoint should return
+         * @param {number} [skip] How many borrelkaart groups should be skipped (for pagination)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllBorrelkaartgroups: async (take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/borrelkaartgroups`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+            if (take !== undefined) {
+                localVarQueryParameter['take'] = take;
+            }
+
+            if (skip !== undefined) {
+                localVarQueryParameter['skip'] = skip;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *  Returns the requested borrelkaart group
+         * @param {number} id The id of the borrelkaart group which should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBorrelkaartgroupId: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getBorrelkaartgroupId', 'id', id)
+            const localVarPath = `/borrelkaartgroups/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *  Updates the requested borrelkaart group
+         * @param {number} id The id of the borrelkaart group which should be updated
+         * @param {BorrelkaartGroupRequest} borrelkaartgroup The updated borrelkaart group
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateBorrelkaartGroup: async (id: number, borrelkaartgroup: BorrelkaartGroupRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('updateBorrelkaartGroup', 'id', id)
+            // verify required parameter 'borrelkaartgroup' is not null or undefined
+            assertParamExists('updateBorrelkaartGroup', 'borrelkaartgroup', borrelkaartgroup)
+            const localVarPath = `/borrelkaartgroups/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(borrelkaartgroup, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * BorrelkaartgroupsApi - functional programming interface
+ * @export
+ */
+export const BorrelkaartgroupsApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = BorrelkaartgroupsApiAxiosParamCreator(configuration)
+    return {
+        /**
+         *  Creates a new borrelkaart group
+         * @param {BorrelkaartGroupRequest} borrelkaartgroup The borrelkaart group which should be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createBorrelkaartgroup(borrelkaartgroup: BorrelkaartGroupRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BorrelkaartGroupResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createBorrelkaartgroup(borrelkaartgroup, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         *  Returns all existing borrelkaart groups
+         * @param {number} [take] How many borrelkaart groups the endpoint should return
+         * @param {number} [skip] How many borrelkaart groups should be skipped (for pagination)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getAllBorrelkaartgroups(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBorrelkaartGroupResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllBorrelkaartgroups(take, skip, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         *  Returns the requested borrelkaart group
+         * @param {number} id The id of the borrelkaart group which should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getBorrelkaartgroupId(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BorrelkaartGroupResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getBorrelkaartgroupId(id, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         *  Updates the requested borrelkaart group
+         * @param {number} id The id of the borrelkaart group which should be updated
+         * @param {BorrelkaartGroupRequest} borrelkaartgroup The updated borrelkaart group
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updateBorrelkaartGroup(id: number, borrelkaartgroup: BorrelkaartGroupRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BorrelkaartGroupResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateBorrelkaartGroup(id, borrelkaartgroup, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * BorrelkaartgroupsApi - factory interface
+ * @export
+ */
+export const BorrelkaartgroupsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = BorrelkaartgroupsApiFp(configuration)
+    return {
+        /**
+         *  Creates a new borrelkaart group
+         * @param {BorrelkaartGroupRequest} borrelkaartgroup The borrelkaart group which should be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createBorrelkaartgroup(borrelkaartgroup: BorrelkaartGroupRequest, options?: any): AxiosPromise<BorrelkaartGroupResponse> {
+            return localVarFp.createBorrelkaartgroup(borrelkaartgroup, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *  Returns all existing borrelkaart groups
+         * @param {number} [take] How many borrelkaart groups the endpoint should return
+         * @param {number} [skip] How many borrelkaart groups should be skipped (for pagination)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllBorrelkaartgroups(take?: number, skip?: number, options?: any): AxiosPromise<PaginatedBorrelkaartGroupResponse> {
+            return localVarFp.getAllBorrelkaartgroups(take, skip, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *  Returns the requested borrelkaart group
+         * @param {number} id The id of the borrelkaart group which should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBorrelkaartgroupId(id: number, options?: any): AxiosPromise<BorrelkaartGroupResponse> {
+            return localVarFp.getBorrelkaartgroupId(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *  Updates the requested borrelkaart group
+         * @param {number} id The id of the borrelkaart group which should be updated
+         * @param {BorrelkaartGroupRequest} borrelkaartgroup The updated borrelkaart group
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateBorrelkaartGroup(id: number, borrelkaartgroup: BorrelkaartGroupRequest, options?: any): AxiosPromise<BorrelkaartGroupResponse> {
+            return localVarFp.updateBorrelkaartGroup(id, borrelkaartgroup, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * BorrelkaartgroupsApi - object-oriented interface
+ * @export
+ * @class BorrelkaartgroupsApi
+ * @extends {BaseAPI}
+ */
+export class BorrelkaartgroupsApi extends BaseAPI {
+    /**
+     *  Creates a new borrelkaart group
+     * @param {BorrelkaartGroupRequest} borrelkaartgroup The borrelkaart group which should be created
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BorrelkaartgroupsApi
+     */
+    public createBorrelkaartgroup(borrelkaartgroup: BorrelkaartGroupRequest, options?: AxiosRequestConfig) {
+        return BorrelkaartgroupsApiFp(this.configuration).createBorrelkaartgroup(borrelkaartgroup, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     *  Returns all existing borrelkaart groups
+     * @param {number} [take] How many borrelkaart groups the endpoint should return
+     * @param {number} [skip] How many borrelkaart groups should be skipped (for pagination)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BorrelkaartgroupsApi
+     */
+    public getAllBorrelkaartgroups(take?: number, skip?: number, options?: AxiosRequestConfig) {
+        return BorrelkaartgroupsApiFp(this.configuration).getAllBorrelkaartgroups(take, skip, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     *  Returns the requested borrelkaart group
+     * @param {number} id The id of the borrelkaart group which should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BorrelkaartgroupsApi
+     */
+    public getBorrelkaartgroupId(id: number, options?: AxiosRequestConfig) {
+        return BorrelkaartgroupsApiFp(this.configuration).getBorrelkaartgroupId(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     *  Updates the requested borrelkaart group
+     * @param {number} id The id of the borrelkaart group which should be updated
+     * @param {BorrelkaartGroupRequest} borrelkaartgroup The updated borrelkaart group
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BorrelkaartgroupsApi
+     */
+    public updateBorrelkaartGroup(id: number, borrelkaartgroup: BorrelkaartGroupRequest, options?: AxiosRequestConfig) {
+        return BorrelkaartgroupsApiFp(this.configuration).updateBorrelkaartGroup(id, borrelkaartgroup, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+/**
  * ContainersApi - axios parameter creator
  * @export
  */
@@ -10745,50 +10132,6 @@ export class ContainersApi extends BaseAPI {
 export const DebtorsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         *  Return all users that had at most -5 euros balance both now and on the reference date For all these users, also return their fine based on the reference date.
-         * @param {string} referenceDates Dates to base the fines on. Every returned user has at least five euros debt on every reference date. The height of the fine is based on the first date in the array.
-         * @param {string} [userTypes] List of all user types fines should be calculated for
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        calculateFines: async (referenceDates: string, userTypes?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'referenceDates' is not null or undefined
-            assertParamExists('calculateFines', 'referenceDates', referenceDates)
-            const localVarPath = `/fines/eligible`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication JWT required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-            if (userTypes !== undefined) {
-                localVarQueryParameter['userTypes'] = userTypes;
-            }
-
-            if (referenceDates !== undefined) {
-                localVarQueryParameter['referenceDates'] = referenceDates;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          *  Delete a fine
          * @param {number} id The id of the fine which should be deleted
          * @param {*} [options] Override http request option.
@@ -10825,7 +10168,7 @@ export const DebtorsApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         *  Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
+         *  Handout fines to all given users.
          * @param {HandoutFinesRequest} body null
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -10989,17 +10332,6 @@ export const DebtorsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = DebtorsApiAxiosParamCreator(configuration)
     return {
         /**
-         *  Return all users that had at most -5 euros balance both now and on the reference date For all these users, also return their fine based on the reference date.
-         * @param {string} referenceDates Dates to base the fines on. Every returned user has at least five euros debt on every reference date. The height of the fine is based on the first date in the array.
-         * @param {string} [userTypes] List of all user types fines should be calculated for
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async calculateFines(referenceDates: string, userTypes?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UserToFineResponse>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.calculateFines(referenceDates, userTypes, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
          *  Delete a fine
          * @param {number} id The id of the fine which should be deleted
          * @param {*} [options] Override http request option.
@@ -11010,7 +10342,7 @@ export const DebtorsApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         *  Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
+         *  Handout fines to all given users.
          * @param {HandoutFinesRequest} body null
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -11061,16 +10393,6 @@ export const DebtorsApiFactory = function (configuration?: Configuration, basePa
     const localVarFp = DebtorsApiFp(configuration)
     return {
         /**
-         *  Return all users that had at most -5 euros balance both now and on the reference date For all these users, also return their fine based on the reference date.
-         * @param {string} referenceDates Dates to base the fines on. Every returned user has at least five euros debt on every reference date. The height of the fine is based on the first date in the array.
-         * @param {string} [userTypes] List of all user types fines should be calculated for
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        calculateFines(referenceDates: string, userTypes?: string, options?: any): AxiosPromise<Array<UserToFineResponse>> {
-            return localVarFp.calculateFines(referenceDates, userTypes, options).then((request) => request(axios, basePath));
-        },
-        /**
          *  Delete a fine
          * @param {number} id The id of the fine which should be deleted
          * @param {*} [options] Override http request option.
@@ -11080,7 +10402,7 @@ export const DebtorsApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.deleteFine(id, options).then((request) => request(axios, basePath));
         },
         /**
-         *  Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
+         *  Handout fines to all given users.
          * @param {HandoutFinesRequest} body null
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -11127,18 +10449,6 @@ export const DebtorsApiFactory = function (configuration?: Configuration, basePa
  */
 export class DebtorsApi extends BaseAPI {
     /**
-     *  Return all users that had at most -5 euros balance both now and on the reference date For all these users, also return their fine based on the reference date.
-     * @param {string} referenceDates Dates to base the fines on. Every returned user has at least five euros debt on every reference date. The height of the fine is based on the first date in the array.
-     * @param {string} [userTypes] List of all user types fines should be calculated for
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DebtorsApi
-     */
-    public calculateFines(referenceDates: string, userTypes?: string, options?: AxiosRequestConfig) {
-        return DebtorsApiFp(this.configuration).calculateFines(referenceDates, userTypes, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
      *  Delete a fine
      * @param {number} id The id of the fine which should be deleted
      * @param {*} [options] Override http request option.
@@ -11150,7 +10460,7 @@ export class DebtorsApi extends BaseAPI {
     }
 
     /**
-     *  Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
+     *  Handout fines to all given users.
      * @param {HandoutFinesRequest} body null
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -11197,218 +10507,22 @@ export class DebtorsApi extends BaseAPI {
 
 
 /**
- * EventsApi - axios parameter creator
+ * DefaultApi - axios parameter creator
  * @export
  */
-export const EventsApiAxiosParamCreator = function (configuration?: Configuration) {
+export const DefaultApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         *  Change the assignment of users to shifts on an event
-         * @param {number} eventId The id of the event
-         * @param {number} shiftId The id of the shift
-         * @param {number} userId The id of the user
-         * @param {EventAnswerAssignmentRequest} body null
+         *  Return all users that had at most -5 euros balance both now and on the reference date For all these users, also return their fine based on the reference date.
+         * @param {Array<string>} userTypes List of all user types fines should be calculated for
+         * @param {string} [referenceDate] Date to base fines on. If undefined, use the date of the last fine handout event. If that one also does not exist, use now.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        assignEventShift: async (eventId: number, shiftId: number, userId: number, body: EventAnswerAssignmentRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'eventId' is not null or undefined
-            assertParamExists('assignEventShift', 'eventId', eventId)
-            // verify required parameter 'shiftId' is not null or undefined
-            assertParamExists('assignEventShift', 'shiftId', shiftId)
-            // verify required parameter 'userId' is not null or undefined
-            assertParamExists('assignEventShift', 'userId', userId)
-            // verify required parameter 'body' is not null or undefined
-            assertParamExists('assignEventShift', 'body', body)
-            const localVarPath = `/events/{eventId}/shift/{shiftId}/user/{userId}/assign`
-                .replace(`{${"eventId"}}`, encodeURIComponent(String(eventId)))
-                .replace(`{${"shiftId"}}`, encodeURIComponent(String(shiftId)))
-                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication JWT required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *  Create an event with its corresponding answers objects
-         * @param {CreateEventRequest} body null
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        createEvent: async (body: CreateEventRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'body' is not null or undefined
-            assertParamExists('createEvent', 'body', body)
-            const localVarPath = `/events`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication JWT required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *  Create an event shift
-         * @param {CreateShiftRequest} body null
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        createEventShift: async (body: CreateShiftRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'body' is not null or undefined
-            assertParamExists('createEventShift', 'body', body)
-            const localVarPath = `/eventshifts`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication JWT required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *  Delete an event with its answers
-         * @param {number} id The id of the event which should be deleted
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteEvent: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('deleteEvent', 'id', id)
-            const localVarPath = `/events/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication JWT required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *  Delete an event shift with its answers
-         * @param {number} id The id of the event which should be deleted
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteEventShift: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('deleteEventShift', 'id', id)
-            const localVarPath = `/eventshifts/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication JWT required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *  Get all event shifts
-         * @param {number} [take] How many entries the endpoint should return
-         * @param {number} [skip] How many entries should be skipped (for pagination)
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getAllEventShifts: async (take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/eventshifts`;
+        calculateFines: async (userTypes: Array<string>, referenceDate?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'userTypes' is not null or undefined
+            assertParamExists('calculateFines', 'userTypes', userTypes)
+            const localVarPath = `/fines/eligible`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -11423,79 +10537,12 @@ export const EventsApiAxiosParamCreator = function (configuration?: Configuratio
             // authentication JWT required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
-            if (take !== undefined) {
-                localVarQueryParameter['take'] = take;
+            if (userTypes) {
+                localVarQueryParameter['userTypes'] = userTypes;
             }
 
-            if (skip !== undefined) {
-                localVarQueryParameter['skip'] = skip;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *  Get all events
-         * @param {string} [name] Name of the event
-         * @param {number} [createdById] ID of user that created the event
-         * @param {string} [beforeDate] Get only events that start after this date
-         * @param {string} [afterDate] Get only events that start before this date
-         * @param {string} [type] Get only events that are this type
-         * @param {number} [take] How many entries the endpoint should return
-         * @param {number} [skip] How many entries should be skipped (for pagination)
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getAllEvents: async (name?: string, createdById?: number, beforeDate?: string, afterDate?: string, type?: string, take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/events`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication JWT required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-            if (name !== undefined) {
-                localVarQueryParameter['name'] = name;
-            }
-
-            if (createdById !== undefined) {
-                localVarQueryParameter['createdById'] = createdById;
-            }
-
-            if (beforeDate !== undefined) {
-                localVarQueryParameter['beforeDate'] = beforeDate;
-            }
-
-            if (afterDate !== undefined) {
-                localVarQueryParameter['afterDate'] = afterDate;
-            }
-
-            if (type !== undefined) {
-                localVarQueryParameter['type'] = type;
-            }
-
-            if (take !== undefined) {
-                localVarQueryParameter['take'] = take;
-            }
-
-            if (skip !== undefined) {
-                localVarQueryParameter['skip'] = skip;
+            if (referenceDate !== undefined) {
+                localVarQueryParameter['referenceDate'] = referenceDate;
             }
 
 
@@ -11503,263 +10550,6 @@ export const EventsApiAxiosParamCreator = function (configuration?: Configuratio
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *  Get the number of times a user has been selected for the given shift
-         * @param {number} id The id of the event which should be deleted
-         * @param {string} [eventType] Only include events of this type
-         * @param {string} [afterDate] Only include events after this date
-         * @param {string} [beforeDate] Only include events before this date
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getShiftSelectedCount: async (id: number, eventType?: string, afterDate?: string, beforeDate?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('getShiftSelectedCount', 'id', id)
-            const localVarPath = `/eventshifts/{id}/counts`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication JWT required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-            if (eventType !== undefined) {
-                localVarQueryParameter['eventType'] = eventType;
-            }
-
-            if (afterDate !== undefined) {
-                localVarQueryParameter['afterDate'] = afterDate;
-            }
-
-            if (beforeDate !== undefined) {
-                localVarQueryParameter['beforeDate'] = beforeDate;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *  Get a single event with its answers and shifts
-         * @param {number} id The id of the event which should be returned
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getSingleEvent: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('getSingleEvent', 'id', id)
-            const localVarPath = `/events/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication JWT required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *  Synchronize an event, so that EventShiftAnswers are created/deleted for users that are (no longer) part of a shift
-         * @param {number} id The id of the event which should be returned
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        syncEventShiftAnswers: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('syncEventShiftAnswers', 'id', id)
-            const localVarPath = `/events/{id}/sync`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication JWT required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *  Update an event with its corresponding answers objects
-         * @param {number} id The id of the event which should be returned
-         * @param {UpdateEventRequest} body null
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        updateEvent: async (id: number, body: UpdateEventRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('updateEvent', 'id', id)
-            // verify required parameter 'body' is not null or undefined
-            assertParamExists('updateEvent', 'body', body)
-            const localVarPath = `/events/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication JWT required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *  Update an event shift
-         * @param {number} id The id of the event which should be returned
-         * @param {UpdateShiftRequest} body null
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        updateEventShift: async (id: number, body: UpdateShiftRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('updateEventShift', 'id', id)
-            // verify required parameter 'body' is not null or undefined
-            assertParamExists('updateEventShift', 'body', body)
-            const localVarPath = `/eventshifts/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication JWT required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *  Update the availability of a user for a shift in an event
-         * @param {number} eventId The id of the event
-         * @param {number} shiftId The id of the shift
-         * @param {number} userId The id of the user
-         * @param {EventAnswerAvailabilityRequest} body null
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        updateEventShiftAvailability: async (eventId: number, shiftId: number, userId: number, body: EventAnswerAvailabilityRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'eventId' is not null or undefined
-            assertParamExists('updateEventShiftAvailability', 'eventId', eventId)
-            // verify required parameter 'shiftId' is not null or undefined
-            assertParamExists('updateEventShiftAvailability', 'shiftId', shiftId)
-            // verify required parameter 'userId' is not null or undefined
-            assertParamExists('updateEventShiftAvailability', 'userId', userId)
-            // verify required parameter 'body' is not null or undefined
-            assertParamExists('updateEventShiftAvailability', 'body', body)
-            const localVarPath = `/events/{eventId}/shift/{shiftId}/user/{userId}/availability`
-                .replace(`{${"eventId"}}`, encodeURIComponent(String(eventId)))
-                .replace(`{${"shiftId"}}`, encodeURIComponent(String(shiftId)))
-                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication JWT required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -11770,474 +10560,63 @@ export const EventsApiAxiosParamCreator = function (configuration?: Configuratio
 };
 
 /**
- * EventsApi - functional programming interface
+ * DefaultApi - functional programming interface
  * @export
  */
-export const EventsApiFp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = EventsApiAxiosParamCreator(configuration)
+export const DefaultApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = DefaultApiAxiosParamCreator(configuration)
     return {
         /**
-         *  Change the assignment of users to shifts on an event
-         * @param {number} eventId The id of the event
-         * @param {number} shiftId The id of the shift
-         * @param {number} userId The id of the user
-         * @param {EventAnswerAssignmentRequest} body null
+         *  Return all users that had at most -5 euros balance both now and on the reference date For all these users, also return their fine based on the reference date.
+         * @param {Array<string>} userTypes List of all user types fines should be calculated for
+         * @param {string} [referenceDate] Date to base fines on. If undefined, use the date of the last fine handout event. If that one also does not exist, use now.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async assignEventShift(eventId: number, shiftId: number, userId: number, body: EventAnswerAssignmentRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseEventAnswerResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.assignEventShift(eventId, shiftId, userId, body, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *  Create an event with its corresponding answers objects
-         * @param {CreateEventRequest} body null
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async createEvent(body: CreateEventRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EventResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createEvent(body, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *  Create an event shift
-         * @param {CreateShiftRequest} body null
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async createEventShift(body: CreateShiftRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EventShiftResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createEventShift(body, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *  Delete an event with its answers
-         * @param {number} id The id of the event which should be deleted
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async deleteEvent(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteEvent(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *  Delete an event shift with its answers
-         * @param {number} id The id of the event which should be deleted
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async deleteEventShift(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteEventShift(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *  Get all event shifts
-         * @param {number} [take] How many entries the endpoint should return
-         * @param {number} [skip] How many entries should be skipped (for pagination)
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getAllEventShifts(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedEventShiftResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllEventShifts(take, skip, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *  Get all events
-         * @param {string} [name] Name of the event
-         * @param {number} [createdById] ID of user that created the event
-         * @param {string} [beforeDate] Get only events that start after this date
-         * @param {string} [afterDate] Get only events that start before this date
-         * @param {string} [type] Get only events that are this type
-         * @param {number} [take] How many entries the endpoint should return
-         * @param {number} [skip] How many entries should be skipped (for pagination)
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getAllEvents(name?: string, createdById?: number, beforeDate?: string, afterDate?: string, type?: string, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBaseEventResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllEvents(name, createdById, beforeDate, afterDate, type, take, skip, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *  Get the number of times a user has been selected for the given shift
-         * @param {number} id The id of the event which should be deleted
-         * @param {string} [eventType] Only include events of this type
-         * @param {string} [afterDate] Only include events after this date
-         * @param {string} [beforeDate] Only include events before this date
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getShiftSelectedCount(id: number, eventType?: string, afterDate?: string, beforeDate?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<EventPlanningSelectedCount>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getShiftSelectedCount(id, eventType, afterDate, beforeDate, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *  Get a single event with its answers and shifts
-         * @param {number} id The id of the event which should be returned
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getSingleEvent(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EventResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getSingleEvent(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *  Synchronize an event, so that EventShiftAnswers are created/deleted for users that are (no longer) part of a shift
-         * @param {number} id The id of the event which should be returned
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async syncEventShiftAnswers(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EventResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.syncEventShiftAnswers(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *  Update an event with its corresponding answers objects
-         * @param {number} id The id of the event which should be returned
-         * @param {UpdateEventRequest} body null
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async updateEvent(id: number, body: UpdateEventRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EventResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateEvent(id, body, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *  Update an event shift
-         * @param {number} id The id of the event which should be returned
-         * @param {UpdateShiftRequest} body null
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async updateEventShift(id: number, body: UpdateShiftRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EventShiftResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateEventShift(id, body, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *  Update the availability of a user for a shift in an event
-         * @param {number} eventId The id of the event
-         * @param {number} shiftId The id of the shift
-         * @param {number} userId The id of the user
-         * @param {EventAnswerAvailabilityRequest} body null
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async updateEventShiftAvailability(eventId: number, shiftId: number, userId: number, body: EventAnswerAvailabilityRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseEventAnswerResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateEventShiftAvailability(eventId, shiftId, userId, body, options);
+        async calculateFines(userTypes: Array<string>, referenceDate?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UserToFineResponse>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.calculateFines(userTypes, referenceDate, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
 };
 
 /**
- * EventsApi - factory interface
+ * DefaultApi - factory interface
  * @export
  */
-export const EventsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = EventsApiFp(configuration)
+export const DefaultApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = DefaultApiFp(configuration)
     return {
         /**
-         *  Change the assignment of users to shifts on an event
-         * @param {number} eventId The id of the event
-         * @param {number} shiftId The id of the shift
-         * @param {number} userId The id of the user
-         * @param {EventAnswerAssignmentRequest} body null
+         *  Return all users that had at most -5 euros balance both now and on the reference date For all these users, also return their fine based on the reference date.
+         * @param {Array<string>} userTypes List of all user types fines should be calculated for
+         * @param {string} [referenceDate] Date to base fines on. If undefined, use the date of the last fine handout event. If that one also does not exist, use now.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        assignEventShift(eventId: number, shiftId: number, userId: number, body: EventAnswerAssignmentRequest, options?: any): AxiosPromise<BaseEventAnswerResponse> {
-            return localVarFp.assignEventShift(eventId, shiftId, userId, body, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Create an event with its corresponding answers objects
-         * @param {CreateEventRequest} body null
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        createEvent(body: CreateEventRequest, options?: any): AxiosPromise<EventResponse> {
-            return localVarFp.createEvent(body, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Create an event shift
-         * @param {CreateShiftRequest} body null
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        createEventShift(body: CreateShiftRequest, options?: any): AxiosPromise<EventShiftResponse> {
-            return localVarFp.createEventShift(body, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Delete an event with its answers
-         * @param {number} id The id of the event which should be deleted
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteEvent(id: number, options?: any): AxiosPromise<void> {
-            return localVarFp.deleteEvent(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Delete an event shift with its answers
-         * @param {number} id The id of the event which should be deleted
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteEventShift(id: number, options?: any): AxiosPromise<void> {
-            return localVarFp.deleteEventShift(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Get all event shifts
-         * @param {number} [take] How many entries the endpoint should return
-         * @param {number} [skip] How many entries should be skipped (for pagination)
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getAllEventShifts(take?: number, skip?: number, options?: any): AxiosPromise<PaginatedEventShiftResponse> {
-            return localVarFp.getAllEventShifts(take, skip, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Get all events
-         * @param {string} [name] Name of the event
-         * @param {number} [createdById] ID of user that created the event
-         * @param {string} [beforeDate] Get only events that start after this date
-         * @param {string} [afterDate] Get only events that start before this date
-         * @param {string} [type] Get only events that are this type
-         * @param {number} [take] How many entries the endpoint should return
-         * @param {number} [skip] How many entries should be skipped (for pagination)
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getAllEvents(name?: string, createdById?: number, beforeDate?: string, afterDate?: string, type?: string, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedBaseEventResponse> {
-            return localVarFp.getAllEvents(name, createdById, beforeDate, afterDate, type, take, skip, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Get the number of times a user has been selected for the given shift
-         * @param {number} id The id of the event which should be deleted
-         * @param {string} [eventType] Only include events of this type
-         * @param {string} [afterDate] Only include events after this date
-         * @param {string} [beforeDate] Only include events before this date
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getShiftSelectedCount(id: number, eventType?: string, afterDate?: string, beforeDate?: string, options?: any): AxiosPromise<Array<EventPlanningSelectedCount>> {
-            return localVarFp.getShiftSelectedCount(id, eventType, afterDate, beforeDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Get a single event with its answers and shifts
-         * @param {number} id The id of the event which should be returned
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getSingleEvent(id: number, options?: any): AxiosPromise<EventResponse> {
-            return localVarFp.getSingleEvent(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Synchronize an event, so that EventShiftAnswers are created/deleted for users that are (no longer) part of a shift
-         * @param {number} id The id of the event which should be returned
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        syncEventShiftAnswers(id: number, options?: any): AxiosPromise<EventResponse> {
-            return localVarFp.syncEventShiftAnswers(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Update an event with its corresponding answers objects
-         * @param {number} id The id of the event which should be returned
-         * @param {UpdateEventRequest} body null
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        updateEvent(id: number, body: UpdateEventRequest, options?: any): AxiosPromise<EventResponse> {
-            return localVarFp.updateEvent(id, body, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Update an event shift
-         * @param {number} id The id of the event which should be returned
-         * @param {UpdateShiftRequest} body null
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        updateEventShift(id: number, body: UpdateShiftRequest, options?: any): AxiosPromise<EventShiftResponse> {
-            return localVarFp.updateEventShift(id, body, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Update the availability of a user for a shift in an event
-         * @param {number} eventId The id of the event
-         * @param {number} shiftId The id of the shift
-         * @param {number} userId The id of the user
-         * @param {EventAnswerAvailabilityRequest} body null
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        updateEventShiftAvailability(eventId: number, shiftId: number, userId: number, body: EventAnswerAvailabilityRequest, options?: any): AxiosPromise<BaseEventAnswerResponse> {
-            return localVarFp.updateEventShiftAvailability(eventId, shiftId, userId, body, options).then((request) => request(axios, basePath));
+        calculateFines(userTypes: Array<string>, referenceDate?: string, options?: any): AxiosPromise<Array<UserToFineResponse>> {
+            return localVarFp.calculateFines(userTypes, referenceDate, options).then((request) => request(axios, basePath));
         },
     };
 };
 
 /**
- * EventsApi - object-oriented interface
+ * DefaultApi - object-oriented interface
  * @export
- * @class EventsApi
+ * @class DefaultApi
  * @extends {BaseAPI}
  */
-export class EventsApi extends BaseAPI {
+export class DefaultApi extends BaseAPI {
     /**
-     *  Change the assignment of users to shifts on an event
-     * @param {number} eventId The id of the event
-     * @param {number} shiftId The id of the shift
-     * @param {number} userId The id of the user
-     * @param {EventAnswerAssignmentRequest} body null
+     *  Return all users that had at most -5 euros balance both now and on the reference date For all these users, also return their fine based on the reference date.
+     * @param {Array<string>} userTypes List of all user types fines should be calculated for
+     * @param {string} [referenceDate] Date to base fines on. If undefined, use the date of the last fine handout event. If that one also does not exist, use now.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof EventsApi
+     * @memberof DefaultApi
      */
-    public assignEventShift(eventId: number, shiftId: number, userId: number, body: EventAnswerAssignmentRequest, options?: AxiosRequestConfig) {
-        return EventsApiFp(this.configuration).assignEventShift(eventId, shiftId, userId, body, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     *  Create an event with its corresponding answers objects
-     * @param {CreateEventRequest} body null
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof EventsApi
-     */
-    public createEvent(body: CreateEventRequest, options?: AxiosRequestConfig) {
-        return EventsApiFp(this.configuration).createEvent(body, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     *  Create an event shift
-     * @param {CreateShiftRequest} body null
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof EventsApi
-     */
-    public createEventShift(body: CreateShiftRequest, options?: AxiosRequestConfig) {
-        return EventsApiFp(this.configuration).createEventShift(body, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     *  Delete an event with its answers
-     * @param {number} id The id of the event which should be deleted
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof EventsApi
-     */
-    public deleteEvent(id: number, options?: AxiosRequestConfig) {
-        return EventsApiFp(this.configuration).deleteEvent(id, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     *  Delete an event shift with its answers
-     * @param {number} id The id of the event which should be deleted
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof EventsApi
-     */
-    public deleteEventShift(id: number, options?: AxiosRequestConfig) {
-        return EventsApiFp(this.configuration).deleteEventShift(id, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     *  Get all event shifts
-     * @param {number} [take] How many entries the endpoint should return
-     * @param {number} [skip] How many entries should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof EventsApi
-     */
-    public getAllEventShifts(take?: number, skip?: number, options?: AxiosRequestConfig) {
-        return EventsApiFp(this.configuration).getAllEventShifts(take, skip, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     *  Get all events
-     * @param {string} [name] Name of the event
-     * @param {number} [createdById] ID of user that created the event
-     * @param {string} [beforeDate] Get only events that start after this date
-     * @param {string} [afterDate] Get only events that start before this date
-     * @param {string} [type] Get only events that are this type
-     * @param {number} [take] How many entries the endpoint should return
-     * @param {number} [skip] How many entries should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof EventsApi
-     */
-    public getAllEvents(name?: string, createdById?: number, beforeDate?: string, afterDate?: string, type?: string, take?: number, skip?: number, options?: AxiosRequestConfig) {
-        return EventsApiFp(this.configuration).getAllEvents(name, createdById, beforeDate, afterDate, type, take, skip, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     *  Get the number of times a user has been selected for the given shift
-     * @param {number} id The id of the event which should be deleted
-     * @param {string} [eventType] Only include events of this type
-     * @param {string} [afterDate] Only include events after this date
-     * @param {string} [beforeDate] Only include events before this date
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof EventsApi
-     */
-    public getShiftSelectedCount(id: number, eventType?: string, afterDate?: string, beforeDate?: string, options?: AxiosRequestConfig) {
-        return EventsApiFp(this.configuration).getShiftSelectedCount(id, eventType, afterDate, beforeDate, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     *  Get a single event with its answers and shifts
-     * @param {number} id The id of the event which should be returned
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof EventsApi
-     */
-    public getSingleEvent(id: number, options?: AxiosRequestConfig) {
-        return EventsApiFp(this.configuration).getSingleEvent(id, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     *  Synchronize an event, so that EventShiftAnswers are created/deleted for users that are (no longer) part of a shift
-     * @param {number} id The id of the event which should be returned
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof EventsApi
-     */
-    public syncEventShiftAnswers(id: number, options?: AxiosRequestConfig) {
-        return EventsApiFp(this.configuration).syncEventShiftAnswers(id, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     *  Update an event with its corresponding answers objects
-     * @param {number} id The id of the event which should be returned
-     * @param {UpdateEventRequest} body null
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof EventsApi
-     */
-    public updateEvent(id: number, body: UpdateEventRequest, options?: AxiosRequestConfig) {
-        return EventsApiFp(this.configuration).updateEvent(id, body, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     *  Update an event shift
-     * @param {number} id The id of the event which should be returned
-     * @param {UpdateShiftRequest} body null
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof EventsApi
-     */
-    public updateEventShift(id: number, body: UpdateShiftRequest, options?: AxiosRequestConfig) {
-        return EventsApiFp(this.configuration).updateEventShift(id, body, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     *  Update the availability of a user for a shift in an event
-     * @param {number} eventId The id of the event
-     * @param {number} shiftId The id of the shift
-     * @param {number} userId The id of the user
-     * @param {EventAnswerAvailabilityRequest} body null
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof EventsApi
-     */
-    public updateEventShiftAvailability(eventId: number, shiftId: number, userId: number, body: EventAnswerAvailabilityRequest, options?: AxiosRequestConfig) {
-        return EventsApiFp(this.configuration).updateEventShiftAvailability(eventId, shiftId, userId, body, options).then((request) => request(this.axios, this.basePath));
+    public calculateFines(userTypes: Array<string>, referenceDate?: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).calculateFines(userTypes, referenceDate, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -12579,12 +10958,10 @@ export const InvoicesApiAxiosParamCreator = function (configuration?: Configurat
          * @param {boolean} [returnEntries] Boolean if invoice entries should be returned
          * @param {string} [fromDate] Start date for selected invoices (inclusive)
          * @param {string} [tillDate] End date for selected invoices (exclusive)
-         * @param {number} [take] How many entries the endpoint should return
-         * @param {number} [skip] How many entries should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllInvoices: async (toId?: number, invoiceId?: number, state?: number, returnEntries?: boolean, fromDate?: string, tillDate?: string, take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllInvoices: async (toId?: number, invoiceId?: number, state?: number, returnEntries?: boolean, fromDate?: string, tillDate?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/invoices`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -12622,14 +10999,6 @@ export const InvoicesApiAxiosParamCreator = function (configuration?: Configurat
 
             if (tillDate !== undefined) {
                 localVarQueryParameter['tillDate'] = tillDate;
-            }
-
-            if (take !== undefined) {
-                localVarQueryParameter['take'] = take;
-            }
-
-            if (skip !== undefined) {
-                localVarQueryParameter['skip'] = skip;
             }
 
 
@@ -12764,13 +11133,11 @@ export const InvoicesApiFp = function(configuration?: Configuration) {
          * @param {boolean} [returnEntries] Boolean if invoice entries should be returned
          * @param {string} [fromDate] Start date for selected invoices (inclusive)
          * @param {string} [tillDate] End date for selected invoices (exclusive)
-         * @param {number} [take] How many entries the endpoint should return
-         * @param {number} [skip] How many entries should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllInvoices(toId?: number, invoiceId?: number, state?: number, returnEntries?: boolean, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedInvoiceResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllInvoices(toId, invoiceId, state, returnEntries, fromDate, tillDate, take, skip, options);
+        async getAllInvoices(toId?: number, invoiceId?: number, state?: number, returnEntries?: boolean, fromDate?: string, tillDate?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedInvoiceResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllInvoices(toId, invoiceId, state, returnEntries, fromDate, tillDate, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -12831,13 +11198,11 @@ export const InvoicesApiFactory = function (configuration?: Configuration, baseP
          * @param {boolean} [returnEntries] Boolean if invoice entries should be returned
          * @param {string} [fromDate] Start date for selected invoices (inclusive)
          * @param {string} [tillDate] End date for selected invoices (exclusive)
-         * @param {number} [take] How many entries the endpoint should return
-         * @param {number} [skip] How many entries should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllInvoices(toId?: number, invoiceId?: number, state?: number, returnEntries?: boolean, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedInvoiceResponse> {
-            return localVarFp.getAllInvoices(toId, invoiceId, state, returnEntries, fromDate, tillDate, take, skip, options).then((request) => request(axios, basePath));
+        getAllInvoices(toId?: number, invoiceId?: number, state?: number, returnEntries?: boolean, fromDate?: string, tillDate?: string, options?: any): AxiosPromise<PaginatedInvoiceResponse> {
+            return localVarFp.getAllInvoices(toId, invoiceId, state, returnEntries, fromDate, tillDate, options).then((request) => request(axios, basePath));
         },
         /**
          *  Returns a single invoice in the system.
@@ -12899,14 +11264,12 @@ export class InvoicesApi extends BaseAPI {
      * @param {boolean} [returnEntries] Boolean if invoice entries should be returned
      * @param {string} [fromDate] Start date for selected invoices (inclusive)
      * @param {string} [tillDate] End date for selected invoices (exclusive)
-     * @param {number} [take] How many entries the endpoint should return
-     * @param {number} [skip] How many entries should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof InvoicesApi
      */
-    public getAllInvoices(toId?: number, invoiceId?: number, state?: number, returnEntries?: boolean, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: AxiosRequestConfig) {
-        return InvoicesApiFp(this.configuration).getAllInvoices(toId, invoiceId, state, returnEntries, fromDate, tillDate, take, skip, options).then((request) => request(this.axios, this.basePath));
+    public getAllInvoices(toId?: number, invoiceId?: number, state?: number, returnEntries?: boolean, fromDate?: string, tillDate?: string, options?: AxiosRequestConfig) {
+        return InvoicesApiFp(this.configuration).getAllInvoices(toId, invoiceId, state, returnEntries, fromDate, tillDate, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -16038,7 +14401,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {boolean} [active] Filter based if the user is active
          * @param {boolean} [ofAge] Filter based if the user is 18+
          * @param {number} [id] Filter based on user ID
-         * @param {string} [type] {MEMBER,ORGAN,VOUCHER,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
+         * @param {string} [type] {MEMBER,ORGAN,BORRELKAART,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -16182,12 +14545,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         /**
          *  Get an organs members
          * @param {number} id The id of the user
-         * @param {number} [take] How many members the endpoint should return
-         * @param {number} [skip] How many members should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getOrganMembers: async (id: number, take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getOrganMembers: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getOrganMembers', 'id', id)
             const localVarPath = `/users/{id}/members`
@@ -16205,14 +14566,6 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
 
             // authentication JWT required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-            if (take !== undefined) {
-                localVarQueryParameter['take'] = take;
-            }
-
-            if (skip !== undefined) {
-                localVarQueryParameter['skip'] = skip;
-            }
 
 
     
@@ -16723,11 +15076,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         /**
          *  Update a user
          * @param {number} id The id of the user
-         * @param {UserRequest} user The user which should be updated
+         * @param {UpdateUserRequest} user The user which should be updated
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUser: async (id: number, user: UserRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateUser: async (id: number, user: UpdateUserRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('updateUser', 'id', id)
             // verify required parameter 'user' is not null or undefined
@@ -17038,7 +15391,7 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {boolean} [active] Filter based if the user is active
          * @param {boolean} [ofAge] Filter based if the user is 18+
          * @param {number} [id] Filter based on user ID
-         * @param {string} [type] {MEMBER,ORGAN,VOUCHER,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
+         * @param {string} [type] {MEMBER,ORGAN,BORRELKAART,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -17071,13 +15424,11 @@ export const UsersApiFp = function(configuration?: Configuration) {
         /**
          *  Get an organs members
          * @param {number} id The id of the user
-         * @param {number} [take] How many members the endpoint should return
-         * @param {number} [skip] How many members should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getOrganMembers(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUserResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getOrganMembers(id, take, skip, options);
+        async getOrganMembers(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUserResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getOrganMembers(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -17210,11 +15561,11 @@ export const UsersApiFp = function(configuration?: Configuration) {
         /**
          *  Update a user
          * @param {number} id The id of the user
-         * @param {UserRequest} user The user which should be updated
+         * @param {UpdateUserRequest} user The user which should be updated
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateUser(id: number, user: UserRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserRequest>> {
+        async updateUser(id: number, user: UpdateUserRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpdateUserRequest>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateUser(id, user, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -17343,7 +15694,7 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * @param {boolean} [active] Filter based if the user is active
          * @param {boolean} [ofAge] Filter based if the user is 18+
          * @param {number} [id] Filter based on user ID
-         * @param {string} [type] {MEMBER,ORGAN,VOUCHER,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
+         * @param {string} [type] {MEMBER,ORGAN,BORRELKAART,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -17373,13 +15724,11 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
         /**
          *  Get an organs members
          * @param {number} id The id of the user
-         * @param {number} [take] How many members the endpoint should return
-         * @param {number} [skip] How many members should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getOrganMembers(id: number, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedUserResponse> {
-            return localVarFp.getOrganMembers(id, take, skip, options).then((request) => request(axios, basePath));
+        getOrganMembers(id: number, options?: any): AxiosPromise<PaginatedUserResponse> {
+            return localVarFp.getOrganMembers(id, options).then((request) => request(axios, basePath));
         },
         /**
          *  Get all users that the user can authenticate as
@@ -17501,11 +15850,11 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
         /**
          *  Update a user
          * @param {number} id The id of the user
-         * @param {UserRequest} user The user which should be updated
+         * @param {UpdateUserRequest} user The user which should be updated
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUser(id: number, user: UserRequest, options?: any): AxiosPromise<UserRequest> {
+        updateUser(id: number, user: UpdateUserRequest, options?: any): AxiosPromise<UpdateUserRequest> {
             return localVarFp.updateUser(id, user, options).then((request) => request(axios, basePath));
         },
         /**
@@ -17640,7 +15989,7 @@ export class UsersApi extends BaseAPI {
      * @param {boolean} [active] Filter based if the user is active
      * @param {boolean} [ofAge] Filter based if the user is 18+
      * @param {number} [id] Filter based on user ID
-     * @param {string} [type] {MEMBER,ORGAN,VOUCHER,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
+     * @param {string} [type] {MEMBER,ORGAN,BORRELKAART,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
@@ -17676,14 +16025,12 @@ export class UsersApi extends BaseAPI {
     /**
      *  Get an organs members
      * @param {number} id The id of the user
-     * @param {number} [take] How many members the endpoint should return
-     * @param {number} [skip] How many members should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public getOrganMembers(id: number, take?: number, skip?: number, options?: AxiosRequestConfig) {
-        return UsersApiFp(this.configuration).getOrganMembers(id, take, skip, options).then((request) => request(this.axios, this.basePath));
+    public getOrganMembers(id: number, options?: AxiosRequestConfig) {
+        return UsersApiFp(this.configuration).getOrganMembers(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -17826,12 +16173,12 @@ export class UsersApi extends BaseAPI {
     /**
      *  Update a user
      * @param {number} id The id of the user
-     * @param {UserRequest} user The user which should be updated
+     * @param {UpdateUserRequest} user The user which should be updated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public updateUser(id: number, user: UserRequest, options?: AxiosRequestConfig) {
+    public updateUser(id: number, user: UpdateUserRequest, options?: AxiosRequestConfig) {
         return UsersApiFp(this.configuration).updateUser(id, user, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -18324,328 +16671,6 @@ export class VatGroupsApi extends BaseAPI {
      */
     public updateVatGroup(id: number, vatGroup: UpdateVatGroupRequest, options?: AxiosRequestConfig) {
         return VatGroupsApiFp(this.configuration).updateVatGroup(id, vatGroup, options).then((request) => request(this.axios, this.basePath));
-    }
-}
-
-
-/**
- * VouchergroupsApi - axios parameter creator
- * @export
- */
-export const VouchergroupsApiAxiosParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         *  Creates a new voucher group
-         * @param {VoucherGroupRequest} vouchergroup The voucher group which should be created
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        createVouchergroup: async (vouchergroup: VoucherGroupRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'vouchergroup' is not null or undefined
-            assertParamExists('createVouchergroup', 'vouchergroup', vouchergroup)
-            const localVarPath = `/vouchergroups`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication JWT required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(vouchergroup, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *  Returns all existing voucher groups
-         * @param {number} [take] How many voucher groups the endpoint should return
-         * @param {number} [skip] How many voucher groups should be skipped (for pagination)
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getAllVouchergroups: async (take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/vouchergroups`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication JWT required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-            if (take !== undefined) {
-                localVarQueryParameter['take'] = take;
-            }
-
-            if (skip !== undefined) {
-                localVarQueryParameter['skip'] = skip;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *  Returns the requested voucher group
-         * @param {number} id The id of the voucher group which should be returned
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getVouchergroupId: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('getVouchergroupId', 'id', id)
-            const localVarPath = `/vouchergroups/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication JWT required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *  Updates the requested voucher group
-         * @param {number} id The id of the voucher group which should be updated
-         * @param {VoucherGroupRequest} vouchergroup The updated voucher group
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        updateVoucherGroup: async (id: number, vouchergroup: VoucherGroupRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('updateVoucherGroup', 'id', id)
-            // verify required parameter 'vouchergroup' is not null or undefined
-            assertParamExists('updateVoucherGroup', 'vouchergroup', vouchergroup)
-            const localVarPath = `/vouchergroups/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication JWT required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(vouchergroup, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    }
-};
-
-/**
- * VouchergroupsApi - functional programming interface
- * @export
- */
-export const VouchergroupsApiFp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = VouchergroupsApiAxiosParamCreator(configuration)
-    return {
-        /**
-         *  Creates a new voucher group
-         * @param {VoucherGroupRequest} vouchergroup The voucher group which should be created
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async createVouchergroup(vouchergroup: VoucherGroupRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VoucherGroupResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createVouchergroup(vouchergroup, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *  Returns all existing voucher groups
-         * @param {number} [take] How many voucher groups the endpoint should return
-         * @param {number} [skip] How many voucher groups should be skipped (for pagination)
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getAllVouchergroups(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedVoucherGroupResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllVouchergroups(take, skip, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *  Returns the requested voucher group
-         * @param {number} id The id of the voucher group which should be returned
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getVouchergroupId(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VoucherGroupResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getVouchergroupId(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         *  Updates the requested voucher group
-         * @param {number} id The id of the voucher group which should be updated
-         * @param {VoucherGroupRequest} vouchergroup The updated voucher group
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async updateVoucherGroup(id: number, vouchergroup: VoucherGroupRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VoucherGroupResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateVoucherGroup(id, vouchergroup, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-    }
-};
-
-/**
- * VouchergroupsApi - factory interface
- * @export
- */
-export const VouchergroupsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = VouchergroupsApiFp(configuration)
-    return {
-        /**
-         *  Creates a new voucher group
-         * @param {VoucherGroupRequest} vouchergroup The voucher group which should be created
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        createVouchergroup(vouchergroup: VoucherGroupRequest, options?: any): AxiosPromise<VoucherGroupResponse> {
-            return localVarFp.createVouchergroup(vouchergroup, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Returns all existing voucher groups
-         * @param {number} [take] How many voucher groups the endpoint should return
-         * @param {number} [skip] How many voucher groups should be skipped (for pagination)
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getAllVouchergroups(take?: number, skip?: number, options?: any): AxiosPromise<PaginatedVoucherGroupResponse> {
-            return localVarFp.getAllVouchergroups(take, skip, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Returns the requested voucher group
-         * @param {number} id The id of the voucher group which should be returned
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getVouchergroupId(id: number, options?: any): AxiosPromise<VoucherGroupResponse> {
-            return localVarFp.getVouchergroupId(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *  Updates the requested voucher group
-         * @param {number} id The id of the voucher group which should be updated
-         * @param {VoucherGroupRequest} vouchergroup The updated voucher group
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        updateVoucherGroup(id: number, vouchergroup: VoucherGroupRequest, options?: any): AxiosPromise<VoucherGroupResponse> {
-            return localVarFp.updateVoucherGroup(id, vouchergroup, options).then((request) => request(axios, basePath));
-        },
-    };
-};
-
-/**
- * VouchergroupsApi - object-oriented interface
- * @export
- * @class VouchergroupsApi
- * @extends {BaseAPI}
- */
-export class VouchergroupsApi extends BaseAPI {
-    /**
-     *  Creates a new voucher group
-     * @param {VoucherGroupRequest} vouchergroup The voucher group which should be created
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VouchergroupsApi
-     */
-    public createVouchergroup(vouchergroup: VoucherGroupRequest, options?: AxiosRequestConfig) {
-        return VouchergroupsApiFp(this.configuration).createVouchergroup(vouchergroup, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     *  Returns all existing voucher groups
-     * @param {number} [take] How many voucher groups the endpoint should return
-     * @param {number} [skip] How many voucher groups should be skipped (for pagination)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VouchergroupsApi
-     */
-    public getAllVouchergroups(take?: number, skip?: number, options?: AxiosRequestConfig) {
-        return VouchergroupsApiFp(this.configuration).getAllVouchergroups(take, skip, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     *  Returns the requested voucher group
-     * @param {number} id The id of the voucher group which should be returned
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VouchergroupsApi
-     */
-    public getVouchergroupId(id: number, options?: AxiosRequestConfig) {
-        return VouchergroupsApiFp(this.configuration).getVouchergroupId(id, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     *  Updates the requested voucher group
-     * @param {number} id The id of the voucher group which should be updated
-     * @param {VoucherGroupRequest} vouchergroup The updated voucher group
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VouchergroupsApi
-     */
-    public updateVoucherGroup(id: number, vouchergroup: VoucherGroupRequest, options?: AxiosRequestConfig) {
-        return VouchergroupsApiFp(this.configuration).updateVoucherGroup(id, vouchergroup, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
