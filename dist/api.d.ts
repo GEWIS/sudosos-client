@@ -4970,6 +4970,14 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
     keyAuthentication: (authenticationKeyRequest: AuthenticationKeyRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary LDAP login and hand out token If user has never signed in before this also creates an account.
+     * @param {AuthenticationLDAPRequest} authenticationLDAPRequest The LDAP login.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    ldapAuthentication: (authenticationLDAPRequest: AuthenticationLDAPRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Local login and hand out token
      * @param {AuthenticationLocalRequest} authenticationLocalRequest The local login.
      * @param {*} [options] Override http request option.
@@ -5071,6 +5079,14 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
     keyAuthentication(authenticationKeyRequest: AuthenticationKeyRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
     /**
      *
+     * @summary LDAP login and hand out token If user has never signed in before this also creates an account.
+     * @param {AuthenticationLDAPRequest} authenticationLDAPRequest The LDAP login.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    ldapAuthentication(authenticationLDAPRequest: AuthenticationLDAPRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
+    /**
+     *
      * @summary Local login and hand out token
      * @param {AuthenticationLocalRequest} authenticationLocalRequest The local login.
      * @param {*} [options] Override http request option.
@@ -5170,6 +5186,14 @@ export declare const AuthenticateApiFactory: (configuration?: Configuration, bas
      * @throws {RequiredError}
      */
     keyAuthentication(authenticationKeyRequest: AuthenticationKeyRequest, options?: any): AxiosPromise<AuthenticationResponse>;
+    /**
+     *
+     * @summary LDAP login and hand out token If user has never signed in before this also creates an account.
+     * @param {AuthenticationLDAPRequest} authenticationLDAPRequest The LDAP login.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    ldapAuthentication(authenticationLDAPRequest: AuthenticationLDAPRequest, options?: any): AxiosPromise<AuthenticationResponse>;
     /**
      *
      * @summary Local login and hand out token
@@ -5278,6 +5302,15 @@ export declare class AuthenticateApi extends BaseAPI {
      * @memberof AuthenticateApi
      */
     keyAuthentication(authenticationKeyRequest: AuthenticationKeyRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
+    /**
+     *
+     * @summary LDAP login and hand out token If user has never signed in before this also creates an account.
+     * @param {AuthenticationLDAPRequest} authenticationLDAPRequest The LDAP login.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    ldapAuthentication(authenticationLDAPRequest: AuthenticationLDAPRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
     /**
      *
      * @summary Local login and hand out token

@@ -219,6 +219,36 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
         }),
         /**
          *
+         * @summary LDAP login and hand out token If user has never signed in before this also creates an account.
+         * @param {AuthenticationLDAPRequest} authenticationLDAPRequest The LDAP login.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        ldapAuthentication: (authenticationLDAPRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            // verify required parameter 'authenticationLDAPRequest' is not null or undefined
+            (0, common_1.assertParamExists)('ldapAuthentication', 'authenticationLDAPRequest', authenticationLDAPRequest);
+            const localVarPath = `/authentication/LDAP`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(authenticationLDAPRequest, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
          * @summary Local login and hand out token
          * @param {AuthenticationLocalRequest} authenticationLocalRequest The local login.
          * @param {*} [options] Override http request option.
@@ -517,6 +547,22 @@ const AuthenticateApiFp = function (configuration) {
         },
         /**
          *
+         * @summary LDAP login and hand out token If user has never signed in before this also creates an account.
+         * @param {AuthenticationLDAPRequest} authenticationLDAPRequest The LDAP login.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        ldapAuthentication(authenticationLDAPRequest, options) {
+            var _a, _b, _c;
+            return __awaiter(this, void 0, void 0, function* () {
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.ldapAuthentication(authenticationLDAPRequest, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['AuthenticateApi.ldapAuthentication']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
          * @summary Local login and hand out token
          * @param {AuthenticationLocalRequest} authenticationLocalRequest The local login.
          * @param {*} [options] Override http request option.
@@ -688,6 +734,16 @@ const AuthenticateApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary LDAP login and hand out token If user has never signed in before this also creates an account.
+         * @param {AuthenticationLDAPRequest} authenticationLDAPRequest The LDAP login.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        ldapAuthentication(authenticationLDAPRequest, options) {
+            return localVarFp.ldapAuthentication(authenticationLDAPRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Local login and hand out token
          * @param {AuthenticationLocalRequest} authenticationLocalRequest The local login.
          * @param {*} [options] Override http request option.
@@ -819,6 +875,17 @@ class AuthenticateApi extends base_1.BaseAPI {
      */
     keyAuthentication(authenticationKeyRequest, options) {
         return (0, exports.AuthenticateApiFp)(this.configuration).keyAuthentication(authenticationKeyRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary LDAP login and hand out token If user has never signed in before this also creates an account.
+     * @param {AuthenticationLDAPRequest} authenticationLDAPRequest The LDAP login.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    ldapAuthentication(authenticationLDAPRequest, options) {
+        return (0, exports.AuthenticateApiFp)(this.configuration).ldapAuthentication(authenticationLDAPRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
