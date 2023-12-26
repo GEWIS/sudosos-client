@@ -321,6 +321,30 @@ export interface BannerRequest {
  */
 export interface BannerResponse {
     /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof BannerResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof BannerResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof BannerResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof BannerResponse
+     */
+    'version'?: number;
+    /**
      * Name/label of the banner
      * @type {string}
      * @memberof BannerResponse
@@ -356,30 +380,6 @@ export interface BannerResponse {
      * @memberof BannerResponse
      */
     'endDate': string;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof BannerResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof BannerResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof BannerResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof BannerResponse
-     */
-    'version'?: number;
 }
 /**
  *
@@ -387,6 +387,30 @@ export interface BannerResponse {
  * @interface BaseContainerResponse
  */
 export interface BaseContainerResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof BaseContainerResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof BaseContainerResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof BaseContainerResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof BaseContainerResponse
+     */
+    'version'?: number;
     /**
      * The name of the container.
      * @type {string}
@@ -405,30 +429,6 @@ export interface BaseContainerResponse {
      * @memberof BaseContainerResponse
      */
     'revision'?: number;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof BaseContainerResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof BaseContainerResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof BaseContainerResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof BaseContainerResponse
-     */
-    'version'?: number;
 }
 /**
  *
@@ -436,12 +436,6 @@ export interface BaseContainerResponse {
  * @interface BaseEntity
  */
 export interface BaseEntity {
-    /**
-     * The auto-generated object id.
-     * @type {number}
-     * @memberof BaseEntity
-     */
-    'id': number;
     /**
      * The creation date of the object.
      * @type {string}
@@ -460,6 +454,12 @@ export interface BaseEntity {
      * @memberof BaseEntity
      */
     'version'?: number;
+    /**
+     * The auto-generated object id.
+     * @type {number}
+     * @memberof BaseEntity
+     */
+    'id': number;
 }
 /**
  *
@@ -518,6 +518,30 @@ export interface BaseEventAnswerResponse {
  */
 export interface BaseEventResponse {
     /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof BaseEventResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof BaseEventResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof BaseEventResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof BaseEventResponse
+     */
+    'version'?: number;
+    /**
      * Name of the borrel.
      * @type {string}
      * @memberof BaseEventResponse
@@ -547,30 +571,6 @@ export interface BaseEventResponse {
      * @memberof BaseEventResponse
      */
     'type': string;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof BaseEventResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof BaseEventResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof BaseEventResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof BaseEventResponse
-     */
-    'version'?: number;
 }
 /**
  *
@@ -579,12 +579,6 @@ export interface BaseEventResponse {
  */
 export interface BaseEventShiftResponse {
     /**
-     * Name of the shift.
-     * @type {string}
-     * @memberof BaseEventShiftResponse
-     */
-    'name': string;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof BaseEventShiftResponse
@@ -608,6 +602,12 @@ export interface BaseEventShiftResponse {
      * @memberof BaseEventShiftResponse
      */
     'version'?: number;
+    /**
+     * Name of the shift.
+     * @type {string}
+     * @memberof BaseEventShiftResponse
+     */
+    'name': string;
 }
 /**
  *
@@ -615,24 +615,6 @@ export interface BaseEventShiftResponse {
  * @interface BaseFile
  */
 export interface BaseFile {
-    /**
-     * The filename when the file is downloaded
-     * @type {string}
-     * @memberof BaseFile
-     */
-    'downloadName': string;
-    /**
-     * The location of the file, including filename in storage
-     * @type {string}
-     * @memberof BaseFile
-     */
-    'location': string;
-    /**
-     *
-     * @type {User}
-     * @memberof BaseFile
-     */
-    'createdBy': User;
     /**
      * The creation date of the object.
      * @type {string}
@@ -651,6 +633,30 @@ export interface BaseFile {
      * @memberof BaseFile
      */
     'version'?: number;
+    /**
+     * The auto-generated object id.
+     * @type {number}
+     * @memberof BaseFile
+     */
+    'id': number;
+    /**
+     * The filename when the file is downloaded
+     * @type {string}
+     * @memberof BaseFile
+     */
+    'downloadName': string;
+    /**
+     * The location of the file, including filename in storage
+     * @type {string}
+     * @memberof BaseFile
+     */
+    'location': string;
+    /**
+     *
+     * @type {User}
+     * @memberof BaseFile
+     */
+    'createdBy': User;
 }
 /**
  *
@@ -658,18 +664,6 @@ export interface BaseFile {
  * @interface BaseFineHandoutEventResponse
  */
 export interface BaseFineHandoutEventResponse {
-    /**
-     * Reference date of fines
-     * @type {string}
-     * @memberof BaseFineHandoutEventResponse
-     */
-    'referenceDate': string;
-    /**
-     *
-     * @type {BaseUserResponse}
-     * @memberof BaseFineHandoutEventResponse
-     */
-    'createdBy': BaseUserResponse;
     /**
      * The unique id of the entity.
      * @type {number}
@@ -694,6 +688,18 @@ export interface BaseFineHandoutEventResponse {
      * @memberof BaseFineHandoutEventResponse
      */
     'version'?: number;
+    /**
+     * Reference date of fines
+     * @type {string}
+     * @memberof BaseFineHandoutEventResponse
+     */
+    'referenceDate': string;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof BaseFineHandoutEventResponse
+     */
+    'createdBy': BaseUserResponse;
 }
 /**
  *
@@ -701,6 +707,30 @@ export interface BaseFineHandoutEventResponse {
  * @interface BaseInvoiceResponse
  */
 export interface BaseInvoiceResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof BaseInvoiceResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof BaseInvoiceResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof BaseInvoiceResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof BaseInvoiceResponse
+     */
+    'version'?: number;
     /**
      *
      * @type {BaseUserResponse}
@@ -731,30 +761,6 @@ export interface BaseInvoiceResponse {
      * @memberof BaseInvoiceResponse
      */
     'transfer'?: TransferResponse;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof BaseInvoiceResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof BaseInvoiceResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof BaseInvoiceResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof BaseInvoiceResponse
-     */
-    'version'?: number;
 }
 /**
  *
@@ -763,12 +769,6 @@ export interface BaseInvoiceResponse {
  */
 export interface BasePayoutRequestResponse {
     /**
-     * The current status of the payout request
-     * @type {string}
-     * @memberof BasePayoutRequestResponse
-     */
-    'status'?: string;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof BasePayoutRequestResponse
@@ -792,6 +792,30 @@ export interface BasePayoutRequestResponse {
      * @memberof BasePayoutRequestResponse
      */
     'version'?: number;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof BasePayoutRequestResponse
+     */
+    'requestedBy': BaseUserResponse;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof BasePayoutRequestResponse
+     */
+    'approvedBy'?: BaseUserResponse;
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof BasePayoutRequestResponse
+     */
+    'amount': DineroObjectResponse;
+    /**
+     * The current status of the payout request
+     * @type {string}
+     * @memberof BasePayoutRequestResponse
+     */
+    'status'?: string;
 }
 /**
  *
@@ -800,12 +824,6 @@ export interface BasePayoutRequestResponse {
  */
 export interface BasePointOfSaleResponse {
     /**
-     * The name of the point-of-sale.
-     * @type {string}
-     * @memberof BasePointOfSaleResponse
-     */
-    'name': string;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof BasePointOfSaleResponse
@@ -829,6 +847,12 @@ export interface BasePointOfSaleResponse {
      * @memberof BasePointOfSaleResponse
      */
     'version'?: number;
+    /**
+     * The name of the point-of-sale.
+     * @type {string}
+     * @memberof BasePointOfSaleResponse
+     */
+    'name': string;
 }
 /**
  *
@@ -836,6 +860,30 @@ export interface BasePointOfSaleResponse {
  * @interface BaseProductResponse
  */
 export interface BaseProductResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof BaseProductResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof BaseProductResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof BaseProductResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof BaseProductResponse
+     */
+    'version'?: number;
     /**
      * The name of the product.
      * @type {string}
@@ -854,30 +902,6 @@ export interface BaseProductResponse {
      * @memberof BaseProductResponse
      */
     'vat': BaseVatGroupResponse;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof BaseProductResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof BaseProductResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof BaseProductResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof BaseProductResponse
-     */
-    'version'?: number;
 }
 /**
  *
@@ -917,30 +941,6 @@ export interface BaseResponse {
  */
 export interface BaseTransactionResponse {
     /**
-     *
-     * @type {BaseUserResponse}
-     * @memberof BaseTransactionResponse
-     */
-    'from': BaseUserResponse;
-    /**
-     *
-     * @type {BaseUserResponse}
-     * @memberof BaseTransactionResponse
-     */
-    'createdBy'?: BaseUserResponse;
-    /**
-     *
-     * @type {BasePointOfSaleResponse}
-     * @memberof BaseTransactionResponse
-     */
-    'pointOfSale': BasePointOfSaleResponse;
-    /**
-     *
-     * @type {Dinero}
-     * @memberof BaseTransactionResponse
-     */
-    'value': Dinero;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof BaseTransactionResponse
@@ -964,6 +964,30 @@ export interface BaseTransactionResponse {
      * @memberof BaseTransactionResponse
      */
     'version'?: number;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof BaseTransactionResponse
+     */
+    'from': BaseUserResponse;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof BaseTransactionResponse
+     */
+    'createdBy'?: BaseUserResponse;
+    /**
+     *
+     * @type {BasePointOfSaleResponse}
+     * @memberof BaseTransactionResponse
+     */
+    'pointOfSale': BasePointOfSaleResponse;
+    /**
+     *
+     * @type {Dinero}
+     * @memberof BaseTransactionResponse
+     */
+    'value': Dinero;
 }
 /**
  *
@@ -971,6 +995,30 @@ export interface BaseTransactionResponse {
  * @interface BaseUserResponse
  */
 export interface BaseUserResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof BaseUserResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof BaseUserResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof BaseUserResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof BaseUserResponse
+     */
+    'version'?: number;
     /**
      * The name of the user.
      * @type {string}
@@ -997,18 +1045,6 @@ export interface BaseUserResponse {
  */
 export interface BaseVatGroupResponse {
     /**
-     * Percentage of VAT
-     * @type {number}
-     * @memberof BaseVatGroupResponse
-     */
-    'percentage': number;
-    /**
-     * Whether VAT should be hidden
-     * @type {boolean}
-     * @memberof BaseVatGroupResponse
-     */
-    'hidden': boolean;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof BaseVatGroupResponse
@@ -1032,6 +1068,18 @@ export interface BaseVatGroupResponse {
      * @memberof BaseVatGroupResponse
      */
     'version'?: number;
+    /**
+     * Percentage of VAT
+     * @type {number}
+     * @memberof BaseVatGroupResponse
+     */
+    'percentage': number;
+    /**
+     * Whether VAT should be hidden
+     * @type {boolean}
+     * @memberof BaseVatGroupResponse
+     */
+    'hidden': boolean;
 }
 /**
  *
@@ -1039,6 +1087,30 @@ export interface BaseVatGroupResponse {
  * @interface BoilerPayoutRequestResponse
  */
 export interface BoilerPayoutRequestResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof BoilerPayoutRequestResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof BoilerPayoutRequestResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof BoilerPayoutRequestResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof BoilerPayoutRequestResponse
+     */
+    'version'?: number;
     /**
      *
      * @type {BaseUserResponse}
@@ -1057,30 +1129,6 @@ export interface BoilerPayoutRequestResponse {
      * @memberof BoilerPayoutRequestResponse
      */
     'amount': DineroObjectResponse;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof BoilerPayoutRequestResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof BoilerPayoutRequestResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof BoilerPayoutRequestResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof BoilerPayoutRequestResponse
-     */
-    'version'?: number;
 }
 /**
  *
@@ -1089,12 +1137,6 @@ export interface BoilerPayoutRequestResponse {
  */
 export interface ContainerResponse {
     /**
-     *
-     * @type {BaseUserResponse}
-     * @memberof ContainerResponse
-     */
-    'owner': BaseUserResponse;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof ContainerResponse
@@ -1118,6 +1160,30 @@ export interface ContainerResponse {
      * @memberof ContainerResponse
      */
     'version'?: number;
+    /**
+     * The name of the container.
+     * @type {string}
+     * @memberof ContainerResponse
+     */
+    'name': string;
+    /**
+     * Public status of the container.
+     * @type {boolean}
+     * @memberof ContainerResponse
+     */
+    'public'?: boolean;
+    /**
+     * The container revision.
+     * @type {number}
+     * @memberof ContainerResponse
+     */
+    'revision'?: number;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof ContainerResponse
+     */
+    'owner': BaseUserResponse;
 }
 /**
  *
@@ -1126,12 +1192,6 @@ export interface ContainerResponse {
  */
 export interface ContainerWithProductsResponse {
     /**
-     * The products in the container.
-     * @type {Array<ProductResponse>}
-     * @memberof ContainerWithProductsResponse
-     */
-    'products': Array<ProductResponse>;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof ContainerWithProductsResponse
@@ -1155,6 +1215,36 @@ export interface ContainerWithProductsResponse {
      * @memberof ContainerWithProductsResponse
      */
     'version'?: number;
+    /**
+     * The name of the container.
+     * @type {string}
+     * @memberof ContainerWithProductsResponse
+     */
+    'name': string;
+    /**
+     * Public status of the container.
+     * @type {boolean}
+     * @memberof ContainerWithProductsResponse
+     */
+    'public'?: boolean;
+    /**
+     * The container revision.
+     * @type {number}
+     * @memberof ContainerWithProductsResponse
+     */
+    'revision'?: number;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof ContainerWithProductsResponse
+     */
+    'owner': BaseUserResponse;
+    /**
+     * The products in the container.
+     * @type {Array<ProductResponse>}
+     * @memberof ContainerWithProductsResponse
+     */
+    'products': Array<ProductResponse>;
 }
 /**
  *
@@ -1573,12 +1663,6 @@ export interface EventAnswerAvailabilityRequest {
  */
 export interface EventInShiftResponse {
     /**
-     * Answers for this shift.
-     * @type {Array<BaseEventAnswerResponse>}
-     * @memberof EventInShiftResponse
-     */
-    'answers'?: Array<BaseEventAnswerResponse>;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof EventInShiftResponse
@@ -1602,6 +1686,24 @@ export interface EventInShiftResponse {
      * @memberof EventInShiftResponse
      */
     'version'?: number;
+    /**
+     * Name of the shift.
+     * @type {string}
+     * @memberof EventInShiftResponse
+     */
+    'name': string;
+    /**
+     * Which roles can fill in this shift.
+     * @type {Array<string>}
+     * @memberof EventInShiftResponse
+     */
+    'roles': Array<string>;
+    /**
+     * Answers for this shift.
+     * @type {Array<BaseEventAnswerResponse>}
+     * @memberof EventInShiftResponse
+     */
+    'answers'?: Array<BaseEventAnswerResponse>;
 }
 /**
  *
@@ -1610,11 +1712,29 @@ export interface EventInShiftResponse {
  */
 export interface EventPlanningSelectedCount {
     /**
-     * Number of times this user was selected for this shift
+     * The unique id of the entity.
      * @type {number}
      * @memberof EventPlanningSelectedCount
      */
-    'count': number;
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof EventPlanningSelectedCount
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof EventPlanningSelectedCount
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof EventPlanningSelectedCount
+     */
+    'version'?: number;
     /**
      * The name of the user.
      * @type {string}
@@ -1633,6 +1753,12 @@ export interface EventPlanningSelectedCount {
      * @memberof EventPlanningSelectedCount
      */
     'nickname'?: string;
+    /**
+     * Number of times this user was selected for this shift
+     * @type {number}
+     * @memberof EventPlanningSelectedCount
+     */
+    'count': number;
 }
 /**
  *
@@ -1641,12 +1767,6 @@ export interface EventPlanningSelectedCount {
  */
 export interface EventResponse {
     /**
-     * Shifts for this event
-     * @type {Array<EventInShiftResponse>}
-     * @memberof EventResponse
-     */
-    'shifts': Array<EventInShiftResponse>;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof EventResponse
@@ -1670,6 +1790,42 @@ export interface EventResponse {
      * @memberof EventResponse
      */
     'version'?: number;
+    /**
+     * Name of the borrel.
+     * @type {string}
+     * @memberof EventResponse
+     */
+    'name': string;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof EventResponse
+     */
+    'createdBy': BaseUserResponse;
+    /**
+     * The starting date of the event.
+     * @type {string}
+     * @memberof EventResponse
+     */
+    'startDate': string;
+    /**
+     * The end date of the event.
+     * @type {string}
+     * @memberof EventResponse
+     */
+    'endDate': string;
+    /**
+     * The tpye of event.
+     * @type {string}
+     * @memberof EventResponse
+     */
+    'type': string;
+    /**
+     * Shifts for this event
+     * @type {Array<EventInShiftResponse>}
+     * @memberof EventResponse
+     */
+    'shifts': Array<EventInShiftResponse>;
 }
 /**
  *
@@ -1678,12 +1834,6 @@ export interface EventResponse {
  */
 export interface EventShiftResponse {
     /**
-     * Which roles can fill in this shift.
-     * @type {Array<string>}
-     * @memberof EventShiftResponse
-     */
-    'roles': Array<string>;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof EventShiftResponse
@@ -1707,6 +1857,18 @@ export interface EventShiftResponse {
      * @memberof EventShiftResponse
      */
     'version'?: number;
+    /**
+     * Name of the shift.
+     * @type {string}
+     * @memberof EventShiftResponse
+     */
+    'name': string;
+    /**
+     * Which roles can fill in this shift.
+     * @type {Array<string>}
+     * @memberof EventShiftResponse
+     */
+    'roles': Array<string>;
 }
 /**
  *
@@ -1745,12 +1907,6 @@ export type FinancialMutationResponseMutation = BaseTransactionResponse | Transf
  */
 export interface FineHandoutEventResponse {
     /**
-     * Fines that have been handed out
-     * @type {Array<FineResponse>}
-     * @memberof FineHandoutEventResponse
-     */
-    'fines': Array<FineResponse>;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof FineHandoutEventResponse
@@ -1774,6 +1930,24 @@ export interface FineHandoutEventResponse {
      * @memberof FineHandoutEventResponse
      */
     'version'?: number;
+    /**
+     * Reference date of fines
+     * @type {string}
+     * @memberof FineHandoutEventResponse
+     */
+    'referenceDate': string;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof FineHandoutEventResponse
+     */
+    'createdBy': BaseUserResponse;
+    /**
+     * Fines that have been handed out
+     * @type {Array<FineResponse>}
+     * @memberof FineHandoutEventResponse
+     */
+    'fines': Array<FineResponse>;
 }
 /**
  *
@@ -1781,6 +1955,30 @@ export interface FineHandoutEventResponse {
  * @interface FineResponse
  */
 export interface FineResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof FineResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof FineResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof FineResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof FineResponse
+     */
+    'version'?: number;
     /**
      *
      * @type {DineroObjectResponse}
@@ -1793,30 +1991,6 @@ export interface FineResponse {
      * @memberof FineResponse
      */
     'user'?: BaseUserResponse;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof FineResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof FineResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof FineResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof FineResponse
-     */
-    'version'?: number;
 }
 /**
  *
@@ -1949,12 +2123,6 @@ export interface InvoiceEntryResponse {
  */
 export interface InvoiceResponse {
     /**
-     * The entries of the invoice
-     * @type {Array<InvoiceEntryResponse>}
-     * @memberof InvoiceResponse
-     */
-    'invoiceEntries': Array<InvoiceEntryResponse>;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof InvoiceResponse
@@ -1978,6 +2146,42 @@ export interface InvoiceResponse {
      * @memberof InvoiceResponse
      */
     'version'?: number;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof InvoiceResponse
+     */
+    'to': BaseUserResponse;
+    /**
+     * Name of the addressed.
+     * @type {string}
+     * @memberof InvoiceResponse
+     */
+    'addressee': string;
+    /**
+     * Description of the invoice.
+     * @type {string}
+     * @memberof InvoiceResponse
+     */
+    'description': string;
+    /**
+     *
+     * @type {InvoiceStatusResponse}
+     * @memberof InvoiceResponse
+     */
+    'currentState': InvoiceStatusResponse;
+    /**
+     *
+     * @type {TransferResponse}
+     * @memberof InvoiceResponse
+     */
+    'transfer'?: TransferResponse;
+    /**
+     * The entries of the invoice
+     * @type {Array<InvoiceEntryResponse>}
+     * @memberof InvoiceResponse
+     */
+    'invoiceEntries': Array<InvoiceEntryResponse>;
 }
 /**
  *
@@ -1986,12 +2190,6 @@ export interface InvoiceResponse {
  */
 export interface InvoiceResponseTypes {
     /**
-     * The entries of the invoice
-     * @type {Array<InvoiceEntryResponse>}
-     * @memberof InvoiceResponseTypes
-     */
-    'invoiceEntries'?: Array<InvoiceEntryResponse>;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof InvoiceResponseTypes
@@ -2015,6 +2213,42 @@ export interface InvoiceResponseTypes {
      * @memberof InvoiceResponseTypes
      */
     'version'?: number;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof InvoiceResponseTypes
+     */
+    'to': BaseUserResponse;
+    /**
+     * Name of the addressed.
+     * @type {string}
+     * @memberof InvoiceResponseTypes
+     */
+    'addressee': string;
+    /**
+     * Description of the invoice.
+     * @type {string}
+     * @memberof InvoiceResponseTypes
+     */
+    'description': string;
+    /**
+     *
+     * @type {InvoiceStatusResponse}
+     * @memberof InvoiceResponseTypes
+     */
+    'currentState': InvoiceStatusResponse;
+    /**
+     *
+     * @type {TransferResponse}
+     * @memberof InvoiceResponseTypes
+     */
+    'transfer'?: TransferResponse;
+    /**
+     * The entries of the invoice
+     * @type {Array<InvoiceEntryResponse>}
+     * @memberof InvoiceResponseTypes
+     */
+    'invoiceEntries'?: Array<InvoiceEntryResponse>;
 }
 /**
  *
@@ -2049,18 +2283,6 @@ export type InvoiceStatusResponseStateEnum = typeof InvoiceStatusResponseStateEn
  */
 export interface InvoiceUser {
     /**
-     *
-     * @type {User}
-     * @memberof InvoiceUser
-     */
-    'user': User;
-    /**
-     * Whether the user gets automatic invoices
-     * @type {boolean}
-     * @memberof InvoiceUser
-     */
-    'automatic'?: boolean;
-    /**
      * The creation date of the object.
      * @type {string}
      * @memberof InvoiceUser
@@ -2078,6 +2300,24 @@ export interface InvoiceUser {
      * @memberof InvoiceUser
      */
     'version'?: number;
+    /**
+     * The auto-generated object id.
+     * @type {number}
+     * @memberof InvoiceUser
+     */
+    'id': number;
+    /**
+     *
+     * @type {User}
+     * @memberof InvoiceUser
+     */
+    'user': User;
+    /**
+     * Whether the user gets automatic invoices
+     * @type {boolean}
+     * @memberof InvoiceUser
+     */
+    'automatic'?: boolean;
 }
 /**
  *
@@ -2085,6 +2325,30 @@ export interface InvoiceUser {
  * @interface LocalUser
  */
 export interface LocalUser {
+    /**
+     * The creation date of the object.
+     * @type {string}
+     * @memberof LocalUser
+     */
+    'createdAt'?: string;
+    /**
+     * The last update date of the object.
+     * @type {string}
+     * @memberof LocalUser
+     */
+    'updatedAt'?: string;
+    /**
+     * The current version of the object.
+     * @type {number}
+     * @memberof LocalUser
+     */
+    'version'?: number;
+    /**
+     * The auto-generated object id.
+     * @type {number}
+     * @memberof LocalUser
+     */
+    'id': number;
     /**
      *
      * @type {User}
@@ -2097,24 +2361,6 @@ export interface LocalUser {
      * @memberof LocalUser
      */
     'passwordHash': string;
-    /**
-     * The creation date of the object.
-     * @type {string}
-     * @memberof LocalUser
-     */
-    'createdAt'?: string;
-    /**
-     * The last update date of the object.
-     * @type {string}
-     * @memberof LocalUser
-     */
-    'updatedAt'?: string;
-    /**
-     * The current version of the object.
-     * @type {number}
-     * @memberof LocalUser
-     */
-    'version'?: number;
 }
 /**
  *
@@ -2528,24 +2774,6 @@ export interface PayoutRequestRequest {
  */
 export interface PayoutRequestResponse {
     /**
-     * Statuses of this payout response over time
-     * @type {Array<PayoutRequestStatusResponse>}
-     * @memberof PayoutRequestResponse
-     */
-    'status': Array<PayoutRequestStatusResponse>;
-    /**
-     * Bank account number
-     * @type {string}
-     * @memberof PayoutRequestResponse
-     */
-    'bankAccountNumber': string;
-    /**
-     * Name of the account owner
-     * @type {string}
-     * @memberof PayoutRequestResponse
-     */
-    'bankAccountName': string;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof PayoutRequestResponse
@@ -2569,6 +2797,42 @@ export interface PayoutRequestResponse {
      * @memberof PayoutRequestResponse
      */
     'version'?: number;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof PayoutRequestResponse
+     */
+    'requestedBy': BaseUserResponse;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof PayoutRequestResponse
+     */
+    'approvedBy'?: BaseUserResponse;
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof PayoutRequestResponse
+     */
+    'amount': DineroObjectResponse;
+    /**
+     * Statuses of this payout response over time
+     * @type {Array<PayoutRequestStatusResponse>}
+     * @memberof PayoutRequestResponse
+     */
+    'status': Array<PayoutRequestStatusResponse>;
+    /**
+     * Bank account number
+     * @type {string}
+     * @memberof PayoutRequestResponse
+     */
+    'bankAccountNumber': string;
+    /**
+     * Name of the account owner
+     * @type {string}
+     * @memberof PayoutRequestResponse
+     */
+    'bankAccountName': string;
 }
 /**
  *
@@ -2597,12 +2861,6 @@ export type PayoutRequestStatusRequestStateEnum = typeof PayoutRequestStatusRequ
  */
 export interface PayoutRequestStatusResponse {
     /**
-     * The state of this status change
-     * @type {string}
-     * @memberof PayoutRequestStatusResponse
-     */
-    'state': string;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof PayoutRequestStatusResponse
@@ -2626,6 +2884,12 @@ export interface PayoutRequestStatusResponse {
      * @memberof PayoutRequestStatusResponse
      */
     'version'?: number;
+    /**
+     * The state of this status change
+     * @type {string}
+     * @memberof PayoutRequestStatusResponse
+     */
+    'state': string;
 }
 /**
  *
@@ -2633,6 +2897,36 @@ export interface PayoutRequestStatusResponse {
  * @interface PointOfSaleResponse
  */
 export interface PointOfSaleResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof PointOfSaleResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof PointOfSaleResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof PointOfSaleResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof PointOfSaleResponse
+     */
+    'version'?: number;
+    /**
+     * The name of the point-of-sale.
+     * @type {string}
+     * @memberof PointOfSaleResponse
+     */
+    'name': string;
     /**
      *
      * @type {BaseUserResponse}
@@ -2651,30 +2945,6 @@ export interface PointOfSaleResponse {
      * @memberof PointOfSaleResponse
      */
     'useAuthentication': boolean;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof PointOfSaleResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof PointOfSaleResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof PointOfSaleResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof PointOfSaleResponse
-     */
-    'version'?: number;
 }
 /**
  *
@@ -2683,12 +2953,6 @@ export interface PointOfSaleResponse {
  */
 export interface PointOfSaleWithContainersResponse {
     /**
-     * The containers in the point-of-sale.
-     * @type {Array<ContainerWithProductsResponse>}
-     * @memberof PointOfSaleWithContainersResponse
-     */
-    'containers': Array<ContainerWithProductsResponse>;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof PointOfSaleWithContainersResponse
@@ -2712,6 +2976,36 @@ export interface PointOfSaleWithContainersResponse {
      * @memberof PointOfSaleWithContainersResponse
      */
     'version'?: number;
+    /**
+     * The name of the point-of-sale.
+     * @type {string}
+     * @memberof PointOfSaleWithContainersResponse
+     */
+    'name': string;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof PointOfSaleWithContainersResponse
+     */
+    'owner'?: BaseUserResponse;
+    /**
+     * Revision of the POS
+     * @type {number}
+     * @memberof PointOfSaleWithContainersResponse
+     */
+    'revision': number;
+    /**
+     * Whether this POS requires users to authenticate themselves before making a transaction
+     * @type {boolean}
+     * @memberof PointOfSaleWithContainersResponse
+     */
+    'useAuthentication': boolean;
+    /**
+     * The containers in the point-of-sale.
+     * @type {Array<ContainerWithProductsResponse>}
+     * @memberof PointOfSaleWithContainersResponse
+     */
+    'containers': Array<ContainerWithProductsResponse>;
 }
 /**
  *
@@ -2733,12 +3027,6 @@ export interface ProductCategoryRequest {
  */
 export interface ProductCategoryResponse {
     /**
-     * The name of the productCategory.
-     * @type {string}
-     * @memberof ProductCategoryResponse
-     */
-    'name': string;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof ProductCategoryResponse
@@ -2762,6 +3050,12 @@ export interface ProductCategoryResponse {
      * @memberof ProductCategoryResponse
      */
     'version'?: number;
+    /**
+     * The name of the productCategory.
+     * @type {string}
+     * @memberof ProductCategoryResponse
+     */
+    'name': string;
 }
 /**
  *
@@ -2769,6 +3063,48 @@ export interface ProductCategoryResponse {
  * @interface ProductResponse
  */
 export interface ProductResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof ProductResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof ProductResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof ProductResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof ProductResponse
+     */
+    'version'?: number;
+    /**
+     * The name of the product.
+     * @type {string}
+     * @memberof ProductResponse
+     */
+    'name': string;
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof ProductResponse
+     */
+    'priceInclVat': DineroObjectResponse;
+    /**
+     *
+     * @type {BaseVatGroupResponse}
+     * @memberof ProductResponse
+     */
+    'vat': BaseVatGroupResponse;
     /**
      * The product revision ID
      * @type {number}
@@ -2805,30 +3141,6 @@ export interface ProductResponse {
      * @memberof ProductResponse
      */
     'alcoholPercentage': number;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof ProductResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof ProductResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof ProductResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof ProductResponse
-     */
-    'version'?: number;
 }
 /**
  *
@@ -2920,24 +3232,6 @@ export interface SimpleFileRequest {
  */
 export interface SimpleFileResponse {
     /**
-     * The filename of the file
-     * @type {string}
-     * @memberof SimpleFileResponse
-     */
-    'downloadName': string;
-    /**
-     * The location of the file in storage
-     * @type {string}
-     * @memberof SimpleFileResponse
-     */
-    'location': string;
-    /**
-     *
-     * @type {UserResponse}
-     * @memberof SimpleFileResponse
-     */
-    'createdBy': UserResponse;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof SimpleFileResponse
@@ -2961,6 +3255,24 @@ export interface SimpleFileResponse {
      * @memberof SimpleFileResponse
      */
     'version'?: number;
+    /**
+     * The filename of the file
+     * @type {string}
+     * @memberof SimpleFileResponse
+     */
+    'downloadName': string;
+    /**
+     * The location of the file in storage
+     * @type {string}
+     * @memberof SimpleFileResponse
+     */
+    'location': string;
+    /**
+     *
+     * @type {UserResponse}
+     * @memberof SimpleFileResponse
+     */
+    'createdBy': UserResponse;
 }
 /**
  *
@@ -2968,6 +3280,30 @@ export interface SimpleFileResponse {
  * @interface StripeDepositResponse
  */
 export interface StripeDepositResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof StripeDepositResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof StripeDepositResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof StripeDepositResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof StripeDepositResponse
+     */
+    'version'?: number;
     /**
      * The ID of the payment intent in Stripe
      * @type {string}
@@ -2992,30 +3328,6 @@ export interface StripeDepositResponse {
      * @memberof StripeDepositResponse
      */
     'to': BaseUserResponse;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof StripeDepositResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof StripeDepositResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof StripeDepositResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof StripeDepositResponse
-     */
-    'version'?: number;
 }
 /**
  *
@@ -3024,12 +3336,6 @@ export interface StripeDepositResponse {
  */
 export interface StripeDepositStatusResponse {
     /**
-     * State of the Stripe deposit. It can be 1 (\'CREATED\'), 2 (\'PROCESSING\'), 3 (\'SUCCEEDED\'), or 4 (\'FAILED\')
-     * @type {number}
-     * @memberof StripeDepositStatusResponse
-     */
-    'state': number;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof StripeDepositStatusResponse
@@ -3053,6 +3359,12 @@ export interface StripeDepositStatusResponse {
      * @memberof StripeDepositStatusResponse
      */
     'version'?: number;
+    /**
+     * State of the Stripe deposit. It can be 1 (\'CREATED\'), 2 (\'PROCESSING\'), 3 (\'SUCCEEDED\'), or 4 (\'FAILED\')
+     * @type {number}
+     * @memberof StripeDepositStatusResponse
+     */
+    'state': number;
 }
 /**
  *
@@ -3060,6 +3372,30 @@ export interface StripeDepositStatusResponse {
  * @interface StripePaymentIntentResponse
  */
 export interface StripePaymentIntentResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof StripePaymentIntentResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof StripePaymentIntentResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof StripePaymentIntentResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof StripePaymentIntentResponse
+     */
+    'version'?: number;
     /**
      * ID of the intent in Stripe.
      * @type {string}
@@ -3072,30 +3408,6 @@ export interface StripePaymentIntentResponse {
      * @memberof StripePaymentIntentResponse
      */
     'clientSecret': string;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof StripePaymentIntentResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof StripePaymentIntentResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof StripePaymentIntentResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof StripePaymentIntentResponse
-     */
-    'version'?: number;
 }
 /**
  *
@@ -3148,30 +3460,6 @@ export interface SubTransactionRequest {
  */
 export interface SubTransactionResponse {
     /**
-     *
-     * @type {BaseUserResponse}
-     * @memberof SubTransactionResponse
-     */
-    'to': BaseUserResponse;
-    /**
-     *
-     * @type {BaseContainerResponse}
-     * @memberof SubTransactionResponse
-     */
-    'container': BaseContainerResponse;
-    /**
-     * The rows of this     SubTransaction
-     * @type {Array<SubTransactionRowResponse>}
-     * @memberof SubTransactionResponse
-     */
-    'subTransactionRows': Array<SubTransactionRowResponse>;
-    /**
-     *
-     * @type {DineroObjectResponse}
-     * @memberof SubTransactionResponse
-     */
-    'totalPriceInclVat': DineroObjectResponse;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof SubTransactionResponse
@@ -3195,6 +3483,30 @@ export interface SubTransactionResponse {
      * @memberof SubTransactionResponse
      */
     'version'?: number;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof SubTransactionResponse
+     */
+    'to': BaseUserResponse;
+    /**
+     *
+     * @type {BaseContainerResponse}
+     * @memberof SubTransactionResponse
+     */
+    'container': BaseContainerResponse;
+    /**
+     * The rows of this     SubTransaction
+     * @type {Array<SubTransactionRowResponse>}
+     * @memberof SubTransactionResponse
+     */
+    'subTransactionRows': Array<SubTransactionRowResponse>;
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof SubTransactionResponse
+     */
+    'totalPriceInclVat': DineroObjectResponse;
 }
 /**
  *
@@ -3228,24 +3540,6 @@ export interface SubTransactionRowRequest {
  */
 export interface SubTransactionRowResponse {
     /**
-     *
-     * @type {BaseProductResponse}
-     * @memberof SubTransactionRowResponse
-     */
-    'product': BaseProductResponse;
-    /**
-     * The amount that has been bought
-     * @type {number}
-     * @memberof SubTransactionRowResponse
-     */
-    'amount': number;
-    /**
-     *
-     * @type {DineroObjectResponse}
-     * @memberof SubTransactionRowResponse
-     */
-    'totalPriceInclVat': DineroObjectResponse;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof SubTransactionRowResponse
@@ -3269,6 +3563,24 @@ export interface SubTransactionRowResponse {
      * @memberof SubTransactionRowResponse
      */
     'version'?: number;
+    /**
+     *
+     * @type {BaseProductResponse}
+     * @memberof SubTransactionRowResponse
+     */
+    'product': BaseProductResponse;
+    /**
+     * The amount that has been bought
+     * @type {number}
+     * @memberof SubTransactionRowResponse
+     */
+    'amount': number;
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof SubTransactionRowResponse
+     */
+    'totalPriceInclVat': DineroObjectResponse;
 }
 /**
  *
@@ -3542,6 +3854,30 @@ export interface TransactionRequest {
  */
 export interface TransactionResponse {
     /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof TransactionResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof TransactionResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof TransactionResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof TransactionResponse
+     */
+    'version'?: number;
+    /**
      *
      * @type {BaseUserResponse}
      * @memberof TransactionResponse
@@ -3571,30 +3907,6 @@ export interface TransactionResponse {
      * @memberof TransactionResponse
      */
     'totalPriceInclVat': DineroObjectResponse;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof TransactionResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof TransactionResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof TransactionResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof TransactionResponse
-     */
-    'version'?: number;
 }
 /**
  *
@@ -3639,6 +3951,30 @@ export interface TransferRequest {
  * @interface TransferResponse
  */
 export interface TransferResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof TransferResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof TransferResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof TransferResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof TransferResponse
+     */
+    'version'?: number;
     /**
      * Description of the transfer
      * @type {string}
@@ -3693,30 +4029,6 @@ export interface TransferResponse {
      * @memberof TransferResponse
      */
     'waivedFines'?: UserFineGroupResponse;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof TransferResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof TransferResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof TransferResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof TransferResponse
-     */
-    'version'?: number;
 }
 /**
  *
@@ -4044,6 +4356,30 @@ export interface UpdateVatGroupRequest {
  */
 export interface User {
     /**
+     * The creation date of the object.
+     * @type {string}
+     * @memberof User
+     */
+    'createdAt'?: string;
+    /**
+     * The last update date of the object.
+     * @type {string}
+     * @memberof User
+     */
+    'updatedAt'?: string;
+    /**
+     * The current version of the object.
+     * @type {number}
+     * @memberof User
+     */
+    'version'?: number;
+    /**
+     * The auto-generated object id.
+     * @type {number}
+     * @memberof User
+     */
+    'id': number;
+    /**
      * First name of the user.
      * @type {string}
      * @memberof User
@@ -4097,24 +4433,6 @@ export interface User {
      * @memberof User
      */
     'type': UserTypeEnum;
-    /**
-     * The creation date of the object.
-     * @type {string}
-     * @memberof User
-     */
-    'createdAt'?: string;
-    /**
-     * The last update date of the object.
-     * @type {string}
-     * @memberof User
-     */
-    'updatedAt'?: string;
-    /**
-     * The current version of the object.
-     * @type {number}
-     * @memberof User
-     */
-    'version'?: number;
 }
 export declare const UserTypeEnum: {
     readonly _1: "1";
@@ -4145,6 +4463,48 @@ export interface UserFineGroupResponse {
  * @interface UserResponse
  */
 export interface UserResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof UserResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof UserResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof UserResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof UserResponse
+     */
+    'version'?: number;
+    /**
+     * The name of the user.
+     * @type {string}
+     * @memberof UserResponse
+     */
+    'firstName': string;
+    /**
+     * The last name of the user
+     * @type {string}
+     * @memberof UserResponse
+     */
+    'lastName': string;
+    /**
+     * The nickname of the user
+     * @type {string}
+     * @memberof UserResponse
+     */
+    'nickname'?: string;
     /**
      * Whether the user activated
      * @type {boolean}
@@ -4193,24 +4553,6 @@ export interface UserResponse {
      * @memberof UserResponse
      */
     'canGoIntoDebt': boolean;
-    /**
-     * The name of the user.
-     * @type {string}
-     * @memberof UserResponse
-     */
-    'firstName': string;
-    /**
-     * The last name of the user
-     * @type {string}
-     * @memberof UserResponse
-     */
-    'lastName': string;
-    /**
-     * The nickname of the user
-     * @type {string}
-     * @memberof UserResponse
-     */
-    'nickname'?: string;
 }
 /**
  *
@@ -4244,18 +4586,6 @@ export interface UserToFineResponse {
  */
 export interface UserVoucherGroup {
     /**
-     *
-     * @type {User}
-     * @memberof UserVoucherGroup
-     */
-    'user': User;
-    /**
-     *
-     * @type {VoucherGroup}
-     * @memberof UserVoucherGroup
-     */
-    'voucherGroup': VoucherGroup;
-    /**
      * The creation date of the object.
      * @type {string}
      * @memberof UserVoucherGroup
@@ -4273,6 +4603,24 @@ export interface UserVoucherGroup {
      * @memberof UserVoucherGroup
      */
     'version'?: number;
+    /**
+     * The auto-generated object id.
+     * @type {number}
+     * @memberof UserVoucherGroup
+     */
+    'id': number;
+    /**
+     *
+     * @type {User}
+     * @memberof UserVoucherGroup
+     */
+    'user': User;
+    /**
+     *
+     * @type {VoucherGroup}
+     * @memberof UserVoucherGroup
+     */
+    'voucherGroup': VoucherGroup;
 }
 /**
  *
@@ -4337,6 +4685,30 @@ export interface VatDeclarationRow {
  */
 export interface VatGroup {
     /**
+     * The creation date of the object.
+     * @type {string}
+     * @memberof VatGroup
+     */
+    'createdAt'?: string;
+    /**
+     * The last update date of the object.
+     * @type {string}
+     * @memberof VatGroup
+     */
+    'updatedAt'?: string;
+    /**
+     * The current version of the object.
+     * @type {number}
+     * @memberof VatGroup
+     */
+    'version'?: number;
+    /**
+     * The auto-generated object id.
+     * @type {number}
+     * @memberof VatGroup
+     */
+    'id': number;
+    /**
      * Name of the VAT group
      * @type {string}
      * @memberof VatGroup
@@ -4360,24 +4732,6 @@ export interface VatGroup {
      * @memberof VatGroup
      */
     'hidden'?: boolean;
-    /**
-     * The creation date of the object.
-     * @type {string}
-     * @memberof VatGroup
-     */
-    'createdAt'?: string;
-    /**
-     * The last update date of the object.
-     * @type {string}
-     * @memberof VatGroup
-     */
-    'updatedAt'?: string;
-    /**
-     * The current version of the object.
-     * @type {number}
-     * @memberof VatGroup
-     */
-    'version'?: number;
 }
 /**
  *
@@ -4385,12 +4739,6 @@ export interface VatGroup {
  * @interface VatGroupRequest
  */
 export interface VatGroupRequest {
-    /**
-     * VAT percentage
-     * @type {number}
-     * @memberof VatGroupRequest
-     */
-    'percentage': number;
     /**
      * Name of the VAT group
      * @type {string}
@@ -4409,6 +4757,12 @@ export interface VatGroupRequest {
      * @memberof VatGroupRequest
      */
     'hidden': boolean;
+    /**
+     * VAT percentage
+     * @type {number}
+     * @memberof VatGroupRequest
+     */
+    'percentage': number;
 }
 /**
  *
@@ -4416,6 +4770,30 @@ export interface VatGroupRequest {
  * @interface VoucherGroup
  */
 export interface VoucherGroup {
+    /**
+     * The creation date of the object.
+     * @type {string}
+     * @memberof VoucherGroup
+     */
+    'createdAt'?: string;
+    /**
+     * The last update date of the object.
+     * @type {string}
+     * @memberof VoucherGroup
+     */
+    'updatedAt'?: string;
+    /**
+     * The current version of the object.
+     * @type {number}
+     * @memberof VoucherGroup
+     */
+    'version'?: number;
+    /**
+     * The auto-generated object id.
+     * @type {number}
+     * @memberof VoucherGroup
+     */
+    'id': number;
     /**
      * Name of the group.
      * @type {string}
@@ -4440,24 +4818,6 @@ export interface VoucherGroup {
      * @memberof VoucherGroup
      */
     'vouchers': Array<User>;
-    /**
-     * The creation date of the object.
-     * @type {string}
-     * @memberof VoucherGroup
-     */
-    'createdAt'?: string;
-    /**
-     * The last update date of the object.
-     * @type {string}
-     * @memberof VoucherGroup
-     */
-    'updatedAt'?: string;
-    /**
-     * The current version of the object.
-     * @type {number}
-     * @memberof VoucherGroup
-     */
-    'version'?: number;
 }
 /**
  *
@@ -4503,6 +4863,30 @@ export interface VoucherGroupRequest {
  */
 export interface VoucherGroupResponse {
     /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof VoucherGroupResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof VoucherGroupResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof VoucherGroupResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof VoucherGroupResponse
+     */
+    'version'?: number;
+    /**
      * Name of the voucher group
      * @type {string}
      * @memberof VoucherGroupResponse
@@ -4538,30 +4922,6 @@ export interface VoucherGroupResponse {
      * @memberof VoucherGroupResponse
      */
     'amount': number;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof VoucherGroupResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof VoucherGroupResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof VoucherGroupResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof VoucherGroupResponse
-     */
-    'version'?: number;
 }
 /**
  * AuthenticateApi - axios parameter creator
