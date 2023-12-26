@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * sudosos-back-end
- * Add your description
+ * SudoSOS
  *
  * The version of the OpenAPI document: 0.1.0
  * 

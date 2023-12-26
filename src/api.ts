@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * sudosos-back-end
- * Add your description
+ * SudoSOS
  *
  * The version of the OpenAPI document: 0.1.0
  * 
@@ -408,7 +408,7 @@ export interface BaseContainerResponse {
      * @type {boolean}
      * @memberof BaseContainerResponse
      */
-    'public': boolean;
+    'public'?: boolean;
     /**
      * The container revision.
      * @type {number}
@@ -1836,7 +1836,7 @@ export interface FineResponse {
      * @type {BaseUserResponse}
      * @memberof FineResponse
      */
-    'user': BaseUserResponse;
+    'user'?: BaseUserResponse;
     /**
      * The unique id of the entity.
      * @type {number}
@@ -3079,7 +3079,7 @@ export interface StripeDepositStatusResponse {
      * @type {number}
      * @memberof StripeDepositStatusResponse
      */
-    'state': StripeDepositStatusResponseStateEnum;
+    'state': number;
     /**
      * The unique id of the entity.
      * @type {number}
@@ -3105,16 +3105,6 @@ export interface StripeDepositStatusResponse {
      */
     'version'?: number;
 }
-
-export const StripeDepositStatusResponseStateEnum = {
-    NUMBER_1: 1,
-    NUMBER_2: 2,
-    NUMBER_3: 3,
-    NUMBER_4: 4
-} as const;
-
-export type StripeDepositStatusResponseStateEnum = typeof StripeDepositStatusResponseStateEnum[keyof typeof StripeDepositStatusResponseStateEnum];
-
 /**
  * 
  * @export
@@ -8055,7 +8045,7 @@ export const EventsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getEventShiftCount(id: number, eventType?: string, afterDate?: string, beforeDate?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedEventShiftResponse>> {
+        async getEventShiftCount(id: number, eventType?: string, afterDate?: string, beforeDate?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<PaginatedEventShiftResponse>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getEventShiftCount(id, eventType, afterDate, beforeDate, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -8208,7 +8198,7 @@ export const EventsApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getEventShiftCount(id: number, eventType?: string, afterDate?: string, beforeDate?: string, options?: any): AxiosPromise<PaginatedEventShiftResponse> {
+        getEventShiftCount(id: number, eventType?: string, afterDate?: string, beforeDate?: string, options?: any): AxiosPromise<Array<PaginatedEventShiftResponse>> {
             return localVarFp.getEventShiftCount(id, eventType, afterDate, beforeDate, options).then((request) => request(axios, basePath));
         },
         /**
@@ -12355,11 +12345,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {boolean} [active] Filter based if the user is active
          * @param {boolean} [ofAge] Filter based if the user is 18+
          * @param {number} [id] Filter based on user ID
-         * @param {string} [type] {MEMBER,ORGAN,VOUCHER,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
+         * @param {'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE'} [type] Filter based on user type.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllUsers: async (take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllUsers: async (take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: 'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE', options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/users`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -13395,11 +13385,11 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {boolean} [active] Filter based if the user is active
          * @param {boolean} [ofAge] Filter based if the user is 18+
          * @param {number} [id] Filter based on user ID
-         * @param {string} [type] {MEMBER,ORGAN,VOUCHER,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
+         * @param {'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE'} [type] Filter based on user type.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllUsers(take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUserResponse>> {
+        async getAllUsers(take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: 'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE', options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUserResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getAllUsers(take, skip, search, active, ofAge, id, type, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -13585,7 +13575,7 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateUser(id: number, updateUserRequest: UpdateUserRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserResponse>> {
+        async updateUser(id: number, updateUserRequest: UpdateUserRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpdateUserRequest>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateUser(id, updateUserRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -13726,11 +13716,11 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * @param {boolean} [active] Filter based if the user is active
          * @param {boolean} [ofAge] Filter based if the user is 18+
          * @param {number} [id] Filter based on user ID
-         * @param {string} [type] {MEMBER,ORGAN,VOUCHER,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
+         * @param {'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE'} [type] Filter based on user type.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllUsers(take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: string, options?: any): AxiosPromise<PaginatedUserResponse> {
+        getAllUsers(take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: 'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE', options?: any): AxiosPromise<PaginatedUserResponse> {
             return localVarFp.getAllUsers(take, skip, search, active, ofAge, id, type, options).then((request) => request(axios, basePath));
         },
         /**
@@ -13902,7 +13892,7 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUser(id: number, updateUserRequest: UpdateUserRequest, options?: any): AxiosPromise<UserResponse> {
+        updateUser(id: number, updateUserRequest: UpdateUserRequest, options?: any): AxiosPromise<UpdateUserRequest> {
             return localVarFp.updateUser(id, updateUserRequest, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14049,12 +14039,12 @@ export class UsersApi extends BaseAPI {
      * @param {boolean} [active] Filter based if the user is active
      * @param {boolean} [ofAge] Filter based if the user is 18+
      * @param {number} [id] Filter based on user ID
-     * @param {string} [type] {MEMBER,ORGAN,VOUCHER,LOCAL_USER,LOCAL_ADMIN,INVOICE,AUTOMATIC_INVOICE} - Filter based on user type.
+     * @param {'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE'} [type] Filter based on user type.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public getAllUsers(take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: string, options?: AxiosRequestConfig) {
+    public getAllUsers(take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: 'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE', options?: AxiosRequestConfig) {
         return UsersApiFp(this.configuration).getAllUsers(take, skip, search, active, ofAge, id, type, options).then((request) => request(this.axios, this.basePath));
     }
 

@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.7.0",
-    "@sudosos/sudosos-backend": "github:GEWIS/sudosos-backend#main",
+    "@sudosos/sudosos-backend": "github:GEWIS/sudosos-backend#feature/express-jsdoc-swagger",
     "@types/node": "^18.7.7",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
     "@typescript-eslint/parser": "^6.14.0",
