@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { Configuration } from './configuration';
-import type { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
+import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import type { RequestArgs } from './base';
 import { BaseAPI } from './base';
 /**
@@ -989,30 +989,6 @@ export interface BaseUserResponse {
      * @memberof BaseUserResponse
      */
     'nickname'?: string;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof BaseUserResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof BaseUserResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof BaseUserResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof BaseUserResponse
-     */
-    'version'?: number;
 }
 /**
  *
@@ -1640,29 +1616,23 @@ export interface EventPlanningSelectedCount {
      */
     'count': number;
     /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof EventPlanningSelectedCount
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
+     * The name of the user.
      * @type {string}
      * @memberof EventPlanningSelectedCount
      */
-    'createdAt'?: string;
+    'firstName': string;
     /**
-     * The last update Date of the entity.
+     * The last name of the user
      * @type {string}
      * @memberof EventPlanningSelectedCount
      */
-    'updatedAt'?: string;
+    'lastName': string;
     /**
-     * The version of the entity.
-     * @type {number}
+     * The nickname of the user
+     * @type {string}
      * @memberof EventPlanningSelectedCount
      */
-    'version'?: number;
+    'nickname'?: string;
 }
 /**
  *
@@ -4224,29 +4194,23 @@ export interface UserResponse {
      */
     'canGoIntoDebt': boolean;
     /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof UserResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
+     * The name of the user.
      * @type {string}
      * @memberof UserResponse
      */
-    'createdAt'?: string;
+    'firstName': string;
     /**
-     * The last update Date of the entity.
+     * The last name of the user
      * @type {string}
      * @memberof UserResponse
      */
-    'updatedAt'?: string;
+    'lastName': string;
     /**
-     * The version of the entity.
-     * @type {number}
+     * The nickname of the user
+     * @type {string}
      * @memberof UserResponse
      */
-    'version'?: number;
+    'nickname'?: string;
 }
 /**
  *
@@ -4611,7 +4575,7 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    eanAuthentication: (authenticationEanRequest: AuthenticationEanRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    eanAuthentication: (authenticationEanRequest: AuthenticationEanRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary LDAP login and hand out token    If user has never signed in before this also creates an GEWIS account.
@@ -4619,7 +4583,7 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    gewisLDAPAuthentication: (authenticationLDAPRequest: AuthenticationLDAPRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    gewisLDAPAuthentication: (authenticationLDAPRequest: AuthenticationLDAPRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary PIN login and hand out token.
@@ -4627,7 +4591,7 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    gewisPinAuthentication: (gEWISAuthenticationPinRequest: GEWISAuthenticationPinRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    gewisPinAuthentication: (gEWISAuthenticationPinRequest: GEWISAuthenticationPinRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary GEWIS login verification based on gewisweb JWT tokens. This method verifies the validity of the gewisweb JWT token, and returns a SudoSOS token if the GEWIS token is valid.
@@ -4635,7 +4599,7 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    gewisWebAuthentication: (gewiswebAuthenticationRequest: GewiswebAuthenticationRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    gewisWebAuthentication: (gewiswebAuthenticationRequest: GewiswebAuthenticationRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Key login and hand out token.
@@ -4643,7 +4607,7 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    keyAuthentication: (authenticationKeyRequest: AuthenticationKeyRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    keyAuthentication: (authenticationKeyRequest: AuthenticationKeyRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Local login and hand out token
@@ -4651,7 +4615,7 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    localAuthentication: (authenticationLocalRequest: AuthenticationLocalRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    localAuthentication: (authenticationLocalRequest: AuthenticationLocalRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Mock login and hand out token.
@@ -4659,7 +4623,7 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    mockAuthentication: (authenticationMockRequest: AuthenticationMockRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    mockAuthentication: (authenticationMockRequest: AuthenticationMockRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary NFC login and hand out token
@@ -4667,7 +4631,7 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    nfcAuthentication: (authenticationNfcRequest: AuthenticationNfcRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    nfcAuthentication: (authenticationNfcRequest: AuthenticationNfcRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary PIN login and hand out token
@@ -4675,14 +4639,14 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    pinAuthentication: (authenticationPinRequest: AuthenticationPinRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    pinAuthentication: (authenticationPinRequest: AuthenticationPinRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get a new JWT token, lesser if the existing token is also lesser
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    refreshToken: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    refreshToken: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Creates a reset token for the local authentication
@@ -4690,7 +4654,7 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    resetLocal: (resetLocalRequest: ResetLocalRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    resetLocal: (resetLocalRequest: ResetLocalRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Reset local authentication using the provided token
@@ -4698,7 +4662,7 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    resetLocalWithToken: (authenticationResetTokenRequest: AuthenticationResetTokenRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    resetLocalWithToken: (authenticationResetTokenRequest: AuthenticationResetTokenRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * AuthenticateApi - functional programming interface
@@ -4712,7 +4676,7 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    eanAuthentication(authenticationEanRequest: AuthenticationEanRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
+    eanAuthentication(authenticationEanRequest: AuthenticationEanRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
     /**
      *
      * @summary LDAP login and hand out token    If user has never signed in before this also creates an GEWIS account.
@@ -4720,7 +4684,7 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    gewisLDAPAuthentication(authenticationLDAPRequest: AuthenticationLDAPRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
+    gewisLDAPAuthentication(authenticationLDAPRequest: AuthenticationLDAPRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
     /**
      *
      * @summary PIN login and hand out token.
@@ -4728,7 +4692,7 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    gewisPinAuthentication(gEWISAuthenticationPinRequest: GEWISAuthenticationPinRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
+    gewisPinAuthentication(gEWISAuthenticationPinRequest: GEWISAuthenticationPinRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
     /**
      *
      * @summary GEWIS login verification based on gewisweb JWT tokens. This method verifies the validity of the gewisweb JWT token, and returns a SudoSOS token if the GEWIS token is valid.
@@ -4736,7 +4700,7 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    gewisWebAuthentication(gewiswebAuthenticationRequest: GewiswebAuthenticationRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
+    gewisWebAuthentication(gewiswebAuthenticationRequest: GewiswebAuthenticationRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
     /**
      *
      * @summary Key login and hand out token.
@@ -4744,7 +4708,7 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    keyAuthentication(authenticationKeyRequest: AuthenticationKeyRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
+    keyAuthentication(authenticationKeyRequest: AuthenticationKeyRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
     /**
      *
      * @summary Local login and hand out token
@@ -4752,7 +4716,7 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    localAuthentication(authenticationLocalRequest: AuthenticationLocalRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
+    localAuthentication(authenticationLocalRequest: AuthenticationLocalRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
     /**
      *
      * @summary Mock login and hand out token.
@@ -4760,7 +4724,7 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    mockAuthentication(authenticationMockRequest: AuthenticationMockRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
+    mockAuthentication(authenticationMockRequest: AuthenticationMockRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
     /**
      *
      * @summary NFC login and hand out token
@@ -4768,7 +4732,7 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    nfcAuthentication(authenticationNfcRequest: AuthenticationNfcRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
+    nfcAuthentication(authenticationNfcRequest: AuthenticationNfcRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
     /**
      *
      * @summary PIN login and hand out token
@@ -4776,14 +4740,14 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    pinAuthentication(authenticationPinRequest: AuthenticationPinRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
+    pinAuthentication(authenticationPinRequest: AuthenticationPinRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
     /**
      *
      * @summary Get a new JWT token, lesser if the existing token is also lesser
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    refreshToken(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
+    refreshToken(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
     /**
      *
      * @summary Creates a reset token for the local authentication
@@ -4791,7 +4755,7 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    resetLocal(resetLocalRequest: ResetLocalRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    resetLocal(resetLocalRequest: ResetLocalRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
     /**
      *
      * @summary Reset local authentication using the provided token
@@ -4799,7 +4763,7 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    resetLocalWithToken(authenticationResetTokenRequest: AuthenticationResetTokenRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    resetLocalWithToken(authenticationResetTokenRequest: AuthenticationResetTokenRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
 };
 /**
  * AuthenticateApi - factory interface
@@ -4917,7 +4881,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    eanAuthentication(authenticationEanRequest: AuthenticationEanRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
+    eanAuthentication(authenticationEanRequest: AuthenticationEanRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
     /**
      *
      * @summary LDAP login and hand out token    If user has never signed in before this also creates an GEWIS account.
@@ -4926,7 +4890,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    gewisLDAPAuthentication(authenticationLDAPRequest: AuthenticationLDAPRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
+    gewisLDAPAuthentication(authenticationLDAPRequest: AuthenticationLDAPRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
     /**
      *
      * @summary PIN login and hand out token.
@@ -4935,7 +4899,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    gewisPinAuthentication(gEWISAuthenticationPinRequest: GEWISAuthenticationPinRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
+    gewisPinAuthentication(gEWISAuthenticationPinRequest: GEWISAuthenticationPinRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
     /**
      *
      * @summary GEWIS login verification based on gewisweb JWT tokens. This method verifies the validity of the gewisweb JWT token, and returns a SudoSOS token if the GEWIS token is valid.
@@ -4944,7 +4908,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    gewisWebAuthentication(gewiswebAuthenticationRequest: GewiswebAuthenticationRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
+    gewisWebAuthentication(gewiswebAuthenticationRequest: GewiswebAuthenticationRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
     /**
      *
      * @summary Key login and hand out token.
@@ -4953,7 +4917,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    keyAuthentication(authenticationKeyRequest: AuthenticationKeyRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
+    keyAuthentication(authenticationKeyRequest: AuthenticationKeyRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
     /**
      *
      * @summary Local login and hand out token
@@ -4962,7 +4926,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    localAuthentication(authenticationLocalRequest: AuthenticationLocalRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
+    localAuthentication(authenticationLocalRequest: AuthenticationLocalRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
     /**
      *
      * @summary Mock login and hand out token.
@@ -4971,7 +4935,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    mockAuthentication(authenticationMockRequest: AuthenticationMockRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
+    mockAuthentication(authenticationMockRequest: AuthenticationMockRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
     /**
      *
      * @summary NFC login and hand out token
@@ -4980,7 +4944,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    nfcAuthentication(authenticationNfcRequest: AuthenticationNfcRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
+    nfcAuthentication(authenticationNfcRequest: AuthenticationNfcRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
     /**
      *
      * @summary PIN login and hand out token
@@ -4989,7 +4953,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    pinAuthentication(authenticationPinRequest: AuthenticationPinRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
+    pinAuthentication(authenticationPinRequest: AuthenticationPinRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
     /**
      *
      * @summary Get a new JWT token, lesser if the existing token is also lesser
@@ -4997,7 +4961,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    refreshToken(options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
+    refreshToken(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
     /**
      *
      * @summary Creates a reset token for the local authentication
@@ -5006,7 +4970,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    resetLocal(resetLocalRequest: ResetLocalRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    resetLocal(resetLocalRequest: ResetLocalRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
     /**
      *
      * @summary Reset local authentication using the provided token
@@ -5015,7 +4979,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    resetLocalWithToken(authenticationResetTokenRequest: AuthenticationResetTokenRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    resetLocalWithToken(authenticationResetTokenRequest: AuthenticationResetTokenRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
 }
 /**
  * BalanceApi - axios parameter creator
@@ -5031,15 +4995,15 @@ export declare const BalanceApiAxiosParamCreator: (configuration?: Configuration
      * @param {boolean} [hasFine] Only users with(out) fines
      * @param {number} [minFine] Minimum fine
      * @param {number} [maxFine] Maximum fine
-     * @param {'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE'} [userType] Filter based on user type.
+     * @param {GetAllBalanceUserTypeEnum} [userType] Filter based on user type.
      * @param {string} [orderBy] Column to order balance by - eg: id,amount
-     * @param {'ASC' | 'DESC'} [orderDirection] Order direction
+     * @param {GetAllBalanceOrderDirectionEnum} [orderDirection] Order direction
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllBalance: (date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userType?: 'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE', orderBy?: string, orderDirection?: 'ASC' | 'DESC', take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getAllBalance: (date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userType?: GetAllBalanceUserTypeEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Retrieves the requested balance
@@ -5047,14 +5011,14 @@ export declare const BalanceApiAxiosParamCreator: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getBalanceId: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getBalanceId: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get balance of the current user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getBalances: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getBalances: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * BalanceApi - functional programming interface
@@ -5070,15 +5034,15 @@ export declare const BalanceApiFp: (configuration?: Configuration) => {
      * @param {boolean} [hasFine] Only users with(out) fines
      * @param {number} [minFine] Minimum fine
      * @param {number} [maxFine] Maximum fine
-     * @param {'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE'} [userType] Filter based on user type.
+     * @param {GetAllBalanceUserTypeEnum} [userType] Filter based on user type.
      * @param {string} [orderBy] Column to order balance by - eg: id,amount
-     * @param {'ASC' | 'DESC'} [orderDirection] Order direction
+     * @param {GetAllBalanceOrderDirectionEnum} [orderDirection] Order direction
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userType?: 'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE', orderBy?: string, orderDirection?: 'ASC' | 'DESC', take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BalanceResponse>>>;
+    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userType?: GetAllBalanceUserTypeEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BalanceResponse>>>;
     /**
      *
      * @summary Retrieves the requested balance
@@ -5086,14 +5050,14 @@ export declare const BalanceApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getBalanceId(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BalanceResponse>>;
+    getBalanceId(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BalanceResponse>>;
     /**
      *
      * @summary Get balance of the current user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getBalances(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BalanceResponse>>;
+    getBalances(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BalanceResponse>>;
 };
 /**
  * BalanceApi - factory interface
@@ -5109,15 +5073,15 @@ export declare const BalanceApiFactory: (configuration?: Configuration, basePath
      * @param {boolean} [hasFine] Only users with(out) fines
      * @param {number} [minFine] Minimum fine
      * @param {number} [maxFine] Maximum fine
-     * @param {'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE'} [userType] Filter based on user type.
+     * @param {GetAllBalanceUserTypeEnum} [userType] Filter based on user type.
      * @param {string} [orderBy] Column to order balance by - eg: id,amount
-     * @param {'ASC' | 'DESC'} [orderDirection] Order direction
+     * @param {GetAllBalanceOrderDirectionEnum} [orderDirection] Order direction
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userType?: 'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE', orderBy?: string, orderDirection?: 'ASC' | 'DESC', take?: number, skip?: number, options?: any): AxiosPromise<Array<BalanceResponse>>;
+    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userType?: GetAllBalanceUserTypeEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, take?: number, skip?: number, options?: any): AxiosPromise<Array<BalanceResponse>>;
     /**
      *
      * @summary Retrieves the requested balance
@@ -5150,16 +5114,16 @@ export declare class BalanceApi extends BaseAPI {
      * @param {boolean} [hasFine] Only users with(out) fines
      * @param {number} [minFine] Minimum fine
      * @param {number} [maxFine] Maximum fine
-     * @param {'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE'} [userType] Filter based on user type.
+     * @param {GetAllBalanceUserTypeEnum} [userType] Filter based on user type.
      * @param {string} [orderBy] Column to order balance by - eg: id,amount
-     * @param {'ASC' | 'DESC'} [orderDirection] Order direction
+     * @param {GetAllBalanceOrderDirectionEnum} [orderDirection] Order direction
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BalanceApi
      */
-    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userType?: 'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE', orderBy?: string, orderDirection?: 'ASC' | 'DESC', take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<BalanceResponse[], any>>;
+    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userType?: GetAllBalanceUserTypeEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BalanceResponse[], any>>;
     /**
      *
      * @summary Retrieves the requested balance
@@ -5168,7 +5132,7 @@ export declare class BalanceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BalanceApi
      */
-    getBalanceId(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<BalanceResponse, any>>;
+    getBalanceId(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BalanceResponse, any>>;
     /**
      *
      * @summary Get balance of the current user
@@ -5176,8 +5140,29 @@ export declare class BalanceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BalanceApi
      */
-    getBalances(options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<BalanceResponse, any>>;
+    getBalances(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BalanceResponse, any>>;
 }
+/**
+ * @export
+ */
+export declare const GetAllBalanceUserTypeEnum: {
+    readonly Member: "MEMBER";
+    readonly Organ: "ORGAN";
+    readonly Voucher: "VOUCHER";
+    readonly LocalUser: "LOCAL_USER";
+    readonly LocalAdmin: "LOCAL_ADMIN";
+    readonly Invoice: "INVOICE";
+    readonly AutomaticInvoice: "AUTOMATIC_INVOICE";
+};
+export type GetAllBalanceUserTypeEnum = typeof GetAllBalanceUserTypeEnum[keyof typeof GetAllBalanceUserTypeEnum];
+/**
+ * @export
+ */
+export declare const GetAllBalanceOrderDirectionEnum: {
+    readonly Asc: "ASC";
+    readonly Desc: "DESC";
+};
+export type GetAllBalanceOrderDirectionEnum = typeof GetAllBalanceOrderDirectionEnum[keyof typeof GetAllBalanceOrderDirectionEnum];
 /**
  * BannersApi - axios parameter creator
  * @export
@@ -5190,7 +5175,7 @@ export declare const BannersApiAxiosParamCreator: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    _delete: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    _delete: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Saves a banner to the database
@@ -5198,7 +5183,7 @@ export declare const BannersApiAxiosParamCreator: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    create: (bannerRequest: BannerRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    create: (bannerRequest: BannerRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns all active banners
@@ -5207,7 +5192,7 @@ export declare const BannersApiAxiosParamCreator: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getActive: (take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getActive: (take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns all existing banners
@@ -5216,7 +5201,7 @@ export declare const BannersApiAxiosParamCreator: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllBanners: (take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getAllBanners: (take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns all existing banners
@@ -5225,7 +5210,7 @@ export declare const BannersApiAxiosParamCreator: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllOpenBanners: (take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getAllOpenBanners: (take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns the requested banner
@@ -5233,7 +5218,7 @@ export declare const BannersApiAxiosParamCreator: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getBanner: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getBanner: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Updates the requested banner
@@ -5242,7 +5227,7 @@ export declare const BannersApiAxiosParamCreator: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    update: (id: number, bannerRequest: BannerRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    update: (id: number, bannerRequest: BannerRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Uploads a banner image to the given banner
@@ -5251,7 +5236,7 @@ export declare const BannersApiAxiosParamCreator: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateImage: (id: number, file?: File, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    updateImage: (id: number, file?: File, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * BannersApi - functional programming interface
@@ -5265,7 +5250,7 @@ export declare const BannersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    _delete(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BannerResponse>>;
+    _delete(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BannerResponse>>;
     /**
      *
      * @summary Saves a banner to the database
@@ -5273,7 +5258,7 @@ export declare const BannersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    create(bannerRequest: BannerRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BannerResponse>>;
+    create(bannerRequest: BannerRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BannerResponse>>;
     /**
      *
      * @summary Returns all active banners
@@ -5282,7 +5267,7 @@ export declare const BannersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getActive(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBannerResponse>>;
+    getActive(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBannerResponse>>;
     /**
      *
      * @summary Returns all existing banners
@@ -5291,7 +5276,7 @@ export declare const BannersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllBanners(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBannerResponse>>;
+    getAllBanners(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBannerResponse>>;
     /**
      *
      * @summary Returns all existing banners
@@ -5300,7 +5285,7 @@ export declare const BannersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllOpenBanners(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBannerResponse>>;
+    getAllOpenBanners(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBannerResponse>>;
     /**
      *
      * @summary Returns the requested banner
@@ -5308,7 +5293,7 @@ export declare const BannersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getBanner(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BannerResponse>>;
+    getBanner(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BannerResponse>>;
     /**
      *
      * @summary Updates the requested banner
@@ -5317,7 +5302,7 @@ export declare const BannersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    update(id: number, bannerRequest: BannerRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BannerResponse>>;
+    update(id: number, bannerRequest: BannerRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BannerResponse>>;
     /**
      *
      * @summary Uploads a banner image to the given banner
@@ -5326,7 +5311,7 @@ export declare const BannersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateImage(id: number, file?: File, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    updateImage(id: number, file?: File, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
 };
 /**
  * BannersApi - factory interface
@@ -5418,7 +5403,7 @@ export declare class BannersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BannersApi
      */
-    _delete(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<BannerResponse, any>>;
+    _delete(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BannerResponse, any>>;
     /**
      *
      * @summary Saves a banner to the database
@@ -5427,7 +5412,7 @@ export declare class BannersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BannersApi
      */
-    create(bannerRequest: BannerRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<BannerResponse, any>>;
+    create(bannerRequest: BannerRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BannerResponse, any>>;
     /**
      *
      * @summary Returns all active banners
@@ -5437,7 +5422,7 @@ export declare class BannersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BannersApi
      */
-    getActive(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBannerResponse, any>>;
+    getActive(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBannerResponse, any>>;
     /**
      *
      * @summary Returns all existing banners
@@ -5447,7 +5432,7 @@ export declare class BannersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BannersApi
      */
-    getAllBanners(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBannerResponse, any>>;
+    getAllBanners(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBannerResponse, any>>;
     /**
      *
      * @summary Returns all existing banners
@@ -5457,7 +5442,7 @@ export declare class BannersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BannersApi
      */
-    getAllOpenBanners(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBannerResponse, any>>;
+    getAllOpenBanners(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBannerResponse, any>>;
     /**
      *
      * @summary Returns the requested banner
@@ -5466,7 +5451,7 @@ export declare class BannersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BannersApi
      */
-    getBanner(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<BannerResponse, any>>;
+    getBanner(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BannerResponse, any>>;
     /**
      *
      * @summary Updates the requested banner
@@ -5476,7 +5461,7 @@ export declare class BannersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BannersApi
      */
-    update(id: number, bannerRequest: BannerRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<BannerResponse, any>>;
+    update(id: number, bannerRequest: BannerRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BannerResponse, any>>;
     /**
      *
      * @summary Uploads a banner image to the given banner
@@ -5486,7 +5471,7 @@ export declare class BannersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BannersApi
      */
-    updateImage(id: number, file?: File, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    updateImage(id: number, file?: File, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
 }
 /**
  * ContainersApi - axios parameter creator
@@ -5500,7 +5485,7 @@ export declare const ContainersApiAxiosParamCreator: (configuration?: Configurat
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createContainer: (createContainerRequest: CreateContainerRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    createContainer: (createContainerRequest: CreateContainerRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns all existing containers
@@ -5509,7 +5494,7 @@ export declare const ContainersApiAxiosParamCreator: (configuration?: Configurat
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllContainers: (take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getAllContainers: (take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns all the products in the container
@@ -5519,7 +5504,7 @@ export declare const ContainersApiAxiosParamCreator: (configuration?: Configurat
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getProductsContainer: (id: number, take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getProductsContainer: (id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns all public container
@@ -5528,7 +5513,7 @@ export declare const ContainersApiAxiosParamCreator: (configuration?: Configurat
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getPublicContainers: (take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getPublicContainers: (take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns the requested container
@@ -5536,7 +5521,7 @@ export declare const ContainersApiAxiosParamCreator: (configuration?: Configurat
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSingleContainer: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getSingleContainer: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Update an existing container.
@@ -5545,7 +5530,7 @@ export declare const ContainersApiAxiosParamCreator: (configuration?: Configurat
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateContainer: (id: number, updateContainerRequest: UpdateContainerRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    updateContainer: (id: number, updateContainerRequest: UpdateContainerRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ContainersApi - functional programming interface
@@ -5559,7 +5544,7 @@ export declare const ContainersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createContainer(createContainerRequest: CreateContainerRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContainerWithProductsResponse>>;
+    createContainer(createContainerRequest: CreateContainerRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContainerWithProductsResponse>>;
     /**
      *
      * @summary Returns all existing containers
@@ -5568,7 +5553,7 @@ export declare const ContainersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllContainers(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedContainerResponse>>;
+    getAllContainers(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedContainerResponse>>;
     /**
      *
      * @summary Returns all the products in the container
@@ -5578,7 +5563,7 @@ export declare const ContainersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getProductsContainer(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductResponse>>;
+    getProductsContainer(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductResponse>>;
     /**
      *
      * @summary Returns all public container
@@ -5587,7 +5572,7 @@ export declare const ContainersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getPublicContainers(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedContainerResponse>>;
+    getPublicContainers(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedContainerResponse>>;
     /**
      *
      * @summary Returns the requested container
@@ -5595,7 +5580,7 @@ export declare const ContainersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSingleContainer(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContainerWithProductsResponse>>;
+    getSingleContainer(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContainerWithProductsResponse>>;
     /**
      *
      * @summary Update an existing container.
@@ -5604,7 +5589,7 @@ export declare const ContainersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateContainer(id: number, updateContainerRequest: UpdateContainerRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContainerWithProductsResponse>>;
+    updateContainer(id: number, updateContainerRequest: UpdateContainerRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContainerWithProductsResponse>>;
 };
 /**
  * ContainersApi - factory interface
@@ -5680,7 +5665,7 @@ export declare class ContainersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ContainersApi
      */
-    createContainer(createContainerRequest: CreateContainerRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ContainerWithProductsResponse, any>>;
+    createContainer(createContainerRequest: CreateContainerRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ContainerWithProductsResponse, any>>;
     /**
      *
      * @summary Returns all existing containers
@@ -5690,7 +5675,7 @@ export declare class ContainersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ContainersApi
      */
-    getAllContainers(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedContainerResponse, any>>;
+    getAllContainers(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedContainerResponse, any>>;
     /**
      *
      * @summary Returns all the products in the container
@@ -5701,7 +5686,7 @@ export declare class ContainersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ContainersApi
      */
-    getProductsContainer(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedProductResponse, any>>;
+    getProductsContainer(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedProductResponse, any>>;
     /**
      *
      * @summary Returns all public container
@@ -5711,7 +5696,7 @@ export declare class ContainersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ContainersApi
      */
-    getPublicContainers(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedContainerResponse, any>>;
+    getPublicContainers(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedContainerResponse, any>>;
     /**
      *
      * @summary Returns the requested container
@@ -5720,7 +5705,7 @@ export declare class ContainersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ContainersApi
      */
-    getSingleContainer(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ContainerWithProductsResponse, any>>;
+    getSingleContainer(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ContainerWithProductsResponse, any>>;
     /**
      *
      * @summary Update an existing container.
@@ -5730,7 +5715,7 @@ export declare class ContainersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ContainersApi
      */
-    updateContainer(id: number, updateContainerRequest: UpdateContainerRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ContainerWithProductsResponse, any>>;
+    updateContainer(id: number, updateContainerRequest: UpdateContainerRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ContainerWithProductsResponse, any>>;
 }
 /**
  * DebtorsApi - axios parameter creator
@@ -5744,7 +5729,7 @@ export declare const DebtorsApiAxiosParamCreator: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteFine: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    deleteFine: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
@@ -5752,7 +5737,7 @@ export declare const DebtorsApiAxiosParamCreator: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    handoutFines: (handoutFinesRequest: HandoutFinesRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    handoutFines: (handoutFinesRequest: HandoutFinesRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Send an email to all given users about their possible future fine.
@@ -5760,7 +5745,7 @@ export declare const DebtorsApiAxiosParamCreator: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyAboutFutureFines: (handoutFinesRequest: HandoutFinesRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    notifyAboutFutureFines: (handoutFinesRequest: HandoutFinesRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get all fine handout events
@@ -5769,7 +5754,7 @@ export declare const DebtorsApiAxiosParamCreator: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    returnAllFineHandoutEvents: (take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    returnAllFineHandoutEvents: (take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get all fine handout events
@@ -5777,7 +5762,7 @@ export declare const DebtorsApiAxiosParamCreator: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    returnSingleFineHandoutEvent: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    returnSingleFineHandoutEvent: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * DebtorsApi - functional programming interface
@@ -5791,7 +5776,7 @@ export declare const DebtorsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteFine(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    deleteFine(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
     /**
      *
      * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
@@ -5799,7 +5784,7 @@ export declare const DebtorsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    handoutFines(handoutFinesRequest: HandoutFinesRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FineHandoutEventResponse>>;
+    handoutFines(handoutFinesRequest: HandoutFinesRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FineHandoutEventResponse>>;
     /**
      *
      * @summary Send an email to all given users about their possible future fine.
@@ -5807,7 +5792,7 @@ export declare const DebtorsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyAboutFutureFines(handoutFinesRequest: HandoutFinesRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    notifyAboutFutureFines(handoutFinesRequest: HandoutFinesRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
     /**
      *
      * @summary Get all fine handout events
@@ -5816,7 +5801,7 @@ export declare const DebtorsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    returnAllFineHandoutEvents(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedFineHandoutEventResponse>>;
+    returnAllFineHandoutEvents(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedFineHandoutEventResponse>>;
     /**
      *
      * @summary Get all fine handout events
@@ -5824,7 +5809,7 @@ export declare const DebtorsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    returnSingleFineHandoutEvent(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FineHandoutEventResponse>>;
+    returnSingleFineHandoutEvent(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FineHandoutEventResponse>>;
 };
 /**
  * DebtorsApi - factory interface
@@ -5888,7 +5873,7 @@ export declare class DebtorsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DebtorsApi
      */
-    deleteFine(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    deleteFine(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
     /**
      *
      * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
@@ -5897,7 +5882,7 @@ export declare class DebtorsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DebtorsApi
      */
-    handoutFines(handoutFinesRequest: HandoutFinesRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<FineHandoutEventResponse, any>>;
+    handoutFines(handoutFinesRequest: HandoutFinesRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FineHandoutEventResponse, any>>;
     /**
      *
      * @summary Send an email to all given users about their possible future fine.
@@ -5906,7 +5891,7 @@ export declare class DebtorsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DebtorsApi
      */
-    notifyAboutFutureFines(handoutFinesRequest: HandoutFinesRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    notifyAboutFutureFines(handoutFinesRequest: HandoutFinesRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
     /**
      *
      * @summary Get all fine handout events
@@ -5916,7 +5901,7 @@ export declare class DebtorsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DebtorsApi
      */
-    returnAllFineHandoutEvents(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedFineHandoutEventResponse, any>>;
+    returnAllFineHandoutEvents(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedFineHandoutEventResponse, any>>;
     /**
      *
      * @summary Get all fine handout events
@@ -5925,7 +5910,7 @@ export declare class DebtorsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DebtorsApi
      */
-    returnSingleFineHandoutEvent(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<FineHandoutEventResponse, any>>;
+    returnSingleFineHandoutEvent(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FineHandoutEventResponse, any>>;
 }
 /**
  * EventsApi - axios parameter creator
@@ -5942,7 +5927,7 @@ export declare const EventsApiAxiosParamCreator: (configuration?: Configuration)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    assignEventShift: (eventId: number, shiftId: number, userId: number, eventAnswerAssignmentRequest: EventAnswerAssignmentRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    assignEventShift: (eventId: number, shiftId: number, userId: number, eventAnswerAssignmentRequest: EventAnswerAssignmentRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Create an event with its corresponding answers objects
@@ -5950,7 +5935,7 @@ export declare const EventsApiAxiosParamCreator: (configuration?: Configuration)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createEvent: (createEventRequest: CreateEventRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    createEvent: (createEventRequest: CreateEventRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Create an event shift
@@ -5958,7 +5943,7 @@ export declare const EventsApiAxiosParamCreator: (configuration?: Configuration)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createEventShift: (createShiftRequest: CreateShiftRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    createEventShift: (createShiftRequest: CreateShiftRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Delete an event with its answers
@@ -5966,7 +5951,7 @@ export declare const EventsApiAxiosParamCreator: (configuration?: Configuration)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteEvent: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    deleteEvent: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Delete an event shift with its answers
@@ -5974,7 +5959,7 @@ export declare const EventsApiAxiosParamCreator: (configuration?: Configuration)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteEventShift: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    deleteEventShift: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get all event shifts
@@ -5983,7 +5968,7 @@ export declare const EventsApiAxiosParamCreator: (configuration?: Configuration)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllEventShifts: (take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getAllEventShifts: (take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get all events
@@ -5997,7 +5982,7 @@ export declare const EventsApiAxiosParamCreator: (configuration?: Configuration)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllEvents: (name?: string, createdById?: number, beforeDate?: string, afterDate?: string, type?: string, take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getAllEvents: (name?: string, createdById?: number, beforeDate?: string, afterDate?: string, type?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get the number of times a user has been selected for the given shift
@@ -6008,7 +5993,7 @@ export declare const EventsApiAxiosParamCreator: (configuration?: Configuration)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getEventShiftCount: (id: number, eventType?: string, afterDate?: string, beforeDate?: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getEventShiftCount: (id: number, eventType?: string, afterDate?: string, beforeDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get a single event with its answers and shifts
@@ -6016,7 +6001,7 @@ export declare const EventsApiAxiosParamCreator: (configuration?: Configuration)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSingleEvent: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getSingleEvent: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Update an event with its corresponding answers objects
@@ -6025,7 +6010,7 @@ export declare const EventsApiAxiosParamCreator: (configuration?: Configuration)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateEvent: (id: number, updateEventRequest: UpdateEventRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    updateEvent: (id: number, updateEventRequest: UpdateEventRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Update an event shift
@@ -6034,7 +6019,7 @@ export declare const EventsApiAxiosParamCreator: (configuration?: Configuration)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateEventShift: (id: number, updateShiftRequest: UpdateShiftRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    updateEventShift: (id: number, updateShiftRequest: UpdateShiftRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Update the availability of a user for a shift in an event
@@ -6045,7 +6030,7 @@ export declare const EventsApiAxiosParamCreator: (configuration?: Configuration)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateEventShiftAvailability: (eventId: number, shiftId: number, userId: number, eventAnswerAvailabilityRequest: EventAnswerAvailabilityRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    updateEventShiftAvailability: (eventId: number, shiftId: number, userId: number, eventAnswerAvailabilityRequest: EventAnswerAvailabilityRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * EventsApi - functional programming interface
@@ -6062,7 +6047,7 @@ export declare const EventsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    assignEventShift(eventId: number, shiftId: number, userId: number, eventAnswerAssignmentRequest: EventAnswerAssignmentRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseEventAnswerResponse>>;
+    assignEventShift(eventId: number, shiftId: number, userId: number, eventAnswerAssignmentRequest: EventAnswerAssignmentRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseEventAnswerResponse>>;
     /**
      *
      * @summary Create an event with its corresponding answers objects
@@ -6070,7 +6055,7 @@ export declare const EventsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createEvent(createEventRequest: CreateEventRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EventResponse>>;
+    createEvent(createEventRequest: CreateEventRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EventResponse>>;
     /**
      *
      * @summary Create an event shift
@@ -6078,7 +6063,7 @@ export declare const EventsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createEventShift(createShiftRequest: CreateShiftRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EventShiftResponse>>;
+    createEventShift(createShiftRequest: CreateShiftRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EventShiftResponse>>;
     /**
      *
      * @summary Delete an event with its answers
@@ -6086,7 +6071,7 @@ export declare const EventsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteEvent(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    deleteEvent(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
     /**
      *
      * @summary Delete an event shift with its answers
@@ -6094,7 +6079,7 @@ export declare const EventsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteEventShift(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    deleteEventShift(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
     /**
      *
      * @summary Get all event shifts
@@ -6103,7 +6088,7 @@ export declare const EventsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllEventShifts(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedEventShiftResponse>>;
+    getAllEventShifts(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedEventShiftResponse>>;
     /**
      *
      * @summary Get all events
@@ -6117,7 +6102,7 @@ export declare const EventsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllEvents(name?: string, createdById?: number, beforeDate?: string, afterDate?: string, type?: string, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBaseEventResponse>>;
+    getAllEvents(name?: string, createdById?: number, beforeDate?: string, afterDate?: string, type?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBaseEventResponse>>;
     /**
      *
      * @summary Get the number of times a user has been selected for the given shift
@@ -6128,7 +6113,7 @@ export declare const EventsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getEventShiftCount(id: number, eventType?: string, afterDate?: string, beforeDate?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<PaginatedEventShiftResponse>>>;
+    getEventShiftCount(id: number, eventType?: string, afterDate?: string, beforeDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<PaginatedEventShiftResponse>>>;
     /**
      *
      * @summary Get a single event with its answers and shifts
@@ -6136,7 +6121,7 @@ export declare const EventsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSingleEvent(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EventResponse>>;
+    getSingleEvent(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EventResponse>>;
     /**
      *
      * @summary Update an event with its corresponding answers objects
@@ -6145,7 +6130,7 @@ export declare const EventsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateEvent(id: number, updateEventRequest: UpdateEventRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EventResponse>>;
+    updateEvent(id: number, updateEventRequest: UpdateEventRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EventResponse>>;
     /**
      *
      * @summary Update an event shift
@@ -6154,7 +6139,7 @@ export declare const EventsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateEventShift(id: number, updateShiftRequest: UpdateShiftRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EventShiftResponse>>;
+    updateEventShift(id: number, updateShiftRequest: UpdateShiftRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EventShiftResponse>>;
     /**
      *
      * @summary Update the availability of a user for a shift in an event
@@ -6165,7 +6150,7 @@ export declare const EventsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateEventShiftAvailability(eventId: number, shiftId: number, userId: number, eventAnswerAvailabilityRequest: EventAnswerAvailabilityRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseEventAnswerResponse>>;
+    updateEventShiftAvailability(eventId: number, shiftId: number, userId: number, eventAnswerAvailabilityRequest: EventAnswerAvailabilityRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseEventAnswerResponse>>;
 };
 /**
  * EventsApi - factory interface
@@ -6305,7 +6290,7 @@ export declare class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    assignEventShift(eventId: number, shiftId: number, userId: number, eventAnswerAssignmentRequest: EventAnswerAssignmentRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<BaseEventAnswerResponse, any>>;
+    assignEventShift(eventId: number, shiftId: number, userId: number, eventAnswerAssignmentRequest: EventAnswerAssignmentRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BaseEventAnswerResponse, any>>;
     /**
      *
      * @summary Create an event with its corresponding answers objects
@@ -6314,7 +6299,7 @@ export declare class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    createEvent(createEventRequest: CreateEventRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<EventResponse, any>>;
+    createEvent(createEventRequest: CreateEventRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<EventResponse, any>>;
     /**
      *
      * @summary Create an event shift
@@ -6323,7 +6308,7 @@ export declare class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    createEventShift(createShiftRequest: CreateShiftRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<EventShiftResponse, any>>;
+    createEventShift(createShiftRequest: CreateShiftRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<EventShiftResponse, any>>;
     /**
      *
      * @summary Delete an event with its answers
@@ -6332,7 +6317,7 @@ export declare class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    deleteEvent(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    deleteEvent(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
     /**
      *
      * @summary Delete an event shift with its answers
@@ -6341,7 +6326,7 @@ export declare class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    deleteEventShift(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    deleteEventShift(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
     /**
      *
      * @summary Get all event shifts
@@ -6351,7 +6336,7 @@ export declare class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    getAllEventShifts(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedEventShiftResponse, any>>;
+    getAllEventShifts(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedEventShiftResponse, any>>;
     /**
      *
      * @summary Get all events
@@ -6366,7 +6351,7 @@ export declare class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    getAllEvents(name?: string, createdById?: number, beforeDate?: string, afterDate?: string, type?: string, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBaseEventResponse, any>>;
+    getAllEvents(name?: string, createdById?: number, beforeDate?: string, afterDate?: string, type?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBaseEventResponse, any>>;
     /**
      *
      * @summary Get the number of times a user has been selected for the given shift
@@ -6378,7 +6363,7 @@ export declare class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    getEventShiftCount(id: number, eventType?: string, afterDate?: string, beforeDate?: string, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedEventShiftResponse[], any>>;
+    getEventShiftCount(id: number, eventType?: string, afterDate?: string, beforeDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedEventShiftResponse[], any>>;
     /**
      *
      * @summary Get a single event with its answers and shifts
@@ -6387,7 +6372,7 @@ export declare class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    getSingleEvent(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<EventResponse, any>>;
+    getSingleEvent(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<EventResponse, any>>;
     /**
      *
      * @summary Update an event with its corresponding answers objects
@@ -6397,7 +6382,7 @@ export declare class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    updateEvent(id: number, updateEventRequest: UpdateEventRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<EventResponse, any>>;
+    updateEvent(id: number, updateEventRequest: UpdateEventRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<EventResponse, any>>;
     /**
      *
      * @summary Update an event shift
@@ -6407,7 +6392,7 @@ export declare class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    updateEventShift(id: number, updateShiftRequest: UpdateShiftRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<EventShiftResponse, any>>;
+    updateEventShift(id: number, updateShiftRequest: UpdateShiftRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<EventShiftResponse, any>>;
     /**
      *
      * @summary Update the availability of a user for a shift in an event
@@ -6419,7 +6404,7 @@ export declare class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    updateEventShiftAvailability(eventId: number, shiftId: number, userId: number, eventAnswerAvailabilityRequest: EventAnswerAvailabilityRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<BaseEventAnswerResponse, any>>;
+    updateEventShiftAvailability(eventId: number, shiftId: number, userId: number, eventAnswerAvailabilityRequest: EventAnswerAvailabilityRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BaseEventAnswerResponse, any>>;
 }
 /**
  * FilesApi - axios parameter creator
@@ -6434,7 +6419,7 @@ export declare const FilesApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createFile: (name: string, file?: File, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    createFile: (name: string, file?: File, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Delete the file with the given id.
@@ -6442,7 +6427,7 @@ export declare const FilesApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteFile: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    deleteFile: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Download a file with the given id.
@@ -6450,7 +6435,7 @@ export declare const FilesApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getFile: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getFile: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * FilesApi - functional programming interface
@@ -6465,7 +6450,7 @@ export declare const FilesApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createFile(name: string, file?: File, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SimpleFileResponse>>;
+    createFile(name: string, file?: File, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SimpleFileResponse>>;
     /**
      *
      * @summary Delete the file with the given id.
@@ -6473,7 +6458,7 @@ export declare const FilesApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteFile(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    deleteFile(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
     /**
      *
      * @summary Download a file with the given id.
@@ -6481,7 +6466,7 @@ export declare const FilesApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getFile(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    getFile(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
 };
 /**
  * FilesApi - factory interface
@@ -6530,7 +6515,7 @@ export declare class FilesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FilesApi
      */
-    createFile(name: string, file?: File, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<SimpleFileResponse, any>>;
+    createFile(name: string, file?: File, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SimpleFileResponse, any>>;
     /**
      *
      * @summary Delete the file with the given id.
@@ -6539,7 +6524,7 @@ export declare class FilesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FilesApi
      */
-    deleteFile(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    deleteFile(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
     /**
      *
      * @summary Download a file with the given id.
@@ -6548,7 +6533,7 @@ export declare class FilesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FilesApi
      */
-    getFile(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    getFile(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
 }
 /**
  * InvoicesApi - axios parameter creator
@@ -6562,7 +6547,7 @@ export declare const InvoicesApiAxiosParamCreator: (configuration?: Configuratio
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createInvoice: (createInvoiceRequest?: CreateInvoiceRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    createInvoice: (createInvoiceRequest?: CreateInvoiceRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Deletes an invoice.
@@ -6570,7 +6555,7 @@ export declare const InvoicesApiAxiosParamCreator: (configuration?: Configuratio
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteInvoice: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    deleteInvoice: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns all invoices in the system.
@@ -6585,7 +6570,7 @@ export declare const InvoicesApiAxiosParamCreator: (configuration?: Configuratio
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllInvoices: (toId?: number, invoiceId?: number, state?: number, returnEntries?: boolean, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getAllInvoices: (toId?: number, invoiceId?: number, state?: number, returnEntries?: boolean, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns a single invoice in the system.
@@ -6594,7 +6579,7 @@ export declare const InvoicesApiAxiosParamCreator: (configuration?: Configuratio
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSingleInvoice: (id: number, returnEntries?: boolean, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getSingleInvoice: (id: number, returnEntries?: boolean, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Adds an invoice to the system.
@@ -6603,7 +6588,7 @@ export declare const InvoicesApiAxiosParamCreator: (configuration?: Configuratio
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateInvoice: (id: number, updateInvoiceRequest?: UpdateInvoiceRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    updateInvoice: (id: number, updateInvoiceRequest?: UpdateInvoiceRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * InvoicesApi - functional programming interface
@@ -6617,7 +6602,7 @@ export declare const InvoicesApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createInvoice(createInvoiceRequest?: CreateInvoiceRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InvoiceResponse>>;
+    createInvoice(createInvoiceRequest?: CreateInvoiceRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InvoiceResponse>>;
     /**
      *
      * @summary Deletes an invoice.
@@ -6625,7 +6610,7 @@ export declare const InvoicesApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteInvoice(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseInvoiceResponse>>;
+    deleteInvoice(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseInvoiceResponse>>;
     /**
      *
      * @summary Returns all invoices in the system.
@@ -6640,7 +6625,7 @@ export declare const InvoicesApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllInvoices(toId?: number, invoiceId?: number, state?: number, returnEntries?: boolean, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedInvoiceResponse>>;
+    getAllInvoices(toId?: number, invoiceId?: number, state?: number, returnEntries?: boolean, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedInvoiceResponse>>;
     /**
      *
      * @summary Returns a single invoice in the system.
@@ -6649,7 +6634,7 @@ export declare const InvoicesApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSingleInvoice(id: number, returnEntries?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InvoiceResponse>>;
+    getSingleInvoice(id: number, returnEntries?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InvoiceResponse>>;
     /**
      *
      * @summary Adds an invoice to the system.
@@ -6658,7 +6643,7 @@ export declare const InvoicesApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateInvoice(id: number, updateInvoiceRequest?: UpdateInvoiceRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseInvoiceResponse>>;
+    updateInvoice(id: number, updateInvoiceRequest?: UpdateInvoiceRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseInvoiceResponse>>;
 };
 /**
  * InvoicesApi - factory interface
@@ -6730,7 +6715,7 @@ export declare class InvoicesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoicesApi
      */
-    createInvoice(createInvoiceRequest?: CreateInvoiceRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<InvoiceResponse, any>>;
+    createInvoice(createInvoiceRequest?: CreateInvoiceRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<InvoiceResponse, any>>;
     /**
      *
      * @summary Deletes an invoice.
@@ -6739,7 +6724,7 @@ export declare class InvoicesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoicesApi
      */
-    deleteInvoice(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<BaseInvoiceResponse, any>>;
+    deleteInvoice(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BaseInvoiceResponse, any>>;
     /**
      *
      * @summary Returns all invoices in the system.
@@ -6755,7 +6740,7 @@ export declare class InvoicesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoicesApi
      */
-    getAllInvoices(toId?: number, invoiceId?: number, state?: number, returnEntries?: boolean, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedInvoiceResponse, any>>;
+    getAllInvoices(toId?: number, invoiceId?: number, state?: number, returnEntries?: boolean, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedInvoiceResponse, any>>;
     /**
      *
      * @summary Returns a single invoice in the system.
@@ -6765,7 +6750,7 @@ export declare class InvoicesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoicesApi
      */
-    getSingleInvoice(id: number, returnEntries?: boolean, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<InvoiceResponse, any>>;
+    getSingleInvoice(id: number, returnEntries?: boolean, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<InvoiceResponse, any>>;
     /**
      *
      * @summary Adds an invoice to the system.
@@ -6775,7 +6760,7 @@ export declare class InvoicesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoicesApi
      */
-    updateInvoice(id: number, updateInvoiceRequest?: UpdateInvoiceRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<BaseInvoiceResponse, any>>;
+    updateInvoice(id: number, updateInvoiceRequest?: UpdateInvoiceRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BaseInvoiceResponse, any>>;
 }
 /**
  * PayoutRequestsApi - axios parameter creator
@@ -6789,7 +6774,7 @@ export declare const PayoutRequestsApiAxiosParamCreator: (configuration?: Config
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createPayoutRequest: (payoutRequestRequest?: PayoutRequestRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    createPayoutRequest: (payoutRequestRequest?: PayoutRequestRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns all payout requests given the filter parameters
@@ -6803,7 +6788,7 @@ export declare const PayoutRequestsApiAxiosParamCreator: (configuration?: Config
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllPayoutRequests: (requestedById?: GetAllPayoutRequestsRequestedByIdParameter, approvedById?: GetAllPayoutRequestsRequestedByIdParameter, fromDate?: string, tillDate?: string, status?: string, take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getAllPayoutRequests: (requestedById?: GetAllPayoutRequestsRequestedByIdParameter, approvedById?: GetAllPayoutRequestsRequestedByIdParameter, fromDate?: string, tillDate?: string, status?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get a single payout request
@@ -6811,7 +6796,7 @@ export declare const PayoutRequestsApiAxiosParamCreator: (configuration?: Config
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSinglePayoutRequest: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getSinglePayoutRequest: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Create a new status for a payout request
@@ -6820,7 +6805,7 @@ export declare const PayoutRequestsApiAxiosParamCreator: (configuration?: Config
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    setPayoutRequestStatus: (id: number, payoutRequestStatusRequest?: PayoutRequestStatusRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    setPayoutRequestStatus: (id: number, payoutRequestStatusRequest?: PayoutRequestStatusRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * PayoutRequestsApi - functional programming interface
@@ -6834,7 +6819,7 @@ export declare const PayoutRequestsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createPayoutRequest(payoutRequestRequest?: PayoutRequestRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayoutRequestResponse>>;
+    createPayoutRequest(payoutRequestRequest?: PayoutRequestRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayoutRequestResponse>>;
     /**
      *
      * @summary Returns all payout requests given the filter parameters
@@ -6848,7 +6833,7 @@ export declare const PayoutRequestsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllPayoutRequests(requestedById?: GetAllPayoutRequestsRequestedByIdParameter, approvedById?: GetAllPayoutRequestsRequestedByIdParameter, fromDate?: string, tillDate?: string, status?: string, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBasePayoutRequestResponse>>;
+    getAllPayoutRequests(requestedById?: GetAllPayoutRequestsRequestedByIdParameter, approvedById?: GetAllPayoutRequestsRequestedByIdParameter, fromDate?: string, tillDate?: string, status?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBasePayoutRequestResponse>>;
     /**
      *
      * @summary Get a single payout request
@@ -6856,7 +6841,7 @@ export declare const PayoutRequestsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSinglePayoutRequest(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayoutRequestResponse>>;
+    getSinglePayoutRequest(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayoutRequestResponse>>;
     /**
      *
      * @summary Create a new status for a payout request
@@ -6865,7 +6850,7 @@ export declare const PayoutRequestsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    setPayoutRequestStatus(id: number, payoutRequestStatusRequest?: PayoutRequestStatusRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayoutRequestResponse>>;
+    setPayoutRequestStatus(id: number, payoutRequestStatusRequest?: PayoutRequestStatusRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayoutRequestResponse>>;
 };
 /**
  * PayoutRequestsApi - factory interface
@@ -6927,7 +6912,7 @@ export declare class PayoutRequestsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PayoutRequestsApi
      */
-    createPayoutRequest(payoutRequestRequest?: PayoutRequestRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PayoutRequestResponse, any>>;
+    createPayoutRequest(payoutRequestRequest?: PayoutRequestRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PayoutRequestResponse, any>>;
     /**
      *
      * @summary Returns all payout requests given the filter parameters
@@ -6942,7 +6927,7 @@ export declare class PayoutRequestsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PayoutRequestsApi
      */
-    getAllPayoutRequests(requestedById?: GetAllPayoutRequestsRequestedByIdParameter, approvedById?: GetAllPayoutRequestsRequestedByIdParameter, fromDate?: string, tillDate?: string, status?: string, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBasePayoutRequestResponse, any>>;
+    getAllPayoutRequests(requestedById?: GetAllPayoutRequestsRequestedByIdParameter, approvedById?: GetAllPayoutRequestsRequestedByIdParameter, fromDate?: string, tillDate?: string, status?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBasePayoutRequestResponse, any>>;
     /**
      *
      * @summary Get a single payout request
@@ -6951,7 +6936,7 @@ export declare class PayoutRequestsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PayoutRequestsApi
      */
-    getSinglePayoutRequest(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PayoutRequestResponse, any>>;
+    getSinglePayoutRequest(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PayoutRequestResponse, any>>;
     /**
      *
      * @summary Create a new status for a payout request
@@ -6961,7 +6946,7 @@ export declare class PayoutRequestsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PayoutRequestsApi
      */
-    setPayoutRequestStatus(id: number, payoutRequestStatusRequest?: PayoutRequestStatusRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PayoutRequestResponse, any>>;
+    setPayoutRequestStatus(id: number, payoutRequestStatusRequest?: PayoutRequestStatusRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PayoutRequestResponse, any>>;
 }
 /**
  * PointofsaleApi - axios parameter creator
@@ -6975,7 +6960,7 @@ export declare const PointofsaleApiAxiosParamCreator: (configuration?: Configura
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createPointOfSale: (createPointOfSaleRequest?: CreatePointOfSaleRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    createPointOfSale: (createPointOfSaleRequest?: CreatePointOfSaleRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns the containers of the requested Point of Sale, empty list if POS does not exist
@@ -6985,7 +6970,7 @@ export declare const PointofsaleApiAxiosParamCreator: (configuration?: Configura
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllPointOfSaleContainers: (id: number, take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getAllPointOfSaleContainers: (id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns the products of the requested Point of Sale, empty list if POS does not exist
@@ -6995,7 +6980,7 @@ export declare const PointofsaleApiAxiosParamCreator: (configuration?: Configura
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllPointOfSaleProducts: (id: number, take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getAllPointOfSaleProducts: (id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns all existing Point of Sales
@@ -7004,7 +6989,7 @@ export declare const PointofsaleApiAxiosParamCreator: (configuration?: Configura
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllPointsOfSale: (take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getAllPointsOfSale: (take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns the requested Point of Sale
@@ -7012,7 +6997,7 @@ export declare const PointofsaleApiAxiosParamCreator: (configuration?: Configura
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSinglePointOfSale: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getSinglePointOfSale: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns a Point of Sale transactions
@@ -7022,7 +7007,7 @@ export declare const PointofsaleApiAxiosParamCreator: (configuration?: Configura
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getTransactions: (id: number, take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getTransactions: (id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Update an existing Point of Sale.
@@ -7031,7 +7016,7 @@ export declare const PointofsaleApiAxiosParamCreator: (configuration?: Configura
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updatePointOfSale: (id: number, updatePointOfSaleRequest?: UpdatePointOfSaleRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    updatePointOfSale: (id: number, updatePointOfSaleRequest?: UpdatePointOfSaleRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * PointofsaleApi - functional programming interface
@@ -7045,7 +7030,7 @@ export declare const PointofsaleApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createPointOfSale(createPointOfSaleRequest?: CreatePointOfSaleRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleWithContainersResponse>>;
+    createPointOfSale(createPointOfSaleRequest?: CreatePointOfSaleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleWithContainersResponse>>;
     /**
      *
      * @summary Returns the containers of the requested Point of Sale, empty list if POS does not exist
@@ -7055,7 +7040,7 @@ export declare const PointofsaleApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllPointOfSaleContainers(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedContainerResponse>>;
+    getAllPointOfSaleContainers(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedContainerResponse>>;
     /**
      *
      * @summary Returns the products of the requested Point of Sale, empty list if POS does not exist
@@ -7065,7 +7050,7 @@ export declare const PointofsaleApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllPointOfSaleProducts(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductResponse>>;
+    getAllPointOfSaleProducts(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductResponse>>;
     /**
      *
      * @summary Returns all existing Point of Sales
@@ -7074,7 +7059,7 @@ export declare const PointofsaleApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllPointsOfSale(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedPointOfSaleResponse>>;
+    getAllPointsOfSale(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedPointOfSaleResponse>>;
     /**
      *
      * @summary Returns the requested Point of Sale
@@ -7082,7 +7067,7 @@ export declare const PointofsaleApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSinglePointOfSale(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleWithContainersResponse>>;
+    getSinglePointOfSale(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleWithContainersResponse>>;
     /**
      *
      * @summary Returns a Point of Sale transactions
@@ -7092,7 +7077,7 @@ export declare const PointofsaleApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getTransactions(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBaseTransactionResponse>>;
+    getTransactions(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBaseTransactionResponse>>;
     /**
      *
      * @summary Update an existing Point of Sale.
@@ -7101,7 +7086,7 @@ export declare const PointofsaleApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updatePointOfSale(id: number, updatePointOfSaleRequest?: UpdatePointOfSaleRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleWithContainersResponse>>;
+    updatePointOfSale(id: number, updatePointOfSaleRequest?: UpdatePointOfSaleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleWithContainersResponse>>;
 };
 /**
  * PointofsaleApi - factory interface
@@ -7188,7 +7173,7 @@ export declare class PointofsaleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PointofsaleApi
      */
-    createPointOfSale(createPointOfSaleRequest?: CreatePointOfSaleRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PointOfSaleWithContainersResponse, any>>;
+    createPointOfSale(createPointOfSaleRequest?: CreatePointOfSaleRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PointOfSaleWithContainersResponse, any>>;
     /**
      *
      * @summary Returns the containers of the requested Point of Sale, empty list if POS does not exist
@@ -7199,7 +7184,7 @@ export declare class PointofsaleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PointofsaleApi
      */
-    getAllPointOfSaleContainers(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedContainerResponse, any>>;
+    getAllPointOfSaleContainers(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedContainerResponse, any>>;
     /**
      *
      * @summary Returns the products of the requested Point of Sale, empty list if POS does not exist
@@ -7210,7 +7195,7 @@ export declare class PointofsaleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PointofsaleApi
      */
-    getAllPointOfSaleProducts(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedProductResponse, any>>;
+    getAllPointOfSaleProducts(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedProductResponse, any>>;
     /**
      *
      * @summary Returns all existing Point of Sales
@@ -7220,7 +7205,7 @@ export declare class PointofsaleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PointofsaleApi
      */
-    getAllPointsOfSale(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedPointOfSaleResponse, any>>;
+    getAllPointsOfSale(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedPointOfSaleResponse, any>>;
     /**
      *
      * @summary Returns the requested Point of Sale
@@ -7229,7 +7214,7 @@ export declare class PointofsaleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PointofsaleApi
      */
-    getSinglePointOfSale(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PointOfSaleWithContainersResponse, any>>;
+    getSinglePointOfSale(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PointOfSaleWithContainersResponse, any>>;
     /**
      *
      * @summary Returns a Point of Sale transactions
@@ -7240,7 +7225,7 @@ export declare class PointofsaleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PointofsaleApi
      */
-    getTransactions(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBaseTransactionResponse, any>>;
+    getTransactions(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBaseTransactionResponse, any>>;
     /**
      *
      * @summary Update an existing Point of Sale.
@@ -7250,7 +7235,7 @@ export declare class PointofsaleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PointofsaleApi
      */
-    updatePointOfSale(id: number, updatePointOfSaleRequest?: UpdatePointOfSaleRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PointOfSaleWithContainersResponse, any>>;
+    updatePointOfSale(id: number, updatePointOfSaleRequest?: UpdatePointOfSaleRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PointOfSaleWithContainersResponse, any>>;
 }
 /**
  * ProductCategoriesApi - axios parameter creator
@@ -7264,7 +7249,7 @@ export declare const ProductCategoriesApiAxiosParamCreator: (configuration?: Con
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createProductCategory: (productCategoryRequest?: ProductCategoryRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    createProductCategory: (productCategoryRequest?: ProductCategoryRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns all existing productcategories
@@ -7273,7 +7258,7 @@ export declare const ProductCategoriesApiAxiosParamCreator: (configuration?: Con
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllProductCategories: (take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getAllProductCategories: (take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns the requested productcategory
@@ -7281,7 +7266,7 @@ export declare const ProductCategoriesApiAxiosParamCreator: (configuration?: Con
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSingleProductCategory: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getSingleProductCategory: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Update an existing productcategory.
@@ -7290,7 +7275,7 @@ export declare const ProductCategoriesApiAxiosParamCreator: (configuration?: Con
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateProductCategory: (id: number, productCategoryRequest?: ProductCategoryRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    updateProductCategory: (id: number, productCategoryRequest?: ProductCategoryRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ProductCategoriesApi - functional programming interface
@@ -7304,7 +7289,7 @@ export declare const ProductCategoriesApiFp: (configuration?: Configuration) => 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createProductCategory(productCategoryRequest?: ProductCategoryRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductCategoryResponse>>;
+    createProductCategory(productCategoryRequest?: ProductCategoryRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductCategoryResponse>>;
     /**
      *
      * @summary Returns all existing productcategories
@@ -7313,7 +7298,7 @@ export declare const ProductCategoriesApiFp: (configuration?: Configuration) => 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllProductCategories(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductCategoryResponse>>;
+    getAllProductCategories(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductCategoryResponse>>;
     /**
      *
      * @summary Returns the requested productcategory
@@ -7321,7 +7306,7 @@ export declare const ProductCategoriesApiFp: (configuration?: Configuration) => 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSingleProductCategory(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductCategoryResponse>>;
+    getSingleProductCategory(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductCategoryResponse>>;
     /**
      *
      * @summary Update an existing productcategory.
@@ -7330,7 +7315,7 @@ export declare const ProductCategoriesApiFp: (configuration?: Configuration) => 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateProductCategory(id: number, productCategoryRequest?: ProductCategoryRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductCategoryResponse>>;
+    updateProductCategory(id: number, productCategoryRequest?: ProductCategoryRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductCategoryResponse>>;
 };
 /**
  * ProductCategoriesApi - factory interface
@@ -7387,7 +7372,7 @@ export declare class ProductCategoriesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProductCategoriesApi
      */
-    createProductCategory(productCategoryRequest?: ProductCategoryRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductCategoryResponse, any>>;
+    createProductCategory(productCategoryRequest?: ProductCategoryRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductCategoryResponse, any>>;
     /**
      *
      * @summary Returns all existing productcategories
@@ -7397,7 +7382,7 @@ export declare class ProductCategoriesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProductCategoriesApi
      */
-    getAllProductCategories(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedProductCategoryResponse, any>>;
+    getAllProductCategories(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedProductCategoryResponse, any>>;
     /**
      *
      * @summary Returns the requested productcategory
@@ -7406,7 +7391,7 @@ export declare class ProductCategoriesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProductCategoriesApi
      */
-    getSingleProductCategory(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductCategoryResponse, any>>;
+    getSingleProductCategory(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductCategoryResponse, any>>;
     /**
      *
      * @summary Update an existing productcategory.
@@ -7416,7 +7401,7 @@ export declare class ProductCategoriesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProductCategoriesApi
      */
-    updateProductCategory(id: number, productCategoryRequest?: ProductCategoryRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductCategoryResponse, any>>;
+    updateProductCategory(id: number, productCategoryRequest?: ProductCategoryRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductCategoryResponse, any>>;
 }
 /**
  * ProductsApi - axios parameter creator
@@ -7430,7 +7415,7 @@ export declare const ProductsApiAxiosParamCreator: (configuration?: Configuratio
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createProduct: (createProductRequest?: CreateProductRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    createProduct: (createProductRequest?: CreateProductRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns all existing products
@@ -7439,7 +7424,7 @@ export declare const ProductsApiAxiosParamCreator: (configuration?: Configuratio
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllProducts: (take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getAllProducts: (take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns the requested product
@@ -7447,7 +7432,7 @@ export declare const ProductsApiAxiosParamCreator: (configuration?: Configuratio
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSingleProduct: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getSingleProduct: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Update an existing product.
@@ -7456,7 +7441,7 @@ export declare const ProductsApiAxiosParamCreator: (configuration?: Configuratio
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateProduct: (id: number, updateProductRequest?: UpdateProductRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    updateProduct: (id: number, updateProductRequest?: UpdateProductRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Upload a new image for a product
@@ -7465,7 +7450,7 @@ export declare const ProductsApiAxiosParamCreator: (configuration?: Configuratio
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateProductImage: (id: number, file?: File, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    updateProductImage: (id: number, file?: File, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ProductsApi - functional programming interface
@@ -7479,7 +7464,7 @@ export declare const ProductsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createProduct(createProductRequest?: CreateProductRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductResponse>>;
+    createProduct(createProductRequest?: CreateProductRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductResponse>>;
     /**
      *
      * @summary Returns all existing products
@@ -7488,7 +7473,7 @@ export declare const ProductsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllProducts(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductResponse>>;
+    getAllProducts(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductResponse>>;
     /**
      *
      * @summary Returns the requested product
@@ -7496,7 +7481,7 @@ export declare const ProductsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSingleProduct(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductResponse>>;
+    getSingleProduct(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductResponse>>;
     /**
      *
      * @summary Update an existing product.
@@ -7505,7 +7490,7 @@ export declare const ProductsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateProduct(id: number, updateProductRequest?: UpdateProductRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductResponse>>;
+    updateProduct(id: number, updateProductRequest?: UpdateProductRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductResponse>>;
     /**
      *
      * @summary Upload a new image for a product
@@ -7514,7 +7499,7 @@ export declare const ProductsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateProductImage(id: number, file?: File, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    updateProductImage(id: number, file?: File, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
 };
 /**
  * ProductsApi - factory interface
@@ -7580,7 +7565,7 @@ export declare class ProductsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProductsApi
      */
-    createProduct(createProductRequest?: CreateProductRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductResponse, any>>;
+    createProduct(createProductRequest?: CreateProductRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductResponse, any>>;
     /**
      *
      * @summary Returns all existing products
@@ -7590,7 +7575,7 @@ export declare class ProductsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProductsApi
      */
-    getAllProducts(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedProductResponse, any>>;
+    getAllProducts(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedProductResponse, any>>;
     /**
      *
      * @summary Returns the requested product
@@ -7599,7 +7584,7 @@ export declare class ProductsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProductsApi
      */
-    getSingleProduct(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductResponse, any>>;
+    getSingleProduct(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductResponse, any>>;
     /**
      *
      * @summary Update an existing product.
@@ -7609,7 +7594,7 @@ export declare class ProductsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProductsApi
      */
-    updateProduct(id: number, updateProductRequest?: UpdateProductRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductResponse, any>>;
+    updateProduct(id: number, updateProductRequest?: UpdateProductRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductResponse, any>>;
     /**
      *
      * @summary Upload a new image for a product
@@ -7619,7 +7604,7 @@ export declare class ProductsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProductsApi
      */
-    updateProductImage(id: number, file?: File, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    updateProductImage(id: number, file?: File, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
 }
 /**
  * RbacApi - axios parameter creator
@@ -7632,7 +7617,7 @@ export declare const RbacApiAxiosParamCreator: (configuration?: Configuration) =
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllRoles: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getAllRoles: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * RbacApi - functional programming interface
@@ -7645,7 +7630,7 @@ export declare const RbacApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllRoles(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RoleResponse>>>;
+    getAllRoles(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RoleResponse>>>;
 };
 /**
  * RbacApi - factory interface
@@ -7674,7 +7659,7 @@ export declare class RbacApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof RbacApi
      */
-    getAllRoles(options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleResponse[], any>>;
+    getAllRoles(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleResponse[], any>>;
 }
 /**
  * RootApi - axios parameter creator
@@ -7687,7 +7672,7 @@ export declare const RootApiAxiosParamCreator: (configuration?: Configuration) =
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    ping: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    ping: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * RootApi - functional programming interface
@@ -7700,7 +7685,7 @@ export declare const RootApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    ping(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    ping(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
 };
 /**
  * RootApi - factory interface
@@ -7729,7 +7714,7 @@ export declare class RootApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof RootApi
      */
-    ping(options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    ping(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
 }
 /**
  * StripeApi - axios parameter creator
@@ -7743,7 +7728,7 @@ export declare const StripeApiAxiosParamCreator: (configuration?: Configuration)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deposit: (stripeRequest?: StripeRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    deposit: (stripeRequest?: StripeRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * StripeApi - functional programming interface
@@ -7757,7 +7742,7 @@ export declare const StripeApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deposit(stripeRequest?: StripeRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StripePaymentIntentResponse>>;
+    deposit(stripeRequest?: StripeRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StripePaymentIntentResponse>>;
 };
 /**
  * StripeApi - factory interface
@@ -7788,7 +7773,7 @@ export declare class StripeApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof StripeApi
      */
-    deposit(stripeRequest?: StripeRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<StripePaymentIntentResponse, any>>;
+    deposit(stripeRequest?: StripeRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<StripePaymentIntentResponse, any>>;
 }
 /**
  * TestOperationsOfTheTestControllerApi - axios parameter creator
@@ -7801,7 +7786,7 @@ export declare const TestOperationsOfTheTestControllerApiAxiosParamCreator: (con
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    helloworld: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    helloworld: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * TestOperationsOfTheTestControllerApi - functional programming interface
@@ -7814,7 +7799,7 @@ export declare const TestOperationsOfTheTestControllerApiFp: (configuration?: Co
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    helloworld(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    helloworld(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
 };
 /**
  * TestOperationsOfTheTestControllerApi - factory interface
@@ -7843,7 +7828,7 @@ export declare class TestOperationsOfTheTestControllerApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TestOperationsOfTheTestControllerApi
      */
-    helloworld(options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    helloworld(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
 }
 /**
  * TransactionsApi - axios parameter creator
@@ -7857,7 +7842,7 @@ export declare const TransactionsApiAxiosParamCreator: (configuration?: Configur
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createTransaction: (transactionRequest?: TransactionRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    createTransaction: (transactionRequest?: TransactionRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Deletes a transaction
@@ -7865,7 +7850,7 @@ export declare const TransactionsApiAxiosParamCreator: (configuration?: Configur
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteTransaction: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    deleteTransaction: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get a list of all transactions
@@ -7882,7 +7867,7 @@ export declare const TransactionsApiAxiosParamCreator: (configuration?: Configur
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllTransactions: (fromId?: number, createdById?: number, toId?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getAllTransactions: (fromId?: number, createdById?: number, toId?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get a single transaction
@@ -7890,7 +7875,7 @@ export declare const TransactionsApiAxiosParamCreator: (configuration?: Configur
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSingleTransaction: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getSingleTransaction: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Updates the requested transaction
@@ -7899,7 +7884,7 @@ export declare const TransactionsApiAxiosParamCreator: (configuration?: Configur
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateTransaction: (id: number, transactionRequest?: TransactionRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    updateTransaction: (id: number, transactionRequest?: TransactionRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Function to validate the transaction immediatly after it is created
@@ -7907,7 +7892,7 @@ export declare const TransactionsApiAxiosParamCreator: (configuration?: Configur
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    validateTransaction: (transactionRequest?: TransactionRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    validateTransaction: (transactionRequest?: TransactionRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * TransactionsApi - functional programming interface
@@ -7921,7 +7906,7 @@ export declare const TransactionsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createTransaction(transactionRequest?: TransactionRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionResponse>>;
+    createTransaction(transactionRequest?: TransactionRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionResponse>>;
     /**
      *
      * @summary Deletes a transaction
@@ -7929,7 +7914,7 @@ export declare const TransactionsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteTransaction(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionResponse>>;
+    deleteTransaction(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionResponse>>;
     /**
      *
      * @summary Get a list of all transactions
@@ -7946,7 +7931,7 @@ export declare const TransactionsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllTransactions(fromId?: number, createdById?: number, toId?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBaseTransactionResponse>>;
+    getAllTransactions(fromId?: number, createdById?: number, toId?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBaseTransactionResponse>>;
     /**
      *
      * @summary Get a single transaction
@@ -7954,7 +7939,7 @@ export declare const TransactionsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSingleTransaction(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionResponse>>;
+    getSingleTransaction(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionResponse>>;
     /**
      *
      * @summary Updates the requested transaction
@@ -7963,7 +7948,7 @@ export declare const TransactionsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateTransaction(id: number, transactionRequest?: TransactionRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionResponse>>;
+    updateTransaction(id: number, transactionRequest?: TransactionRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionResponse>>;
     /**
      *
      * @summary Function to validate the transaction immediatly after it is created
@@ -7971,7 +7956,7 @@ export declare const TransactionsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    validateTransaction(transactionRequest?: TransactionRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean>>;
+    validateTransaction(transactionRequest?: TransactionRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean>>;
 };
 /**
  * TransactionsApi - factory interface
@@ -8052,7 +8037,7 @@ export declare class TransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    createTransaction(transactionRequest?: TransactionRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionResponse, any>>;
+    createTransaction(transactionRequest?: TransactionRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionResponse, any>>;
     /**
      *
      * @summary Deletes a transaction
@@ -8061,7 +8046,7 @@ export declare class TransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    deleteTransaction(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionResponse, any>>;
+    deleteTransaction(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionResponse, any>>;
     /**
      *
      * @summary Get a list of all transactions
@@ -8079,7 +8064,7 @@ export declare class TransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    getAllTransactions(fromId?: number, createdById?: number, toId?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBaseTransactionResponse, any>>;
+    getAllTransactions(fromId?: number, createdById?: number, toId?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBaseTransactionResponse, any>>;
     /**
      *
      * @summary Get a single transaction
@@ -8088,7 +8073,7 @@ export declare class TransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    getSingleTransaction(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionResponse, any>>;
+    getSingleTransaction(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionResponse, any>>;
     /**
      *
      * @summary Updates the requested transaction
@@ -8098,7 +8083,7 @@ export declare class TransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    updateTransaction(id: number, transactionRequest?: TransactionRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionResponse, any>>;
+    updateTransaction(id: number, transactionRequest?: TransactionRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionResponse, any>>;
     /**
      *
      * @summary Function to validate the transaction immediatly after it is created
@@ -8107,7 +8092,7 @@ export declare class TransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    validateTransaction(transactionRequest?: TransactionRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<boolean, any>>;
+    validateTransaction(transactionRequest?: TransactionRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<boolean, any>>;
 }
 /**
  * TransfersApi - axios parameter creator
@@ -8121,7 +8106,7 @@ export declare const TransfersApiAxiosParamCreator: (configuration?: Configurati
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createTransfer: (transferRequest?: TransferRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    createTransfer: (transferRequest?: TransferRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns all existing transfers
@@ -8130,7 +8115,7 @@ export declare const TransfersApiAxiosParamCreator: (configuration?: Configurati
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllTransfers: (take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getAllTransfers: (take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns the requested transfer
@@ -8138,7 +8123,7 @@ export declare const TransfersApiAxiosParamCreator: (configuration?: Configurati
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSingleTransfer: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getSingleTransfer: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * TransfersApi - functional programming interface
@@ -8152,7 +8137,7 @@ export declare const TransfersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createTransfer(transferRequest?: TransferRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransferResponse>>;
+    createTransfer(transferRequest?: TransferRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransferResponse>>;
     /**
      *
      * @summary Returns all existing transfers
@@ -8161,7 +8146,7 @@ export declare const TransfersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllTransfers(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TransferResponse>>>;
+    getAllTransfers(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TransferResponse>>>;
     /**
      *
      * @summary Returns the requested transfer
@@ -8169,7 +8154,7 @@ export declare const TransfersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSingleTransfer(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransferResponse>>;
+    getSingleTransfer(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransferResponse>>;
 };
 /**
  * TransfersApi - factory interface
@@ -8217,7 +8202,7 @@ export declare class TransfersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransfersApi
      */
-    createTransfer(transferRequest?: TransferRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<TransferResponse, any>>;
+    createTransfer(transferRequest?: TransferRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransferResponse, any>>;
     /**
      *
      * @summary Returns all existing transfers
@@ -8227,7 +8212,7 @@ export declare class TransfersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransfersApi
      */
-    getAllTransfers(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<TransferResponse[], any>>;
+    getAllTransfers(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransferResponse[], any>>;
     /**
      *
      * @summary Returns the requested transfer
@@ -8236,7 +8221,7 @@ export declare class TransfersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransfersApi
      */
-    getSingleTransfer(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<TransferResponse, any>>;
+    getSingleTransfer(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransferResponse, any>>;
 }
 /**
  * UsersApi - axios parameter creator
@@ -8250,7 +8235,7 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    acceptTos: (acceptTosRequest?: AcceptTosRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    acceptTos: (acceptTosRequest?: AcceptTosRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Authenticate as another user
@@ -8258,7 +8243,7 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authenticateAs: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    authenticateAs: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Create a new user
@@ -8266,7 +8251,7 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createUser: (createUserRequest?: CreateUserRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    createUser: (createUserRequest?: CreateUserRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Delete a single user
@@ -8274,7 +8259,7 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteUser: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    deleteUser: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Delete a users key code
@@ -8282,7 +8267,7 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteUserKey: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    deleteUserKey: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Delete a nfc code
@@ -8290,7 +8275,7 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteUserNfc: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    deleteUserNfc: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get a list of all users
@@ -8300,11 +8285,11 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {boolean} [active] Filter based if the user is active
      * @param {boolean} [ofAge] Filter based if the user is 18+
      * @param {number} [id] Filter based on user ID
-     * @param {'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE'} [type] Filter based on user type.
+     * @param {GetAllUsersTypeEnum} [type] Filter based on user type.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllUsers: (take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: 'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE', options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getAllUsers: (take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: GetAllUsersTypeEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get all users of user type
@@ -8314,7 +8299,7 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllUsersOfUserType: (userType: string, take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getAllUsersOfUserType: (userType: string, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get an individual user
@@ -8322,7 +8307,7 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getIndividualUser: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getIndividualUser: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get an organs members
@@ -8332,7 +8317,7 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getOrganMembers: (id: number, take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getOrganMembers: (id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get all users that the user can authenticate as
@@ -8340,7 +8325,7 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUserAuthenticatable: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getUserAuthenticatable: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get all roles assigned to the user.
@@ -8348,7 +8333,7 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUserRoles: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getUserRoles: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns the user\'s containers
@@ -8358,7 +8343,7 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUsersContainers: (id: number, take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getUsersContainers: (id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get all financial mutations of a user.
@@ -8368,7 +8353,7 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUsersFinancialMutations: (id: number, take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getUsersFinancialMutations: (id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns the user\'s Points of Sale
@@ -8378,7 +8363,7 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUsersPointsOfSale: (id: number, take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getUsersPointsOfSale: (id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get all deposits of a user that are still being processed by Stripe
@@ -8386,7 +8371,7 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUsersProcessingDeposits: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getUsersProcessingDeposits: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get an user\'s products
@@ -8396,7 +8381,7 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUsersProducts: (id: number, take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getUsersProducts: (id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get an user\'s transactions (from, to or created)
@@ -8413,7 +8398,7 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUsersTransactions: (id: number, fromId?: number, createdById?: number, toId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getUsersTransactions: (id: number, fromId?: number, createdById?: number, toId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get transaction report for the given user
@@ -8426,7 +8411,7 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUsersTransactionsReport: (id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, exclusiveToId?: boolean, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getUsersTransactionsReport: (id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, exclusiveToId?: boolean, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get an user\'s transfers
@@ -8439,7 +8424,7 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUsersTransfers: (id: number, take?: number, skip?: number, fromId?: number, toId?: number, id2?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getUsersTransfers: (id: number, take?: number, skip?: number, fromId?: number, toId?: number, id2?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Update a user
@@ -8448,7 +8433,7 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateUser: (id: number, updateUserRequest: UpdateUserRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    updateUser: (id: number, updateUserRequest: UpdateUserRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary POST an users update to new key code
@@ -8456,7 +8441,7 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateUserKey: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    updateUserKey: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Put a user\'s local password
@@ -8465,7 +8450,7 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateUserLocalPassword: (id: number, updateLocalRequest?: UpdateLocalRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    updateUserLocalPassword: (id: number, updateLocalRequest?: UpdateLocalRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Put a users NFC code
@@ -8474,7 +8459,7 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateUserNfc: (id: number, updateNfcRequest?: UpdateNfcRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    updateUserNfc: (id: number, updateNfcRequest?: UpdateNfcRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Put an users pin code
@@ -8483,7 +8468,7 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateUserPin: (id: number, updatePinRequest?: UpdatePinRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    updateUserPin: (id: number, updatePinRequest?: UpdatePinRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Waive all given user\'s fines
@@ -8491,7 +8476,7 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    waiveUserFines: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    waiveUserFines: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * UsersApi - functional programming interface
@@ -8505,7 +8490,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    acceptTos(acceptTosRequest?: AcceptTosRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    acceptTos(acceptTosRequest?: AcceptTosRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
     /**
      *
      * @summary Authenticate as another user
@@ -8513,7 +8498,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authenticateAs(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
+    authenticateAs(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
     /**
      *
      * @summary Create a new user
@@ -8521,7 +8506,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createUser(createUserRequest?: CreateUserRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>>;
+    createUser(createUserRequest?: CreateUserRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>>;
     /**
      *
      * @summary Delete a single user
@@ -8529,7 +8514,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteUser(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    deleteUser(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
     /**
      *
      * @summary Delete a users key code
@@ -8537,7 +8522,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteUserKey(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    deleteUserKey(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
      * @summary Delete a nfc code
@@ -8545,7 +8530,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteUserNfc(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    deleteUserNfc(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
      * @summary Get a list of all users
@@ -8555,11 +8540,11 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {boolean} [active] Filter based if the user is active
      * @param {boolean} [ofAge] Filter based if the user is 18+
      * @param {number} [id] Filter based on user ID
-     * @param {'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE'} [type] Filter based on user type.
+     * @param {GetAllUsersTypeEnum} [type] Filter based on user type.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllUsers(take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: 'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE', options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUserResponse>>;
+    getAllUsers(take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: GetAllUsersTypeEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUserResponse>>;
     /**
      *
      * @summary Get all users of user type
@@ -8569,7 +8554,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllUsersOfUserType(userType: string, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUserResponse>>;
+    getAllUsersOfUserType(userType: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUserResponse>>;
     /**
      *
      * @summary Get an individual user
@@ -8577,7 +8562,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getIndividualUser(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserResponse>>;
+    getIndividualUser(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserResponse>>;
     /**
      *
      * @summary Get an organs members
@@ -8587,7 +8572,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getOrganMembers(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUserResponse>>;
+    getOrganMembers(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUserResponse>>;
     /**
      *
      * @summary Get all users that the user can authenticate as
@@ -8595,7 +8580,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUserAuthenticatable(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UserResponse>>>;
+    getUserAuthenticatable(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UserResponse>>>;
     /**
      *
      * @summary Get all roles assigned to the user.
@@ -8603,7 +8588,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUserRoles(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RoleResponse>>>;
+    getUserRoles(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RoleResponse>>>;
     /**
      *
      * @summary Returns the user\'s containers
@@ -8613,7 +8598,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUsersContainers(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedContainerResponse>>;
+    getUsersContainers(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedContainerResponse>>;
     /**
      *
      * @summary Get all financial mutations of a user.
@@ -8623,7 +8608,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUsersFinancialMutations(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedFinancialMutationResponse>>;
+    getUsersFinancialMutations(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedFinancialMutationResponse>>;
     /**
      *
      * @summary Returns the user\'s Points of Sale
@@ -8633,7 +8618,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUsersPointsOfSale(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedPointOfSaleResponse>>;
+    getUsersPointsOfSale(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedPointOfSaleResponse>>;
     /**
      *
      * @summary Get all deposits of a user that are still being processed by Stripe
@@ -8641,7 +8626,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUsersProcessingDeposits(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RoleResponse>>>;
+    getUsersProcessingDeposits(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RoleResponse>>>;
     /**
      *
      * @summary Get an user\'s products
@@ -8651,7 +8636,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUsersProducts(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductResponse>>;
+    getUsersProducts(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductResponse>>;
     /**
      *
      * @summary Get an user\'s transactions (from, to or created)
@@ -8668,7 +8653,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUsersTransactions(id: number, fromId?: number, createdById?: number, toId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBaseTransactionResponse>>;
+    getUsersTransactions(id: number, fromId?: number, createdById?: number, toId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBaseTransactionResponse>>;
     /**
      *
      * @summary Get transaction report for the given user
@@ -8681,7 +8666,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUsersTransactionsReport(id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, exclusiveToId?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TransactionReportResponse>>>;
+    getUsersTransactionsReport(id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, exclusiveToId?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TransactionReportResponse>>>;
     /**
      *
      * @summary Get an user\'s transfers
@@ -8694,7 +8679,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUsersTransfers(id: number, take?: number, skip?: number, fromId?: number, toId?: number, id2?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedTransferResponse>>;
+    getUsersTransfers(id: number, take?: number, skip?: number, fromId?: number, toId?: number, id2?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedTransferResponse>>;
     /**
      *
      * @summary Update a user
@@ -8703,7 +8688,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateUser(id: number, updateUserRequest: UpdateUserRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpdateUserRequest>>;
+    updateUser(id: number, updateUserRequest: UpdateUserRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpdateUserRequest>>;
     /**
      *
      * @summary POST an users update to new key code
@@ -8711,7 +8696,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateUserKey(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpdateKeyResponse>>;
+    updateUserKey(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpdateKeyResponse>>;
     /**
      *
      * @summary Put a user\'s local password
@@ -8720,7 +8705,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateUserLocalPassword(id: number, updateLocalRequest?: UpdateLocalRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    updateUserLocalPassword(id: number, updateLocalRequest?: UpdateLocalRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
      * @summary Put a users NFC code
@@ -8729,7 +8714,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateUserNfc(id: number, updateNfcRequest?: UpdateNfcRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    updateUserNfc(id: number, updateNfcRequest?: UpdateNfcRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
      * @summary Put an users pin code
@@ -8738,7 +8723,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateUserPin(id: number, updatePinRequest?: UpdatePinRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    updateUserPin(id: number, updatePinRequest?: UpdatePinRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
      * @summary Waive all given user\'s fines
@@ -8746,7 +8731,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    waiveUserFines(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    waiveUserFines(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
 };
 /**
  * UsersApi - factory interface
@@ -8810,11 +8795,11 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
      * @param {boolean} [active] Filter based if the user is active
      * @param {boolean} [ofAge] Filter based if the user is 18+
      * @param {number} [id] Filter based on user ID
-     * @param {'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE'} [type] Filter based on user type.
+     * @param {GetAllUsersTypeEnum} [type] Filter based on user type.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllUsers(take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: 'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE', options?: any): AxiosPromise<PaginatedUserResponse>;
+    getAllUsers(take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: GetAllUsersTypeEnum, options?: any): AxiosPromise<PaginatedUserResponse>;
     /**
      *
      * @summary Get all users of user type
@@ -9018,7 +9003,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    acceptTos(acceptTosRequest?: AcceptTosRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    acceptTos(acceptTosRequest?: AcceptTosRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
     /**
      *
      * @summary Authenticate as another user
@@ -9027,7 +9012,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    authenticateAs(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
+    authenticateAs(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
     /**
      *
      * @summary Create a new user
@@ -9036,7 +9021,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    createUser(createUserRequest?: CreateUserRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<User, any>>;
+    createUser(createUserRequest?: CreateUserRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<User, any>>;
     /**
      *
      * @summary Delete a single user
@@ -9045,7 +9030,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    deleteUser(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    deleteUser(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
     /**
      *
      * @summary Delete a users key code
@@ -9054,7 +9039,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    deleteUserKey(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    deleteUserKey(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
     /**
      *
      * @summary Delete a nfc code
@@ -9063,7 +9048,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    deleteUserNfc(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    deleteUserNfc(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
     /**
      *
      * @summary Get a list of all users
@@ -9073,12 +9058,12 @@ export declare class UsersApi extends BaseAPI {
      * @param {boolean} [active] Filter based if the user is active
      * @param {boolean} [ofAge] Filter based if the user is 18+
      * @param {number} [id] Filter based on user ID
-     * @param {'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE'} [type] Filter based on user type.
+     * @param {GetAllUsersTypeEnum} [type] Filter based on user type.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getAllUsers(take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: 'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE', options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedUserResponse, any>>;
+    getAllUsers(take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: GetAllUsersTypeEnum, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedUserResponse, any>>;
     /**
      *
      * @summary Get all users of user type
@@ -9089,7 +9074,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getAllUsersOfUserType(userType: string, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedUserResponse, any>>;
+    getAllUsersOfUserType(userType: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedUserResponse, any>>;
     /**
      *
      * @summary Get an individual user
@@ -9098,7 +9083,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getIndividualUser(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<UserResponse, any>>;
+    getIndividualUser(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserResponse, any>>;
     /**
      *
      * @summary Get an organs members
@@ -9109,7 +9094,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getOrganMembers(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedUserResponse, any>>;
+    getOrganMembers(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedUserResponse, any>>;
     /**
      *
      * @summary Get all users that the user can authenticate as
@@ -9118,7 +9103,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUserAuthenticatable(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<UserResponse[], any>>;
+    getUserAuthenticatable(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserResponse[], any>>;
     /**
      *
      * @summary Get all roles assigned to the user.
@@ -9127,7 +9112,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUserRoles(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleResponse[], any>>;
+    getUserRoles(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleResponse[], any>>;
     /**
      *
      * @summary Returns the user\'s containers
@@ -9138,7 +9123,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUsersContainers(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedContainerResponse, any>>;
+    getUsersContainers(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedContainerResponse, any>>;
     /**
      *
      * @summary Get all financial mutations of a user.
@@ -9149,7 +9134,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUsersFinancialMutations(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedFinancialMutationResponse, any>>;
+    getUsersFinancialMutations(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedFinancialMutationResponse, any>>;
     /**
      *
      * @summary Returns the user\'s Points of Sale
@@ -9160,7 +9145,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUsersPointsOfSale(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedPointOfSaleResponse, any>>;
+    getUsersPointsOfSale(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedPointOfSaleResponse, any>>;
     /**
      *
      * @summary Get all deposits of a user that are still being processed by Stripe
@@ -9169,7 +9154,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUsersProcessingDeposits(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleResponse[], any>>;
+    getUsersProcessingDeposits(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleResponse[], any>>;
     /**
      *
      * @summary Get an user\'s products
@@ -9180,7 +9165,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUsersProducts(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedProductResponse, any>>;
+    getUsersProducts(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedProductResponse, any>>;
     /**
      *
      * @summary Get an user\'s transactions (from, to or created)
@@ -9198,7 +9183,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUsersTransactions(id: number, fromId?: number, createdById?: number, toId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBaseTransactionResponse, any>>;
+    getUsersTransactions(id: number, fromId?: number, createdById?: number, toId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBaseTransactionResponse, any>>;
     /**
      *
      * @summary Get transaction report for the given user
@@ -9212,7 +9197,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUsersTransactionsReport(id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, exclusiveToId?: boolean, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionReportResponse[], any>>;
+    getUsersTransactionsReport(id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, exclusiveToId?: boolean, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionReportResponse[], any>>;
     /**
      *
      * @summary Get an user\'s transfers
@@ -9226,7 +9211,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUsersTransfers(id: number, take?: number, skip?: number, fromId?: number, toId?: number, id2?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedTransferResponse, any>>;
+    getUsersTransfers(id: number, take?: number, skip?: number, fromId?: number, toId?: number, id2?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedTransferResponse, any>>;
     /**
      *
      * @summary Update a user
@@ -9236,7 +9221,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    updateUser(id: number, updateUserRequest: UpdateUserRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<UpdateUserRequest, any>>;
+    updateUser(id: number, updateUserRequest: UpdateUserRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UpdateUserRequest, any>>;
     /**
      *
      * @summary POST an users update to new key code
@@ -9245,7 +9230,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    updateUserKey(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<UpdateKeyResponse, any>>;
+    updateUserKey(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UpdateKeyResponse, any>>;
     /**
      *
      * @summary Put a user\'s local password
@@ -9255,7 +9240,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    updateUserLocalPassword(id: number, updateLocalRequest?: UpdateLocalRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    updateUserLocalPassword(id: number, updateLocalRequest?: UpdateLocalRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
     /**
      *
      * @summary Put a users NFC code
@@ -9265,7 +9250,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    updateUserNfc(id: number, updateNfcRequest?: UpdateNfcRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    updateUserNfc(id: number, updateNfcRequest?: UpdateNfcRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
     /**
      *
      * @summary Put an users pin code
@@ -9275,7 +9260,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    updateUserPin(id: number, updatePinRequest?: UpdatePinRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    updateUserPin(id: number, updatePinRequest?: UpdatePinRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
     /**
      *
      * @summary Waive all given user\'s fines
@@ -9284,8 +9269,21 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    waiveUserFines(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    waiveUserFines(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
 }
+/**
+ * @export
+ */
+export declare const GetAllUsersTypeEnum: {
+    readonly Member: "MEMBER";
+    readonly Organ: "ORGAN";
+    readonly Voucher: "VOUCHER";
+    readonly LocalUser: "LOCAL_USER";
+    readonly LocalAdmin: "LOCAL_ADMIN";
+    readonly Invoice: "INVOICE";
+    readonly AutomaticInvoice: "AUTOMATIC_INVOICE";
+};
+export type GetAllUsersTypeEnum = typeof GetAllUsersTypeEnum[keyof typeof GetAllUsersTypeEnum];
 /**
  * VatGroupsApi - axios parameter creator
  * @export
@@ -9298,7 +9296,7 @@ export declare const VatGroupsApiAxiosParamCreator: (configuration?: Configurati
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createVatGroup: (vatGroupRequest?: VatGroupRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    createVatGroup: (vatGroupRequest?: VatGroupRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get a list of all VAT groups
@@ -9311,7 +9309,7 @@ export declare const VatGroupsApiAxiosParamCreator: (configuration?: Configurati
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllVatGroups: (vatGroupId?: number, name?: string, percentage?: number, deleted?: boolean, take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getAllVatGroups: (vatGroupId?: number, name?: string, percentage?: number, deleted?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns the requested VAT group
@@ -9319,7 +9317,7 @@ export declare const VatGroupsApiAxiosParamCreator: (configuration?: Configurati
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSingleVatGroup: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getSingleVatGroup: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get the VAT collections needed for VAT declarations
@@ -9328,7 +9326,7 @@ export declare const VatGroupsApiAxiosParamCreator: (configuration?: Configurati
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getVatDeclarationAmounts: (year: number, period: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getVatDeclarationAmounts: (year: number, period: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Create a new VAT group
@@ -9337,7 +9335,7 @@ export declare const VatGroupsApiAxiosParamCreator: (configuration?: Configurati
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateVatGroup: (id: number, updateVatGroupRequest?: UpdateVatGroupRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    updateVatGroup: (id: number, updateVatGroupRequest?: UpdateVatGroupRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * VatGroupsApi - functional programming interface
@@ -9351,7 +9349,7 @@ export declare const VatGroupsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createVatGroup(vatGroupRequest?: VatGroupRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VatGroup>>;
+    createVatGroup(vatGroupRequest?: VatGroupRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VatGroup>>;
     /**
      *
      * @summary Get a list of all VAT groups
@@ -9364,7 +9362,7 @@ export declare const VatGroupsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllVatGroups(vatGroupId?: number, name?: string, percentage?: number, deleted?: boolean, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedVatGroupResponse>>;
+    getAllVatGroups(vatGroupId?: number, name?: string, percentage?: number, deleted?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedVatGroupResponse>>;
     /**
      *
      * @summary Returns the requested VAT group
@@ -9372,7 +9370,7 @@ export declare const VatGroupsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSingleVatGroup(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VatGroup>>;
+    getSingleVatGroup(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VatGroup>>;
     /**
      *
      * @summary Get the VAT collections needed for VAT declarations
@@ -9381,7 +9379,7 @@ export declare const VatGroupsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getVatDeclarationAmounts(year: number, period: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedVatGroupResponse>>;
+    getVatDeclarationAmounts(year: number, period: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedVatGroupResponse>>;
     /**
      *
      * @summary Create a new VAT group
@@ -9390,7 +9388,7 @@ export declare const VatGroupsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateVatGroup(id: number, updateVatGroupRequest?: UpdateVatGroupRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VatGroup>>;
+    updateVatGroup(id: number, updateVatGroupRequest?: UpdateVatGroupRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VatGroup>>;
 };
 /**
  * VatGroupsApi - factory interface
@@ -9460,7 +9458,7 @@ export declare class VatGroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VatGroupsApi
      */
-    createVatGroup(vatGroupRequest?: VatGroupRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<VatGroup, any>>;
+    createVatGroup(vatGroupRequest?: VatGroupRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VatGroup, any>>;
     /**
      *
      * @summary Get a list of all VAT groups
@@ -9474,7 +9472,7 @@ export declare class VatGroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VatGroupsApi
      */
-    getAllVatGroups(vatGroupId?: number, name?: string, percentage?: number, deleted?: boolean, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedVatGroupResponse, any>>;
+    getAllVatGroups(vatGroupId?: number, name?: string, percentage?: number, deleted?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedVatGroupResponse, any>>;
     /**
      *
      * @summary Returns the requested VAT group
@@ -9483,7 +9481,7 @@ export declare class VatGroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VatGroupsApi
      */
-    getSingleVatGroup(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<VatGroup, any>>;
+    getSingleVatGroup(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VatGroup, any>>;
     /**
      *
      * @summary Get the VAT collections needed for VAT declarations
@@ -9493,7 +9491,7 @@ export declare class VatGroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VatGroupsApi
      */
-    getVatDeclarationAmounts(year: number, period: string, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedVatGroupResponse, any>>;
+    getVatDeclarationAmounts(year: number, period: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedVatGroupResponse, any>>;
     /**
      *
      * @summary Create a new VAT group
@@ -9503,7 +9501,7 @@ export declare class VatGroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VatGroupsApi
      */
-    updateVatGroup(id: number, updateVatGroupRequest?: UpdateVatGroupRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<VatGroup, any>>;
+    updateVatGroup(id: number, updateVatGroupRequest?: UpdateVatGroupRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VatGroup, any>>;
 }
 /**
  * VouchergroupsApi - axios parameter creator
@@ -9517,7 +9515,7 @@ export declare const VouchergroupsApiAxiosParamCreator: (configuration?: Configu
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createVouchergroup: (voucherGroupRequest?: VoucherGroupRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    createVouchergroup: (voucherGroupRequest?: VoucherGroupRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns all existing voucher groups
@@ -9526,7 +9524,7 @@ export declare const VouchergroupsApiAxiosParamCreator: (configuration?: Configu
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllVouchergroups: (take?: number, skip?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getAllVouchergroups: (take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns the requested voucher group
@@ -9534,7 +9532,7 @@ export declare const VouchergroupsApiAxiosParamCreator: (configuration?: Configu
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getVouchergroupId: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getVouchergroupId: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Updates the requested voucher group
@@ -9543,7 +9541,7 @@ export declare const VouchergroupsApiAxiosParamCreator: (configuration?: Configu
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateVoucherGroup: (id: number, voucherGroupRequest?: VoucherGroupRequest, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    updateVoucherGroup: (id: number, voucherGroupRequest?: VoucherGroupRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * VouchergroupsApi - functional programming interface
@@ -9557,7 +9555,7 @@ export declare const VouchergroupsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createVouchergroup(voucherGroupRequest?: VoucherGroupRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VoucherGroupResponse>>;
+    createVouchergroup(voucherGroupRequest?: VoucherGroupRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VoucherGroupResponse>>;
     /**
      *
      * @summary Returns all existing voucher groups
@@ -9566,7 +9564,7 @@ export declare const VouchergroupsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllVouchergroups(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedVoucherGroupResponse>>;
+    getAllVouchergroups(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedVoucherGroupResponse>>;
     /**
      *
      * @summary Returns the requested voucher group
@@ -9574,7 +9572,7 @@ export declare const VouchergroupsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getVouchergroupId(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VoucherGroupResponse>>;
+    getVouchergroupId(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VoucherGroupResponse>>;
     /**
      *
      * @summary Updates the requested voucher group
@@ -9583,7 +9581,7 @@ export declare const VouchergroupsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateVoucherGroup(id: number, voucherGroupRequest?: VoucherGroupRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VoucherGroupResponse>>;
+    updateVoucherGroup(id: number, voucherGroupRequest?: VoucherGroupRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VoucherGroupResponse>>;
 };
 /**
  * VouchergroupsApi - factory interface
@@ -9640,7 +9638,7 @@ export declare class VouchergroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VouchergroupsApi
      */
-    createVouchergroup(voucherGroupRequest?: VoucherGroupRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<VoucherGroupResponse, any>>;
+    createVouchergroup(voucherGroupRequest?: VoucherGroupRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VoucherGroupResponse, any>>;
     /**
      *
      * @summary Returns all existing voucher groups
@@ -9650,7 +9648,7 @@ export declare class VouchergroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VouchergroupsApi
      */
-    getAllVouchergroups(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedVoucherGroupResponse, any>>;
+    getAllVouchergroups(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedVoucherGroupResponse, any>>;
     /**
      *
      * @summary Returns the requested voucher group
@@ -9659,7 +9657,7 @@ export declare class VouchergroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VouchergroupsApi
      */
-    getVouchergroupId(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<VoucherGroupResponse, any>>;
+    getVouchergroupId(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VoucherGroupResponse, any>>;
     /**
      *
      * @summary Updates the requested voucher group
@@ -9669,5 +9667,5 @@ export declare class VouchergroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VouchergroupsApi
      */
-    updateVoucherGroup(id: number, voucherGroupRequest?: VoucherGroupRequest, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<VoucherGroupResponse, any>>;
+    updateVoucherGroup(id: number, voucherGroupRequest?: VoucherGroupRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VoucherGroupResponse, any>>;
 }

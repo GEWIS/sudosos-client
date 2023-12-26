@@ -14,14 +14,14 @@
 
 
 import type { Configuration } from './configuration';
-import type { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
+import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from './common';
 import type { RequestArgs } from './base';
 // @ts-ignore
-import { BASE_PATH, COLLECTION_FORMATS, BaseAPI, RequiredError } from './base';
+import { BASE_PATH, COLLECTION_FORMATS, BaseAPI, RequiredError, operationServerMap } from './base';
 
 /**
  * 
@@ -331,6 +331,30 @@ export interface BannerRequest {
  */
 export interface BannerResponse {
     /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof BannerResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof BannerResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof BannerResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof BannerResponse
+     */
+    'version'?: number;
+    /**
      * Name/label of the banner
      * @type {string}
      * @memberof BannerResponse
@@ -366,30 +390,6 @@ export interface BannerResponse {
      * @memberof BannerResponse
      */
     'endDate': string;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof BannerResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof BannerResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof BannerResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof BannerResponse
-     */
-    'version'?: number;
 }
 /**
  * 
@@ -397,6 +397,30 @@ export interface BannerResponse {
  * @interface BaseContainerResponse
  */
 export interface BaseContainerResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof BaseContainerResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof BaseContainerResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof BaseContainerResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof BaseContainerResponse
+     */
+    'version'?: number;
     /**
      * The name of the container.
      * @type {string}
@@ -415,30 +439,6 @@ export interface BaseContainerResponse {
      * @memberof BaseContainerResponse
      */
     'revision'?: number;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof BaseContainerResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof BaseContainerResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof BaseContainerResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof BaseContainerResponse
-     */
-    'version'?: number;
 }
 /**
  * 
@@ -446,12 +446,6 @@ export interface BaseContainerResponse {
  * @interface BaseEntity
  */
 export interface BaseEntity {
-    /**
-     * The auto-generated object id.
-     * @type {number}
-     * @memberof BaseEntity
-     */
-    'id': number;
     /**
      * The creation date of the object.
      * @type {string}
@@ -470,6 +464,12 @@ export interface BaseEntity {
      * @memberof BaseEntity
      */
     'version'?: number;
+    /**
+     * The auto-generated object id.
+     * @type {number}
+     * @memberof BaseEntity
+     */
+    'id': number;
 }
 /**
  * 
@@ -528,6 +528,30 @@ export interface BaseEventAnswerResponse {
  */
 export interface BaseEventResponse {
     /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof BaseEventResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof BaseEventResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof BaseEventResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof BaseEventResponse
+     */
+    'version'?: number;
+    /**
      * Name of the borrel.
      * @type {string}
      * @memberof BaseEventResponse
@@ -557,30 +581,6 @@ export interface BaseEventResponse {
      * @memberof BaseEventResponse
      */
     'type': string;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof BaseEventResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof BaseEventResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof BaseEventResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof BaseEventResponse
-     */
-    'version'?: number;
 }
 /**
  * 
@@ -589,12 +589,6 @@ export interface BaseEventResponse {
  */
 export interface BaseEventShiftResponse {
     /**
-     * Name of the shift.
-     * @type {string}
-     * @memberof BaseEventShiftResponse
-     */
-    'name': string;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof BaseEventShiftResponse
@@ -618,6 +612,12 @@ export interface BaseEventShiftResponse {
      * @memberof BaseEventShiftResponse
      */
     'version'?: number;
+    /**
+     * Name of the shift.
+     * @type {string}
+     * @memberof BaseEventShiftResponse
+     */
+    'name': string;
 }
 /**
  * 
@@ -625,24 +625,6 @@ export interface BaseEventShiftResponse {
  * @interface BaseFile
  */
 export interface BaseFile {
-    /**
-     * The filename when the file is downloaded
-     * @type {string}
-     * @memberof BaseFile
-     */
-    'downloadName': string;
-    /**
-     * The location of the file, including filename in storage
-     * @type {string}
-     * @memberof BaseFile
-     */
-    'location': string;
-    /**
-     * 
-     * @type {User}
-     * @memberof BaseFile
-     */
-    'createdBy': User;
     /**
      * The creation date of the object.
      * @type {string}
@@ -661,6 +643,30 @@ export interface BaseFile {
      * @memberof BaseFile
      */
     'version'?: number;
+    /**
+     * The auto-generated object id.
+     * @type {number}
+     * @memberof BaseFile
+     */
+    'id': number;
+    /**
+     * The filename when the file is downloaded
+     * @type {string}
+     * @memberof BaseFile
+     */
+    'downloadName': string;
+    /**
+     * The location of the file, including filename in storage
+     * @type {string}
+     * @memberof BaseFile
+     */
+    'location': string;
+    /**
+     * 
+     * @type {User}
+     * @memberof BaseFile
+     */
+    'createdBy': User;
 }
 /**
  * 
@@ -668,18 +674,6 @@ export interface BaseFile {
  * @interface BaseFineHandoutEventResponse
  */
 export interface BaseFineHandoutEventResponse {
-    /**
-     * Reference date of fines
-     * @type {string}
-     * @memberof BaseFineHandoutEventResponse
-     */
-    'referenceDate': string;
-    /**
-     * 
-     * @type {BaseUserResponse}
-     * @memberof BaseFineHandoutEventResponse
-     */
-    'createdBy': BaseUserResponse;
     /**
      * The unique id of the entity.
      * @type {number}
@@ -704,6 +698,18 @@ export interface BaseFineHandoutEventResponse {
      * @memberof BaseFineHandoutEventResponse
      */
     'version'?: number;
+    /**
+     * Reference date of fines
+     * @type {string}
+     * @memberof BaseFineHandoutEventResponse
+     */
+    'referenceDate': string;
+    /**
+     * 
+     * @type {BaseUserResponse}
+     * @memberof BaseFineHandoutEventResponse
+     */
+    'createdBy': BaseUserResponse;
 }
 /**
  * 
@@ -711,6 +717,30 @@ export interface BaseFineHandoutEventResponse {
  * @interface BaseInvoiceResponse
  */
 export interface BaseInvoiceResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof BaseInvoiceResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof BaseInvoiceResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof BaseInvoiceResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof BaseInvoiceResponse
+     */
+    'version'?: number;
     /**
      * 
      * @type {BaseUserResponse}
@@ -741,30 +771,6 @@ export interface BaseInvoiceResponse {
      * @memberof BaseInvoiceResponse
      */
     'transfer'?: TransferResponse;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof BaseInvoiceResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof BaseInvoiceResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof BaseInvoiceResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof BaseInvoiceResponse
-     */
-    'version'?: number;
 }
 /**
  * 
@@ -773,12 +779,6 @@ export interface BaseInvoiceResponse {
  */
 export interface BasePayoutRequestResponse {
     /**
-     * The current status of the payout request
-     * @type {string}
-     * @memberof BasePayoutRequestResponse
-     */
-    'status'?: string;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof BasePayoutRequestResponse
@@ -802,6 +802,30 @@ export interface BasePayoutRequestResponse {
      * @memberof BasePayoutRequestResponse
      */
     'version'?: number;
+    /**
+     * 
+     * @type {BaseUserResponse}
+     * @memberof BasePayoutRequestResponse
+     */
+    'requestedBy': BaseUserResponse;
+    /**
+     * 
+     * @type {BaseUserResponse}
+     * @memberof BasePayoutRequestResponse
+     */
+    'approvedBy'?: BaseUserResponse;
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof BasePayoutRequestResponse
+     */
+    'amount': DineroObjectResponse;
+    /**
+     * The current status of the payout request
+     * @type {string}
+     * @memberof BasePayoutRequestResponse
+     */
+    'status'?: string;
 }
 /**
  * 
@@ -810,12 +834,6 @@ export interface BasePayoutRequestResponse {
  */
 export interface BasePointOfSaleResponse {
     /**
-     * The name of the point-of-sale.
-     * @type {string}
-     * @memberof BasePointOfSaleResponse
-     */
-    'name': string;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof BasePointOfSaleResponse
@@ -839,6 +857,12 @@ export interface BasePointOfSaleResponse {
      * @memberof BasePointOfSaleResponse
      */
     'version'?: number;
+    /**
+     * The name of the point-of-sale.
+     * @type {string}
+     * @memberof BasePointOfSaleResponse
+     */
+    'name': string;
 }
 /**
  * 
@@ -846,6 +870,30 @@ export interface BasePointOfSaleResponse {
  * @interface BaseProductResponse
  */
 export interface BaseProductResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof BaseProductResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof BaseProductResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof BaseProductResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof BaseProductResponse
+     */
+    'version'?: number;
     /**
      * The name of the product.
      * @type {string}
@@ -864,30 +912,6 @@ export interface BaseProductResponse {
      * @memberof BaseProductResponse
      */
     'vat': BaseVatGroupResponse;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof BaseProductResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof BaseProductResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof BaseProductResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof BaseProductResponse
-     */
-    'version'?: number;
 }
 /**
  * 
@@ -927,6 +951,30 @@ export interface BaseResponse {
  */
 export interface BaseTransactionResponse {
     /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof BaseTransactionResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof BaseTransactionResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof BaseTransactionResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof BaseTransactionResponse
+     */
+    'version'?: number;
+    /**
      * 
      * @type {BaseUserResponse}
      * @memberof BaseTransactionResponse
@@ -950,30 +998,6 @@ export interface BaseTransactionResponse {
      * @memberof BaseTransactionResponse
      */
     'value': Dinero;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof BaseTransactionResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof BaseTransactionResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof BaseTransactionResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof BaseTransactionResponse
-     */
-    'version'?: number;
 }
 /**
  * 
@@ -981,6 +1005,30 @@ export interface BaseTransactionResponse {
  * @interface BaseUserResponse
  */
 export interface BaseUserResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof BaseUserResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof BaseUserResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof BaseUserResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof BaseUserResponse
+     */
+    'version'?: number;
     /**
      * The name of the user.
      * @type {string}
@@ -999,30 +1047,6 @@ export interface BaseUserResponse {
      * @memberof BaseUserResponse
      */
     'nickname'?: string;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof BaseUserResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof BaseUserResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof BaseUserResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof BaseUserResponse
-     */
-    'version'?: number;
 }
 /**
  * 
@@ -1030,6 +1054,30 @@ export interface BaseUserResponse {
  * @interface BaseVatGroupResponse
  */
 export interface BaseVatGroupResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof BaseVatGroupResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof BaseVatGroupResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof BaseVatGroupResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof BaseVatGroupResponse
+     */
+    'version'?: number;
     /**
      * Percentage of VAT
      * @type {number}
@@ -1042,30 +1090,6 @@ export interface BaseVatGroupResponse {
      * @memberof BaseVatGroupResponse
      */
     'hidden': boolean;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof BaseVatGroupResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof BaseVatGroupResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof BaseVatGroupResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof BaseVatGroupResponse
-     */
-    'version'?: number;
 }
 /**
  * 
@@ -1073,6 +1097,30 @@ export interface BaseVatGroupResponse {
  * @interface BoilerPayoutRequestResponse
  */
 export interface BoilerPayoutRequestResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof BoilerPayoutRequestResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof BoilerPayoutRequestResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof BoilerPayoutRequestResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof BoilerPayoutRequestResponse
+     */
+    'version'?: number;
     /**
      * 
      * @type {BaseUserResponse}
@@ -1091,30 +1139,6 @@ export interface BoilerPayoutRequestResponse {
      * @memberof BoilerPayoutRequestResponse
      */
     'amount': DineroObjectResponse;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof BoilerPayoutRequestResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof BoilerPayoutRequestResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof BoilerPayoutRequestResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof BoilerPayoutRequestResponse
-     */
-    'version'?: number;
 }
 /**
  * 
@@ -1123,12 +1147,6 @@ export interface BoilerPayoutRequestResponse {
  */
 export interface ContainerResponse {
     /**
-     * 
-     * @type {BaseUserResponse}
-     * @memberof ContainerResponse
-     */
-    'owner': BaseUserResponse;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof ContainerResponse
@@ -1152,6 +1170,30 @@ export interface ContainerResponse {
      * @memberof ContainerResponse
      */
     'version'?: number;
+    /**
+     * The name of the container.
+     * @type {string}
+     * @memberof ContainerResponse
+     */
+    'name': string;
+    /**
+     * Public status of the container.
+     * @type {boolean}
+     * @memberof ContainerResponse
+     */
+    'public'?: boolean;
+    /**
+     * The container revision.
+     * @type {number}
+     * @memberof ContainerResponse
+     */
+    'revision'?: number;
+    /**
+     * 
+     * @type {BaseUserResponse}
+     * @memberof ContainerResponse
+     */
+    'owner': BaseUserResponse;
 }
 /**
  * 
@@ -1160,12 +1202,6 @@ export interface ContainerResponse {
  */
 export interface ContainerWithProductsResponse {
     /**
-     * The products in the container.
-     * @type {Array<ProductResponse>}
-     * @memberof ContainerWithProductsResponse
-     */
-    'products': Array<ProductResponse>;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof ContainerWithProductsResponse
@@ -1189,6 +1225,36 @@ export interface ContainerWithProductsResponse {
      * @memberof ContainerWithProductsResponse
      */
     'version'?: number;
+    /**
+     * The name of the container.
+     * @type {string}
+     * @memberof ContainerWithProductsResponse
+     */
+    'name': string;
+    /**
+     * Public status of the container.
+     * @type {boolean}
+     * @memberof ContainerWithProductsResponse
+     */
+    'public'?: boolean;
+    /**
+     * The container revision.
+     * @type {number}
+     * @memberof ContainerWithProductsResponse
+     */
+    'revision'?: number;
+    /**
+     * 
+     * @type {BaseUserResponse}
+     * @memberof ContainerWithProductsResponse
+     */
+    'owner': BaseUserResponse;
+    /**
+     * The products in the container.
+     * @type {Array<ProductResponse>}
+     * @memberof ContainerWithProductsResponse
+     */
+    'products': Array<ProductResponse>;
 }
 /**
  * 
@@ -1607,12 +1673,6 @@ export interface EventAnswerAvailabilityRequest {
  */
 export interface EventInShiftResponse {
     /**
-     * Answers for this shift.
-     * @type {Array<BaseEventAnswerResponse>}
-     * @memberof EventInShiftResponse
-     */
-    'answers'?: Array<BaseEventAnswerResponse>;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof EventInShiftResponse
@@ -1636,6 +1696,24 @@ export interface EventInShiftResponse {
      * @memberof EventInShiftResponse
      */
     'version'?: number;
+    /**
+     * Name of the shift.
+     * @type {string}
+     * @memberof EventInShiftResponse
+     */
+    'name': string;
+    /**
+     * Which roles can fill in this shift.
+     * @type {Array<string>}
+     * @memberof EventInShiftResponse
+     */
+    'roles': Array<string>;
+    /**
+     * Answers for this shift.
+     * @type {Array<BaseEventAnswerResponse>}
+     * @memberof EventInShiftResponse
+     */
+    'answers'?: Array<BaseEventAnswerResponse>;
 }
 /**
  * 
@@ -1644,12 +1722,6 @@ export interface EventInShiftResponse {
  */
 export interface EventPlanningSelectedCount {
     /**
-     * Number of times this user was selected for this shift
-     * @type {number}
-     * @memberof EventPlanningSelectedCount
-     */
-    'count': number;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof EventPlanningSelectedCount
@@ -1673,6 +1745,30 @@ export interface EventPlanningSelectedCount {
      * @memberof EventPlanningSelectedCount
      */
     'version'?: number;
+    /**
+     * The name of the user.
+     * @type {string}
+     * @memberof EventPlanningSelectedCount
+     */
+    'firstName': string;
+    /**
+     * The last name of the user
+     * @type {string}
+     * @memberof EventPlanningSelectedCount
+     */
+    'lastName': string;
+    /**
+     * The nickname of the user
+     * @type {string}
+     * @memberof EventPlanningSelectedCount
+     */
+    'nickname'?: string;
+    /**
+     * Number of times this user was selected for this shift
+     * @type {number}
+     * @memberof EventPlanningSelectedCount
+     */
+    'count': number;
 }
 /**
  * 
@@ -1681,12 +1777,6 @@ export interface EventPlanningSelectedCount {
  */
 export interface EventResponse {
     /**
-     * Shifts for this event
-     * @type {Array<EventInShiftResponse>}
-     * @memberof EventResponse
-     */
-    'shifts': Array<EventInShiftResponse>;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof EventResponse
@@ -1710,6 +1800,42 @@ export interface EventResponse {
      * @memberof EventResponse
      */
     'version'?: number;
+    /**
+     * Name of the borrel.
+     * @type {string}
+     * @memberof EventResponse
+     */
+    'name': string;
+    /**
+     * 
+     * @type {BaseUserResponse}
+     * @memberof EventResponse
+     */
+    'createdBy': BaseUserResponse;
+    /**
+     * The starting date of the event.
+     * @type {string}
+     * @memberof EventResponse
+     */
+    'startDate': string;
+    /**
+     * The end date of the event.
+     * @type {string}
+     * @memberof EventResponse
+     */
+    'endDate': string;
+    /**
+     * The tpye of event.
+     * @type {string}
+     * @memberof EventResponse
+     */
+    'type': string;
+    /**
+     * Shifts for this event
+     * @type {Array<EventInShiftResponse>}
+     * @memberof EventResponse
+     */
+    'shifts': Array<EventInShiftResponse>;
 }
 /**
  * 
@@ -1718,12 +1844,6 @@ export interface EventResponse {
  */
 export interface EventShiftResponse {
     /**
-     * Which roles can fill in this shift.
-     * @type {Array<string>}
-     * @memberof EventShiftResponse
-     */
-    'roles': Array<string>;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof EventShiftResponse
@@ -1747,6 +1867,18 @@ export interface EventShiftResponse {
      * @memberof EventShiftResponse
      */
     'version'?: number;
+    /**
+     * Name of the shift.
+     * @type {string}
+     * @memberof EventShiftResponse
+     */
+    'name': string;
+    /**
+     * Which roles can fill in this shift.
+     * @type {Array<string>}
+     * @memberof EventShiftResponse
+     */
+    'roles': Array<string>;
 }
 /**
  * 
@@ -1789,12 +1921,6 @@ export type FinancialMutationResponseMutation = BaseTransactionResponse | Transf
  */
 export interface FineHandoutEventResponse {
     /**
-     * Fines that have been handed out
-     * @type {Array<FineResponse>}
-     * @memberof FineHandoutEventResponse
-     */
-    'fines': Array<FineResponse>;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof FineHandoutEventResponse
@@ -1818,6 +1944,24 @@ export interface FineHandoutEventResponse {
      * @memberof FineHandoutEventResponse
      */
     'version'?: number;
+    /**
+     * Reference date of fines
+     * @type {string}
+     * @memberof FineHandoutEventResponse
+     */
+    'referenceDate': string;
+    /**
+     * 
+     * @type {BaseUserResponse}
+     * @memberof FineHandoutEventResponse
+     */
+    'createdBy': BaseUserResponse;
+    /**
+     * Fines that have been handed out
+     * @type {Array<FineResponse>}
+     * @memberof FineHandoutEventResponse
+     */
+    'fines': Array<FineResponse>;
 }
 /**
  * 
@@ -1825,6 +1969,30 @@ export interface FineHandoutEventResponse {
  * @interface FineResponse
  */
 export interface FineResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof FineResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof FineResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof FineResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof FineResponse
+     */
+    'version'?: number;
     /**
      * 
      * @type {DineroObjectResponse}
@@ -1837,30 +2005,6 @@ export interface FineResponse {
      * @memberof FineResponse
      */
     'user'?: BaseUserResponse;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof FineResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof FineResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof FineResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof FineResponse
-     */
-    'version'?: number;
 }
 /**
  * 
@@ -1994,12 +2138,6 @@ export interface InvoiceEntryResponse {
  */
 export interface InvoiceResponse {
     /**
-     * The entries of the invoice
-     * @type {Array<InvoiceEntryResponse>}
-     * @memberof InvoiceResponse
-     */
-    'invoiceEntries': Array<InvoiceEntryResponse>;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof InvoiceResponse
@@ -2023,6 +2161,42 @@ export interface InvoiceResponse {
      * @memberof InvoiceResponse
      */
     'version'?: number;
+    /**
+     * 
+     * @type {BaseUserResponse}
+     * @memberof InvoiceResponse
+     */
+    'to': BaseUserResponse;
+    /**
+     * Name of the addressed.
+     * @type {string}
+     * @memberof InvoiceResponse
+     */
+    'addressee': string;
+    /**
+     * Description of the invoice.
+     * @type {string}
+     * @memberof InvoiceResponse
+     */
+    'description': string;
+    /**
+     * 
+     * @type {InvoiceStatusResponse}
+     * @memberof InvoiceResponse
+     */
+    'currentState': InvoiceStatusResponse;
+    /**
+     * 
+     * @type {TransferResponse}
+     * @memberof InvoiceResponse
+     */
+    'transfer'?: TransferResponse;
+    /**
+     * The entries of the invoice
+     * @type {Array<InvoiceEntryResponse>}
+     * @memberof InvoiceResponse
+     */
+    'invoiceEntries': Array<InvoiceEntryResponse>;
 }
 /**
  * 
@@ -2031,12 +2205,6 @@ export interface InvoiceResponse {
  */
 export interface InvoiceResponseTypes {
     /**
-     * The entries of the invoice
-     * @type {Array<InvoiceEntryResponse>}
-     * @memberof InvoiceResponseTypes
-     */
-    'invoiceEntries'?: Array<InvoiceEntryResponse>;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof InvoiceResponseTypes
@@ -2060,6 +2228,42 @@ export interface InvoiceResponseTypes {
      * @memberof InvoiceResponseTypes
      */
     'version'?: number;
+    /**
+     * 
+     * @type {BaseUserResponse}
+     * @memberof InvoiceResponseTypes
+     */
+    'to': BaseUserResponse;
+    /**
+     * Name of the addressed.
+     * @type {string}
+     * @memberof InvoiceResponseTypes
+     */
+    'addressee': string;
+    /**
+     * Description of the invoice.
+     * @type {string}
+     * @memberof InvoiceResponseTypes
+     */
+    'description': string;
+    /**
+     * 
+     * @type {InvoiceStatusResponse}
+     * @memberof InvoiceResponseTypes
+     */
+    'currentState': InvoiceStatusResponse;
+    /**
+     * 
+     * @type {TransferResponse}
+     * @memberof InvoiceResponseTypes
+     */
+    'transfer'?: TransferResponse;
+    /**
+     * The entries of the invoice
+     * @type {Array<InvoiceEntryResponse>}
+     * @memberof InvoiceResponseTypes
+     */
+    'invoiceEntries'?: Array<InvoiceEntryResponse>;
 }
 /**
  * 
@@ -2097,18 +2301,6 @@ export type InvoiceStatusResponseStateEnum = typeof InvoiceStatusResponseStateEn
  */
 export interface InvoiceUser {
     /**
-     * 
-     * @type {User}
-     * @memberof InvoiceUser
-     */
-    'user': User;
-    /**
-     * Whether the user gets automatic invoices
-     * @type {boolean}
-     * @memberof InvoiceUser
-     */
-    'automatic'?: boolean;
-    /**
      * The creation date of the object.
      * @type {string}
      * @memberof InvoiceUser
@@ -2126,6 +2318,24 @@ export interface InvoiceUser {
      * @memberof InvoiceUser
      */
     'version'?: number;
+    /**
+     * The auto-generated object id.
+     * @type {number}
+     * @memberof InvoiceUser
+     */
+    'id': number;
+    /**
+     * 
+     * @type {User}
+     * @memberof InvoiceUser
+     */
+    'user': User;
+    /**
+     * Whether the user gets automatic invoices
+     * @type {boolean}
+     * @memberof InvoiceUser
+     */
+    'automatic'?: boolean;
 }
 /**
  * 
@@ -2133,6 +2343,30 @@ export interface InvoiceUser {
  * @interface LocalUser
  */
 export interface LocalUser {
+    /**
+     * The creation date of the object.
+     * @type {string}
+     * @memberof LocalUser
+     */
+    'createdAt'?: string;
+    /**
+     * The last update date of the object.
+     * @type {string}
+     * @memberof LocalUser
+     */
+    'updatedAt'?: string;
+    /**
+     * The current version of the object.
+     * @type {number}
+     * @memberof LocalUser
+     */
+    'version'?: number;
+    /**
+     * The auto-generated object id.
+     * @type {number}
+     * @memberof LocalUser
+     */
+    'id': number;
     /**
      * 
      * @type {User}
@@ -2145,24 +2379,6 @@ export interface LocalUser {
      * @memberof LocalUser
      */
     'passwordHash': string;
-    /**
-     * The creation date of the object.
-     * @type {string}
-     * @memberof LocalUser
-     */
-    'createdAt'?: string;
-    /**
-     * The last update date of the object.
-     * @type {string}
-     * @memberof LocalUser
-     */
-    'updatedAt'?: string;
-    /**
-     * The current version of the object.
-     * @type {number}
-     * @memberof LocalUser
-     */
-    'version'?: number;
 }
 /**
  * 
@@ -2576,24 +2792,6 @@ export interface PayoutRequestRequest {
  */
 export interface PayoutRequestResponse {
     /**
-     * Statuses of this payout response over time
-     * @type {Array<PayoutRequestStatusResponse>}
-     * @memberof PayoutRequestResponse
-     */
-    'status': Array<PayoutRequestStatusResponse>;
-    /**
-     * Bank account number
-     * @type {string}
-     * @memberof PayoutRequestResponse
-     */
-    'bankAccountNumber': string;
-    /**
-     * Name of the account owner
-     * @type {string}
-     * @memberof PayoutRequestResponse
-     */
-    'bankAccountName': string;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof PayoutRequestResponse
@@ -2617,6 +2815,42 @@ export interface PayoutRequestResponse {
      * @memberof PayoutRequestResponse
      */
     'version'?: number;
+    /**
+     * 
+     * @type {BaseUserResponse}
+     * @memberof PayoutRequestResponse
+     */
+    'requestedBy': BaseUserResponse;
+    /**
+     * 
+     * @type {BaseUserResponse}
+     * @memberof PayoutRequestResponse
+     */
+    'approvedBy'?: BaseUserResponse;
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof PayoutRequestResponse
+     */
+    'amount': DineroObjectResponse;
+    /**
+     * Statuses of this payout response over time
+     * @type {Array<PayoutRequestStatusResponse>}
+     * @memberof PayoutRequestResponse
+     */
+    'status': Array<PayoutRequestStatusResponse>;
+    /**
+     * Bank account number
+     * @type {string}
+     * @memberof PayoutRequestResponse
+     */
+    'bankAccountNumber': string;
+    /**
+     * Name of the account owner
+     * @type {string}
+     * @memberof PayoutRequestResponse
+     */
+    'bankAccountName': string;
 }
 /**
  * 
@@ -2648,12 +2882,6 @@ export type PayoutRequestStatusRequestStateEnum = typeof PayoutRequestStatusRequ
  */
 export interface PayoutRequestStatusResponse {
     /**
-     * The state of this status change
-     * @type {string}
-     * @memberof PayoutRequestStatusResponse
-     */
-    'state': string;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof PayoutRequestStatusResponse
@@ -2677,6 +2905,12 @@ export interface PayoutRequestStatusResponse {
      * @memberof PayoutRequestStatusResponse
      */
     'version'?: number;
+    /**
+     * The state of this status change
+     * @type {string}
+     * @memberof PayoutRequestStatusResponse
+     */
+    'state': string;
 }
 /**
  * 
@@ -2684,6 +2918,36 @@ export interface PayoutRequestStatusResponse {
  * @interface PointOfSaleResponse
  */
 export interface PointOfSaleResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof PointOfSaleResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof PointOfSaleResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof PointOfSaleResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof PointOfSaleResponse
+     */
+    'version'?: number;
+    /**
+     * The name of the point-of-sale.
+     * @type {string}
+     * @memberof PointOfSaleResponse
+     */
+    'name': string;
     /**
      * 
      * @type {BaseUserResponse}
@@ -2702,30 +2966,6 @@ export interface PointOfSaleResponse {
      * @memberof PointOfSaleResponse
      */
     'useAuthentication': boolean;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof PointOfSaleResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof PointOfSaleResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof PointOfSaleResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof PointOfSaleResponse
-     */
-    'version'?: number;
 }
 /**
  * 
@@ -2734,12 +2974,6 @@ export interface PointOfSaleResponse {
  */
 export interface PointOfSaleWithContainersResponse {
     /**
-     * The containers in the point-of-sale.
-     * @type {Array<ContainerWithProductsResponse>}
-     * @memberof PointOfSaleWithContainersResponse
-     */
-    'containers': Array<ContainerWithProductsResponse>;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof PointOfSaleWithContainersResponse
@@ -2763,6 +2997,36 @@ export interface PointOfSaleWithContainersResponse {
      * @memberof PointOfSaleWithContainersResponse
      */
     'version'?: number;
+    /**
+     * The name of the point-of-sale.
+     * @type {string}
+     * @memberof PointOfSaleWithContainersResponse
+     */
+    'name': string;
+    /**
+     * 
+     * @type {BaseUserResponse}
+     * @memberof PointOfSaleWithContainersResponse
+     */
+    'owner'?: BaseUserResponse;
+    /**
+     * Revision of the POS
+     * @type {number}
+     * @memberof PointOfSaleWithContainersResponse
+     */
+    'revision': number;
+    /**
+     * Whether this POS requires users to authenticate themselves before making a transaction
+     * @type {boolean}
+     * @memberof PointOfSaleWithContainersResponse
+     */
+    'useAuthentication': boolean;
+    /**
+     * The containers in the point-of-sale.
+     * @type {Array<ContainerWithProductsResponse>}
+     * @memberof PointOfSaleWithContainersResponse
+     */
+    'containers': Array<ContainerWithProductsResponse>;
 }
 /**
  * 
@@ -2784,12 +3048,6 @@ export interface ProductCategoryRequest {
  */
 export interface ProductCategoryResponse {
     /**
-     * The name of the productCategory.
-     * @type {string}
-     * @memberof ProductCategoryResponse
-     */
-    'name': string;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof ProductCategoryResponse
@@ -2813,6 +3071,12 @@ export interface ProductCategoryResponse {
      * @memberof ProductCategoryResponse
      */
     'version'?: number;
+    /**
+     * The name of the productCategory.
+     * @type {string}
+     * @memberof ProductCategoryResponse
+     */
+    'name': string;
 }
 /**
  * 
@@ -2820,6 +3084,48 @@ export interface ProductCategoryResponse {
  * @interface ProductResponse
  */
 export interface ProductResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof ProductResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof ProductResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof ProductResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof ProductResponse
+     */
+    'version'?: number;
+    /**
+     * The name of the product.
+     * @type {string}
+     * @memberof ProductResponse
+     */
+    'name': string;
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof ProductResponse
+     */
+    'priceInclVat': DineroObjectResponse;
+    /**
+     * 
+     * @type {BaseVatGroupResponse}
+     * @memberof ProductResponse
+     */
+    'vat': BaseVatGroupResponse;
     /**
      * The product revision ID
      * @type {number}
@@ -2856,30 +3162,6 @@ export interface ProductResponse {
      * @memberof ProductResponse
      */
     'alcoholPercentage': number;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof ProductResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof ProductResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof ProductResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof ProductResponse
-     */
-    'version'?: number;
 }
 /**
  * 
@@ -2971,24 +3253,6 @@ export interface SimpleFileRequest {
  */
 export interface SimpleFileResponse {
     /**
-     * The filename of the file
-     * @type {string}
-     * @memberof SimpleFileResponse
-     */
-    'downloadName': string;
-    /**
-     * The location of the file in storage
-     * @type {string}
-     * @memberof SimpleFileResponse
-     */
-    'location': string;
-    /**
-     * 
-     * @type {UserResponse}
-     * @memberof SimpleFileResponse
-     */
-    'createdBy': UserResponse;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof SimpleFileResponse
@@ -3012,6 +3276,24 @@ export interface SimpleFileResponse {
      * @memberof SimpleFileResponse
      */
     'version'?: number;
+    /**
+     * The filename of the file
+     * @type {string}
+     * @memberof SimpleFileResponse
+     */
+    'downloadName': string;
+    /**
+     * The location of the file in storage
+     * @type {string}
+     * @memberof SimpleFileResponse
+     */
+    'location': string;
+    /**
+     * 
+     * @type {UserResponse}
+     * @memberof SimpleFileResponse
+     */
+    'createdBy': UserResponse;
 }
 /**
  * 
@@ -3019,6 +3301,30 @@ export interface SimpleFileResponse {
  * @interface StripeDepositResponse
  */
 export interface StripeDepositResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof StripeDepositResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof StripeDepositResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof StripeDepositResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof StripeDepositResponse
+     */
+    'version'?: number;
     /**
      * The ID of the payment intent in Stripe
      * @type {string}
@@ -3043,30 +3349,6 @@ export interface StripeDepositResponse {
      * @memberof StripeDepositResponse
      */
     'to': BaseUserResponse;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof StripeDepositResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof StripeDepositResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof StripeDepositResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof StripeDepositResponse
-     */
-    'version'?: number;
 }
 /**
  * 
@@ -3075,12 +3357,6 @@ export interface StripeDepositResponse {
  */
 export interface StripeDepositStatusResponse {
     /**
-     * State of the Stripe deposit. It can be 1 (\'CREATED\'), 2 (\'PROCESSING\'), 3 (\'SUCCEEDED\'), or 4 (\'FAILED\')
-     * @type {number}
-     * @memberof StripeDepositStatusResponse
-     */
-    'state': number;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof StripeDepositStatusResponse
@@ -3104,6 +3380,12 @@ export interface StripeDepositStatusResponse {
      * @memberof StripeDepositStatusResponse
      */
     'version'?: number;
+    /**
+     * State of the Stripe deposit. It can be 1 (\'CREATED\'), 2 (\'PROCESSING\'), 3 (\'SUCCEEDED\'), or 4 (\'FAILED\')
+     * @type {number}
+     * @memberof StripeDepositStatusResponse
+     */
+    'state': number;
 }
 /**
  * 
@@ -3111,6 +3393,30 @@ export interface StripeDepositStatusResponse {
  * @interface StripePaymentIntentResponse
  */
 export interface StripePaymentIntentResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof StripePaymentIntentResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof StripePaymentIntentResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof StripePaymentIntentResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof StripePaymentIntentResponse
+     */
+    'version'?: number;
     /**
      * ID of the intent in Stripe.
      * @type {string}
@@ -3123,30 +3429,6 @@ export interface StripePaymentIntentResponse {
      * @memberof StripePaymentIntentResponse
      */
     'clientSecret': string;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof StripePaymentIntentResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof StripePaymentIntentResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof StripePaymentIntentResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof StripePaymentIntentResponse
-     */
-    'version'?: number;
 }
 /**
  * 
@@ -3199,30 +3481,6 @@ export interface SubTransactionRequest {
  */
 export interface SubTransactionResponse {
     /**
-     * 
-     * @type {BaseUserResponse}
-     * @memberof SubTransactionResponse
-     */
-    'to': BaseUserResponse;
-    /**
-     * 
-     * @type {BaseContainerResponse}
-     * @memberof SubTransactionResponse
-     */
-    'container': BaseContainerResponse;
-    /**
-     * The rows of this     SubTransaction
-     * @type {Array<SubTransactionRowResponse>}
-     * @memberof SubTransactionResponse
-     */
-    'subTransactionRows': Array<SubTransactionRowResponse>;
-    /**
-     * 
-     * @type {DineroObjectResponse}
-     * @memberof SubTransactionResponse
-     */
-    'totalPriceInclVat': DineroObjectResponse;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof SubTransactionResponse
@@ -3246,6 +3504,30 @@ export interface SubTransactionResponse {
      * @memberof SubTransactionResponse
      */
     'version'?: number;
+    /**
+     * 
+     * @type {BaseUserResponse}
+     * @memberof SubTransactionResponse
+     */
+    'to': BaseUserResponse;
+    /**
+     * 
+     * @type {BaseContainerResponse}
+     * @memberof SubTransactionResponse
+     */
+    'container': BaseContainerResponse;
+    /**
+     * The rows of this     SubTransaction
+     * @type {Array<SubTransactionRowResponse>}
+     * @memberof SubTransactionResponse
+     */
+    'subTransactionRows': Array<SubTransactionRowResponse>;
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof SubTransactionResponse
+     */
+    'totalPriceInclVat': DineroObjectResponse;
 }
 /**
  * 
@@ -3279,24 +3561,6 @@ export interface SubTransactionRowRequest {
  */
 export interface SubTransactionRowResponse {
     /**
-     * 
-     * @type {BaseProductResponse}
-     * @memberof SubTransactionRowResponse
-     */
-    'product': BaseProductResponse;
-    /**
-     * The amount that has been bought
-     * @type {number}
-     * @memberof SubTransactionRowResponse
-     */
-    'amount': number;
-    /**
-     * 
-     * @type {DineroObjectResponse}
-     * @memberof SubTransactionRowResponse
-     */
-    'totalPriceInclVat': DineroObjectResponse;
-    /**
      * The unique id of the entity.
      * @type {number}
      * @memberof SubTransactionRowResponse
@@ -3320,6 +3584,24 @@ export interface SubTransactionRowResponse {
      * @memberof SubTransactionRowResponse
      */
     'version'?: number;
+    /**
+     * 
+     * @type {BaseProductResponse}
+     * @memberof SubTransactionRowResponse
+     */
+    'product': BaseProductResponse;
+    /**
+     * The amount that has been bought
+     * @type {number}
+     * @memberof SubTransactionRowResponse
+     */
+    'amount': number;
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof SubTransactionRowResponse
+     */
+    'totalPriceInclVat': DineroObjectResponse;
 }
 /**
  * 
@@ -3593,6 +3875,30 @@ export interface TransactionRequest {
  */
 export interface TransactionResponse {
     /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof TransactionResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof TransactionResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof TransactionResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof TransactionResponse
+     */
+    'version'?: number;
+    /**
      * 
      * @type {BaseUserResponse}
      * @memberof TransactionResponse
@@ -3622,30 +3928,6 @@ export interface TransactionResponse {
      * @memberof TransactionResponse
      */
     'totalPriceInclVat': DineroObjectResponse;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof TransactionResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof TransactionResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof TransactionResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof TransactionResponse
-     */
-    'version'?: number;
 }
 /**
  * 
@@ -3690,6 +3972,30 @@ export interface TransferRequest {
  * @interface TransferResponse
  */
 export interface TransferResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof TransferResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof TransferResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof TransferResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof TransferResponse
+     */
+    'version'?: number;
     /**
      * Description of the transfer
      * @type {string}
@@ -3744,30 +4050,6 @@ export interface TransferResponse {
      * @memberof TransferResponse
      */
     'waivedFines'?: UserFineGroupResponse;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof TransferResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof TransferResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof TransferResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof TransferResponse
-     */
-    'version'?: number;
 }
 /**
  * 
@@ -4098,6 +4380,30 @@ export interface UpdateVatGroupRequest {
  */
 export interface User {
     /**
+     * The creation date of the object.
+     * @type {string}
+     * @memberof User
+     */
+    'createdAt'?: string;
+    /**
+     * The last update date of the object.
+     * @type {string}
+     * @memberof User
+     */
+    'updatedAt'?: string;
+    /**
+     * The current version of the object.
+     * @type {number}
+     * @memberof User
+     */
+    'version'?: number;
+    /**
+     * The auto-generated object id.
+     * @type {number}
+     * @memberof User
+     */
+    'id': number;
+    /**
      * First name of the user.
      * @type {string}
      * @memberof User
@@ -4151,24 +4457,6 @@ export interface User {
      * @memberof User
      */
     'type': UserTypeEnum;
-    /**
-     * The creation date of the object.
-     * @type {string}
-     * @memberof User
-     */
-    'createdAt'?: string;
-    /**
-     * The last update date of the object.
-     * @type {string}
-     * @memberof User
-     */
-    'updatedAt'?: string;
-    /**
-     * The current version of the object.
-     * @type {number}
-     * @memberof User
-     */
-    'version'?: number;
 }
 
 export const UserTypeEnum = {
@@ -4202,6 +4490,48 @@ export interface UserFineGroupResponse {
  * @interface UserResponse
  */
 export interface UserResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof UserResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof UserResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof UserResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof UserResponse
+     */
+    'version'?: number;
+    /**
+     * The name of the user.
+     * @type {string}
+     * @memberof UserResponse
+     */
+    'firstName': string;
+    /**
+     * The last name of the user
+     * @type {string}
+     * @memberof UserResponse
+     */
+    'lastName': string;
+    /**
+     * The nickname of the user
+     * @type {string}
+     * @memberof UserResponse
+     */
+    'nickname'?: string;
     /**
      * Whether the user activated
      * @type {boolean}
@@ -4250,30 +4580,6 @@ export interface UserResponse {
      * @memberof UserResponse
      */
     'canGoIntoDebt': boolean;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof UserResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof UserResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof UserResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof UserResponse
-     */
-    'version'?: number;
 }
 /**
  * 
@@ -4307,18 +4613,6 @@ export interface UserToFineResponse {
  */
 export interface UserVoucherGroup {
     /**
-     * 
-     * @type {User}
-     * @memberof UserVoucherGroup
-     */
-    'user': User;
-    /**
-     * 
-     * @type {VoucherGroup}
-     * @memberof UserVoucherGroup
-     */
-    'voucherGroup': VoucherGroup;
-    /**
      * The creation date of the object.
      * @type {string}
      * @memberof UserVoucherGroup
@@ -4336,6 +4630,24 @@ export interface UserVoucherGroup {
      * @memberof UserVoucherGroup
      */
     'version'?: number;
+    /**
+     * The auto-generated object id.
+     * @type {number}
+     * @memberof UserVoucherGroup
+     */
+    'id': number;
+    /**
+     * 
+     * @type {User}
+     * @memberof UserVoucherGroup
+     */
+    'user': User;
+    /**
+     * 
+     * @type {VoucherGroup}
+     * @memberof UserVoucherGroup
+     */
+    'voucherGroup': VoucherGroup;
 }
 /**
  * 
@@ -4400,6 +4712,30 @@ export interface VatDeclarationRow {
  */
 export interface VatGroup {
     /**
+     * The creation date of the object.
+     * @type {string}
+     * @memberof VatGroup
+     */
+    'createdAt'?: string;
+    /**
+     * The last update date of the object.
+     * @type {string}
+     * @memberof VatGroup
+     */
+    'updatedAt'?: string;
+    /**
+     * The current version of the object.
+     * @type {number}
+     * @memberof VatGroup
+     */
+    'version'?: number;
+    /**
+     * The auto-generated object id.
+     * @type {number}
+     * @memberof VatGroup
+     */
+    'id': number;
+    /**
      * Name of the VAT group
      * @type {string}
      * @memberof VatGroup
@@ -4423,24 +4759,6 @@ export interface VatGroup {
      * @memberof VatGroup
      */
     'hidden'?: boolean;
-    /**
-     * The creation date of the object.
-     * @type {string}
-     * @memberof VatGroup
-     */
-    'createdAt'?: string;
-    /**
-     * The last update date of the object.
-     * @type {string}
-     * @memberof VatGroup
-     */
-    'updatedAt'?: string;
-    /**
-     * The current version of the object.
-     * @type {number}
-     * @memberof VatGroup
-     */
-    'version'?: number;
 }
 /**
  * 
@@ -4448,12 +4766,6 @@ export interface VatGroup {
  * @interface VatGroupRequest
  */
 export interface VatGroupRequest {
-    /**
-     * VAT percentage
-     * @type {number}
-     * @memberof VatGroupRequest
-     */
-    'percentage': number;
     /**
      * Name of the VAT group
      * @type {string}
@@ -4472,6 +4784,12 @@ export interface VatGroupRequest {
      * @memberof VatGroupRequest
      */
     'hidden': boolean;
+    /**
+     * VAT percentage
+     * @type {number}
+     * @memberof VatGroupRequest
+     */
+    'percentage': number;
 }
 /**
  * 
@@ -4479,6 +4797,30 @@ export interface VatGroupRequest {
  * @interface VoucherGroup
  */
 export interface VoucherGroup {
+    /**
+     * The creation date of the object.
+     * @type {string}
+     * @memberof VoucherGroup
+     */
+    'createdAt'?: string;
+    /**
+     * The last update date of the object.
+     * @type {string}
+     * @memberof VoucherGroup
+     */
+    'updatedAt'?: string;
+    /**
+     * The current version of the object.
+     * @type {number}
+     * @memberof VoucherGroup
+     */
+    'version'?: number;
+    /**
+     * The auto-generated object id.
+     * @type {number}
+     * @memberof VoucherGroup
+     */
+    'id': number;
     /**
      * Name of the group.
      * @type {string}
@@ -4503,24 +4845,6 @@ export interface VoucherGroup {
      * @memberof VoucherGroup
      */
     'vouchers': Array<User>;
-    /**
-     * The creation date of the object.
-     * @type {string}
-     * @memberof VoucherGroup
-     */
-    'createdAt'?: string;
-    /**
-     * The last update date of the object.
-     * @type {string}
-     * @memberof VoucherGroup
-     */
-    'updatedAt'?: string;
-    /**
-     * The current version of the object.
-     * @type {number}
-     * @memberof VoucherGroup
-     */
-    'version'?: number;
 }
 /**
  * 
@@ -4566,6 +4890,30 @@ export interface VoucherGroupRequest {
  */
 export interface VoucherGroupResponse {
     /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof VoucherGroupResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof VoucherGroupResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof VoucherGroupResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof VoucherGroupResponse
+     */
+    'version'?: number;
+    /**
      * Name of the voucher group
      * @type {string}
      * @memberof VoucherGroupResponse
@@ -4601,30 +4949,6 @@ export interface VoucherGroupResponse {
      * @memberof VoucherGroupResponse
      */
     'amount': number;
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof VoucherGroupResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof VoucherGroupResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof VoucherGroupResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof VoucherGroupResponse
-     */
-    'version'?: number;
 }
 
 /**
@@ -4640,7 +4964,7 @@ export const AuthenticateApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        eanAuthentication: async (authenticationEanRequest: AuthenticationEanRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        eanAuthentication: async (authenticationEanRequest: AuthenticationEanRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'authenticationEanRequest' is not null or undefined
             assertParamExists('eanAuthentication', 'authenticationEanRequest', authenticationEanRequest)
             const localVarPath = `/authentication/ean`;
@@ -4676,7 +5000,7 @@ export const AuthenticateApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        gewisLDAPAuthentication: async (authenticationLDAPRequest: AuthenticationLDAPRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        gewisLDAPAuthentication: async (authenticationLDAPRequest: AuthenticationLDAPRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'authenticationLDAPRequest' is not null or undefined
             assertParamExists('gewisLDAPAuthentication', 'authenticationLDAPRequest', authenticationLDAPRequest)
             const localVarPath = `/authentication/GEWIS/LDAP`;
@@ -4712,7 +5036,7 @@ export const AuthenticateApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        gewisPinAuthentication: async (gEWISAuthenticationPinRequest: GEWISAuthenticationPinRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        gewisPinAuthentication: async (gEWISAuthenticationPinRequest: GEWISAuthenticationPinRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'gEWISAuthenticationPinRequest' is not null or undefined
             assertParamExists('gewisPinAuthentication', 'gEWISAuthenticationPinRequest', gEWISAuthenticationPinRequest)
             const localVarPath = `/authentication/GEWIS/pin`;
@@ -4748,7 +5072,7 @@ export const AuthenticateApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        gewisWebAuthentication: async (gewiswebAuthenticationRequest: GewiswebAuthenticationRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        gewisWebAuthentication: async (gewiswebAuthenticationRequest: GewiswebAuthenticationRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'gewiswebAuthenticationRequest' is not null or undefined
             assertParamExists('gewisWebAuthentication', 'gewiswebAuthenticationRequest', gewiswebAuthenticationRequest)
             const localVarPath = `/authentication/gewisweb`;
@@ -4784,7 +5108,7 @@ export const AuthenticateApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        keyAuthentication: async (authenticationKeyRequest: AuthenticationKeyRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        keyAuthentication: async (authenticationKeyRequest: AuthenticationKeyRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'authenticationKeyRequest' is not null or undefined
             assertParamExists('keyAuthentication', 'authenticationKeyRequest', authenticationKeyRequest)
             const localVarPath = `/authentication/key`;
@@ -4820,7 +5144,7 @@ export const AuthenticateApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        localAuthentication: async (authenticationLocalRequest: AuthenticationLocalRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        localAuthentication: async (authenticationLocalRequest: AuthenticationLocalRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'authenticationLocalRequest' is not null or undefined
             assertParamExists('localAuthentication', 'authenticationLocalRequest', authenticationLocalRequest)
             const localVarPath = `/authentication/local`;
@@ -4856,7 +5180,7 @@ export const AuthenticateApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        mockAuthentication: async (authenticationMockRequest: AuthenticationMockRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        mockAuthentication: async (authenticationMockRequest: AuthenticationMockRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'authenticationMockRequest' is not null or undefined
             assertParamExists('mockAuthentication', 'authenticationMockRequest', authenticationMockRequest)
             const localVarPath = `/authentication/mock`;
@@ -4892,7 +5216,7 @@ export const AuthenticateApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        nfcAuthentication: async (authenticationNfcRequest: AuthenticationNfcRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        nfcAuthentication: async (authenticationNfcRequest: AuthenticationNfcRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'authenticationNfcRequest' is not null or undefined
             assertParamExists('nfcAuthentication', 'authenticationNfcRequest', authenticationNfcRequest)
             const localVarPath = `/authentication/nfc`;
@@ -4928,7 +5252,7 @@ export const AuthenticateApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinAuthentication: async (authenticationPinRequest: AuthenticationPinRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        pinAuthentication: async (authenticationPinRequest: AuthenticationPinRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'authenticationPinRequest' is not null or undefined
             assertParamExists('pinAuthentication', 'authenticationPinRequest', authenticationPinRequest)
             const localVarPath = `/authentication/pin`;
@@ -4963,7 +5287,7 @@ export const AuthenticateApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        refreshToken: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        refreshToken: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/authentication/refreshToken`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -4998,7 +5322,7 @@ export const AuthenticateApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        resetLocal: async (resetLocalRequest: ResetLocalRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        resetLocal: async (resetLocalRequest: ResetLocalRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'resetLocalRequest' is not null or undefined
             assertParamExists('resetLocal', 'resetLocalRequest', resetLocalRequest)
             const localVarPath = `/authentication/local/reset`;
@@ -5034,7 +5358,7 @@ export const AuthenticateApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        resetLocalWithToken: async (authenticationResetTokenRequest: AuthenticationResetTokenRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        resetLocalWithToken: async (authenticationResetTokenRequest: AuthenticationResetTokenRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'authenticationResetTokenRequest' is not null or undefined
             assertParamExists('resetLocalWithToken', 'authenticationResetTokenRequest', authenticationResetTokenRequest)
             const localVarPath = `/authentication/local`;
@@ -5080,9 +5404,11 @@ export const AuthenticateApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async eanAuthentication(authenticationEanRequest: AuthenticationEanRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>> {
+        async eanAuthentication(authenticationEanRequest: AuthenticationEanRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.eanAuthentication(authenticationEanRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['AuthenticateApi.eanAuthentication']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -5091,9 +5417,11 @@ export const AuthenticateApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async gewisLDAPAuthentication(authenticationLDAPRequest: AuthenticationLDAPRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>> {
+        async gewisLDAPAuthentication(authenticationLDAPRequest: AuthenticationLDAPRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.gewisLDAPAuthentication(authenticationLDAPRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['AuthenticateApi.gewisLDAPAuthentication']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -5102,9 +5430,11 @@ export const AuthenticateApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async gewisPinAuthentication(gEWISAuthenticationPinRequest: GEWISAuthenticationPinRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>> {
+        async gewisPinAuthentication(gEWISAuthenticationPinRequest: GEWISAuthenticationPinRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.gewisPinAuthentication(gEWISAuthenticationPinRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['AuthenticateApi.gewisPinAuthentication']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -5113,9 +5443,11 @@ export const AuthenticateApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async gewisWebAuthentication(gewiswebAuthenticationRequest: GewiswebAuthenticationRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>> {
+        async gewisWebAuthentication(gewiswebAuthenticationRequest: GewiswebAuthenticationRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.gewisWebAuthentication(gewiswebAuthenticationRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['AuthenticateApi.gewisWebAuthentication']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -5124,9 +5456,11 @@ export const AuthenticateApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async keyAuthentication(authenticationKeyRequest: AuthenticationKeyRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>> {
+        async keyAuthentication(authenticationKeyRequest: AuthenticationKeyRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.keyAuthentication(authenticationKeyRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['AuthenticateApi.keyAuthentication']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -5135,9 +5469,11 @@ export const AuthenticateApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async localAuthentication(authenticationLocalRequest: AuthenticationLocalRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>> {
+        async localAuthentication(authenticationLocalRequest: AuthenticationLocalRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.localAuthentication(authenticationLocalRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['AuthenticateApi.localAuthentication']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -5146,9 +5482,11 @@ export const AuthenticateApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async mockAuthentication(authenticationMockRequest: AuthenticationMockRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>> {
+        async mockAuthentication(authenticationMockRequest: AuthenticationMockRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.mockAuthentication(authenticationMockRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['AuthenticateApi.mockAuthentication']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -5157,9 +5495,11 @@ export const AuthenticateApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async nfcAuthentication(authenticationNfcRequest: AuthenticationNfcRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>> {
+        async nfcAuthentication(authenticationNfcRequest: AuthenticationNfcRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.nfcAuthentication(authenticationNfcRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['AuthenticateApi.nfcAuthentication']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -5168,9 +5508,11 @@ export const AuthenticateApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async pinAuthentication(authenticationPinRequest: AuthenticationPinRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>> {
+        async pinAuthentication(authenticationPinRequest: AuthenticationPinRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.pinAuthentication(authenticationPinRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['AuthenticateApi.pinAuthentication']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -5178,9 +5520,11 @@ export const AuthenticateApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async refreshToken(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>> {
+        async refreshToken(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.refreshToken(options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['AuthenticateApi.refreshToken']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -5189,9 +5533,11 @@ export const AuthenticateApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async resetLocal(resetLocalRequest: ResetLocalRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+        async resetLocal(resetLocalRequest: ResetLocalRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.resetLocal(resetLocalRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['AuthenticateApi.resetLocal']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -5200,9 +5546,11 @@ export const AuthenticateApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async resetLocalWithToken(authenticationResetTokenRequest: AuthenticationResetTokenRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+        async resetLocalWithToken(authenticationResetTokenRequest: AuthenticationResetTokenRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.resetLocalWithToken(authenticationResetTokenRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['AuthenticateApi.resetLocalWithToken']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
     }
 };
@@ -5351,7 +5699,7 @@ export class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    public eanAuthentication(authenticationEanRequest: AuthenticationEanRequest, options?: AxiosRequestConfig) {
+    public eanAuthentication(authenticationEanRequest: AuthenticationEanRequest, options?: RawAxiosRequestConfig) {
         return AuthenticateApiFp(this.configuration).eanAuthentication(authenticationEanRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -5363,7 +5711,7 @@ export class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    public gewisLDAPAuthentication(authenticationLDAPRequest: AuthenticationLDAPRequest, options?: AxiosRequestConfig) {
+    public gewisLDAPAuthentication(authenticationLDAPRequest: AuthenticationLDAPRequest, options?: RawAxiosRequestConfig) {
         return AuthenticateApiFp(this.configuration).gewisLDAPAuthentication(authenticationLDAPRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -5375,7 +5723,7 @@ export class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    public gewisPinAuthentication(gEWISAuthenticationPinRequest: GEWISAuthenticationPinRequest, options?: AxiosRequestConfig) {
+    public gewisPinAuthentication(gEWISAuthenticationPinRequest: GEWISAuthenticationPinRequest, options?: RawAxiosRequestConfig) {
         return AuthenticateApiFp(this.configuration).gewisPinAuthentication(gEWISAuthenticationPinRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -5387,7 +5735,7 @@ export class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    public gewisWebAuthentication(gewiswebAuthenticationRequest: GewiswebAuthenticationRequest, options?: AxiosRequestConfig) {
+    public gewisWebAuthentication(gewiswebAuthenticationRequest: GewiswebAuthenticationRequest, options?: RawAxiosRequestConfig) {
         return AuthenticateApiFp(this.configuration).gewisWebAuthentication(gewiswebAuthenticationRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -5399,7 +5747,7 @@ export class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    public keyAuthentication(authenticationKeyRequest: AuthenticationKeyRequest, options?: AxiosRequestConfig) {
+    public keyAuthentication(authenticationKeyRequest: AuthenticationKeyRequest, options?: RawAxiosRequestConfig) {
         return AuthenticateApiFp(this.configuration).keyAuthentication(authenticationKeyRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -5411,7 +5759,7 @@ export class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    public localAuthentication(authenticationLocalRequest: AuthenticationLocalRequest, options?: AxiosRequestConfig) {
+    public localAuthentication(authenticationLocalRequest: AuthenticationLocalRequest, options?: RawAxiosRequestConfig) {
         return AuthenticateApiFp(this.configuration).localAuthentication(authenticationLocalRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -5423,7 +5771,7 @@ export class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    public mockAuthentication(authenticationMockRequest: AuthenticationMockRequest, options?: AxiosRequestConfig) {
+    public mockAuthentication(authenticationMockRequest: AuthenticationMockRequest, options?: RawAxiosRequestConfig) {
         return AuthenticateApiFp(this.configuration).mockAuthentication(authenticationMockRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -5435,7 +5783,7 @@ export class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    public nfcAuthentication(authenticationNfcRequest: AuthenticationNfcRequest, options?: AxiosRequestConfig) {
+    public nfcAuthentication(authenticationNfcRequest: AuthenticationNfcRequest, options?: RawAxiosRequestConfig) {
         return AuthenticateApiFp(this.configuration).nfcAuthentication(authenticationNfcRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -5447,7 +5795,7 @@ export class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    public pinAuthentication(authenticationPinRequest: AuthenticationPinRequest, options?: AxiosRequestConfig) {
+    public pinAuthentication(authenticationPinRequest: AuthenticationPinRequest, options?: RawAxiosRequestConfig) {
         return AuthenticateApiFp(this.configuration).pinAuthentication(authenticationPinRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -5458,7 +5806,7 @@ export class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    public refreshToken(options?: AxiosRequestConfig) {
+    public refreshToken(options?: RawAxiosRequestConfig) {
         return AuthenticateApiFp(this.configuration).refreshToken(options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -5470,7 +5818,7 @@ export class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    public resetLocal(resetLocalRequest: ResetLocalRequest, options?: AxiosRequestConfig) {
+    public resetLocal(resetLocalRequest: ResetLocalRequest, options?: RawAxiosRequestConfig) {
         return AuthenticateApiFp(this.configuration).resetLocal(resetLocalRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -5482,10 +5830,11 @@ export class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    public resetLocalWithToken(authenticationResetTokenRequest: AuthenticationResetTokenRequest, options?: AxiosRequestConfig) {
+    public resetLocalWithToken(authenticationResetTokenRequest: AuthenticationResetTokenRequest, options?: RawAxiosRequestConfig) {
         return AuthenticateApiFp(this.configuration).resetLocalWithToken(authenticationResetTokenRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
 
 
 /**
@@ -5503,15 +5852,15 @@ export const BalanceApiAxiosParamCreator = function (configuration?: Configurati
          * @param {boolean} [hasFine] Only users with(out) fines
          * @param {number} [minFine] Minimum fine
          * @param {number} [maxFine] Maximum fine
-         * @param {'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE'} [userType] Filter based on user type.
+         * @param {GetAllBalanceUserTypeEnum} [userType] Filter based on user type.
          * @param {string} [orderBy] Column to order balance by - eg: id,amount
-         * @param {'ASC' | 'DESC'} [orderDirection] Order direction
+         * @param {GetAllBalanceOrderDirectionEnum} [orderDirection] Order direction
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllBalance: async (date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userType?: 'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE', orderBy?: string, orderDirection?: 'ASC' | 'DESC', take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllBalance: async (date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userType?: GetAllBalanceUserTypeEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/balances/all`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -5590,7 +5939,7 @@ export const BalanceApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getBalanceId: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getBalanceId: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getBalanceId', 'id', id)
             const localVarPath = `/balances/{id}`
@@ -5627,7 +5976,7 @@ export const BalanceApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getBalances: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getBalances: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/balances`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -5674,17 +6023,19 @@ export const BalanceApiFp = function(configuration?: Configuration) {
          * @param {boolean} [hasFine] Only users with(out) fines
          * @param {number} [minFine] Minimum fine
          * @param {number} [maxFine] Maximum fine
-         * @param {'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE'} [userType] Filter based on user type.
+         * @param {GetAllBalanceUserTypeEnum} [userType] Filter based on user type.
          * @param {string} [orderBy] Column to order balance by - eg: id,amount
-         * @param {'ASC' | 'DESC'} [orderDirection] Order direction
+         * @param {GetAllBalanceOrderDirectionEnum} [orderDirection] Order direction
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userType?: 'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE', orderBy?: string, orderDirection?: 'ASC' | 'DESC', take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BalanceResponse>>> {
+        async getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userType?: GetAllBalanceUserTypeEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BalanceResponse>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userType, orderBy, orderDirection, take, skip, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['BalanceApi.getAllBalance']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -5693,9 +6044,11 @@ export const BalanceApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getBalanceId(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BalanceResponse>> {
+        async getBalanceId(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BalanceResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getBalanceId(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['BalanceApi.getBalanceId']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -5703,9 +6056,11 @@ export const BalanceApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getBalances(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BalanceResponse>> {
+        async getBalances(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BalanceResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getBalances(options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['BalanceApi.getBalances']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
     }
 };
@@ -5726,15 +6081,15 @@ export const BalanceApiFactory = function (configuration?: Configuration, basePa
          * @param {boolean} [hasFine] Only users with(out) fines
          * @param {number} [minFine] Minimum fine
          * @param {number} [maxFine] Maximum fine
-         * @param {'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE'} [userType] Filter based on user type.
+         * @param {GetAllBalanceUserTypeEnum} [userType] Filter based on user type.
          * @param {string} [orderBy] Column to order balance by - eg: id,amount
-         * @param {'ASC' | 'DESC'} [orderDirection] Order direction
+         * @param {GetAllBalanceOrderDirectionEnum} [orderDirection] Order direction
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userType?: 'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE', orderBy?: string, orderDirection?: 'ASC' | 'DESC', take?: number, skip?: number, options?: any): AxiosPromise<Array<BalanceResponse>> {
+        getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userType?: GetAllBalanceUserTypeEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, take?: number, skip?: number, options?: any): AxiosPromise<Array<BalanceResponse>> {
             return localVarFp.getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userType, orderBy, orderDirection, take, skip, options).then((request) => request(axios, basePath));
         },
         /**
@@ -5775,16 +6130,16 @@ export class BalanceApi extends BaseAPI {
      * @param {boolean} [hasFine] Only users with(out) fines
      * @param {number} [minFine] Minimum fine
      * @param {number} [maxFine] Maximum fine
-     * @param {'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE'} [userType] Filter based on user type.
+     * @param {GetAllBalanceUserTypeEnum} [userType] Filter based on user type.
      * @param {string} [orderBy] Column to order balance by - eg: id,amount
-     * @param {'ASC' | 'DESC'} [orderDirection] Order direction
+     * @param {GetAllBalanceOrderDirectionEnum} [orderDirection] Order direction
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BalanceApi
      */
-    public getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userType?: 'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE', orderBy?: string, orderDirection?: 'ASC' | 'DESC', take?: number, skip?: number, options?: AxiosRequestConfig) {
+    public getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userType?: GetAllBalanceUserTypeEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return BalanceApiFp(this.configuration).getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userType, orderBy, orderDirection, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -5796,7 +6151,7 @@ export class BalanceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BalanceApi
      */
-    public getBalanceId(id: number, options?: AxiosRequestConfig) {
+    public getBalanceId(id: number, options?: RawAxiosRequestConfig) {
         return BalanceApiFp(this.configuration).getBalanceId(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -5807,10 +6162,32 @@ export class BalanceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BalanceApi
      */
-    public getBalances(options?: AxiosRequestConfig) {
+    public getBalances(options?: RawAxiosRequestConfig) {
         return BalanceApiFp(this.configuration).getBalances(options).then((request) => request(this.axios, this.basePath));
     }
 }
+
+/**
+ * @export
+ */
+export const GetAllBalanceUserTypeEnum = {
+    Member: 'MEMBER',
+    Organ: 'ORGAN',
+    Voucher: 'VOUCHER',
+    LocalUser: 'LOCAL_USER',
+    LocalAdmin: 'LOCAL_ADMIN',
+    Invoice: 'INVOICE',
+    AutomaticInvoice: 'AUTOMATIC_INVOICE'
+} as const;
+export type GetAllBalanceUserTypeEnum = typeof GetAllBalanceUserTypeEnum[keyof typeof GetAllBalanceUserTypeEnum];
+/**
+ * @export
+ */
+export const GetAllBalanceOrderDirectionEnum = {
+    Asc: 'ASC',
+    Desc: 'DESC'
+} as const;
+export type GetAllBalanceOrderDirectionEnum = typeof GetAllBalanceOrderDirectionEnum[keyof typeof GetAllBalanceOrderDirectionEnum];
 
 
 /**
@@ -5826,7 +6203,7 @@ export const BannersApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        _delete: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        _delete: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('_delete', 'id', id)
             const localVarPath = `/banners/{id}`
@@ -5864,7 +6241,7 @@ export const BannersApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        create: async (bannerRequest: BannerRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        create: async (bannerRequest: BannerRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'bannerRequest' is not null or undefined
             assertParamExists('create', 'bannerRequest', bannerRequest)
             const localVarPath = `/banners`;
@@ -5905,7 +6282,7 @@ export const BannersApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getActive: async (take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getActive: async (take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/banners/active`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -5949,7 +6326,7 @@ export const BannersApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllBanners: async (take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllBanners: async (take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/banners`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -5993,7 +6370,7 @@ export const BannersApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllOpenBanners: async (take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllOpenBanners: async (take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/open/banners`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -6032,7 +6409,7 @@ export const BannersApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getBanner: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getBanner: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getBanner', 'id', id)
             const localVarPath = `/banners/{id}`
@@ -6071,7 +6448,7 @@ export const BannersApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        update: async (id: number, bannerRequest: BannerRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        update: async (id: number, bannerRequest: BannerRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('update', 'id', id)
             // verify required parameter 'bannerRequest' is not null or undefined
@@ -6115,7 +6492,7 @@ export const BannersApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateImage: async (id: number, file?: File, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateImage: async (id: number, file?: File, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('updateImage', 'id', id)
             const localVarPath = `/banners/{id}/image`
@@ -6171,9 +6548,11 @@ export const BannersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async _delete(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BannerResponse>> {
+        async _delete(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BannerResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator._delete(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['BannersApi._delete']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -6182,9 +6561,11 @@ export const BannersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async create(bannerRequest: BannerRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BannerResponse>> {
+        async create(bannerRequest: BannerRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BannerResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.create(bannerRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['BannersApi.create']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -6194,9 +6575,11 @@ export const BannersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getActive(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBannerResponse>> {
+        async getActive(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBannerResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getActive(take, skip, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['BannersApi.getActive']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -6206,9 +6589,11 @@ export const BannersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllBanners(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBannerResponse>> {
+        async getAllBanners(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBannerResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getAllBanners(take, skip, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['BannersApi.getAllBanners']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -6218,9 +6603,11 @@ export const BannersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllOpenBanners(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBannerResponse>> {
+        async getAllOpenBanners(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBannerResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getAllOpenBanners(take, skip, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['BannersApi.getAllOpenBanners']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -6229,9 +6616,11 @@ export const BannersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getBanner(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BannerResponse>> {
+        async getBanner(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BannerResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getBanner(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['BannersApi.getBanner']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -6241,9 +6630,11 @@ export const BannersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async update(id: number, bannerRequest: BannerRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BannerResponse>> {
+        async update(id: number, bannerRequest: BannerRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BannerResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.update(id, bannerRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['BannersApi.update']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -6253,9 +6644,11 @@ export const BannersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateImage(id: number, file?: File, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async updateImage(id: number, file?: File, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateImage(id, file, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['BannersApi.updateImage']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
     }
 };
@@ -6370,7 +6763,7 @@ export class BannersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BannersApi
      */
-    public _delete(id: number, options?: AxiosRequestConfig) {
+    public _delete(id: number, options?: RawAxiosRequestConfig) {
         return BannersApiFp(this.configuration)._delete(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -6382,7 +6775,7 @@ export class BannersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BannersApi
      */
-    public create(bannerRequest: BannerRequest, options?: AxiosRequestConfig) {
+    public create(bannerRequest: BannerRequest, options?: RawAxiosRequestConfig) {
         return BannersApiFp(this.configuration).create(bannerRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -6395,7 +6788,7 @@ export class BannersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BannersApi
      */
-    public getActive(take?: number, skip?: number, options?: AxiosRequestConfig) {
+    public getActive(take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return BannersApiFp(this.configuration).getActive(take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -6408,7 +6801,7 @@ export class BannersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BannersApi
      */
-    public getAllBanners(take?: number, skip?: number, options?: AxiosRequestConfig) {
+    public getAllBanners(take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return BannersApiFp(this.configuration).getAllBanners(take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -6421,7 +6814,7 @@ export class BannersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BannersApi
      */
-    public getAllOpenBanners(take?: number, skip?: number, options?: AxiosRequestConfig) {
+    public getAllOpenBanners(take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return BannersApiFp(this.configuration).getAllOpenBanners(take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -6433,7 +6826,7 @@ export class BannersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BannersApi
      */
-    public getBanner(id: number, options?: AxiosRequestConfig) {
+    public getBanner(id: number, options?: RawAxiosRequestConfig) {
         return BannersApiFp(this.configuration).getBanner(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -6446,7 +6839,7 @@ export class BannersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BannersApi
      */
-    public update(id: number, bannerRequest: BannerRequest, options?: AxiosRequestConfig) {
+    public update(id: number, bannerRequest: BannerRequest, options?: RawAxiosRequestConfig) {
         return BannersApiFp(this.configuration).update(id, bannerRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -6459,10 +6852,11 @@ export class BannersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BannersApi
      */
-    public updateImage(id: number, file?: File, options?: AxiosRequestConfig) {
+    public updateImage(id: number, file?: File, options?: RawAxiosRequestConfig) {
         return BannersApiFp(this.configuration).updateImage(id, file, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
 
 
 /**
@@ -6478,7 +6872,7 @@ export const ContainersApiAxiosParamCreator = function (configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createContainer: async (createContainerRequest: CreateContainerRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createContainer: async (createContainerRequest: CreateContainerRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'createContainerRequest' is not null or undefined
             assertParamExists('createContainer', 'createContainerRequest', createContainerRequest)
             const localVarPath = `/containers`;
@@ -6519,7 +6913,7 @@ export const ContainersApiAxiosParamCreator = function (configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllContainers: async (take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllContainers: async (take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/containers`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -6564,7 +6958,7 @@ export const ContainersApiAxiosParamCreator = function (configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getProductsContainer: async (id: number, take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getProductsContainer: async (id: number, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getProductsContainer', 'id', id)
             const localVarPath = `/containers/{id}/products`
@@ -6611,7 +7005,7 @@ export const ContainersApiAxiosParamCreator = function (configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPublicContainers: async (take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getPublicContainers: async (take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/containers/public`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -6654,7 +7048,7 @@ export const ContainersApiAxiosParamCreator = function (configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSingleContainer: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getSingleContainer: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getSingleContainer', 'id', id)
             const localVarPath = `/containers/{id}`
@@ -6693,7 +7087,7 @@ export const ContainersApiAxiosParamCreator = function (configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateContainer: async (id: number, updateContainerRequest: UpdateContainerRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateContainer: async (id: number, updateContainerRequest: UpdateContainerRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('updateContainer', 'id', id)
             // verify required parameter 'updateContainerRequest' is not null or undefined
@@ -6746,9 +7140,11 @@ export const ContainersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createContainer(createContainerRequest: CreateContainerRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContainerWithProductsResponse>> {
+        async createContainer(createContainerRequest: CreateContainerRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContainerWithProductsResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createContainer(createContainerRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['ContainersApi.createContainer']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -6758,9 +7154,11 @@ export const ContainersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllContainers(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedContainerResponse>> {
+        async getAllContainers(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedContainerResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getAllContainers(take, skip, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['ContainersApi.getAllContainers']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -6771,9 +7169,11 @@ export const ContainersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getProductsContainer(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductResponse>> {
+        async getProductsContainer(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getProductsContainer(id, take, skip, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['ContainersApi.getProductsContainer']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -6783,9 +7183,11 @@ export const ContainersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getPublicContainers(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedContainerResponse>> {
+        async getPublicContainers(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedContainerResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getPublicContainers(take, skip, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['ContainersApi.getPublicContainers']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -6794,9 +7196,11 @@ export const ContainersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getSingleContainer(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContainerWithProductsResponse>> {
+        async getSingleContainer(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContainerWithProductsResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getSingleContainer(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['ContainersApi.getSingleContainer']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -6806,9 +7210,11 @@ export const ContainersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateContainer(id: number, updateContainerRequest: UpdateContainerRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContainerWithProductsResponse>> {
+        async updateContainer(id: number, updateContainerRequest: UpdateContainerRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContainerWithProductsResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateContainer(id, updateContainerRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['ContainersApi.updateContainer']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
     }
 };
@@ -6903,7 +7309,7 @@ export class ContainersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ContainersApi
      */
-    public createContainer(createContainerRequest: CreateContainerRequest, options?: AxiosRequestConfig) {
+    public createContainer(createContainerRequest: CreateContainerRequest, options?: RawAxiosRequestConfig) {
         return ContainersApiFp(this.configuration).createContainer(createContainerRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -6916,7 +7322,7 @@ export class ContainersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ContainersApi
      */
-    public getAllContainers(take?: number, skip?: number, options?: AxiosRequestConfig) {
+    public getAllContainers(take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return ContainersApiFp(this.configuration).getAllContainers(take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -6930,7 +7336,7 @@ export class ContainersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ContainersApi
      */
-    public getProductsContainer(id: number, take?: number, skip?: number, options?: AxiosRequestConfig) {
+    public getProductsContainer(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return ContainersApiFp(this.configuration).getProductsContainer(id, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -6943,7 +7349,7 @@ export class ContainersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ContainersApi
      */
-    public getPublicContainers(take?: number, skip?: number, options?: AxiosRequestConfig) {
+    public getPublicContainers(take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return ContainersApiFp(this.configuration).getPublicContainers(take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -6955,7 +7361,7 @@ export class ContainersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ContainersApi
      */
-    public getSingleContainer(id: number, options?: AxiosRequestConfig) {
+    public getSingleContainer(id: number, options?: RawAxiosRequestConfig) {
         return ContainersApiFp(this.configuration).getSingleContainer(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -6968,10 +7374,11 @@ export class ContainersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ContainersApi
      */
-    public updateContainer(id: number, updateContainerRequest: UpdateContainerRequest, options?: AxiosRequestConfig) {
+    public updateContainer(id: number, updateContainerRequest: UpdateContainerRequest, options?: RawAxiosRequestConfig) {
         return ContainersApiFp(this.configuration).updateContainer(id, updateContainerRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
 
 
 /**
@@ -6987,7 +7394,7 @@ export const DebtorsApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteFine: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteFine: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('deleteFine', 'id', id)
             const localVarPath = `/fines/single/{id}`
@@ -7025,7 +7432,7 @@ export const DebtorsApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        handoutFines: async (handoutFinesRequest: HandoutFinesRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        handoutFines: async (handoutFinesRequest: HandoutFinesRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'handoutFinesRequest' is not null or undefined
             assertParamExists('handoutFines', 'handoutFinesRequest', handoutFinesRequest)
             const localVarPath = `/fines/handout`;
@@ -7065,7 +7472,7 @@ export const DebtorsApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        notifyAboutFutureFines: async (handoutFinesRequest: HandoutFinesRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        notifyAboutFutureFines: async (handoutFinesRequest: HandoutFinesRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'handoutFinesRequest' is not null or undefined
             assertParamExists('notifyAboutFutureFines', 'handoutFinesRequest', handoutFinesRequest)
             const localVarPath = `/fines/notify`;
@@ -7106,7 +7513,7 @@ export const DebtorsApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        returnAllFineHandoutEvents: async (take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        returnAllFineHandoutEvents: async (take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/fines`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -7149,7 +7556,7 @@ export const DebtorsApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        returnSingleFineHandoutEvent: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        returnSingleFineHandoutEvent: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('returnSingleFineHandoutEvent', 'id', id)
             const localVarPath = `/fines/{id}`
@@ -7197,9 +7604,11 @@ export const DebtorsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteFine(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+        async deleteFine(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteFine(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['DebtorsApi.deleteFine']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -7208,9 +7617,11 @@ export const DebtorsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async handoutFines(handoutFinesRequest: HandoutFinesRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FineHandoutEventResponse>> {
+        async handoutFines(handoutFinesRequest: HandoutFinesRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FineHandoutEventResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.handoutFines(handoutFinesRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['DebtorsApi.handoutFines']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -7219,9 +7630,11 @@ export const DebtorsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async notifyAboutFutureFines(handoutFinesRequest: HandoutFinesRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+        async notifyAboutFutureFines(handoutFinesRequest: HandoutFinesRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.notifyAboutFutureFines(handoutFinesRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['DebtorsApi.notifyAboutFutureFines']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -7231,9 +7644,11 @@ export const DebtorsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async returnAllFineHandoutEvents(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedFineHandoutEventResponse>> {
+        async returnAllFineHandoutEvents(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedFineHandoutEventResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.returnAllFineHandoutEvents(take, skip, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['DebtorsApi.returnAllFineHandoutEvents']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -7242,9 +7657,11 @@ export const DebtorsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async returnSingleFineHandoutEvent(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FineHandoutEventResponse>> {
+        async returnSingleFineHandoutEvent(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FineHandoutEventResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.returnSingleFineHandoutEvent(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['DebtorsApi.returnSingleFineHandoutEvent']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
     }
 };
@@ -7325,7 +7742,7 @@ export class DebtorsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DebtorsApi
      */
-    public deleteFine(id: number, options?: AxiosRequestConfig) {
+    public deleteFine(id: number, options?: RawAxiosRequestConfig) {
         return DebtorsApiFp(this.configuration).deleteFine(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -7337,7 +7754,7 @@ export class DebtorsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DebtorsApi
      */
-    public handoutFines(handoutFinesRequest: HandoutFinesRequest, options?: AxiosRequestConfig) {
+    public handoutFines(handoutFinesRequest: HandoutFinesRequest, options?: RawAxiosRequestConfig) {
         return DebtorsApiFp(this.configuration).handoutFines(handoutFinesRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -7349,7 +7766,7 @@ export class DebtorsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DebtorsApi
      */
-    public notifyAboutFutureFines(handoutFinesRequest: HandoutFinesRequest, options?: AxiosRequestConfig) {
+    public notifyAboutFutureFines(handoutFinesRequest: HandoutFinesRequest, options?: RawAxiosRequestConfig) {
         return DebtorsApiFp(this.configuration).notifyAboutFutureFines(handoutFinesRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -7362,7 +7779,7 @@ export class DebtorsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DebtorsApi
      */
-    public returnAllFineHandoutEvents(take?: number, skip?: number, options?: AxiosRequestConfig) {
+    public returnAllFineHandoutEvents(take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return DebtorsApiFp(this.configuration).returnAllFineHandoutEvents(take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -7374,10 +7791,11 @@ export class DebtorsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DebtorsApi
      */
-    public returnSingleFineHandoutEvent(id: number, options?: AxiosRequestConfig) {
+    public returnSingleFineHandoutEvent(id: number, options?: RawAxiosRequestConfig) {
         return DebtorsApiFp(this.configuration).returnSingleFineHandoutEvent(id, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
 
 
 /**
@@ -7396,7 +7814,7 @@ export const EventsApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        assignEventShift: async (eventId: number, shiftId: number, userId: number, eventAnswerAssignmentRequest: EventAnswerAssignmentRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        assignEventShift: async (eventId: number, shiftId: number, userId: number, eventAnswerAssignmentRequest: EventAnswerAssignmentRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'eventId' is not null or undefined
             assertParamExists('assignEventShift', 'eventId', eventId)
             // verify required parameter 'shiftId' is not null or undefined
@@ -7445,7 +7863,7 @@ export const EventsApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createEvent: async (createEventRequest: CreateEventRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createEvent: async (createEventRequest: CreateEventRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'createEventRequest' is not null or undefined
             assertParamExists('createEvent', 'createEventRequest', createEventRequest)
             const localVarPath = `/events`;
@@ -7485,7 +7903,7 @@ export const EventsApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createEventShift: async (createShiftRequest: CreateShiftRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createEventShift: async (createShiftRequest: CreateShiftRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'createShiftRequest' is not null or undefined
             assertParamExists('createEventShift', 'createShiftRequest', createShiftRequest)
             const localVarPath = `/eventshifts`;
@@ -7525,7 +7943,7 @@ export const EventsApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteEvent: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteEvent: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('deleteEvent', 'id', id)
             const localVarPath = `/events/{id}`
@@ -7563,7 +7981,7 @@ export const EventsApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteEventShift: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteEventShift: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('deleteEventShift', 'id', id)
             const localVarPath = `/eventshifts/{id}`
@@ -7602,7 +8020,7 @@ export const EventsApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllEventShifts: async (take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllEventShifts: async (take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/eventshifts`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -7651,7 +8069,7 @@ export const EventsApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllEvents: async (name?: string, createdById?: number, beforeDate?: string, afterDate?: string, type?: string, take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllEvents: async (name?: string, createdById?: number, beforeDate?: string, afterDate?: string, type?: string, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/events`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -7717,7 +8135,7 @@ export const EventsApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getEventShiftCount: async (id: number, eventType?: string, afterDate?: string, beforeDate?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getEventShiftCount: async (id: number, eventType?: string, afterDate?: string, beforeDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getEventShiftCount', 'id', id)
             const localVarPath = `/eventshifts/{id}/counts`
@@ -7767,7 +8185,7 @@ export const EventsApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSingleEvent: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getSingleEvent: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getSingleEvent', 'id', id)
             const localVarPath = `/events/{id}`
@@ -7806,7 +8224,7 @@ export const EventsApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateEvent: async (id: number, updateEventRequest: UpdateEventRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateEvent: async (id: number, updateEventRequest: UpdateEventRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('updateEvent', 'id', id)
             // verify required parameter 'updateEventRequest' is not null or undefined
@@ -7850,7 +8268,7 @@ export const EventsApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateEventShift: async (id: number, updateShiftRequest: UpdateShiftRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateEventShift: async (id: number, updateShiftRequest: UpdateShiftRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('updateEventShift', 'id', id)
             // verify required parameter 'updateShiftRequest' is not null or undefined
@@ -7896,7 +8314,7 @@ export const EventsApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateEventShiftAvailability: async (eventId: number, shiftId: number, userId: number, eventAnswerAvailabilityRequest: EventAnswerAvailabilityRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateEventShiftAvailability: async (eventId: number, shiftId: number, userId: number, eventAnswerAvailabilityRequest: EventAnswerAvailabilityRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'eventId' is not null or undefined
             assertParamExists('updateEventShiftAvailability', 'eventId', eventId)
             // verify required parameter 'shiftId' is not null or undefined
@@ -7958,9 +8376,11 @@ export const EventsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async assignEventShift(eventId: number, shiftId: number, userId: number, eventAnswerAssignmentRequest: EventAnswerAssignmentRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseEventAnswerResponse>> {
+        async assignEventShift(eventId: number, shiftId: number, userId: number, eventAnswerAssignmentRequest: EventAnswerAssignmentRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseEventAnswerResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.assignEventShift(eventId, shiftId, userId, eventAnswerAssignmentRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['EventsApi.assignEventShift']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -7969,9 +8389,11 @@ export const EventsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createEvent(createEventRequest: CreateEventRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EventResponse>> {
+        async createEvent(createEventRequest: CreateEventRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EventResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createEvent(createEventRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['EventsApi.createEvent']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -7980,9 +8402,11 @@ export const EventsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createEventShift(createShiftRequest: CreateShiftRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EventShiftResponse>> {
+        async createEventShift(createShiftRequest: CreateShiftRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EventShiftResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createEventShift(createShiftRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['EventsApi.createEventShift']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -7991,9 +8415,11 @@ export const EventsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteEvent(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+        async deleteEvent(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteEvent(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['EventsApi.deleteEvent']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -8002,9 +8428,11 @@ export const EventsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteEventShift(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+        async deleteEventShift(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteEventShift(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['EventsApi.deleteEventShift']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -8014,9 +8442,11 @@ export const EventsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllEventShifts(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedEventShiftResponse>> {
+        async getAllEventShifts(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedEventShiftResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getAllEventShifts(take, skip, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['EventsApi.getAllEventShifts']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -8031,9 +8461,11 @@ export const EventsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllEvents(name?: string, createdById?: number, beforeDate?: string, afterDate?: string, type?: string, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBaseEventResponse>> {
+        async getAllEvents(name?: string, createdById?: number, beforeDate?: string, afterDate?: string, type?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBaseEventResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getAllEvents(name, createdById, beforeDate, afterDate, type, take, skip, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['EventsApi.getAllEvents']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -8045,9 +8477,11 @@ export const EventsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getEventShiftCount(id: number, eventType?: string, afterDate?: string, beforeDate?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<PaginatedEventShiftResponse>>> {
+        async getEventShiftCount(id: number, eventType?: string, afterDate?: string, beforeDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<PaginatedEventShiftResponse>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getEventShiftCount(id, eventType, afterDate, beforeDate, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['EventsApi.getEventShiftCount']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -8056,9 +8490,11 @@ export const EventsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getSingleEvent(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EventResponse>> {
+        async getSingleEvent(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EventResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getSingleEvent(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['EventsApi.getSingleEvent']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -8068,9 +8504,11 @@ export const EventsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateEvent(id: number, updateEventRequest: UpdateEventRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EventResponse>> {
+        async updateEvent(id: number, updateEventRequest: UpdateEventRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EventResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateEvent(id, updateEventRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['EventsApi.updateEvent']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -8080,9 +8518,11 @@ export const EventsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateEventShift(id: number, updateShiftRequest: UpdateShiftRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EventShiftResponse>> {
+        async updateEventShift(id: number, updateShiftRequest: UpdateShiftRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EventShiftResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateEventShift(id, updateShiftRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['EventsApi.updateEventShift']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -8094,9 +8534,11 @@ export const EventsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateEventShiftAvailability(eventId: number, shiftId: number, userId: number, eventAnswerAvailabilityRequest: EventAnswerAvailabilityRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseEventAnswerResponse>> {
+        async updateEventShiftAvailability(eventId: number, shiftId: number, userId: number, eventAnswerAvailabilityRequest: EventAnswerAvailabilityRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseEventAnswerResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateEventShiftAvailability(eventId, shiftId, userId, eventAnswerAvailabilityRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['EventsApi.updateEventShiftAvailability']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
     }
 };
@@ -8267,7 +8709,7 @@ export class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    public assignEventShift(eventId: number, shiftId: number, userId: number, eventAnswerAssignmentRequest: EventAnswerAssignmentRequest, options?: AxiosRequestConfig) {
+    public assignEventShift(eventId: number, shiftId: number, userId: number, eventAnswerAssignmentRequest: EventAnswerAssignmentRequest, options?: RawAxiosRequestConfig) {
         return EventsApiFp(this.configuration).assignEventShift(eventId, shiftId, userId, eventAnswerAssignmentRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -8279,7 +8721,7 @@ export class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    public createEvent(createEventRequest: CreateEventRequest, options?: AxiosRequestConfig) {
+    public createEvent(createEventRequest: CreateEventRequest, options?: RawAxiosRequestConfig) {
         return EventsApiFp(this.configuration).createEvent(createEventRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -8291,7 +8733,7 @@ export class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    public createEventShift(createShiftRequest: CreateShiftRequest, options?: AxiosRequestConfig) {
+    public createEventShift(createShiftRequest: CreateShiftRequest, options?: RawAxiosRequestConfig) {
         return EventsApiFp(this.configuration).createEventShift(createShiftRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -8303,7 +8745,7 @@ export class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    public deleteEvent(id: number, options?: AxiosRequestConfig) {
+    public deleteEvent(id: number, options?: RawAxiosRequestConfig) {
         return EventsApiFp(this.configuration).deleteEvent(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -8315,7 +8757,7 @@ export class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    public deleteEventShift(id: number, options?: AxiosRequestConfig) {
+    public deleteEventShift(id: number, options?: RawAxiosRequestConfig) {
         return EventsApiFp(this.configuration).deleteEventShift(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -8328,7 +8770,7 @@ export class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    public getAllEventShifts(take?: number, skip?: number, options?: AxiosRequestConfig) {
+    public getAllEventShifts(take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return EventsApiFp(this.configuration).getAllEventShifts(take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -8346,7 +8788,7 @@ export class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    public getAllEvents(name?: string, createdById?: number, beforeDate?: string, afterDate?: string, type?: string, take?: number, skip?: number, options?: AxiosRequestConfig) {
+    public getAllEvents(name?: string, createdById?: number, beforeDate?: string, afterDate?: string, type?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return EventsApiFp(this.configuration).getAllEvents(name, createdById, beforeDate, afterDate, type, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -8361,7 +8803,7 @@ export class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    public getEventShiftCount(id: number, eventType?: string, afterDate?: string, beforeDate?: string, options?: AxiosRequestConfig) {
+    public getEventShiftCount(id: number, eventType?: string, afterDate?: string, beforeDate?: string, options?: RawAxiosRequestConfig) {
         return EventsApiFp(this.configuration).getEventShiftCount(id, eventType, afterDate, beforeDate, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -8373,7 +8815,7 @@ export class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    public getSingleEvent(id: number, options?: AxiosRequestConfig) {
+    public getSingleEvent(id: number, options?: RawAxiosRequestConfig) {
         return EventsApiFp(this.configuration).getSingleEvent(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -8386,7 +8828,7 @@ export class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    public updateEvent(id: number, updateEventRequest: UpdateEventRequest, options?: AxiosRequestConfig) {
+    public updateEvent(id: number, updateEventRequest: UpdateEventRequest, options?: RawAxiosRequestConfig) {
         return EventsApiFp(this.configuration).updateEvent(id, updateEventRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -8399,7 +8841,7 @@ export class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    public updateEventShift(id: number, updateShiftRequest: UpdateShiftRequest, options?: AxiosRequestConfig) {
+    public updateEventShift(id: number, updateShiftRequest: UpdateShiftRequest, options?: RawAxiosRequestConfig) {
         return EventsApiFp(this.configuration).updateEventShift(id, updateShiftRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -8414,10 +8856,11 @@ export class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    public updateEventShiftAvailability(eventId: number, shiftId: number, userId: number, eventAnswerAvailabilityRequest: EventAnswerAvailabilityRequest, options?: AxiosRequestConfig) {
+    public updateEventShiftAvailability(eventId: number, shiftId: number, userId: number, eventAnswerAvailabilityRequest: EventAnswerAvailabilityRequest, options?: RawAxiosRequestConfig) {
         return EventsApiFp(this.configuration).updateEventShiftAvailability(eventId, shiftId, userId, eventAnswerAvailabilityRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
 
 
 /**
@@ -8434,7 +8877,7 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createFile: async (name: string, file?: File, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createFile: async (name: string, file?: File, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'name' is not null or undefined
             assertParamExists('createFile', 'name', name)
             const localVarPath = `/files`;
@@ -8483,7 +8926,7 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteFile: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteFile: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('deleteFile', 'id', id)
             const localVarPath = `/files/{id}`
@@ -8521,7 +8964,7 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getFile: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getFile: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getFile', 'id', id)
             const localVarPath = `/files/{id}`
@@ -8570,9 +9013,11 @@ export const FilesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createFile(name: string, file?: File, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SimpleFileResponse>> {
+        async createFile(name: string, file?: File, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SimpleFileResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createFile(name, file, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['FilesApi.createFile']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -8581,9 +9026,11 @@ export const FilesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteFile(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+        async deleteFile(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteFile(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['FilesApi.deleteFile']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -8592,9 +9039,11 @@ export const FilesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getFile(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+        async getFile(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getFile(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['FilesApi.getFile']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
     }
 };
@@ -8656,7 +9105,7 @@ export class FilesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FilesApi
      */
-    public createFile(name: string, file?: File, options?: AxiosRequestConfig) {
+    public createFile(name: string, file?: File, options?: RawAxiosRequestConfig) {
         return FilesApiFp(this.configuration).createFile(name, file, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -8668,7 +9117,7 @@ export class FilesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FilesApi
      */
-    public deleteFile(id: number, options?: AxiosRequestConfig) {
+    public deleteFile(id: number, options?: RawAxiosRequestConfig) {
         return FilesApiFp(this.configuration).deleteFile(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -8680,10 +9129,11 @@ export class FilesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FilesApi
      */
-    public getFile(id: number, options?: AxiosRequestConfig) {
+    public getFile(id: number, options?: RawAxiosRequestConfig) {
         return FilesApiFp(this.configuration).getFile(id, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
 
 
 /**
@@ -8699,7 +9149,7 @@ export const InvoicesApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createInvoice: async (createInvoiceRequest?: CreateInvoiceRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createInvoice: async (createInvoiceRequest?: CreateInvoiceRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/invoices`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -8737,7 +9187,7 @@ export const InvoicesApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteInvoice: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteInvoice: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('deleteInvoice', 'id', id)
             const localVarPath = `/invoices/{id}`
@@ -8782,7 +9232,7 @@ export const InvoicesApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllInvoices: async (toId?: number, invoiceId?: number, state?: number, returnEntries?: boolean, fromDate?: string, tillDate?: string, take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllInvoices: async (toId?: number, invoiceId?: number, state?: number, returnEntries?: boolean, fromDate?: string, tillDate?: string, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/invoices`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -8850,7 +9300,7 @@ export const InvoicesApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSingleInvoice: async (id: number, returnEntries?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getSingleInvoice: async (id: number, returnEntries?: boolean, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getSingleInvoice', 'id', id)
             const localVarPath = `/invoices/{id}`
@@ -8893,7 +9343,7 @@ export const InvoicesApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateInvoice: async (id: number, updateInvoiceRequest?: UpdateInvoiceRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateInvoice: async (id: number, updateInvoiceRequest?: UpdateInvoiceRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('updateInvoice', 'id', id)
             const localVarPath = `/invoices/{id}`
@@ -8944,9 +9394,11 @@ export const InvoicesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createInvoice(createInvoiceRequest?: CreateInvoiceRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InvoiceResponse>> {
+        async createInvoice(createInvoiceRequest?: CreateInvoiceRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InvoiceResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createInvoice(createInvoiceRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['InvoicesApi.createInvoice']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -8955,9 +9407,11 @@ export const InvoicesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteInvoice(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseInvoiceResponse>> {
+        async deleteInvoice(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseInvoiceResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteInvoice(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['InvoicesApi.deleteInvoice']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -8973,9 +9427,11 @@ export const InvoicesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllInvoices(toId?: number, invoiceId?: number, state?: number, returnEntries?: boolean, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedInvoiceResponse>> {
+        async getAllInvoices(toId?: number, invoiceId?: number, state?: number, returnEntries?: boolean, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedInvoiceResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getAllInvoices(toId, invoiceId, state, returnEntries, fromDate, tillDate, take, skip, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['InvoicesApi.getAllInvoices']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -8985,9 +9441,11 @@ export const InvoicesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getSingleInvoice(id: number, returnEntries?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InvoiceResponse>> {
+        async getSingleInvoice(id: number, returnEntries?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InvoiceResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getSingleInvoice(id, returnEntries, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['InvoicesApi.getSingleInvoice']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -8997,9 +9455,11 @@ export const InvoicesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateInvoice(id: number, updateInvoiceRequest?: UpdateInvoiceRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseInvoiceResponse>> {
+        async updateInvoice(id: number, updateInvoiceRequest?: UpdateInvoiceRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseInvoiceResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateInvoice(id, updateInvoiceRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['InvoicesApi.updateInvoice']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
     }
 };
@@ -9088,7 +9548,7 @@ export class InvoicesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoicesApi
      */
-    public createInvoice(createInvoiceRequest?: CreateInvoiceRequest, options?: AxiosRequestConfig) {
+    public createInvoice(createInvoiceRequest?: CreateInvoiceRequest, options?: RawAxiosRequestConfig) {
         return InvoicesApiFp(this.configuration).createInvoice(createInvoiceRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -9100,7 +9560,7 @@ export class InvoicesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoicesApi
      */
-    public deleteInvoice(id: number, options?: AxiosRequestConfig) {
+    public deleteInvoice(id: number, options?: RawAxiosRequestConfig) {
         return InvoicesApiFp(this.configuration).deleteInvoice(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -9119,7 +9579,7 @@ export class InvoicesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoicesApi
      */
-    public getAllInvoices(toId?: number, invoiceId?: number, state?: number, returnEntries?: boolean, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: AxiosRequestConfig) {
+    public getAllInvoices(toId?: number, invoiceId?: number, state?: number, returnEntries?: boolean, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return InvoicesApiFp(this.configuration).getAllInvoices(toId, invoiceId, state, returnEntries, fromDate, tillDate, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -9132,7 +9592,7 @@ export class InvoicesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoicesApi
      */
-    public getSingleInvoice(id: number, returnEntries?: boolean, options?: AxiosRequestConfig) {
+    public getSingleInvoice(id: number, returnEntries?: boolean, options?: RawAxiosRequestConfig) {
         return InvoicesApiFp(this.configuration).getSingleInvoice(id, returnEntries, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -9145,10 +9605,11 @@ export class InvoicesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoicesApi
      */
-    public updateInvoice(id: number, updateInvoiceRequest?: UpdateInvoiceRequest, options?: AxiosRequestConfig) {
+    public updateInvoice(id: number, updateInvoiceRequest?: UpdateInvoiceRequest, options?: RawAxiosRequestConfig) {
         return InvoicesApiFp(this.configuration).updateInvoice(id, updateInvoiceRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
 
 
 /**
@@ -9164,7 +9625,7 @@ export const PayoutRequestsApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createPayoutRequest: async (payoutRequestRequest?: PayoutRequestRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createPayoutRequest: async (payoutRequestRequest?: PayoutRequestRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/payoutrequests`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -9208,7 +9669,7 @@ export const PayoutRequestsApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllPayoutRequests: async (requestedById?: GetAllPayoutRequestsRequestedByIdParameter, approvedById?: GetAllPayoutRequestsRequestedByIdParameter, fromDate?: string, tillDate?: string, status?: string, take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllPayoutRequests: async (requestedById?: GetAllPayoutRequestsRequestedByIdParameter, approvedById?: GetAllPayoutRequestsRequestedByIdParameter, fromDate?: string, tillDate?: string, status?: string, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/payoutrequests`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -9226,11 +9687,15 @@ export const PayoutRequestsApiAxiosParamCreator = function (configuration?: Conf
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
             if (requestedById !== undefined) {
-                localVarQueryParameter['requestedById'] = requestedById;
+                for (const [key, value] of Object.entries(requestedById)) {
+                    localVarQueryParameter[key] = value;
+                }
             }
 
             if (approvedById !== undefined) {
-                localVarQueryParameter['approvedById'] = approvedById;
+                for (const [key, value] of Object.entries(approvedById)) {
+                    localVarQueryParameter[key] = value;
+                }
             }
 
             if (fromDate !== undefined) {
@@ -9271,7 +9736,7 @@ export const PayoutRequestsApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSinglePayoutRequest: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getSinglePayoutRequest: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getSinglePayoutRequest', 'id', id)
             const localVarPath = `/payoutrequests/{id}`
@@ -9310,7 +9775,7 @@ export const PayoutRequestsApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setPayoutRequestStatus: async (id: number, payoutRequestStatusRequest?: PayoutRequestStatusRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        setPayoutRequestStatus: async (id: number, payoutRequestStatusRequest?: PayoutRequestStatusRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('setPayoutRequestStatus', 'id', id)
             const localVarPath = `/payoutrequests/{id}/status`
@@ -9361,9 +9826,11 @@ export const PayoutRequestsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createPayoutRequest(payoutRequestRequest?: PayoutRequestRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayoutRequestResponse>> {
+        async createPayoutRequest(payoutRequestRequest?: PayoutRequestRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayoutRequestResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createPayoutRequest(payoutRequestRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['PayoutRequestsApi.createPayoutRequest']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -9378,9 +9845,11 @@ export const PayoutRequestsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllPayoutRequests(requestedById?: GetAllPayoutRequestsRequestedByIdParameter, approvedById?: GetAllPayoutRequestsRequestedByIdParameter, fromDate?: string, tillDate?: string, status?: string, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBasePayoutRequestResponse>> {
+        async getAllPayoutRequests(requestedById?: GetAllPayoutRequestsRequestedByIdParameter, approvedById?: GetAllPayoutRequestsRequestedByIdParameter, fromDate?: string, tillDate?: string, status?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBasePayoutRequestResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getAllPayoutRequests(requestedById, approvedById, fromDate, tillDate, status, take, skip, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['PayoutRequestsApi.getAllPayoutRequests']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -9389,9 +9858,11 @@ export const PayoutRequestsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getSinglePayoutRequest(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayoutRequestResponse>> {
+        async getSinglePayoutRequest(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayoutRequestResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getSinglePayoutRequest(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['PayoutRequestsApi.getSinglePayoutRequest']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -9401,9 +9872,11 @@ export const PayoutRequestsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async setPayoutRequestStatus(id: number, payoutRequestStatusRequest?: PayoutRequestStatusRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayoutRequestResponse>> {
+        async setPayoutRequestStatus(id: number, payoutRequestStatusRequest?: PayoutRequestStatusRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayoutRequestResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.setPayoutRequestStatus(id, payoutRequestStatusRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['PayoutRequestsApi.setPayoutRequestStatus']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
     }
 };
@@ -9480,7 +9953,7 @@ export class PayoutRequestsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PayoutRequestsApi
      */
-    public createPayoutRequest(payoutRequestRequest?: PayoutRequestRequest, options?: AxiosRequestConfig) {
+    public createPayoutRequest(payoutRequestRequest?: PayoutRequestRequest, options?: RawAxiosRequestConfig) {
         return PayoutRequestsApiFp(this.configuration).createPayoutRequest(payoutRequestRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -9498,7 +9971,7 @@ export class PayoutRequestsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PayoutRequestsApi
      */
-    public getAllPayoutRequests(requestedById?: GetAllPayoutRequestsRequestedByIdParameter, approvedById?: GetAllPayoutRequestsRequestedByIdParameter, fromDate?: string, tillDate?: string, status?: string, take?: number, skip?: number, options?: AxiosRequestConfig) {
+    public getAllPayoutRequests(requestedById?: GetAllPayoutRequestsRequestedByIdParameter, approvedById?: GetAllPayoutRequestsRequestedByIdParameter, fromDate?: string, tillDate?: string, status?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return PayoutRequestsApiFp(this.configuration).getAllPayoutRequests(requestedById, approvedById, fromDate, tillDate, status, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -9510,7 +9983,7 @@ export class PayoutRequestsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PayoutRequestsApi
      */
-    public getSinglePayoutRequest(id: number, options?: AxiosRequestConfig) {
+    public getSinglePayoutRequest(id: number, options?: RawAxiosRequestConfig) {
         return PayoutRequestsApiFp(this.configuration).getSinglePayoutRequest(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -9523,10 +9996,11 @@ export class PayoutRequestsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PayoutRequestsApi
      */
-    public setPayoutRequestStatus(id: number, payoutRequestStatusRequest?: PayoutRequestStatusRequest, options?: AxiosRequestConfig) {
+    public setPayoutRequestStatus(id: number, payoutRequestStatusRequest?: PayoutRequestStatusRequest, options?: RawAxiosRequestConfig) {
         return PayoutRequestsApiFp(this.configuration).setPayoutRequestStatus(id, payoutRequestStatusRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
 
 
 /**
@@ -9542,7 +10016,7 @@ export const PointofsaleApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createPointOfSale: async (createPointOfSaleRequest?: CreatePointOfSaleRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createPointOfSale: async (createPointOfSaleRequest?: CreatePointOfSaleRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/pointsofsale`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -9582,7 +10056,7 @@ export const PointofsaleApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllPointOfSaleContainers: async (id: number, take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllPointOfSaleContainers: async (id: number, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getAllPointOfSaleContainers', 'id', id)
             const localVarPath = `/pointsofsale/{id}/containers`
@@ -9630,7 +10104,7 @@ export const PointofsaleApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllPointOfSaleProducts: async (id: number, take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllPointOfSaleProducts: async (id: number, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getAllPointOfSaleProducts', 'id', id)
             const localVarPath = `/pointsofsale/{id}/products`
@@ -9677,7 +10151,7 @@ export const PointofsaleApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllPointsOfSale: async (take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllPointsOfSale: async (take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/pointsofsale`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -9720,7 +10194,7 @@ export const PointofsaleApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSinglePointOfSale: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getSinglePointOfSale: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getSinglePointOfSale', 'id', id)
             const localVarPath = `/pointsofsale/{id}`
@@ -9760,7 +10234,7 @@ export const PointofsaleApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTransactions: async (id: number, take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getTransactions: async (id: number, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getTransactions', 'id', id)
             const localVarPath = `/pointsofsale/{id}/transactions`
@@ -9807,7 +10281,7 @@ export const PointofsaleApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updatePointOfSale: async (id: number, updatePointOfSaleRequest?: UpdatePointOfSaleRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updatePointOfSale: async (id: number, updatePointOfSaleRequest?: UpdatePointOfSaleRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('updatePointOfSale', 'id', id)
             const localVarPath = `/pointsofsale/{id}`
@@ -9858,9 +10332,11 @@ export const PointofsaleApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createPointOfSale(createPointOfSaleRequest?: CreatePointOfSaleRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleWithContainersResponse>> {
+        async createPointOfSale(createPointOfSaleRequest?: CreatePointOfSaleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleWithContainersResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createPointOfSale(createPointOfSaleRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['PointofsaleApi.createPointOfSale']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -9871,9 +10347,11 @@ export const PointofsaleApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllPointOfSaleContainers(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedContainerResponse>> {
+        async getAllPointOfSaleContainers(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedContainerResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getAllPointOfSaleContainers(id, take, skip, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['PointofsaleApi.getAllPointOfSaleContainers']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -9884,9 +10362,11 @@ export const PointofsaleApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllPointOfSaleProducts(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductResponse>> {
+        async getAllPointOfSaleProducts(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getAllPointOfSaleProducts(id, take, skip, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['PointofsaleApi.getAllPointOfSaleProducts']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -9896,9 +10376,11 @@ export const PointofsaleApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllPointsOfSale(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedPointOfSaleResponse>> {
+        async getAllPointsOfSale(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedPointOfSaleResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getAllPointsOfSale(take, skip, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['PointofsaleApi.getAllPointsOfSale']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -9907,9 +10389,11 @@ export const PointofsaleApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getSinglePointOfSale(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleWithContainersResponse>> {
+        async getSinglePointOfSale(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleWithContainersResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getSinglePointOfSale(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['PointofsaleApi.getSinglePointOfSale']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -9920,9 +10404,11 @@ export const PointofsaleApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getTransactions(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBaseTransactionResponse>> {
+        async getTransactions(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBaseTransactionResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getTransactions(id, take, skip, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['PointofsaleApi.getTransactions']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -9932,9 +10418,11 @@ export const PointofsaleApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updatePointOfSale(id: number, updatePointOfSaleRequest?: UpdatePointOfSaleRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleWithContainersResponse>> {
+        async updatePointOfSale(id: number, updatePointOfSaleRequest?: UpdatePointOfSaleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleWithContainersResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updatePointOfSale(id, updatePointOfSaleRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['PointofsaleApi.updatePointOfSale']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
     }
 };
@@ -10042,7 +10530,7 @@ export class PointofsaleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PointofsaleApi
      */
-    public createPointOfSale(createPointOfSaleRequest?: CreatePointOfSaleRequest, options?: AxiosRequestConfig) {
+    public createPointOfSale(createPointOfSaleRequest?: CreatePointOfSaleRequest, options?: RawAxiosRequestConfig) {
         return PointofsaleApiFp(this.configuration).createPointOfSale(createPointOfSaleRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10056,7 +10544,7 @@ export class PointofsaleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PointofsaleApi
      */
-    public getAllPointOfSaleContainers(id: number, take?: number, skip?: number, options?: AxiosRequestConfig) {
+    public getAllPointOfSaleContainers(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return PointofsaleApiFp(this.configuration).getAllPointOfSaleContainers(id, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10070,7 +10558,7 @@ export class PointofsaleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PointofsaleApi
      */
-    public getAllPointOfSaleProducts(id: number, take?: number, skip?: number, options?: AxiosRequestConfig) {
+    public getAllPointOfSaleProducts(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return PointofsaleApiFp(this.configuration).getAllPointOfSaleProducts(id, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10083,7 +10571,7 @@ export class PointofsaleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PointofsaleApi
      */
-    public getAllPointsOfSale(take?: number, skip?: number, options?: AxiosRequestConfig) {
+    public getAllPointsOfSale(take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return PointofsaleApiFp(this.configuration).getAllPointsOfSale(take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10095,7 +10583,7 @@ export class PointofsaleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PointofsaleApi
      */
-    public getSinglePointOfSale(id: number, options?: AxiosRequestConfig) {
+    public getSinglePointOfSale(id: number, options?: RawAxiosRequestConfig) {
         return PointofsaleApiFp(this.configuration).getSinglePointOfSale(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10109,7 +10597,7 @@ export class PointofsaleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PointofsaleApi
      */
-    public getTransactions(id: number, take?: number, skip?: number, options?: AxiosRequestConfig) {
+    public getTransactions(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return PointofsaleApiFp(this.configuration).getTransactions(id, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10122,10 +10610,11 @@ export class PointofsaleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PointofsaleApi
      */
-    public updatePointOfSale(id: number, updatePointOfSaleRequest?: UpdatePointOfSaleRequest, options?: AxiosRequestConfig) {
+    public updatePointOfSale(id: number, updatePointOfSaleRequest?: UpdatePointOfSaleRequest, options?: RawAxiosRequestConfig) {
         return PointofsaleApiFp(this.configuration).updatePointOfSale(id, updatePointOfSaleRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
 
 
 /**
@@ -10141,7 +10630,7 @@ export const ProductCategoriesApiAxiosParamCreator = function (configuration?: C
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createProductCategory: async (productCategoryRequest?: ProductCategoryRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createProductCategory: async (productCategoryRequest?: ProductCategoryRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/productcategories`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -10180,7 +10669,7 @@ export const ProductCategoriesApiAxiosParamCreator = function (configuration?: C
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllProductCategories: async (take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllProductCategories: async (take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/productcategories`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -10223,7 +10712,7 @@ export const ProductCategoriesApiAxiosParamCreator = function (configuration?: C
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSingleProductCategory: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getSingleProductCategory: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getSingleProductCategory', 'id', id)
             const localVarPath = `/productcategories/{id}`
@@ -10262,7 +10751,7 @@ export const ProductCategoriesApiAxiosParamCreator = function (configuration?: C
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateProductCategory: async (id: number, productCategoryRequest?: ProductCategoryRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateProductCategory: async (id: number, productCategoryRequest?: ProductCategoryRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('updateProductCategory', 'id', id)
             const localVarPath = `/productcategories/{id}`
@@ -10313,9 +10802,11 @@ export const ProductCategoriesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createProductCategory(productCategoryRequest?: ProductCategoryRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductCategoryResponse>> {
+        async createProductCategory(productCategoryRequest?: ProductCategoryRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductCategoryResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createProductCategory(productCategoryRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['ProductCategoriesApi.createProductCategory']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -10325,9 +10816,11 @@ export const ProductCategoriesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllProductCategories(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductCategoryResponse>> {
+        async getAllProductCategories(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductCategoryResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getAllProductCategories(take, skip, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['ProductCategoriesApi.getAllProductCategories']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -10336,9 +10829,11 @@ export const ProductCategoriesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getSingleProductCategory(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductCategoryResponse>> {
+        async getSingleProductCategory(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductCategoryResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getSingleProductCategory(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['ProductCategoriesApi.getSingleProductCategory']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -10348,9 +10843,11 @@ export const ProductCategoriesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateProductCategory(id: number, productCategoryRequest?: ProductCategoryRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductCategoryResponse>> {
+        async updateProductCategory(id: number, productCategoryRequest?: ProductCategoryRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductCategoryResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateProductCategory(id, productCategoryRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['ProductCategoriesApi.updateProductCategory']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
     }
 };
@@ -10422,7 +10919,7 @@ export class ProductCategoriesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProductCategoriesApi
      */
-    public createProductCategory(productCategoryRequest?: ProductCategoryRequest, options?: AxiosRequestConfig) {
+    public createProductCategory(productCategoryRequest?: ProductCategoryRequest, options?: RawAxiosRequestConfig) {
         return ProductCategoriesApiFp(this.configuration).createProductCategory(productCategoryRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10435,7 +10932,7 @@ export class ProductCategoriesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProductCategoriesApi
      */
-    public getAllProductCategories(take?: number, skip?: number, options?: AxiosRequestConfig) {
+    public getAllProductCategories(take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return ProductCategoriesApiFp(this.configuration).getAllProductCategories(take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10447,7 +10944,7 @@ export class ProductCategoriesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProductCategoriesApi
      */
-    public getSingleProductCategory(id: number, options?: AxiosRequestConfig) {
+    public getSingleProductCategory(id: number, options?: RawAxiosRequestConfig) {
         return ProductCategoriesApiFp(this.configuration).getSingleProductCategory(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10460,10 +10957,11 @@ export class ProductCategoriesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProductCategoriesApi
      */
-    public updateProductCategory(id: number, productCategoryRequest?: ProductCategoryRequest, options?: AxiosRequestConfig) {
+    public updateProductCategory(id: number, productCategoryRequest?: ProductCategoryRequest, options?: RawAxiosRequestConfig) {
         return ProductCategoriesApiFp(this.configuration).updateProductCategory(id, productCategoryRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
 
 
 /**
@@ -10479,7 +10977,7 @@ export const ProductsApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createProduct: async (createProductRequest?: CreateProductRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createProduct: async (createProductRequest?: CreateProductRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/products`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -10518,7 +11016,7 @@ export const ProductsApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllProducts: async (take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllProducts: async (take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/products`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -10561,7 +11059,7 @@ export const ProductsApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSingleProduct: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getSingleProduct: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getSingleProduct', 'id', id)
             const localVarPath = `/products/{id}`
@@ -10600,7 +11098,7 @@ export const ProductsApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateProduct: async (id: number, updateProductRequest?: UpdateProductRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateProduct: async (id: number, updateProductRequest?: UpdateProductRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('updateProduct', 'id', id)
             const localVarPath = `/products/{id}`
@@ -10642,7 +11140,7 @@ export const ProductsApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateProductImage: async (id: number, file?: File, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateProductImage: async (id: number, file?: File, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('updateProductImage', 'id', id)
             const localVarPath = `/products/{id}/image`
@@ -10698,9 +11196,11 @@ export const ProductsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createProduct(createProductRequest?: CreateProductRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductResponse>> {
+        async createProduct(createProductRequest?: CreateProductRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createProduct(createProductRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['ProductsApi.createProduct']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -10710,9 +11210,11 @@ export const ProductsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllProducts(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductResponse>> {
+        async getAllProducts(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getAllProducts(take, skip, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['ProductsApi.getAllProducts']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -10721,9 +11223,11 @@ export const ProductsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getSingleProduct(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductResponse>> {
+        async getSingleProduct(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getSingleProduct(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['ProductsApi.getSingleProduct']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -10733,9 +11237,11 @@ export const ProductsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateProduct(id: number, updateProductRequest?: UpdateProductRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductResponse>> {
+        async updateProduct(id: number, updateProductRequest?: UpdateProductRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateProduct(id, updateProductRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['ProductsApi.updateProduct']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -10745,9 +11251,11 @@ export const ProductsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateProductImage(id: number, file?: File, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async updateProductImage(id: number, file?: File, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateProductImage(id, file, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['ProductsApi.updateProductImage']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
     }
 };
@@ -10830,7 +11338,7 @@ export class ProductsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProductsApi
      */
-    public createProduct(createProductRequest?: CreateProductRequest, options?: AxiosRequestConfig) {
+    public createProduct(createProductRequest?: CreateProductRequest, options?: RawAxiosRequestConfig) {
         return ProductsApiFp(this.configuration).createProduct(createProductRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10843,7 +11351,7 @@ export class ProductsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProductsApi
      */
-    public getAllProducts(take?: number, skip?: number, options?: AxiosRequestConfig) {
+    public getAllProducts(take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return ProductsApiFp(this.configuration).getAllProducts(take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10855,7 +11363,7 @@ export class ProductsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProductsApi
      */
-    public getSingleProduct(id: number, options?: AxiosRequestConfig) {
+    public getSingleProduct(id: number, options?: RawAxiosRequestConfig) {
         return ProductsApiFp(this.configuration).getSingleProduct(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10868,7 +11376,7 @@ export class ProductsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProductsApi
      */
-    public updateProduct(id: number, updateProductRequest?: UpdateProductRequest, options?: AxiosRequestConfig) {
+    public updateProduct(id: number, updateProductRequest?: UpdateProductRequest, options?: RawAxiosRequestConfig) {
         return ProductsApiFp(this.configuration).updateProduct(id, updateProductRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10881,10 +11389,11 @@ export class ProductsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProductsApi
      */
-    public updateProductImage(id: number, file?: File, options?: AxiosRequestConfig) {
+    public updateProductImage(id: number, file?: File, options?: RawAxiosRequestConfig) {
         return ProductsApiFp(this.configuration).updateProductImage(id, file, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
 
 
 /**
@@ -10899,7 +11408,7 @@ export const RbacApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllRoles: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllRoles: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/rbac/roles`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -10943,9 +11452,11 @@ export const RbacApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllRoles(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RoleResponse>>> {
+        async getAllRoles(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RoleResponse>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getAllRoles(options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['RbacApi.getAllRoles']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
     }
 };
@@ -10983,10 +11494,11 @@ export class RbacApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof RbacApi
      */
-    public getAllRoles(options?: AxiosRequestConfig) {
+    public getAllRoles(options?: RawAxiosRequestConfig) {
         return RbacApiFp(this.configuration).getAllRoles(options).then((request) => request(this.axios, this.basePath));
     }
 }
+
 
 
 /**
@@ -11001,7 +11513,7 @@ export const RootApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        ping: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        ping: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/ping`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -11041,9 +11553,11 @@ export const RootApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async ping(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+        async ping(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.ping(options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['RootApi.ping']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
     }
 };
@@ -11081,10 +11595,11 @@ export class RootApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof RootApi
      */
-    public ping(options?: AxiosRequestConfig) {
+    public ping(options?: RawAxiosRequestConfig) {
         return RootApiFp(this.configuration).ping(options).then((request) => request(this.axios, this.basePath));
     }
 }
+
 
 
 /**
@@ -11100,7 +11615,7 @@ export const StripeApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deposit: async (stripeRequest?: StripeRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deposit: async (stripeRequest?: StripeRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/stripe/deposit`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -11148,9 +11663,11 @@ export const StripeApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deposit(stripeRequest?: StripeRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StripePaymentIntentResponse>> {
+        async deposit(stripeRequest?: StripeRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StripePaymentIntentResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deposit(stripeRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['StripeApi.deposit']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
     }
 };
@@ -11190,10 +11707,11 @@ export class StripeApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof StripeApi
      */
-    public deposit(stripeRequest?: StripeRequest, options?: AxiosRequestConfig) {
+    public deposit(stripeRequest?: StripeRequest, options?: RawAxiosRequestConfig) {
         return StripeApiFp(this.configuration).deposit(stripeRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
 
 
 /**
@@ -11208,7 +11726,7 @@ export const TestOperationsOfTheTestControllerApiAxiosParamCreator = function (c
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        helloworld: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        helloworld: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/test/helloworld`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -11252,9 +11770,11 @@ export const TestOperationsOfTheTestControllerApiFp = function(configuration?: C
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async helloworld(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+        async helloworld(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.helloworld(options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['TestOperationsOfTheTestControllerApi.helloworld']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
     }
 };
@@ -11292,10 +11812,11 @@ export class TestOperationsOfTheTestControllerApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TestOperationsOfTheTestControllerApi
      */
-    public helloworld(options?: AxiosRequestConfig) {
+    public helloworld(options?: RawAxiosRequestConfig) {
         return TestOperationsOfTheTestControllerApiFp(this.configuration).helloworld(options).then((request) => request(this.axios, this.basePath));
     }
 }
+
 
 
 /**
@@ -11311,7 +11832,7 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTransaction: async (transactionRequest?: TransactionRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createTransaction: async (transactionRequest?: TransactionRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/transactions`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -11349,7 +11870,7 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteTransaction: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteTransaction: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('deleteTransaction', 'id', id)
             const localVarPath = `/transactions/{id}`
@@ -11396,7 +11917,7 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllTransactions: async (fromId?: number, createdById?: number, toId?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllTransactions: async (fromId?: number, createdById?: number, toId?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/transactions`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -11471,7 +11992,7 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSingleTransaction: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getSingleTransaction: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getSingleTransaction', 'id', id)
             const localVarPath = `/transactions/{id}`
@@ -11510,7 +12031,7 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateTransaction: async (id: number, transactionRequest?: TransactionRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateTransaction: async (id: number, transactionRequest?: TransactionRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('updateTransaction', 'id', id)
             const localVarPath = `/transactions/{id}`
@@ -11551,7 +12072,7 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        validateTransaction: async (transactionRequest?: TransactionRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        validateTransaction: async (transactionRequest?: TransactionRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/transactions/validate`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -11599,9 +12120,11 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createTransaction(transactionRequest?: TransactionRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionResponse>> {
+        async createTransaction(transactionRequest?: TransactionRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createTransaction(transactionRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['TransactionsApi.createTransaction']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -11610,9 +12133,11 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteTransaction(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionResponse>> {
+        async deleteTransaction(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteTransaction(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['TransactionsApi.deleteTransaction']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -11630,9 +12155,11 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllTransactions(fromId?: number, createdById?: number, toId?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBaseTransactionResponse>> {
+        async getAllTransactions(fromId?: number, createdById?: number, toId?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBaseTransactionResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getAllTransactions(fromId, createdById, toId, pointOfSaleId, productId, productRevision, fromDate, tillDate, take, skip, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['TransactionsApi.getAllTransactions']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -11641,9 +12168,11 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getSingleTransaction(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionResponse>> {
+        async getSingleTransaction(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getSingleTransaction(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['TransactionsApi.getSingleTransaction']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -11653,9 +12182,11 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateTransaction(id: number, transactionRequest?: TransactionRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionResponse>> {
+        async updateTransaction(id: number, transactionRequest?: TransactionRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateTransaction(id, transactionRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['TransactionsApi.updateTransaction']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -11664,9 +12195,11 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async validateTransaction(transactionRequest?: TransactionRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean>> {
+        async validateTransaction(transactionRequest?: TransactionRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.validateTransaction(transactionRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['TransactionsApi.validateTransaction']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
     }
 };
@@ -11766,7 +12299,7 @@ export class TransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    public createTransaction(transactionRequest?: TransactionRequest, options?: AxiosRequestConfig) {
+    public createTransaction(transactionRequest?: TransactionRequest, options?: RawAxiosRequestConfig) {
         return TransactionsApiFp(this.configuration).createTransaction(transactionRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -11778,7 +12311,7 @@ export class TransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    public deleteTransaction(id: number, options?: AxiosRequestConfig) {
+    public deleteTransaction(id: number, options?: RawAxiosRequestConfig) {
         return TransactionsApiFp(this.configuration).deleteTransaction(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -11799,7 +12332,7 @@ export class TransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    public getAllTransactions(fromId?: number, createdById?: number, toId?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: AxiosRequestConfig) {
+    public getAllTransactions(fromId?: number, createdById?: number, toId?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return TransactionsApiFp(this.configuration).getAllTransactions(fromId, createdById, toId, pointOfSaleId, productId, productRevision, fromDate, tillDate, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -11811,7 +12344,7 @@ export class TransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    public getSingleTransaction(id: number, options?: AxiosRequestConfig) {
+    public getSingleTransaction(id: number, options?: RawAxiosRequestConfig) {
         return TransactionsApiFp(this.configuration).getSingleTransaction(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -11824,7 +12357,7 @@ export class TransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    public updateTransaction(id: number, transactionRequest?: TransactionRequest, options?: AxiosRequestConfig) {
+    public updateTransaction(id: number, transactionRequest?: TransactionRequest, options?: RawAxiosRequestConfig) {
         return TransactionsApiFp(this.configuration).updateTransaction(id, transactionRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -11836,10 +12369,11 @@ export class TransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    public validateTransaction(transactionRequest?: TransactionRequest, options?: AxiosRequestConfig) {
+    public validateTransaction(transactionRequest?: TransactionRequest, options?: RawAxiosRequestConfig) {
         return TransactionsApiFp(this.configuration).validateTransaction(transactionRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
 
 
 /**
@@ -11855,7 +12389,7 @@ export const TransfersApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTransfer: async (transferRequest?: TransferRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createTransfer: async (transferRequest?: TransferRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/transfers`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -11894,7 +12428,7 @@ export const TransfersApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllTransfers: async (take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllTransfers: async (take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/transfers`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -11937,7 +12471,7 @@ export const TransfersApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSingleTransfer: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getSingleTransfer: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getSingleTransfer', 'id', id)
             const localVarPath = `/transfers/{id}`
@@ -11985,9 +12519,11 @@ export const TransfersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createTransfer(transferRequest?: TransferRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransferResponse>> {
+        async createTransfer(transferRequest?: TransferRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransferResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createTransfer(transferRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['TransfersApi.createTransfer']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -11997,9 +12533,11 @@ export const TransfersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllTransfers(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TransferResponse>>> {
+        async getAllTransfers(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TransferResponse>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getAllTransfers(take, skip, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['TransfersApi.getAllTransfers']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -12008,9 +12546,11 @@ export const TransfersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getSingleTransfer(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransferResponse>> {
+        async getSingleTransfer(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransferResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getSingleTransfer(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['TransfersApi.getSingleTransfer']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
     }
 };
@@ -12071,7 +12611,7 @@ export class TransfersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransfersApi
      */
-    public createTransfer(transferRequest?: TransferRequest, options?: AxiosRequestConfig) {
+    public createTransfer(transferRequest?: TransferRequest, options?: RawAxiosRequestConfig) {
         return TransfersApiFp(this.configuration).createTransfer(transferRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -12084,7 +12624,7 @@ export class TransfersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransfersApi
      */
-    public getAllTransfers(take?: number, skip?: number, options?: AxiosRequestConfig) {
+    public getAllTransfers(take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return TransfersApiFp(this.configuration).getAllTransfers(take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -12096,10 +12636,11 @@ export class TransfersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransfersApi
      */
-    public getSingleTransfer(id: number, options?: AxiosRequestConfig) {
+    public getSingleTransfer(id: number, options?: RawAxiosRequestConfig) {
         return TransfersApiFp(this.configuration).getSingleTransfer(id, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
 
 
 /**
@@ -12115,7 +12656,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        acceptTos: async (acceptTosRequest?: AcceptTosRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        acceptTos: async (acceptTosRequest?: AcceptTosRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/users/acceptTos`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -12153,7 +12694,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authenticateAs: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        authenticateAs: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('authenticateAs', 'id', id)
             const localVarPath = `/users/{id}/authenticate`
@@ -12191,7 +12732,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createUser: async (createUserRequest?: CreateUserRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createUser: async (createUserRequest?: CreateUserRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/users`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -12229,7 +12770,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteUser: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteUser: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('deleteUser', 'id', id)
             const localVarPath = `/users/{id}`
@@ -12267,7 +12808,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteUserKey: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteUserKey: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('deleteUserKey', 'id', id)
             const localVarPath = `/users/{id}/authenticator/key`
@@ -12305,7 +12846,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteUserNfc: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteUserNfc: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('deleteUserNfc', 'id', id)
             const localVarPath = `/users/{id}/authenticator/nfc`
@@ -12345,11 +12886,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {boolean} [active] Filter based if the user is active
          * @param {boolean} [ofAge] Filter based if the user is 18+
          * @param {number} [id] Filter based on user ID
-         * @param {'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE'} [type] Filter based on user type.
+         * @param {GetAllUsersTypeEnum} [type] Filter based on user type.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllUsers: async (take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: 'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE', options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllUsers: async (take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: GetAllUsersTypeEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/users`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -12414,7 +12955,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllUsersOfUserType: async (userType: string, take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllUsersOfUserType: async (userType: string, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'userType' is not null or undefined
             assertParamExists('getAllUsersOfUserType', 'userType', userType)
             const localVarPath = `/users/usertype/{userType}`
@@ -12460,7 +13001,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getIndividualUser: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getIndividualUser: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getIndividualUser', 'id', id)
             const localVarPath = `/users/{id}`
@@ -12500,7 +13041,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getOrganMembers: async (id: number, take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getOrganMembers: async (id: number, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getOrganMembers', 'id', id)
             const localVarPath = `/users/{id}/members`
@@ -12546,7 +13087,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserAuthenticatable: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getUserAuthenticatable: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getUserAuthenticatable', 'id', id)
             const localVarPath = `/users/{id}/authenticate`
@@ -12584,7 +13125,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserRoles: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getUserRoles: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getUserRoles', 'id', id)
             const localVarPath = `/users/{id}/roles`
@@ -12624,7 +13165,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersContainers: async (id: number, take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getUsersContainers: async (id: number, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getUsersContainers', 'id', id)
             const localVarPath = `/users/{id}/containers`
@@ -12672,7 +13213,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersFinancialMutations: async (id: number, take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getUsersFinancialMutations: async (id: number, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getUsersFinancialMutations', 'id', id)
             const localVarPath = `/users/{id}/financialmutations`
@@ -12720,7 +13261,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersPointsOfSale: async (id: number, take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getUsersPointsOfSale: async (id: number, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getUsersPointsOfSale', 'id', id)
             const localVarPath = `/users/{id}/pointsofsale`
@@ -12766,7 +13307,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersProcessingDeposits: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getUsersProcessingDeposits: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getUsersProcessingDeposits', 'id', id)
             const localVarPath = `/users/{id}/deposits`
@@ -12806,7 +13347,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersProducts: async (id: number, take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getUsersProducts: async (id: number, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getUsersProducts', 'id', id)
             const localVarPath = `/users/{id}/products`
@@ -12861,7 +13402,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersTransactions: async (id: number, fromId?: number, createdById?: number, toId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getUsersTransactions: async (id: number, fromId?: number, createdById?: number, toId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getUsersTransactions', 'id', id)
             const localVarPath = `/users/{id}/transactions`
@@ -12940,7 +13481,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersTransactionsReport: async (id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, exclusiveToId?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getUsersTransactionsReport: async (id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, exclusiveToId?: boolean, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getUsersTransactionsReport', 'id', id)
             const localVarPath = `/users/{id}/transactions/report`
@@ -13003,7 +13544,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersTransfers: async (id: number, take?: number, skip?: number, fromId?: number, toId?: number, id2?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getUsersTransfers: async (id: number, take?: number, skip?: number, fromId?: number, toId?: number, id2?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getUsersTransfers', 'id', id)
             const localVarPath = `/users/{id}/transfers`
@@ -13062,7 +13603,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUser: async (id: number, updateUserRequest: UpdateUserRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateUser: async (id: number, updateUserRequest: UpdateUserRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('updateUser', 'id', id)
             // verify required parameter 'updateUserRequest' is not null or undefined
@@ -13105,7 +13646,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUserKey: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateUserKey: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('updateUserKey', 'id', id)
             const localVarPath = `/users/{id}/authenticator/key`
@@ -13144,7 +13685,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUserLocalPassword: async (id: number, updateLocalRequest?: UpdateLocalRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateUserLocalPassword: async (id: number, updateLocalRequest?: UpdateLocalRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('updateUserLocalPassword', 'id', id)
             const localVarPath = `/users/{id}/authenticator/local`
@@ -13186,7 +13727,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUserNfc: async (id: number, updateNfcRequest?: UpdateNfcRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateUserNfc: async (id: number, updateNfcRequest?: UpdateNfcRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('updateUserNfc', 'id', id)
             const localVarPath = `/users/{id}/authenticator/nfc`
@@ -13228,7 +13769,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUserPin: async (id: number, updatePinRequest?: UpdatePinRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateUserPin: async (id: number, updatePinRequest?: UpdatePinRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('updateUserPin', 'id', id)
             const localVarPath = `/users/{id}/authenticator/pin`
@@ -13269,7 +13810,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        waiveUserFines: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        waiveUserFines: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('waiveUserFines', 'id', id)
             const localVarPath = `/users/{id}/fines/waive`
@@ -13317,9 +13858,11 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async acceptTos(acceptTosRequest?: AcceptTosRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+        async acceptTos(acceptTosRequest?: AcceptTosRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.acceptTos(acceptTosRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.acceptTos']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -13328,9 +13871,11 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async authenticateAs(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>> {
+        async authenticateAs(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.authenticateAs(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.authenticateAs']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -13339,9 +13884,11 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createUser(createUserRequest?: CreateUserRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
+        async createUser(createUserRequest?: CreateUserRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createUser(createUserRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.createUser']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -13350,9 +13897,11 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteUser(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+        async deleteUser(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteUser(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.deleteUser']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -13361,9 +13910,11 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteUserKey(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async deleteUserKey(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteUserKey(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.deleteUserKey']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -13372,9 +13923,11 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteUserNfc(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async deleteUserNfc(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteUserNfc(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.deleteUserNfc']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -13385,13 +13938,15 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {boolean} [active] Filter based if the user is active
          * @param {boolean} [ofAge] Filter based if the user is 18+
          * @param {number} [id] Filter based on user ID
-         * @param {'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE'} [type] Filter based on user type.
+         * @param {GetAllUsersTypeEnum} [type] Filter based on user type.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllUsers(take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: 'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE', options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUserResponse>> {
+        async getAllUsers(take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: GetAllUsersTypeEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUserResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getAllUsers(take, skip, search, active, ofAge, id, type, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.getAllUsers']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -13402,9 +13957,11 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllUsersOfUserType(userType: string, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUserResponse>> {
+        async getAllUsersOfUserType(userType: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUserResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getAllUsersOfUserType(userType, take, skip, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.getAllUsersOfUserType']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -13413,9 +13970,11 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getIndividualUser(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserResponse>> {
+        async getIndividualUser(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getIndividualUser(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.getIndividualUser']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -13426,9 +13985,11 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getOrganMembers(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUserResponse>> {
+        async getOrganMembers(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUserResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getOrganMembers(id, take, skip, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.getOrganMembers']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -13437,9 +13998,11 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUserAuthenticatable(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UserResponse>>> {
+        async getUserAuthenticatable(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UserResponse>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getUserAuthenticatable(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.getUserAuthenticatable']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -13448,9 +14011,11 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUserRoles(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RoleResponse>>> {
+        async getUserRoles(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RoleResponse>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getUserRoles(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.getUserRoles']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -13461,9 +14026,11 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUsersContainers(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedContainerResponse>> {
+        async getUsersContainers(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedContainerResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getUsersContainers(id, take, skip, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.getUsersContainers']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -13474,9 +14041,11 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUsersFinancialMutations(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedFinancialMutationResponse>> {
+        async getUsersFinancialMutations(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedFinancialMutationResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getUsersFinancialMutations(id, take, skip, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.getUsersFinancialMutations']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -13487,9 +14056,11 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUsersPointsOfSale(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedPointOfSaleResponse>> {
+        async getUsersPointsOfSale(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedPointOfSaleResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getUsersPointsOfSale(id, take, skip, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.getUsersPointsOfSale']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -13498,9 +14069,11 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUsersProcessingDeposits(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RoleResponse>>> {
+        async getUsersProcessingDeposits(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RoleResponse>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getUsersProcessingDeposits(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.getUsersProcessingDeposits']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -13511,9 +14084,11 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUsersProducts(id: number, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductResponse>> {
+        async getUsersProducts(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getUsersProducts(id, take, skip, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.getUsersProducts']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -13531,9 +14106,11 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUsersTransactions(id: number, fromId?: number, createdById?: number, toId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBaseTransactionResponse>> {
+        async getUsersTransactions(id: number, fromId?: number, createdById?: number, toId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBaseTransactionResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getUsersTransactions(id, fromId, createdById, toId, productId, productRevision, fromDate, tillDate, take, skip, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.getUsersTransactions']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -13547,9 +14124,11 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUsersTransactionsReport(id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, exclusiveToId?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TransactionReportResponse>>> {
+        async getUsersTransactionsReport(id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, exclusiveToId?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TransactionReportResponse>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getUsersTransactionsReport(id, fromDate, tillDate, fromId, toId, exclusiveToId, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.getUsersTransactionsReport']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -13563,9 +14142,11 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUsersTransfers(id: number, take?: number, skip?: number, fromId?: number, toId?: number, id2?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedTransferResponse>> {
+        async getUsersTransfers(id: number, take?: number, skip?: number, fromId?: number, toId?: number, id2?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedTransferResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getUsersTransfers(id, take, skip, fromId, toId, id2, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.getUsersTransfers']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -13575,9 +14156,11 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateUser(id: number, updateUserRequest: UpdateUserRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpdateUserRequest>> {
+        async updateUser(id: number, updateUserRequest: UpdateUserRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpdateUserRequest>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateUser(id, updateUserRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.updateUser']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -13586,9 +14169,11 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateUserKey(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpdateKeyResponse>> {
+        async updateUserKey(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpdateKeyResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateUserKey(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.updateUserKey']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -13598,9 +14183,11 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateUserLocalPassword(id: number, updateLocalRequest?: UpdateLocalRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async updateUserLocalPassword(id: number, updateLocalRequest?: UpdateLocalRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateUserLocalPassword(id, updateLocalRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.updateUserLocalPassword']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -13610,9 +14197,11 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateUserNfc(id: number, updateNfcRequest?: UpdateNfcRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async updateUserNfc(id: number, updateNfcRequest?: UpdateNfcRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateUserNfc(id, updateNfcRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.updateUserNfc']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -13622,9 +14211,11 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateUserPin(id: number, updatePinRequest?: UpdatePinRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async updateUserPin(id: number, updatePinRequest?: UpdatePinRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateUserPin(id, updatePinRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.updateUserPin']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -13633,9 +14224,11 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async waiveUserFines(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+        async waiveUserFines(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.waiveUserFines(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.waiveUserFines']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
     }
 };
@@ -13716,11 +14309,11 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * @param {boolean} [active] Filter based if the user is active
          * @param {boolean} [ofAge] Filter based if the user is 18+
          * @param {number} [id] Filter based on user ID
-         * @param {'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE'} [type] Filter based on user type.
+         * @param {GetAllUsersTypeEnum} [type] Filter based on user type.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllUsers(take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: 'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE', options?: any): AxiosPromise<PaginatedUserResponse> {
+        getAllUsers(take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: GetAllUsersTypeEnum, options?: any): AxiosPromise<PaginatedUserResponse> {
             return localVarFp.getAllUsers(take, skip, search, active, ofAge, id, type, options).then((request) => request(axios, basePath));
         },
         /**
@@ -13966,7 +14559,7 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public acceptTos(acceptTosRequest?: AcceptTosRequest, options?: AxiosRequestConfig) {
+    public acceptTos(acceptTosRequest?: AcceptTosRequest, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).acceptTos(acceptTosRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -13978,7 +14571,7 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public authenticateAs(id: number, options?: AxiosRequestConfig) {
+    public authenticateAs(id: number, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).authenticateAs(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -13990,7 +14583,7 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public createUser(createUserRequest?: CreateUserRequest, options?: AxiosRequestConfig) {
+    public createUser(createUserRequest?: CreateUserRequest, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).createUser(createUserRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -14002,7 +14595,7 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public deleteUser(id: number, options?: AxiosRequestConfig) {
+    public deleteUser(id: number, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).deleteUser(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -14014,7 +14607,7 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public deleteUserKey(id: number, options?: AxiosRequestConfig) {
+    public deleteUserKey(id: number, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).deleteUserKey(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -14026,7 +14619,7 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public deleteUserNfc(id: number, options?: AxiosRequestConfig) {
+    public deleteUserNfc(id: number, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).deleteUserNfc(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -14039,12 +14632,12 @@ export class UsersApi extends BaseAPI {
      * @param {boolean} [active] Filter based if the user is active
      * @param {boolean} [ofAge] Filter based if the user is 18+
      * @param {number} [id] Filter based on user ID
-     * @param {'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE'} [type] Filter based on user type.
+     * @param {GetAllUsersTypeEnum} [type] Filter based on user type.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public getAllUsers(take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: 'MEMBER' | 'ORGAN' | 'VOUCHER' | 'LOCAL_USER' | 'LOCAL_ADMIN' | 'INVOICE' | 'AUTOMATIC_INVOICE', options?: AxiosRequestConfig) {
+    public getAllUsers(take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: GetAllUsersTypeEnum, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).getAllUsers(take, skip, search, active, ofAge, id, type, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -14058,7 +14651,7 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public getAllUsersOfUserType(userType: string, take?: number, skip?: number, options?: AxiosRequestConfig) {
+    public getAllUsersOfUserType(userType: string, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).getAllUsersOfUserType(userType, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -14070,7 +14663,7 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public getIndividualUser(id: number, options?: AxiosRequestConfig) {
+    public getIndividualUser(id: number, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).getIndividualUser(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -14084,7 +14677,7 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public getOrganMembers(id: number, take?: number, skip?: number, options?: AxiosRequestConfig) {
+    public getOrganMembers(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).getOrganMembers(id, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -14096,7 +14689,7 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public getUserAuthenticatable(id: number, options?: AxiosRequestConfig) {
+    public getUserAuthenticatable(id: number, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).getUserAuthenticatable(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -14108,7 +14701,7 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public getUserRoles(id: number, options?: AxiosRequestConfig) {
+    public getUserRoles(id: number, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).getUserRoles(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -14122,7 +14715,7 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public getUsersContainers(id: number, take?: number, skip?: number, options?: AxiosRequestConfig) {
+    public getUsersContainers(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).getUsersContainers(id, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -14136,7 +14729,7 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public getUsersFinancialMutations(id: number, take?: number, skip?: number, options?: AxiosRequestConfig) {
+    public getUsersFinancialMutations(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).getUsersFinancialMutations(id, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -14150,7 +14743,7 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public getUsersPointsOfSale(id: number, take?: number, skip?: number, options?: AxiosRequestConfig) {
+    public getUsersPointsOfSale(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).getUsersPointsOfSale(id, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -14162,7 +14755,7 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public getUsersProcessingDeposits(id: number, options?: AxiosRequestConfig) {
+    public getUsersProcessingDeposits(id: number, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).getUsersProcessingDeposits(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -14176,7 +14769,7 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public getUsersProducts(id: number, take?: number, skip?: number, options?: AxiosRequestConfig) {
+    public getUsersProducts(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).getUsersProducts(id, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -14197,7 +14790,7 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public getUsersTransactions(id: number, fromId?: number, createdById?: number, toId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: AxiosRequestConfig) {
+    public getUsersTransactions(id: number, fromId?: number, createdById?: number, toId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).getUsersTransactions(id, fromId, createdById, toId, productId, productRevision, fromDate, tillDate, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -14214,7 +14807,7 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public getUsersTransactionsReport(id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, exclusiveToId?: boolean, options?: AxiosRequestConfig) {
+    public getUsersTransactionsReport(id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, exclusiveToId?: boolean, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).getUsersTransactionsReport(id, fromDate, tillDate, fromId, toId, exclusiveToId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -14231,7 +14824,7 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public getUsersTransfers(id: number, take?: number, skip?: number, fromId?: number, toId?: number, id2?: number, options?: AxiosRequestConfig) {
+    public getUsersTransfers(id: number, take?: number, skip?: number, fromId?: number, toId?: number, id2?: number, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).getUsersTransfers(id, take, skip, fromId, toId, id2, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -14244,7 +14837,7 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public updateUser(id: number, updateUserRequest: UpdateUserRequest, options?: AxiosRequestConfig) {
+    public updateUser(id: number, updateUserRequest: UpdateUserRequest, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).updateUser(id, updateUserRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -14256,7 +14849,7 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public updateUserKey(id: number, options?: AxiosRequestConfig) {
+    public updateUserKey(id: number, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).updateUserKey(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -14269,7 +14862,7 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public updateUserLocalPassword(id: number, updateLocalRequest?: UpdateLocalRequest, options?: AxiosRequestConfig) {
+    public updateUserLocalPassword(id: number, updateLocalRequest?: UpdateLocalRequest, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).updateUserLocalPassword(id, updateLocalRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -14282,7 +14875,7 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public updateUserNfc(id: number, updateNfcRequest?: UpdateNfcRequest, options?: AxiosRequestConfig) {
+    public updateUserNfc(id: number, updateNfcRequest?: UpdateNfcRequest, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).updateUserNfc(id, updateNfcRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -14295,7 +14888,7 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public updateUserPin(id: number, updatePinRequest?: UpdatePinRequest, options?: AxiosRequestConfig) {
+    public updateUserPin(id: number, updatePinRequest?: UpdatePinRequest, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).updateUserPin(id, updatePinRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -14307,10 +14900,24 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public waiveUserFines(id: number, options?: AxiosRequestConfig) {
+    public waiveUserFines(id: number, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).waiveUserFines(id, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
+/**
+ * @export
+ */
+export const GetAllUsersTypeEnum = {
+    Member: 'MEMBER',
+    Organ: 'ORGAN',
+    Voucher: 'VOUCHER',
+    LocalUser: 'LOCAL_USER',
+    LocalAdmin: 'LOCAL_ADMIN',
+    Invoice: 'INVOICE',
+    AutomaticInvoice: 'AUTOMATIC_INVOICE'
+} as const;
+export type GetAllUsersTypeEnum = typeof GetAllUsersTypeEnum[keyof typeof GetAllUsersTypeEnum];
 
 
 /**
@@ -14326,7 +14933,7 @@ export const VatGroupsApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createVatGroup: async (vatGroupRequest?: VatGroupRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createVatGroup: async (vatGroupRequest?: VatGroupRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/vatgroups`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -14369,7 +14976,7 @@ export const VatGroupsApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllVatGroups: async (vatGroupId?: number, name?: string, percentage?: number, deleted?: boolean, take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllVatGroups: async (vatGroupId?: number, name?: string, percentage?: number, deleted?: boolean, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/vatgroups`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -14428,7 +15035,7 @@ export const VatGroupsApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSingleVatGroup: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getSingleVatGroup: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getSingleVatGroup', 'id', id)
             const localVarPath = `/vatgroups/{id}`
@@ -14467,7 +15074,7 @@ export const VatGroupsApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getVatDeclarationAmounts: async (year: number, period: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getVatDeclarationAmounts: async (year: number, period: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'year' is not null or undefined
             assertParamExists('getVatDeclarationAmounts', 'year', year)
             // verify required parameter 'period' is not null or undefined
@@ -14515,7 +15122,7 @@ export const VatGroupsApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateVatGroup: async (id: number, updateVatGroupRequest?: UpdateVatGroupRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateVatGroup: async (id: number, updateVatGroupRequest?: UpdateVatGroupRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('updateVatGroup', 'id', id)
             const localVarPath = `/vatgroups/{id}`
@@ -14566,9 +15173,11 @@ export const VatGroupsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createVatGroup(vatGroupRequest?: VatGroupRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VatGroup>> {
+        async createVatGroup(vatGroupRequest?: VatGroupRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VatGroup>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createVatGroup(vatGroupRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['VatGroupsApi.createVatGroup']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -14582,9 +15191,11 @@ export const VatGroupsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllVatGroups(vatGroupId?: number, name?: string, percentage?: number, deleted?: boolean, take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedVatGroupResponse>> {
+        async getAllVatGroups(vatGroupId?: number, name?: string, percentage?: number, deleted?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedVatGroupResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getAllVatGroups(vatGroupId, name, percentage, deleted, take, skip, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['VatGroupsApi.getAllVatGroups']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -14593,9 +15204,11 @@ export const VatGroupsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getSingleVatGroup(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VatGroup>> {
+        async getSingleVatGroup(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VatGroup>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getSingleVatGroup(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['VatGroupsApi.getSingleVatGroup']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -14605,9 +15218,11 @@ export const VatGroupsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getVatDeclarationAmounts(year: number, period: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedVatGroupResponse>> {
+        async getVatDeclarationAmounts(year: number, period: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedVatGroupResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getVatDeclarationAmounts(year, period, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['VatGroupsApi.getVatDeclarationAmounts']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -14617,9 +15232,11 @@ export const VatGroupsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateVatGroup(id: number, updateVatGroupRequest?: UpdateVatGroupRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VatGroup>> {
+        async updateVatGroup(id: number, updateVatGroupRequest?: UpdateVatGroupRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VatGroup>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateVatGroup(id, updateVatGroupRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['VatGroupsApi.updateVatGroup']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
     }
 };
@@ -14706,7 +15323,7 @@ export class VatGroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VatGroupsApi
      */
-    public createVatGroup(vatGroupRequest?: VatGroupRequest, options?: AxiosRequestConfig) {
+    public createVatGroup(vatGroupRequest?: VatGroupRequest, options?: RawAxiosRequestConfig) {
         return VatGroupsApiFp(this.configuration).createVatGroup(vatGroupRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -14723,7 +15340,7 @@ export class VatGroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VatGroupsApi
      */
-    public getAllVatGroups(vatGroupId?: number, name?: string, percentage?: number, deleted?: boolean, take?: number, skip?: number, options?: AxiosRequestConfig) {
+    public getAllVatGroups(vatGroupId?: number, name?: string, percentage?: number, deleted?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return VatGroupsApiFp(this.configuration).getAllVatGroups(vatGroupId, name, percentage, deleted, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -14735,7 +15352,7 @@ export class VatGroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VatGroupsApi
      */
-    public getSingleVatGroup(id: number, options?: AxiosRequestConfig) {
+    public getSingleVatGroup(id: number, options?: RawAxiosRequestConfig) {
         return VatGroupsApiFp(this.configuration).getSingleVatGroup(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -14748,7 +15365,7 @@ export class VatGroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VatGroupsApi
      */
-    public getVatDeclarationAmounts(year: number, period: string, options?: AxiosRequestConfig) {
+    public getVatDeclarationAmounts(year: number, period: string, options?: RawAxiosRequestConfig) {
         return VatGroupsApiFp(this.configuration).getVatDeclarationAmounts(year, period, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -14761,10 +15378,11 @@ export class VatGroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VatGroupsApi
      */
-    public updateVatGroup(id: number, updateVatGroupRequest?: UpdateVatGroupRequest, options?: AxiosRequestConfig) {
+    public updateVatGroup(id: number, updateVatGroupRequest?: UpdateVatGroupRequest, options?: RawAxiosRequestConfig) {
         return VatGroupsApiFp(this.configuration).updateVatGroup(id, updateVatGroupRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
 
 
 /**
@@ -14780,7 +15398,7 @@ export const VouchergroupsApiAxiosParamCreator = function (configuration?: Confi
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createVouchergroup: async (voucherGroupRequest?: VoucherGroupRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createVouchergroup: async (voucherGroupRequest?: VoucherGroupRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/vouchergroups`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -14819,7 +15437,7 @@ export const VouchergroupsApiAxiosParamCreator = function (configuration?: Confi
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllVouchergroups: async (take?: number, skip?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllVouchergroups: async (take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/vouchergroups`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -14862,7 +15480,7 @@ export const VouchergroupsApiAxiosParamCreator = function (configuration?: Confi
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getVouchergroupId: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getVouchergroupId: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getVouchergroupId', 'id', id)
             const localVarPath = `/vouchergroups/{id}`
@@ -14901,7 +15519,7 @@ export const VouchergroupsApiAxiosParamCreator = function (configuration?: Confi
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateVoucherGroup: async (id: number, voucherGroupRequest?: VoucherGroupRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateVoucherGroup: async (id: number, voucherGroupRequest?: VoucherGroupRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('updateVoucherGroup', 'id', id)
             const localVarPath = `/vouchergroups/{id}`
@@ -14952,9 +15570,11 @@ export const VouchergroupsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createVouchergroup(voucherGroupRequest?: VoucherGroupRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VoucherGroupResponse>> {
+        async createVouchergroup(voucherGroupRequest?: VoucherGroupRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VoucherGroupResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createVouchergroup(voucherGroupRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['VouchergroupsApi.createVouchergroup']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -14964,9 +15584,11 @@ export const VouchergroupsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllVouchergroups(take?: number, skip?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedVoucherGroupResponse>> {
+        async getAllVouchergroups(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedVoucherGroupResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getAllVouchergroups(take, skip, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['VouchergroupsApi.getAllVouchergroups']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -14975,9 +15597,11 @@ export const VouchergroupsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getVouchergroupId(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VoucherGroupResponse>> {
+        async getVouchergroupId(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VoucherGroupResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getVouchergroupId(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['VouchergroupsApi.getVouchergroupId']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
          * 
@@ -14987,9 +15611,11 @@ export const VouchergroupsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateVoucherGroup(id: number, voucherGroupRequest?: VoucherGroupRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VoucherGroupResponse>> {
+        async updateVoucherGroup(id: number, voucherGroupRequest?: VoucherGroupRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VoucherGroupResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateVoucherGroup(id, voucherGroupRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['VouchergroupsApi.updateVoucherGroup']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
     }
 };
@@ -15061,7 +15687,7 @@ export class VouchergroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VouchergroupsApi
      */
-    public createVouchergroup(voucherGroupRequest?: VoucherGroupRequest, options?: AxiosRequestConfig) {
+    public createVouchergroup(voucherGroupRequest?: VoucherGroupRequest, options?: RawAxiosRequestConfig) {
         return VouchergroupsApiFp(this.configuration).createVouchergroup(voucherGroupRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -15074,7 +15700,7 @@ export class VouchergroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VouchergroupsApi
      */
-    public getAllVouchergroups(take?: number, skip?: number, options?: AxiosRequestConfig) {
+    public getAllVouchergroups(take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return VouchergroupsApiFp(this.configuration).getAllVouchergroups(take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -15086,7 +15712,7 @@ export class VouchergroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VouchergroupsApi
      */
-    public getVouchergroupId(id: number, options?: AxiosRequestConfig) {
+    public getVouchergroupId(id: number, options?: RawAxiosRequestConfig) {
         return VouchergroupsApiFp(this.configuration).getVouchergroupId(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -15099,9 +15725,10 @@ export class VouchergroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VouchergroupsApi
      */
-    public updateVoucherGroup(id: number, voucherGroupRequest?: VoucherGroupRequest, options?: AxiosRequestConfig) {
+    public updateVoucherGroup(id: number, voucherGroupRequest?: VoucherGroupRequest, options?: RawAxiosRequestConfig) {
         return VouchergroupsApiFp(this.configuration).updateVoucherGroup(id, voucherGroupRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
 
 

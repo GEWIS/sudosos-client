@@ -8,7 +8,7 @@
   "scripts": {
     "build": "tsc",
     "gen-build": "npm run gen && npm run build && (git add ./src && git add ./dist)",
-    "gen": "openapi-generator-cli generate -i swagger.json  -g typescript-axios -o ./src",
+    "gen": "openapi-generator-cli generate -i swagger.json  -g typescript-axios -o ./src --openapi-normalizer REFACTOR_ALLOF_WITH_PROPERTIES_ONLY=true",
     "update-swagger": "cd ./node_modules/@sudosos/sudosos-backend && npx npm install && npx npm run swagger && cd ../../../ &&  cp ./node_modules/@sudosos/sudosos-backend/out/swagger.json ./swagger.json"
   },
   "devDependencies": {
