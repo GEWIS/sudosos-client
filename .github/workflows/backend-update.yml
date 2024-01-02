@@ -23,28 +23,58 @@ jobs:
     - name: Determine Branch and SHA for Update
       id: set_branch_and_sha
       run: |
-        echo "branch=${{ github.event.client_payload.branch || 'main' }}" >> $GITHUB_ENV
+        echo "branch=${{ github.event.client_payload.branch || 'develop' }}" >> $GITHUB_ENV
         echo "BACKEND_SHA=${{ github.event.client_payload.sha || 'MANUAL_RUN' }}" >> $GITHUB_ENV
 
     - name: Run Update Script
       run: |
         if [[ ${{ env.branch }} == 'main' ]]; then
-          genupdate:main
+          npm run update-swagger:main
+          if ! cmp --silent ./swagger-main.json ./swagger-json; then
+            cp ./swagger-main.json ./swagger-json
+            echo "Files differ, running npm run gen"
+            echo "NEEDS_GEN=true" >> $GITHUB_ENV
+          else
+            echo "Files are identical, no need to run npm run gen"
+            echo "NEEDS_GEN=false" >> $GITHUB_ENV
+          fi
         elif [[ ${{ env.branch }} == 'develop' ]]; then
-          genupdate:dev
+          npm run update-swagger:dev
+          if ! cmp --silent ./swagger-develop.json ./swagger-json; then
+            cp ./swagger-develop.json ./swagger-json
+            echo "Files differ, running npm run gen"
+            echo "NEEDS_GEN=true" >> $GITHUB_ENV
+          else
+            echo "Files are identical, no need to run npm run gen"
+            echo "NEEDS_GEN=false" >> $GITHUB_ENV
+          fi
         fi
+
+    - name: Generate Client Code
+      if: env.NEEDS_GEN == 'true'
+      run: npm run genbuild
+
+    - name: Check if Generation is Needed
+      if: env.NEEDS_GEN == 'false'
+      run: |
+        echo "No changes detected in Swagger files. Aborting workflow."
+        exit 1
+
+    - name: Configure Git
+      run: |
+        git config --global user.name "${{ github.actor }}"
+        git config --global user.email "${{ github.actor }}@users.noreply.github.com"
 
     - name: Push Changes to New Branch
       run: |
         git checkout -b Update/${{ env.branch }}-${{ env.BACKEND_SHA }}
         git add .
-        git commit -m "Update from backend ${env.BACKEND_SHA}" --author="GitHub Actions Bot <actions@github.com>"
+        git commit -m "Update from backend ${{env.BACKEND_SHA}}" --author="GitHub Actions Bot <actions@github.com>"
         git push origin Update/${{ env.branch }}-${{ env.BACKEND_SHA }}
 
     - name: Create Pull Request
       uses: repo-sync/pull-request@v2
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
         pr_title: "Update from Backend"
         pr_body: "Automated PR to update client after backend changes."
         source_branch: "Update/${{ env.branch }}-${{ env.BACKEND_SHA }}"
