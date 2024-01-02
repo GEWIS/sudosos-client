@@ -20,20 +20,26 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      - name: Determine Branch and SHA for Update
+        id: set_branch_and_sha
+        run: |
+          echo "branch=${{ github.event.client_payload.branch || 'main' }}" >> $GITHUB_ENV
+          echo "BACKEND_SHA=${{ github.event.client_payload.sha || 'MANUAL_RUN' }}" >> $GITHUB_ENV
+
       - name: Run Update Script
         run: |
-          if [[ ${{ github.event.client_payload.branch }} == 'main' ]]; then
+          if [[ ${{ env.branch }} == 'main' ]]; then
             genupdate:main
-          elif [[ ${{ github.event.client_payload.branch }} == 'develop' ]]; then
+          elif [[ ${{ env.branch }} == 'develop' ]]; then
             genupdate:dev
           fi
 
       - name: Push Changes to New Branch
         run: |
-          git checkout -b Update/${{ github.event.client_payload.branch }}-${{ github.sha }}
+          git checkout -b Update/${{ env.branch }}-${{ env.BACKEND_SHA }}
           git add .
-          git commit -m "Update from backend ${GITHUB_SHA}" --author="GitHub Actions Bot <actions@github.com>"
-          git push origin Update/${{ github.event.client_payload.branch }}-${{ github.sha }}
+          git commit -m "Update from backend ${env.BACKEND_SHA}" --author="GitHub Actions Bot <actions@github.com>"
+          git push origin Update/${{ env.branch }}-${{ env.BACKEND_SHA }}
 
       - name: Create Pull Request
         uses: repo-sync/pull-request@v2
@@ -41,5 +47,5 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           pr_title: "Update from Backend"
           pr_body: "Automated PR to update client after backend changes."
-          source_branch: "Update/${{ github.event.client_payload.branch }}-${{ github.sha }}"
-          destination_branch: ${{ github.event.client_payload.branch }}
+          source_branch: "Update/${{ env.branch }}-${{ env.BACKEND_SHA }}"
+          destination_branch: ${{ env.branch }}
