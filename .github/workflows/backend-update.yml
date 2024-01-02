@@ -31,7 +31,7 @@ jobs:
         if [[ ${{ env.branch }} == 'main' ]]; then
           npm run update-swagger:main
           if ! cmp --silent ./swagger-main.json ./swagger-json; then
-            cp ./swagger-main.json ./swagger-json
+            mv ./swagger-main.json ./swagger-json
             echo "Files differ, running npm run gen"
             echo "NEEDS_GEN=true" >> $GITHUB_ENV
           else
@@ -41,7 +41,7 @@ jobs:
         elif [[ ${{ env.branch }} == 'develop' ]]; then
           npm run update-swagger:dev
           if ! cmp --silent ./swagger-develop.json ./swagger-json; then
-            cp ./swagger-develop.json ./swagger-json
+            mv ./swagger-develop.json ./swagger-json
             echo "Files differ, running npm run gen"
             echo "NEEDS_GEN=true" >> $GITHUB_ENV
           else
@@ -54,18 +54,14 @@ jobs:
       if: env.NEEDS_GEN == 'true'
       run: npm run genbuild
 
-    - name: Check if Generation is Needed
-      if: env.NEEDS_GEN == 'false'
-      run: |
-        echo "No changes detected in Swagger files. Aborting workflow."
-        exit 1
-
     - name: Configure Git
+      if: env.NEEDS_GEN == 'true'
       run: |
         git config --global user.name "${{ github.actor }}"
         git config --global user.email "${{ github.actor }}@users.noreply.github.com"
 
     - name: Push Changes to New Branch
+      if: env.NEEDS_GEN == 'true'
       run: |
         git checkout -b Update/${{ env.branch }}-${{ env.BACKEND_SHA }}
         git add .
@@ -74,6 +70,7 @@ jobs:
 
     - name: Create Pull Request
       uses: repo-sync/pull-request@v2
+      if: env.NEEDS_GEN == 'true'
       with:
         pr_title: "Update from Backend"
         pr_body: "Automated PR to update client after backend changes."
