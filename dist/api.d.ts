@@ -37,13 +37,13 @@ export interface ActionResponse {
      * @type {string}
      * @memberof ActionResponse
      */
-    'action'?: string;
+    'action': string;
     /**
      * The ownership relations with permissions.
      * @type {Array<RelationResponse>}
      * @memberof ActionResponse
      */
-    'relations'?: Array<RelationResponse>;
+    'relations': Array<RelationResponse>;
 }
 /**
  *
@@ -433,62 +433,6 @@ export interface BaseContainerResponse {
 /**
  *
  * @export
- * @interface BaseEntity
- */
-export interface BaseEntity {
-    /**
-     * The creation date of the object.
-     * @type {string}
-     * @memberof BaseEntity
-     */
-    'createdAt'?: string;
-    /**
-     * The last update date of the object.
-     * @type {string}
-     * @memberof BaseEntity
-     */
-    'updatedAt'?: string;
-    /**
-     * The current version of the object.
-     * @type {number}
-     * @memberof BaseEntity
-     */
-    'version'?: number;
-    /**
-     * The auto-generated object id.
-     * @type {number}
-     * @memberof BaseEntity
-     */
-    'id': number;
-}
-/**
- *
- * @export
- * @interface BaseEntityWithoutId
- */
-export interface BaseEntityWithoutId {
-    /**
-     * The creation date of the object.
-     * @type {string}
-     * @memberof BaseEntityWithoutId
-     */
-    'createdAt'?: string;
-    /**
-     * The last update date of the object.
-     * @type {string}
-     * @memberof BaseEntityWithoutId
-     */
-    'updatedAt'?: string;
-    /**
-     * The current version of the object.
-     * @type {number}
-     * @memberof BaseEntityWithoutId
-     */
-    'version'?: number;
-}
-/**
- *
- * @export
  * @interface BaseEventAnswerResponse
  */
 export interface BaseEventAnswerResponse {
@@ -608,55 +552,6 @@ export interface BaseEventShiftResponse {
      * @memberof BaseEventShiftResponse
      */
     'name': string;
-}
-/**
- *
- * @export
- * @interface BaseFile
- */
-export interface BaseFile {
-    /**
-     * The creation date of the object.
-     * @type {string}
-     * @memberof BaseFile
-     */
-    'createdAt'?: string;
-    /**
-     * The last update date of the object.
-     * @type {string}
-     * @memberof BaseFile
-     */
-    'updatedAt'?: string;
-    /**
-     * The current version of the object.
-     * @type {number}
-     * @memberof BaseFile
-     */
-    'version'?: number;
-    /**
-     * The auto-generated object id.
-     * @type {number}
-     * @memberof BaseFile
-     */
-    'id': number;
-    /**
-     * The filename when the file is downloaded
-     * @type {string}
-     * @memberof BaseFile
-     */
-    'downloadName': string;
-    /**
-     * The location of the file, including filename in storage
-     * @type {string}
-     * @memberof BaseFile
-     */
-    'location': string;
-    /**
-     *
-     * @type {User}
-     * @memberof BaseFile
-     */
-    'createdBy': User;
 }
 /**
  *
@@ -1622,13 +1517,13 @@ export interface EntityResponse {
      * @type {string}
      * @memberof EntityResponse
      */
-    'entity'?: string;
+    'entity': string;
     /**
      * The permissions per action.
      * @type {Array<ActionResponse>}
      * @memberof EntityResponse
      */
-    'actions'?: Array<ActionResponse>;
+    'actions': Array<ActionResponse>;
 }
 /**
  *
@@ -1990,7 +1885,7 @@ export interface FineResponse {
      * @type {BaseUserResponse}
      * @memberof FineResponse
      */
-    'user'?: BaseUserResponse;
+    'user': BaseUserResponse;
 }
 /**
  *
@@ -2016,6 +1911,109 @@ export interface GEWISAuthenticationPinRequest {
  * @export
  */
 export type GetAllPayoutRequestsRequestedByIdParameter = Array<number> | number;
+/**
+ *
+ * @export
+ * @interface GewisUserResponse
+ */
+export interface GewisUserResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof GewisUserResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof GewisUserResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof GewisUserResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof GewisUserResponse
+     */
+    'version'?: number;
+    /**
+     * The name of the user.
+     * @type {string}
+     * @memberof GewisUserResponse
+     */
+    'firstName': string;
+    /**
+     * The last name of the user
+     * @type {string}
+     * @memberof GewisUserResponse
+     */
+    'lastName': string;
+    /**
+     * The nickname of the user
+     * @type {string}
+     * @memberof GewisUserResponse
+     */
+    'nickname'?: string;
+    /**
+     * Whether the user activated
+     * @type {boolean}
+     * @memberof GewisUserResponse
+     */
+    'active': boolean;
+    /**
+     * Whether the user is deleted
+     * @type {boolean}
+     * @memberof GewisUserResponse
+     */
+    'deleted': boolean;
+    /**
+     * The type of user
+     * @type {string}
+     * @memberof GewisUserResponse
+     */
+    'type': string;
+    /**
+     * If local user, the e-mail of the user
+     * @type {string}
+     * @memberof GewisUserResponse
+     */
+    'email'?: string;
+    /**
+     * Whether this user has accepted the TOS
+     * @type {string}
+     * @memberof GewisUserResponse
+     */
+    'acceptedToS'?: string;
+    /**
+     * Whether data about this user can be used (non-anonymously) for more data science!
+     * @type {boolean}
+     * @memberof GewisUserResponse
+     */
+    'extensiveDataProcessing'?: boolean;
+    /**
+     * Whether someone is old enough to drink beer
+     * @type {boolean}
+     * @memberof GewisUserResponse
+     */
+    'ofAge'?: boolean;
+    /**
+     * Whether this user can get a negative balance
+     * @type {boolean}
+     * @memberof GewisUserResponse
+     */
+    'canGoIntoDebt': boolean;
+    /**
+     * The m-Number of the user
+     * @type {number}
+     * @memberof GewisUserResponse
+     */
+    'gewisId'?: number;
+}
 /**
  *
  * @export
@@ -2276,92 +2274,6 @@ export declare const InvoiceStatusResponseStateEnum: {
     readonly Deleted: "DELETED";
 };
 export type InvoiceStatusResponseStateEnum = typeof InvoiceStatusResponseStateEnum[keyof typeof InvoiceStatusResponseStateEnum];
-/**
- *
- * @export
- * @interface InvoiceUser
- */
-export interface InvoiceUser {
-    /**
-     * The creation date of the object.
-     * @type {string}
-     * @memberof InvoiceUser
-     */
-    'createdAt'?: string;
-    /**
-     * The last update date of the object.
-     * @type {string}
-     * @memberof InvoiceUser
-     */
-    'updatedAt'?: string;
-    /**
-     * The current version of the object.
-     * @type {number}
-     * @memberof InvoiceUser
-     */
-    'version'?: number;
-    /**
-     * The auto-generated object id.
-     * @type {number}
-     * @memberof InvoiceUser
-     */
-    'id': number;
-    /**
-     *
-     * @type {User}
-     * @memberof InvoiceUser
-     */
-    'user': User;
-    /**
-     * Whether the user gets automatic invoices
-     * @type {boolean}
-     * @memberof InvoiceUser
-     */
-    'automatic'?: boolean;
-}
-/**
- *
- * @export
- * @interface LocalUser
- */
-export interface LocalUser {
-    /**
-     * The creation date of the object.
-     * @type {string}
-     * @memberof LocalUser
-     */
-    'createdAt'?: string;
-    /**
-     * The last update date of the object.
-     * @type {string}
-     * @memberof LocalUser
-     */
-    'updatedAt'?: string;
-    /**
-     * The current version of the object.
-     * @type {number}
-     * @memberof LocalUser
-     */
-    'version'?: number;
-    /**
-     * The auto-generated object id.
-     * @type {number}
-     * @memberof LocalUser
-     */
-    'id': number;
-    /**
-     *
-     * @type {User}
-     * @memberof LocalUser
-     */
-    'user': User;
-    /**
-     * The hashed password of the user.
-     * @type {string}
-     * @memberof LocalUser
-     */
-    'passwordHash': string;
-}
 /**
  *
  * @export
@@ -2693,10 +2605,10 @@ export interface PaginatedVatGroupResponse {
     '_pagination': PaginationResult;
     /**
      * Returned VAT groups
-     * @type {Array<VatGroup>}
+     * @type {Array<VatGroupResponse>}
      * @memberof PaginatedVatGroupResponse
      */
-    'records': Array<VatGroup>;
+    'records': Array<VatGroupResponse>;
 }
 /**
  *
@@ -3153,13 +3065,13 @@ export interface RelationResponse {
      * @type {string}
      * @memberof RelationResponse
      */
-    'relation'?: string;
+    'relation': string;
     /**
      * The attributes of the entity for which there is access.
      * @type {Array<string>}
      * @memberof RelationResponse
      */
-    'attributes'?: Array<string>;
+    'attributes': Array<string>;
 }
 /**
  *
@@ -3210,7 +3122,7 @@ export interface RoleResponse {
      * @type {Array<EntityResponse>}
      * @memberof RoleResponse
      */
-    'entities'?: Array<EntityResponse>;
+    'entities': Array<EntityResponse>;
 }
 /**
  *
@@ -3897,10 +3809,10 @@ export interface TransactionResponse {
     'subTransactions': Array<SubTransactionResponse>;
     /**
      *
-     * @type {BasePointOfSaleResponse}
+     * @type {PointOfSaleResponse}
      * @memberof TransactionResponse
      */
-    'pointOfSale': BasePointOfSaleResponse;
+    'pointOfSale': PointOfSaleResponse;
     /**
      *
      * @type {DineroObjectResponse}
@@ -4352,101 +4264,6 @@ export interface UpdateVatGroupRequest {
 /**
  *
  * @export
- * @interface User
- */
-export interface User {
-    /**
-     * The creation date of the object.
-     * @type {string}
-     * @memberof User
-     */
-    'createdAt'?: string;
-    /**
-     * The last update date of the object.
-     * @type {string}
-     * @memberof User
-     */
-    'updatedAt'?: string;
-    /**
-     * The current version of the object.
-     * @type {number}
-     * @memberof User
-     */
-    'version'?: number;
-    /**
-     * The auto-generated object id.
-     * @type {number}
-     * @memberof User
-     */
-    'id': number;
-    /**
-     * First name of the user.
-     * @type {string}
-     * @memberof User
-     */
-    'firstName': string;
-    /**
-     * Last name of the user.
-     * @type {string}
-     * @memberof User
-     */
-    'lastName'?: string;
-    /**
-     * Nickname of the user.
-     * @type {string}
-     * @memberof User
-     */
-    'nickname'?: string;
-    /**
-     * Whether the user has accepted the TOS. Defaults to false.
-     * @type {boolean}
-     * @memberof User
-     */
-    'active'?: boolean;
-    /**
-     * Whether the user can have a negative balance. Defaults to false
-     * @type {boolean}
-     * @memberof User
-     */
-    'canGoIntoDebt'?: boolean;
-    /**
-     * Whether the user is 18+ or not.
-     * @type {boolean}
-     * @memberof User
-     */
-    'ofAge'?: boolean;
-    /**
-     * The email of the user.
-     * @type {string}
-     * @memberof User
-     */
-    'email'?: string;
-    /**
-     * Whether the user was deleted. Defaults to false.
-     * @type {boolean}
-     * @memberof User
-     */
-    'deleted'?: boolean;
-    /**
-     * The type of user 1 (MEMBER), 2 (ORGAN), 3 (VOUCHER), 4 (LOCAL_USER), 5 (LOCAL_ADMIN), 6 (INVOICE), 7 (AUTOMATIC_INVOICE).
-     * @type {string}
-     * @memberof User
-     */
-    'type': UserTypeEnum;
-}
-export declare const UserTypeEnum: {
-    readonly _1: "1";
-    readonly _2: "2";
-    readonly _3: "3";
-    readonly _4: "4";
-    readonly _5: "5";
-    readonly _6: "6";
-    readonly _7: "7";
-};
-export type UserTypeEnum = typeof UserTypeEnum[keyof typeof UserTypeEnum];
-/**
- *
- * @export
  * @interface UserFineGroupResponse
  */
 export interface UserFineGroupResponse {
@@ -4582,49 +4399,6 @@ export interface UserToFineResponse {
 /**
  *
  * @export
- * @interface UserVoucherGroup
- */
-export interface UserVoucherGroup {
-    /**
-     * The creation date of the object.
-     * @type {string}
-     * @memberof UserVoucherGroup
-     */
-    'createdAt'?: string;
-    /**
-     * The last update date of the object.
-     * @type {string}
-     * @memberof UserVoucherGroup
-     */
-    'updatedAt'?: string;
-    /**
-     * The current version of the object.
-     * @type {number}
-     * @memberof UserVoucherGroup
-     */
-    'version'?: number;
-    /**
-     * The auto-generated object id.
-     * @type {number}
-     * @memberof UserVoucherGroup
-     */
-    'id': number;
-    /**
-     *
-     * @type {User}
-     * @memberof UserVoucherGroup
-     */
-    'user': User;
-    /**
-     *
-     * @type {VoucherGroup}
-     * @memberof UserVoucherGroup
-     */
-    'voucherGroup': VoucherGroup;
-}
-/**
- *
- * @export
  * @interface VatDeclarationResponse
  */
 export interface VatDeclarationResponse {
@@ -4681,61 +4455,6 @@ export interface VatDeclarationRow {
 /**
  *
  * @export
- * @interface VatGroup
- */
-export interface VatGroup {
-    /**
-     * The creation date of the object.
-     * @type {string}
-     * @memberof VatGroup
-     */
-    'createdAt'?: string;
-    /**
-     * The last update date of the object.
-     * @type {string}
-     * @memberof VatGroup
-     */
-    'updatedAt'?: string;
-    /**
-     * The current version of the object.
-     * @type {number}
-     * @memberof VatGroup
-     */
-    'version'?: number;
-    /**
-     * The auto-generated object id.
-     * @type {number}
-     * @memberof VatGroup
-     */
-    'id': number;
-    /**
-     * Name of the VAT group
-     * @type {string}
-     * @memberof VatGroup
-     */
-    'name'?: string;
-    /**
-     * VAT percentage
-     * @type {number}
-     * @memberof VatGroup
-     */
-    'percentage'?: number;
-    /**
-     * Whether this group is soft-deleted
-     * @type {boolean}
-     * @memberof VatGroup
-     */
-    'deleted'?: boolean;
-    /**
-     * Whether this group is hidden from transactions
-     * @type {boolean}
-     * @memberof VatGroup
-     */
-    'hidden'?: boolean;
-}
-/**
- *
- * @export
  * @interface VatGroupRequest
  */
 export interface VatGroupRequest {
@@ -4767,57 +4486,57 @@ export interface VatGroupRequest {
 /**
  *
  * @export
- * @interface VoucherGroup
+ * @interface VatGroupResponse
  */
-export interface VoucherGroup {
+export interface VatGroupResponse {
     /**
-     * The creation date of the object.
-     * @type {string}
-     * @memberof VoucherGroup
-     */
-    'createdAt'?: string;
-    /**
-     * The last update date of the object.
-     * @type {string}
-     * @memberof VoucherGroup
-     */
-    'updatedAt'?: string;
-    /**
-     * The current version of the object.
+     * The unique id of the entity.
      * @type {number}
-     * @memberof VoucherGroup
-     */
-    'version'?: number;
-    /**
-     * The auto-generated object id.
-     * @type {number}
-     * @memberof VoucherGroup
+     * @memberof VatGroupResponse
      */
     'id': number;
     /**
-     * Name of the group.
+     * The creation Date of the entity.
      * @type {string}
-     * @memberof VoucherGroup
+     * @memberof VatGroupResponse
      */
-    'name': string;
+    'createdAt'?: string;
     /**
-     * Date after which the included cards are active.
+     * The last update Date of the entity.
      * @type {string}
-     * @memberof VoucherGroup
+     * @memberof VatGroupResponse
      */
-    'activeStartDate': string;
+    'updatedAt'?: string;
     /**
-     * Date after which cards are no longer active.
+     * The version of the entity.
+     * @type {number}
+     * @memberof VatGroupResponse
+     */
+    'version'?: number;
+    /**
+     * Percentage of VAT
+     * @type {number}
+     * @memberof VatGroupResponse
+     */
+    'percentage': number;
+    /**
+     * Whether VAT should be hidden
+     * @type {boolean}
+     * @memberof VatGroupResponse
+     */
+    'hidden': boolean;
+    /**
+     * Name of the VAT group
      * @type {string}
-     * @memberof VoucherGroup
+     * @memberof VatGroupResponse
      */
-    'activeEndDate'?: string;
+    'name'?: string;
     /**
-     * Cards included in this group.
-     * @type {Array<User>}
-     * @memberof VoucherGroup
+     * Whether this group is soft-deleted
+     * @type {boolean}
+     * @memberof VatGroupResponse
      */
-    'vouchers': Array<User>;
+    'deleted': boolean;
 }
 /**
  *
@@ -6936,11 +6655,11 @@ export declare const InvoicesApiAxiosParamCreator: (configuration?: Configuratio
     /**
      *
      * @summary Adds an invoice to the system.
-     * @param {CreateInvoiceRequest} [createInvoiceRequest] The invoice which should be created
+     * @param {CreateInvoiceRequest} createInvoiceRequest The invoice which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createInvoice: (createInvoiceRequest?: CreateInvoiceRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    createInvoice: (createInvoiceRequest: CreateInvoiceRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Deletes an invoice.
@@ -6977,11 +6696,11 @@ export declare const InvoicesApiAxiosParamCreator: (configuration?: Configuratio
      *
      * @summary Adds an invoice to the system.
      * @param {number} id The id of the invoice which should be updated
-     * @param {UpdateInvoiceRequest} [updateInvoiceRequest] The invoice update to process
+     * @param {UpdateInvoiceRequest} updateInvoiceRequest The invoice update to process
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateInvoice: (id: number, updateInvoiceRequest?: UpdateInvoiceRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    updateInvoice: (id: number, updateInvoiceRequest: UpdateInvoiceRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * InvoicesApi - functional programming interface
@@ -6991,11 +6710,11 @@ export declare const InvoicesApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Adds an invoice to the system.
-     * @param {CreateInvoiceRequest} [createInvoiceRequest] The invoice which should be created
+     * @param {CreateInvoiceRequest} createInvoiceRequest The invoice which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createInvoice(createInvoiceRequest?: CreateInvoiceRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InvoiceResponse>>;
+    createInvoice(createInvoiceRequest: CreateInvoiceRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InvoiceResponse>>;
     /**
      *
      * @summary Deletes an invoice.
@@ -7032,11 +6751,11 @@ export declare const InvoicesApiFp: (configuration?: Configuration) => {
      *
      * @summary Adds an invoice to the system.
      * @param {number} id The id of the invoice which should be updated
-     * @param {UpdateInvoiceRequest} [updateInvoiceRequest] The invoice update to process
+     * @param {UpdateInvoiceRequest} updateInvoiceRequest The invoice update to process
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateInvoice(id: number, updateInvoiceRequest?: UpdateInvoiceRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseInvoiceResponse>>;
+    updateInvoice(id: number, updateInvoiceRequest: UpdateInvoiceRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseInvoiceResponse>>;
 };
 /**
  * InvoicesApi - factory interface
@@ -7046,11 +6765,11 @@ export declare const InvoicesApiFactory: (configuration?: Configuration, basePat
     /**
      *
      * @summary Adds an invoice to the system.
-     * @param {CreateInvoiceRequest} [createInvoiceRequest] The invoice which should be created
+     * @param {CreateInvoiceRequest} createInvoiceRequest The invoice which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createInvoice(createInvoiceRequest?: CreateInvoiceRequest, options?: any): AxiosPromise<InvoiceResponse>;
+    createInvoice(createInvoiceRequest: CreateInvoiceRequest, options?: any): AxiosPromise<InvoiceResponse>;
     /**
      *
      * @summary Deletes an invoice.
@@ -7087,11 +6806,11 @@ export declare const InvoicesApiFactory: (configuration?: Configuration, basePat
      *
      * @summary Adds an invoice to the system.
      * @param {number} id The id of the invoice which should be updated
-     * @param {UpdateInvoiceRequest} [updateInvoiceRequest] The invoice update to process
+     * @param {UpdateInvoiceRequest} updateInvoiceRequest The invoice update to process
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateInvoice(id: number, updateInvoiceRequest?: UpdateInvoiceRequest, options?: any): AxiosPromise<BaseInvoiceResponse>;
+    updateInvoice(id: number, updateInvoiceRequest: UpdateInvoiceRequest, options?: any): AxiosPromise<BaseInvoiceResponse>;
 };
 /**
  * InvoicesApi - object-oriented interface
@@ -7103,12 +6822,12 @@ export declare class InvoicesApi extends BaseAPI {
     /**
      *
      * @summary Adds an invoice to the system.
-     * @param {CreateInvoiceRequest} [createInvoiceRequest] The invoice which should be created
+     * @param {CreateInvoiceRequest} createInvoiceRequest The invoice which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof InvoicesApi
      */
-    createInvoice(createInvoiceRequest?: CreateInvoiceRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<InvoiceResponse, any>>;
+    createInvoice(createInvoiceRequest: CreateInvoiceRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<InvoiceResponse, any>>;
     /**
      *
      * @summary Deletes an invoice.
@@ -7148,12 +6867,12 @@ export declare class InvoicesApi extends BaseAPI {
      *
      * @summary Adds an invoice to the system.
      * @param {number} id The id of the invoice which should be updated
-     * @param {UpdateInvoiceRequest} [updateInvoiceRequest] The invoice update to process
+     * @param {UpdateInvoiceRequest} updateInvoiceRequest The invoice update to process
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof InvoicesApi
      */
-    updateInvoice(id: number, updateInvoiceRequest?: UpdateInvoiceRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BaseInvoiceResponse, any>>;
+    updateInvoice(id: number, updateInvoiceRequest: UpdateInvoiceRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BaseInvoiceResponse, any>>;
 }
 /**
  * PayoutRequestsApi - axios parameter creator
@@ -7163,11 +6882,11 @@ export declare const PayoutRequestsApiAxiosParamCreator: (configuration?: Config
     /**
      *
      * @summary Create a new payout request
-     * @param {PayoutRequestRequest} [payoutRequestRequest] New payout request
+     * @param {PayoutRequestRequest} payoutRequestRequest New payout request
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createPayoutRequest: (payoutRequestRequest?: PayoutRequestRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    createPayoutRequest: (payoutRequestRequest: PayoutRequestRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns all payout requests given the filter parameters
@@ -7194,11 +6913,11 @@ export declare const PayoutRequestsApiAxiosParamCreator: (configuration?: Config
      *
      * @summary Create a new status for a payout request
      * @param {number} id The ID of the payout request object that should be returned
-     * @param {PayoutRequestStatusRequest} [payoutRequestStatusRequest] New state of payout request
+     * @param {PayoutRequestStatusRequest} payoutRequestStatusRequest New state of payout request
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    setPayoutRequestStatus: (id: number, payoutRequestStatusRequest?: PayoutRequestStatusRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    setPayoutRequestStatus: (id: number, payoutRequestStatusRequest: PayoutRequestStatusRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * PayoutRequestsApi - functional programming interface
@@ -7208,11 +6927,11 @@ export declare const PayoutRequestsApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Create a new payout request
-     * @param {PayoutRequestRequest} [payoutRequestRequest] New payout request
+     * @param {PayoutRequestRequest} payoutRequestRequest New payout request
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createPayoutRequest(payoutRequestRequest?: PayoutRequestRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayoutRequestResponse>>;
+    createPayoutRequest(payoutRequestRequest: PayoutRequestRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayoutRequestResponse>>;
     /**
      *
      * @summary Returns all payout requests given the filter parameters
@@ -7239,11 +6958,11 @@ export declare const PayoutRequestsApiFp: (configuration?: Configuration) => {
      *
      * @summary Create a new status for a payout request
      * @param {number} id The ID of the payout request object that should be returned
-     * @param {PayoutRequestStatusRequest} [payoutRequestStatusRequest] New state of payout request
+     * @param {PayoutRequestStatusRequest} payoutRequestStatusRequest New state of payout request
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    setPayoutRequestStatus(id: number, payoutRequestStatusRequest?: PayoutRequestStatusRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayoutRequestResponse>>;
+    setPayoutRequestStatus(id: number, payoutRequestStatusRequest: PayoutRequestStatusRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PayoutRequestResponse>>;
 };
 /**
  * PayoutRequestsApi - factory interface
@@ -7253,11 +6972,11 @@ export declare const PayoutRequestsApiFactory: (configuration?: Configuration, b
     /**
      *
      * @summary Create a new payout request
-     * @param {PayoutRequestRequest} [payoutRequestRequest] New payout request
+     * @param {PayoutRequestRequest} payoutRequestRequest New payout request
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createPayoutRequest(payoutRequestRequest?: PayoutRequestRequest, options?: any): AxiosPromise<PayoutRequestResponse>;
+    createPayoutRequest(payoutRequestRequest: PayoutRequestRequest, options?: any): AxiosPromise<PayoutRequestResponse>;
     /**
      *
      * @summary Returns all payout requests given the filter parameters
@@ -7284,11 +7003,11 @@ export declare const PayoutRequestsApiFactory: (configuration?: Configuration, b
      *
      * @summary Create a new status for a payout request
      * @param {number} id The ID of the payout request object that should be returned
-     * @param {PayoutRequestStatusRequest} [payoutRequestStatusRequest] New state of payout request
+     * @param {PayoutRequestStatusRequest} payoutRequestStatusRequest New state of payout request
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    setPayoutRequestStatus(id: number, payoutRequestStatusRequest?: PayoutRequestStatusRequest, options?: any): AxiosPromise<PayoutRequestResponse>;
+    setPayoutRequestStatus(id: number, payoutRequestStatusRequest: PayoutRequestStatusRequest, options?: any): AxiosPromise<PayoutRequestResponse>;
 };
 /**
  * PayoutRequestsApi - object-oriented interface
@@ -7300,12 +7019,12 @@ export declare class PayoutRequestsApi extends BaseAPI {
     /**
      *
      * @summary Create a new payout request
-     * @param {PayoutRequestRequest} [payoutRequestRequest] New payout request
+     * @param {PayoutRequestRequest} payoutRequestRequest New payout request
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PayoutRequestsApi
      */
-    createPayoutRequest(payoutRequestRequest?: PayoutRequestRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PayoutRequestResponse, any>>;
+    createPayoutRequest(payoutRequestRequest: PayoutRequestRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PayoutRequestResponse, any>>;
     /**
      *
      * @summary Returns all payout requests given the filter parameters
@@ -7334,12 +7053,12 @@ export declare class PayoutRequestsApi extends BaseAPI {
      *
      * @summary Create a new status for a payout request
      * @param {number} id The ID of the payout request object that should be returned
-     * @param {PayoutRequestStatusRequest} [payoutRequestStatusRequest] New state of payout request
+     * @param {PayoutRequestStatusRequest} payoutRequestStatusRequest New state of payout request
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PayoutRequestsApi
      */
-    setPayoutRequestStatus(id: number, payoutRequestStatusRequest?: PayoutRequestStatusRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PayoutRequestResponse, any>>;
+    setPayoutRequestStatus(id: number, payoutRequestStatusRequest: PayoutRequestStatusRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PayoutRequestResponse, any>>;
 }
 /**
  * PointofsaleApi - axios parameter creator
@@ -7349,11 +7068,11 @@ export declare const PointofsaleApiAxiosParamCreator: (configuration?: Configura
     /**
      *
      * @summary Create a new Point of Sale.
-     * @param {CreatePointOfSaleRequest} [createPointOfSaleRequest] The point of sale which should be created
+     * @param {CreatePointOfSaleRequest} createPointOfSaleRequest The point of sale which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createPointOfSale: (createPointOfSaleRequest?: CreatePointOfSaleRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    createPointOfSale: (createPointOfSaleRequest: CreatePointOfSaleRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns the containers of the requested Point of Sale, empty list if POS does not exist
@@ -7405,11 +7124,11 @@ export declare const PointofsaleApiAxiosParamCreator: (configuration?: Configura
      *
      * @summary Update an existing Point of Sale.
      * @param {number} id The id of the Point of Sale which should be updated
-     * @param {UpdatePointOfSaleRequest} [updatePointOfSaleRequest]    The Point of Sale which should be updated
+     * @param {UpdatePointOfSaleRequest} updatePointOfSaleRequest    The Point of Sale which should be updated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updatePointOfSale: (id: number, updatePointOfSaleRequest?: UpdatePointOfSaleRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    updatePointOfSale: (id: number, updatePointOfSaleRequest: UpdatePointOfSaleRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * PointofsaleApi - functional programming interface
@@ -7419,11 +7138,11 @@ export declare const PointofsaleApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Create a new Point of Sale.
-     * @param {CreatePointOfSaleRequest} [createPointOfSaleRequest] The point of sale which should be created
+     * @param {CreatePointOfSaleRequest} createPointOfSaleRequest The point of sale which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createPointOfSale(createPointOfSaleRequest?: CreatePointOfSaleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleWithContainersResponse>>;
+    createPointOfSale(createPointOfSaleRequest: CreatePointOfSaleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleWithContainersResponse>>;
     /**
      *
      * @summary Returns the containers of the requested Point of Sale, empty list if POS does not exist
@@ -7475,11 +7194,11 @@ export declare const PointofsaleApiFp: (configuration?: Configuration) => {
      *
      * @summary Update an existing Point of Sale.
      * @param {number} id The id of the Point of Sale which should be updated
-     * @param {UpdatePointOfSaleRequest} [updatePointOfSaleRequest]    The Point of Sale which should be updated
+     * @param {UpdatePointOfSaleRequest} updatePointOfSaleRequest    The Point of Sale which should be updated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updatePointOfSale(id: number, updatePointOfSaleRequest?: UpdatePointOfSaleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleWithContainersResponse>>;
+    updatePointOfSale(id: number, updatePointOfSaleRequest: UpdatePointOfSaleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleWithContainersResponse>>;
 };
 /**
  * PointofsaleApi - factory interface
@@ -7489,11 +7208,11 @@ export declare const PointofsaleApiFactory: (configuration?: Configuration, base
     /**
      *
      * @summary Create a new Point of Sale.
-     * @param {CreatePointOfSaleRequest} [createPointOfSaleRequest] The point of sale which should be created
+     * @param {CreatePointOfSaleRequest} createPointOfSaleRequest The point of sale which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createPointOfSale(createPointOfSaleRequest?: CreatePointOfSaleRequest, options?: any): AxiosPromise<PointOfSaleWithContainersResponse>;
+    createPointOfSale(createPointOfSaleRequest: CreatePointOfSaleRequest, options?: any): AxiosPromise<PointOfSaleWithContainersResponse>;
     /**
      *
      * @summary Returns the containers of the requested Point of Sale, empty list if POS does not exist
@@ -7545,11 +7264,11 @@ export declare const PointofsaleApiFactory: (configuration?: Configuration, base
      *
      * @summary Update an existing Point of Sale.
      * @param {number} id The id of the Point of Sale which should be updated
-     * @param {UpdatePointOfSaleRequest} [updatePointOfSaleRequest]    The Point of Sale which should be updated
+     * @param {UpdatePointOfSaleRequest} updatePointOfSaleRequest    The Point of Sale which should be updated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updatePointOfSale(id: number, updatePointOfSaleRequest?: UpdatePointOfSaleRequest, options?: any): AxiosPromise<PointOfSaleWithContainersResponse>;
+    updatePointOfSale(id: number, updatePointOfSaleRequest: UpdatePointOfSaleRequest, options?: any): AxiosPromise<PointOfSaleWithContainersResponse>;
 };
 /**
  * PointofsaleApi - object-oriented interface
@@ -7561,12 +7280,12 @@ export declare class PointofsaleApi extends BaseAPI {
     /**
      *
      * @summary Create a new Point of Sale.
-     * @param {CreatePointOfSaleRequest} [createPointOfSaleRequest] The point of sale which should be created
+     * @param {CreatePointOfSaleRequest} createPointOfSaleRequest The point of sale which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PointofsaleApi
      */
-    createPointOfSale(createPointOfSaleRequest?: CreatePointOfSaleRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PointOfSaleWithContainersResponse, any>>;
+    createPointOfSale(createPointOfSaleRequest: CreatePointOfSaleRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PointOfSaleWithContainersResponse, any>>;
     /**
      *
      * @summary Returns the containers of the requested Point of Sale, empty list if POS does not exist
@@ -7623,12 +7342,12 @@ export declare class PointofsaleApi extends BaseAPI {
      *
      * @summary Update an existing Point of Sale.
      * @param {number} id The id of the Point of Sale which should be updated
-     * @param {UpdatePointOfSaleRequest} [updatePointOfSaleRequest]    The Point of Sale which should be updated
+     * @param {UpdatePointOfSaleRequest} updatePointOfSaleRequest    The Point of Sale which should be updated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PointofsaleApi
      */
-    updatePointOfSale(id: number, updatePointOfSaleRequest?: UpdatePointOfSaleRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PointOfSaleWithContainersResponse, any>>;
+    updatePointOfSale(id: number, updatePointOfSaleRequest: UpdatePointOfSaleRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PointOfSaleWithContainersResponse, any>>;
 }
 /**
  * ProductCategoriesApi - axios parameter creator
@@ -7638,11 +7357,11 @@ export declare const ProductCategoriesApiAxiosParamCreator: (configuration?: Con
     /**
      *
      * @summary Post a new productCategory.
-     * @param {ProductCategoryRequest} [productCategoryRequest] The productCategory which should be created
+     * @param {ProductCategoryRequest} productCategoryRequest The productCategory which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createProductCategory: (productCategoryRequest?: ProductCategoryRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    createProductCategory: (productCategoryRequest: ProductCategoryRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns all existing productcategories
@@ -7664,11 +7383,11 @@ export declare const ProductCategoriesApiAxiosParamCreator: (configuration?: Con
      *
      * @summary Update an existing productcategory.
      * @param {number} id The id of the productcategory which should be returned
-     * @param {ProductCategoryRequest} [productCategoryRequest] The productcategory which should be created
+     * @param {ProductCategoryRequest} productCategoryRequest The productcategory which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateProductCategory: (id: number, productCategoryRequest?: ProductCategoryRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    updateProductCategory: (id: number, productCategoryRequest: ProductCategoryRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ProductCategoriesApi - functional programming interface
@@ -7678,11 +7397,11 @@ export declare const ProductCategoriesApiFp: (configuration?: Configuration) => 
     /**
      *
      * @summary Post a new productCategory.
-     * @param {ProductCategoryRequest} [productCategoryRequest] The productCategory which should be created
+     * @param {ProductCategoryRequest} productCategoryRequest The productCategory which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createProductCategory(productCategoryRequest?: ProductCategoryRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductCategoryResponse>>;
+    createProductCategory(productCategoryRequest: ProductCategoryRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductCategoryResponse>>;
     /**
      *
      * @summary Returns all existing productcategories
@@ -7704,11 +7423,11 @@ export declare const ProductCategoriesApiFp: (configuration?: Configuration) => 
      *
      * @summary Update an existing productcategory.
      * @param {number} id The id of the productcategory which should be returned
-     * @param {ProductCategoryRequest} [productCategoryRequest] The productcategory which should be created
+     * @param {ProductCategoryRequest} productCategoryRequest The productcategory which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateProductCategory(id: number, productCategoryRequest?: ProductCategoryRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductCategoryResponse>>;
+    updateProductCategory(id: number, productCategoryRequest: ProductCategoryRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductCategoryResponse>>;
 };
 /**
  * ProductCategoriesApi - factory interface
@@ -7718,11 +7437,11 @@ export declare const ProductCategoriesApiFactory: (configuration?: Configuration
     /**
      *
      * @summary Post a new productCategory.
-     * @param {ProductCategoryRequest} [productCategoryRequest] The productCategory which should be created
+     * @param {ProductCategoryRequest} productCategoryRequest The productCategory which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createProductCategory(productCategoryRequest?: ProductCategoryRequest, options?: any): AxiosPromise<ProductCategoryResponse>;
+    createProductCategory(productCategoryRequest: ProductCategoryRequest, options?: any): AxiosPromise<ProductCategoryResponse>;
     /**
      *
      * @summary Returns all existing productcategories
@@ -7744,11 +7463,11 @@ export declare const ProductCategoriesApiFactory: (configuration?: Configuration
      *
      * @summary Update an existing productcategory.
      * @param {number} id The id of the productcategory which should be returned
-     * @param {ProductCategoryRequest} [productCategoryRequest] The productcategory which should be created
+     * @param {ProductCategoryRequest} productCategoryRequest The productcategory which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateProductCategory(id: number, productCategoryRequest?: ProductCategoryRequest, options?: any): AxiosPromise<ProductCategoryResponse>;
+    updateProductCategory(id: number, productCategoryRequest: ProductCategoryRequest, options?: any): AxiosPromise<ProductCategoryResponse>;
 };
 /**
  * ProductCategoriesApi - object-oriented interface
@@ -7760,12 +7479,12 @@ export declare class ProductCategoriesApi extends BaseAPI {
     /**
      *
      * @summary Post a new productCategory.
-     * @param {ProductCategoryRequest} [productCategoryRequest] The productCategory which should be created
+     * @param {ProductCategoryRequest} productCategoryRequest The productCategory which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProductCategoriesApi
      */
-    createProductCategory(productCategoryRequest?: ProductCategoryRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductCategoryResponse, any>>;
+    createProductCategory(productCategoryRequest: ProductCategoryRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductCategoryResponse, any>>;
     /**
      *
      * @summary Returns all existing productcategories
@@ -7789,12 +7508,12 @@ export declare class ProductCategoriesApi extends BaseAPI {
      *
      * @summary Update an existing productcategory.
      * @param {number} id The id of the productcategory which should be returned
-     * @param {ProductCategoryRequest} [productCategoryRequest] The productcategory which should be created
+     * @param {ProductCategoryRequest} productCategoryRequest The productcategory which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProductCategoriesApi
      */
-    updateProductCategory(id: number, productCategoryRequest?: ProductCategoryRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductCategoryResponse, any>>;
+    updateProductCategory(id: number, productCategoryRequest: ProductCategoryRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductCategoryResponse, any>>;
 }
 /**
  * ProductsApi - axios parameter creator
@@ -7804,11 +7523,11 @@ export declare const ProductsApiAxiosParamCreator: (configuration?: Configuratio
     /**
      *
      * @summary Create a new product.
-     * @param {CreateProductRequest} [createProductRequest] The product which should be created
+     * @param {CreateProductRequest} createProductRequest The product which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createProduct: (createProductRequest?: CreateProductRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    createProduct: (createProductRequest: CreateProductRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns all existing products
@@ -7830,11 +7549,11 @@ export declare const ProductsApiAxiosParamCreator: (configuration?: Configuratio
      *
      * @summary Update an existing product.
      * @param {number} id The id of the product which should be updated
-     * @param {UpdateProductRequest} [updateProductRequest] The product which should be updated
+     * @param {UpdateProductRequest} updateProductRequest The product which should be updated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateProduct: (id: number, updateProductRequest?: UpdateProductRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    updateProduct: (id: number, updateProductRequest: UpdateProductRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Upload a new image for a product
@@ -7853,11 +7572,11 @@ export declare const ProductsApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Create a new product.
-     * @param {CreateProductRequest} [createProductRequest] The product which should be created
+     * @param {CreateProductRequest} createProductRequest The product which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createProduct(createProductRequest?: CreateProductRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductResponse>>;
+    createProduct(createProductRequest: CreateProductRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductResponse>>;
     /**
      *
      * @summary Returns all existing products
@@ -7879,11 +7598,11 @@ export declare const ProductsApiFp: (configuration?: Configuration) => {
      *
      * @summary Update an existing product.
      * @param {number} id The id of the product which should be updated
-     * @param {UpdateProductRequest} [updateProductRequest] The product which should be updated
+     * @param {UpdateProductRequest} updateProductRequest The product which should be updated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateProduct(id: number, updateProductRequest?: UpdateProductRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductResponse>>;
+    updateProduct(id: number, updateProductRequest: UpdateProductRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductResponse>>;
     /**
      *
      * @summary Upload a new image for a product
@@ -7902,11 +7621,11 @@ export declare const ProductsApiFactory: (configuration?: Configuration, basePat
     /**
      *
      * @summary Create a new product.
-     * @param {CreateProductRequest} [createProductRequest] The product which should be created
+     * @param {CreateProductRequest} createProductRequest The product which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createProduct(createProductRequest?: CreateProductRequest, options?: any): AxiosPromise<ProductResponse>;
+    createProduct(createProductRequest: CreateProductRequest, options?: any): AxiosPromise<ProductResponse>;
     /**
      *
      * @summary Returns all existing products
@@ -7928,11 +7647,11 @@ export declare const ProductsApiFactory: (configuration?: Configuration, basePat
      *
      * @summary Update an existing product.
      * @param {number} id The id of the product which should be updated
-     * @param {UpdateProductRequest} [updateProductRequest] The product which should be updated
+     * @param {UpdateProductRequest} updateProductRequest The product which should be updated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateProduct(id: number, updateProductRequest?: UpdateProductRequest, options?: any): AxiosPromise<ProductResponse>;
+    updateProduct(id: number, updateProductRequest: UpdateProductRequest, options?: any): AxiosPromise<ProductResponse>;
     /**
      *
      * @summary Upload a new image for a product
@@ -7953,12 +7672,12 @@ export declare class ProductsApi extends BaseAPI {
     /**
      *
      * @summary Create a new product.
-     * @param {CreateProductRequest} [createProductRequest] The product which should be created
+     * @param {CreateProductRequest} createProductRequest The product which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProductsApi
      */
-    createProduct(createProductRequest?: CreateProductRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductResponse, any>>;
+    createProduct(createProductRequest: CreateProductRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductResponse, any>>;
     /**
      *
      * @summary Returns all existing products
@@ -7982,12 +7701,12 @@ export declare class ProductsApi extends BaseAPI {
      *
      * @summary Update an existing product.
      * @param {number} id The id of the product which should be updated
-     * @param {UpdateProductRequest} [updateProductRequest] The product which should be updated
+     * @param {UpdateProductRequest} updateProductRequest The product which should be updated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProductsApi
      */
-    updateProduct(id: number, updateProductRequest?: UpdateProductRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductResponse, any>>;
+    updateProduct(id: number, updateProductRequest: UpdateProductRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductResponse, any>>;
     /**
      *
      * @summary Upload a new image for a product
@@ -8117,11 +7836,11 @@ export declare const StripeApiAxiosParamCreator: (configuration?: Configuration)
     /**
      *
      * @summary Start the stripe deposit flow
-     * @param {StripeRequest} [stripeRequest] The deposit that should be created
+     * @param {StripeRequest} stripeRequest The deposit that should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deposit: (stripeRequest?: StripeRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    deposit: (stripeRequest: StripeRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * StripeApi - functional programming interface
@@ -8131,11 +7850,11 @@ export declare const StripeApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Start the stripe deposit flow
-     * @param {StripeRequest} [stripeRequest] The deposit that should be created
+     * @param {StripeRequest} stripeRequest The deposit that should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deposit(stripeRequest?: StripeRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StripePaymentIntentResponse>>;
+    deposit(stripeRequest: StripeRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StripePaymentIntentResponse>>;
 };
 /**
  * StripeApi - factory interface
@@ -8145,11 +7864,11 @@ export declare const StripeApiFactory: (configuration?: Configuration, basePath?
     /**
      *
      * @summary Start the stripe deposit flow
-     * @param {StripeRequest} [stripeRequest] The deposit that should be created
+     * @param {StripeRequest} stripeRequest The deposit that should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deposit(stripeRequest?: StripeRequest, options?: any): AxiosPromise<StripePaymentIntentResponse>;
+    deposit(stripeRequest: StripeRequest, options?: any): AxiosPromise<StripePaymentIntentResponse>;
 };
 /**
  * StripeApi - object-oriented interface
@@ -8161,12 +7880,12 @@ export declare class StripeApi extends BaseAPI {
     /**
      *
      * @summary Start the stripe deposit flow
-     * @param {StripeRequest} [stripeRequest] The deposit that should be created
+     * @param {StripeRequest} stripeRequest The deposit that should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof StripeApi
      */
-    deposit(stripeRequest?: StripeRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<StripePaymentIntentResponse, any>>;
+    deposit(stripeRequest: StripeRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<StripePaymentIntentResponse, any>>;
 }
 /**
  * TestOperationsOfTheTestControllerApi - axios parameter creator
@@ -8231,11 +7950,11 @@ export declare const TransactionsApiAxiosParamCreator: (configuration?: Configur
     /**
      *
      * @summary Creates a new transaction
-     * @param {TransactionRequest} [transactionRequest] The transaction which should be created
+     * @param {TransactionRequest} transactionRequest The transaction which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createTransaction: (transactionRequest?: TransactionRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    createTransaction: (transactionRequest: TransactionRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Deletes a transaction
@@ -8273,19 +7992,19 @@ export declare const TransactionsApiAxiosParamCreator: (configuration?: Configur
      *
      * @summary Updates the requested transaction
      * @param {number} id The id of the transaction which should be updated
-     * @param {TransactionRequest} [transactionRequest] The updated transaction
+     * @param {TransactionRequest} transactionRequest The updated transaction
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateTransaction: (id: number, transactionRequest?: TransactionRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    updateTransaction: (id: number, transactionRequest: TransactionRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Function to validate the transaction immediatly after it is created
-     * @param {TransactionRequest} [transactionRequest] The transaction which should be validated
+     * @param {TransactionRequest} transactionRequest The transaction which should be validated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    validateTransaction: (transactionRequest?: TransactionRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    validateTransaction: (transactionRequest: TransactionRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * TransactionsApi - functional programming interface
@@ -8295,11 +8014,11 @@ export declare const TransactionsApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Creates a new transaction
-     * @param {TransactionRequest} [transactionRequest] The transaction which should be created
+     * @param {TransactionRequest} transactionRequest The transaction which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createTransaction(transactionRequest?: TransactionRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionResponse>>;
+    createTransaction(transactionRequest: TransactionRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionResponse>>;
     /**
      *
      * @summary Deletes a transaction
@@ -8337,19 +8056,19 @@ export declare const TransactionsApiFp: (configuration?: Configuration) => {
      *
      * @summary Updates the requested transaction
      * @param {number} id The id of the transaction which should be updated
-     * @param {TransactionRequest} [transactionRequest] The updated transaction
+     * @param {TransactionRequest} transactionRequest The updated transaction
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateTransaction(id: number, transactionRequest?: TransactionRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionResponse>>;
+    updateTransaction(id: number, transactionRequest: TransactionRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionResponse>>;
     /**
      *
      * @summary Function to validate the transaction immediatly after it is created
-     * @param {TransactionRequest} [transactionRequest] The transaction which should be validated
+     * @param {TransactionRequest} transactionRequest The transaction which should be validated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    validateTransaction(transactionRequest?: TransactionRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean>>;
+    validateTransaction(transactionRequest: TransactionRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean>>;
 };
 /**
  * TransactionsApi - factory interface
@@ -8359,11 +8078,11 @@ export declare const TransactionsApiFactory: (configuration?: Configuration, bas
     /**
      *
      * @summary Creates a new transaction
-     * @param {TransactionRequest} [transactionRequest] The transaction which should be created
+     * @param {TransactionRequest} transactionRequest The transaction which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createTransaction(transactionRequest?: TransactionRequest, options?: any): AxiosPromise<TransactionResponse>;
+    createTransaction(transactionRequest: TransactionRequest, options?: any): AxiosPromise<TransactionResponse>;
     /**
      *
      * @summary Deletes a transaction
@@ -8401,19 +8120,19 @@ export declare const TransactionsApiFactory: (configuration?: Configuration, bas
      *
      * @summary Updates the requested transaction
      * @param {number} id The id of the transaction which should be updated
-     * @param {TransactionRequest} [transactionRequest] The updated transaction
+     * @param {TransactionRequest} transactionRequest The updated transaction
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateTransaction(id: number, transactionRequest?: TransactionRequest, options?: any): AxiosPromise<TransactionResponse>;
+    updateTransaction(id: number, transactionRequest: TransactionRequest, options?: any): AxiosPromise<TransactionResponse>;
     /**
      *
      * @summary Function to validate the transaction immediatly after it is created
-     * @param {TransactionRequest} [transactionRequest] The transaction which should be validated
+     * @param {TransactionRequest} transactionRequest The transaction which should be validated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    validateTransaction(transactionRequest?: TransactionRequest, options?: any): AxiosPromise<boolean>;
+    validateTransaction(transactionRequest: TransactionRequest, options?: any): AxiosPromise<boolean>;
 };
 /**
  * TransactionsApi - object-oriented interface
@@ -8425,12 +8144,12 @@ export declare class TransactionsApi extends BaseAPI {
     /**
      *
      * @summary Creates a new transaction
-     * @param {TransactionRequest} [transactionRequest] The transaction which should be created
+     * @param {TransactionRequest} transactionRequest The transaction which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    createTransaction(transactionRequest?: TransactionRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionResponse, any>>;
+    createTransaction(transactionRequest: TransactionRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionResponse, any>>;
     /**
      *
      * @summary Deletes a transaction
@@ -8471,21 +8190,21 @@ export declare class TransactionsApi extends BaseAPI {
      *
      * @summary Updates the requested transaction
      * @param {number} id The id of the transaction which should be updated
-     * @param {TransactionRequest} [transactionRequest] The updated transaction
+     * @param {TransactionRequest} transactionRequest The updated transaction
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    updateTransaction(id: number, transactionRequest?: TransactionRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionResponse, any>>;
+    updateTransaction(id: number, transactionRequest: TransactionRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionResponse, any>>;
     /**
      *
      * @summary Function to validate the transaction immediatly after it is created
-     * @param {TransactionRequest} [transactionRequest] The transaction which should be validated
+     * @param {TransactionRequest} transactionRequest The transaction which should be validated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    validateTransaction(transactionRequest?: TransactionRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<boolean, any>>;
+    validateTransaction(transactionRequest: TransactionRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<boolean, any>>;
 }
 /**
  * TransfersApi - axios parameter creator
@@ -8495,11 +8214,11 @@ export declare const TransfersApiAxiosParamCreator: (configuration?: Configurati
     /**
      *
      * @summary Post a new transfer.
-     * @param {TransferRequest} [transferRequest] The transfer which should be created
+     * @param {TransferRequest} transferRequest The transfer which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createTransfer: (transferRequest?: TransferRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    createTransfer: (transferRequest: TransferRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns all existing transfers
@@ -8526,11 +8245,11 @@ export declare const TransfersApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Post a new transfer.
-     * @param {TransferRequest} [transferRequest] The transfer which should be created
+     * @param {TransferRequest} transferRequest The transfer which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createTransfer(transferRequest?: TransferRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransferResponse>>;
+    createTransfer(transferRequest: TransferRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransferResponse>>;
     /**
      *
      * @summary Returns all existing transfers
@@ -8557,11 +8276,11 @@ export declare const TransfersApiFactory: (configuration?: Configuration, basePa
     /**
      *
      * @summary Post a new transfer.
-     * @param {TransferRequest} [transferRequest] The transfer which should be created
+     * @param {TransferRequest} transferRequest The transfer which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createTransfer(transferRequest?: TransferRequest, options?: any): AxiosPromise<TransferResponse>;
+    createTransfer(transferRequest: TransferRequest, options?: any): AxiosPromise<TransferResponse>;
     /**
      *
      * @summary Returns all existing transfers
@@ -8590,12 +8309,12 @@ export declare class TransfersApi extends BaseAPI {
     /**
      *
      * @summary Post a new transfer.
-     * @param {TransferRequest} [transferRequest] The transfer which should be created
+     * @param {TransferRequest} transferRequest The transfer which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TransfersApi
      */
-    createTransfer(transferRequest?: TransferRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransferResponse, any>>;
+    createTransfer(transferRequest: TransferRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransferResponse, any>>;
     /**
      *
      * @summary Returns all existing transfers
@@ -8624,11 +8343,11 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
     /**
      *
      * @summary Accept the Terms of Service if you have not accepted it yet
-     * @param {AcceptTosRequest} [acceptTosRequest] \&quot;Tosrequest body\&quot;
+     * @param {AcceptTosRequest} acceptTosRequest \&quot;Tosrequest body\&quot;
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    acceptTos: (acceptTosRequest?: AcceptTosRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    acceptTos: (acceptTosRequest: AcceptTosRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Authenticate as another user
@@ -8640,11 +8359,11 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
     /**
      *
      * @summary Create a new user
-     * @param {CreateUserRequest} [createUserRequest] The user which should be created
+     * @param {CreateUserRequest} createUserRequest The user which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createUser: (createUserRequest?: CreateUserRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    createUser: (createUserRequest: CreateUserRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Delete a single user
@@ -8839,29 +8558,29 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      *
      * @summary Put a user\'s local password
      * @param {number} id The id of the user
-     * @param {UpdateLocalRequest} [updateLocalRequest]    The password update
+     * @param {UpdateLocalRequest} updateLocalRequest    The password update
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateUserLocalPassword: (id: number, updateLocalRequest?: UpdateLocalRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    updateUserLocalPassword: (id: number, updateLocalRequest: UpdateLocalRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Put a users NFC code
      * @param {number} id The id of the user
-     * @param {UpdateNfcRequest} [updateNfcRequest]    The NFC code to update to
+     * @param {UpdateNfcRequest} updateNfcRequest    The NFC code to update to
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateUserNfc: (id: number, updateNfcRequest?: UpdateNfcRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    updateUserNfc: (id: number, updateNfcRequest: UpdateNfcRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Put an users pin code
      * @param {number} id The id of the user
-     * @param {UpdatePinRequest} [updatePinRequest]    The PIN code to update to
+     * @param {UpdatePinRequest} updatePinRequest    The PIN code to update to
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateUserPin: (id: number, updatePinRequest?: UpdatePinRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    updateUserPin: (id: number, updatePinRequest: UpdatePinRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Waive all given user\'s fines
@@ -8879,11 +8598,11 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Accept the Terms of Service if you have not accepted it yet
-     * @param {AcceptTosRequest} [acceptTosRequest] \&quot;Tosrequest body\&quot;
+     * @param {AcceptTosRequest} acceptTosRequest \&quot;Tosrequest body\&quot;
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    acceptTos(acceptTosRequest?: AcceptTosRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    acceptTos(acceptTosRequest: AcceptTosRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
     /**
      *
      * @summary Authenticate as another user
@@ -8895,11 +8614,11 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Create a new user
-     * @param {CreateUserRequest} [createUserRequest] The user which should be created
+     * @param {CreateUserRequest} createUserRequest The user which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createUser(createUserRequest?: CreateUserRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>>;
+    createUser(createUserRequest: CreateUserRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserResponse>>;
     /**
      *
      * @summary Delete a single user
@@ -9081,7 +8800,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateUser(id: number, updateUserRequest: UpdateUserRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpdateUserRequest>>;
+    updateUser(id: number, updateUserRequest: UpdateUserRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserResponse>>;
     /**
      *
      * @summary POST an users update to new key code
@@ -9094,29 +8813,29 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      *
      * @summary Put a user\'s local password
      * @param {number} id The id of the user
-     * @param {UpdateLocalRequest} [updateLocalRequest]    The password update
+     * @param {UpdateLocalRequest} updateLocalRequest    The password update
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateUserLocalPassword(id: number, updateLocalRequest?: UpdateLocalRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    updateUserLocalPassword(id: number, updateLocalRequest: UpdateLocalRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
      * @summary Put a users NFC code
      * @param {number} id The id of the user
-     * @param {UpdateNfcRequest} [updateNfcRequest]    The NFC code to update to
+     * @param {UpdateNfcRequest} updateNfcRequest    The NFC code to update to
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateUserNfc(id: number, updateNfcRequest?: UpdateNfcRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    updateUserNfc(id: number, updateNfcRequest: UpdateNfcRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
      * @summary Put an users pin code
      * @param {number} id The id of the user
-     * @param {UpdatePinRequest} [updatePinRequest]    The PIN code to update to
+     * @param {UpdatePinRequest} updatePinRequest    The PIN code to update to
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateUserPin(id: number, updatePinRequest?: UpdatePinRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    updateUserPin(id: number, updatePinRequest: UpdatePinRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
      * @summary Waive all given user\'s fines
@@ -9134,11 +8853,11 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
     /**
      *
      * @summary Accept the Terms of Service if you have not accepted it yet
-     * @param {AcceptTosRequest} [acceptTosRequest] \&quot;Tosrequest body\&quot;
+     * @param {AcceptTosRequest} acceptTosRequest \&quot;Tosrequest body\&quot;
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    acceptTos(acceptTosRequest?: AcceptTosRequest, options?: any): AxiosPromise<string>;
+    acceptTos(acceptTosRequest: AcceptTosRequest, options?: any): AxiosPromise<string>;
     /**
      *
      * @summary Authenticate as another user
@@ -9150,11 +8869,11 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
     /**
      *
      * @summary Create a new user
-     * @param {CreateUserRequest} [createUserRequest] The user which should be created
+     * @param {CreateUserRequest} createUserRequest The user which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createUser(createUserRequest?: CreateUserRequest, options?: any): AxiosPromise<User>;
+    createUser(createUserRequest: CreateUserRequest, options?: any): AxiosPromise<UserResponse>;
     /**
      *
      * @summary Delete a single user
@@ -9336,7 +9055,7 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateUser(id: number, updateUserRequest: UpdateUserRequest, options?: any): AxiosPromise<UpdateUserRequest>;
+    updateUser(id: number, updateUserRequest: UpdateUserRequest, options?: any): AxiosPromise<UserResponse>;
     /**
      *
      * @summary POST an users update to new key code
@@ -9349,29 +9068,29 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
      *
      * @summary Put a user\'s local password
      * @param {number} id The id of the user
-     * @param {UpdateLocalRequest} [updateLocalRequest]    The password update
+     * @param {UpdateLocalRequest} updateLocalRequest    The password update
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateUserLocalPassword(id: number, updateLocalRequest?: UpdateLocalRequest, options?: any): AxiosPromise<void>;
+    updateUserLocalPassword(id: number, updateLocalRequest: UpdateLocalRequest, options?: any): AxiosPromise<void>;
     /**
      *
      * @summary Put a users NFC code
      * @param {number} id The id of the user
-     * @param {UpdateNfcRequest} [updateNfcRequest]    The NFC code to update to
+     * @param {UpdateNfcRequest} updateNfcRequest    The NFC code to update to
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateUserNfc(id: number, updateNfcRequest?: UpdateNfcRequest, options?: any): AxiosPromise<void>;
+    updateUserNfc(id: number, updateNfcRequest: UpdateNfcRequest, options?: any): AxiosPromise<void>;
     /**
      *
      * @summary Put an users pin code
      * @param {number} id The id of the user
-     * @param {UpdatePinRequest} [updatePinRequest]    The PIN code to update to
+     * @param {UpdatePinRequest} updatePinRequest    The PIN code to update to
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateUserPin(id: number, updatePinRequest?: UpdatePinRequest, options?: any): AxiosPromise<void>;
+    updateUserPin(id: number, updatePinRequest: UpdatePinRequest, options?: any): AxiosPromise<void>;
     /**
      *
      * @summary Waive all given user\'s fines
@@ -9391,12 +9110,12 @@ export declare class UsersApi extends BaseAPI {
     /**
      *
      * @summary Accept the Terms of Service if you have not accepted it yet
-     * @param {AcceptTosRequest} [acceptTosRequest] \&quot;Tosrequest body\&quot;
+     * @param {AcceptTosRequest} acceptTosRequest \&quot;Tosrequest body\&quot;
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    acceptTos(acceptTosRequest?: AcceptTosRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    acceptTos(acceptTosRequest: AcceptTosRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
     /**
      *
      * @summary Authenticate as another user
@@ -9409,12 +9128,12 @@ export declare class UsersApi extends BaseAPI {
     /**
      *
      * @summary Create a new user
-     * @param {CreateUserRequest} [createUserRequest] The user which should be created
+     * @param {CreateUserRequest} createUserRequest The user which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    createUser(createUserRequest?: CreateUserRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<User, any>>;
+    createUser(createUserRequest: CreateUserRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserResponse, any>>;
     /**
      *
      * @summary Delete a single user
@@ -9614,7 +9333,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    updateUser(id: number, updateUserRequest: UpdateUserRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UpdateUserRequest, any>>;
+    updateUser(id: number, updateUserRequest: UpdateUserRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserResponse, any>>;
     /**
      *
      * @summary POST an users update to new key code
@@ -9628,32 +9347,32 @@ export declare class UsersApi extends BaseAPI {
      *
      * @summary Put a user\'s local password
      * @param {number} id The id of the user
-     * @param {UpdateLocalRequest} [updateLocalRequest]    The password update
+     * @param {UpdateLocalRequest} updateLocalRequest    The password update
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    updateUserLocalPassword(id: number, updateLocalRequest?: UpdateLocalRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    updateUserLocalPassword(id: number, updateLocalRequest: UpdateLocalRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
     /**
      *
      * @summary Put a users NFC code
      * @param {number} id The id of the user
-     * @param {UpdateNfcRequest} [updateNfcRequest]    The NFC code to update to
+     * @param {UpdateNfcRequest} updateNfcRequest    The NFC code to update to
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    updateUserNfc(id: number, updateNfcRequest?: UpdateNfcRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    updateUserNfc(id: number, updateNfcRequest: UpdateNfcRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
     /**
      *
      * @summary Put an users pin code
      * @param {number} id The id of the user
-     * @param {UpdatePinRequest} [updatePinRequest]    The PIN code to update to
+     * @param {UpdatePinRequest} updatePinRequest    The PIN code to update to
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    updateUserPin(id: number, updatePinRequest?: UpdatePinRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    updateUserPin(id: number, updatePinRequest: UpdatePinRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
     /**
      *
      * @summary Waive all given user\'s fines
@@ -9685,11 +9404,11 @@ export declare const VatGroupsApiAxiosParamCreator: (configuration?: Configurati
     /**
      *
      * @summary Create a new VAT group
-     * @param {VatGroupRequest} [vatGroupRequest] The VAT group which should be created
+     * @param {VatGroupRequest} vatGroupRequest The VAT group which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createVatGroup: (vatGroupRequest?: VatGroupRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    createVatGroup: (vatGroupRequest: VatGroupRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get a list of all VAT groups
@@ -9724,11 +9443,11 @@ export declare const VatGroupsApiAxiosParamCreator: (configuration?: Configurati
      *
      * @summary Create a new VAT group
      * @param {number} id The ID of the VAT group which should be updated
-     * @param {UpdateVatGroupRequest} [updateVatGroupRequest] The VAT group information
+     * @param {UpdateVatGroupRequest} updateVatGroupRequest The VAT group information
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateVatGroup: (id: number, updateVatGroupRequest?: UpdateVatGroupRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    updateVatGroup: (id: number, updateVatGroupRequest: UpdateVatGroupRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * VatGroupsApi - functional programming interface
@@ -9738,11 +9457,11 @@ export declare const VatGroupsApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Create a new VAT group
-     * @param {VatGroupRequest} [vatGroupRequest] The VAT group which should be created
+     * @param {VatGroupRequest} vatGroupRequest The VAT group which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createVatGroup(vatGroupRequest?: VatGroupRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VatGroup>>;
+    createVatGroup(vatGroupRequest: VatGroupRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VatGroupResponse>>;
     /**
      *
      * @summary Get a list of all VAT groups
@@ -9763,7 +9482,7 @@ export declare const VatGroupsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSingleVatGroup(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VatGroup>>;
+    getSingleVatGroup(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VatGroupResponse>>;
     /**
      *
      * @summary Get the VAT collections needed for VAT declarations
@@ -9777,11 +9496,11 @@ export declare const VatGroupsApiFp: (configuration?: Configuration) => {
      *
      * @summary Create a new VAT group
      * @param {number} id The ID of the VAT group which should be updated
-     * @param {UpdateVatGroupRequest} [updateVatGroupRequest] The VAT group information
+     * @param {UpdateVatGroupRequest} updateVatGroupRequest The VAT group information
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateVatGroup(id: number, updateVatGroupRequest?: UpdateVatGroupRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VatGroup>>;
+    updateVatGroup(id: number, updateVatGroupRequest: UpdateVatGroupRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VatGroupResponse>>;
 };
 /**
  * VatGroupsApi - factory interface
@@ -9791,11 +9510,11 @@ export declare const VatGroupsApiFactory: (configuration?: Configuration, basePa
     /**
      *
      * @summary Create a new VAT group
-     * @param {VatGroupRequest} [vatGroupRequest] The VAT group which should be created
+     * @param {VatGroupRequest} vatGroupRequest The VAT group which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createVatGroup(vatGroupRequest?: VatGroupRequest, options?: any): AxiosPromise<VatGroup>;
+    createVatGroup(vatGroupRequest: VatGroupRequest, options?: any): AxiosPromise<VatGroupResponse>;
     /**
      *
      * @summary Get a list of all VAT groups
@@ -9816,7 +9535,7 @@ export declare const VatGroupsApiFactory: (configuration?: Configuration, basePa
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSingleVatGroup(id: number, options?: any): AxiosPromise<VatGroup>;
+    getSingleVatGroup(id: number, options?: any): AxiosPromise<VatGroupResponse>;
     /**
      *
      * @summary Get the VAT collections needed for VAT declarations
@@ -9830,11 +9549,11 @@ export declare const VatGroupsApiFactory: (configuration?: Configuration, basePa
      *
      * @summary Create a new VAT group
      * @param {number} id The ID of the VAT group which should be updated
-     * @param {UpdateVatGroupRequest} [updateVatGroupRequest] The VAT group information
+     * @param {UpdateVatGroupRequest} updateVatGroupRequest The VAT group information
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateVatGroup(id: number, updateVatGroupRequest?: UpdateVatGroupRequest, options?: any): AxiosPromise<VatGroup>;
+    updateVatGroup(id: number, updateVatGroupRequest: UpdateVatGroupRequest, options?: any): AxiosPromise<VatGroupResponse>;
 };
 /**
  * VatGroupsApi - object-oriented interface
@@ -9846,12 +9565,12 @@ export declare class VatGroupsApi extends BaseAPI {
     /**
      *
      * @summary Create a new VAT group
-     * @param {VatGroupRequest} [vatGroupRequest] The VAT group which should be created
+     * @param {VatGroupRequest} vatGroupRequest The VAT group which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VatGroupsApi
      */
-    createVatGroup(vatGroupRequest?: VatGroupRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VatGroup, any>>;
+    createVatGroup(vatGroupRequest: VatGroupRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VatGroupResponse, any>>;
     /**
      *
      * @summary Get a list of all VAT groups
@@ -9874,7 +9593,7 @@ export declare class VatGroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VatGroupsApi
      */
-    getSingleVatGroup(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VatGroup, any>>;
+    getSingleVatGroup(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VatGroupResponse, any>>;
     /**
      *
      * @summary Get the VAT collections needed for VAT declarations
@@ -9889,12 +9608,12 @@ export declare class VatGroupsApi extends BaseAPI {
      *
      * @summary Create a new VAT group
      * @param {number} id The ID of the VAT group which should be updated
-     * @param {UpdateVatGroupRequest} [updateVatGroupRequest] The VAT group information
+     * @param {UpdateVatGroupRequest} updateVatGroupRequest The VAT group information
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VatGroupsApi
      */
-    updateVatGroup(id: number, updateVatGroupRequest?: UpdateVatGroupRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VatGroup, any>>;
+    updateVatGroup(id: number, updateVatGroupRequest: UpdateVatGroupRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VatGroupResponse, any>>;
 }
 /**
  * VouchergroupsApi - axios parameter creator
@@ -9904,11 +9623,11 @@ export declare const VouchergroupsApiAxiosParamCreator: (configuration?: Configu
     /**
      *
      * @summary Creates a new voucher group
-     * @param {VoucherGroupRequest} [voucherGroupRequest] The voucher group which should be created
+     * @param {VoucherGroupRequest} voucherGroupRequest The voucher group which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createVouchergroup: (voucherGroupRequest?: VoucherGroupRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    createVouchergroup: (voucherGroupRequest: VoucherGroupRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns all existing voucher groups
@@ -9930,11 +9649,11 @@ export declare const VouchergroupsApiAxiosParamCreator: (configuration?: Configu
      *
      * @summary Updates the requested voucher group
      * @param {number} id The id of the voucher group which should be updated
-     * @param {VoucherGroupRequest} [voucherGroupRequest] The updated voucher group
+     * @param {VoucherGroupRequest} voucherGroupRequest The updated voucher group
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateVoucherGroup: (id: number, voucherGroupRequest?: VoucherGroupRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    updateVoucherGroup: (id: number, voucherGroupRequest: VoucherGroupRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * VouchergroupsApi - functional programming interface
@@ -9944,11 +9663,11 @@ export declare const VouchergroupsApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Creates a new voucher group
-     * @param {VoucherGroupRequest} [voucherGroupRequest] The voucher group which should be created
+     * @param {VoucherGroupRequest} voucherGroupRequest The voucher group which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createVouchergroup(voucherGroupRequest?: VoucherGroupRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VoucherGroupResponse>>;
+    createVouchergroup(voucherGroupRequest: VoucherGroupRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VoucherGroupResponse>>;
     /**
      *
      * @summary Returns all existing voucher groups
@@ -9970,11 +9689,11 @@ export declare const VouchergroupsApiFp: (configuration?: Configuration) => {
      *
      * @summary Updates the requested voucher group
      * @param {number} id The id of the voucher group which should be updated
-     * @param {VoucherGroupRequest} [voucherGroupRequest] The updated voucher group
+     * @param {VoucherGroupRequest} voucherGroupRequest The updated voucher group
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateVoucherGroup(id: number, voucherGroupRequest?: VoucherGroupRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VoucherGroupResponse>>;
+    updateVoucherGroup(id: number, voucherGroupRequest: VoucherGroupRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VoucherGroupResponse>>;
 };
 /**
  * VouchergroupsApi - factory interface
@@ -9984,11 +9703,11 @@ export declare const VouchergroupsApiFactory: (configuration?: Configuration, ba
     /**
      *
      * @summary Creates a new voucher group
-     * @param {VoucherGroupRequest} [voucherGroupRequest] The voucher group which should be created
+     * @param {VoucherGroupRequest} voucherGroupRequest The voucher group which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createVouchergroup(voucherGroupRequest?: VoucherGroupRequest, options?: any): AxiosPromise<VoucherGroupResponse>;
+    createVouchergroup(voucherGroupRequest: VoucherGroupRequest, options?: any): AxiosPromise<VoucherGroupResponse>;
     /**
      *
      * @summary Returns all existing voucher groups
@@ -10010,11 +9729,11 @@ export declare const VouchergroupsApiFactory: (configuration?: Configuration, ba
      *
      * @summary Updates the requested voucher group
      * @param {number} id The id of the voucher group which should be updated
-     * @param {VoucherGroupRequest} [voucherGroupRequest] The updated voucher group
+     * @param {VoucherGroupRequest} voucherGroupRequest The updated voucher group
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateVoucherGroup(id: number, voucherGroupRequest?: VoucherGroupRequest, options?: any): AxiosPromise<VoucherGroupResponse>;
+    updateVoucherGroup(id: number, voucherGroupRequest: VoucherGroupRequest, options?: any): AxiosPromise<VoucherGroupResponse>;
 };
 /**
  * VouchergroupsApi - object-oriented interface
@@ -10026,12 +9745,12 @@ export declare class VouchergroupsApi extends BaseAPI {
     /**
      *
      * @summary Creates a new voucher group
-     * @param {VoucherGroupRequest} [voucherGroupRequest] The voucher group which should be created
+     * @param {VoucherGroupRequest} voucherGroupRequest The voucher group which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VouchergroupsApi
      */
-    createVouchergroup(voucherGroupRequest?: VoucherGroupRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VoucherGroupResponse, any>>;
+    createVouchergroup(voucherGroupRequest: VoucherGroupRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VoucherGroupResponse, any>>;
     /**
      *
      * @summary Returns all existing voucher groups
@@ -10055,10 +9774,10 @@ export declare class VouchergroupsApi extends BaseAPI {
      *
      * @summary Updates the requested voucher group
      * @param {number} id The id of the voucher group which should be updated
-     * @param {VoucherGroupRequest} [voucherGroupRequest] The updated voucher group
+     * @param {VoucherGroupRequest} voucherGroupRequest The updated voucher group
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VouchergroupsApi
      */
-    updateVoucherGroup(id: number, voucherGroupRequest?: VoucherGroupRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VoucherGroupResponse, any>>;
+    updateVoucherGroup(id: number, voucherGroupRequest: VoucherGroupRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VoucherGroupResponse, any>>;
 }

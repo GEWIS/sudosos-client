@@ -22,8 +22,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProductCategoriesApiFactory = exports.ProductCategoriesApiFp = exports.ProductCategoriesApiAxiosParamCreator = exports.PointofsaleApi = exports.PointofsaleApiFactory = exports.PointofsaleApiFp = exports.PointofsaleApiAxiosParamCreator = exports.PayoutRequestsApi = exports.PayoutRequestsApiFactory = exports.PayoutRequestsApiFp = exports.PayoutRequestsApiAxiosParamCreator = exports.InvoicesApi = exports.InvoicesApiFactory = exports.InvoicesApiFp = exports.InvoicesApiAxiosParamCreator = exports.FilesApi = exports.FilesApiFactory = exports.FilesApiFp = exports.FilesApiAxiosParamCreator = exports.EventsApi = exports.EventsApiFactory = exports.EventsApiFp = exports.EventsApiAxiosParamCreator = exports.DebtorsApi = exports.DebtorsApiFactory = exports.DebtorsApiFp = exports.DebtorsApiAxiosParamCreator = exports.ContainersApi = exports.ContainersApiFactory = exports.ContainersApiFp = exports.ContainersApiAxiosParamCreator = exports.BannersApi = exports.BannersApiFactory = exports.BannersApiFp = exports.BannersApiAxiosParamCreator = exports.GetAllBalanceOrderDirectionEnum = exports.GetAllBalanceUserTypeEnum = exports.BalanceApi = exports.BalanceApiFactory = exports.BalanceApiFp = exports.BalanceApiAxiosParamCreator = exports.AuthenticateApi = exports.AuthenticateApiFactory = exports.AuthenticateApiFp = exports.AuthenticateApiAxiosParamCreator = exports.UserTypeEnum = exports.UpdateInvoiceRequestStateEnum = exports.PayoutRequestStatusRequestStateEnum = exports.InvoiceStatusResponseStateEnum = exports.FinancialMutationResponseTypeEnum = void 0;
-exports.VouchergroupsApi = exports.VouchergroupsApiFactory = exports.VouchergroupsApiFp = exports.VouchergroupsApiAxiosParamCreator = exports.VatGroupsApi = exports.VatGroupsApiFactory = exports.VatGroupsApiFp = exports.VatGroupsApiAxiosParamCreator = exports.GetAllUsersTypeEnum = exports.UsersApi = exports.UsersApiFactory = exports.UsersApiFp = exports.UsersApiAxiosParamCreator = exports.TransfersApi = exports.TransfersApiFactory = exports.TransfersApiFp = exports.TransfersApiAxiosParamCreator = exports.TransactionsApi = exports.TransactionsApiFactory = exports.TransactionsApiFp = exports.TransactionsApiAxiosParamCreator = exports.TestOperationsOfTheTestControllerApi = exports.TestOperationsOfTheTestControllerApiFactory = exports.TestOperationsOfTheTestControllerApiFp = exports.TestOperationsOfTheTestControllerApiAxiosParamCreator = exports.StripeApi = exports.StripeApiFactory = exports.StripeApiFp = exports.StripeApiAxiosParamCreator = exports.RootApi = exports.RootApiFactory = exports.RootApiFp = exports.RootApiAxiosParamCreator = exports.RbacApi = exports.RbacApiFactory = exports.RbacApiFp = exports.RbacApiAxiosParamCreator = exports.ProductsApi = exports.ProductsApiFactory = exports.ProductsApiFp = exports.ProductsApiAxiosParamCreator = exports.ProductCategoriesApi = void 0;
+exports.ProductCategoriesApi = exports.ProductCategoriesApiFactory = exports.ProductCategoriesApiFp = exports.ProductCategoriesApiAxiosParamCreator = exports.PointofsaleApi = exports.PointofsaleApiFactory = exports.PointofsaleApiFp = exports.PointofsaleApiAxiosParamCreator = exports.PayoutRequestsApi = exports.PayoutRequestsApiFactory = exports.PayoutRequestsApiFp = exports.PayoutRequestsApiAxiosParamCreator = exports.InvoicesApi = exports.InvoicesApiFactory = exports.InvoicesApiFp = exports.InvoicesApiAxiosParamCreator = exports.FilesApi = exports.FilesApiFactory = exports.FilesApiFp = exports.FilesApiAxiosParamCreator = exports.EventsApi = exports.EventsApiFactory = exports.EventsApiFp = exports.EventsApiAxiosParamCreator = exports.DebtorsApi = exports.DebtorsApiFactory = exports.DebtorsApiFp = exports.DebtorsApiAxiosParamCreator = exports.ContainersApi = exports.ContainersApiFactory = exports.ContainersApiFp = exports.ContainersApiAxiosParamCreator = exports.BannersApi = exports.BannersApiFactory = exports.BannersApiFp = exports.BannersApiAxiosParamCreator = exports.GetAllBalanceOrderDirectionEnum = exports.GetAllBalanceUserTypeEnum = exports.BalanceApi = exports.BalanceApiFactory = exports.BalanceApiFp = exports.BalanceApiAxiosParamCreator = exports.AuthenticateApi = exports.AuthenticateApiFactory = exports.AuthenticateApiFp = exports.AuthenticateApiAxiosParamCreator = exports.UpdateInvoiceRequestStateEnum = exports.PayoutRequestStatusRequestStateEnum = exports.InvoiceStatusResponseStateEnum = exports.FinancialMutationResponseTypeEnum = void 0;
+exports.VouchergroupsApi = exports.VouchergroupsApiFactory = exports.VouchergroupsApiFp = exports.VouchergroupsApiAxiosParamCreator = exports.VatGroupsApi = exports.VatGroupsApiFactory = exports.VatGroupsApiFp = exports.VatGroupsApiAxiosParamCreator = exports.GetAllUsersTypeEnum = exports.UsersApi = exports.UsersApiFactory = exports.UsersApiFp = exports.UsersApiAxiosParamCreator = exports.TransfersApi = exports.TransfersApiFactory = exports.TransfersApiFp = exports.TransfersApiAxiosParamCreator = exports.TransactionsApi = exports.TransactionsApiFactory = exports.TransactionsApiFp = exports.TransactionsApiAxiosParamCreator = exports.TestOperationsOfTheTestControllerApi = exports.TestOperationsOfTheTestControllerApiFactory = exports.TestOperationsOfTheTestControllerApiFp = exports.TestOperationsOfTheTestControllerApiAxiosParamCreator = exports.StripeApi = exports.StripeApiFactory = exports.StripeApiFp = exports.StripeApiAxiosParamCreator = exports.RootApi = exports.RootApiFactory = exports.RootApiFp = exports.RootApiAxiosParamCreator = exports.RbacApi = exports.RbacApiFactory = exports.RbacApiFp = exports.RbacApiAxiosParamCreator = exports.ProductsApi = exports.ProductsApiFactory = exports.ProductsApiFp = exports.ProductsApiAxiosParamCreator = void 0;
 const axios_1 = require("axios");
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -51,15 +51,6 @@ exports.UpdateInvoiceRequestStateEnum = {
     Sent: 'SENT',
     Paid: 'PAID',
     Deleted: 'DELETED'
-};
-exports.UserTypeEnum = {
-    _1: '1',
-    _2: '2',
-    _3: '3',
-    _4: '4',
-    _5: '5',
-    _6: '6',
-    _7: '7'
 };
 /**
  * AuthenticateApi - axios parameter creator
@@ -4064,11 +4055,13 @@ const InvoicesApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Adds an invoice to the system.
-         * @param {CreateInvoiceRequest} [createInvoiceRequest] The invoice which should be created
+         * @param {CreateInvoiceRequest} createInvoiceRequest The invoice which should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         createInvoice: (createInvoiceRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            // verify required parameter 'createInvoiceRequest' is not null or undefined
+            (0, common_1.assertParamExists)('createInvoice', 'createInvoiceRequest', createInvoiceRequest);
             const localVarPath = `/invoices`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -4224,13 +4217,15 @@ const InvoicesApiAxiosParamCreator = function (configuration) {
          *
          * @summary Adds an invoice to the system.
          * @param {number} id The id of the invoice which should be updated
-         * @param {UpdateInvoiceRequest} [updateInvoiceRequest] The invoice update to process
+         * @param {UpdateInvoiceRequest} updateInvoiceRequest The invoice update to process
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         updateInvoice: (id, updateInvoiceRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateInvoice', 'id', id);
+            // verify required parameter 'updateInvoiceRequest' is not null or undefined
+            (0, common_1.assertParamExists)('updateInvoice', 'updateInvoiceRequest', updateInvoiceRequest);
             const localVarPath = `/invoices/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -4268,7 +4263,7 @@ const InvoicesApiFp = function (configuration) {
         /**
          *
          * @summary Adds an invoice to the system.
-         * @param {CreateInvoiceRequest} [createInvoiceRequest] The invoice which should be created
+         * @param {CreateInvoiceRequest} createInvoiceRequest The invoice which should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -4341,7 +4336,7 @@ const InvoicesApiFp = function (configuration) {
          *
          * @summary Adds an invoice to the system.
          * @param {number} id The id of the invoice which should be updated
-         * @param {UpdateInvoiceRequest} [updateInvoiceRequest] The invoice update to process
+         * @param {UpdateInvoiceRequest} updateInvoiceRequest The invoice update to process
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -4367,7 +4362,7 @@ const InvoicesApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Adds an invoice to the system.
-         * @param {CreateInvoiceRequest} [createInvoiceRequest] The invoice which should be created
+         * @param {CreateInvoiceRequest} createInvoiceRequest The invoice which should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -4416,7 +4411,7 @@ const InvoicesApiFactory = function (configuration, basePath, axios) {
          *
          * @summary Adds an invoice to the system.
          * @param {number} id The id of the invoice which should be updated
-         * @param {UpdateInvoiceRequest} [updateInvoiceRequest] The invoice update to process
+         * @param {UpdateInvoiceRequest} updateInvoiceRequest The invoice update to process
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -4436,7 +4431,7 @@ class InvoicesApi extends base_1.BaseAPI {
     /**
      *
      * @summary Adds an invoice to the system.
-     * @param {CreateInvoiceRequest} [createInvoiceRequest] The invoice which should be created
+     * @param {CreateInvoiceRequest} createInvoiceRequest The invoice which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof InvoicesApi
@@ -4489,7 +4484,7 @@ class InvoicesApi extends base_1.BaseAPI {
      *
      * @summary Adds an invoice to the system.
      * @param {number} id The id of the invoice which should be updated
-     * @param {UpdateInvoiceRequest} [updateInvoiceRequest] The invoice update to process
+     * @param {UpdateInvoiceRequest} updateInvoiceRequest The invoice update to process
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof InvoicesApi
@@ -4508,11 +4503,13 @@ const PayoutRequestsApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Create a new payout request
-         * @param {PayoutRequestRequest} [payoutRequestRequest] New payout request
+         * @param {PayoutRequestRequest} payoutRequestRequest New payout request
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         createPayoutRequest: (payoutRequestRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            // verify required parameter 'payoutRequestRequest' is not null or undefined
+            (0, common_1.assertParamExists)('createPayoutRequest', 'payoutRequestRequest', payoutRequestRequest);
             const localVarPath = `/payoutrequests`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -4632,13 +4629,15 @@ const PayoutRequestsApiAxiosParamCreator = function (configuration) {
          *
          * @summary Create a new status for a payout request
          * @param {number} id The ID of the payout request object that should be returned
-         * @param {PayoutRequestStatusRequest} [payoutRequestStatusRequest] New state of payout request
+         * @param {PayoutRequestStatusRequest} payoutRequestStatusRequest New state of payout request
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         setPayoutRequestStatus: (id, payoutRequestStatusRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('setPayoutRequestStatus', 'id', id);
+            // verify required parameter 'payoutRequestStatusRequest' is not null or undefined
+            (0, common_1.assertParamExists)('setPayoutRequestStatus', 'payoutRequestStatusRequest', payoutRequestStatusRequest);
             const localVarPath = `/payoutrequests/{id}/status`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -4676,7 +4675,7 @@ const PayoutRequestsApiFp = function (configuration) {
         /**
          *
          * @summary Create a new payout request
-         * @param {PayoutRequestRequest} [payoutRequestRequest] New payout request
+         * @param {PayoutRequestRequest} payoutRequestRequest New payout request
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -4731,7 +4730,7 @@ const PayoutRequestsApiFp = function (configuration) {
          *
          * @summary Create a new status for a payout request
          * @param {number} id The ID of the payout request object that should be returned
-         * @param {PayoutRequestStatusRequest} [payoutRequestStatusRequest] New state of payout request
+         * @param {PayoutRequestStatusRequest} payoutRequestStatusRequest New state of payout request
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -4757,7 +4756,7 @@ const PayoutRequestsApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Create a new payout request
-         * @param {PayoutRequestRequest} [payoutRequestRequest] New payout request
+         * @param {PayoutRequestRequest} payoutRequestRequest New payout request
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -4794,7 +4793,7 @@ const PayoutRequestsApiFactory = function (configuration, basePath, axios) {
          *
          * @summary Create a new status for a payout request
          * @param {number} id The ID of the payout request object that should be returned
-         * @param {PayoutRequestStatusRequest} [payoutRequestStatusRequest] New state of payout request
+         * @param {PayoutRequestStatusRequest} payoutRequestStatusRequest New state of payout request
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -4814,7 +4813,7 @@ class PayoutRequestsApi extends base_1.BaseAPI {
     /**
      *
      * @summary Create a new payout request
-     * @param {PayoutRequestRequest} [payoutRequestRequest] New payout request
+     * @param {PayoutRequestRequest} payoutRequestRequest New payout request
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PayoutRequestsApi
@@ -4854,7 +4853,7 @@ class PayoutRequestsApi extends base_1.BaseAPI {
      *
      * @summary Create a new status for a payout request
      * @param {number} id The ID of the payout request object that should be returned
-     * @param {PayoutRequestStatusRequest} [payoutRequestStatusRequest] New state of payout request
+     * @param {PayoutRequestStatusRequest} payoutRequestStatusRequest New state of payout request
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PayoutRequestsApi
@@ -4873,11 +4872,13 @@ const PointofsaleApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Create a new Point of Sale.
-         * @param {CreatePointOfSaleRequest} [createPointOfSaleRequest] The point of sale which should be created
+         * @param {CreatePointOfSaleRequest} createPointOfSaleRequest The point of sale which should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         createPointOfSale: (createPointOfSaleRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            // verify required parameter 'createPointOfSaleRequest' is not null or undefined
+            (0, common_1.assertParamExists)('createPointOfSale', 'createPointOfSaleRequest', createPointOfSaleRequest);
             const localVarPath = `/pointsofsale`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -5093,13 +5094,15 @@ const PointofsaleApiAxiosParamCreator = function (configuration) {
          *
          * @summary Update an existing Point of Sale.
          * @param {number} id The id of the Point of Sale which should be updated
-         * @param {UpdatePointOfSaleRequest} [updatePointOfSaleRequest]    The Point of Sale which should be updated
+         * @param {UpdatePointOfSaleRequest} updatePointOfSaleRequest    The Point of Sale which should be updated
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         updatePointOfSale: (id, updatePointOfSaleRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updatePointOfSale', 'id', id);
+            // verify required parameter 'updatePointOfSaleRequest' is not null or undefined
+            (0, common_1.assertParamExists)('updatePointOfSale', 'updatePointOfSaleRequest', updatePointOfSaleRequest);
             const localVarPath = `/pointsofsale/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -5137,7 +5140,7 @@ const PointofsaleApiFp = function (configuration) {
         /**
          *
          * @summary Create a new Point of Sale.
-         * @param {CreatePointOfSaleRequest} [createPointOfSaleRequest] The point of sale which should be created
+         * @param {CreatePointOfSaleRequest} createPointOfSaleRequest The point of sale which should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -5241,7 +5244,7 @@ const PointofsaleApiFp = function (configuration) {
          *
          * @summary Update an existing Point of Sale.
          * @param {number} id The id of the Point of Sale which should be updated
-         * @param {UpdatePointOfSaleRequest} [updatePointOfSaleRequest]    The Point of Sale which should be updated
+         * @param {UpdatePointOfSaleRequest} updatePointOfSaleRequest    The Point of Sale which should be updated
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -5267,7 +5270,7 @@ const PointofsaleApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Create a new Point of Sale.
-         * @param {CreatePointOfSaleRequest} [createPointOfSaleRequest] The point of sale which should be created
+         * @param {CreatePointOfSaleRequest} createPointOfSaleRequest The point of sale which should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -5335,7 +5338,7 @@ const PointofsaleApiFactory = function (configuration, basePath, axios) {
          *
          * @summary Update an existing Point of Sale.
          * @param {number} id The id of the Point of Sale which should be updated
-         * @param {UpdatePointOfSaleRequest} [updatePointOfSaleRequest]    The Point of Sale which should be updated
+         * @param {UpdatePointOfSaleRequest} updatePointOfSaleRequest    The Point of Sale which should be updated
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -5355,7 +5358,7 @@ class PointofsaleApi extends base_1.BaseAPI {
     /**
      *
      * @summary Create a new Point of Sale.
-     * @param {CreatePointOfSaleRequest} [createPointOfSaleRequest] The point of sale which should be created
+     * @param {CreatePointOfSaleRequest} createPointOfSaleRequest The point of sale which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PointofsaleApi
@@ -5429,7 +5432,7 @@ class PointofsaleApi extends base_1.BaseAPI {
      *
      * @summary Update an existing Point of Sale.
      * @param {number} id The id of the Point of Sale which should be updated
-     * @param {UpdatePointOfSaleRequest} [updatePointOfSaleRequest]    The Point of Sale which should be updated
+     * @param {UpdatePointOfSaleRequest} updatePointOfSaleRequest    The Point of Sale which should be updated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PointofsaleApi
@@ -5448,11 +5451,13 @@ const ProductCategoriesApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Post a new productCategory.
-         * @param {ProductCategoryRequest} [productCategoryRequest] The productCategory which should be created
+         * @param {ProductCategoryRequest} productCategoryRequest The productCategory which should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         createProductCategory: (productCategoryRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            // verify required parameter 'productCategoryRequest' is not null or undefined
+            (0, common_1.assertParamExists)('createProductCategory', 'productCategoryRequest', productCategoryRequest);
             const localVarPath = `/productcategories`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -5548,13 +5553,15 @@ const ProductCategoriesApiAxiosParamCreator = function (configuration) {
          *
          * @summary Update an existing productcategory.
          * @param {number} id The id of the productcategory which should be returned
-         * @param {ProductCategoryRequest} [productCategoryRequest] The productcategory which should be created
+         * @param {ProductCategoryRequest} productCategoryRequest The productcategory which should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         updateProductCategory: (id, productCategoryRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateProductCategory', 'id', id);
+            // verify required parameter 'productCategoryRequest' is not null or undefined
+            (0, common_1.assertParamExists)('updateProductCategory', 'productCategoryRequest', productCategoryRequest);
             const localVarPath = `/productcategories/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -5592,7 +5599,7 @@ const ProductCategoriesApiFp = function (configuration) {
         /**
          *
          * @summary Post a new productCategory.
-         * @param {ProductCategoryRequest} [productCategoryRequest] The productCategory which should be created
+         * @param {ProductCategoryRequest} productCategoryRequest The productCategory which should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -5642,7 +5649,7 @@ const ProductCategoriesApiFp = function (configuration) {
          *
          * @summary Update an existing productcategory.
          * @param {number} id The id of the productcategory which should be returned
-         * @param {ProductCategoryRequest} [productCategoryRequest] The productcategory which should be created
+         * @param {ProductCategoryRequest} productCategoryRequest The productcategory which should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -5668,7 +5675,7 @@ const ProductCategoriesApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Post a new productCategory.
-         * @param {ProductCategoryRequest} [productCategoryRequest] The productCategory which should be created
+         * @param {ProductCategoryRequest} productCategoryRequest The productCategory which should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -5700,7 +5707,7 @@ const ProductCategoriesApiFactory = function (configuration, basePath, axios) {
          *
          * @summary Update an existing productcategory.
          * @param {number} id The id of the productcategory which should be returned
-         * @param {ProductCategoryRequest} [productCategoryRequest] The productcategory which should be created
+         * @param {ProductCategoryRequest} productCategoryRequest The productcategory which should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -5720,7 +5727,7 @@ class ProductCategoriesApi extends base_1.BaseAPI {
     /**
      *
      * @summary Post a new productCategory.
-     * @param {ProductCategoryRequest} [productCategoryRequest] The productCategory which should be created
+     * @param {ProductCategoryRequest} productCategoryRequest The productCategory which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProductCategoriesApi
@@ -5755,7 +5762,7 @@ class ProductCategoriesApi extends base_1.BaseAPI {
      *
      * @summary Update an existing productcategory.
      * @param {number} id The id of the productcategory which should be returned
-     * @param {ProductCategoryRequest} [productCategoryRequest] The productcategory which should be created
+     * @param {ProductCategoryRequest} productCategoryRequest The productcategory which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProductCategoriesApi
@@ -5774,11 +5781,13 @@ const ProductsApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Create a new product.
-         * @param {CreateProductRequest} [createProductRequest] The product which should be created
+         * @param {CreateProductRequest} createProductRequest The product which should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         createProduct: (createProductRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            // verify required parameter 'createProductRequest' is not null or undefined
+            (0, common_1.assertParamExists)('createProduct', 'createProductRequest', createProductRequest);
             const localVarPath = `/products`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -5874,13 +5883,15 @@ const ProductsApiAxiosParamCreator = function (configuration) {
          *
          * @summary Update an existing product.
          * @param {number} id The id of the product which should be updated
-         * @param {UpdateProductRequest} [updateProductRequest] The product which should be updated
+         * @param {UpdateProductRequest} updateProductRequest The product which should be updated
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         updateProduct: (id, updateProductRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateProduct', 'id', id);
+            // verify required parameter 'updateProductRequest' is not null or undefined
+            (0, common_1.assertParamExists)('updateProduct', 'updateProductRequest', updateProductRequest);
             const localVarPath = `/products/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -5957,7 +5968,7 @@ const ProductsApiFp = function (configuration) {
         /**
          *
          * @summary Create a new product.
-         * @param {CreateProductRequest} [createProductRequest] The product which should be created
+         * @param {CreateProductRequest} createProductRequest The product which should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -6007,7 +6018,7 @@ const ProductsApiFp = function (configuration) {
          *
          * @summary Update an existing product.
          * @param {number} id The id of the product which should be updated
-         * @param {UpdateProductRequest} [updateProductRequest] The product which should be updated
+         * @param {UpdateProductRequest} updateProductRequest The product which should be updated
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -6050,7 +6061,7 @@ const ProductsApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Create a new product.
-         * @param {CreateProductRequest} [createProductRequest] The product which should be created
+         * @param {CreateProductRequest} createProductRequest The product which should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -6082,7 +6093,7 @@ const ProductsApiFactory = function (configuration, basePath, axios) {
          *
          * @summary Update an existing product.
          * @param {number} id The id of the product which should be updated
-         * @param {UpdateProductRequest} [updateProductRequest] The product which should be updated
+         * @param {UpdateProductRequest} updateProductRequest The product which should be updated
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -6113,7 +6124,7 @@ class ProductsApi extends base_1.BaseAPI {
     /**
      *
      * @summary Create a new product.
-     * @param {CreateProductRequest} [createProductRequest] The product which should be created
+     * @param {CreateProductRequest} createProductRequest The product which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProductsApi
@@ -6148,7 +6159,7 @@ class ProductsApi extends base_1.BaseAPI {
      *
      * @summary Update an existing product.
      * @param {number} id The id of the product which should be updated
-     * @param {UpdateProductRequest} [updateProductRequest] The product which should be updated
+     * @param {UpdateProductRequest} updateProductRequest The product which should be updated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProductsApi
@@ -6376,11 +6387,13 @@ const StripeApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Start the stripe deposit flow
-         * @param {StripeRequest} [stripeRequest] The deposit that should be created
+         * @param {StripeRequest} stripeRequest The deposit that should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         deposit: (stripeRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            // verify required parameter 'stripeRequest' is not null or undefined
+            (0, common_1.assertParamExists)('deposit', 'stripeRequest', stripeRequest);
             const localVarPath = `/stripe/deposit`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -6417,7 +6430,7 @@ const StripeApiFp = function (configuration) {
         /**
          *
          * @summary Start the stripe deposit flow
-         * @param {StripeRequest} [stripeRequest] The deposit that should be created
+         * @param {StripeRequest} stripeRequest The deposit that should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -6443,7 +6456,7 @@ const StripeApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Start the stripe deposit flow
-         * @param {StripeRequest} [stripeRequest] The deposit that should be created
+         * @param {StripeRequest} stripeRequest The deposit that should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -6463,7 +6476,7 @@ class StripeApi extends base_1.BaseAPI {
     /**
      *
      * @summary Start the stripe deposit flow
-     * @param {StripeRequest} [stripeRequest] The deposit that should be created
+     * @param {StripeRequest} stripeRequest The deposit that should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof StripeApi
@@ -6582,11 +6595,13 @@ const TransactionsApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Creates a new transaction
-         * @param {TransactionRequest} [transactionRequest] The transaction which should be created
+         * @param {TransactionRequest} transactionRequest The transaction which should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         createTransaction: (transactionRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            // verify required parameter 'transactionRequest' is not null or undefined
+            (0, common_1.assertParamExists)('createTransaction', 'transactionRequest', transactionRequest);
             const localVarPath = `/transactions`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -6746,13 +6761,15 @@ const TransactionsApiAxiosParamCreator = function (configuration) {
          *
          * @summary Updates the requested transaction
          * @param {number} id The id of the transaction which should be updated
-         * @param {TransactionRequest} [transactionRequest] The updated transaction
+         * @param {TransactionRequest} transactionRequest The updated transaction
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         updateTransaction: (id, transactionRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateTransaction', 'id', id);
+            // verify required parameter 'transactionRequest' is not null or undefined
+            (0, common_1.assertParamExists)('updateTransaction', 'transactionRequest', transactionRequest);
             const localVarPath = `/transactions/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -6780,11 +6797,13 @@ const TransactionsApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Function to validate the transaction immediatly after it is created
-         * @param {TransactionRequest} [transactionRequest] The transaction which should be validated
+         * @param {TransactionRequest} transactionRequest The transaction which should be validated
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         validateTransaction: (transactionRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            // verify required parameter 'transactionRequest' is not null or undefined
+            (0, common_1.assertParamExists)('validateTransaction', 'transactionRequest', transactionRequest);
             const localVarPath = `/transactions/validate`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -6821,7 +6840,7 @@ const TransactionsApiFp = function (configuration) {
         /**
          *
          * @summary Creates a new transaction
-         * @param {TransactionRequest} [transactionRequest] The transaction which should be created
+         * @param {TransactionRequest} transactionRequest The transaction which should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -6895,7 +6914,7 @@ const TransactionsApiFp = function (configuration) {
          *
          * @summary Updates the requested transaction
          * @param {number} id The id of the transaction which should be updated
-         * @param {TransactionRequest} [transactionRequest] The updated transaction
+         * @param {TransactionRequest} transactionRequest The updated transaction
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -6911,7 +6930,7 @@ const TransactionsApiFp = function (configuration) {
         /**
          *
          * @summary Function to validate the transaction immediatly after it is created
-         * @param {TransactionRequest} [transactionRequest] The transaction which should be validated
+         * @param {TransactionRequest} transactionRequest The transaction which should be validated
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -6937,7 +6956,7 @@ const TransactionsApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Creates a new transaction
-         * @param {TransactionRequest} [transactionRequest] The transaction which should be created
+         * @param {TransactionRequest} transactionRequest The transaction which should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -6987,7 +7006,7 @@ const TransactionsApiFactory = function (configuration, basePath, axios) {
          *
          * @summary Updates the requested transaction
          * @param {number} id The id of the transaction which should be updated
-         * @param {TransactionRequest} [transactionRequest] The updated transaction
+         * @param {TransactionRequest} transactionRequest The updated transaction
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -6997,7 +7016,7 @@ const TransactionsApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Function to validate the transaction immediatly after it is created
-         * @param {TransactionRequest} [transactionRequest] The transaction which should be validated
+         * @param {TransactionRequest} transactionRequest The transaction which should be validated
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -7017,7 +7036,7 @@ class TransactionsApi extends base_1.BaseAPI {
     /**
      *
      * @summary Creates a new transaction
-     * @param {TransactionRequest} [transactionRequest] The transaction which should be created
+     * @param {TransactionRequest} transactionRequest The transaction which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TransactionsApi
@@ -7071,7 +7090,7 @@ class TransactionsApi extends base_1.BaseAPI {
      *
      * @summary Updates the requested transaction
      * @param {number} id The id of the transaction which should be updated
-     * @param {TransactionRequest} [transactionRequest] The updated transaction
+     * @param {TransactionRequest} transactionRequest The updated transaction
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TransactionsApi
@@ -7082,7 +7101,7 @@ class TransactionsApi extends base_1.BaseAPI {
     /**
      *
      * @summary Function to validate the transaction immediatly after it is created
-     * @param {TransactionRequest} [transactionRequest] The transaction which should be validated
+     * @param {TransactionRequest} transactionRequest The transaction which should be validated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TransactionsApi
@@ -7101,11 +7120,13 @@ const TransfersApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Post a new transfer.
-         * @param {TransferRequest} [transferRequest] The transfer which should be created
+         * @param {TransferRequest} transferRequest The transfer which should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         createTransfer: (transferRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            // verify required parameter 'transferRequest' is not null or undefined
+            (0, common_1.assertParamExists)('createTransfer', 'transferRequest', transferRequest);
             const localVarPath = `/transfers`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -7210,7 +7231,7 @@ const TransfersApiFp = function (configuration) {
         /**
          *
          * @summary Post a new transfer.
-         * @param {TransferRequest} [transferRequest] The transfer which should be created
+         * @param {TransferRequest} transferRequest The transfer which should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -7269,7 +7290,7 @@ const TransfersApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Post a new transfer.
-         * @param {TransferRequest} [transferRequest] The transfer which should be created
+         * @param {TransferRequest} transferRequest The transfer which should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -7310,7 +7331,7 @@ class TransfersApi extends base_1.BaseAPI {
     /**
      *
      * @summary Post a new transfer.
-     * @param {TransferRequest} [transferRequest] The transfer which should be created
+     * @param {TransferRequest} transferRequest The transfer which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TransfersApi
@@ -7352,11 +7373,13 @@ const UsersApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Accept the Terms of Service if you have not accepted it yet
-         * @param {AcceptTosRequest} [acceptTosRequest] \&quot;Tosrequest body\&quot;
+         * @param {AcceptTosRequest} acceptTosRequest \&quot;Tosrequest body\&quot;
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         acceptTos: (acceptTosRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            // verify required parameter 'acceptTosRequest' is not null or undefined
+            (0, common_1.assertParamExists)('acceptTos', 'acceptTosRequest', acceptTosRequest);
             const localVarPath = `/users/acceptTos`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -7415,11 +7438,13 @@ const UsersApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Create a new user
-         * @param {CreateUserRequest} [createUserRequest] The user which should be created
+         * @param {CreateUserRequest} createUserRequest The user which should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         createUser: (createUserRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            // verify required parameter 'createUserRequest' is not null or undefined
+            (0, common_1.assertParamExists)('createUser', 'createUserRequest', createUserRequest);
             const localVarPath = `/users`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -8208,13 +8233,15 @@ const UsersApiAxiosParamCreator = function (configuration) {
          *
          * @summary Put a user\'s local password
          * @param {number} id The id of the user
-         * @param {UpdateLocalRequest} [updateLocalRequest]    The password update
+         * @param {UpdateLocalRequest} updateLocalRequest    The password update
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         updateUserLocalPassword: (id, updateLocalRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateUserLocalPassword', 'id', id);
+            // verify required parameter 'updateLocalRequest' is not null or undefined
+            (0, common_1.assertParamExists)('updateUserLocalPassword', 'updateLocalRequest', updateLocalRequest);
             const localVarPath = `/users/{id}/authenticator/local`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -8243,13 +8270,15 @@ const UsersApiAxiosParamCreator = function (configuration) {
          *
          * @summary Put a users NFC code
          * @param {number} id The id of the user
-         * @param {UpdateNfcRequest} [updateNfcRequest]    The NFC code to update to
+         * @param {UpdateNfcRequest} updateNfcRequest    The NFC code to update to
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         updateUserNfc: (id, updateNfcRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateUserNfc', 'id', id);
+            // verify required parameter 'updateNfcRequest' is not null or undefined
+            (0, common_1.assertParamExists)('updateUserNfc', 'updateNfcRequest', updateNfcRequest);
             const localVarPath = `/users/{id}/authenticator/nfc`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -8278,13 +8307,15 @@ const UsersApiAxiosParamCreator = function (configuration) {
          *
          * @summary Put an users pin code
          * @param {number} id The id of the user
-         * @param {UpdatePinRequest} [updatePinRequest]    The PIN code to update to
+         * @param {UpdatePinRequest} updatePinRequest    The PIN code to update to
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         updateUserPin: (id, updatePinRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateUserPin', 'id', id);
+            // verify required parameter 'updatePinRequest' is not null or undefined
+            (0, common_1.assertParamExists)('updateUserPin', 'updatePinRequest', updatePinRequest);
             const localVarPath = `/users/{id}/authenticator/pin`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -8354,7 +8385,7 @@ const UsersApiFp = function (configuration) {
         /**
          *
          * @summary Accept the Terms of Service if you have not accepted it yet
-         * @param {AcceptTosRequest} [acceptTosRequest] \&quot;Tosrequest body\&quot;
+         * @param {AcceptTosRequest} acceptTosRequest \&quot;Tosrequest body\&quot;
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -8386,7 +8417,7 @@ const UsersApiFp = function (configuration) {
         /**
          *
          * @summary Create a new user
-         * @param {CreateUserRequest} [createUserRequest] The user which should be created
+         * @param {CreateUserRequest} createUserRequest The user which should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -8745,7 +8776,7 @@ const UsersApiFp = function (configuration) {
          *
          * @summary Put a user\'s local password
          * @param {number} id The id of the user
-         * @param {UpdateLocalRequest} [updateLocalRequest]    The password update
+         * @param {UpdateLocalRequest} updateLocalRequest    The password update
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -8762,7 +8793,7 @@ const UsersApiFp = function (configuration) {
          *
          * @summary Put a users NFC code
          * @param {number} id The id of the user
-         * @param {UpdateNfcRequest} [updateNfcRequest]    The NFC code to update to
+         * @param {UpdateNfcRequest} updateNfcRequest    The NFC code to update to
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -8779,7 +8810,7 @@ const UsersApiFp = function (configuration) {
          *
          * @summary Put an users pin code
          * @param {number} id The id of the user
-         * @param {UpdatePinRequest} [updatePinRequest]    The PIN code to update to
+         * @param {UpdatePinRequest} updatePinRequest    The PIN code to update to
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -8821,7 +8852,7 @@ const UsersApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Accept the Terms of Service if you have not accepted it yet
-         * @param {AcceptTosRequest} [acceptTosRequest] \&quot;Tosrequest body\&quot;
+         * @param {AcceptTosRequest} acceptTosRequest \&quot;Tosrequest body\&quot;
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -8841,7 +8872,7 @@ const UsersApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Create a new user
-         * @param {CreateUserRequest} [createUserRequest] The user which should be created
+         * @param {CreateUserRequest} createUserRequest The user which should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -9080,7 +9111,7 @@ const UsersApiFactory = function (configuration, basePath, axios) {
          *
          * @summary Put a user\'s local password
          * @param {number} id The id of the user
-         * @param {UpdateLocalRequest} [updateLocalRequest]    The password update
+         * @param {UpdateLocalRequest} updateLocalRequest    The password update
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -9091,7 +9122,7 @@ const UsersApiFactory = function (configuration, basePath, axios) {
          *
          * @summary Put a users NFC code
          * @param {number} id The id of the user
-         * @param {UpdateNfcRequest} [updateNfcRequest]    The NFC code to update to
+         * @param {UpdateNfcRequest} updateNfcRequest    The NFC code to update to
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -9102,7 +9133,7 @@ const UsersApiFactory = function (configuration, basePath, axios) {
          *
          * @summary Put an users pin code
          * @param {number} id The id of the user
-         * @param {UpdatePinRequest} [updatePinRequest]    The PIN code to update to
+         * @param {UpdatePinRequest} updatePinRequest    The PIN code to update to
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -9132,7 +9163,7 @@ class UsersApi extends base_1.BaseAPI {
     /**
      *
      * @summary Accept the Terms of Service if you have not accepted it yet
-     * @param {AcceptTosRequest} [acceptTosRequest] \&quot;Tosrequest body\&quot;
+     * @param {AcceptTosRequest} acceptTosRequest \&quot;Tosrequest body\&quot;
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
@@ -9154,7 +9185,7 @@ class UsersApi extends base_1.BaseAPI {
     /**
      *
      * @summary Create a new user
-     * @param {CreateUserRequest} [createUserRequest] The user which should be created
+     * @param {CreateUserRequest} createUserRequest The user which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
@@ -9413,7 +9444,7 @@ class UsersApi extends base_1.BaseAPI {
      *
      * @summary Put a user\'s local password
      * @param {number} id The id of the user
-     * @param {UpdateLocalRequest} [updateLocalRequest]    The password update
+     * @param {UpdateLocalRequest} updateLocalRequest    The password update
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
@@ -9425,7 +9456,7 @@ class UsersApi extends base_1.BaseAPI {
      *
      * @summary Put a users NFC code
      * @param {number} id The id of the user
-     * @param {UpdateNfcRequest} [updateNfcRequest]    The NFC code to update to
+     * @param {UpdateNfcRequest} updateNfcRequest    The NFC code to update to
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
@@ -9437,7 +9468,7 @@ class UsersApi extends base_1.BaseAPI {
      *
      * @summary Put an users pin code
      * @param {number} id The id of the user
-     * @param {UpdatePinRequest} [updatePinRequest]    The PIN code to update to
+     * @param {UpdatePinRequest} updatePinRequest    The PIN code to update to
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
@@ -9479,11 +9510,13 @@ const VatGroupsApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Create a new VAT group
-         * @param {VatGroupRequest} [vatGroupRequest] The VAT group which should be created
+         * @param {VatGroupRequest} vatGroupRequest The VAT group which should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         createVatGroup: (vatGroupRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            // verify required parameter 'vatGroupRequest' is not null or undefined
+            (0, common_1.assertParamExists)('createVatGroup', 'vatGroupRequest', vatGroupRequest);
             const localVarPath = `/vatgroups`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -9635,13 +9668,15 @@ const VatGroupsApiAxiosParamCreator = function (configuration) {
          *
          * @summary Create a new VAT group
          * @param {number} id The ID of the VAT group which should be updated
-         * @param {UpdateVatGroupRequest} [updateVatGroupRequest] The VAT group information
+         * @param {UpdateVatGroupRequest} updateVatGroupRequest The VAT group information
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         updateVatGroup: (id, updateVatGroupRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateVatGroup', 'id', id);
+            // verify required parameter 'updateVatGroupRequest' is not null or undefined
+            (0, common_1.assertParamExists)('updateVatGroup', 'updateVatGroupRequest', updateVatGroupRequest);
             const localVarPath = `/vatgroups/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -9679,7 +9714,7 @@ const VatGroupsApiFp = function (configuration) {
         /**
          *
          * @summary Create a new VAT group
-         * @param {VatGroupRequest} [vatGroupRequest] The VAT group which should be created
+         * @param {VatGroupRequest} vatGroupRequest The VAT group which should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -9750,7 +9785,7 @@ const VatGroupsApiFp = function (configuration) {
          *
          * @summary Create a new VAT group
          * @param {number} id The ID of the VAT group which should be updated
-         * @param {UpdateVatGroupRequest} [updateVatGroupRequest] The VAT group information
+         * @param {UpdateVatGroupRequest} updateVatGroupRequest The VAT group information
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -9776,7 +9811,7 @@ const VatGroupsApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Create a new VAT group
-         * @param {VatGroupRequest} [vatGroupRequest] The VAT group which should be created
+         * @param {VatGroupRequest} vatGroupRequest The VAT group which should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -9823,7 +9858,7 @@ const VatGroupsApiFactory = function (configuration, basePath, axios) {
          *
          * @summary Create a new VAT group
          * @param {number} id The ID of the VAT group which should be updated
-         * @param {UpdateVatGroupRequest} [updateVatGroupRequest] The VAT group information
+         * @param {UpdateVatGroupRequest} updateVatGroupRequest The VAT group information
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -9843,7 +9878,7 @@ class VatGroupsApi extends base_1.BaseAPI {
     /**
      *
      * @summary Create a new VAT group
-     * @param {VatGroupRequest} [vatGroupRequest] The VAT group which should be created
+     * @param {VatGroupRequest} vatGroupRequest The VAT group which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VatGroupsApi
@@ -9894,7 +9929,7 @@ class VatGroupsApi extends base_1.BaseAPI {
      *
      * @summary Create a new VAT group
      * @param {number} id The ID of the VAT group which should be updated
-     * @param {UpdateVatGroupRequest} [updateVatGroupRequest] The VAT group information
+     * @param {UpdateVatGroupRequest} updateVatGroupRequest The VAT group information
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VatGroupsApi
@@ -9913,11 +9948,13 @@ const VouchergroupsApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Creates a new voucher group
-         * @param {VoucherGroupRequest} [voucherGroupRequest] The voucher group which should be created
+         * @param {VoucherGroupRequest} voucherGroupRequest The voucher group which should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         createVouchergroup: (voucherGroupRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            // verify required parameter 'voucherGroupRequest' is not null or undefined
+            (0, common_1.assertParamExists)('createVouchergroup', 'voucherGroupRequest', voucherGroupRequest);
             const localVarPath = `/vouchergroups`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -10013,13 +10050,15 @@ const VouchergroupsApiAxiosParamCreator = function (configuration) {
          *
          * @summary Updates the requested voucher group
          * @param {number} id The id of the voucher group which should be updated
-         * @param {VoucherGroupRequest} [voucherGroupRequest] The updated voucher group
+         * @param {VoucherGroupRequest} voucherGroupRequest The updated voucher group
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         updateVoucherGroup: (id, voucherGroupRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateVoucherGroup', 'id', id);
+            // verify required parameter 'voucherGroupRequest' is not null or undefined
+            (0, common_1.assertParamExists)('updateVoucherGroup', 'voucherGroupRequest', voucherGroupRequest);
             const localVarPath = `/vouchergroups/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -10057,7 +10096,7 @@ const VouchergroupsApiFp = function (configuration) {
         /**
          *
          * @summary Creates a new voucher group
-         * @param {VoucherGroupRequest} [voucherGroupRequest] The voucher group which should be created
+         * @param {VoucherGroupRequest} voucherGroupRequest The voucher group which should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -10107,7 +10146,7 @@ const VouchergroupsApiFp = function (configuration) {
          *
          * @summary Updates the requested voucher group
          * @param {number} id The id of the voucher group which should be updated
-         * @param {VoucherGroupRequest} [voucherGroupRequest] The updated voucher group
+         * @param {VoucherGroupRequest} voucherGroupRequest The updated voucher group
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -10133,7 +10172,7 @@ const VouchergroupsApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Creates a new voucher group
-         * @param {VoucherGroupRequest} [voucherGroupRequest] The voucher group which should be created
+         * @param {VoucherGroupRequest} voucherGroupRequest The voucher group which should be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -10165,7 +10204,7 @@ const VouchergroupsApiFactory = function (configuration, basePath, axios) {
          *
          * @summary Updates the requested voucher group
          * @param {number} id The id of the voucher group which should be updated
-         * @param {VoucherGroupRequest} [voucherGroupRequest] The updated voucher group
+         * @param {VoucherGroupRequest} voucherGroupRequest The updated voucher group
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -10185,7 +10224,7 @@ class VouchergroupsApi extends base_1.BaseAPI {
     /**
      *
      * @summary Creates a new voucher group
-     * @param {VoucherGroupRequest} [voucherGroupRequest] The voucher group which should be created
+     * @param {VoucherGroupRequest} voucherGroupRequest The voucher group which should be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VouchergroupsApi
@@ -10220,7 +10259,7 @@ class VouchergroupsApi extends base_1.BaseAPI {
      *
      * @summary Updates the requested voucher group
      * @param {number} id The id of the voucher group which should be updated
-     * @param {VoucherGroupRequest} [voucherGroupRequest] The updated voucher group
+     * @param {VoucherGroupRequest} voucherGroupRequest The updated voucher group
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VouchergroupsApi
