@@ -1,0 +1,45 @@
+name: Backend Update Workflow
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [backend-update]
+
+jobs:
+  update-client:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Client Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Update Script
+        run: |
+          if [[ ${{ github.event.client_payload.branch }} == 'main' ]]; then
+            genupdate:main
+          elif [[ ${{ github.event.client_payload.branch }} == 'develop' ]]; then
+            genupdate:dev
+          fi
+
+      - name: Push Changes to New Branch
+        run: |
+          git checkout -b Update/${{ github.event.client_payload.branch }}-${{ github.sha }}
+          git add .
+          git commit -m "Update from backend ${GITHUB_SHA}" --author="GitHub Actions Bot <actions@github.com>"
+          git push origin Update/${{ github.event.client_payload.branch }}-${{ github.sha }}
+
+      - name: Create Pull Request
+        uses: repo-sync/pull-request@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          pr_title: "Update from Backend"
+          pr_body: "Automated PR to update client after backend changes."
+          source_branch: "Update/${{ github.event.client_payload.branch }}-${{ github.sha }}"
+          destination_branch: ${{ github.event.client_payload.branch }}
