@@ -23,7 +23,7 @@ jobs:
     - name: Determine Branch and SHA for Update
       id: set_branch_and_sha
       run: |
-        echo "branch=${{ github.event.client_payload.branch || 'main' }}" >> $GITHUB_ENV
+        echo "branch=${{ github.event.client_payload.branch || 'develop' }}" >> $GITHUB_ENV
         echo "BACKEND_SHA=${{ github.event.client_payload.sha || 'MANUAL_RUN' }}" >> $GITHUB_ENV
 
     - name: Run Update Script
