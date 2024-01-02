@@ -29,10 +29,36 @@ jobs:
     - name: Run Update Script
       run: |
         if [[ ${{ env.branch }} == 'main' ]]; then
-          npm run genupdate:main
+          npm run update-swagger:main
+          if ! cmp --silent ./swagger-main.json ./swagger-json; then
+            cp ./swagger-main.json ./swagger-json
+            echo "Files differ, running npm run gen"
+            echo "NEEDS_GEN=true" >> $GITHUB_ENV
+          else
+            echo "Files are identical, no need to run npm run gen"
+            echo "NEEDS_GEN=false" >> $GITHUB_ENV
+          fi
         elif [[ ${{ env.branch }} == 'develop' ]]; then
-          npm run genupdate:dev
+          npm run update-swagger:dev
+          if ! cmp --silent ./swagger-develop.json ./swagger-json; then
+            cp ./swagger-develop.json ./swagger-json
+            echo "Files differ, running npm run gen"
+            echo "NEEDS_GEN=true" >> $GITHUB_ENV
+          else
+            echo "Files are identical, no need to run npm run gen"
+            echo "NEEDS_GEN=false" >> $GITHUB_ENV
+          fi
         fi
+
+    - name: Generate Client Code
+      if: env.NEEDS_GEN == 'true'
+      run: npm run genbuild
+
+    - name: Check if Generation is Needed
+      if: env.NEEDS_GEN == 'false'
+      run: |
+        echo "No changes detected in Swagger files. Aborting workflow."
+        exit 1
 
     - name: Push Changes to New Branch
       run: |

@@ -7,15 +7,12 @@
   "license": "AGPL-3.0-or-later",
   "scripts": {
     "build": "tsc",
-    "genbuild:main": "npm run gen:main && npm run build && (git add ./src && git add ./dist)",
-    "gen:main": "openapi-generator-cli generate -i swagger-main.json  -g typescript-axios -o ./src --openapi-normalizer REFACTOR_ALLOF_WITH_PROPERTIES_ONLY=true",
-    "update-swagger:main": "(cd ./node_modules/@sudosos/sudosos-backend-main && npx npm install && npx npm run swagger ) && cp ./node_modules/@sudosos/sudosos-backend-main/out/swagger.json ./swagger-main.json",
-    "genupdate:main": "npm run update-swagger:main && npm run genbuild:main",
+    "gen": "openapi-generator-cli generate -i swagger.json  -g typescript-axios -o ./src --openapi-normalizer REFACTOR_ALLOF_WITH_PROPERTIES_ONLY=true",
 
-    "genbuild:dev": "npm run gen:dev && npm run build && (git add ./src && git add ./dist)",
-    "gen:dev": "openapi-generator-cli generate -i swagger-dev.json  -g typescript-axios -o ./src --openapi-normalizer REFACTOR_ALLOF_WITH_PROPERTIES_ONLY=true",
-    "genupdate:dev": "npm run update-swagger:dev && npm run genbuild:dev",
-    "update-swagger:dev": "(cd ./node_modules/@sudosos/sudosos-backend-develop && npx npm install && npx npm run swagger ) && cp ./node_modules/@sudosos/sudosos-backend-develop/out/swagger.json ./swagger-develop.json"
+    "genbuild": "npm run gen && npm run build && (git add ./src && git add ./dist)",
+
+    "update-swagger:main": "(cd ./node_modules/@sudosos/sudosos-backend-main && npx npm install && npx npm run swagger ) && cp ./node_modules/@sudosos/sudosos-backend-main/out/swagger.json ./swagger-main.json",
+    "update-swagger:dev": "(cd ./node_modules/@sudosos/sudosos-backend-develop && npx npm install && npx npm run swagger ) && cp ./node_modules/@sudosos/sudosos-backend-develop/out/swagger.json ./swagger-develop.json",
   },
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.7.0",
