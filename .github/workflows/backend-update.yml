@@ -54,18 +54,14 @@ jobs:
       if: env.NEEDS_GEN == 'true'
       run: npm run genbuild
 
-    - name: Check if Generation is Needed
-      if: env.NEEDS_GEN == 'false'
-      run: |
-        echo "No changes detected in Swagger files. Aborting workflow."
-        exit 1
-
     - name: Configure Git
+      if: env.NEEDS_GEN == 'true'
       run: |
         git config --global user.name "${{ github.actor }}"
         git config --global user.email "${{ github.actor }}@users.noreply.github.com"
 
     - name: Push Changes to New Branch
+      if: env.NEEDS_GEN == 'true'
       run: |
         git checkout -b Update/${{ env.branch }}-${{ env.BACKEND_SHA }}
         git add .
@@ -74,6 +70,7 @@ jobs:
 
     - name: Create Pull Request
       uses: repo-sync/pull-request@v2
+      if: env.NEEDS_GEN == 'true'
       with:
         pr_title: "Update from Backend"
         pr_body: "Automated PR to update client after backend changes."
