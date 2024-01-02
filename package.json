@@ -12,7 +12,7 @@
     "genbuild": "npm run gen && npm run build && (git add ./src && git add ./dist)",
 
     "update-swagger:main": "(cd ./node_modules/@sudosos/sudosos-backend-main && npx npm install && npx npm run swagger ) && cp ./node_modules/@sudosos/sudosos-backend-main/out/swagger.json ./swagger-main.json",
-    "update-swagger:dev": "(cd ./node_modules/@sudosos/sudosos-backend-develop && npx npm install && npx npm run swagger ) && cp ./node_modules/@sudosos/sudosos-backend-develop/out/swagger.json ./swagger-develop.json",
+    "update-swagger:dev": "(cd ./node_modules/@sudosos/sudosos-backend-develop && npx npm install && npx npm run swagger ) && cp ./node_modules/@sudosos/sudosos-backend-develop/out/swagger.json ./swagger-develop.json"
   },
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.7.0",
