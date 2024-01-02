@@ -29,9 +29,9 @@ jobs:
     - name: Run Update Script
       run: |
         if [[ ${{ env.branch }} == 'main' ]]; then
-          genupdate:main
+          npm run genupdate:main
         elif [[ ${{ env.branch }} == 'develop' ]]; then
-          genupdate:dev
+          npm run genupdate:dev
         fi
 
     - name: Push Changes to New Branch
