@@ -75,7 +75,6 @@ jobs:
     - name: Create Pull Request
       uses: repo-sync/pull-request@v2
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
         pr_title: "Update from Backend"
         pr_body: "Automated PR to update client after backend changes."
         source_branch: "Update/${{ env.branch }}-${{ env.BACKEND_SHA }}"
