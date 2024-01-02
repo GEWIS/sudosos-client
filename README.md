@@ -54,7 +54,7 @@ const authApi = new AuthenticateApi(configuration).keyAuthentication({
 // Construct axios config
 const withKeyConfiguration = new Configuration({
   basePath,
-  apiKey: () => `Bearer ${jwtToken}`,
+  accessToken: () => jwtToken,
 });
 
 // Now we can make authenticated API requests
