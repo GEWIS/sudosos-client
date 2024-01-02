@@ -64,7 +64,7 @@ jobs:
       run: |
         git checkout -b Update/${{ env.branch }}-${{ env.BACKEND_SHA }}
         git add .
-        git commit -m "Update from backend ${env.BACKEND_SHA}" --author="GitHub Actions Bot <actions@github.com>"
+        git commit -m "Update from backend ${{env.BACKEND_SHA}}" --author="GitHub Actions Bot <actions@github.com>"
         git push origin Update/${{ env.branch }}-${{ env.BACKEND_SHA }}
 
     - name: Create Pull Request
