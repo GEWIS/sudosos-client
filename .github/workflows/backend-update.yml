@@ -60,6 +60,11 @@ jobs:
         echo "No changes detected in Swagger files. Aborting workflow."
         exit 1
 
+    - name: Configure Git
+      run: |
+        git config --global user.name "${{ github.actor }}"
+        git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+
     - name: Push Changes to New Branch
       run: |
         git checkout -b Update/${{ env.branch }}-${{ env.BACKEND_SHA }}
