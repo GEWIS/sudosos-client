@@ -1907,6 +1907,13 @@ export interface GEWISAuthenticationPinRequest {
     'pin': string;
 }
 /**
+ *
+ * @export
+ * @interface GetAllBalanceUserTypeParameterInner
+ */
+export interface GetAllBalanceUserTypeParameterInner {
+}
+/**
  * @type GetAllPayoutRequestsRequestedByIdParameter
  * @export
  */
@@ -5257,15 +5264,7 @@ export declare class BalanceApi extends BaseAPI {
 /**
  * @export
  */
-export declare const GetAllBalanceUserTypeEnum: {
-    readonly Member: "MEMBER";
-    readonly Organ: "ORGAN";
-    readonly Voucher: "VOUCHER";
-    readonly LocalUser: "LOCAL_USER";
-    readonly LocalAdmin: "LOCAL_ADMIN";
-    readonly Invoice: "INVOICE";
-    readonly AutomaticInvoice: "AUTOMATIC_INVOICE";
-};
+export declare const GetAllBalanceUserTypeEnum: {};
 export type GetAllBalanceUserTypeEnum = typeof GetAllBalanceUserTypeEnum[keyof typeof GetAllBalanceUserTypeEnum];
 /**
  * @export
@@ -5836,6 +5835,15 @@ export declare class ContainersApi extends BaseAPI {
 export declare const DebtorsApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
+     * @summary Return all users that had at most -5 euros balance both now and on the reference date.    For all these users, also return their fine based on the reference date.
+     * @param {Array<string>} referenceDates Dates to base the fines on. Every returned user has at    least five euros debt on every reference date. The height of the fine is based on the first date in the array.
+     * @param {Array<number>} [userTypes] List of all user types fines should be calculated for 1 (MEMBER), 2 (ORGAN), 3 (VOUCHER), 4 (LOCAL_USER), 5 (LOCAL_ADMIN), 6 (INVOICE), 7 (AUTOMATIC_INVOICE).
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    calculateFines: (referenceDates: Array<string>, userTypes?: Array<number>, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Delete a fine
      * @param {number} id The id of the fine which should be deleted
      * @param {*} [options] Override http request option.
@@ -5881,6 +5889,15 @@ export declare const DebtorsApiAxiosParamCreator: (configuration?: Configuration
  * @export
  */
 export declare const DebtorsApiFp: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Return all users that had at most -5 euros balance both now and on the reference date.    For all these users, also return their fine based on the reference date.
+     * @param {Array<string>} referenceDates Dates to base the fines on. Every returned user has at    least five euros debt on every reference date. The height of the fine is based on the first date in the array.
+     * @param {Array<number>} [userTypes] List of all user types fines should be calculated for 1 (MEMBER), 2 (ORGAN), 3 (VOUCHER), 4 (LOCAL_USER), 5 (LOCAL_ADMIN), 6 (INVOICE), 7 (AUTOMATIC_INVOICE).
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    calculateFines(referenceDates: Array<string>, userTypes?: Array<number>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UserToFineResponse>>>;
     /**
      *
      * @summary Delete a fine
@@ -5930,6 +5947,15 @@ export declare const DebtorsApiFp: (configuration?: Configuration) => {
 export declare const DebtorsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
+     * @summary Return all users that had at most -5 euros balance both now and on the reference date.    For all these users, also return their fine based on the reference date.
+     * @param {Array<string>} referenceDates Dates to base the fines on. Every returned user has at    least five euros debt on every reference date. The height of the fine is based on the first date in the array.
+     * @param {Array<number>} [userTypes] List of all user types fines should be calculated for 1 (MEMBER), 2 (ORGAN), 3 (VOUCHER), 4 (LOCAL_USER), 5 (LOCAL_ADMIN), 6 (INVOICE), 7 (AUTOMATIC_INVOICE).
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    calculateFines(referenceDates: Array<string>, userTypes?: Array<number>, options?: any): AxiosPromise<Array<UserToFineResponse>>;
+    /**
+     *
      * @summary Delete a fine
      * @param {number} id The id of the fine which should be deleted
      * @param {*} [options] Override http request option.
@@ -5977,6 +6003,16 @@ export declare const DebtorsApiFactory: (configuration?: Configuration, basePath
  * @extends {BaseAPI}
  */
 export declare class DebtorsApi extends BaseAPI {
+    /**
+     *
+     * @summary Return all users that had at most -5 euros balance both now and on the reference date.    For all these users, also return their fine based on the reference date.
+     * @param {Array<string>} referenceDates Dates to base the fines on. Every returned user has at    least five euros debt on every reference date. The height of the fine is based on the first date in the array.
+     * @param {Array<number>} [userTypes] List of all user types fines should be calculated for 1 (MEMBER), 2 (ORGAN), 3 (VOUCHER), 4 (LOCAL_USER), 5 (LOCAL_ADMIN), 6 (INVOICE), 7 (AUTOMATIC_INVOICE).
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DebtorsApi
+     */
+    calculateFines(referenceDates: Array<string>, userTypes?: Array<number>, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserToFineResponse[], any>>;
     /**
      *
      * @summary Delete a fine
