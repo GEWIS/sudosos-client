@@ -9,8 +9,16 @@ jobs:
   update-client:
     runs-on: ubuntu-latest
     steps:
+    - name: Determine Branch and SHA for Update
+      id: set_branch_and_sha
+      run: |
+        echo "branch=${{ github.event.client_payload.branch || 'develop' }}" >> $GITHUB_ENV
+        echo "BACKEND_SHA=${{ github.event.client_payload.sha || 'MANUAL_RUN' }}" >> $GITHUB_ENV
+
     - name: Checkout Client Repository
       uses: actions/checkout@v2
+      with:
+        ref: ${{ env.branch }}
 
     - name: Set up Node.js
       uses: actions/setup-node@v2
@@ -19,12 +27,6 @@ jobs:
 
     - name: Install Dependencies
       run: npm install
-
-    - name: Determine Branch and SHA for Update
-      id: set_branch_and_sha
-      run: |
-        echo "branch=${{ github.event.client_payload.branch || 'develop' }}" >> $GITHUB_ENV
-        echo "BACKEND_SHA=${{ github.event.client_payload.sha || 'MANUAL_RUN' }}" >> $GITHUB_ENV
 
     - name: Run Update Script
       run: |
