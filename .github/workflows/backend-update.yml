@@ -30,7 +30,7 @@ jobs:
       run: |
         if [[ ${{ env.branch }} == 'main' ]]; then
           npm run update-swagger:main
-          if ! cmp --silent ./swagger-main.json ./swagger-json; then
+          if ! cmp --silent ./swagger-main.json ./swagger.json; then
             mv ./swagger-main.json ./swagger-json
             echo "Files differ, running npm run gen"
             echo "NEEDS_GEN=true" >> $GITHUB_ENV
@@ -40,7 +40,7 @@ jobs:
           fi
         elif [[ ${{ env.branch }} == 'develop' ]]; then
           npm run update-swagger:dev
-          if ! cmp --silent ./swagger-develop.json ./swagger-json; then
+          if ! cmp --silent ./swagger-develop.json ./swagger.json; then
             mv ./swagger-develop.json ./swagger-json
             echo "Files differ, running npm run gen"
             echo "NEEDS_GEN=true" >> $GITHUB_ENV

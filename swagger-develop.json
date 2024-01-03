@@ -1,1 +1,0 @@
-{"openapi":"3.0.0","info":{"title":"sudosos-back-end","description":"SudoSOS","termsOfService":"","version":"0.1.0"},"servers":[{"url":"http://undefinedundefined","description":"Development server"}],"security":[{"JWT":[]}],"components":{"securitySchemes":{"JWT":{"type":"http","scheme":"bearer","bearerFormat":"JWT"}},"schemas":{}},"paths":{},"tags":[]}
