@@ -12,9 +12,8 @@ jobs:
     - name: Determine Branch and SHA for Update
       id: set_branch_and_sha
       run: |
-        echo "branch=${{ github.event.client_payload.branch || 'develop' }}" >> $GITHUB_ENV
-        echo "BACKEND_SHA=${{ github.event.client_payload.sha || 'MANUAL_RUN' }}" >> $GITHUB_ENV
-
+        echo "branch=$(echo ${{ github.event.client_payload.ref }} | awk -F'/' '{print $NF}' || 'develop')" >> $GITHUB_ENV
+        echo "BACKEND_SHA=$(echo ${{ github.event.client_payload.sha }} || 'MANUAL_RUN')" >> $GITHUB_ENV
     - name: Checkout Client Repository
       uses: actions/checkout@v2
       with:
@@ -51,7 +50,6 @@ jobs:
             echo "NEEDS_GEN=false" >> $GITHUB_ENV
           fi
         fi
-
     - name: Generate Client Code
       if: env.NEEDS_GEN == 'true'
       run: npm run genbuild
@@ -61,7 +59,6 @@ jobs:
       run: |
         git config --global user.name "${{ github.actor }}"
         git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-
     - name: Push Changes to New Branch
       if: env.NEEDS_GEN == 'true'
       run: |
@@ -69,7 +66,6 @@ jobs:
         git add .
         git commit -m "Update from backend ${{env.BACKEND_SHA}}" --author="GitHub Actions Bot <actions@github.com>"
         git push origin Update/${{ env.branch }}-${{ env.BACKEND_SHA }}
-
     - name: Create Pull Request
       uses: repo-sync/pull-request@v2
       if: env.NEEDS_GEN == 'true'
