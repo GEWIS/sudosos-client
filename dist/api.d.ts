@@ -4857,7 +4857,7 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    resetLocal(resetLocalRequest: ResetLocalRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    resetLocal(resetLocalRequest: ResetLocalRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
      * @summary Reset local authentication using the provided token
@@ -4865,7 +4865,7 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    resetLocalWithToken(authenticationResetTokenRequest: AuthenticationResetTokenRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    resetLocalWithToken(authenticationResetTokenRequest: AuthenticationResetTokenRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
 };
 /**
  * AuthenticateApi - factory interface
@@ -4966,7 +4966,7 @@ export declare const AuthenticateApiFactory: (configuration?: Configuration, bas
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    resetLocal(resetLocalRequest: ResetLocalRequest, options?: any): AxiosPromise<string>;
+    resetLocal(resetLocalRequest: ResetLocalRequest, options?: any): AxiosPromise<void>;
     /**
      *
      * @summary Reset local authentication using the provided token
@@ -4974,7 +4974,7 @@ export declare const AuthenticateApiFactory: (configuration?: Configuration, bas
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    resetLocalWithToken(authenticationResetTokenRequest: AuthenticationResetTokenRequest, options?: any): AxiosPromise<string>;
+    resetLocalWithToken(authenticationResetTokenRequest: AuthenticationResetTokenRequest, options?: any): AxiosPromise<void>;
 };
 /**
  * AuthenticateApi - object-oriented interface
@@ -5089,7 +5089,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    resetLocal(resetLocalRequest: ResetLocalRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    resetLocal(resetLocalRequest: ResetLocalRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
     /**
      *
      * @summary Reset local authentication using the provided token
@@ -5098,7 +5098,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    resetLocalWithToken(authenticationResetTokenRequest: AuthenticationResetTokenRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    resetLocalWithToken(authenticationResetTokenRequest: AuthenticationResetTokenRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
 }
 /**
  * BalanceApi - axios parameter creator
@@ -5361,7 +5361,7 @@ export declare const BannersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    _delete(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BannerResponse>>;
+    _delete(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
      * @summary Saves a banner to the database
@@ -5436,7 +5436,7 @@ export declare const BannersApiFactory: (configuration?: Configuration, basePath
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    _delete(id: number, options?: any): AxiosPromise<BannerResponse>;
+    _delete(id: number, options?: any): AxiosPromise<void>;
     /**
      *
      * @summary Saves a banner to the database
@@ -5514,7 +5514,7 @@ export declare class BannersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BannersApi
      */
-    _delete(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BannerResponse, any>>;
+    _delete(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
     /**
      *
      * @summary Saves a banner to the database
@@ -5905,7 +5905,7 @@ export declare const DebtorsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteFine(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    deleteFine(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
      * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
@@ -5921,7 +5921,7 @@ export declare const DebtorsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyAboutFutureFines(handoutFinesRequest: HandoutFinesRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    notifyAboutFutureFines(handoutFinesRequest: HandoutFinesRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
      * @summary Get all fine handout events
@@ -5961,7 +5961,7 @@ export declare const DebtorsApiFactory: (configuration?: Configuration, basePath
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteFine(id: number, options?: any): AxiosPromise<string>;
+    deleteFine(id: number, options?: any): AxiosPromise<void>;
     /**
      *
      * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
@@ -5977,7 +5977,7 @@ export declare const DebtorsApiFactory: (configuration?: Configuration, basePath
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    notifyAboutFutureFines(handoutFinesRequest: HandoutFinesRequest, options?: any): AxiosPromise<string>;
+    notifyAboutFutureFines(handoutFinesRequest: HandoutFinesRequest, options?: any): AxiosPromise<void>;
     /**
      *
      * @summary Get all fine handout events
@@ -6021,7 +6021,7 @@ export declare class DebtorsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DebtorsApi
      */
-    deleteFine(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    deleteFine(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
     /**
      *
      * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
@@ -6039,7 +6039,7 @@ export declare class DebtorsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DebtorsApi
      */
-    notifyAboutFutureFines(handoutFinesRequest: HandoutFinesRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    notifyAboutFutureFines(handoutFinesRequest: HandoutFinesRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
     /**
      *
      * @summary Get all fine handout events
@@ -6219,7 +6219,7 @@ export declare const EventsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteEvent(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    deleteEvent(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
      * @summary Delete an event shift with its answers
@@ -6227,7 +6227,7 @@ export declare const EventsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteEventShift(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    deleteEventShift(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
      * @summary Get all event shifts
@@ -6339,7 +6339,7 @@ export declare const EventsApiFactory: (configuration?: Configuration, basePath?
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteEvent(id: number, options?: any): AxiosPromise<string>;
+    deleteEvent(id: number, options?: any): AxiosPromise<void>;
     /**
      *
      * @summary Delete an event shift with its answers
@@ -6347,7 +6347,7 @@ export declare const EventsApiFactory: (configuration?: Configuration, basePath?
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteEventShift(id: number, options?: any): AxiosPromise<string>;
+    deleteEventShift(id: number, options?: any): AxiosPromise<void>;
     /**
      *
      * @summary Get all event shifts
@@ -6465,7 +6465,7 @@ export declare class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    deleteEvent(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    deleteEvent(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
     /**
      *
      * @summary Delete an event shift with its answers
@@ -6474,7 +6474,7 @@ export declare class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    deleteEventShift(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    deleteEventShift(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
     /**
      *
      * @summary Get all event shifts
@@ -6606,7 +6606,7 @@ export declare const FilesApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteFile(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    deleteFile(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
      * @summary Download a file with the given id.
@@ -6637,7 +6637,7 @@ export declare const FilesApiFactory: (configuration?: Configuration, basePath?:
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteFile(id: number, options?: any): AxiosPromise<string>;
+    deleteFile(id: number, options?: any): AxiosPromise<void>;
     /**
      *
      * @summary Download a file with the given id.
@@ -6672,7 +6672,7 @@ export declare class FilesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FilesApi
      */
-    deleteFile(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    deleteFile(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
     /**
      *
      * @summary Download a file with the given id.
@@ -7947,7 +7947,7 @@ export declare const TestOperationsOfTheTestControllerApiFp: (configuration?: Co
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    helloworld(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    helloworld(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
 };
 /**
  * TestOperationsOfTheTestControllerApi - factory interface
@@ -7960,7 +7960,7 @@ export declare const TestOperationsOfTheTestControllerApiFactory: (configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    helloworld(options?: any): AxiosPromise<string>;
+    helloworld(options?: any): AxiosPromise<void>;
 };
 /**
  * TestOperationsOfTheTestControllerApi - object-oriented interface
@@ -7976,7 +7976,7 @@ export declare class TestOperationsOfTheTestControllerApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TestOperationsOfTheTestControllerApi
      */
-    helloworld(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    helloworld(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
 }
 /**
  * TransactionsApi - axios parameter creator
@@ -8062,7 +8062,7 @@ export declare const TransactionsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteTransaction(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionResponse>>;
+    deleteTransaction(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
      * @summary Get a list of all transactions
@@ -8126,7 +8126,7 @@ export declare const TransactionsApiFactory: (configuration?: Configuration, bas
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteTransaction(id: number, options?: any): AxiosPromise<TransactionResponse>;
+    deleteTransaction(id: number, options?: any): AxiosPromise<void>;
     /**
      *
      * @summary Get a list of all transactions
@@ -8194,7 +8194,7 @@ export declare class TransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    deleteTransaction(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionResponse, any>>;
+    deleteTransaction(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
     /**
      *
      * @summary Get a list of all transactions
@@ -8638,7 +8638,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    acceptTos(acceptTosRequest: AcceptTosRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    acceptTos(acceptTosRequest: AcceptTosRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
      * @summary Authenticate as another user
@@ -8662,7 +8662,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteUser(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    deleteUser(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
      * @summary Delete a users key code
@@ -8879,7 +8879,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    waiveUserFines(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    waiveUserFines(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
 };
 /**
  * UsersApi - factory interface
@@ -8893,7 +8893,7 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    acceptTos(acceptTosRequest: AcceptTosRequest, options?: any): AxiosPromise<string>;
+    acceptTos(acceptTosRequest: AcceptTosRequest, options?: any): AxiosPromise<void>;
     /**
      *
      * @summary Authenticate as another user
@@ -8917,7 +8917,7 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteUser(id: number, options?: any): AxiosPromise<string>;
+    deleteUser(id: number, options?: any): AxiosPromise<void>;
     /**
      *
      * @summary Delete a users key code
@@ -9134,7 +9134,7 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    waiveUserFines(id: number, options?: any): AxiosPromise<string>;
+    waiveUserFines(id: number, options?: any): AxiosPromise<void>;
 };
 /**
  * UsersApi - object-oriented interface
@@ -9151,7 +9151,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    acceptTos(acceptTosRequest: AcceptTosRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    acceptTos(acceptTosRequest: AcceptTosRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
     /**
      *
      * @summary Authenticate as another user
@@ -9178,7 +9178,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    deleteUser(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    deleteUser(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
     /**
      *
      * @summary Delete a users key code
@@ -9417,7 +9417,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    waiveUserFines(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    waiveUserFines(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
 }
 /**
  * @export
