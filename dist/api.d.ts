@@ -1909,9 +1909,9 @@ export interface GEWISAuthenticationPinRequest {
 /**
  *
  * @export
- * @interface GetAllBalanceUserTypeParameterInner
+ * @interface GetAllBalanceUserTypesParameterInner
  */
-export interface GetAllBalanceUserTypeParameterInner {
+export interface GetAllBalanceUserTypesParameterInner {
 }
 /**
  * @type GetAllPayoutRequestsRequestedByIdParameter
@@ -5114,7 +5114,7 @@ export declare const BalanceApiAxiosParamCreator: (configuration?: Configuration
      * @param {boolean} [hasFine] Only users with(out) fines
      * @param {number} [minFine] Minimum fine
      * @param {number} [maxFine] Maximum fine
-     * @param {GetAllBalanceUserTypeEnum} [userType] Filter based on user type.
+     * @param {GetAllBalanceUserTypesEnum} [userTypes] Filter based on user type.
      * @param {string} [orderBy] Column to order balance by - eg: id,amount
      * @param {GetAllBalanceOrderDirectionEnum} [orderDirection] Order direction
      * @param {number} [take] How many transactions the endpoint should return
@@ -5122,7 +5122,7 @@ export declare const BalanceApiAxiosParamCreator: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllBalance: (date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userType?: GetAllBalanceUserTypeEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getAllBalance: (date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Retrieves the requested balance
@@ -5153,7 +5153,7 @@ export declare const BalanceApiFp: (configuration?: Configuration) => {
      * @param {boolean} [hasFine] Only users with(out) fines
      * @param {number} [minFine] Minimum fine
      * @param {number} [maxFine] Maximum fine
-     * @param {GetAllBalanceUserTypeEnum} [userType] Filter based on user type.
+     * @param {GetAllBalanceUserTypesEnum} [userTypes] Filter based on user type.
      * @param {string} [orderBy] Column to order balance by - eg: id,amount
      * @param {GetAllBalanceOrderDirectionEnum} [orderDirection] Order direction
      * @param {number} [take] How many transactions the endpoint should return
@@ -5161,7 +5161,7 @@ export declare const BalanceApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userType?: GetAllBalanceUserTypeEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BalanceResponse>>>;
+    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BalanceResponse>>>;
     /**
      *
      * @summary Retrieves the requested balance
@@ -5192,7 +5192,7 @@ export declare const BalanceApiFactory: (configuration?: Configuration, basePath
      * @param {boolean} [hasFine] Only users with(out) fines
      * @param {number} [minFine] Minimum fine
      * @param {number} [maxFine] Maximum fine
-     * @param {GetAllBalanceUserTypeEnum} [userType] Filter based on user type.
+     * @param {GetAllBalanceUserTypesEnum} [userTypes] Filter based on user type.
      * @param {string} [orderBy] Column to order balance by - eg: id,amount
      * @param {GetAllBalanceOrderDirectionEnum} [orderDirection] Order direction
      * @param {number} [take] How many transactions the endpoint should return
@@ -5200,7 +5200,7 @@ export declare const BalanceApiFactory: (configuration?: Configuration, basePath
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userType?: GetAllBalanceUserTypeEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, take?: number, skip?: number, options?: any): AxiosPromise<Array<BalanceResponse>>;
+    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, take?: number, skip?: number, options?: any): AxiosPromise<Array<BalanceResponse>>;
     /**
      *
      * @summary Retrieves the requested balance
@@ -5233,7 +5233,7 @@ export declare class BalanceApi extends BaseAPI {
      * @param {boolean} [hasFine] Only users with(out) fines
      * @param {number} [minFine] Minimum fine
      * @param {number} [maxFine] Maximum fine
-     * @param {GetAllBalanceUserTypeEnum} [userType] Filter based on user type.
+     * @param {GetAllBalanceUserTypesEnum} [userTypes] Filter based on user type.
      * @param {string} [orderBy] Column to order balance by - eg: id,amount
      * @param {GetAllBalanceOrderDirectionEnum} [orderDirection] Order direction
      * @param {number} [take] How many transactions the endpoint should return
@@ -5242,7 +5242,7 @@ export declare class BalanceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BalanceApi
      */
-    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userType?: GetAllBalanceUserTypeEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BalanceResponse[], any>>;
+    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BalanceResponse[], any>>;
     /**
      *
      * @summary Retrieves the requested balance
@@ -5264,8 +5264,8 @@ export declare class BalanceApi extends BaseAPI {
 /**
  * @export
  */
-export declare const GetAllBalanceUserTypeEnum: {};
-export type GetAllBalanceUserTypeEnum = typeof GetAllBalanceUserTypeEnum[keyof typeof GetAllBalanceUserTypeEnum];
+export declare const GetAllBalanceUserTypesEnum: {};
+export type GetAllBalanceUserTypesEnum = typeof GetAllBalanceUserTypesEnum[keyof typeof GetAllBalanceUserTypesEnum];
 /**
  * @export
  */
@@ -6709,7 +6709,7 @@ export declare const InvoicesApiAxiosParamCreator: (configuration?: Configuratio
      * @summary Returns all invoices in the system.
      * @param {number} [toId] Filter on Id of the debtor
      * @param {number} [invoiceId] Filter on invoice ID
-     * @param {number} [state] {1,2,3,4} - Filter based on Invoice State.    Possible values: 1 (CREATED), 2 (SENT), 3 (PAID), 4 (DELETED)
+     * @param {GetAllInvoicesCurrentStateEnum} [currentState] Filter based on Invoice State.
      * @param {boolean} [returnEntries] Boolean if invoice entries should be returned
      * @param {string} [fromDate] Start date for selected invoices (inclusive)
      * @param {string} [tillDate] End date for selected invoices (exclusive)
@@ -6718,7 +6718,7 @@ export declare const InvoicesApiAxiosParamCreator: (configuration?: Configuratio
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllInvoices: (toId?: number, invoiceId?: number, state?: number, returnEntries?: boolean, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getAllInvoices: (toId?: number, invoiceId?: number, currentState?: GetAllInvoicesCurrentStateEnum, returnEntries?: boolean, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns a single invoice in the system.
@@ -6764,7 +6764,7 @@ export declare const InvoicesApiFp: (configuration?: Configuration) => {
      * @summary Returns all invoices in the system.
      * @param {number} [toId] Filter on Id of the debtor
      * @param {number} [invoiceId] Filter on invoice ID
-     * @param {number} [state] {1,2,3,4} - Filter based on Invoice State.    Possible values: 1 (CREATED), 2 (SENT), 3 (PAID), 4 (DELETED)
+     * @param {GetAllInvoicesCurrentStateEnum} [currentState] Filter based on Invoice State.
      * @param {boolean} [returnEntries] Boolean if invoice entries should be returned
      * @param {string} [fromDate] Start date for selected invoices (inclusive)
      * @param {string} [tillDate] End date for selected invoices (exclusive)
@@ -6773,7 +6773,7 @@ export declare const InvoicesApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllInvoices(toId?: number, invoiceId?: number, state?: number, returnEntries?: boolean, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedInvoiceResponse>>;
+    getAllInvoices(toId?: number, invoiceId?: number, currentState?: GetAllInvoicesCurrentStateEnum, returnEntries?: boolean, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedInvoiceResponse>>;
     /**
      *
      * @summary Returns a single invoice in the system.
@@ -6819,7 +6819,7 @@ export declare const InvoicesApiFactory: (configuration?: Configuration, basePat
      * @summary Returns all invoices in the system.
      * @param {number} [toId] Filter on Id of the debtor
      * @param {number} [invoiceId] Filter on invoice ID
-     * @param {number} [state] {1,2,3,4} - Filter based on Invoice State.    Possible values: 1 (CREATED), 2 (SENT), 3 (PAID), 4 (DELETED)
+     * @param {GetAllInvoicesCurrentStateEnum} [currentState] Filter based on Invoice State.
      * @param {boolean} [returnEntries] Boolean if invoice entries should be returned
      * @param {string} [fromDate] Start date for selected invoices (inclusive)
      * @param {string} [tillDate] End date for selected invoices (exclusive)
@@ -6828,7 +6828,7 @@ export declare const InvoicesApiFactory: (configuration?: Configuration, basePat
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllInvoices(toId?: number, invoiceId?: number, state?: number, returnEntries?: boolean, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedInvoiceResponse>;
+    getAllInvoices(toId?: number, invoiceId?: number, currentState?: GetAllInvoicesCurrentStateEnum, returnEntries?: boolean, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedInvoiceResponse>;
     /**
      *
      * @summary Returns a single invoice in the system.
@@ -6878,7 +6878,7 @@ export declare class InvoicesApi extends BaseAPI {
      * @summary Returns all invoices in the system.
      * @param {number} [toId] Filter on Id of the debtor
      * @param {number} [invoiceId] Filter on invoice ID
-     * @param {number} [state] {1,2,3,4} - Filter based on Invoice State.    Possible values: 1 (CREATED), 2 (SENT), 3 (PAID), 4 (DELETED)
+     * @param {GetAllInvoicesCurrentStateEnum} [currentState] Filter based on Invoice State.
      * @param {boolean} [returnEntries] Boolean if invoice entries should be returned
      * @param {string} [fromDate] Start date for selected invoices (inclusive)
      * @param {string} [tillDate] End date for selected invoices (exclusive)
@@ -6888,7 +6888,7 @@ export declare class InvoicesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoicesApi
      */
-    getAllInvoices(toId?: number, invoiceId?: number, state?: number, returnEntries?: boolean, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedInvoiceResponse, any>>;
+    getAllInvoices(toId?: number, invoiceId?: number, currentState?: GetAllInvoicesCurrentStateEnum, returnEntries?: boolean, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedInvoiceResponse, any>>;
     /**
      *
      * @summary Returns a single invoice in the system.
@@ -6910,6 +6910,11 @@ export declare class InvoicesApi extends BaseAPI {
      */
     updateInvoice(id: number, updateInvoiceRequest: UpdateInvoiceRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BaseInvoiceResponse, any>>;
 }
+/**
+ * @export
+ */
+export declare const GetAllInvoicesCurrentStateEnum: {};
+export type GetAllInvoicesCurrentStateEnum = typeof GetAllInvoicesCurrentStateEnum[keyof typeof GetAllInvoicesCurrentStateEnum];
 /**
  * PayoutRequestsApi - axios parameter creator
  * @export
