@@ -4296,6 +4296,12 @@ export interface UpdateUserRequest {
      * @memberof UpdateUserRequest
      */
     'active'?: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof UpdateUserRequest
+     */
+    'extensiveDataProcessing'?: boolean;
 }
 /**
  *
