@@ -13678,7 +13678,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
-         * @summary Get all financial mutations of a user.
+         * @summary Get all financial mutations of a user (from or to).
          * @param {number} id The id of the user to get the mutations from
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
@@ -13860,7 +13860,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
-         * @summary Get an user\'s transactions (from, to or created)
+         * @summary Get transactions from a user.
          * @param {number} id The id of the user that should be involved in all returned transactions
          * @param {number} [fromId] From-user for selected transactions
          * @param {number} [createdById] User that created selected transaction
@@ -14006,7 +14006,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
-         * @summary Get an user\'s transfers
+         * @summary Get transfers to or from an user.
          * @param {number} id The id of the user that should be involved in all returned transfers
          * @param {number} [take] How many transfers the endpoint should return
          * @param {number} [skip] How many transfers should be skipped (for pagination)
@@ -14512,7 +14512,7 @@ export const UsersApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Get all financial mutations of a user.
+         * @summary Get all financial mutations of a user (from or to).
          * @param {number} id The id of the user to get the mutations from
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
@@ -14570,7 +14570,7 @@ export const UsersApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Get an user\'s transactions (from, to or created)
+         * @summary Get transactions from a user.
          * @param {number} id The id of the user that should be involved in all returned transactions
          * @param {number} [fromId] From-user for selected transactions
          * @param {number} [createdById] User that created selected transaction
@@ -14610,7 +14610,7 @@ export const UsersApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Get an user\'s transfers
+         * @summary Get transfers to or from an user.
          * @param {number} id The id of the user that should be involved in all returned transfers
          * @param {number} [take] How many transfers the endpoint should return
          * @param {number} [skip] How many transfers should be skipped (for pagination)
@@ -14862,7 +14862,7 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
-         * @summary Get all financial mutations of a user.
+         * @summary Get all financial mutations of a user (from or to).
          * @param {number} id The id of the user to get the mutations from
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
@@ -14908,7 +14908,7 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
-         * @summary Get an user\'s transactions (from, to or created)
+         * @summary Get transactions from a user.
          * @param {number} id The id of the user that should be involved in all returned transactions
          * @param {number} [fromId] From-user for selected transactions
          * @param {number} [createdById] User that created selected transaction
@@ -14942,7 +14942,7 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
-         * @summary Get an user\'s transfers
+         * @summary Get transfers to or from an user.
          * @param {number} id The id of the user that should be involved in all returned transfers
          * @param {number} [take] How many transfers the endpoint should return
          * @param {number} [skip] How many transfers should be skipped (for pagination)
@@ -15199,7 +15199,7 @@ export class UsersApi extends BaseAPI {
 
     /**
      * 
-     * @summary Get all financial mutations of a user.
+     * @summary Get all financial mutations of a user (from or to).
      * @param {number} id The id of the user to get the mutations from
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
@@ -15253,7 +15253,7 @@ export class UsersApi extends BaseAPI {
 
     /**
      * 
-     * @summary Get an user\'s transactions (from, to or created)
+     * @summary Get transactions from a user.
      * @param {number} id The id of the user that should be involved in all returned transactions
      * @param {number} [fromId] From-user for selected transactions
      * @param {number} [createdById] User that created selected transaction
@@ -15291,7 +15291,7 @@ export class UsersApi extends BaseAPI {
 
     /**
      * 
-     * @summary Get an user\'s transfers
+     * @summary Get transfers to or from an user.
      * @param {number} id The id of the user that should be involved in all returned transfers
      * @param {number} [take] How many transfers the endpoint should return
      * @param {number} [skip] How many transfers should be skipped (for pagination)
