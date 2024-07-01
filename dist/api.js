@@ -95,7 +95,7 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        gewisLDAPAuthentication: (authenticationLDAPRequest_1, ...args_2) => __awaiter(this, [authenticationLDAPRequest_1, ...args_2], void 0, function* (authenticationLDAPRequest, options = {}) {
+        gewisLDAPAuthentication: (authenticationLDAPRequest_1, ...args_1) => __awaiter(this, [authenticationLDAPRequest_1, ...args_1], void 0, function* (authenticationLDAPRequest, options = {}) {
             // verify required parameter 'authenticationLDAPRequest' is not null or undefined
             (0, common_1.assertParamExists)('gewisLDAPAuthentication', 'authenticationLDAPRequest', authenticationLDAPRequest);
             const localVarPath = `/authentication/GEWIS/LDAP`;
@@ -125,7 +125,7 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        gewisPinAuthentication: (gEWISAuthenticationPinRequest_1, ...args_3) => __awaiter(this, [gEWISAuthenticationPinRequest_1, ...args_3], void 0, function* (gEWISAuthenticationPinRequest, options = {}) {
+        gewisPinAuthentication: (gEWISAuthenticationPinRequest_1, ...args_1) => __awaiter(this, [gEWISAuthenticationPinRequest_1, ...args_1], void 0, function* (gEWISAuthenticationPinRequest, options = {}) {
             // verify required parameter 'gEWISAuthenticationPinRequest' is not null or undefined
             (0, common_1.assertParamExists)('gewisPinAuthentication', 'gEWISAuthenticationPinRequest', gEWISAuthenticationPinRequest);
             const localVarPath = `/authentication/GEWIS/pin`;
@@ -155,7 +155,7 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        gewisWebAuthentication: (gewiswebAuthenticationRequest_1, ...args_4) => __awaiter(this, [gewiswebAuthenticationRequest_1, ...args_4], void 0, function* (gewiswebAuthenticationRequest, options = {}) {
+        gewisWebAuthentication: (gewiswebAuthenticationRequest_1, ...args_1) => __awaiter(this, [gewiswebAuthenticationRequest_1, ...args_1], void 0, function* (gewiswebAuthenticationRequest, options = {}) {
             // verify required parameter 'gewiswebAuthenticationRequest' is not null or undefined
             (0, common_1.assertParamExists)('gewisWebAuthentication', 'gewiswebAuthenticationRequest', gewiswebAuthenticationRequest);
             const localVarPath = `/authentication/gewisweb`;
@@ -185,7 +185,7 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        keyAuthentication: (authenticationKeyRequest_1, ...args_5) => __awaiter(this, [authenticationKeyRequest_1, ...args_5], void 0, function* (authenticationKeyRequest, options = {}) {
+        keyAuthentication: (authenticationKeyRequest_1, ...args_1) => __awaiter(this, [authenticationKeyRequest_1, ...args_1], void 0, function* (authenticationKeyRequest, options = {}) {
             // verify required parameter 'authenticationKeyRequest' is not null or undefined
             (0, common_1.assertParamExists)('keyAuthentication', 'authenticationKeyRequest', authenticationKeyRequest);
             const localVarPath = `/authentication/key`;
@@ -215,7 +215,7 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        ldapAuthentication: (authenticationLDAPRequest_2, ...args_6) => __awaiter(this, [authenticationLDAPRequest_2, ...args_6], void 0, function* (authenticationLDAPRequest, options = {}) {
+        ldapAuthentication: (authenticationLDAPRequest_1, ...args_1) => __awaiter(this, [authenticationLDAPRequest_1, ...args_1], void 0, function* (authenticationLDAPRequest, options = {}) {
             // verify required parameter 'authenticationLDAPRequest' is not null or undefined
             (0, common_1.assertParamExists)('ldapAuthentication', 'authenticationLDAPRequest', authenticationLDAPRequest);
             const localVarPath = `/authentication/LDAP`;
@@ -245,7 +245,7 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        localAuthentication: (authenticationLocalRequest_1, ...args_7) => __awaiter(this, [authenticationLocalRequest_1, ...args_7], void 0, function* (authenticationLocalRequest, options = {}) {
+        localAuthentication: (authenticationLocalRequest_1, ...args_1) => __awaiter(this, [authenticationLocalRequest_1, ...args_1], void 0, function* (authenticationLocalRequest, options = {}) {
             // verify required parameter 'authenticationLocalRequest' is not null or undefined
             (0, common_1.assertParamExists)('localAuthentication', 'authenticationLocalRequest', authenticationLocalRequest);
             const localVarPath = `/authentication/local`;
@@ -275,7 +275,7 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        mockAuthentication: (authenticationMockRequest_1, ...args_8) => __awaiter(this, [authenticationMockRequest_1, ...args_8], void 0, function* (authenticationMockRequest, options = {}) {
+        mockAuthentication: (authenticationMockRequest_1, ...args_1) => __awaiter(this, [authenticationMockRequest_1, ...args_1], void 0, function* (authenticationMockRequest, options = {}) {
             // verify required parameter 'authenticationMockRequest' is not null or undefined
             (0, common_1.assertParamExists)('mockAuthentication', 'authenticationMockRequest', authenticationMockRequest);
             const localVarPath = `/authentication/mock`;
@@ -305,7 +305,7 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        nfcAuthentication: (authenticationNfcRequest_1, ...args_9) => __awaiter(this, [authenticationNfcRequest_1, ...args_9], void 0, function* (authenticationNfcRequest, options = {}) {
+        nfcAuthentication: (authenticationNfcRequest_1, ...args_1) => __awaiter(this, [authenticationNfcRequest_1, ...args_1], void 0, function* (authenticationNfcRequest, options = {}) {
             // verify required parameter 'authenticationNfcRequest' is not null or undefined
             (0, common_1.assertParamExists)('nfcAuthentication', 'authenticationNfcRequest', authenticationNfcRequest);
             const localVarPath = `/authentication/nfc`;
@@ -335,7 +335,7 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinAuthentication: (authenticationPinRequest_1, ...args_10) => __awaiter(this, [authenticationPinRequest_1, ...args_10], void 0, function* (authenticationPinRequest, options = {}) {
+        pinAuthentication: (authenticationPinRequest_1, ...args_1) => __awaiter(this, [authenticationPinRequest_1, ...args_1], void 0, function* (authenticationPinRequest, options = {}) {
             // verify required parameter 'authenticationPinRequest' is not null or undefined
             (0, common_1.assertParamExists)('pinAuthentication', 'authenticationPinRequest', authenticationPinRequest);
             const localVarPath = `/authentication/pin`;
@@ -364,7 +364,7 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        refreshToken: (...args_11) => __awaiter(this, [...args_11], void 0, function* (options = {}) {
+        refreshToken: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
             const localVarPath = `/authentication/refreshToken`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -393,7 +393,7 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        resetLocal: (resetLocalRequest_1, ...args_12) => __awaiter(this, [resetLocalRequest_1, ...args_12], void 0, function* (resetLocalRequest, options = {}) {
+        resetLocal: (resetLocalRequest_1, ...args_1) => __awaiter(this, [resetLocalRequest_1, ...args_1], void 0, function* (resetLocalRequest, options = {}) {
             // verify required parameter 'resetLocalRequest' is not null or undefined
             (0, common_1.assertParamExists)('resetLocal', 'resetLocalRequest', resetLocalRequest);
             const localVarPath = `/authentication/local/reset`;
@@ -423,7 +423,7 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        resetLocalWithToken: (authenticationResetTokenRequest_1, ...args_13) => __awaiter(this, [authenticationResetTokenRequest_1, ...args_13], void 0, function* (authenticationResetTokenRequest, options = {}) {
+        resetLocalWithToken: (authenticationResetTokenRequest_1, ...args_1) => __awaiter(this, [authenticationResetTokenRequest_1, ...args_1], void 0, function* (authenticationResetTokenRequest, options = {}) {
             // verify required parameter 'authenticationResetTokenRequest' is not null or undefined
             (0, common_1.assertParamExists)('resetLocalWithToken', 'authenticationResetTokenRequest', authenticationResetTokenRequest);
             const localVarPath = `/authentication/local`;
@@ -1041,7 +1041,7 @@ const BalanceApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getBalanceId: (id_1, ...args_2) => __awaiter(this, [id_1, ...args_2], void 0, function* (id, options = {}) {
+        getBalanceId: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getBalanceId', 'id', id);
             const localVarPath = `/balances/{id}`
@@ -1072,7 +1072,7 @@ const BalanceApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getBalances: (...args_3) => __awaiter(this, [...args_3], void 0, function* (options = {}) {
+        getBalances: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
             const localVarPath = `/balances`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -1320,7 +1320,7 @@ const BannersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        create: (bannerRequest_1, ...args_2) => __awaiter(this, [bannerRequest_1, ...args_2], void 0, function* (bannerRequest, options = {}) {
+        create: (bannerRequest_1, ...args_1) => __awaiter(this, [bannerRequest_1, ...args_1], void 0, function* (bannerRequest, options = {}) {
             // verify required parameter 'bannerRequest' is not null or undefined
             (0, common_1.assertParamExists)('create', 'bannerRequest', bannerRequest);
             const localVarPath = `/banners`;
@@ -1354,7 +1354,7 @@ const BannersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getActive: (take_1, skip_1, ...args_3) => __awaiter(this, [take_1, skip_1, ...args_3], void 0, function* (take, skip, options = {}) {
+        getActive: (take_1, skip_1, ...args_1) => __awaiter(this, [take_1, skip_1, ...args_1], void 0, function* (take, skip, options = {}) {
             const localVarPath = `/banners/active`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -1390,7 +1390,7 @@ const BannersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllBanners: (take_2, skip_2, ...args_4) => __awaiter(this, [take_2, skip_2, ...args_4], void 0, function* (take, skip, options = {}) {
+        getAllBanners: (take_1, skip_1, ...args_1) => __awaiter(this, [take_1, skip_1, ...args_1], void 0, function* (take, skip, options = {}) {
             const localVarPath = `/banners`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -1426,7 +1426,7 @@ const BannersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllOpenBanners: (take_3, skip_3, ...args_5) => __awaiter(this, [take_3, skip_3, ...args_5], void 0, function* (take, skip, options = {}) {
+        getAllOpenBanners: (take_1, skip_1, ...args_1) => __awaiter(this, [take_1, skip_1, ...args_1], void 0, function* (take, skip, options = {}) {
             const localVarPath = `/open/banners`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -1458,7 +1458,7 @@ const BannersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getBanner: (id_2, ...args_6) => __awaiter(this, [id_2, ...args_6], void 0, function* (id, options = {}) {
+        getBanner: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getBanner', 'id', id);
             const localVarPath = `/banners/{id}`
@@ -1491,7 +1491,7 @@ const BannersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        update: (id_3, bannerRequest_2, ...args_7) => __awaiter(this, [id_3, bannerRequest_2, ...args_7], void 0, function* (id, bannerRequest, options = {}) {
+        update: (id_1, bannerRequest_1, ...args_1) => __awaiter(this, [id_1, bannerRequest_1, ...args_1], void 0, function* (id, bannerRequest, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('update', 'id', id);
             // verify required parameter 'bannerRequest' is not null or undefined
@@ -1528,7 +1528,7 @@ const BannersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateImage: (id_4, file_1, ...args_8) => __awaiter(this, [id_4, file_1, ...args_8], void 0, function* (id, file, options = {}) {
+        updateImage: (id_1, file_1, ...args_1) => __awaiter(this, [id_1, file_1, ...args_1], void 0, function* (id, file, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateImage', 'id', id);
             const localVarPath = `/banners/{id}/image`
@@ -1949,7 +1949,7 @@ const ContainersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllContainers: (take_1, skip_1, ...args_2) => __awaiter(this, [take_1, skip_1, ...args_2], void 0, function* (take, skip, options = {}) {
+        getAllContainers: (take_1, skip_1, ...args_1) => __awaiter(this, [take_1, skip_1, ...args_1], void 0, function* (take, skip, options = {}) {
             const localVarPath = `/containers`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -1986,7 +1986,7 @@ const ContainersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getProductsContainer: (id_1, take_2, skip_2, ...args_3) => __awaiter(this, [id_1, take_2, skip_2, ...args_3], void 0, function* (id, take, skip, options = {}) {
+        getProductsContainer: (id_1, take_1, skip_1, ...args_1) => __awaiter(this, [id_1, take_1, skip_1, ...args_1], void 0, function* (id, take, skip, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getProductsContainer', 'id', id);
             const localVarPath = `/containers/{id}/products`
@@ -2025,7 +2025,7 @@ const ContainersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPublicContainers: (take_3, skip_3, ...args_4) => __awaiter(this, [take_3, skip_3, ...args_4], void 0, function* (take, skip, options = {}) {
+        getPublicContainers: (take_1, skip_1, ...args_1) => __awaiter(this, [take_1, skip_1, ...args_1], void 0, function* (take, skip, options = {}) {
             const localVarPath = `/containers/public`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -2060,7 +2060,7 @@ const ContainersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSingleContainer: (id_2, ...args_5) => __awaiter(this, [id_2, ...args_5], void 0, function* (id, options = {}) {
+        getSingleContainer: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getSingleContainer', 'id', id);
             const localVarPath = `/containers/{id}`
@@ -2093,7 +2093,7 @@ const ContainersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateContainer: (id_3, updateContainerRequest_1, ...args_6) => __awaiter(this, [id_3, updateContainerRequest_1, ...args_6], void 0, function* (id, updateContainerRequest, options = {}) {
+        updateContainer: (id_1, updateContainerRequest_1, ...args_1) => __awaiter(this, [id_1, updateContainerRequest_1, ...args_1], void 0, function* (id, updateContainerRequest, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateContainer', 'id', id);
             // verify required parameter 'updateContainerRequest' is not null or undefined
@@ -2442,7 +2442,7 @@ const DebtorsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteFine: (id_1, ...args_2) => __awaiter(this, [id_1, ...args_2], void 0, function* (id, options = {}) {
+        deleteFine: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('deleteFine', 'id', id);
             const localVarPath = `/fines/single/{id}`
@@ -2474,7 +2474,7 @@ const DebtorsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        handoutFines: (handoutFinesRequest_1, ...args_3) => __awaiter(this, [handoutFinesRequest_1, ...args_3], void 0, function* (handoutFinesRequest, options = {}) {
+        handoutFines: (handoutFinesRequest_1, ...args_1) => __awaiter(this, [handoutFinesRequest_1, ...args_1], void 0, function* (handoutFinesRequest, options = {}) {
             // verify required parameter 'handoutFinesRequest' is not null or undefined
             (0, common_1.assertParamExists)('handoutFines', 'handoutFinesRequest', handoutFinesRequest);
             const localVarPath = `/fines/handout`;
@@ -2507,7 +2507,7 @@ const DebtorsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        notifyAboutFutureFines: (handoutFinesRequest_2, ...args_4) => __awaiter(this, [handoutFinesRequest_2, ...args_4], void 0, function* (handoutFinesRequest, options = {}) {
+        notifyAboutFutureFines: (handoutFinesRequest_1, ...args_1) => __awaiter(this, [handoutFinesRequest_1, ...args_1], void 0, function* (handoutFinesRequest, options = {}) {
             // verify required parameter 'handoutFinesRequest' is not null or undefined
             (0, common_1.assertParamExists)('notifyAboutFutureFines', 'handoutFinesRequest', handoutFinesRequest);
             const localVarPath = `/fines/notify`;
@@ -2541,7 +2541,7 @@ const DebtorsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        returnAllFineHandoutEvents: (take_1, skip_1, ...args_5) => __awaiter(this, [take_1, skip_1, ...args_5], void 0, function* (take, skip, options = {}) {
+        returnAllFineHandoutEvents: (take_1, skip_1, ...args_1) => __awaiter(this, [take_1, skip_1, ...args_1], void 0, function* (take, skip, options = {}) {
             const localVarPath = `/fines`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -2576,7 +2576,7 @@ const DebtorsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        returnSingleFineHandoutEvent: (id_2, ...args_6) => __awaiter(this, [id_2, ...args_6], void 0, function* (id, options = {}) {
+        returnSingleFineHandoutEvent: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('returnSingleFineHandoutEvent', 'id', id);
             const localVarPath = `/fines/{id}`
@@ -2919,7 +2919,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createEvent: (createEventRequest_1, ...args_2) => __awaiter(this, [createEventRequest_1, ...args_2], void 0, function* (createEventRequest, options = {}) {
+        createEvent: (createEventRequest_1, ...args_1) => __awaiter(this, [createEventRequest_1, ...args_1], void 0, function* (createEventRequest, options = {}) {
             // verify required parameter 'createEventRequest' is not null or undefined
             (0, common_1.assertParamExists)('createEvent', 'createEventRequest', createEventRequest);
             const localVarPath = `/events`;
@@ -2952,7 +2952,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createEventShift: (createShiftRequest_1, ...args_3) => __awaiter(this, [createShiftRequest_1, ...args_3], void 0, function* (createShiftRequest, options = {}) {
+        createEventShift: (createShiftRequest_1, ...args_1) => __awaiter(this, [createShiftRequest_1, ...args_1], void 0, function* (createShiftRequest, options = {}) {
             // verify required parameter 'createShiftRequest' is not null or undefined
             (0, common_1.assertParamExists)('createEventShift', 'createShiftRequest', createShiftRequest);
             const localVarPath = `/eventshifts`;
@@ -2985,7 +2985,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteEvent: (id_1, ...args_4) => __awaiter(this, [id_1, ...args_4], void 0, function* (id, options = {}) {
+        deleteEvent: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('deleteEvent', 'id', id);
             const localVarPath = `/events/{id}`
@@ -3017,7 +3017,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteEventShift: (id_2, ...args_5) => __awaiter(this, [id_2, ...args_5], void 0, function* (id, options = {}) {
+        deleteEventShift: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('deleteEventShift', 'id', id);
             const localVarPath = `/eventshifts/{id}`
@@ -3050,7 +3050,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllEventShifts: (take_1, skip_1, ...args_6) => __awaiter(this, [take_1, skip_1, ...args_6], void 0, function* (take, skip, options = {}) {
+        getAllEventShifts: (take_1, skip_1, ...args_1) => __awaiter(this, [take_1, skip_1, ...args_1], void 0, function* (take, skip, options = {}) {
             const localVarPath = `/eventshifts`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -3091,7 +3091,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllEvents: (name_1, createdById_1, beforeDate_1, afterDate_1, type_1, take_2, skip_2, ...args_7) => __awaiter(this, [name_1, createdById_1, beforeDate_1, afterDate_1, type_1, take_2, skip_2, ...args_7], void 0, function* (name, createdById, beforeDate, afterDate, type, take, skip, options = {}) {
+        getAllEvents: (name_1, createdById_1, beforeDate_1, afterDate_1, type_1, take_1, skip_1, ...args_1) => __awaiter(this, [name_1, createdById_1, beforeDate_1, afterDate_1, type_1, take_1, skip_1, ...args_1], void 0, function* (name, createdById, beforeDate, afterDate, type, take, skip, options = {}) {
             const localVarPath = `/events`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -3144,7 +3144,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getEventShiftCount: (id_3, eventType_1, afterDate_2, beforeDate_2, ...args_8) => __awaiter(this, [id_3, eventType_1, afterDate_2, beforeDate_2, ...args_8], void 0, function* (id, eventType, afterDate, beforeDate, options = {}) {
+        getEventShiftCount: (id_1, eventType_1, afterDate_1, beforeDate_1, ...args_1) => __awaiter(this, [id_1, eventType_1, afterDate_1, beforeDate_1, ...args_1], void 0, function* (id, eventType, afterDate, beforeDate, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getEventShiftCount', 'id', id);
             const localVarPath = `/eventshifts/{id}/counts`
@@ -3185,7 +3185,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSingleEvent: (id_4, ...args_9) => __awaiter(this, [id_4, ...args_9], void 0, function* (id, options = {}) {
+        getSingleEvent: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getSingleEvent', 'id', id);
             const localVarPath = `/events/{id}`
@@ -3218,7 +3218,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateEvent: (id_5, updateEventRequest_1, ...args_10) => __awaiter(this, [id_5, updateEventRequest_1, ...args_10], void 0, function* (id, updateEventRequest, options = {}) {
+        updateEvent: (id_1, updateEventRequest_1, ...args_1) => __awaiter(this, [id_1, updateEventRequest_1, ...args_1], void 0, function* (id, updateEventRequest, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateEvent', 'id', id);
             // verify required parameter 'updateEventRequest' is not null or undefined
@@ -3255,7 +3255,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateEventShift: (id_6, updateShiftRequest_1, ...args_11) => __awaiter(this, [id_6, updateShiftRequest_1, ...args_11], void 0, function* (id, updateShiftRequest, options = {}) {
+        updateEventShift: (id_1, updateShiftRequest_1, ...args_1) => __awaiter(this, [id_1, updateShiftRequest_1, ...args_1], void 0, function* (id, updateShiftRequest, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateEventShift', 'id', id);
             // verify required parameter 'updateShiftRequest' is not null or undefined
@@ -3294,7 +3294,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateEventShiftAvailability: (eventId_2, shiftId_2, userId_2, eventAnswerAvailabilityRequest_1, ...args_12) => __awaiter(this, [eventId_2, shiftId_2, userId_2, eventAnswerAvailabilityRequest_1, ...args_12], void 0, function* (eventId, shiftId, userId, eventAnswerAvailabilityRequest, options = {}) {
+        updateEventShiftAvailability: (eventId_1, shiftId_1, userId_1, eventAnswerAvailabilityRequest_1, ...args_1) => __awaiter(this, [eventId_1, shiftId_1, userId_1, eventAnswerAvailabilityRequest_1, ...args_1], void 0, function* (eventId, shiftId, userId, eventAnswerAvailabilityRequest, options = {}) {
             // verify required parameter 'eventId' is not null or undefined
             (0, common_1.assertParamExists)('updateEventShiftAvailability', 'eventId', eventId);
             // verify required parameter 'shiftId' is not null or undefined
@@ -3913,7 +3913,7 @@ const FilesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteFile: (id_1, ...args_2) => __awaiter(this, [id_1, ...args_2], void 0, function* (id, options = {}) {
+        deleteFile: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('deleteFile', 'id', id);
             const localVarPath = `/files/{id}`
@@ -3945,7 +3945,7 @@ const FilesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getFile: (id_2, ...args_3) => __awaiter(this, [id_2, ...args_3], void 0, function* (id, options = {}) {
+        getFile: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getFile', 'id', id);
             const localVarPath = `/files/{id}`
@@ -4162,7 +4162,7 @@ const InvoicesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteInvoice: (id_1, ...args_2) => __awaiter(this, [id_1, ...args_2], void 0, function* (id, options = {}) {
+        deleteInvoice: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('deleteInvoice', 'id', id);
             const localVarPath = `/invoices/{id}`
@@ -4194,7 +4194,7 @@ const InvoicesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteInvoiceUser: (id_2, ...args_3) => __awaiter(this, [id_2, ...args_3], void 0, function* (id, options = {}) {
+        deleteInvoiceUser: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('deleteInvoiceUser', 'id', id);
             const localVarPath = `/invoices/users/{id}`
@@ -4233,7 +4233,7 @@ const InvoicesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllInvoices: (toId_1, invoiceId_1, currentState_1, returnEntries_1, fromDate_1, tillDate_1, take_1, skip_1, ...args_4) => __awaiter(this, [toId_1, invoiceId_1, currentState_1, returnEntries_1, fromDate_1, tillDate_1, take_1, skip_1, ...args_4], void 0, function* (toId, invoiceId, currentState, returnEntries, fromDate, tillDate, take, skip, options = {}) {
+        getAllInvoices: (toId_1, invoiceId_1, currentState_1, returnEntries_1, fromDate_1, tillDate_1, take_1, skip_1, ...args_1) => __awaiter(this, [toId_1, invoiceId_1, currentState_1, returnEntries_1, fromDate_1, tillDate_1, take_1, skip_1, ...args_1], void 0, function* (toId, invoiceId, currentState, returnEntries, fromDate, tillDate, take, skip, options = {}) {
             const localVarPath = `/invoices`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -4286,7 +4286,7 @@ const InvoicesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInvoicePdf: (id_3, ...args_5) => __awaiter(this, [id_3, ...args_5], void 0, function* (id, options = {}) {
+        getInvoicePdf: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getInvoicePdf', 'id', id);
             const localVarPath = `/invoices/{id}/pdf`
@@ -4319,7 +4319,7 @@ const InvoicesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSingleInvoice: (id_4, returnEntries_2, ...args_6) => __awaiter(this, [id_4, returnEntries_2, ...args_6], void 0, function* (id, returnEntries, options = {}) {
+        getSingleInvoice: (id_1, returnEntries_1, ...args_1) => __awaiter(this, [id_1, returnEntries_1, ...args_1], void 0, function* (id, returnEntries, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getSingleInvoice', 'id', id);
             const localVarPath = `/invoices/{id}`
@@ -4354,7 +4354,7 @@ const InvoicesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSingleInvoiceUser: (id_5, ...args_7) => __awaiter(this, [id_5, ...args_7], void 0, function* (id, options = {}) {
+        getSingleInvoiceUser: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getSingleInvoiceUser', 'id', id);
             const localVarPath = `/invoices/users/{id}`
@@ -4387,7 +4387,7 @@ const InvoicesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        putInvoiceUser: (id_6, updateInvoiceUserRequest_1, ...args_8) => __awaiter(this, [id_6, updateInvoiceUserRequest_1, ...args_8], void 0, function* (id, updateInvoiceUserRequest, options = {}) {
+        putInvoiceUser: (id_1, updateInvoiceUserRequest_1, ...args_1) => __awaiter(this, [id_1, updateInvoiceUserRequest_1, ...args_1], void 0, function* (id, updateInvoiceUserRequest, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('putInvoiceUser', 'id', id);
             // verify required parameter 'updateInvoiceUserRequest' is not null or undefined
@@ -4424,7 +4424,7 @@ const InvoicesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateInvoice: (id_7, updateInvoiceRequest_1, ...args_9) => __awaiter(this, [id_7, updateInvoiceRequest_1, ...args_9], void 0, function* (id, updateInvoiceRequest, options = {}) {
+        updateInvoice: (id_1, updateInvoiceRequest_1, ...args_1) => __awaiter(this, [id_1, updateInvoiceRequest_1, ...args_1], void 0, function* (id, updateInvoiceRequest, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateInvoice', 'id', id);
             // verify required parameter 'updateInvoiceRequest' is not null or undefined
@@ -4904,7 +4904,7 @@ const PayoutRequestsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllPayoutRequests: (requestedById_1, approvedById_1, fromDate_1, tillDate_1, status_1, take_1, skip_1, ...args_2) => __awaiter(this, [requestedById_1, approvedById_1, fromDate_1, tillDate_1, status_1, take_1, skip_1, ...args_2], void 0, function* (requestedById, approvedById, fromDate, tillDate, status, take, skip, options = {}) {
+        getAllPayoutRequests: (requestedById_1, approvedById_1, fromDate_1, tillDate_1, status_1, take_1, skip_1, ...args_1) => __awaiter(this, [requestedById_1, approvedById_1, fromDate_1, tillDate_1, status_1, take_1, skip_1, ...args_1], void 0, function* (requestedById, approvedById, fromDate, tillDate, status, take, skip, options = {}) {
             const localVarPath = `/payoutrequests`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -4958,7 +4958,7 @@ const PayoutRequestsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSinglePayoutRequest: (id_1, ...args_3) => __awaiter(this, [id_1, ...args_3], void 0, function* (id, options = {}) {
+        getSinglePayoutRequest: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getSinglePayoutRequest', 'id', id);
             const localVarPath = `/payoutrequests/{id}`
@@ -4991,7 +4991,7 @@ const PayoutRequestsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setPayoutRequestStatus: (id_2, payoutRequestStatusRequest_1, ...args_4) => __awaiter(this, [id_2, payoutRequestStatusRequest_1, ...args_4], void 0, function* (id, payoutRequestStatusRequest, options = {}) {
+        setPayoutRequestStatus: (id_1, payoutRequestStatusRequest_1, ...args_1) => __awaiter(this, [id_1, payoutRequestStatusRequest_1, ...args_1], void 0, function* (id, payoutRequestStatusRequest, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('setPayoutRequestStatus', 'id', id);
             // verify required parameter 'payoutRequestStatusRequest' is not null or undefined
@@ -5269,7 +5269,7 @@ const PointofsaleApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllPointOfSaleContainers: (id_1, take_1, skip_1, ...args_2) => __awaiter(this, [id_1, take_1, skip_1, ...args_2], void 0, function* (id, take, skip, options = {}) {
+        getAllPointOfSaleContainers: (id_1, take_1, skip_1, ...args_1) => __awaiter(this, [id_1, take_1, skip_1, ...args_1], void 0, function* (id, take, skip, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getAllPointOfSaleContainers', 'id', id);
             const localVarPath = `/pointsofsale/{id}/containers`
@@ -5309,7 +5309,7 @@ const PointofsaleApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllPointOfSaleProducts: (id_2, take_2, skip_2, ...args_3) => __awaiter(this, [id_2, take_2, skip_2, ...args_3], void 0, function* (id, take, skip, options = {}) {
+        getAllPointOfSaleProducts: (id_1, take_1, skip_1, ...args_1) => __awaiter(this, [id_1, take_1, skip_1, ...args_1], void 0, function* (id, take, skip, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getAllPointOfSaleProducts', 'id', id);
             const localVarPath = `/pointsofsale/{id}/products`
@@ -5348,7 +5348,7 @@ const PointofsaleApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllPointsOfSale: (take_3, skip_3, ...args_4) => __awaiter(this, [take_3, skip_3, ...args_4], void 0, function* (take, skip, options = {}) {
+        getAllPointsOfSale: (take_1, skip_1, ...args_1) => __awaiter(this, [take_1, skip_1, ...args_1], void 0, function* (take, skip, options = {}) {
             const localVarPath = `/pointsofsale`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -5383,7 +5383,7 @@ const PointofsaleApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSinglePointOfSale: (id_3, ...args_5) => __awaiter(this, [id_3, ...args_5], void 0, function* (id, options = {}) {
+        getSinglePointOfSale: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getSinglePointOfSale', 'id', id);
             const localVarPath = `/pointsofsale/{id}`
@@ -5417,7 +5417,7 @@ const PointofsaleApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTransactions: (id_4, take_4, skip_4, ...args_6) => __awaiter(this, [id_4, take_4, skip_4, ...args_6], void 0, function* (id, take, skip, options = {}) {
+        getTransactions: (id_1, take_1, skip_1, ...args_1) => __awaiter(this, [id_1, take_1, skip_1, ...args_1], void 0, function* (id, take, skip, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getTransactions', 'id', id);
             const localVarPath = `/pointsofsale/{id}/transactions`
@@ -5456,7 +5456,7 @@ const PointofsaleApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updatePointOfSale: (id_5, updatePointOfSaleRequest_1, ...args_7) => __awaiter(this, [id_5, updatePointOfSaleRequest_1, ...args_7], void 0, function* (id, updatePointOfSaleRequest, options = {}) {
+        updatePointOfSale: (id_1, updatePointOfSaleRequest_1, ...args_1) => __awaiter(this, [id_1, updatePointOfSaleRequest_1, ...args_1], void 0, function* (id, updatePointOfSaleRequest, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updatePointOfSale', 'id', id);
             // verify required parameter 'updatePointOfSaleRequest' is not null or undefined
@@ -5847,7 +5847,7 @@ const ProductCategoriesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllProductCategories: (take_1, skip_1, ...args_2) => __awaiter(this, [take_1, skip_1, ...args_2], void 0, function* (take, skip, options = {}) {
+        getAllProductCategories: (take_1, skip_1, ...args_1) => __awaiter(this, [take_1, skip_1, ...args_1], void 0, function* (take, skip, options = {}) {
             const localVarPath = `/productcategories`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -5882,7 +5882,7 @@ const ProductCategoriesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSingleProductCategory: (id_1, ...args_3) => __awaiter(this, [id_1, ...args_3], void 0, function* (id, options = {}) {
+        getSingleProductCategory: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getSingleProductCategory', 'id', id);
             const localVarPath = `/productcategories/{id}`
@@ -5915,7 +5915,7 @@ const ProductCategoriesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateProductCategory: (id_2, productCategoryRequest_2, ...args_4) => __awaiter(this, [id_2, productCategoryRequest_2, ...args_4], void 0, function* (id, productCategoryRequest, options = {}) {
+        updateProductCategory: (id_1, productCategoryRequest_1, ...args_1) => __awaiter(this, [id_1, productCategoryRequest_1, ...args_1], void 0, function* (id, productCategoryRequest, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateProductCategory', 'id', id);
             // verify required parameter 'productCategoryRequest' is not null or undefined
@@ -6177,7 +6177,7 @@ const ProductsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllProducts: (take_1, skip_1, ...args_2) => __awaiter(this, [take_1, skip_1, ...args_2], void 0, function* (take, skip, options = {}) {
+        getAllProducts: (take_1, skip_1, ...args_1) => __awaiter(this, [take_1, skip_1, ...args_1], void 0, function* (take, skip, options = {}) {
             const localVarPath = `/products`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -6212,7 +6212,7 @@ const ProductsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSingleProduct: (id_1, ...args_3) => __awaiter(this, [id_1, ...args_3], void 0, function* (id, options = {}) {
+        getSingleProduct: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getSingleProduct', 'id', id);
             const localVarPath = `/products/{id}`
@@ -6245,7 +6245,7 @@ const ProductsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateProduct: (id_2, updateProductRequest_1, ...args_4) => __awaiter(this, [id_2, updateProductRequest_1, ...args_4], void 0, function* (id, updateProductRequest, options = {}) {
+        updateProduct: (id_1, updateProductRequest_1, ...args_1) => __awaiter(this, [id_1, updateProductRequest_1, ...args_1], void 0, function* (id, updateProductRequest, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateProduct', 'id', id);
             // verify required parameter 'updateProductRequest' is not null or undefined
@@ -6282,7 +6282,7 @@ const ProductsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateProductImage: (id_3, file_1, ...args_5) => __awaiter(this, [id_3, file_1, ...args_5], void 0, function* (id, file, options = {}) {
+        updateProductImage: (id_1, file_1, ...args_1) => __awaiter(this, [id_1, file_1, ...args_1], void 0, function* (id, file, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateProductImage', 'id', id);
             const localVarPath = `/products/{id}/image`
@@ -6990,7 +6990,7 @@ const TransactionsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteTransaction: (id_1, ...args_2) => __awaiter(this, [id_1, ...args_2], void 0, function* (id, options = {}) {
+        deleteTransaction: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('deleteTransaction', 'id', id);
             const localVarPath = `/transactions/{id}`
@@ -7031,7 +7031,7 @@ const TransactionsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllTransactions: (fromId_1, createdById_1, toId_1, pointOfSaleId_1, productId_1, productRevision_1, fromDate_1, tillDate_1, take_1, skip_1, ...args_3) => __awaiter(this, [fromId_1, createdById_1, toId_1, pointOfSaleId_1, productId_1, productRevision_1, fromDate_1, tillDate_1, take_1, skip_1, ...args_3], void 0, function* (fromId, createdById, toId, pointOfSaleId, productId, productRevision, fromDate, tillDate, take, skip, options = {}) {
+        getAllTransactions: (fromId_1, createdById_1, toId_1, pointOfSaleId_1, productId_1, productRevision_1, fromDate_1, tillDate_1, take_1, skip_1, ...args_1) => __awaiter(this, [fromId_1, createdById_1, toId_1, pointOfSaleId_1, productId_1, productRevision_1, fromDate_1, tillDate_1, take_1, skip_1, ...args_1], void 0, function* (fromId, createdById, toId, pointOfSaleId, productId, productRevision, fromDate, tillDate, take, skip, options = {}) {
             const localVarPath = `/transactions`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -7090,7 +7090,7 @@ const TransactionsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSingleTransaction: (id_2, ...args_4) => __awaiter(this, [id_2, ...args_4], void 0, function* (id, options = {}) {
+        getSingleTransaction: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getSingleTransaction', 'id', id);
             const localVarPath = `/transactions/{id}`
@@ -7123,7 +7123,7 @@ const TransactionsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateTransaction: (id_3, transactionRequest_2, ...args_5) => __awaiter(this, [id_3, transactionRequest_2, ...args_5], void 0, function* (id, transactionRequest, options = {}) {
+        updateTransaction: (id_1, transactionRequest_1, ...args_1) => __awaiter(this, [id_1, transactionRequest_1, ...args_1], void 0, function* (id, transactionRequest, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateTransaction', 'id', id);
             // verify required parameter 'transactionRequest' is not null or undefined
@@ -7159,7 +7159,7 @@ const TransactionsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        validateTransaction: (transactionRequest_3, ...args_6) => __awaiter(this, [transactionRequest_3, ...args_6], void 0, function* (transactionRequest, options = {}) {
+        validateTransaction: (transactionRequest_1, ...args_1) => __awaiter(this, [transactionRequest_1, ...args_1], void 0, function* (transactionRequest, options = {}) {
             // verify required parameter 'transactionRequest' is not null or undefined
             (0, common_1.assertParamExists)('validateTransaction', 'transactionRequest', transactionRequest);
             const localVarPath = `/transactions/validate`;
@@ -7516,7 +7516,7 @@ const TransfersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllTransfers: (take_1, skip_1, ...args_2) => __awaiter(this, [take_1, skip_1, ...args_2], void 0, function* (take, skip, options = {}) {
+        getAllTransfers: (take_1, skip_1, ...args_1) => __awaiter(this, [take_1, skip_1, ...args_1], void 0, function* (take, skip, options = {}) {
             const localVarPath = `/transfers`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -7551,7 +7551,7 @@ const TransfersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSingleTransfer: (id_1, ...args_3) => __awaiter(this, [id_1, ...args_3], void 0, function* (id, options = {}) {
+        getSingleTransfer: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getSingleTransfer', 'id', id);
             const localVarPath = `/transfers/{id}`
@@ -7768,7 +7768,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authenticateAs: (id_1, ...args_2) => __awaiter(this, [id_1, ...args_2], void 0, function* (id, options = {}) {
+        authenticateAs: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('authenticateAs', 'id', id);
             const localVarPath = `/users/{id}/authenticate`
@@ -7800,7 +7800,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createUser: (createUserRequest_1, ...args_3) => __awaiter(this, [createUserRequest_1, ...args_3], void 0, function* (createUserRequest, options = {}) {
+        createUser: (createUserRequest_1, ...args_1) => __awaiter(this, [createUserRequest_1, ...args_1], void 0, function* (createUserRequest, options = {}) {
             // verify required parameter 'createUserRequest' is not null or undefined
             (0, common_1.assertParamExists)('createUser', 'createUserRequest', createUserRequest);
             const localVarPath = `/users`;
@@ -7833,7 +7833,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteUser: (id_2, ...args_4) => __awaiter(this, [id_2, ...args_4], void 0, function* (id, options = {}) {
+        deleteUser: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('deleteUser', 'id', id);
             const localVarPath = `/users/{id}`
@@ -7865,7 +7865,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteUserKey: (id_3, ...args_5) => __awaiter(this, [id_3, ...args_5], void 0, function* (id, options = {}) {
+        deleteUserKey: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('deleteUserKey', 'id', id);
             const localVarPath = `/users/{id}/authenticator/key`
@@ -7897,7 +7897,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteUserNfc: (id_4, ...args_6) => __awaiter(this, [id_4, ...args_6], void 0, function* (id, options = {}) {
+        deleteUserNfc: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('deleteUserNfc', 'id', id);
             const localVarPath = `/users/{id}/authenticator/nfc`
@@ -7935,7 +7935,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllUsers: (take_1, skip_1, search_1, active_1, ofAge_1, id_5, type_1, ...args_7) => __awaiter(this, [take_1, skip_1, search_1, active_1, ofAge_1, id_5, type_1, ...args_7], void 0, function* (take, skip, search, active, ofAge, id, type, options = {}) {
+        getAllUsers: (take_1, skip_1, search_1, active_1, ofAge_1, id_1, type_1, ...args_1) => __awaiter(this, [take_1, skip_1, search_1, active_1, ofAge_1, id_1, type_1, ...args_1], void 0, function* (take, skip, search, active, ofAge, id, type, options = {}) {
             const localVarPath = `/users`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -7987,7 +7987,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllUsersOfUserType: (userType_1, take_2, skip_2, ...args_8) => __awaiter(this, [userType_1, take_2, skip_2, ...args_8], void 0, function* (userType, take, skip, options = {}) {
+        getAllUsersOfUserType: (userType_1, take_1, skip_1, ...args_1) => __awaiter(this, [userType_1, take_1, skip_1, ...args_1], void 0, function* (userType, take, skip, options = {}) {
             // verify required parameter 'userType' is not null or undefined
             (0, common_1.assertParamExists)('getAllUsersOfUserType', 'userType', userType);
             const localVarPath = `/users/usertype/{userType}`
@@ -8025,7 +8025,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getIndividualUser: (id_6, ...args_9) => __awaiter(this, [id_6, ...args_9], void 0, function* (id, options = {}) {
+        getIndividualUser: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getIndividualUser', 'id', id);
             const localVarPath = `/users/{id}`
@@ -8059,7 +8059,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getOrganMembers: (id_7, take_3, skip_3, ...args_10) => __awaiter(this, [id_7, take_3, skip_3, ...args_10], void 0, function* (id, take, skip, options = {}) {
+        getOrganMembers: (id_1, take_1, skip_1, ...args_1) => __awaiter(this, [id_1, take_1, skip_1, ...args_1], void 0, function* (id, take, skip, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getOrganMembers', 'id', id);
             const localVarPath = `/users/{id}/members`
@@ -8097,7 +8097,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserAuthenticatable: (id_8, ...args_11) => __awaiter(this, [id_8, ...args_11], void 0, function* (id, options = {}) {
+        getUserAuthenticatable: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getUserAuthenticatable', 'id', id);
             const localVarPath = `/users/{id}/authenticate`
@@ -8129,7 +8129,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserRoles: (id_9, ...args_12) => __awaiter(this, [id_9, ...args_12], void 0, function* (id, options = {}) {
+        getUserRoles: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getUserRoles', 'id', id);
             const localVarPath = `/users/{id}/roles`
@@ -8163,7 +8163,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersContainers: (id_10, take_4, skip_4, ...args_13) => __awaiter(this, [id_10, take_4, skip_4, ...args_13], void 0, function* (id, take, skip, options = {}) {
+        getUsersContainers: (id_1, take_1, skip_1, ...args_1) => __awaiter(this, [id_1, take_1, skip_1, ...args_1], void 0, function* (id, take, skip, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getUsersContainers', 'id', id);
             const localVarPath = `/users/{id}/containers`
@@ -8196,14 +8196,14 @@ const UsersApiAxiosParamCreator = function (configuration) {
         }),
         /**
          *
-         * @summary Get all financial mutations of a user.
+         * @summary Get all financial mutations of a user (from or to).
          * @param {number} id The id of the user to get the mutations from
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersFinancialMutations: (id_11, take_5, skip_5, ...args_14) => __awaiter(this, [id_11, take_5, skip_5, ...args_14], void 0, function* (id, take, skip, options = {}) {
+        getUsersFinancialMutations: (id_1, take_1, skip_1, ...args_1) => __awaiter(this, [id_1, take_1, skip_1, ...args_1], void 0, function* (id, take, skip, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getUsersFinancialMutations', 'id', id);
             const localVarPath = `/users/{id}/financialmutations`
@@ -8243,7 +8243,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersPointsOfSale: (id_12, take_6, skip_6, ...args_15) => __awaiter(this, [id_12, take_6, skip_6, ...args_15], void 0, function* (id, take, skip, options = {}) {
+        getUsersPointsOfSale: (id_1, take_1, skip_1, ...args_1) => __awaiter(this, [id_1, take_1, skip_1, ...args_1], void 0, function* (id, take, skip, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getUsersPointsOfSale', 'id', id);
             const localVarPath = `/users/{id}/pointsofsale`
@@ -8281,7 +8281,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersProcessingDeposits: (id_13, ...args_16) => __awaiter(this, [id_13, ...args_16], void 0, function* (id, options = {}) {
+        getUsersProcessingDeposits: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getUsersProcessingDeposits', 'id', id);
             const localVarPath = `/users/{id}/deposits`
@@ -8315,7 +8315,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersProducts: (id_14, take_7, skip_7, ...args_17) => __awaiter(this, [id_14, take_7, skip_7, ...args_17], void 0, function* (id, take, skip, options = {}) {
+        getUsersProducts: (id_1, take_1, skip_1, ...args_1) => __awaiter(this, [id_1, take_1, skip_1, ...args_1], void 0, function* (id, take, skip, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getUsersProducts', 'id', id);
             const localVarPath = `/users/{id}/products`
@@ -8348,7 +8348,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
         }),
         /**
          *
-         * @summary Get an user\'s transactions (from, to or created)
+         * @summary Get transactions from a user.
          * @param {number} id The id of the user that should be involved in all returned transactions
          * @param {number} [fromId] From-user for selected transactions
          * @param {number} [createdById] User that created selected transaction
@@ -8362,7 +8362,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersTransactions: (id_15, fromId_1, createdById_1, toId_1, productId_1, productRevision_1, fromDate_1, tillDate_1, take_8, skip_8, ...args_18) => __awaiter(this, [id_15, fromId_1, createdById_1, toId_1, productId_1, productRevision_1, fromDate_1, tillDate_1, take_8, skip_8, ...args_18], void 0, function* (id, fromId, createdById, toId, productId, productRevision, fromDate, tillDate, take, skip, options = {}) {
+        getUsersTransactions: (id_1, fromId_1, createdById_1, toId_1, productId_1, productRevision_1, fromDate_1, tillDate_1, take_1, skip_1, ...args_1) => __awaiter(this, [id_1, fromId_1, createdById_1, toId_1, productId_1, productRevision_1, fromDate_1, tillDate_1, take_1, skip_1, ...args_1], void 0, function* (id, fromId, createdById, toId, productId, productRevision, fromDate, tillDate, take, skip, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getUsersTransactions', 'id', id);
             const localVarPath = `/users/{id}/transactions`
@@ -8426,7 +8426,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersTransactionsReport: (id_16, fromDate_2, tillDate_2, fromId_2, toId_2, exclusiveToId_1, ...args_19) => __awaiter(this, [id_16, fromDate_2, tillDate_2, fromId_2, toId_2, exclusiveToId_1, ...args_19], void 0, function* (id, fromDate, tillDate, fromId, toId, exclusiveToId, options = {}) {
+        getUsersTransactionsReport: (id_1, fromDate_1, tillDate_1, fromId_1, toId_1, exclusiveToId_1, ...args_1) => __awaiter(this, [id_1, fromDate_1, tillDate_1, fromId_1, toId_1, exclusiveToId_1, ...args_1], void 0, function* (id, fromDate, tillDate, fromId, toId, exclusiveToId, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getUsersTransactionsReport', 'id', id);
             const localVarPath = `/users/{id}/transactions/report`
@@ -8468,7 +8468,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
         }),
         /**
          *
-         * @summary Get an user\'s transfers
+         * @summary Get transfers to or from an user.
          * @param {number} id The id of the user that should be involved in all returned transfers
          * @param {number} [take] How many transfers the endpoint should return
          * @param {number} [skip] How many transfers should be skipped (for pagination)
@@ -8478,7 +8478,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersTransfers: (id_17, take_9, skip_9, fromId_3, toId_3, id2_1, ...args_20) => __awaiter(this, [id_17, take_9, skip_9, fromId_3, toId_3, id2_1, ...args_20], void 0, function* (id, take, skip, fromId, toId, id2, options = {}) {
+        getUsersTransfers: (id_1, take_1, skip_1, fromId_1, toId_1, id2_1, ...args_1) => __awaiter(this, [id_1, take_1, skip_1, fromId_1, toId_1, id2_1, ...args_1], void 0, function* (id, take, skip, fromId, toId, id2, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getUsersTransfers', 'id', id);
             const localVarPath = `/users/{id}/transfers`
@@ -8526,7 +8526,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUser: (id_18, updateUserRequest_1, ...args_21) => __awaiter(this, [id_18, updateUserRequest_1, ...args_21], void 0, function* (id, updateUserRequest, options = {}) {
+        updateUser: (id_1, updateUserRequest_1, ...args_1) => __awaiter(this, [id_1, updateUserRequest_1, ...args_1], void 0, function* (id, updateUserRequest, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateUser', 'id', id);
             // verify required parameter 'updateUserRequest' is not null or undefined
@@ -8562,7 +8562,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUserKey: (id_19, ...args_22) => __awaiter(this, [id_19, ...args_22], void 0, function* (id, options = {}) {
+        updateUserKey: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateUserKey', 'id', id);
             const localVarPath = `/users/{id}/authenticator/key`
@@ -8595,7 +8595,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUserLocalPassword: (id_20, updateLocalRequest_1, ...args_23) => __awaiter(this, [id_20, updateLocalRequest_1, ...args_23], void 0, function* (id, updateLocalRequest, options = {}) {
+        updateUserLocalPassword: (id_1, updateLocalRequest_1, ...args_1) => __awaiter(this, [id_1, updateLocalRequest_1, ...args_1], void 0, function* (id, updateLocalRequest, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateUserLocalPassword', 'id', id);
             // verify required parameter 'updateLocalRequest' is not null or undefined
@@ -8632,7 +8632,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUserNfc: (id_21, updateNfcRequest_1, ...args_24) => __awaiter(this, [id_21, updateNfcRequest_1, ...args_24], void 0, function* (id, updateNfcRequest, options = {}) {
+        updateUserNfc: (id_1, updateNfcRequest_1, ...args_1) => __awaiter(this, [id_1, updateNfcRequest_1, ...args_1], void 0, function* (id, updateNfcRequest, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateUserNfc', 'id', id);
             // verify required parameter 'updateNfcRequest' is not null or undefined
@@ -8669,7 +8669,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUserPin: (id_22, updatePinRequest_1, ...args_25) => __awaiter(this, [id_22, updatePinRequest_1, ...args_25], void 0, function* (id, updatePinRequest, options = {}) {
+        updateUserPin: (id_1, updatePinRequest_1, ...args_1) => __awaiter(this, [id_1, updatePinRequest_1, ...args_1], void 0, function* (id, updatePinRequest, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateUserPin', 'id', id);
             // verify required parameter 'updatePinRequest' is not null or undefined
@@ -8705,7 +8705,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        waiveUserFines: (id_23, ...args_26) => __awaiter(this, [id_23, ...args_26], void 0, function* (id, options = {}) {
+        waiveUserFines: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('waiveUserFines', 'id', id);
             const localVarPath = `/users/{id}/fines/waive`
@@ -8962,7 +8962,7 @@ const UsersApiFp = function (configuration) {
         },
         /**
          *
-         * @summary Get all financial mutations of a user.
+         * @summary Get all financial mutations of a user (from or to).
          * @param {number} id The id of the user to get the mutations from
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
@@ -9032,7 +9032,7 @@ const UsersApiFp = function (configuration) {
         },
         /**
          *
-         * @summary Get an user\'s transactions (from, to or created)
+         * @summary Get transactions from a user.
          * @param {number} id The id of the user that should be involved in all returned transactions
          * @param {number} [fromId] From-user for selected transactions
          * @param {number} [createdById] User that created selected transaction
@@ -9078,7 +9078,7 @@ const UsersApiFp = function (configuration) {
         },
         /**
          *
-         * @summary Get an user\'s transfers
+         * @summary Get transfers to or from an user.
          * @param {number} id The id of the user that should be involved in all returned transfers
          * @param {number} [take] How many transfers the endpoint should return
          * @param {number} [skip] How many transfers should be skipped (for pagination)
@@ -9351,7 +9351,7 @@ const UsersApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
-         * @summary Get all financial mutations of a user.
+         * @summary Get all financial mutations of a user (from or to).
          * @param {number} id The id of the user to get the mutations from
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
@@ -9397,7 +9397,7 @@ const UsersApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
-         * @summary Get an user\'s transactions (from, to or created)
+         * @summary Get transactions from a user.
          * @param {number} id The id of the user that should be involved in all returned transactions
          * @param {number} [fromId] From-user for selected transactions
          * @param {number} [createdById] User that created selected transaction
@@ -9431,7 +9431,7 @@ const UsersApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
-         * @summary Get an user\'s transfers
+         * @summary Get transfers to or from an user.
          * @param {number} id The id of the user that should be involved in all returned transfers
          * @param {number} [take] How many transfers the endpoint should return
          * @param {number} [skip] How many transfers should be skipped (for pagination)
@@ -9675,7 +9675,7 @@ class UsersApi extends base_1.BaseAPI {
     }
     /**
      *
-     * @summary Get all financial mutations of a user.
+     * @summary Get all financial mutations of a user (from or to).
      * @param {number} id The id of the user to get the mutations from
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
@@ -9725,7 +9725,7 @@ class UsersApi extends base_1.BaseAPI {
     }
     /**
      *
-     * @summary Get an user\'s transactions (from, to or created)
+     * @summary Get transactions from a user.
      * @param {number} id The id of the user that should be involved in all returned transactions
      * @param {number} [fromId] From-user for selected transactions
      * @param {number} [createdById] User that created selected transaction
@@ -9761,7 +9761,7 @@ class UsersApi extends base_1.BaseAPI {
     }
     /**
      *
-     * @summary Get an user\'s transfers
+     * @summary Get transfers to or from an user.
      * @param {number} id The id of the user that should be involved in all returned transfers
      * @param {number} [take] How many transfers the endpoint should return
      * @param {number} [skip] How many transfers should be skipped (for pagination)
@@ -9910,7 +9910,7 @@ const VatGroupsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllVatGroups: (vatGroupId_1, name_1, percentage_1, deleted_1, take_1, skip_1, ...args_2) => __awaiter(this, [vatGroupId_1, name_1, percentage_1, deleted_1, take_1, skip_1, ...args_2], void 0, function* (vatGroupId, name, percentage, deleted, take, skip, options = {}) {
+        getAllVatGroups: (vatGroupId_1, name_1, percentage_1, deleted_1, take_1, skip_1, ...args_1) => __awaiter(this, [vatGroupId_1, name_1, percentage_1, deleted_1, take_1, skip_1, ...args_1], void 0, function* (vatGroupId, name, percentage, deleted, take, skip, options = {}) {
             const localVarPath = `/vatgroups`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -9957,7 +9957,7 @@ const VatGroupsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSingleVatGroup: (id_1, ...args_3) => __awaiter(this, [id_1, ...args_3], void 0, function* (id, options = {}) {
+        getSingleVatGroup: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getSingleVatGroup', 'id', id);
             const localVarPath = `/vatgroups/{id}`
@@ -9990,7 +9990,7 @@ const VatGroupsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getVatDeclarationAmounts: (year_1, period_1, ...args_4) => __awaiter(this, [year_1, period_1, ...args_4], void 0, function* (year, period, options = {}) {
+        getVatDeclarationAmounts: (year_1, period_1, ...args_1) => __awaiter(this, [year_1, period_1, ...args_1], void 0, function* (year, period, options = {}) {
             // verify required parameter 'year' is not null or undefined
             (0, common_1.assertParamExists)('getVatDeclarationAmounts', 'year', year);
             // verify required parameter 'period' is not null or undefined
@@ -10030,7 +10030,7 @@ const VatGroupsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateVatGroup: (id_2, updateVatGroupRequest_1, ...args_5) => __awaiter(this, [id_2, updateVatGroupRequest_1, ...args_5], void 0, function* (id, updateVatGroupRequest, options = {}) {
+        updateVatGroup: (id_1, updateVatGroupRequest_1, ...args_1) => __awaiter(this, [id_1, updateVatGroupRequest_1, ...args_1], void 0, function* (id, updateVatGroupRequest, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateVatGroup', 'id', id);
             // verify required parameter 'updateVatGroupRequest' is not null or undefined
@@ -10344,7 +10344,7 @@ const VouchergroupsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllVouchergroups: (take_1, skip_1, ...args_2) => __awaiter(this, [take_1, skip_1, ...args_2], void 0, function* (take, skip, options = {}) {
+        getAllVouchergroups: (take_1, skip_1, ...args_1) => __awaiter(this, [take_1, skip_1, ...args_1], void 0, function* (take, skip, options = {}) {
             const localVarPath = `/vouchergroups`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -10379,7 +10379,7 @@ const VouchergroupsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getVouchergroupId: (id_1, ...args_3) => __awaiter(this, [id_1, ...args_3], void 0, function* (id, options = {}) {
+        getVouchergroupId: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getVouchergroupId', 'id', id);
             const localVarPath = `/vouchergroups/{id}`
@@ -10412,7 +10412,7 @@ const VouchergroupsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateVoucherGroup: (id_2, voucherGroupRequest_2, ...args_4) => __awaiter(this, [id_2, voucherGroupRequest_2, ...args_4], void 0, function* (id, voucherGroupRequest, options = {}) {
+        updateVoucherGroup: (id_1, voucherGroupRequest_1, ...args_1) => __awaiter(this, [id_1, voucherGroupRequest_1, ...args_1], void 0, function* (id, voucherGroupRequest, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateVoucherGroup', 'id', id);
             // verify required parameter 'voucherGroupRequest' is not null or undefined
