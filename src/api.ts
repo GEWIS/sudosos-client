@@ -655,6 +655,30 @@ export interface BaseInvoiceResponse {
      */
     'description': string;
     /**
+     * Street of the invoice.
+     * @type {string}
+     * @memberof BaseInvoiceResponse
+     */
+    'street': string;
+    /**
+     * Postal code of the invoice.
+     * @type {string}
+     * @memberof BaseInvoiceResponse
+     */
+    'postalCode': string;
+    /**
+     *  City of the invoice.
+     * @type {string}
+     * @memberof BaseInvoiceResponse
+     */
+    'city': string;
+    /**
+     *  Country of the invoice.
+     * @type {string}
+     * @memberof BaseInvoiceResponse
+     */
+    'country': string;
+    /**
      * 
      * @type {InvoiceStatusResponse}
      * @memberof BaseInvoiceResponse
@@ -666,6 +690,12 @@ export interface BaseInvoiceResponse {
      * @memberof BaseInvoiceResponse
      */
     'transfer'?: TransferResponse;
+    /**
+     * Pdf url path linked to the invoice
+     * @type {string}
+     * @memberof BaseInvoiceResponse
+     */
+    'pdf'?: string;
 }
 /**
  * 
@@ -1238,17 +1268,23 @@ export interface CreateInvoiceRequest {
      */
     'byId'?: number;
     /**
-     * Name of the addressed.
+     * Name of the addressed, defaults to the fullname of the person being invoiced.
      * @type {string}
      * @memberof CreateInvoiceRequest
      */
-    'addressee': string;
+    'addressee'?: string;
     /**
      * The description of the invoice.
      * @type {string}
      * @memberof CreateInvoiceRequest
      */
-    'description': string;
+    'description'?: string;
+    /**
+     * The reference of the invoice.
+     * @type {string}
+     * @memberof CreateInvoiceRequest
+     */
+    'reference': string;
     /**
      * Custom entries to be added to the invoice
      * @type {Array<InvoiceEntryRequest>}
@@ -1273,6 +1309,30 @@ export interface CreateInvoiceRequest {
      * @memberof CreateInvoiceRequest
      */
     'isCreditInvoice': boolean;
+    /**
+     * Street to use on the invoice, overwrites the users default.
+     * @type {string}
+     * @memberof CreateInvoiceRequest
+     */
+    'street'?: string;
+    /**
+     * Postal code to use on the invoice, overwrites the users default.
+     * @type {string}
+     * @memberof CreateInvoiceRequest
+     */
+    'postalCode'?: string;
+    /**
+     * City to use on the invoice, overwrites the users default.
+     * @type {string}
+     * @memberof CreateInvoiceRequest
+     */
+    'city'?: string;
+    /**
+     * Country to use on the invoice, overwrites the users default.
+     * @type {string}
+     * @memberof CreateInvoiceRequest
+     */
+    'country'?: string;
 }
 /**
  * 
@@ -2203,6 +2263,30 @@ export interface InvoiceResponse {
      */
     'description': string;
     /**
+     * Street of the invoice.
+     * @type {string}
+     * @memberof InvoiceResponse
+     */
+    'street': string;
+    /**
+     * Postal code of the invoice.
+     * @type {string}
+     * @memberof InvoiceResponse
+     */
+    'postalCode': string;
+    /**
+     *  City of the invoice.
+     * @type {string}
+     * @memberof InvoiceResponse
+     */
+    'city': string;
+    /**
+     *  Country of the invoice.
+     * @type {string}
+     * @memberof InvoiceResponse
+     */
+    'country': string;
+    /**
      * 
      * @type {InvoiceStatusResponse}
      * @memberof InvoiceResponse
@@ -2214,6 +2298,12 @@ export interface InvoiceResponse {
      * @memberof InvoiceResponse
      */
     'transfer'?: TransferResponse;
+    /**
+     * Pdf url path linked to the invoice
+     * @type {string}
+     * @memberof InvoiceResponse
+     */
+    'pdf'?: string;
     /**
      * The entries of the invoice
      * @type {Array<InvoiceEntryResponse>}
@@ -2270,6 +2360,30 @@ export interface InvoiceResponseTypes {
      */
     'description': string;
     /**
+     * Street of the invoice.
+     * @type {string}
+     * @memberof InvoiceResponseTypes
+     */
+    'street': string;
+    /**
+     * Postal code of the invoice.
+     * @type {string}
+     * @memberof InvoiceResponseTypes
+     */
+    'postalCode': string;
+    /**
+     *  City of the invoice.
+     * @type {string}
+     * @memberof InvoiceResponseTypes
+     */
+    'city': string;
+    /**
+     *  Country of the invoice.
+     * @type {string}
+     * @memberof InvoiceResponseTypes
+     */
+    'country': string;
+    /**
      * 
      * @type {InvoiceStatusResponse}
      * @memberof InvoiceResponseTypes
@@ -2281,6 +2395,12 @@ export interface InvoiceResponseTypes {
      * @memberof InvoiceResponseTypes
      */
     'transfer'?: TransferResponse;
+    /**
+     * Pdf url path linked to the invoice
+     * @type {string}
+     * @memberof InvoiceResponseTypes
+     */
+    'pdf'?: string;
     /**
      * The entries of the invoice
      * @type {Array<InvoiceEntryResponse>}
@@ -2317,6 +2437,49 @@ export const InvoiceStatusResponseStateEnum = {
 
 export type InvoiceStatusResponseStateEnum = typeof InvoiceStatusResponseStateEnum[keyof typeof InvoiceStatusResponseStateEnum];
 
+/**
+ * 
+ * @export
+ * @interface InvoiceUserResponse
+ */
+export interface InvoiceUserResponse {
+    /**
+     * 
+     * @type {BaseUserResponse}
+     * @memberof InvoiceUserResponse
+     */
+    'user': BaseUserResponse;
+    /**
+     * Default street to use for invoices.
+     * @type {string}
+     * @memberof InvoiceUserResponse
+     */
+    'street': string;
+    /**
+     * Default postal code to use for invoices.
+     * @type {string}
+     * @memberof InvoiceUserResponse
+     */
+    'postalCode': string;
+    /**
+     * Default city to use for invoices.
+     * @type {string}
+     * @memberof InvoiceUserResponse
+     */
+    'city': string;
+    /**
+     * Default country to use for invoices.
+     * @type {string}
+     * @memberof InvoiceUserResponse
+     */
+    'country': string;
+    /**
+     * Whether invoices should be automatically generated
+     * @type {boolean}
+     * @memberof InvoiceUserResponse
+     */
+    'automatic': boolean;
+}
 /**
  * 
  * @export
@@ -4085,13 +4248,13 @@ export interface UpdateInvoiceRequest {
      * @type {string}
      * @memberof UpdateInvoiceRequest
      */
-    'addressee': string;
+    'addressee'?: string;
     /**
      * The description of the invoice.
      * @type {string}
      * @memberof UpdateInvoiceRequest
      */
-    'description': string;
+    'description'?: string;
     /**
      * The state to set of the invoice,
      * @type {string}
@@ -4109,6 +4272,43 @@ export const UpdateInvoiceRequestStateEnum = {
 
 export type UpdateInvoiceRequestStateEnum = typeof UpdateInvoiceRequestStateEnum[keyof typeof UpdateInvoiceRequestStateEnum];
 
+/**
+ * 
+ * @export
+ * @interface UpdateInvoiceUserRequest
+ */
+export interface UpdateInvoiceUserRequest {
+    /**
+     * Default street to use for invoices.
+     * @type {string}
+     * @memberof UpdateInvoiceUserRequest
+     */
+    'street': string;
+    /**
+     * Default postal code to use for invoices.
+     * @type {string}
+     * @memberof UpdateInvoiceUserRequest
+     */
+    'postalCode': string;
+    /**
+     * Default city to use for invoices.
+     * @type {string}
+     * @memberof UpdateInvoiceUserRequest
+     */
+    'city': string;
+    /**
+     * Default country to use for invoices.
+     * @type {string}
+     * @memberof UpdateInvoiceUserRequest
+     */
+    'country': string;
+    /**
+     * Whether invoices should be automatically generated
+     * @type {boolean}
+     * @memberof UpdateInvoiceUserRequest
+     */
+    'automatic': boolean;
+}
 /**
  * 
  * @export
@@ -9153,6 +9353,44 @@ export const InvoicesApiAxiosParamCreator = function (configuration?: Configurat
         },
         /**
          * 
+         * @summary Delete invoice user defaults.
+         * @param {number} id The id of the invoice user to delete.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteInvoiceUser: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('deleteInvoiceUser', 'id', id)
+            const localVarPath = `/invoices/users/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Returns all invoices in the system.
          * @param {number} [toId] Filter on Id of the debtor
          * @param {number} [invoiceId] Filter on invoice ID
@@ -9227,6 +9465,44 @@ export const InvoicesApiAxiosParamCreator = function (configuration?: Configurat
         },
         /**
          * 
+         * @summary Get an invoice pdf.
+         * @param {number} id The id of the invoice to return
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getInvoicePdf: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getInvoicePdf', 'id', id)
+            const localVarPath = `/invoices/{id}/pdf`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Returns a single invoice in the system.
          * @param {number} id The id of the requested invoice
          * @param {boolean} [returnEntries] Boolean if invoice entries should be returned, defaults to true.
@@ -9262,6 +9538,88 @@ export const InvoicesApiAxiosParamCreator = function (configuration?: Configurat
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get invoice user defaults.
+         * @param {number} id The id of the invoice user to return.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSingleInvoiceUser: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getSingleInvoiceUser', 'id', id)
+            const localVarPath = `/invoices/users/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Update or create invoice user defaults.
+         * @param {number} id The id of the user to update
+         * @param {UpdateInvoiceUserRequest} updateInvoiceUserRequest The invoice user which should be updated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        putInvoiceUser: async (id: number, updateInvoiceUserRequest: UpdateInvoiceUserRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('putInvoiceUser', 'id', id)
+            // verify required parameter 'updateInvoiceUserRequest' is not null or undefined
+            assertParamExists('putInvoiceUser', 'updateInvoiceUserRequest', updateInvoiceUserRequest)
+            const localVarPath = `/invoices/users/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(updateInvoiceUserRequest, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -9342,10 +9700,23 @@ export const InvoicesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteInvoice(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseInvoiceResponse>> {
+        async deleteInvoice(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteInvoice(id, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['InvoicesApi.deleteInvoice']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Delete invoice user defaults.
+         * @param {number} id The id of the invoice user to delete.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteInvoiceUser(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteInvoiceUser(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['InvoicesApi.deleteInvoiceUser']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
@@ -9370,6 +9741,19 @@ export const InvoicesApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get an invoice pdf.
+         * @param {number} id The id of the invoice to return
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getInvoicePdf(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getInvoicePdf(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['InvoicesApi.getInvoicePdf']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Returns a single invoice in the system.
          * @param {number} id The id of the requested invoice
          * @param {boolean} [returnEntries] Boolean if invoice entries should be returned, defaults to true.
@@ -9380,6 +9764,33 @@ export const InvoicesApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getSingleInvoice(id, returnEntries, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['InvoicesApi.getSingleInvoice']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get invoice user defaults.
+         * @param {number} id The id of the invoice user to return.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getSingleInvoiceUser(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InvoiceUserResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSingleInvoiceUser(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['InvoicesApi.getSingleInvoiceUser']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Update or create invoice user defaults.
+         * @param {number} id The id of the user to update
+         * @param {UpdateInvoiceUserRequest} updateInvoiceUserRequest The invoice user which should be updated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async putInvoiceUser(id: number, updateInvoiceUserRequest: UpdateInvoiceUserRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InvoiceUserResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.putInvoiceUser(id, updateInvoiceUserRequest, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['InvoicesApi.putInvoiceUser']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
@@ -9423,8 +9834,18 @@ export const InvoicesApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteInvoice(id: number, options?: any): AxiosPromise<BaseInvoiceResponse> {
+        deleteInvoice(id: number, options?: any): AxiosPromise<void> {
             return localVarFp.deleteInvoice(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Delete invoice user defaults.
+         * @param {number} id The id of the invoice user to delete.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteInvoiceUser(id: number, options?: any): AxiosPromise<void> {
+            return localVarFp.deleteInvoiceUser(id, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -9445,6 +9866,16 @@ export const InvoicesApiFactory = function (configuration?: Configuration, baseP
         },
         /**
          * 
+         * @summary Get an invoice pdf.
+         * @param {number} id The id of the invoice to return
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getInvoicePdf(id: number, options?: any): AxiosPromise<string> {
+            return localVarFp.getInvoicePdf(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Returns a single invoice in the system.
          * @param {number} id The id of the requested invoice
          * @param {boolean} [returnEntries] Boolean if invoice entries should be returned, defaults to true.
@@ -9453,6 +9884,27 @@ export const InvoicesApiFactory = function (configuration?: Configuration, baseP
          */
         getSingleInvoice(id: number, returnEntries?: boolean, options?: any): AxiosPromise<InvoiceResponse> {
             return localVarFp.getSingleInvoice(id, returnEntries, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get invoice user defaults.
+         * @param {number} id The id of the invoice user to return.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSingleInvoiceUser(id: number, options?: any): AxiosPromise<InvoiceUserResponse> {
+            return localVarFp.getSingleInvoiceUser(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Update or create invoice user defaults.
+         * @param {number} id The id of the user to update
+         * @param {UpdateInvoiceUserRequest} updateInvoiceUserRequest The invoice user which should be updated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        putInvoiceUser(id: number, updateInvoiceUserRequest: UpdateInvoiceUserRequest, options?: any): AxiosPromise<InvoiceUserResponse> {
+            return localVarFp.putInvoiceUser(id, updateInvoiceUserRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -9501,6 +9953,18 @@ export class InvoicesApi extends BaseAPI {
 
     /**
      * 
+     * @summary Delete invoice user defaults.
+     * @param {number} id The id of the invoice user to delete.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InvoicesApi
+     */
+    public deleteInvoiceUser(id: number, options?: RawAxiosRequestConfig) {
+        return InvoicesApiFp(this.configuration).deleteInvoiceUser(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary Returns all invoices in the system.
      * @param {number} [toId] Filter on Id of the debtor
      * @param {number} [invoiceId] Filter on invoice ID
@@ -9520,6 +9984,18 @@ export class InvoicesApi extends BaseAPI {
 
     /**
      * 
+     * @summary Get an invoice pdf.
+     * @param {number} id The id of the invoice to return
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InvoicesApi
+     */
+    public getInvoicePdf(id: number, options?: RawAxiosRequestConfig) {
+        return InvoicesApiFp(this.configuration).getInvoicePdf(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary Returns a single invoice in the system.
      * @param {number} id The id of the requested invoice
      * @param {boolean} [returnEntries] Boolean if invoice entries should be returned, defaults to true.
@@ -9529,6 +10005,31 @@ export class InvoicesApi extends BaseAPI {
      */
     public getSingleInvoice(id: number, returnEntries?: boolean, options?: RawAxiosRequestConfig) {
         return InvoicesApiFp(this.configuration).getSingleInvoice(id, returnEntries, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get invoice user defaults.
+     * @param {number} id The id of the invoice user to return.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InvoicesApi
+     */
+    public getSingleInvoiceUser(id: number, options?: RawAxiosRequestConfig) {
+        return InvoicesApiFp(this.configuration).getSingleInvoiceUser(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Update or create invoice user defaults.
+     * @param {number} id The id of the user to update
+     * @param {UpdateInvoiceUserRequest} updateInvoiceUserRequest The invoice user which should be updated
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InvoicesApi
+     */
+    public putInvoiceUser(id: number, updateInvoiceUserRequest: UpdateInvoiceUserRequest, options?: RawAxiosRequestConfig) {
+        return InvoicesApiFp(this.configuration).putInvoiceUser(id, updateInvoiceUserRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -13177,7 +13678,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
-         * @summary Get all financial mutations of a user.
+         * @summary Get all financial mutations of a user (from or to).
          * @param {number} id The id of the user to get the mutations from
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
@@ -13359,7 +13860,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
-         * @summary Get an user\'s transactions (from, to or created)
+         * @summary Get transactions from a user.
          * @param {number} id The id of the user that should be involved in all returned transactions
          * @param {number} [fromId] From-user for selected transactions
          * @param {number} [createdById] User that created selected transaction
@@ -13505,7 +14006,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
-         * @summary Get an user\'s transfers
+         * @summary Get transfers to or from an user.
          * @param {number} id The id of the user that should be involved in all returned transfers
          * @param {number} [take] How many transfers the endpoint should return
          * @param {number} [skip] How many transfers should be skipped (for pagination)
@@ -14011,7 +14512,7 @@ export const UsersApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Get all financial mutations of a user.
+         * @summary Get all financial mutations of a user (from or to).
          * @param {number} id The id of the user to get the mutations from
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
@@ -14069,7 +14570,7 @@ export const UsersApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Get an user\'s transactions (from, to or created)
+         * @summary Get transactions from a user.
          * @param {number} id The id of the user that should be involved in all returned transactions
          * @param {number} [fromId] From-user for selected transactions
          * @param {number} [createdById] User that created selected transaction
@@ -14109,7 +14610,7 @@ export const UsersApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Get an user\'s transfers
+         * @summary Get transfers to or from an user.
          * @param {number} id The id of the user that should be involved in all returned transfers
          * @param {number} [take] How many transfers the endpoint should return
          * @param {number} [skip] How many transfers should be skipped (for pagination)
@@ -14361,7 +14862,7 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
-         * @summary Get all financial mutations of a user.
+         * @summary Get all financial mutations of a user (from or to).
          * @param {number} id The id of the user to get the mutations from
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
@@ -14407,7 +14908,7 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
-         * @summary Get an user\'s transactions (from, to or created)
+         * @summary Get transactions from a user.
          * @param {number} id The id of the user that should be involved in all returned transactions
          * @param {number} [fromId] From-user for selected transactions
          * @param {number} [createdById] User that created selected transaction
@@ -14441,7 +14942,7 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
-         * @summary Get an user\'s transfers
+         * @summary Get transfers to or from an user.
          * @param {number} id The id of the user that should be involved in all returned transfers
          * @param {number} [take] How many transfers the endpoint should return
          * @param {number} [skip] How many transfers should be skipped (for pagination)
@@ -14698,7 +15199,7 @@ export class UsersApi extends BaseAPI {
 
     /**
      * 
-     * @summary Get all financial mutations of a user.
+     * @summary Get all financial mutations of a user (from or to).
      * @param {number} id The id of the user to get the mutations from
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
@@ -14752,7 +15253,7 @@ export class UsersApi extends BaseAPI {
 
     /**
      * 
-     * @summary Get an user\'s transactions (from, to or created)
+     * @summary Get transactions from a user.
      * @param {number} id The id of the user that should be involved in all returned transactions
      * @param {number} [fromId] From-user for selected transactions
      * @param {number} [createdById] User that created selected transaction
@@ -14790,7 +15291,7 @@ export class UsersApi extends BaseAPI {
 
     /**
      * 
-     * @summary Get an user\'s transfers
+     * @summary Get transfers to or from an user.
      * @param {number} id The id of the user that should be involved in all returned transfers
      * @param {number} [take] How many transfers the endpoint should return
      * @param {number} [skip] How many transfers should be skipped (for pagination)
