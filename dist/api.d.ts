@@ -1925,6 +1925,49 @@ export interface FineHandoutEventResponse {
 /**
  *
  * @export
+ * @interface FineReportResponse
+ */
+export interface FineReportResponse {
+    /**
+     * From date of the report
+     * @type {string}
+     * @memberof FineReportResponse
+     */
+    'fromDate': string;
+    /**
+     * To date of the report
+     * @type {string}
+     * @memberof FineReportResponse
+     */
+    'toDate': string;
+    /**
+     * Number of fines
+     * @type {number}
+     * @memberof FineReportResponse
+     */
+    'count': number;
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof FineReportResponse
+     */
+    'handedOut': DineroObjectResponse;
+    /**
+     * Number of fines waived
+     * @type {number}
+     * @memberof FineReportResponse
+     */
+    'waivedCount': number;
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof FineReportResponse
+     */
+    'waived': DineroObjectResponse;
+}
+/**
+ *
+ * @export
  * @interface FineResponse
  */
 export interface FineResponse {
@@ -5377,12 +5420,13 @@ export declare const BalanceApiAxiosParamCreator: (configuration?: Configuration
      * @param {GetAllBalanceUserTypesEnum} [userTypes] Filter based on user type.
      * @param {string} [orderBy] Column to order balance by - eg: id,amount
      * @param {GetAllBalanceOrderDirectionEnum} [orderDirection] Order direction
+     * @param {boolean} [allowDeleted] Whether to include deleted users
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllBalance: (date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getAllBalance: (date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Retrieves the requested balance
@@ -5416,12 +5460,13 @@ export declare const BalanceApiFp: (configuration?: Configuration) => {
      * @param {GetAllBalanceUserTypesEnum} [userTypes] Filter based on user type.
      * @param {string} [orderBy] Column to order balance by - eg: id,amount
      * @param {GetAllBalanceOrderDirectionEnum} [orderDirection] Order direction
+     * @param {boolean} [allowDeleted] Whether to include deleted users
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BalanceResponse>>>;
+    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BalanceResponse>>>;
     /**
      *
      * @summary Retrieves the requested balance
@@ -5455,12 +5500,13 @@ export declare const BalanceApiFactory: (configuration?: Configuration, basePath
      * @param {GetAllBalanceUserTypesEnum} [userTypes] Filter based on user type.
      * @param {string} [orderBy] Column to order balance by - eg: id,amount
      * @param {GetAllBalanceOrderDirectionEnum} [orderDirection] Order direction
+     * @param {boolean} [allowDeleted] Whether to include deleted users
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, take?: number, skip?: number, options?: any): AxiosPromise<Array<BalanceResponse>>;
+    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: any): AxiosPromise<Array<BalanceResponse>>;
     /**
      *
      * @summary Retrieves the requested balance
@@ -5496,13 +5542,14 @@ export declare class BalanceApi extends BaseAPI {
      * @param {GetAllBalanceUserTypesEnum} [userTypes] Filter based on user type.
      * @param {string} [orderBy] Column to order balance by - eg: id,amount
      * @param {GetAllBalanceOrderDirectionEnum} [orderDirection] Order direction
+     * @param {boolean} [allowDeleted] Whether to include deleted users
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BalanceApi
      */
-    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BalanceResponse[], any>>;
+    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BalanceResponse[], any>>;
     /**
      *
      * @summary Retrieves the requested balance
@@ -6112,6 +6159,15 @@ export declare const DebtorsApiAxiosParamCreator: (configuration?: Configuration
     deleteFine: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Get a report of all fines
+     * @param {string} [fromDate] The start date of the report, inclusive
+     * @param {string} [toDate] The end date of the report, exclusive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getFineReport: (fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
      * @param {HandoutFinesRequest} handoutFinesRequest
      * @param {*} [options] Override http request option.
@@ -6168,6 +6224,15 @@ export declare const DebtorsApiFp: (configuration?: Configuration) => {
     deleteFine(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
+     * @summary Get a report of all fines
+     * @param {string} [fromDate] The start date of the report, inclusive
+     * @param {string} [toDate] The end date of the report, exclusive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getFineReport(fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FineReportResponse>>;
+    /**
+     *
      * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
      * @param {HandoutFinesRequest} handoutFinesRequest
      * @param {*} [options] Override http request option.
@@ -6222,6 +6287,15 @@ export declare const DebtorsApiFactory: (configuration?: Configuration, basePath
      * @throws {RequiredError}
      */
     deleteFine(id: number, options?: any): AxiosPromise<void>;
+    /**
+     *
+     * @summary Get a report of all fines
+     * @param {string} [fromDate] The start date of the report, inclusive
+     * @param {string} [toDate] The end date of the report, exclusive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getFineReport(fromDate?: string, toDate?: string, options?: any): AxiosPromise<FineReportResponse>;
     /**
      *
      * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
@@ -6282,6 +6356,16 @@ export declare class DebtorsApi extends BaseAPI {
      * @memberof DebtorsApi
      */
     deleteFine(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    /**
+     *
+     * @summary Get a report of all fines
+     * @param {string} [fromDate] The start date of the report, inclusive
+     * @param {string} [toDate] The end date of the report, exclusive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DebtorsApi
+     */
+    getFineReport(fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FineReportResponse, any>>;
     /**
      *
      * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
@@ -8895,7 +8979,7 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
     getUsersContainers: (id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary Get all financial mutations of a user.
+     * @summary Get all financial mutations of a user (from or to).
      * @param {number} id The id of the user to get the mutations from
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
@@ -8933,7 +9017,7 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
     getUsersProducts: (id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary Get an user\'s transactions (from, to or created)
+     * @summary Get transactions from a user.
      * @param {number} id The id of the user that should be involved in all returned transactions
      * @param {number} [fromId] From-user for selected transactions
      * @param {number} [createdById] User that created selected transaction
@@ -8963,7 +9047,7 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
     getUsersTransactionsReport: (id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, exclusiveToId?: boolean, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary Get an user\'s transfers
+     * @summary Get transfers to or from an user.
      * @param {number} id The id of the user that should be involved in all returned transfers
      * @param {number} [take] How many transfers the endpoint should return
      * @param {number} [skip] How many transfers should be skipped (for pagination)
@@ -9150,7 +9234,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
     getUsersContainers(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedContainerResponse>>;
     /**
      *
-     * @summary Get all financial mutations of a user.
+     * @summary Get all financial mutations of a user (from or to).
      * @param {number} id The id of the user to get the mutations from
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
@@ -9188,7 +9272,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
     getUsersProducts(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductResponse>>;
     /**
      *
-     * @summary Get an user\'s transactions (from, to or created)
+     * @summary Get transactions from a user.
      * @param {number} id The id of the user that should be involved in all returned transactions
      * @param {number} [fromId] From-user for selected transactions
      * @param {number} [createdById] User that created selected transaction
@@ -9218,7 +9302,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
     getUsersTransactionsReport(id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, exclusiveToId?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TransactionReportResponse>>>;
     /**
      *
-     * @summary Get an user\'s transfers
+     * @summary Get transfers to or from an user.
      * @param {number} id The id of the user that should be involved in all returned transfers
      * @param {number} [take] How many transfers the endpoint should return
      * @param {number} [skip] How many transfers should be skipped (for pagination)
@@ -9405,7 +9489,7 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
     getUsersContainers(id: number, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedContainerResponse>;
     /**
      *
-     * @summary Get all financial mutations of a user.
+     * @summary Get all financial mutations of a user (from or to).
      * @param {number} id The id of the user to get the mutations from
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
@@ -9443,7 +9527,7 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
     getUsersProducts(id: number, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedProductResponse>;
     /**
      *
-     * @summary Get an user\'s transactions (from, to or created)
+     * @summary Get transactions from a user.
      * @param {number} id The id of the user that should be involved in all returned transactions
      * @param {number} [fromId] From-user for selected transactions
      * @param {number} [createdById] User that created selected transaction
@@ -9473,7 +9557,7 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
     getUsersTransactionsReport(id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, exclusiveToId?: boolean, options?: any): AxiosPromise<Array<TransactionReportResponse>>;
     /**
      *
-     * @summary Get an user\'s transfers
+     * @summary Get transfers to or from an user.
      * @param {number} id The id of the user that should be involved in all returned transfers
      * @param {number} [take] How many transfers the endpoint should return
      * @param {number} [skip] How many transfers should be skipped (for pagination)
@@ -9675,7 +9759,7 @@ export declare class UsersApi extends BaseAPI {
     getUsersContainers(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedContainerResponse, any>>;
     /**
      *
-     * @summary Get all financial mutations of a user.
+     * @summary Get all financial mutations of a user (from or to).
      * @param {number} id The id of the user to get the mutations from
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
@@ -9717,7 +9801,7 @@ export declare class UsersApi extends BaseAPI {
     getUsersProducts(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedProductResponse, any>>;
     /**
      *
-     * @summary Get an user\'s transactions (from, to or created)
+     * @summary Get transactions from a user.
      * @param {number} id The id of the user that should be involved in all returned transactions
      * @param {number} [fromId] From-user for selected transactions
      * @param {number} [createdById] User that created selected transaction
@@ -9749,7 +9833,7 @@ export declare class UsersApi extends BaseAPI {
     getUsersTransactionsReport(id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, exclusiveToId?: boolean, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionReportResponse[], any>>;
     /**
      *
-     * @summary Get an user\'s transfers
+     * @summary Get transfers to or from an user.
      * @param {number} id The id of the user that should be involved in all returned transfers
      * @param {number} [take] How many transfers the endpoint should return
      * @param {number} [skip] How many transfers should be skipped (for pagination)
