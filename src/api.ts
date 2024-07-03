@@ -5909,12 +5909,13 @@ export const BalanceApiAxiosParamCreator = function (configuration?: Configurati
          * @param {GetAllBalanceUserTypesEnum} [userTypes] Filter based on user type.
          * @param {string} [orderBy] Column to order balance by - eg: id,amount
          * @param {GetAllBalanceOrderDirectionEnum} [orderDirection] Order direction
+         * @param {boolean} [allowDeleted] Whether to include deleted users
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllBalance: async (date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllBalance: async (date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/balances/all`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -5965,6 +5966,10 @@ export const BalanceApiAxiosParamCreator = function (configuration?: Configurati
 
             if (orderDirection !== undefined) {
                 localVarQueryParameter['orderDirection'] = orderDirection;
+            }
+
+            if (allowDeleted !== undefined) {
+                localVarQueryParameter['allowDeleted'] = allowDeleted;
             }
 
             if (take !== undefined) {
@@ -6080,13 +6085,14 @@ export const BalanceApiFp = function(configuration?: Configuration) {
          * @param {GetAllBalanceUserTypesEnum} [userTypes] Filter based on user type.
          * @param {string} [orderBy] Column to order balance by - eg: id,amount
          * @param {GetAllBalanceOrderDirectionEnum} [orderDirection] Order direction
+         * @param {boolean} [allowDeleted] Whether to include deleted users
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BalanceResponse>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, take, skip, options);
+        async getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BalanceResponse>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, allowDeleted, take, skip, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['BalanceApi.getAllBalance']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
@@ -6138,13 +6144,14 @@ export const BalanceApiFactory = function (configuration?: Configuration, basePa
          * @param {GetAllBalanceUserTypesEnum} [userTypes] Filter based on user type.
          * @param {string} [orderBy] Column to order balance by - eg: id,amount
          * @param {GetAllBalanceOrderDirectionEnum} [orderDirection] Order direction
+         * @param {boolean} [allowDeleted] Whether to include deleted users
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, take?: number, skip?: number, options?: any): AxiosPromise<Array<BalanceResponse>> {
-            return localVarFp.getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, take, skip, options).then((request) => request(axios, basePath));
+        getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: any): AxiosPromise<Array<BalanceResponse>> {
+            return localVarFp.getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, allowDeleted, take, skip, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -6187,14 +6194,15 @@ export class BalanceApi extends BaseAPI {
      * @param {GetAllBalanceUserTypesEnum} [userTypes] Filter based on user type.
      * @param {string} [orderBy] Column to order balance by - eg: id,amount
      * @param {GetAllBalanceOrderDirectionEnum} [orderDirection] Order direction
+     * @param {boolean} [allowDeleted] Whether to include deleted users
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BalanceApi
      */
-    public getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
-        return BalanceApiFp(this.configuration).getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, take, skip, options).then((request) => request(this.axios, this.basePath));
+    public getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
+        return BalanceApiFp(this.configuration).getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, allowDeleted, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -13678,7 +13686,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
-         * @summary Get all financial mutations of a user.
+         * @summary Get all financial mutations of a user (from or to).
          * @param {number} id The id of the user to get the mutations from
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
@@ -13860,7 +13868,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
-         * @summary Get an user\'s transactions (from, to or created)
+         * @summary Get transactions from a user.
          * @param {number} id The id of the user that should be involved in all returned transactions
          * @param {number} [fromId] From-user for selected transactions
          * @param {number} [createdById] User that created selected transaction
@@ -14006,7 +14014,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
-         * @summary Get an user\'s transfers
+         * @summary Get transfers to or from an user.
          * @param {number} id The id of the user that should be involved in all returned transfers
          * @param {number} [take] How many transfers the endpoint should return
          * @param {number} [skip] How many transfers should be skipped (for pagination)
@@ -14512,7 +14520,7 @@ export const UsersApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Get all financial mutations of a user.
+         * @summary Get all financial mutations of a user (from or to).
          * @param {number} id The id of the user to get the mutations from
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
@@ -14570,7 +14578,7 @@ export const UsersApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Get an user\'s transactions (from, to or created)
+         * @summary Get transactions from a user.
          * @param {number} id The id of the user that should be involved in all returned transactions
          * @param {number} [fromId] From-user for selected transactions
          * @param {number} [createdById] User that created selected transaction
@@ -14610,7 +14618,7 @@ export const UsersApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Get an user\'s transfers
+         * @summary Get transfers to or from an user.
          * @param {number} id The id of the user that should be involved in all returned transfers
          * @param {number} [take] How many transfers the endpoint should return
          * @param {number} [skip] How many transfers should be skipped (for pagination)
@@ -14862,7 +14870,7 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
-         * @summary Get all financial mutations of a user.
+         * @summary Get all financial mutations of a user (from or to).
          * @param {number} id The id of the user to get the mutations from
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
@@ -14908,7 +14916,7 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
-         * @summary Get an user\'s transactions (from, to or created)
+         * @summary Get transactions from a user.
          * @param {number} id The id of the user that should be involved in all returned transactions
          * @param {number} [fromId] From-user for selected transactions
          * @param {number} [createdById] User that created selected transaction
@@ -14942,7 +14950,7 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
-         * @summary Get an user\'s transfers
+         * @summary Get transfers to or from an user.
          * @param {number} id The id of the user that should be involved in all returned transfers
          * @param {number} [take] How many transfers the endpoint should return
          * @param {number} [skip] How many transfers should be skipped (for pagination)
@@ -15199,7 +15207,7 @@ export class UsersApi extends BaseAPI {
 
     /**
      * 
-     * @summary Get all financial mutations of a user.
+     * @summary Get all financial mutations of a user (from or to).
      * @param {number} id The id of the user to get the mutations from
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
@@ -15253,7 +15261,7 @@ export class UsersApi extends BaseAPI {
 
     /**
      * 
-     * @summary Get an user\'s transactions (from, to or created)
+     * @summary Get transactions from a user.
      * @param {number} id The id of the user that should be involved in all returned transactions
      * @param {number} [fromId] From-user for selected transactions
      * @param {number} [createdById] User that created selected transaction
@@ -15291,7 +15299,7 @@ export class UsersApi extends BaseAPI {
 
     /**
      * 
-     * @summary Get an user\'s transfers
+     * @summary Get transfers to or from an user.
      * @param {number} id The id of the user that should be involved in all returned transfers
      * @param {number} [take] How many transfers the endpoint should return
      * @param {number} [skip] How many transfers should be skipped (for pagination)
