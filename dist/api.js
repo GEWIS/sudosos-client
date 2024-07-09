@@ -1988,12 +1988,10 @@ const ContainersApiAxiosParamCreator = function (configuration) {
          *
          * @summary Returns all the products in the container
          * @param {number} id The id of the container which should be returned
-         * @param {number} [take] How many products the endpoint should return
-         * @param {number} [skip] How many products should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getProductsContainer: (id_1, take_1, skip_1, ...args_1) => __awaiter(this, [id_1, take_1, skip_1, ...args_1], void 0, function* (id, take, skip, options = {}) {
+        getProductsContainer: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getProductsContainer', 'id', id);
             const localVarPath = `/containers/{id}/products`
@@ -2010,12 +2008,6 @@ const ContainersApiAxiosParamCreator = function (configuration) {
             // authentication JWT required
             // http bearer authentication required
             yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
-            if (take !== undefined) {
-                localVarQueryParameter['take'] = take;
-            }
-            if (skip !== undefined) {
-                localVarQueryParameter['skip'] = skip;
-            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
@@ -2176,15 +2168,13 @@ const ContainersApiFp = function (configuration) {
          *
          * @summary Returns all the products in the container
          * @param {number} id The id of the container which should be returned
-         * @param {number} [take] How many products the endpoint should return
-         * @param {number} [skip] How many products should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getProductsContainer(id, take, skip, options) {
+        getProductsContainer(id, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getProductsContainer(id, take, skip, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getProductsContainer(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['ContainersApi.getProductsContainer']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
@@ -2275,13 +2265,11 @@ const ContainersApiFactory = function (configuration, basePath, axios) {
          *
          * @summary Returns all the products in the container
          * @param {number} id The id of the container which should be returned
-         * @param {number} [take] How many products the endpoint should return
-         * @param {number} [skip] How many products should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getProductsContainer(id, take, skip, options) {
-            return localVarFp.getProductsContainer(id, take, skip, options).then((request) => request(axios, basePath));
+        getProductsContainer(id, options) {
+            return localVarFp.getProductsContainer(id, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -2352,14 +2340,12 @@ class ContainersApi extends base_1.BaseAPI {
      *
      * @summary Returns all the products in the container
      * @param {number} id The id of the container which should be returned
-     * @param {number} [take] How many products the endpoint should return
-     * @param {number} [skip] How many products should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContainersApi
      */
-    getProductsContainer(id, take, skip, options) {
-        return (0, exports.ContainersApiFp)(this.configuration).getProductsContainer(id, take, skip, options).then((request) => request(this.axios, this.basePath));
+    getProductsContainer(id, options) {
+        return (0, exports.ContainersApiFp)(this.configuration).getProductsContainer(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -5387,12 +5373,10 @@ const PointofsaleApiAxiosParamCreator = function (configuration) {
          *
          * @summary Returns the products of the requested Point of Sale, empty list if POS does not exist
          * @param {number} id The id of the point of sale
-         * @param {number} [take] How many products the endpoint should return
-         * @param {number} [skip] How many products should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllPointOfSaleProducts: (id_1, take_1, skip_1, ...args_1) => __awaiter(this, [id_1, take_1, skip_1, ...args_1], void 0, function* (id, take, skip, options = {}) {
+        getAllPointOfSaleProducts: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getAllPointOfSaleProducts', 'id', id);
             const localVarPath = `/pointsofsale/{id}/products`
@@ -5409,12 +5393,6 @@ const PointofsaleApiAxiosParamCreator = function (configuration) {
             // authentication JWT required
             // http bearer authentication required
             yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
-            if (take !== undefined) {
-                localVarQueryParameter['take'] = take;
-            }
-            if (skip !== undefined) {
-                localVarQueryParameter['skip'] = skip;
-            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
@@ -5616,15 +5594,13 @@ const PointofsaleApiFp = function (configuration) {
          *
          * @summary Returns the products of the requested Point of Sale, empty list if POS does not exist
          * @param {number} id The id of the point of sale
-         * @param {number} [take] How many products the endpoint should return
-         * @param {number} [skip] How many products should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllPointOfSaleProducts(id, take, skip, options) {
+        getAllPointOfSaleProducts(id, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllPointOfSaleProducts(id, take, skip, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllPointOfSaleProducts(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['PointofsaleApi.getAllPointOfSaleProducts']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
@@ -5734,13 +5710,11 @@ const PointofsaleApiFactory = function (configuration, basePath, axios) {
          *
          * @summary Returns the products of the requested Point of Sale, empty list if POS does not exist
          * @param {number} id The id of the point of sale
-         * @param {number} [take] How many products the endpoint should return
-         * @param {number} [skip] How many products should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllPointOfSaleProducts(id, take, skip, options) {
-            return localVarFp.getAllPointOfSaleProducts(id, take, skip, options).then((request) => request(axios, basePath));
+        getAllPointOfSaleProducts(id, options) {
+            return localVarFp.getAllPointOfSaleProducts(id, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -5824,14 +5798,12 @@ class PointofsaleApi extends base_1.BaseAPI {
      *
      * @summary Returns the products of the requested Point of Sale, empty list if POS does not exist
      * @param {number} id The id of the point of sale
-     * @param {number} [take] How many products the endpoint should return
-     * @param {number} [skip] How many products should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PointofsaleApi
      */
-    getAllPointOfSaleProducts(id, take, skip, options) {
-        return (0, exports.PointofsaleApiFp)(this.configuration).getAllPointOfSaleProducts(id, take, skip, options).then((request) => request(this.axios, this.basePath));
+    getAllPointOfSaleProducts(id, options) {
+        return (0, exports.PointofsaleApiFp)(this.configuration).getAllPointOfSaleProducts(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
