@@ -2909,6 +2909,12 @@ export interface PayoutRequestRequest {
      * @memberof PayoutRequestRequest
      */
     'bankAccountName': string;
+    /**
+     * The ID of the user who requested the payout
+     * @type {number}
+     * @memberof PayoutRequestRequest
+     */
+    'forId': number;
 }
 /**
  *
