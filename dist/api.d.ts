@@ -2909,6 +2909,12 @@ export interface PayoutRequestRequest {
      * @memberof PayoutRequestRequest
      */
     'bankAccountName': string;
+    /**
+     * The ID of the user who requested the payout
+     * @type {number}
+     * @memberof PayoutRequestRequest
+     */
+    'forId': number;
 }
 /**
  *
@@ -5917,12 +5923,10 @@ export declare const ContainersApiAxiosParamCreator: (configuration?: Configurat
      *
      * @summary Returns all the products in the container
      * @param {number} id The id of the container which should be returned
-     * @param {number} [take] How many products the endpoint should return
-     * @param {number} [skip] How many products should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getProductsContainer: (id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getProductsContainer: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns all public container
@@ -5976,12 +5980,10 @@ export declare const ContainersApiFp: (configuration?: Configuration) => {
      *
      * @summary Returns all the products in the container
      * @param {number} id The id of the container which should be returned
-     * @param {number} [take] How many products the endpoint should return
-     * @param {number} [skip] How many products should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getProductsContainer(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductResponse>>;
+    getProductsContainer(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ProductResponse>>>;
     /**
      *
      * @summary Returns all public container
@@ -6035,12 +6037,10 @@ export declare const ContainersApiFactory: (configuration?: Configuration, baseP
      *
      * @summary Returns all the products in the container
      * @param {number} id The id of the container which should be returned
-     * @param {number} [take] How many products the endpoint should return
-     * @param {number} [skip] How many products should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getProductsContainer(id: number, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedProductResponse>;
+    getProductsContainer(id: number, options?: any): AxiosPromise<Array<ProductResponse>>;
     /**
      *
      * @summary Returns all public container
@@ -6098,13 +6098,11 @@ export declare class ContainersApi extends BaseAPI {
      *
      * @summary Returns all the products in the container
      * @param {number} id The id of the container which should be returned
-     * @param {number} [take] How many products the endpoint should return
-     * @param {number} [skip] How many products should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContainersApi
      */
-    getProductsContainer(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedProductResponse, any>>;
+    getProductsContainer(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductResponse[], any>>;
     /**
      *
      * @summary Returns all public container
@@ -7608,12 +7606,10 @@ export declare const PointofsaleApiAxiosParamCreator: (configuration?: Configura
      *
      * @summary Returns the products of the requested Point of Sale, empty list if POS does not exist
      * @param {number} id The id of the point of sale
-     * @param {number} [take] How many products the endpoint should return
-     * @param {number} [skip] How many products should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllPointOfSaleProducts: (id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getAllPointOfSaleProducts: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns all existing Point of Sales
@@ -7678,12 +7674,10 @@ export declare const PointofsaleApiFp: (configuration?: Configuration) => {
      *
      * @summary Returns the products of the requested Point of Sale, empty list if POS does not exist
      * @param {number} id The id of the point of sale
-     * @param {number} [take] How many products the endpoint should return
-     * @param {number} [skip] How many products should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllPointOfSaleProducts(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductResponse>>;
+    getAllPointOfSaleProducts(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ProductResponse>>>;
     /**
      *
      * @summary Returns all existing Point of Sales
@@ -7748,12 +7742,10 @@ export declare const PointofsaleApiFactory: (configuration?: Configuration, base
      *
      * @summary Returns the products of the requested Point of Sale, empty list if POS does not exist
      * @param {number} id The id of the point of sale
-     * @param {number} [take] How many products the endpoint should return
-     * @param {number} [skip] How many products should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllPointOfSaleProducts(id: number, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedProductResponse>;
+    getAllPointOfSaleProducts(id: number, options?: any): AxiosPromise<Array<ProductResponse>>;
     /**
      *
      * @summary Returns all existing Point of Sales
@@ -7822,13 +7814,11 @@ export declare class PointofsaleApi extends BaseAPI {
      *
      * @summary Returns the products of the requested Point of Sale, empty list if POS does not exist
      * @param {number} id The id of the point of sale
-     * @param {number} [take] How many products the endpoint should return
-     * @param {number} [skip] How many products should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PointofsaleApi
      */
-    getAllPointOfSaleProducts(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedProductResponse, any>>;
+    getAllPointOfSaleProducts(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductResponse[], any>>;
     /**
      *
      * @summary Returns all existing Point of Sales
