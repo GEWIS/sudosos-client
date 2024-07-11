@@ -1925,6 +1925,49 @@ export interface FineHandoutEventResponse {
 /**
  *
  * @export
+ * @interface FineReportResponse
+ */
+export interface FineReportResponse {
+    /**
+     * From date of the report
+     * @type {string}
+     * @memberof FineReportResponse
+     */
+    'fromDate': string;
+    /**
+     * To date of the report
+     * @type {string}
+     * @memberof FineReportResponse
+     */
+    'toDate': string;
+    /**
+     * Number of fines
+     * @type {number}
+     * @memberof FineReportResponse
+     */
+    'count': number;
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof FineReportResponse
+     */
+    'handedOut': DineroObjectResponse;
+    /**
+     * Number of fines waived
+     * @type {number}
+     * @memberof FineReportResponse
+     */
+    'waivedCount': number;
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof FineReportResponse
+     */
+    'waived': DineroObjectResponse;
+}
+/**
+ *
+ * @export
  * @interface FineResponse
  */
 export interface FineResponse {
@@ -2866,6 +2909,12 @@ export interface PayoutRequestRequest {
      * @memberof PayoutRequestRequest
      */
     'bankAccountName': string;
+    /**
+     * The ID of the user who requested the payout
+     * @type {number}
+     * @memberof PayoutRequestRequest
+     */
+    'forId': number;
 }
 /**
  *
@@ -5377,12 +5426,13 @@ export declare const BalanceApiAxiosParamCreator: (configuration?: Configuration
      * @param {GetAllBalanceUserTypesEnum} [userTypes] Filter based on user type.
      * @param {string} [orderBy] Column to order balance by - eg: id,amount
      * @param {GetAllBalanceOrderDirectionEnum} [orderDirection] Order direction
+     * @param {boolean} [allowDeleted] Whether to include deleted users
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllBalance: (date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getAllBalance: (date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Retrieves the requested balance
@@ -5416,12 +5466,13 @@ export declare const BalanceApiFp: (configuration?: Configuration) => {
      * @param {GetAllBalanceUserTypesEnum} [userTypes] Filter based on user type.
      * @param {string} [orderBy] Column to order balance by - eg: id,amount
      * @param {GetAllBalanceOrderDirectionEnum} [orderDirection] Order direction
+     * @param {boolean} [allowDeleted] Whether to include deleted users
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BalanceResponse>>>;
+    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BalanceResponse>>>;
     /**
      *
      * @summary Retrieves the requested balance
@@ -5455,12 +5506,13 @@ export declare const BalanceApiFactory: (configuration?: Configuration, basePath
      * @param {GetAllBalanceUserTypesEnum} [userTypes] Filter based on user type.
      * @param {string} [orderBy] Column to order balance by - eg: id,amount
      * @param {GetAllBalanceOrderDirectionEnum} [orderDirection] Order direction
+     * @param {boolean} [allowDeleted] Whether to include deleted users
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, take?: number, skip?: number, options?: any): AxiosPromise<Array<BalanceResponse>>;
+    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: any): AxiosPromise<Array<BalanceResponse>>;
     /**
      *
      * @summary Retrieves the requested balance
@@ -5496,13 +5548,14 @@ export declare class BalanceApi extends BaseAPI {
      * @param {GetAllBalanceUserTypesEnum} [userTypes] Filter based on user type.
      * @param {string} [orderBy] Column to order balance by - eg: id,amount
      * @param {GetAllBalanceOrderDirectionEnum} [orderDirection] Order direction
+     * @param {boolean} [allowDeleted] Whether to include deleted users
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BalanceApi
      */
-    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BalanceResponse[], any>>;
+    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BalanceResponse[], any>>;
     /**
      *
      * @summary Retrieves the requested balance
@@ -5859,6 +5912,14 @@ export declare const ContainersApiAxiosParamCreator: (configuration?: Configurat
     createContainer: (createContainerRequest: CreateContainerRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary (Soft) delete the given container. Cannot be undone.
+     * @param {number} id The id of the container which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteContainer: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Returns all existing containers
      * @param {number} [take] How many containers the endpoint should return
      * @param {number} [skip] How many containers should be skipped (for pagination)
@@ -5870,12 +5931,10 @@ export declare const ContainersApiAxiosParamCreator: (configuration?: Configurat
      *
      * @summary Returns all the products in the container
      * @param {number} id The id of the container which should be returned
-     * @param {number} [take] How many products the endpoint should return
-     * @param {number} [skip] How many products should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getProductsContainer: (id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getProductsContainer: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns all public container
@@ -5918,6 +5977,14 @@ export declare const ContainersApiFp: (configuration?: Configuration) => {
     createContainer(createContainerRequest: CreateContainerRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContainerWithProductsResponse>>;
     /**
      *
+     * @summary (Soft) delete the given container. Cannot be undone.
+     * @param {number} id The id of the container which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteContainer(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    /**
+     *
      * @summary Returns all existing containers
      * @param {number} [take] How many containers the endpoint should return
      * @param {number} [skip] How many containers should be skipped (for pagination)
@@ -5929,12 +5996,10 @@ export declare const ContainersApiFp: (configuration?: Configuration) => {
      *
      * @summary Returns all the products in the container
      * @param {number} id The id of the container which should be returned
-     * @param {number} [take] How many products the endpoint should return
-     * @param {number} [skip] How many products should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getProductsContainer(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductResponse>>;
+    getProductsContainer(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ProductResponse>>>;
     /**
      *
      * @summary Returns all public container
@@ -5977,6 +6042,14 @@ export declare const ContainersApiFactory: (configuration?: Configuration, baseP
     createContainer(createContainerRequest: CreateContainerRequest, options?: any): AxiosPromise<ContainerWithProductsResponse>;
     /**
      *
+     * @summary (Soft) delete the given container. Cannot be undone.
+     * @param {number} id The id of the container which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteContainer(id: number, options?: any): AxiosPromise<string>;
+    /**
+     *
      * @summary Returns all existing containers
      * @param {number} [take] How many containers the endpoint should return
      * @param {number} [skip] How many containers should be skipped (for pagination)
@@ -5988,12 +6061,10 @@ export declare const ContainersApiFactory: (configuration?: Configuration, baseP
      *
      * @summary Returns all the products in the container
      * @param {number} id The id of the container which should be returned
-     * @param {number} [take] How many products the endpoint should return
-     * @param {number} [skip] How many products should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getProductsContainer(id: number, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedProductResponse>;
+    getProductsContainer(id: number, options?: any): AxiosPromise<Array<ProductResponse>>;
     /**
      *
      * @summary Returns all public container
@@ -6039,6 +6110,15 @@ export declare class ContainersApi extends BaseAPI {
     createContainer(createContainerRequest: CreateContainerRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ContainerWithProductsResponse, any>>;
     /**
      *
+     * @summary (Soft) delete the given container. Cannot be undone.
+     * @param {number} id The id of the container which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ContainersApi
+     */
+    deleteContainer(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    /**
+     *
      * @summary Returns all existing containers
      * @param {number} [take] How many containers the endpoint should return
      * @param {number} [skip] How many containers should be skipped (for pagination)
@@ -6051,13 +6131,11 @@ export declare class ContainersApi extends BaseAPI {
      *
      * @summary Returns all the products in the container
      * @param {number} id The id of the container which should be returned
-     * @param {number} [take] How many products the endpoint should return
-     * @param {number} [skip] How many products should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContainersApi
      */
-    getProductsContainer(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedProductResponse, any>>;
+    getProductsContainer(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductResponse[], any>>;
     /**
      *
      * @summary Returns all public container
@@ -6110,6 +6188,15 @@ export declare const DebtorsApiAxiosParamCreator: (configuration?: Configuration
      * @throws {RequiredError}
      */
     deleteFine: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get a report of all fines
+     * @param {string} [fromDate] The start date of the report, inclusive
+     * @param {string} [toDate] The end date of the report, exclusive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getFineReport: (fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
@@ -6168,6 +6255,15 @@ export declare const DebtorsApiFp: (configuration?: Configuration) => {
     deleteFine(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
+     * @summary Get a report of all fines
+     * @param {string} [fromDate] The start date of the report, inclusive
+     * @param {string} [toDate] The end date of the report, exclusive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getFineReport(fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FineReportResponse>>;
+    /**
+     *
      * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
      * @param {HandoutFinesRequest} handoutFinesRequest
      * @param {*} [options] Override http request option.
@@ -6222,6 +6318,15 @@ export declare const DebtorsApiFactory: (configuration?: Configuration, basePath
      * @throws {RequiredError}
      */
     deleteFine(id: number, options?: any): AxiosPromise<void>;
+    /**
+     *
+     * @summary Get a report of all fines
+     * @param {string} [fromDate] The start date of the report, inclusive
+     * @param {string} [toDate] The end date of the report, exclusive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getFineReport(fromDate?: string, toDate?: string, options?: any): AxiosPromise<FineReportResponse>;
     /**
      *
      * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
@@ -6282,6 +6387,16 @@ export declare class DebtorsApi extends BaseAPI {
      * @memberof DebtorsApi
      */
     deleteFine(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    /**
+     *
+     * @summary Get a report of all fines
+     * @param {string} [fromDate] The start date of the report, inclusive
+     * @param {string} [toDate] The end date of the report, exclusive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DebtorsApi
+     */
+    getFineReport(fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FineReportResponse, any>>;
     /**
      *
      * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
@@ -7340,6 +7455,14 @@ export declare const PayoutRequestsApiAxiosParamCreator: (configuration?: Config
     getAllPayoutRequests: (requestedById?: GetAllPayoutRequestsRequestedByIdParameter, approvedById?: GetAllPayoutRequestsRequestedByIdParameter, fromDate?: string, tillDate?: string, status?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Get a payout request pdf
+     * @param {number} id The ID of the payout request object that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPayoutRequestPdf: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Get a single payout request
      * @param {number} id The ID of the payout request object that should be returned
      * @param {*} [options] Override http request option.
@@ -7385,6 +7508,14 @@ export declare const PayoutRequestsApiFp: (configuration?: Configuration) => {
     getAllPayoutRequests(requestedById?: GetAllPayoutRequestsRequestedByIdParameter, approvedById?: GetAllPayoutRequestsRequestedByIdParameter, fromDate?: string, tillDate?: string, status?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBasePayoutRequestResponse>>;
     /**
      *
+     * @summary Get a payout request pdf
+     * @param {number} id The ID of the payout request object that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPayoutRequestPdf(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    /**
+     *
      * @summary Get a single payout request
      * @param {number} id The ID of the payout request object that should be returned
      * @param {*} [options] Override http request option.
@@ -7428,6 +7559,14 @@ export declare const PayoutRequestsApiFactory: (configuration?: Configuration, b
      * @throws {RequiredError}
      */
     getAllPayoutRequests(requestedById?: GetAllPayoutRequestsRequestedByIdParameter, approvedById?: GetAllPayoutRequestsRequestedByIdParameter, fromDate?: string, tillDate?: string, status?: string, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedBasePayoutRequestResponse>;
+    /**
+     *
+     * @summary Get a payout request pdf
+     * @param {number} id The ID of the payout request object that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPayoutRequestPdf(id: number, options?: any): AxiosPromise<string>;
     /**
      *
      * @summary Get a single payout request
@@ -7479,6 +7618,15 @@ export declare class PayoutRequestsApi extends BaseAPI {
     getAllPayoutRequests(requestedById?: GetAllPayoutRequestsRequestedByIdParameter, approvedById?: GetAllPayoutRequestsRequestedByIdParameter, fromDate?: string, tillDate?: string, status?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBasePayoutRequestResponse, any>>;
     /**
      *
+     * @summary Get a payout request pdf
+     * @param {number} id The ID of the payout request object that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PayoutRequestsApi
+     */
+    getPayoutRequestPdf(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    /**
+     *
      * @summary Get a single payout request
      * @param {number} id The ID of the payout request object that should be returned
      * @param {*} [options] Override http request option.
@@ -7512,6 +7660,14 @@ export declare const PointofsaleApiAxiosParamCreator: (configuration?: Configura
     createPointOfSale: (createPointOfSaleRequest: CreatePointOfSaleRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary (Soft) delete the given point of sale. Cannot be undone.
+     * @param {number} id The id of the point of sale which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletePointOfSale: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Returns the containers of the requested Point of Sale, empty list if POS does not exist
      * @param {number} id The id of the point of sale
      * @param {number} [take] How many containers the endpoint should return
@@ -7524,12 +7680,10 @@ export declare const PointofsaleApiAxiosParamCreator: (configuration?: Configura
      *
      * @summary Returns the products of the requested Point of Sale, empty list if POS does not exist
      * @param {number} id The id of the point of sale
-     * @param {number} [take] How many products the endpoint should return
-     * @param {number} [skip] How many products should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllPointOfSaleProducts: (id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getAllPointOfSaleProducts: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns all existing Point of Sales
@@ -7582,6 +7736,14 @@ export declare const PointofsaleApiFp: (configuration?: Configuration) => {
     createPointOfSale(createPointOfSaleRequest: CreatePointOfSaleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleWithContainersResponse>>;
     /**
      *
+     * @summary (Soft) delete the given point of sale. Cannot be undone.
+     * @param {number} id The id of the point of sale which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletePointOfSale(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    /**
+     *
      * @summary Returns the containers of the requested Point of Sale, empty list if POS does not exist
      * @param {number} id The id of the point of sale
      * @param {number} [take] How many containers the endpoint should return
@@ -7594,12 +7756,10 @@ export declare const PointofsaleApiFp: (configuration?: Configuration) => {
      *
      * @summary Returns the products of the requested Point of Sale, empty list if POS does not exist
      * @param {number} id The id of the point of sale
-     * @param {number} [take] How many products the endpoint should return
-     * @param {number} [skip] How many products should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllPointOfSaleProducts(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductResponse>>;
+    getAllPointOfSaleProducts(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ProductResponse>>>;
     /**
      *
      * @summary Returns all existing Point of Sales
@@ -7652,6 +7812,14 @@ export declare const PointofsaleApiFactory: (configuration?: Configuration, base
     createPointOfSale(createPointOfSaleRequest: CreatePointOfSaleRequest, options?: any): AxiosPromise<PointOfSaleWithContainersResponse>;
     /**
      *
+     * @summary (Soft) delete the given point of sale. Cannot be undone.
+     * @param {number} id The id of the point of sale which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletePointOfSale(id: number, options?: any): AxiosPromise<string>;
+    /**
+     *
      * @summary Returns the containers of the requested Point of Sale, empty list if POS does not exist
      * @param {number} id The id of the point of sale
      * @param {number} [take] How many containers the endpoint should return
@@ -7664,12 +7832,10 @@ export declare const PointofsaleApiFactory: (configuration?: Configuration, base
      *
      * @summary Returns the products of the requested Point of Sale, empty list if POS does not exist
      * @param {number} id The id of the point of sale
-     * @param {number} [take] How many products the endpoint should return
-     * @param {number} [skip] How many products should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllPointOfSaleProducts(id: number, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedProductResponse>;
+    getAllPointOfSaleProducts(id: number, options?: any): AxiosPromise<Array<ProductResponse>>;
     /**
      *
      * @summary Returns all existing Point of Sales
@@ -7725,6 +7891,15 @@ export declare class PointofsaleApi extends BaseAPI {
     createPointOfSale(createPointOfSaleRequest: CreatePointOfSaleRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PointOfSaleWithContainersResponse, any>>;
     /**
      *
+     * @summary (Soft) delete the given point of sale. Cannot be undone.
+     * @param {number} id The id of the point of sale which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PointofsaleApi
+     */
+    deletePointOfSale(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    /**
+     *
      * @summary Returns the containers of the requested Point of Sale, empty list if POS does not exist
      * @param {number} id The id of the point of sale
      * @param {number} [take] How many containers the endpoint should return
@@ -7738,13 +7913,11 @@ export declare class PointofsaleApi extends BaseAPI {
      *
      * @summary Returns the products of the requested Point of Sale, empty list if POS does not exist
      * @param {number} id The id of the point of sale
-     * @param {number} [take] How many products the endpoint should return
-     * @param {number} [skip] How many products should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PointofsaleApi
      */
-    getAllPointOfSaleProducts(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedProductResponse, any>>;
+    getAllPointOfSaleProducts(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductResponse[], any>>;
     /**
      *
      * @summary Returns all existing Point of Sales
@@ -7967,6 +8140,14 @@ export declare const ProductsApiAxiosParamCreator: (configuration?: Configuratio
     createProduct: (createProductRequest: CreateProductRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary (Soft) delete the given product. Cannot be undone.
+     * @param {number} id The id of the product which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteProduct: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Returns all existing products
      * @param {number} [take] How many products the endpoint should return
      * @param {number} [skip] How many products should be skipped (for pagination)
@@ -8016,6 +8197,14 @@ export declare const ProductsApiFp: (configuration?: Configuration) => {
     createProduct(createProductRequest: CreateProductRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductResponse>>;
     /**
      *
+     * @summary (Soft) delete the given product. Cannot be undone.
+     * @param {number} id The id of the product which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteProduct(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    /**
+     *
      * @summary Returns all existing products
      * @param {number} [take] How many products the endpoint should return
      * @param {number} [skip] How many products should be skipped (for pagination)
@@ -8063,6 +8252,14 @@ export declare const ProductsApiFactory: (configuration?: Configuration, basePat
      * @throws {RequiredError}
      */
     createProduct(createProductRequest: CreateProductRequest, options?: any): AxiosPromise<ProductResponse>;
+    /**
+     *
+     * @summary (Soft) delete the given product. Cannot be undone.
+     * @param {number} id The id of the product which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteProduct(id: number, options?: any): AxiosPromise<string>;
     /**
      *
      * @summary Returns all existing products
@@ -8115,6 +8312,15 @@ export declare class ProductsApi extends BaseAPI {
      * @memberof ProductsApi
      */
     createProduct(createProductRequest: CreateProductRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductResponse, any>>;
+    /**
+     *
+     * @summary (Soft) delete the given product. Cannot be undone.
+     * @param {number} id The id of the product which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProductsApi
+     */
+    deleteProduct(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
     /**
      *
      * @summary Returns all existing products
