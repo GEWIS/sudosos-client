@@ -1950,6 +1950,38 @@ const ContainersApiAxiosParamCreator = function (configuration) {
         }),
         /**
          *
+         * @summary (Soft) delete the given container. Cannot be undone.
+         * @param {number} id The id of the container which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteContainer: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('deleteContainer', 'id', id);
+            const localVarPath = `/containers/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'DELETE' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
          * @summary Returns all existing containers
          * @param {number} [take] How many containers the endpoint should return
          * @param {number} [skip] How many containers should be skipped (for pagination)
@@ -2149,6 +2181,22 @@ const ContainersApiFp = function (configuration) {
         },
         /**
          *
+         * @summary (Soft) delete the given container. Cannot be undone.
+         * @param {number} id The id of the container which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteContainer(id, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteContainer(id, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['ContainersApi.deleteContainer']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
          * @summary Returns all existing containers
          * @param {number} [take] How many containers the endpoint should return
          * @param {number} [skip] How many containers should be skipped (for pagination)
@@ -2252,6 +2300,16 @@ const ContainersApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary (Soft) delete the given container. Cannot be undone.
+         * @param {number} id The id of the container which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteContainer(id, options) {
+            return localVarFp.deleteContainer(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Returns all existing containers
          * @param {number} [take] How many containers the endpoint should return
          * @param {number} [skip] How many containers should be skipped (for pagination)
@@ -2323,6 +2381,17 @@ class ContainersApi extends base_1.BaseAPI {
      */
     createContainer(createContainerRequest, options) {
         return (0, exports.ContainersApiFp)(this.configuration).createContainer(createContainerRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary (Soft) delete the given container. Cannot be undone.
+     * @param {number} id The id of the container which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ContainersApi
+     */
+    deleteContainer(id, options) {
+        return (0, exports.ContainersApiFp)(this.configuration).deleteContainer(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -5400,6 +5469,38 @@ const PointofsaleApiAxiosParamCreator = function (configuration) {
         }),
         /**
          *
+         * @summary (Soft) delete the given point of sale. Cannot be undone.
+         * @param {number} id The id of the point of sale which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deletePointOfSale: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('deletePointOfSale', 'id', id);
+            const localVarPath = `/pointsofsale/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'DELETE' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
          * @summary Returns the containers of the requested Point of Sale, empty list if POS does not exist
          * @param {number} id The id of the point of sale
          * @param {number} [take] How many containers the endpoint should return
@@ -5643,6 +5744,22 @@ const PointofsaleApiFp = function (configuration) {
         },
         /**
          *
+         * @summary (Soft) delete the given point of sale. Cannot be undone.
+         * @param {number} id The id of the point of sale which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deletePointOfSale(id, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.deletePointOfSale(id, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['PointofsaleApi.deletePointOfSale']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
          * @summary Returns the containers of the requested Point of Sale, empty list if POS does not exist
          * @param {number} id The id of the point of sale
          * @param {number} [take] How many containers the endpoint should return
@@ -5765,6 +5882,16 @@ const PointofsaleApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary (Soft) delete the given point of sale. Cannot be undone.
+         * @param {number} id The id of the point of sale which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deletePointOfSale(id, options) {
+            return localVarFp.deletePointOfSale(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Returns the containers of the requested Point of Sale, empty list if POS does not exist
          * @param {number} id The id of the point of sale
          * @param {number} [take] How many containers the endpoint should return
@@ -5849,6 +5976,17 @@ class PointofsaleApi extends base_1.BaseAPI {
      */
     createPointOfSale(createPointOfSaleRequest, options) {
         return (0, exports.PointofsaleApiFp)(this.configuration).createPointOfSale(createPointOfSaleRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary (Soft) delete the given point of sale. Cannot be undone.
+     * @param {number} id The id of the point of sale which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PointofsaleApi
+     */
+    deletePointOfSale(id, options) {
+        return (0, exports.PointofsaleApiFp)(this.configuration).deletePointOfSale(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -6295,6 +6433,38 @@ const ProductsApiAxiosParamCreator = function (configuration) {
         }),
         /**
          *
+         * @summary (Soft) delete the given product. Cannot be undone.
+         * @param {number} id The id of the product which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteProduct: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('deleteProduct', 'id', id);
+            const localVarPath = `/products/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'DELETE' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
          * @summary Returns all existing products
          * @param {number} [take] How many products the endpoint should return
          * @param {number} [skip] How many products should be skipped (for pagination)
@@ -6465,6 +6635,22 @@ const ProductsApiFp = function (configuration) {
         },
         /**
          *
+         * @summary (Soft) delete the given product. Cannot be undone.
+         * @param {number} id The id of the product which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteProduct(id, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteProduct(id, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['ProductsApi.deleteProduct']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
          * @summary Returns all existing products
          * @param {number} [take] How many products the endpoint should return
          * @param {number} [skip] How many products should be skipped (for pagination)
@@ -6552,6 +6738,16 @@ const ProductsApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary (Soft) delete the given product. Cannot be undone.
+         * @param {number} id The id of the product which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteProduct(id, options) {
+            return localVarFp.deleteProduct(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Returns all existing products
          * @param {number} [take] How many products the endpoint should return
          * @param {number} [skip] How many products should be skipped (for pagination)
@@ -6613,6 +6809,17 @@ class ProductsApi extends base_1.BaseAPI {
      */
     createProduct(createProductRequest, options) {
         return (0, exports.ProductsApiFp)(this.configuration).createProduct(createProductRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary (Soft) delete the given product. Cannot be undone.
+     * @param {number} id The id of the product which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProductsApi
+     */
+    deleteProduct(id, options) {
+        return (0, exports.ProductsApiFp)(this.configuration).deleteProduct(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *

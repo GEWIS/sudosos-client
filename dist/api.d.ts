@@ -5912,6 +5912,14 @@ export declare const ContainersApiAxiosParamCreator: (configuration?: Configurat
     createContainer: (createContainerRequest: CreateContainerRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary (Soft) delete the given container. Cannot be undone.
+     * @param {number} id The id of the container which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteContainer: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Returns all existing containers
      * @param {number} [take] How many containers the endpoint should return
      * @param {number} [skip] How many containers should be skipped (for pagination)
@@ -5969,6 +5977,14 @@ export declare const ContainersApiFp: (configuration?: Configuration) => {
     createContainer(createContainerRequest: CreateContainerRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContainerWithProductsResponse>>;
     /**
      *
+     * @summary (Soft) delete the given container. Cannot be undone.
+     * @param {number} id The id of the container which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteContainer(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    /**
+     *
      * @summary Returns all existing containers
      * @param {number} [take] How many containers the endpoint should return
      * @param {number} [skip] How many containers should be skipped (for pagination)
@@ -6024,6 +6040,14 @@ export declare const ContainersApiFactory: (configuration?: Configuration, baseP
      * @throws {RequiredError}
      */
     createContainer(createContainerRequest: CreateContainerRequest, options?: any): AxiosPromise<ContainerWithProductsResponse>;
+    /**
+     *
+     * @summary (Soft) delete the given container. Cannot be undone.
+     * @param {number} id The id of the container which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteContainer(id: number, options?: any): AxiosPromise<string>;
     /**
      *
      * @summary Returns all existing containers
@@ -6084,6 +6108,15 @@ export declare class ContainersApi extends BaseAPI {
      * @memberof ContainersApi
      */
     createContainer(createContainerRequest: CreateContainerRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ContainerWithProductsResponse, any>>;
+    /**
+     *
+     * @summary (Soft) delete the given container. Cannot be undone.
+     * @param {number} id The id of the container which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ContainersApi
+     */
+    deleteContainer(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
     /**
      *
      * @summary Returns all existing containers
@@ -7627,6 +7660,14 @@ export declare const PointofsaleApiAxiosParamCreator: (configuration?: Configura
     createPointOfSale: (createPointOfSaleRequest: CreatePointOfSaleRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary (Soft) delete the given point of sale. Cannot be undone.
+     * @param {number} id The id of the point of sale which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletePointOfSale: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Returns the containers of the requested Point of Sale, empty list if POS does not exist
      * @param {number} id The id of the point of sale
      * @param {number} [take] How many containers the endpoint should return
@@ -7695,6 +7736,14 @@ export declare const PointofsaleApiFp: (configuration?: Configuration) => {
     createPointOfSale(createPointOfSaleRequest: CreatePointOfSaleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleWithContainersResponse>>;
     /**
      *
+     * @summary (Soft) delete the given point of sale. Cannot be undone.
+     * @param {number} id The id of the point of sale which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletePointOfSale(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    /**
+     *
      * @summary Returns the containers of the requested Point of Sale, empty list if POS does not exist
      * @param {number} id The id of the point of sale
      * @param {number} [take] How many containers the endpoint should return
@@ -7761,6 +7810,14 @@ export declare const PointofsaleApiFactory: (configuration?: Configuration, base
      * @throws {RequiredError}
      */
     createPointOfSale(createPointOfSaleRequest: CreatePointOfSaleRequest, options?: any): AxiosPromise<PointOfSaleWithContainersResponse>;
+    /**
+     *
+     * @summary (Soft) delete the given point of sale. Cannot be undone.
+     * @param {number} id The id of the point of sale which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletePointOfSale(id: number, options?: any): AxiosPromise<string>;
     /**
      *
      * @summary Returns the containers of the requested Point of Sale, empty list if POS does not exist
@@ -7832,6 +7889,15 @@ export declare class PointofsaleApi extends BaseAPI {
      * @memberof PointofsaleApi
      */
     createPointOfSale(createPointOfSaleRequest: CreatePointOfSaleRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PointOfSaleWithContainersResponse, any>>;
+    /**
+     *
+     * @summary (Soft) delete the given point of sale. Cannot be undone.
+     * @param {number} id The id of the point of sale which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PointofsaleApi
+     */
+    deletePointOfSale(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
     /**
      *
      * @summary Returns the containers of the requested Point of Sale, empty list if POS does not exist
@@ -8074,6 +8140,14 @@ export declare const ProductsApiAxiosParamCreator: (configuration?: Configuratio
     createProduct: (createProductRequest: CreateProductRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary (Soft) delete the given product. Cannot be undone.
+     * @param {number} id The id of the product which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteProduct: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Returns all existing products
      * @param {number} [take] How many products the endpoint should return
      * @param {number} [skip] How many products should be skipped (for pagination)
@@ -8123,6 +8197,14 @@ export declare const ProductsApiFp: (configuration?: Configuration) => {
     createProduct(createProductRequest: CreateProductRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductResponse>>;
     /**
      *
+     * @summary (Soft) delete the given product. Cannot be undone.
+     * @param {number} id The id of the product which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteProduct(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    /**
+     *
      * @summary Returns all existing products
      * @param {number} [take] How many products the endpoint should return
      * @param {number} [skip] How many products should be skipped (for pagination)
@@ -8170,6 +8252,14 @@ export declare const ProductsApiFactory: (configuration?: Configuration, basePat
      * @throws {RequiredError}
      */
     createProduct(createProductRequest: CreateProductRequest, options?: any): AxiosPromise<ProductResponse>;
+    /**
+     *
+     * @summary (Soft) delete the given product. Cannot be undone.
+     * @param {number} id The id of the product which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteProduct(id: number, options?: any): AxiosPromise<string>;
     /**
      *
      * @summary Returns all existing products
@@ -8222,6 +8312,15 @@ export declare class ProductsApi extends BaseAPI {
      * @memberof ProductsApi
      */
     createProduct(createProductRequest: CreateProductRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductResponse, any>>;
+    /**
+     *
+     * @summary (Soft) delete the given product. Cannot be undone.
+     * @param {number} id The id of the product which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProductsApi
+     */
+    deleteProduct(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
     /**
      *
      * @summary Returns all existing products
