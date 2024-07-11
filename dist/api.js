@@ -974,12 +974,13 @@ const BalanceApiAxiosParamCreator = function (configuration) {
          * @param {GetAllBalanceUserTypesEnum} [userTypes] Filter based on user type.
          * @param {string} [orderBy] Column to order balance by - eg: id,amount
          * @param {GetAllBalanceOrderDirectionEnum} [orderDirection] Order direction
+         * @param {boolean} [allowDeleted] Whether to include deleted users
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllBalance: (date_1, minBalance_1, maxBalance_1, hasFine_1, minFine_1, maxFine_1, userTypes_1, orderBy_1, orderDirection_1, take_1, skip_1, ...args_1) => __awaiter(this, [date_1, minBalance_1, maxBalance_1, hasFine_1, minFine_1, maxFine_1, userTypes_1, orderBy_1, orderDirection_1, take_1, skip_1, ...args_1], void 0, function* (date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, take, skip, options = {}) {
+        getAllBalance: (date_1, minBalance_1, maxBalance_1, hasFine_1, minFine_1, maxFine_1, userTypes_1, orderBy_1, orderDirection_1, allowDeleted_1, take_1, skip_1, ...args_1) => __awaiter(this, [date_1, minBalance_1, maxBalance_1, hasFine_1, minFine_1, maxFine_1, userTypes_1, orderBy_1, orderDirection_1, allowDeleted_1, take_1, skip_1, ...args_1], void 0, function* (date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, allowDeleted, take, skip, options = {}) {
             const localVarPath = `/balances/all`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -1019,6 +1020,9 @@ const BalanceApiAxiosParamCreator = function (configuration) {
             }
             if (orderDirection !== undefined) {
                 localVarQueryParameter['orderDirection'] = orderDirection;
+            }
+            if (allowDeleted !== undefined) {
+                localVarQueryParameter['allowDeleted'] = allowDeleted;
             }
             if (take !== undefined) {
                 localVarQueryParameter['take'] = take;
@@ -1116,15 +1120,16 @@ const BalanceApiFp = function (configuration) {
          * @param {GetAllBalanceUserTypesEnum} [userTypes] Filter based on user type.
          * @param {string} [orderBy] Column to order balance by - eg: id,amount
          * @param {GetAllBalanceOrderDirectionEnum} [orderDirection] Order direction
+         * @param {boolean} [allowDeleted] Whether to include deleted users
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, take, skip, options) {
+        getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, allowDeleted, take, skip, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, take, skip, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, allowDeleted, take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['BalanceApi.getAllBalance']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
@@ -1183,13 +1188,14 @@ const BalanceApiFactory = function (configuration, basePath, axios) {
          * @param {GetAllBalanceUserTypesEnum} [userTypes] Filter based on user type.
          * @param {string} [orderBy] Column to order balance by - eg: id,amount
          * @param {GetAllBalanceOrderDirectionEnum} [orderDirection] Order direction
+         * @param {boolean} [allowDeleted] Whether to include deleted users
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, take, skip, options) {
-            return localVarFp.getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, take, skip, options).then((request) => request(axios, basePath));
+        getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, allowDeleted, take, skip, options) {
+            return localVarFp.getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, allowDeleted, take, skip, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -1232,14 +1238,15 @@ class BalanceApi extends base_1.BaseAPI {
      * @param {GetAllBalanceUserTypesEnum} [userTypes] Filter based on user type.
      * @param {string} [orderBy] Column to order balance by - eg: id,amount
      * @param {GetAllBalanceOrderDirectionEnum} [orderDirection] Order direction
+     * @param {boolean} [allowDeleted] Whether to include deleted users
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BalanceApi
      */
-    getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, take, skip, options) {
-        return (0, exports.BalanceApiFp)(this.configuration).getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, take, skip, options).then((request) => request(this.axios, this.basePath));
+    getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, allowDeleted, take, skip, options) {
+        return (0, exports.BalanceApiFp)(this.configuration).getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, allowDeleted, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -1943,6 +1950,38 @@ const ContainersApiAxiosParamCreator = function (configuration) {
         }),
         /**
          *
+         * @summary (Soft) delete the given container. Cannot be undone.
+         * @param {number} id The id of the container which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteContainer: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('deleteContainer', 'id', id);
+            const localVarPath = `/containers/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'DELETE' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
          * @summary Returns all existing containers
          * @param {number} [take] How many containers the endpoint should return
          * @param {number} [skip] How many containers should be skipped (for pagination)
@@ -1981,12 +2020,10 @@ const ContainersApiAxiosParamCreator = function (configuration) {
          *
          * @summary Returns all the products in the container
          * @param {number} id The id of the container which should be returned
-         * @param {number} [take] How many products the endpoint should return
-         * @param {number} [skip] How many products should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getProductsContainer: (id_1, take_1, skip_1, ...args_1) => __awaiter(this, [id_1, take_1, skip_1, ...args_1], void 0, function* (id, take, skip, options = {}) {
+        getProductsContainer: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getProductsContainer', 'id', id);
             const localVarPath = `/containers/{id}/products`
@@ -2003,12 +2040,6 @@ const ContainersApiAxiosParamCreator = function (configuration) {
             // authentication JWT required
             // http bearer authentication required
             yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
-            if (take !== undefined) {
-                localVarQueryParameter['take'] = take;
-            }
-            if (skip !== undefined) {
-                localVarQueryParameter['skip'] = skip;
-            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
@@ -2150,6 +2181,22 @@ const ContainersApiFp = function (configuration) {
         },
         /**
          *
+         * @summary (Soft) delete the given container. Cannot be undone.
+         * @param {number} id The id of the container which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteContainer(id, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteContainer(id, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['ContainersApi.deleteContainer']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
          * @summary Returns all existing containers
          * @param {number} [take] How many containers the endpoint should return
          * @param {number} [skip] How many containers should be skipped (for pagination)
@@ -2169,15 +2216,13 @@ const ContainersApiFp = function (configuration) {
          *
          * @summary Returns all the products in the container
          * @param {number} id The id of the container which should be returned
-         * @param {number} [take] How many products the endpoint should return
-         * @param {number} [skip] How many products should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getProductsContainer(id, take, skip, options) {
+        getProductsContainer(id, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getProductsContainer(id, take, skip, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getProductsContainer(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['ContainersApi.getProductsContainer']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
@@ -2255,6 +2300,16 @@ const ContainersApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary (Soft) delete the given container. Cannot be undone.
+         * @param {number} id The id of the container which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteContainer(id, options) {
+            return localVarFp.deleteContainer(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Returns all existing containers
          * @param {number} [take] How many containers the endpoint should return
          * @param {number} [skip] How many containers should be skipped (for pagination)
@@ -2268,13 +2323,11 @@ const ContainersApiFactory = function (configuration, basePath, axios) {
          *
          * @summary Returns all the products in the container
          * @param {number} id The id of the container which should be returned
-         * @param {number} [take] How many products the endpoint should return
-         * @param {number} [skip] How many products should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getProductsContainer(id, take, skip, options) {
-            return localVarFp.getProductsContainer(id, take, skip, options).then((request) => request(axios, basePath));
+        getProductsContainer(id, options) {
+            return localVarFp.getProductsContainer(id, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -2331,6 +2384,17 @@ class ContainersApi extends base_1.BaseAPI {
     }
     /**
      *
+     * @summary (Soft) delete the given container. Cannot be undone.
+     * @param {number} id The id of the container which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ContainersApi
+     */
+    deleteContainer(id, options) {
+        return (0, exports.ContainersApiFp)(this.configuration).deleteContainer(id, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
      * @summary Returns all existing containers
      * @param {number} [take] How many containers the endpoint should return
      * @param {number} [skip] How many containers should be skipped (for pagination)
@@ -2345,14 +2409,12 @@ class ContainersApi extends base_1.BaseAPI {
      *
      * @summary Returns all the products in the container
      * @param {number} id The id of the container which should be returned
-     * @param {number} [take] How many products the endpoint should return
-     * @param {number} [skip] How many products should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContainersApi
      */
-    getProductsContainer(id, take, skip, options) {
-        return (0, exports.ContainersApiFp)(this.configuration).getProductsContainer(id, take, skip, options).then((request) => request(this.axios, this.basePath));
+    getProductsContainer(id, options) {
+        return (0, exports.ContainersApiFp)(this.configuration).getProductsContainer(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -2459,6 +2521,42 @@ const DebtorsApiAxiosParamCreator = function (configuration) {
             // authentication JWT required
             // http bearer authentication required
             yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
+         * @summary Get a report of all fines
+         * @param {string} [fromDate] The start date of the report, inclusive
+         * @param {string} [toDate] The end date of the report, exclusive
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFineReport: (fromDate_1, toDate_1, ...args_1) => __awaiter(this, [fromDate_1, toDate_1, ...args_1], void 0, function* (fromDate, toDate, options = {}) {
+            const localVarPath = `/fines/report`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            if (fromDate !== undefined) {
+                localVarQueryParameter['fromDate'] = fromDate;
+            }
+            if (toDate !== undefined) {
+                localVarQueryParameter['toDate'] = toDate;
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
@@ -2646,6 +2744,23 @@ const DebtorsApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Get a report of all fines
+         * @param {string} [fromDate] The start date of the report, inclusive
+         * @param {string} [toDate] The end date of the report, exclusive
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFineReport(fromDate, toDate, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getFineReport(fromDate, toDate, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['DebtorsApi.getFineReport']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
          * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
          * @param {HandoutFinesRequest} handoutFinesRequest
          * @param {*} [options] Override http request option.
@@ -2742,6 +2857,17 @@ const DebtorsApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary Get a report of all fines
+         * @param {string} [fromDate] The start date of the report, inclusive
+         * @param {string} [toDate] The end date of the report, exclusive
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFineReport(fromDate, toDate, options) {
+            return localVarFp.getFineReport(fromDate, toDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
          * @param {HandoutFinesRequest} handoutFinesRequest
          * @param {*} [options] Override http request option.
@@ -2813,6 +2939,18 @@ class DebtorsApi extends base_1.BaseAPI {
      */
     deleteFine(id, options) {
         return (0, exports.DebtorsApiFp)(this.configuration).deleteFine(id, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get a report of all fines
+     * @param {string} [fromDate] The start date of the report, inclusive
+     * @param {string} [toDate] The end date of the report, exclusive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DebtorsApi
+     */
+    getFineReport(fromDate, toDate, options) {
+        return (0, exports.DebtorsApiFp)(this.configuration).getFineReport(fromDate, toDate, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -4953,6 +5091,38 @@ const PayoutRequestsApiAxiosParamCreator = function (configuration) {
         }),
         /**
          *
+         * @summary Get a payout request pdf
+         * @param {number} id The ID of the payout request object that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPayoutRequestPdf: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('getPayoutRequestPdf', 'id', id);
+            const localVarPath = `/payoutrequests/{id}/pdf`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
          * @summary Get a single payout request
          * @param {number} id The ID of the payout request object that should be returned
          * @param {*} [options] Override http request option.
@@ -5070,6 +5240,22 @@ const PayoutRequestsApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Get a payout request pdf
+         * @param {number} id The ID of the payout request object that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPayoutRequestPdf(id, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getPayoutRequestPdf(id, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['PayoutRequestsApi.getPayoutRequestPdf']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
          * @summary Get a single payout request
          * @param {number} id The ID of the payout request object that should be returned
          * @param {*} [options] Override http request option.
@@ -5139,6 +5325,16 @@ const PayoutRequestsApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary Get a payout request pdf
+         * @param {number} id The ID of the payout request object that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPayoutRequestPdf(id, options) {
+            return localVarFp.getPayoutRequestPdf(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Get a single payout request
          * @param {number} id The ID of the payout request object that should be returned
          * @param {*} [options] Override http request option.
@@ -5195,6 +5391,17 @@ class PayoutRequestsApi extends base_1.BaseAPI {
      */
     getAllPayoutRequests(requestedById, approvedById, fromDate, tillDate, status, take, skip, options) {
         return (0, exports.PayoutRequestsApiFp)(this.configuration).getAllPayoutRequests(requestedById, approvedById, fromDate, tillDate, status, take, skip, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get a payout request pdf
+     * @param {number} id The ID of the payout request object that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PayoutRequestsApi
+     */
+    getPayoutRequestPdf(id, options) {
+        return (0, exports.PayoutRequestsApiFp)(this.configuration).getPayoutRequestPdf(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -5262,6 +5469,38 @@ const PointofsaleApiAxiosParamCreator = function (configuration) {
         }),
         /**
          *
+         * @summary (Soft) delete the given point of sale. Cannot be undone.
+         * @param {number} id The id of the point of sale which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deletePointOfSale: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('deletePointOfSale', 'id', id);
+            const localVarPath = `/pointsofsale/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'DELETE' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
          * @summary Returns the containers of the requested Point of Sale, empty list if POS does not exist
          * @param {number} id The id of the point of sale
          * @param {number} [take] How many containers the endpoint should return
@@ -5304,12 +5543,10 @@ const PointofsaleApiAxiosParamCreator = function (configuration) {
          *
          * @summary Returns the products of the requested Point of Sale, empty list if POS does not exist
          * @param {number} id The id of the point of sale
-         * @param {number} [take] How many products the endpoint should return
-         * @param {number} [skip] How many products should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllPointOfSaleProducts: (id_1, take_1, skip_1, ...args_1) => __awaiter(this, [id_1, take_1, skip_1, ...args_1], void 0, function* (id, take, skip, options = {}) {
+        getAllPointOfSaleProducts: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getAllPointOfSaleProducts', 'id', id);
             const localVarPath = `/pointsofsale/{id}/products`
@@ -5326,12 +5563,6 @@ const PointofsaleApiAxiosParamCreator = function (configuration) {
             // authentication JWT required
             // http bearer authentication required
             yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
-            if (take !== undefined) {
-                localVarQueryParameter['take'] = take;
-            }
-            if (skip !== undefined) {
-                localVarQueryParameter['skip'] = skip;
-            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
@@ -5513,6 +5744,22 @@ const PointofsaleApiFp = function (configuration) {
         },
         /**
          *
+         * @summary (Soft) delete the given point of sale. Cannot be undone.
+         * @param {number} id The id of the point of sale which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deletePointOfSale(id, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.deletePointOfSale(id, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['PointofsaleApi.deletePointOfSale']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
          * @summary Returns the containers of the requested Point of Sale, empty list if POS does not exist
          * @param {number} id The id of the point of sale
          * @param {number} [take] How many containers the endpoint should return
@@ -5533,15 +5780,13 @@ const PointofsaleApiFp = function (configuration) {
          *
          * @summary Returns the products of the requested Point of Sale, empty list if POS does not exist
          * @param {number} id The id of the point of sale
-         * @param {number} [take] How many products the endpoint should return
-         * @param {number} [skip] How many products should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllPointOfSaleProducts(id, take, skip, options) {
+        getAllPointOfSaleProducts(id, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllPointOfSaleProducts(id, take, skip, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllPointOfSaleProducts(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['PointofsaleApi.getAllPointOfSaleProducts']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
@@ -5637,6 +5882,16 @@ const PointofsaleApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary (Soft) delete the given point of sale. Cannot be undone.
+         * @param {number} id The id of the point of sale which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deletePointOfSale(id, options) {
+            return localVarFp.deletePointOfSale(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Returns the containers of the requested Point of Sale, empty list if POS does not exist
          * @param {number} id The id of the point of sale
          * @param {number} [take] How many containers the endpoint should return
@@ -5651,13 +5906,11 @@ const PointofsaleApiFactory = function (configuration, basePath, axios) {
          *
          * @summary Returns the products of the requested Point of Sale, empty list if POS does not exist
          * @param {number} id The id of the point of sale
-         * @param {number} [take] How many products the endpoint should return
-         * @param {number} [skip] How many products should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllPointOfSaleProducts(id, take, skip, options) {
-            return localVarFp.getAllPointOfSaleProducts(id, take, skip, options).then((request) => request(axios, basePath));
+        getAllPointOfSaleProducts(id, options) {
+            return localVarFp.getAllPointOfSaleProducts(id, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -5726,6 +5979,17 @@ class PointofsaleApi extends base_1.BaseAPI {
     }
     /**
      *
+     * @summary (Soft) delete the given point of sale. Cannot be undone.
+     * @param {number} id The id of the point of sale which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PointofsaleApi
+     */
+    deletePointOfSale(id, options) {
+        return (0, exports.PointofsaleApiFp)(this.configuration).deletePointOfSale(id, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
      * @summary Returns the containers of the requested Point of Sale, empty list if POS does not exist
      * @param {number} id The id of the point of sale
      * @param {number} [take] How many containers the endpoint should return
@@ -5741,14 +6005,12 @@ class PointofsaleApi extends base_1.BaseAPI {
      *
      * @summary Returns the products of the requested Point of Sale, empty list if POS does not exist
      * @param {number} id The id of the point of sale
-     * @param {number} [take] How many products the endpoint should return
-     * @param {number} [skip] How many products should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PointofsaleApi
      */
-    getAllPointOfSaleProducts(id, take, skip, options) {
-        return (0, exports.PointofsaleApiFp)(this.configuration).getAllPointOfSaleProducts(id, take, skip, options).then((request) => request(this.axios, this.basePath));
+    getAllPointOfSaleProducts(id, options) {
+        return (0, exports.PointofsaleApiFp)(this.configuration).getAllPointOfSaleProducts(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -6171,6 +6433,38 @@ const ProductsApiAxiosParamCreator = function (configuration) {
         }),
         /**
          *
+         * @summary (Soft) delete the given product. Cannot be undone.
+         * @param {number} id The id of the product which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteProduct: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('deleteProduct', 'id', id);
+            const localVarPath = `/products/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'DELETE' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
          * @summary Returns all existing products
          * @param {number} [take] How many products the endpoint should return
          * @param {number} [skip] How many products should be skipped (for pagination)
@@ -6341,6 +6635,22 @@ const ProductsApiFp = function (configuration) {
         },
         /**
          *
+         * @summary (Soft) delete the given product. Cannot be undone.
+         * @param {number} id The id of the product which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteProduct(id, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteProduct(id, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['ProductsApi.deleteProduct']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
          * @summary Returns all existing products
          * @param {number} [take] How many products the endpoint should return
          * @param {number} [skip] How many products should be skipped (for pagination)
@@ -6428,6 +6738,16 @@ const ProductsApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary (Soft) delete the given product. Cannot be undone.
+         * @param {number} id The id of the product which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteProduct(id, options) {
+            return localVarFp.deleteProduct(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Returns all existing products
          * @param {number} [take] How many products the endpoint should return
          * @param {number} [skip] How many products should be skipped (for pagination)
@@ -6489,6 +6809,17 @@ class ProductsApi extends base_1.BaseAPI {
      */
     createProduct(createProductRequest, options) {
         return (0, exports.ProductsApiFp)(this.configuration).createProduct(createProductRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary (Soft) delete the given product. Cannot be undone.
+     * @param {number} id The id of the product which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProductsApi
+     */
+    deleteProduct(id, options) {
+        return (0, exports.ProductsApiFp)(this.configuration).deleteProduct(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
