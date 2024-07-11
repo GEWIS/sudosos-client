@@ -7422,6 +7422,14 @@ export declare const PayoutRequestsApiAxiosParamCreator: (configuration?: Config
     getAllPayoutRequests: (requestedById?: GetAllPayoutRequestsRequestedByIdParameter, approvedById?: GetAllPayoutRequestsRequestedByIdParameter, fromDate?: string, tillDate?: string, status?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Get a payout request pdf
+     * @param {number} id The ID of the payout request object that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPayoutRequestPdf: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Get a single payout request
      * @param {number} id The ID of the payout request object that should be returned
      * @param {*} [options] Override http request option.
@@ -7467,6 +7475,14 @@ export declare const PayoutRequestsApiFp: (configuration?: Configuration) => {
     getAllPayoutRequests(requestedById?: GetAllPayoutRequestsRequestedByIdParameter, approvedById?: GetAllPayoutRequestsRequestedByIdParameter, fromDate?: string, tillDate?: string, status?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBasePayoutRequestResponse>>;
     /**
      *
+     * @summary Get a payout request pdf
+     * @param {number} id The ID of the payout request object that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPayoutRequestPdf(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    /**
+     *
      * @summary Get a single payout request
      * @param {number} id The ID of the payout request object that should be returned
      * @param {*} [options] Override http request option.
@@ -7510,6 +7526,14 @@ export declare const PayoutRequestsApiFactory: (configuration?: Configuration, b
      * @throws {RequiredError}
      */
     getAllPayoutRequests(requestedById?: GetAllPayoutRequestsRequestedByIdParameter, approvedById?: GetAllPayoutRequestsRequestedByIdParameter, fromDate?: string, tillDate?: string, status?: string, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedBasePayoutRequestResponse>;
+    /**
+     *
+     * @summary Get a payout request pdf
+     * @param {number} id The ID of the payout request object that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPayoutRequestPdf(id: number, options?: any): AxiosPromise<string>;
     /**
      *
      * @summary Get a single payout request
@@ -7559,6 +7583,15 @@ export declare class PayoutRequestsApi extends BaseAPI {
      * @memberof PayoutRequestsApi
      */
     getAllPayoutRequests(requestedById?: GetAllPayoutRequestsRequestedByIdParameter, approvedById?: GetAllPayoutRequestsRequestedByIdParameter, fromDate?: string, tillDate?: string, status?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBasePayoutRequestResponse, any>>;
+    /**
+     *
+     * @summary Get a payout request pdf
+     * @param {number} id The ID of the payout request object that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PayoutRequestsApi
+     */
+    getPayoutRequestPdf(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
     /**
      *
      * @summary Get a single payout request

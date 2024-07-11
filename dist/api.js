@@ -5022,6 +5022,38 @@ const PayoutRequestsApiAxiosParamCreator = function (configuration) {
         }),
         /**
          *
+         * @summary Get a payout request pdf
+         * @param {number} id The ID of the payout request object that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPayoutRequestPdf: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('getPayoutRequestPdf', 'id', id);
+            const localVarPath = `/payoutrequests/{id}/pdf`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
          * @summary Get a single payout request
          * @param {number} id The ID of the payout request object that should be returned
          * @param {*} [options] Override http request option.
@@ -5139,6 +5171,22 @@ const PayoutRequestsApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Get a payout request pdf
+         * @param {number} id The ID of the payout request object that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPayoutRequestPdf(id, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getPayoutRequestPdf(id, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['PayoutRequestsApi.getPayoutRequestPdf']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
          * @summary Get a single payout request
          * @param {number} id The ID of the payout request object that should be returned
          * @param {*} [options] Override http request option.
@@ -5208,6 +5256,16 @@ const PayoutRequestsApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary Get a payout request pdf
+         * @param {number} id The ID of the payout request object that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPayoutRequestPdf(id, options) {
+            return localVarFp.getPayoutRequestPdf(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Get a single payout request
          * @param {number} id The ID of the payout request object that should be returned
          * @param {*} [options] Override http request option.
@@ -5264,6 +5322,17 @@ class PayoutRequestsApi extends base_1.BaseAPI {
      */
     getAllPayoutRequests(requestedById, approvedById, fromDate, tillDate, status, take, skip, options) {
         return (0, exports.PayoutRequestsApiFp)(this.configuration).getAllPayoutRequests(requestedById, approvedById, fromDate, tillDate, status, take, skip, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get a payout request pdf
+     * @param {number} id The ID of the payout request object that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PayoutRequestsApi
+     */
+    getPayoutRequestPdf(id, options) {
+        return (0, exports.PayoutRequestsApiFp)(this.configuration).getPayoutRequestPdf(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
