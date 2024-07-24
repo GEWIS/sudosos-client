@@ -6878,7 +6878,147 @@ const RbacApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
-         * @summary Returns all existing roles
+         * @summary Add new permissions to an existing role
+         * @param {number} id The ID of the role which should get the new permissions
+         * @param {Array<CreatePermissionParams>} createPermissionParams The permissions that need to be added
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addPermissions: (id_1, createPermissionParams_1, ...args_1) => __awaiter(this, [id_1, createPermissionParams_1, ...args_1], void 0, function* (id, createPermissionParams, options = {}) {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('addPermissions', 'id', id);
+            // verify required parameter 'createPermissionParams' is not null or undefined
+            (0, common_1.assertParamExists)('addPermissions', 'createPermissionParams', createPermissionParams);
+            const localVarPath = `/rbac/roles/{id}/permissions`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(createPermissionParams, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
+         * @summary Create a new role
+         * @param {UpdateRoleRequest} updateRoleRequest The role which should be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createRole: (updateRoleRequest_1, ...args_1) => __awaiter(this, [updateRoleRequest_1, ...args_1], void 0, function* (updateRoleRequest, options = {}) {
+            // verify required parameter 'updateRoleRequest' is not null or undefined
+            (0, common_1.assertParamExists)('createRole', 'updateRoleRequest', updateRoleRequest);
+            const localVarPath = `/rbac/roles`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(updateRoleRequest, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
+         * @summary Delete a permission from an existing role
+         * @param {number} id The ID of the role
+         * @param {number} entity The entity of the permission
+         * @param {number} action The action of the permission
+         * @param {number} relation The relation of the permission
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deletePermission: (id_1, entity_1, action_1, relation_1, ...args_1) => __awaiter(this, [id_1, entity_1, action_1, relation_1, ...args_1], void 0, function* (id, entity, action, relation, options = {}) {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('deletePermission', 'id', id);
+            // verify required parameter 'entity' is not null or undefined
+            (0, common_1.assertParamExists)('deletePermission', 'entity', entity);
+            // verify required parameter 'action' is not null or undefined
+            (0, common_1.assertParamExists)('deletePermission', 'action', action);
+            // verify required parameter 'relation' is not null or undefined
+            (0, common_1.assertParamExists)('deletePermission', 'relation', relation);
+            const localVarPath = `/rbac/roles/{id}/permissions/{entity}/{action}/{relation}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)))
+                .replace(`{${"entity"}}`, encodeURIComponent(String(entity)))
+                .replace(`{${"action"}}`, encodeURIComponent(String(action)))
+                .replace(`{${"relation"}}`, encodeURIComponent(String(relation)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'DELETE' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
+         * @summary Delete an existing role
+         * @param {number} id The ID of the role which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteRole: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('deleteRole', 'id', id);
+            const localVarPath = `/rbac/roles/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'DELETE' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
+         * @summary Get all existing roles
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -6904,6 +7044,75 @@ const RbacApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         }),
+        /**
+         *
+         * @summary Get a single existing role with its permissions
+         * @param {number} id The ID of the role that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSingleRole: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('getSingleRole', 'id', id);
+            const localVarPath = `/rbac/roles/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
+         * @summary Update an existing role
+         * @param {number} id The ID of the role which should be updated
+         * @param {UpdateRoleRequest} updateRoleRequest The role which should be updated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateRole: (id_1, updateRoleRequest_1, ...args_1) => __awaiter(this, [id_1, updateRoleRequest_1, ...args_1], void 0, function* (id, updateRoleRequest, options = {}) {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('updateRole', 'id', id);
+            // verify required parameter 'updateRoleRequest' is not null or undefined
+            (0, common_1.assertParamExists)('updateRole', 'updateRoleRequest', updateRoleRequest);
+            const localVarPath = `/rbac/roles/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'PATCH' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(updateRoleRequest, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
     };
 };
 exports.RbacApiAxiosParamCreator = RbacApiAxiosParamCreator;
@@ -6916,7 +7125,75 @@ const RbacApiFp = function (configuration) {
     return {
         /**
          *
-         * @summary Returns all existing roles
+         * @summary Add new permissions to an existing role
+         * @param {number} id The ID of the role which should get the new permissions
+         * @param {Array<CreatePermissionParams>} createPermissionParams The permissions that need to be added
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addPermissions(id, createPermissionParams, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.addPermissions(id, createPermissionParams, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['RbacApi.addPermissions']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
+         * @summary Create a new role
+         * @param {UpdateRoleRequest} updateRoleRequest The role which should be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createRole(updateRoleRequest, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.createRole(updateRoleRequest, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['RbacApi.createRole']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
+         * @summary Delete a permission from an existing role
+         * @param {number} id The ID of the role
+         * @param {number} entity The entity of the permission
+         * @param {number} action The action of the permission
+         * @param {number} relation The relation of the permission
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deletePermission(id, entity, action, relation, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.deletePermission(id, entity, action, relation, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['RbacApi.deletePermission']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
+         * @summary Delete an existing role
+         * @param {number} id The ID of the role which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteRole(id, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteRole(id, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['RbacApi.deleteRole']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
+         * @summary Get all existing roles
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -6926,6 +7203,39 @@ const RbacApiFp = function (configuration) {
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllRoles(options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['RbacApi.getAllRoles']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
+         * @summary Get a single existing role with its permissions
+         * @param {number} id The ID of the role that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSingleRole(id, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getSingleRole(id, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['RbacApi.getSingleRole']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
+         * @summary Update an existing role
+         * @param {number} id The ID of the role which should be updated
+         * @param {UpdateRoleRequest} updateRoleRequest The role which should be updated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateRole(id, updateRoleRequest, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.updateRole(id, updateRoleRequest, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['RbacApi.updateRole']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
             });
         },
@@ -6941,12 +7251,77 @@ const RbacApiFactory = function (configuration, basePath, axios) {
     return {
         /**
          *
-         * @summary Returns all existing roles
+         * @summary Add new permissions to an existing role
+         * @param {number} id The ID of the role which should get the new permissions
+         * @param {Array<CreatePermissionParams>} createPermissionParams The permissions that need to be added
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addPermissions(id, createPermissionParams, options) {
+            return localVarFp.addPermissions(id, createPermissionParams, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Create a new role
+         * @param {UpdateRoleRequest} updateRoleRequest The role which should be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createRole(updateRoleRequest, options) {
+            return localVarFp.createRole(updateRoleRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Delete a permission from an existing role
+         * @param {number} id The ID of the role
+         * @param {number} entity The entity of the permission
+         * @param {number} action The action of the permission
+         * @param {number} relation The relation of the permission
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deletePermission(id, entity, action, relation, options) {
+            return localVarFp.deletePermission(id, entity, action, relation, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Delete an existing role
+         * @param {number} id The ID of the role which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteRole(id, options) {
+            return localVarFp.deleteRole(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get all existing roles
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         getAllRoles(options) {
             return localVarFp.getAllRoles(options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get a single existing role with its permissions
+         * @param {number} id The ID of the role that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSingleRole(id, options) {
+            return localVarFp.getSingleRole(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Update an existing role
+         * @param {number} id The ID of the role which should be updated
+         * @param {UpdateRoleRequest} updateRoleRequest The role which should be updated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateRole(id, updateRoleRequest, options) {
+            return localVarFp.updateRole(id, updateRoleRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -6960,13 +7335,84 @@ exports.RbacApiFactory = RbacApiFactory;
 class RbacApi extends base_1.BaseAPI {
     /**
      *
-     * @summary Returns all existing roles
+     * @summary Add new permissions to an existing role
+     * @param {number} id The ID of the role which should get the new permissions
+     * @param {Array<CreatePermissionParams>} createPermissionParams The permissions that need to be added
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    addPermissions(id, createPermissionParams, options) {
+        return (0, exports.RbacApiFp)(this.configuration).addPermissions(id, createPermissionParams, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Create a new role
+     * @param {UpdateRoleRequest} updateRoleRequest The role which should be created
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    createRole(updateRoleRequest, options) {
+        return (0, exports.RbacApiFp)(this.configuration).createRole(updateRoleRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Delete a permission from an existing role
+     * @param {number} id The ID of the role
+     * @param {number} entity The entity of the permission
+     * @param {number} action The action of the permission
+     * @param {number} relation The relation of the permission
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    deletePermission(id, entity, action, relation, options) {
+        return (0, exports.RbacApiFp)(this.configuration).deletePermission(id, entity, action, relation, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Delete an existing role
+     * @param {number} id The ID of the role which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    deleteRole(id, options) {
+        return (0, exports.RbacApiFp)(this.configuration).deleteRole(id, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get all existing roles
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RbacApi
      */
     getAllRoles(options) {
         return (0, exports.RbacApiFp)(this.configuration).getAllRoles(options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get a single existing role with its permissions
+     * @param {number} id The ID of the role that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    getSingleRole(id, options) {
+        return (0, exports.RbacApiFp)(this.configuration).getSingleRole(id, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Update an existing role
+     * @param {number} id The ID of the role which should be updated
+     * @param {UpdateRoleRequest} updateRoleRequest The role which should be updated
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    updateRole(id, updateRoleRequest, options) {
+        return (0, exports.RbacApiFp)(this.configuration).updateRole(id, updateRoleRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.RbacApi = RbacApi;
