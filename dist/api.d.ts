@@ -204,7 +204,7 @@ export interface AuthenticationResponse {
      */
     'user': UserResponse;
     /**
-     * The RBAC roles that the user has.
+     * The RBAC roles that the user has. (DEPRECATED)
      * @type {Array<string>}
      * @memberof AuthenticationResponse
      */
@@ -227,6 +227,12 @@ export interface AuthenticationResponse {
      * @memberof AuthenticationResponse
      */
     'acceptedToS': string;
+    /**
+     * All unique RBAC permissions the user has
+     * @type {Array<RoleWithPermissionsResponse>}
+     * @memberof AuthenticationResponse
+     */
+    'rolesWithPermissions': Array<RoleWithPermissionsResponse>;
 }
 /**
  *
@@ -1327,6 +1333,37 @@ export interface CreateInvoiceRequest {
 /**
  *
  * @export
+ * @interface CreatePermissionParams
+ */
+export interface CreatePermissionParams {
+    /**
+     * Entity
+     * @type {string}
+     * @memberof CreatePermissionParams
+     */
+    'entity': string;
+    /**
+     * Action
+     * @type {string}
+     * @memberof CreatePermissionParams
+     */
+    'action': string;
+    /**
+     * Relation
+     * @type {string}
+     * @memberof CreatePermissionParams
+     */
+    'relation': string;
+    /**
+     * Attributes
+     * @type {Array<string>}
+     * @memberof CreatePermissionParams
+     */
+    'attributes': Array<string>;
+}
+/**
+ *
+ * @export
  * @interface CreatePointOfSaleRequest
  */
 export interface CreatePointOfSaleRequest {
@@ -1583,25 +1620,6 @@ export interface DineroObjectResponse {
      * @memberof DineroObjectResponse
      */
     'precision': number;
-}
-/**
- *
- * @export
- * @interface EntityResponse
- */
-export interface EntityResponse {
-    /**
-     * The name of the entity for which the permissions are.
-     * @type {string}
-     * @memberof EntityResponse
-     */
-    'entity': string;
-    /**
-     * The permissions per action.
-     * @type {Array<ActionResponse>}
-     * @memberof EntityResponse
-     */
-    'actions': Array<ActionResponse>;
 }
 /**
  *
@@ -3043,6 +3061,25 @@ export interface PayoutRequestStatusResponse {
 /**
  *
  * @export
+ * @interface PermissionResponse
+ */
+export interface PermissionResponse {
+    /**
+     * The name of the entity for which the permissions are.
+     * @type {string}
+     * @memberof PermissionResponse
+     */
+    'entity': string;
+    /**
+     * The permissions per action.
+     * @type {Array<ActionResponse>}
+     * @memberof PermissionResponse
+     */
+    'actions': Array<ActionResponse>;
+}
+/**
+ *
+ * @export
  * @interface PointOfSaleResponse
  */
 export interface PointOfSaleResponse {
@@ -3367,17 +3404,66 @@ export interface RevisionRequest {
  */
 export interface RoleResponse {
     /**
+     * The ID of the role.
+     * @type {number}
+     * @memberof RoleResponse
+     */
+    'id': number;
+    /**
      * The name of the role.
      * @type {string}
      * @memberof RoleResponse
      */
-    'role': string;
+    'name': string;
     /**
-     * The permissions with regards to the entity.
-     * @type {Array<EntityResponse>}
+     * Whether the role is a system default role
+     * @type {boolean}
      * @memberof RoleResponse
      */
-    'entities': Array<EntityResponse>;
+    'systemDefault': boolean;
+    /**
+     * The user types this role is default for
+     * @type {Array<number>}
+     * @memberof RoleResponse
+     */
+    'userTypes'?: Array<number>;
+}
+/**
+ *
+ * @export
+ * @interface RoleWithPermissionsResponse
+ */
+export interface RoleWithPermissionsResponse {
+    /**
+     * The ID of the role.
+     * @type {number}
+     * @memberof RoleWithPermissionsResponse
+     */
+    'id': number;
+    /**
+     * The name of the role.
+     * @type {string}
+     * @memberof RoleWithPermissionsResponse
+     */
+    'name': string;
+    /**
+     * Whether the role is a system default role
+     * @type {boolean}
+     * @memberof RoleWithPermissionsResponse
+     */
+    'systemDefault': boolean;
+    /**
+     * The user types this role is default for
+     * @type {Array<number>}
+     * @memberof RoleWithPermissionsResponse
+     */
+    'userTypes'?: Array<number>;
+    /**
+     * The permissions with regards to the entity.
+     * @type {Array<PermissionResponse>}
+     * @memberof RoleWithPermissionsResponse
+     */
+    'permissions': Array<PermissionResponse>;
 }
 /**
  *
@@ -4471,6 +4557,19 @@ export interface UpdateProductRequest {
      * @memberof UpdateProductRequest
      */
     'priceList'?: boolean;
+}
+/**
+ *
+ * @export
+ * @interface UpdateRoleRequest
+ */
+export interface UpdateRoleRequest {
+    /**
+     * Name of the role
+     * @type {string}
+     * @memberof UpdateRoleRequest
+     */
+    'name': string;
 }
 /**
  *
@@ -6199,6 +6298,15 @@ export declare const DebtorsApiAxiosParamCreator: (configuration?: Configuration
     getFineReport: (fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Get a report of all fines in pdf format
+     * @param {string} [fromDate] The start date of the report, inclusive
+     * @param {string} [toDate] The end date of the report, exclusive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getFineReportPdf: (fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
      * @param {HandoutFinesRequest} handoutFinesRequest
      * @param {*} [options] Override http request option.
@@ -6264,6 +6372,15 @@ export declare const DebtorsApiFp: (configuration?: Configuration) => {
     getFineReport(fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FineReportResponse>>;
     /**
      *
+     * @summary Get a report of all fines in pdf format
+     * @param {string} [fromDate] The start date of the report, inclusive
+     * @param {string} [toDate] The end date of the report, exclusive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getFineReportPdf(fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    /**
+     *
      * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
      * @param {HandoutFinesRequest} handoutFinesRequest
      * @param {*} [options] Override http request option.
@@ -6327,6 +6444,15 @@ export declare const DebtorsApiFactory: (configuration?: Configuration, basePath
      * @throws {RequiredError}
      */
     getFineReport(fromDate?: string, toDate?: string, options?: any): AxiosPromise<FineReportResponse>;
+    /**
+     *
+     * @summary Get a report of all fines in pdf format
+     * @param {string} [fromDate] The start date of the report, inclusive
+     * @param {string} [toDate] The end date of the report, exclusive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getFineReportPdf(fromDate?: string, toDate?: string, options?: any): AxiosPromise<string>;
     /**
      *
      * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
@@ -6397,6 +6523,16 @@ export declare class DebtorsApi extends BaseAPI {
      * @memberof DebtorsApi
      */
     getFineReport(fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FineReportResponse, any>>;
+    /**
+     *
+     * @summary Get a report of all fines in pdf format
+     * @param {string} [fromDate] The start date of the report, inclusive
+     * @param {string} [toDate] The end date of the report, exclusive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DebtorsApi
+     */
+    getFineReportPdf(fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
     /**
      *
      * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
@@ -8368,11 +8504,64 @@ export declare class ProductsApi extends BaseAPI {
 export declare const RbacApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
-     * @summary Returns all existing roles
+     * @summary Add new permissions to an existing role
+     * @param {number} id The ID of the role which should get the new permissions
+     * @param {Array<CreatePermissionParams>} createPermissionParams The permissions that need to be added
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    addPermissions: (id: number, createPermissionParams: Array<CreatePermissionParams>, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Create a new role
+     * @param {UpdateRoleRequest} updateRoleRequest The role which should be created
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createRole: (updateRoleRequest: UpdateRoleRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Delete a permission from an existing role
+     * @param {number} id The ID of the role
+     * @param {number} entity The entity of the permission
+     * @param {number} action The action of the permission
+     * @param {number} relation The relation of the permission
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletePermission: (id: number, entity: number, action: number, relation: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Delete an existing role
+     * @param {number} id The ID of the role which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteRole: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get all existing roles
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getAllRoles: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get a single existing role with its permissions
+     * @param {number} id The ID of the role that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getSingleRole: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Update an existing role
+     * @param {number} id The ID of the role which should be updated
+     * @param {UpdateRoleRequest} updateRoleRequest The role which should be updated
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateRole: (id: number, updateRoleRequest: UpdateRoleRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * RbacApi - functional programming interface
@@ -8381,11 +8570,64 @@ export declare const RbacApiAxiosParamCreator: (configuration?: Configuration) =
 export declare const RbacApiFp: (configuration?: Configuration) => {
     /**
      *
-     * @summary Returns all existing roles
+     * @summary Add new permissions to an existing role
+     * @param {number} id The ID of the role which should get the new permissions
+     * @param {Array<CreatePermissionParams>} createPermissionParams The permissions that need to be added
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    addPermissions(id: number, createPermissionParams: Array<CreatePermissionParams>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<PermissionResponse>>>;
+    /**
+     *
+     * @summary Create a new role
+     * @param {UpdateRoleRequest} updateRoleRequest The role which should be created
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createRole(updateRoleRequest: UpdateRoleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RoleResponse>>;
+    /**
+     *
+     * @summary Delete a permission from an existing role
+     * @param {number} id The ID of the role
+     * @param {number} entity The entity of the permission
+     * @param {number} action The action of the permission
+     * @param {number} relation The relation of the permission
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletePermission(id: number, entity: number, action: number, relation: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    /**
+     *
+     * @summary Delete an existing role
+     * @param {number} id The ID of the role which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteRole(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    /**
+     *
+     * @summary Get all existing roles
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getAllRoles(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RoleResponse>>>;
+    /**
+     *
+     * @summary Get a single existing role with its permissions
+     * @param {number} id The ID of the role that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getSingleRole(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RoleWithPermissionsResponse>>;
+    /**
+     *
+     * @summary Update an existing role
+     * @param {number} id The ID of the role which should be updated
+     * @param {UpdateRoleRequest} updateRoleRequest The role which should be updated
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateRole(id: number, updateRoleRequest: UpdateRoleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RoleResponse>>;
 };
 /**
  * RbacApi - factory interface
@@ -8394,11 +8636,64 @@ export declare const RbacApiFp: (configuration?: Configuration) => {
 export declare const RbacApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
-     * @summary Returns all existing roles
+     * @summary Add new permissions to an existing role
+     * @param {number} id The ID of the role which should get the new permissions
+     * @param {Array<CreatePermissionParams>} createPermissionParams The permissions that need to be added
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    addPermissions(id: number, createPermissionParams: Array<CreatePermissionParams>, options?: any): AxiosPromise<Array<PermissionResponse>>;
+    /**
+     *
+     * @summary Create a new role
+     * @param {UpdateRoleRequest} updateRoleRequest The role which should be created
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createRole(updateRoleRequest: UpdateRoleRequest, options?: any): AxiosPromise<RoleResponse>;
+    /**
+     *
+     * @summary Delete a permission from an existing role
+     * @param {number} id The ID of the role
+     * @param {number} entity The entity of the permission
+     * @param {number} action The action of the permission
+     * @param {number} relation The relation of the permission
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletePermission(id: number, entity: number, action: number, relation: number, options?: any): AxiosPromise<string>;
+    /**
+     *
+     * @summary Delete an existing role
+     * @param {number} id The ID of the role which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteRole(id: number, options?: any): AxiosPromise<string>;
+    /**
+     *
+     * @summary Get all existing roles
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getAllRoles(options?: any): AxiosPromise<Array<RoleResponse>>;
+    /**
+     *
+     * @summary Get a single existing role with its permissions
+     * @param {number} id The ID of the role that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getSingleRole(id: number, options?: any): AxiosPromise<RoleWithPermissionsResponse>;
+    /**
+     *
+     * @summary Update an existing role
+     * @param {number} id The ID of the role which should be updated
+     * @param {UpdateRoleRequest} updateRoleRequest The role which should be updated
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateRole(id: number, updateRoleRequest: UpdateRoleRequest, options?: any): AxiosPromise<RoleResponse>;
 };
 /**
  * RbacApi - object-oriented interface
@@ -8409,12 +8704,71 @@ export declare const RbacApiFactory: (configuration?: Configuration, basePath?: 
 export declare class RbacApi extends BaseAPI {
     /**
      *
-     * @summary Returns all existing roles
+     * @summary Add new permissions to an existing role
+     * @param {number} id The ID of the role which should get the new permissions
+     * @param {Array<CreatePermissionParams>} createPermissionParams The permissions that need to be added
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    addPermissions(id: number, createPermissionParams: Array<CreatePermissionParams>, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PermissionResponse[], any>>;
+    /**
+     *
+     * @summary Create a new role
+     * @param {UpdateRoleRequest} updateRoleRequest The role which should be created
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    createRole(updateRoleRequest: UpdateRoleRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleResponse, any>>;
+    /**
+     *
+     * @summary Delete a permission from an existing role
+     * @param {number} id The ID of the role
+     * @param {number} entity The entity of the permission
+     * @param {number} action The action of the permission
+     * @param {number} relation The relation of the permission
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    deletePermission(id: number, entity: number, action: number, relation: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    /**
+     *
+     * @summary Delete an existing role
+     * @param {number} id The ID of the role which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    deleteRole(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    /**
+     *
+     * @summary Get all existing roles
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RbacApi
      */
     getAllRoles(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleResponse[], any>>;
+    /**
+     *
+     * @summary Get a single existing role with its permissions
+     * @param {number} id The ID of the role that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    getSingleRole(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleWithPermissionsResponse, any>>;
+    /**
+     *
+     * @summary Update an existing role
+     * @param {number} id The ID of the role which should be updated
+     * @param {UpdateRoleRequest} updateRoleRequest The role which should be updated
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    updateRole(id: number, updateRoleRequest: UpdateRoleRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleResponse, any>>;
 }
 /**
  * RootApi - axios parameter creator
@@ -9343,7 +9697,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUserRoles(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RoleResponse>>>;
+    getUserRoles(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RoleWithPermissionsResponse>>>;
     /**
      *
      * @summary Returns the user\'s containers
@@ -9598,7 +9952,7 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUserRoles(id: number, options?: any): AxiosPromise<Array<RoleResponse>>;
+    getUserRoles(id: number, options?: any): AxiosPromise<Array<RoleWithPermissionsResponse>>;
     /**
      *
      * @summary Returns the user\'s containers
@@ -9867,7 +10221,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUserRoles(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleResponse[], any>>;
+    getUserRoles(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleWithPermissionsResponse[], any>>;
     /**
      *
      * @summary Returns the user\'s containers
