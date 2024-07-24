@@ -214,7 +214,7 @@ export interface AuthenticationResponse {
      */
     'user': UserResponse;
     /**
-     * The RBAC roles that the user has.
+     * The RBAC roles that the user has. (DEPRECATED)
      * @type {Array<string>}
      * @memberof AuthenticationResponse
      */
@@ -237,6 +237,12 @@ export interface AuthenticationResponse {
      * @memberof AuthenticationResponse
      */
     'acceptedToS': string;
+    /**
+     * All unique RBAC permissions the user has
+     * @type {Array<RoleWithPermissionsResponse>}
+     * @memberof AuthenticationResponse
+     */
+    'rolesWithPermissions': Array<RoleWithPermissionsResponse>;
 }
 /**
  * 
@@ -1337,6 +1343,37 @@ export interface CreateInvoiceRequest {
 /**
  * 
  * @export
+ * @interface CreatePermissionParams
+ */
+export interface CreatePermissionParams {
+    /**
+     * Entity
+     * @type {string}
+     * @memberof CreatePermissionParams
+     */
+    'entity': string;
+    /**
+     * Action
+     * @type {string}
+     * @memberof CreatePermissionParams
+     */
+    'action': string;
+    /**
+     * Relation
+     * @type {string}
+     * @memberof CreatePermissionParams
+     */
+    'relation': string;
+    /**
+     * Attributes
+     * @type {Array<string>}
+     * @memberof CreatePermissionParams
+     */
+    'attributes': Array<string>;
+}
+/**
+ * 
+ * @export
  * @interface CreatePointOfSaleRequest
  */
 export interface CreatePointOfSaleRequest {
@@ -1593,25 +1630,6 @@ export interface DineroObjectResponse {
      * @memberof DineroObjectResponse
      */
     'precision': number;
-}
-/**
- * 
- * @export
- * @interface EntityResponse
- */
-export interface EntityResponse {
-    /**
-     * The name of the entity for which the permissions are.
-     * @type {string}
-     * @memberof EntityResponse
-     */
-    'entity': string;
-    /**
-     * The permissions per action.
-     * @type {Array<ActionResponse>}
-     * @memberof EntityResponse
-     */
-    'actions': Array<ActionResponse>;
 }
 /**
  * 
@@ -3064,6 +3082,25 @@ export interface PayoutRequestStatusResponse {
 /**
  * 
  * @export
+ * @interface PermissionResponse
+ */
+export interface PermissionResponse {
+    /**
+     * The name of the entity for which the permissions are.
+     * @type {string}
+     * @memberof PermissionResponse
+     */
+    'entity': string;
+    /**
+     * The permissions per action.
+     * @type {Array<ActionResponse>}
+     * @memberof PermissionResponse
+     */
+    'actions': Array<ActionResponse>;
+}
+/**
+ * 
+ * @export
  * @interface PointOfSaleResponse
  */
 export interface PointOfSaleResponse {
@@ -3388,17 +3425,66 @@ export interface RevisionRequest {
  */
 export interface RoleResponse {
     /**
+     * The ID of the role.
+     * @type {number}
+     * @memberof RoleResponse
+     */
+    'id': number;
+    /**
      * The name of the role.
      * @type {string}
      * @memberof RoleResponse
      */
-    'role': string;
+    'name': string;
     /**
-     * The permissions with regards to the entity.
-     * @type {Array<EntityResponse>}
+     * Whether the role is a system default role
+     * @type {boolean}
      * @memberof RoleResponse
      */
-    'entities': Array<EntityResponse>;
+    'systemDefault': boolean;
+    /**
+     * The user types this role is default for
+     * @type {Array<number>}
+     * @memberof RoleResponse
+     */
+    'userTypes'?: Array<number>;
+}
+/**
+ * 
+ * @export
+ * @interface RoleWithPermissionsResponse
+ */
+export interface RoleWithPermissionsResponse {
+    /**
+     * The ID of the role.
+     * @type {number}
+     * @memberof RoleWithPermissionsResponse
+     */
+    'id': number;
+    /**
+     * The name of the role.
+     * @type {string}
+     * @memberof RoleWithPermissionsResponse
+     */
+    'name': string;
+    /**
+     * Whether the role is a system default role
+     * @type {boolean}
+     * @memberof RoleWithPermissionsResponse
+     */
+    'systemDefault': boolean;
+    /**
+     * The user types this role is default for
+     * @type {Array<number>}
+     * @memberof RoleWithPermissionsResponse
+     */
+    'userTypes'?: Array<number>;
+    /**
+     * The permissions with regards to the entity.
+     * @type {Array<PermissionResponse>}
+     * @memberof RoleWithPermissionsResponse
+     */
+    'permissions': Array<PermissionResponse>;
 }
 /**
  * 
@@ -4495,6 +4581,19 @@ export interface UpdateProductRequest {
      * @memberof UpdateProductRequest
      */
     'priceList'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface UpdateRoleRequest
+ */
+export interface UpdateRoleRequest {
+    /**
+     * Name of the role
+     * @type {string}
+     * @memberof UpdateRoleRequest
+     */
+    'name': string;
 }
 /**
  * 
@@ -7678,6 +7777,50 @@ export const DebtorsApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @summary Get a report of all fines in pdf format
+         * @param {string} [fromDate] The start date of the report, inclusive
+         * @param {string} [toDate] The end date of the report, exclusive
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFineReportPdf: async (fromDate?: string, toDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/fines/report/pdf`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (fromDate !== undefined) {
+                localVarQueryParameter['fromDate'] = fromDate;
+            }
+
+            if (toDate !== undefined) {
+                localVarQueryParameter['toDate'] = toDate;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
          * @param {HandoutFinesRequest} handoutFinesRequest 
          * @param {*} [options] Override http request option.
@@ -7891,6 +8034,20 @@ export const DebtorsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get a report of all fines in pdf format
+         * @param {string} [fromDate] The start date of the report, inclusive
+         * @param {string} [toDate] The end date of the report, exclusive
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getFineReportPdf(fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getFineReportPdf(fromDate, toDate, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['DebtorsApi.getFineReportPdf']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
          * @param {HandoutFinesRequest} handoutFinesRequest 
          * @param {*} [options] Override http request option.
@@ -7986,6 +8143,17 @@ export const DebtorsApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
+         * @summary Get a report of all fines in pdf format
+         * @param {string} [fromDate] The start date of the report, inclusive
+         * @param {string} [toDate] The end date of the report, exclusive
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFineReportPdf(fromDate?: string, toDate?: string, options?: any): AxiosPromise<string> {
+            return localVarFp.getFineReportPdf(fromDate, toDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
          * @param {HandoutFinesRequest} handoutFinesRequest 
          * @param {*} [options] Override http request option.
@@ -8071,6 +8239,19 @@ export class DebtorsApi extends BaseAPI {
      */
     public getFineReport(fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig) {
         return DebtorsApiFp(this.configuration).getFineReport(fromDate, toDate, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get a report of all fines in pdf format
+     * @param {string} [fromDate] The start date of the report, inclusive
+     * @param {string} [toDate] The end date of the report, exclusive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DebtorsApi
+     */
+    public getFineReportPdf(fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig) {
+        return DebtorsApiFp(this.configuration).getFineReportPdf(fromDate, toDate, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -12261,7 +12442,171 @@ export const RbacApiAxiosParamCreator = function (configuration?: Configuration)
     return {
         /**
          * 
-         * @summary Returns all existing roles
+         * @summary Add new permissions to an existing role
+         * @param {number} id The ID of the role which should get the new permissions
+         * @param {Array<CreatePermissionParams>} createPermissionParams The permissions that need to be added
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addPermissions: async (id: number, createPermissionParams: Array<CreatePermissionParams>, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('addPermissions', 'id', id)
+            // verify required parameter 'createPermissionParams' is not null or undefined
+            assertParamExists('addPermissions', 'createPermissionParams', createPermissionParams)
+            const localVarPath = `/rbac/roles/{id}/permissions`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(createPermissionParams, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Create a new role
+         * @param {UpdateRoleRequest} updateRoleRequest The role which should be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createRole: async (updateRoleRequest: UpdateRoleRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'updateRoleRequest' is not null or undefined
+            assertParamExists('createRole', 'updateRoleRequest', updateRoleRequest)
+            const localVarPath = `/rbac/roles`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(updateRoleRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Delete a permission from an existing role
+         * @param {number} id The ID of the role
+         * @param {number} entity The entity of the permission
+         * @param {number} action The action of the permission
+         * @param {number} relation The relation of the permission
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deletePermission: async (id: number, entity: number, action: number, relation: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('deletePermission', 'id', id)
+            // verify required parameter 'entity' is not null or undefined
+            assertParamExists('deletePermission', 'entity', entity)
+            // verify required parameter 'action' is not null or undefined
+            assertParamExists('deletePermission', 'action', action)
+            // verify required parameter 'relation' is not null or undefined
+            assertParamExists('deletePermission', 'relation', relation)
+            const localVarPath = `/rbac/roles/{id}/permissions/{entity}/{action}/{relation}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)))
+                .replace(`{${"entity"}}`, encodeURIComponent(String(entity)))
+                .replace(`{${"action"}}`, encodeURIComponent(String(action)))
+                .replace(`{${"relation"}}`, encodeURIComponent(String(relation)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Delete an existing role
+         * @param {number} id The ID of the role which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteRole: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('deleteRole', 'id', id)
+            const localVarPath = `/rbac/roles/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get all existing roles
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -12293,6 +12638,88 @@ export const RbacApiAxiosParamCreator = function (configuration?: Configuration)
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @summary Get a single existing role with its permissions
+         * @param {number} id The ID of the role that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSingleRole: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getSingleRole', 'id', id)
+            const localVarPath = `/rbac/roles/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Update an existing role
+         * @param {number} id The ID of the role which should be updated
+         * @param {UpdateRoleRequest} updateRoleRequest The role which should be updated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateRole: async (id: number, updateRoleRequest: UpdateRoleRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('updateRole', 'id', id)
+            // verify required parameter 'updateRoleRequest' is not null or undefined
+            assertParamExists('updateRole', 'updateRoleRequest', updateRoleRequest)
+            const localVarPath = `/rbac/roles/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(updateRoleRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -12305,7 +12732,63 @@ export const RbacApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @summary Returns all existing roles
+         * @summary Add new permissions to an existing role
+         * @param {number} id The ID of the role which should get the new permissions
+         * @param {Array<CreatePermissionParams>} createPermissionParams The permissions that need to be added
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addPermissions(id: number, createPermissionParams: Array<CreatePermissionParams>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<PermissionResponse>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addPermissions(id, createPermissionParams, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['RbacApi.addPermissions']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Create a new role
+         * @param {UpdateRoleRequest} updateRoleRequest The role which should be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createRole(updateRoleRequest: UpdateRoleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RoleResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createRole(updateRoleRequest, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['RbacApi.createRole']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Delete a permission from an existing role
+         * @param {number} id The ID of the role
+         * @param {number} entity The entity of the permission
+         * @param {number} action The action of the permission
+         * @param {number} relation The relation of the permission
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deletePermission(id: number, entity: number, action: number, relation: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deletePermission(id, entity, action, relation, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['RbacApi.deletePermission']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Delete an existing role
+         * @param {number} id The ID of the role which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteRole(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteRole(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['RbacApi.deleteRole']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get all existing roles
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -12313,6 +12796,33 @@ export const RbacApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getAllRoles(options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['RbacApi.getAllRoles']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get a single existing role with its permissions
+         * @param {number} id The ID of the role that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getSingleRole(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RoleWithPermissionsResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSingleRole(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['RbacApi.getSingleRole']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Update an existing role
+         * @param {number} id The ID of the role which should be updated
+         * @param {UpdateRoleRequest} updateRoleRequest The role which should be updated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updateRole(id: number, updateRoleRequest: UpdateRoleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RoleResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateRole(id, updateRoleRequest, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['RbacApi.updateRole']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
     }
@@ -12327,12 +12837,77 @@ export const RbacApiFactory = function (configuration?: Configuration, basePath?
     return {
         /**
          * 
-         * @summary Returns all existing roles
+         * @summary Add new permissions to an existing role
+         * @param {number} id The ID of the role which should get the new permissions
+         * @param {Array<CreatePermissionParams>} createPermissionParams The permissions that need to be added
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addPermissions(id: number, createPermissionParams: Array<CreatePermissionParams>, options?: any): AxiosPromise<Array<PermissionResponse>> {
+            return localVarFp.addPermissions(id, createPermissionParams, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Create a new role
+         * @param {UpdateRoleRequest} updateRoleRequest The role which should be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createRole(updateRoleRequest: UpdateRoleRequest, options?: any): AxiosPromise<RoleResponse> {
+            return localVarFp.createRole(updateRoleRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Delete a permission from an existing role
+         * @param {number} id The ID of the role
+         * @param {number} entity The entity of the permission
+         * @param {number} action The action of the permission
+         * @param {number} relation The relation of the permission
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deletePermission(id: number, entity: number, action: number, relation: number, options?: any): AxiosPromise<string> {
+            return localVarFp.deletePermission(id, entity, action, relation, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Delete an existing role
+         * @param {number} id The ID of the role which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteRole(id: number, options?: any): AxiosPromise<string> {
+            return localVarFp.deleteRole(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get all existing roles
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         getAllRoles(options?: any): AxiosPromise<Array<RoleResponse>> {
             return localVarFp.getAllRoles(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get a single existing role with its permissions
+         * @param {number} id The ID of the role that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSingleRole(id: number, options?: any): AxiosPromise<RoleWithPermissionsResponse> {
+            return localVarFp.getSingleRole(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Update an existing role
+         * @param {number} id The ID of the role which should be updated
+         * @param {UpdateRoleRequest} updateRoleRequest The role which should be updated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateRole(id: number, updateRoleRequest: UpdateRoleRequest, options?: any): AxiosPromise<RoleResponse> {
+            return localVarFp.updateRole(id, updateRoleRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -12346,13 +12921,90 @@ export const RbacApiFactory = function (configuration?: Configuration, basePath?
 export class RbacApi extends BaseAPI {
     /**
      * 
-     * @summary Returns all existing roles
+     * @summary Add new permissions to an existing role
+     * @param {number} id The ID of the role which should get the new permissions
+     * @param {Array<CreatePermissionParams>} createPermissionParams The permissions that need to be added
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    public addPermissions(id: number, createPermissionParams: Array<CreatePermissionParams>, options?: RawAxiosRequestConfig) {
+        return RbacApiFp(this.configuration).addPermissions(id, createPermissionParams, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Create a new role
+     * @param {UpdateRoleRequest} updateRoleRequest The role which should be created
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    public createRole(updateRoleRequest: UpdateRoleRequest, options?: RawAxiosRequestConfig) {
+        return RbacApiFp(this.configuration).createRole(updateRoleRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Delete a permission from an existing role
+     * @param {number} id The ID of the role
+     * @param {number} entity The entity of the permission
+     * @param {number} action The action of the permission
+     * @param {number} relation The relation of the permission
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    public deletePermission(id: number, entity: number, action: number, relation: number, options?: RawAxiosRequestConfig) {
+        return RbacApiFp(this.configuration).deletePermission(id, entity, action, relation, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Delete an existing role
+     * @param {number} id The ID of the role which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    public deleteRole(id: number, options?: RawAxiosRequestConfig) {
+        return RbacApiFp(this.configuration).deleteRole(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get all existing roles
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RbacApi
      */
     public getAllRoles(options?: RawAxiosRequestConfig) {
         return RbacApiFp(this.configuration).getAllRoles(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get a single existing role with its permissions
+     * @param {number} id The ID of the role that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    public getSingleRole(id: number, options?: RawAxiosRequestConfig) {
+        return RbacApiFp(this.configuration).getSingleRole(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Update an existing role
+     * @param {number} id The ID of the role which should be updated
+     * @param {UpdateRoleRequest} updateRoleRequest The role which should be updated
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    public updateRole(id: number, updateRoleRequest: UpdateRoleRequest, options?: RawAxiosRequestConfig) {
+        return RbacApiFp(this.configuration).updateRole(id, updateRoleRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -14888,7 +15540,7 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUserRoles(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RoleResponse>>> {
+        async getUserRoles(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RoleWithPermissionsResponse>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getUserRoles(id, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['UsersApi.getUserRoles']?.[index]?.url;
@@ -15244,7 +15896,7 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserRoles(id: number, options?: any): AxiosPromise<Array<RoleResponse>> {
+        getUserRoles(id: number, options?: any): AxiosPromise<Array<RoleWithPermissionsResponse>> {
             return localVarFp.getUserRoles(id, options).then((request) => request(axios, basePath));
         },
         /**
