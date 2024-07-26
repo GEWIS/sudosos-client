@@ -5685,6 +5685,38 @@ const PointofsaleApiAxiosParamCreator = function (configuration) {
         }),
         /**
          *
+         * @summary Returns a Point of Sale\'s associate users
+         * @param {number} id The id of the Point of Sale of which to get the associate users.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPointOfSaleAssociates: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('getPointOfSaleAssociates', 'id', id);
+            const localVarPath = `/pointsofsale/{id}/associates`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
          * @summary Returns the requested Point of Sale
          * @param {number} id The id of the Point of Sale which should be returned
          * @param {*} [options] Override http request option.
@@ -5887,6 +5919,22 @@ const PointofsaleApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Returns a Point of Sale\'s associate users
+         * @param {number} id The id of the Point of Sale of which to get the associate users.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPointOfSaleAssociates(id, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getPointOfSaleAssociates(id, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['PointofsaleApi.getPointOfSaleAssociates']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
          * @summary Returns the requested Point of Sale
          * @param {number} id The id of the Point of Sale which should be returned
          * @param {*} [options] Override http request option.
@@ -6001,6 +6049,16 @@ const PointofsaleApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary Returns a Point of Sale\'s associate users
+         * @param {number} id The id of the Point of Sale of which to get the associate users.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPointOfSaleAssociates(id, options) {
+            return localVarFp.getPointOfSaleAssociates(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Returns the requested Point of Sale
          * @param {number} id The id of the Point of Sale which should be returned
          * @param {*} [options] Override http request option.
@@ -6099,6 +6157,17 @@ class PointofsaleApi extends base_1.BaseAPI {
      */
     getAllPointsOfSale(take, skip, options) {
         return (0, exports.PointofsaleApiFp)(this.configuration).getAllPointsOfSale(take, skip, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Returns a Point of Sale\'s associate users
+     * @param {number} id The id of the Point of Sale of which to get the associate users.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PointofsaleApi
+     */
+    getPointOfSaleAssociates(id, options) {
+        return (0, exports.PointofsaleApiFp)(this.configuration).getPointOfSaleAssociates(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -9051,12 +9120,14 @@ const UsersApiAxiosParamCreator = function (configuration) {
          *
          * @summary Get all financial mutations of a user (from or to).
          * @param {number} id The id of the user to get the mutations from
+         * @param {string} [fromDate] Start date for selected transactions (inclusive)
+         * @param {string} [tillDate] End date for selected transactions (exclusive)
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersFinancialMutations: (id_1, take_1, skip_1, ...args_1) => __awaiter(this, [id_1, take_1, skip_1, ...args_1], void 0, function* (id, take, skip, options = {}) {
+        getUsersFinancialMutations: (id_1, fromDate_1, tillDate_1, take_1, skip_1, ...args_1) => __awaiter(this, [id_1, fromDate_1, tillDate_1, take_1, skip_1, ...args_1], void 0, function* (id, fromDate, tillDate, take, skip, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getUsersFinancialMutations', 'id', id);
             const localVarPath = `/users/{id}/financialmutations`
@@ -9073,6 +9144,12 @@ const UsersApiAxiosParamCreator = function (configuration) {
             // authentication JWT required
             // http bearer authentication required
             yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            if (fromDate !== undefined) {
+                localVarQueryParameter['fromDate'] = fromDate;
+            }
+            if (tillDate !== undefined) {
+                localVarQueryParameter['tillDate'] = tillDate;
+            }
             if (take !== undefined) {
                 localVarQueryParameter['take'] = take;
             }
@@ -9817,15 +9894,17 @@ const UsersApiFp = function (configuration) {
          *
          * @summary Get all financial mutations of a user (from or to).
          * @param {number} id The id of the user to get the mutations from
+         * @param {string} [fromDate] Start date for selected transactions (inclusive)
+         * @param {string} [tillDate] End date for selected transactions (exclusive)
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersFinancialMutations(id, take, skip, options) {
+        getUsersFinancialMutations(id, fromDate, tillDate, take, skip, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUsersFinancialMutations(id, take, skip, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUsersFinancialMutations(id, fromDate, tillDate, take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.getUsersFinancialMutations']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
@@ -10206,13 +10285,15 @@ const UsersApiFactory = function (configuration, basePath, axios) {
          *
          * @summary Get all financial mutations of a user (from or to).
          * @param {number} id The id of the user to get the mutations from
+         * @param {string} [fromDate] Start date for selected transactions (inclusive)
+         * @param {string} [tillDate] End date for selected transactions (exclusive)
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersFinancialMutations(id, take, skip, options) {
-            return localVarFp.getUsersFinancialMutations(id, take, skip, options).then((request) => request(axios, basePath));
+        getUsersFinancialMutations(id, fromDate, tillDate, take, skip, options) {
+            return localVarFp.getUsersFinancialMutations(id, fromDate, tillDate, take, skip, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -10530,14 +10611,16 @@ class UsersApi extends base_1.BaseAPI {
      *
      * @summary Get all financial mutations of a user (from or to).
      * @param {number} id The id of the user to get the mutations from
+     * @param {string} [fromDate] Start date for selected transactions (inclusive)
+     * @param {string} [tillDate] End date for selected transactions (exclusive)
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUsersFinancialMutations(id, take, skip, options) {
-        return (0, exports.UsersApiFp)(this.configuration).getUsersFinancialMutations(id, take, skip, options).then((request) => request(this.axios, this.basePath));
+    getUsersFinancialMutations(id, fromDate, tillDate, take, skip, options) {
+        return (0, exports.UsersApiFp)(this.configuration).getUsersFinancialMutations(id, fromDate, tillDate, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *

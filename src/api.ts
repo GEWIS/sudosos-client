@@ -1394,13 +1394,19 @@ export interface CreatePointOfSaleRequest {
      * @type {Array<number>}
      * @memberof CreatePointOfSaleRequest
      */
-    'containers'?: Array<number>;
+    'containers': Array<number>;
     /**
      * ID of the user who will own the POS, if undefined it will    default to the token ID.
      * @type {number}
      * @memberof CreatePointOfSaleRequest
      */
-    'ownerId'?: number;
+    'ownerId': number;
+    /**
+     * Users that have at least one of the given roles can create transactions in this POS (but not open/close/edit it)
+     * @type {Array<number>}
+     * @memberof CreatePointOfSaleRequest
+     */
+    'cashierRoleIds'?: Array<number>;
 }
 /**
  * 
@@ -3101,6 +3107,31 @@ export interface PermissionResponse {
 /**
  * 
  * @export
+ * @interface PointOfSaleAssociateUsersResponse
+ */
+export interface PointOfSaleAssociateUsersResponse {
+    /**
+     * 
+     * @type {BaseUserResponse}
+     * @memberof PointOfSaleAssociateUsersResponse
+     */
+    'owner': BaseUserResponse;
+    /**
+     * Members that belong to the owner
+     * @type {Array<BaseUserResponse>}
+     * @memberof PointOfSaleAssociateUsersResponse
+     */
+    'ownerMembers': Array<BaseUserResponse>;
+    /**
+     * Users that belong to at least one cashier role of this point of sale
+     * @type {Array<BaseUserResponse>}
+     * @memberof PointOfSaleAssociateUsersResponse
+     */
+    'cashiers': Array<BaseUserResponse>;
+}
+/**
+ * 
+ * @export
  * @interface PointOfSaleResponse
  */
 export interface PointOfSaleResponse {
@@ -3152,6 +3183,12 @@ export interface PointOfSaleResponse {
      * @memberof PointOfSaleResponse
      */
     'useAuthentication': boolean;
+    /**
+     * The roles that are cashiers of this POS
+     * @type {Array<RoleResponse>}
+     * @memberof PointOfSaleResponse
+     */
+    'cashierRoles': Array<RoleResponse>;
 }
 /**
  * 
@@ -3207,6 +3244,12 @@ export interface PointOfSaleWithContainersResponse {
      * @memberof PointOfSaleWithContainersResponse
      */
     'useAuthentication': boolean;
+    /**
+     * The roles that are cashiers of this POS
+     * @type {Array<RoleResponse>}
+     * @memberof PointOfSaleWithContainersResponse
+     */
+    'cashierRoles': Array<RoleResponse>;
     /**
      * The containers in the point-of-sale.
      * @type {Array<ContainerWithProductsResponse>}
@@ -4171,10 +4214,10 @@ export interface TransactionResponse {
     'subTransactions': Array<SubTransactionResponse>;
     /**
      * 
-     * @type {PointOfSaleResponse}
+     * @type {BasePointOfSaleResponse}
      * @memberof TransactionResponse
      */
-    'pointOfSale': PointOfSaleResponse;
+    'pointOfSale': BasePointOfSaleResponse;
     /**
      * 
      * @type {DineroObjectResponse}
@@ -4189,25 +4232,19 @@ export interface TransactionResponse {
  */
 export interface TransferRequest {
     /**
-     * Description of the transfer
+     * Description of the transfer.
      * @type {string}
      * @memberof TransferRequest
      */
-    'description'?: string;
+    'description': string;
     /**
      * 
      * @type {DineroObjectRequest}
      * @memberof TransferRequest
      */
-    'amount'?: DineroObjectRequest;
+    'amount': DineroObjectRequest;
     /**
-     * Type of transfer
-     * @type {number}
-     * @memberof TransferRequest
-     */
-    'type'?: number;
-    /**
-     * from which user the money is being transferred
+     * from which user the money is being transferred.
      * @type {number}
      * @memberof TransferRequest
      */
@@ -4218,6 +4255,12 @@ export interface TransferRequest {
      * @memberof TransferRequest
      */
     'toId'?: number;
+    /**
+     * The vat group id for the transfer.
+     * @type {number}
+     * @memberof TransferRequest
+     */
+    'vatId'?: number;
 }
 /**
  * 
@@ -4260,6 +4303,12 @@ export interface TransferResponse {
      * @type {Dinero}
      * @memberof TransferResponse
      */
+    'amountInclVat': Dinero;
+    /**
+     * 
+     * @type {Dinero}
+     * @memberof TransferResponse
+     */
     'amount': Dinero;
     /**
      * 
@@ -4297,6 +4346,12 @@ export interface TransferResponse {
      * @memberof TransferResponse
      */
     'fine'?: FineResponse;
+    /**
+     * 
+     * @type {VatGroupResponse}
+     * @memberof TransferResponse
+     */
+    'vat'?: VatGroupResponse;
     /**
      * 
      * @type {UserFineGroupResponse}
@@ -4519,13 +4574,19 @@ export interface UpdatePointOfSaleRequest {
      * @type {Array<number>}
      * @memberof UpdatePointOfSaleRequest
      */
-    'containers'?: Array<number>;
+    'containers': Array<number>;
     /**
      * ID of the POS to update.
      * @type {number}
      * @memberof UpdatePointOfSaleRequest
      */
     'id': number;
+    /**
+     * Users that have at least one of the given roles can create transactions in this POS (but not open/close/edit it)
+     * @type {Array<number>}
+     * @memberof UpdatePointOfSaleRequest
+     */
+    'cashierRoleIds'?: Array<number>;
 }
 /**
  * 
@@ -11115,6 +11176,44 @@ export const PointofsaleApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
+         * @summary Returns a Point of Sale\'s associate users
+         * @param {number} id The id of the Point of Sale of which to get the associate users.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPointOfSaleAssociates: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getPointOfSaleAssociates', 'id', id)
+            const localVarPath = `/pointsofsale/{id}/associates`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Returns the requested Point of Sale
          * @param {number} id The id of the Point of Sale which should be returned
          * @param {*} [options] Override http request option.
@@ -11323,6 +11422,19 @@ export const PointofsaleApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Returns a Point of Sale\'s associate users
+         * @param {number} id The id of the Point of Sale of which to get the associate users.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getPointOfSaleAssociates(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleAssociateUsersResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPointOfSaleAssociates(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['PointofsaleApi.getPointOfSaleAssociates']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Returns the requested Point of Sale
          * @param {number} id The id of the Point of Sale which should be returned
          * @param {*} [options] Override http request option.
@@ -11428,6 +11540,16 @@ export const PointofsaleApiFactory = function (configuration?: Configuration, ba
         },
         /**
          * 
+         * @summary Returns a Point of Sale\'s associate users
+         * @param {number} id The id of the Point of Sale of which to get the associate users.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPointOfSaleAssociates(id: number, options?: any): AxiosPromise<PointOfSaleAssociateUsersResponse> {
+            return localVarFp.getPointOfSaleAssociates(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Returns the requested Point of Sale
          * @param {number} id The id of the Point of Sale which should be returned
          * @param {*} [options] Override http request option.
@@ -11530,6 +11652,18 @@ export class PointofsaleApi extends BaseAPI {
      */
     public getAllPointsOfSale(take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return PointofsaleApiFp(this.configuration).getAllPointsOfSale(take, skip, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Returns a Point of Sale\'s associate users
+     * @param {number} id The id of the Point of Sale of which to get the associate users.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PointofsaleApi
+     */
+    public getPointOfSaleAssociates(id: number, options?: RawAxiosRequestConfig) {
+        return PointofsaleApiFp(this.configuration).getPointOfSaleAssociates(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -14731,12 +14865,14 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Get all financial mutations of a user (from or to).
          * @param {number} id The id of the user to get the mutations from
+         * @param {string} [fromDate] Start date for selected transactions (inclusive)
+         * @param {string} [tillDate] End date for selected transactions (exclusive)
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersFinancialMutations: async (id: number, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getUsersFinancialMutations: async (id: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getUsersFinancialMutations', 'id', id)
             const localVarPath = `/users/{id}/financialmutations`
@@ -14755,6 +14891,14 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             // authentication JWT required
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (fromDate !== undefined) {
+                localVarQueryParameter['fromDate'] = fromDate;
+            }
+
+            if (tillDate !== undefined) {
+                localVarQueryParameter['tillDate'] = tillDate;
+            }
 
             if (take !== undefined) {
                 localVarQueryParameter['take'] = take;
@@ -15565,13 +15709,15 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get all financial mutations of a user (from or to).
          * @param {number} id The id of the user to get the mutations from
+         * @param {string} [fromDate] Start date for selected transactions (inclusive)
+         * @param {string} [tillDate] End date for selected transactions (exclusive)
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUsersFinancialMutations(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedFinancialMutationResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUsersFinancialMutations(id, take, skip, options);
+        async getUsersFinancialMutations(id: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedFinancialMutationResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getUsersFinancialMutations(id, fromDate, tillDate, take, skip, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['UsersApi.getUsersFinancialMutations']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
@@ -15915,13 +16061,15 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * 
          * @summary Get all financial mutations of a user (from or to).
          * @param {number} id The id of the user to get the mutations from
+         * @param {string} [fromDate] Start date for selected transactions (inclusive)
+         * @param {string} [tillDate] End date for selected transactions (exclusive)
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersFinancialMutations(id: number, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedFinancialMutationResponse> {
-            return localVarFp.getUsersFinancialMutations(id, take, skip, options).then((request) => request(axios, basePath));
+        getUsersFinancialMutations(id: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedFinancialMutationResponse> {
+            return localVarFp.getUsersFinancialMutations(id, fromDate, tillDate, take, skip, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -16252,14 +16400,16 @@ export class UsersApi extends BaseAPI {
      * 
      * @summary Get all financial mutations of a user (from or to).
      * @param {number} id The id of the user to get the mutations from
+     * @param {string} [fromDate] Start date for selected transactions (inclusive)
+     * @param {string} [tillDate] End date for selected transactions (exclusive)
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public getUsersFinancialMutations(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
-        return UsersApiFp(this.configuration).getUsersFinancialMutations(id, take, skip, options).then((request) => request(this.axios, this.basePath));
+    public getUsersFinancialMutations(id: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
+        return UsersApiFp(this.configuration).getUsersFinancialMutations(id, fromDate, tillDate, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
