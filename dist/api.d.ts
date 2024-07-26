@@ -1384,13 +1384,19 @@ export interface CreatePointOfSaleRequest {
      * @type {Array<number>}
      * @memberof CreatePointOfSaleRequest
      */
-    'containers'?: Array<number>;
+    'containers': Array<number>;
     /**
      * ID of the user who will own the POS, if undefined it will    default to the token ID.
      * @type {number}
      * @memberof CreatePointOfSaleRequest
      */
-    'ownerId'?: number;
+    'ownerId': number;
+    /**
+     * Users that have at least one of the given roles can create transactions in this POS (but not open/close/edit it)
+     * @type {Array<number>}
+     * @memberof CreatePointOfSaleRequest
+     */
+    'cashierRoleIds'?: Array<number>;
 }
 /**
  *
@@ -3080,6 +3086,31 @@ export interface PermissionResponse {
 /**
  *
  * @export
+ * @interface PointOfSaleAssociateUsersResponse
+ */
+export interface PointOfSaleAssociateUsersResponse {
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof PointOfSaleAssociateUsersResponse
+     */
+    'owner': BaseUserResponse;
+    /**
+     * Members that belong to the owner
+     * @type {Array<BaseUserResponse>}
+     * @memberof PointOfSaleAssociateUsersResponse
+     */
+    'ownerMembers': Array<BaseUserResponse>;
+    /**
+     * Users that belong to at least one cashier role of this point of sale
+     * @type {Array<BaseUserResponse>}
+     * @memberof PointOfSaleAssociateUsersResponse
+     */
+    'cashiers': Array<BaseUserResponse>;
+}
+/**
+ *
+ * @export
  * @interface PointOfSaleResponse
  */
 export interface PointOfSaleResponse {
@@ -3131,6 +3162,12 @@ export interface PointOfSaleResponse {
      * @memberof PointOfSaleResponse
      */
     'useAuthentication': boolean;
+    /**
+     * The roles that are cashiers of this POS
+     * @type {Array<RoleResponse>}
+     * @memberof PointOfSaleResponse
+     */
+    'cashierRoles': Array<RoleResponse>;
 }
 /**
  *
@@ -3186,6 +3223,12 @@ export interface PointOfSaleWithContainersResponse {
      * @memberof PointOfSaleWithContainersResponse
      */
     'useAuthentication': boolean;
+    /**
+     * The roles that are cashiers of this POS
+     * @type {Array<RoleResponse>}
+     * @memberof PointOfSaleWithContainersResponse
+     */
+    'cashierRoles': Array<RoleResponse>;
     /**
      * The containers in the point-of-sale.
      * @type {Array<ContainerWithProductsResponse>}
@@ -4150,10 +4193,10 @@ export interface TransactionResponse {
     'subTransactions': Array<SubTransactionResponse>;
     /**
      *
-     * @type {PointOfSaleResponse}
+     * @type {BasePointOfSaleResponse}
      * @memberof TransactionResponse
      */
-    'pointOfSale': PointOfSaleResponse;
+    'pointOfSale': BasePointOfSaleResponse;
     /**
      *
      * @type {DineroObjectResponse}
@@ -4168,25 +4211,19 @@ export interface TransactionResponse {
  */
 export interface TransferRequest {
     /**
-     * Description of the transfer
+     * Description of the transfer.
      * @type {string}
      * @memberof TransferRequest
      */
-    'description'?: string;
+    'description': string;
     /**
      *
      * @type {DineroObjectRequest}
      * @memberof TransferRequest
      */
-    'amount'?: DineroObjectRequest;
+    'amount': DineroObjectRequest;
     /**
-     * Type of transfer
-     * @type {number}
-     * @memberof TransferRequest
-     */
-    'type'?: number;
-    /**
-     * from which user the money is being transferred
+     * from which user the money is being transferred.
      * @type {number}
      * @memberof TransferRequest
      */
@@ -4197,6 +4234,12 @@ export interface TransferRequest {
      * @memberof TransferRequest
      */
     'toId'?: number;
+    /**
+     * The vat group id for the transfer.
+     * @type {number}
+     * @memberof TransferRequest
+     */
+    'vatId'?: number;
 }
 /**
  *
@@ -4239,6 +4282,12 @@ export interface TransferResponse {
      * @type {Dinero}
      * @memberof TransferResponse
      */
+    'amountInclVat': Dinero;
+    /**
+     *
+     * @type {Dinero}
+     * @memberof TransferResponse
+     */
     'amount': Dinero;
     /**
      *
@@ -4276,6 +4325,12 @@ export interface TransferResponse {
      * @memberof TransferResponse
      */
     'fine'?: FineResponse;
+    /**
+     *
+     * @type {VatGroupResponse}
+     * @memberof TransferResponse
+     */
+    'vat'?: VatGroupResponse;
     /**
      *
      * @type {UserFineGroupResponse}
@@ -4495,13 +4550,19 @@ export interface UpdatePointOfSaleRequest {
      * @type {Array<number>}
      * @memberof UpdatePointOfSaleRequest
      */
-    'containers'?: Array<number>;
+    'containers': Array<number>;
     /**
      * ID of the POS to update.
      * @type {number}
      * @memberof UpdatePointOfSaleRequest
      */
     'id': number;
+    /**
+     * Users that have at least one of the given roles can create transactions in this POS (but not open/close/edit it)
+     * @type {Array<number>}
+     * @memberof UpdatePointOfSaleRequest
+     */
+    'cashierRoleIds'?: Array<number>;
 }
 /**
  *
@@ -7831,6 +7892,14 @@ export declare const PointofsaleApiAxiosParamCreator: (configuration?: Configura
     getAllPointsOfSale: (take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Returns a Point of Sale\'s associate users
+     * @param {number} id The id of the Point of Sale of which to get the associate users.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPointOfSaleAssociates: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Returns the requested Point of Sale
      * @param {number} id The id of the Point of Sale which should be returned
      * @param {*} [options] Override http request option.
@@ -7907,6 +7976,14 @@ export declare const PointofsaleApiFp: (configuration?: Configuration) => {
     getAllPointsOfSale(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedPointOfSaleResponse>>;
     /**
      *
+     * @summary Returns a Point of Sale\'s associate users
+     * @param {number} id The id of the Point of Sale of which to get the associate users.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPointOfSaleAssociates(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleAssociateUsersResponse>>;
+    /**
+     *
      * @summary Returns the requested Point of Sale
      * @param {number} id The id of the Point of Sale which should be returned
      * @param {*} [options] Override http request option.
@@ -7981,6 +8058,14 @@ export declare const PointofsaleApiFactory: (configuration?: Configuration, base
      * @throws {RequiredError}
      */
     getAllPointsOfSale(take?: number, skip?: number, options?: any): AxiosPromise<PaginatedPointOfSaleResponse>;
+    /**
+     *
+     * @summary Returns a Point of Sale\'s associate users
+     * @param {number} id The id of the Point of Sale of which to get the associate users.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPointOfSaleAssociates(id: number, options?: any): AxiosPromise<PointOfSaleAssociateUsersResponse>;
     /**
      *
      * @summary Returns the requested Point of Sale
@@ -8064,6 +8149,15 @@ export declare class PointofsaleApi extends BaseAPI {
      * @memberof PointofsaleApi
      */
     getAllPointsOfSale(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedPointOfSaleResponse, any>>;
+    /**
+     *
+     * @summary Returns a Point of Sale\'s associate users
+     * @param {number} id The id of the Point of Sale of which to get the associate users.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PointofsaleApi
+     */
+    getPointOfSaleAssociates(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PointOfSaleAssociateUsersResponse, any>>;
     /**
      *
      * @summary Returns the requested Point of Sale
@@ -9457,12 +9551,14 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      *
      * @summary Get all financial mutations of a user (from or to).
      * @param {number} id The id of the user to get the mutations from
+     * @param {string} [fromDate] Start date for selected transactions (inclusive)
+     * @param {string} [tillDate] End date for selected transactions (exclusive)
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUsersFinancialMutations: (id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getUsersFinancialMutations: (id: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns the user\'s Points of Sale
@@ -9712,12 +9808,14 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      *
      * @summary Get all financial mutations of a user (from or to).
      * @param {number} id The id of the user to get the mutations from
+     * @param {string} [fromDate] Start date for selected transactions (inclusive)
+     * @param {string} [tillDate] End date for selected transactions (exclusive)
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUsersFinancialMutations(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedFinancialMutationResponse>>;
+    getUsersFinancialMutations(id: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedFinancialMutationResponse>>;
     /**
      *
      * @summary Returns the user\'s Points of Sale
@@ -9967,12 +10065,14 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
      *
      * @summary Get all financial mutations of a user (from or to).
      * @param {number} id The id of the user to get the mutations from
+     * @param {string} [fromDate] Start date for selected transactions (inclusive)
+     * @param {string} [tillDate] End date for selected transactions (exclusive)
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUsersFinancialMutations(id: number, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedFinancialMutationResponse>;
+    getUsersFinancialMutations(id: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedFinancialMutationResponse>;
     /**
      *
      * @summary Returns the user\'s Points of Sale
@@ -10237,13 +10337,15 @@ export declare class UsersApi extends BaseAPI {
      *
      * @summary Get all financial mutations of a user (from or to).
      * @param {number} id The id of the user to get the mutations from
+     * @param {string} [fromDate] Start date for selected transactions (inclusive)
+     * @param {string} [tillDate] End date for selected transactions (exclusive)
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUsersFinancialMutations(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedFinancialMutationResponse, any>>;
+    getUsersFinancialMutations(id: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedFinancialMutationResponse, any>>;
     /**
      *
      * @summary Returns the user\'s Points of Sale
