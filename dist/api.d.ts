@@ -4168,25 +4168,19 @@ export interface TransactionResponse {
  */
 export interface TransferRequest {
     /**
-     * Description of the transfer
+     * Description of the transfer.
      * @type {string}
      * @memberof TransferRequest
      */
-    'description'?: string;
+    'description': string;
     /**
      *
      * @type {DineroObjectRequest}
      * @memberof TransferRequest
      */
-    'amount'?: DineroObjectRequest;
+    'amount': DineroObjectRequest;
     /**
-     * Type of transfer
-     * @type {number}
-     * @memberof TransferRequest
-     */
-    'type'?: number;
-    /**
-     * from which user the money is being transferred
+     * from which user the money is being transferred.
      * @type {number}
      * @memberof TransferRequest
      */
@@ -4197,6 +4191,12 @@ export interface TransferRequest {
      * @memberof TransferRequest
      */
     'toId'?: number;
+    /**
+     * The vat group id for the transfer.
+     * @type {number}
+     * @memberof TransferRequest
+     */
+    'vatId'?: number;
 }
 /**
  *
@@ -4239,6 +4239,12 @@ export interface TransferResponse {
      * @type {Dinero}
      * @memberof TransferResponse
      */
+    'amountInclVat': Dinero;
+    /**
+     *
+     * @type {Dinero}
+     * @memberof TransferResponse
+     */
     'amount': Dinero;
     /**
      *
@@ -4276,6 +4282,12 @@ export interface TransferResponse {
      * @memberof TransferResponse
      */
     'fine'?: FineResponse;
+    /**
+     *
+     * @type {VatGroupResponse}
+     * @memberof TransferResponse
+     */
+    'vat'?: VatGroupResponse;
     /**
      *
      * @type {UserFineGroupResponse}
