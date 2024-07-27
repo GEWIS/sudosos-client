@@ -655,6 +655,12 @@ export interface BaseInvoiceResponse {
      */
     'addressee': string;
     /**
+     * Reference of the invoice.
+     * @type {string}
+     * @memberof BaseInvoiceResponse
+     */
+    'reference': string;
+    /**
      * Description of the invoice.
      * @type {string}
      * @memberof BaseInvoiceResponse
@@ -2324,6 +2330,12 @@ export interface InvoiceResponse {
      */
     'addressee': string;
     /**
+     * Reference of the invoice.
+     * @type {string}
+     * @memberof InvoiceResponse
+     */
+    'reference': string;
+    /**
      * Description of the invoice.
      * @type {string}
      * @memberof InvoiceResponse
@@ -2420,6 +2432,12 @@ export interface InvoiceResponseTypes {
      * @memberof InvoiceResponseTypes
      */
     'addressee': string;
+    /**
+     * Reference of the invoice.
+     * @type {string}
+     * @memberof InvoiceResponseTypes
+     */
+    'reference': string;
     /**
      * Description of the invoice.
      * @type {string}
