@@ -645,6 +645,12 @@ export interface BaseInvoiceResponse {
      */
     'addressee': string;
     /**
+     * Reference of the invoice.
+     * @type {string}
+     * @memberof BaseInvoiceResponse
+     */
+    'reference': string;
+    /**
      * Description of the invoice.
      * @type {string}
      * @memberof BaseInvoiceResponse
@@ -2309,6 +2315,12 @@ export interface InvoiceResponse {
      */
     'addressee': string;
     /**
+     * Reference of the invoice.
+     * @type {string}
+     * @memberof InvoiceResponse
+     */
+    'reference': string;
+    /**
      * Description of the invoice.
      * @type {string}
      * @memberof InvoiceResponse
@@ -2405,6 +2417,12 @@ export interface InvoiceResponseTypes {
      * @memberof InvoiceResponseTypes
      */
     'addressee': string;
+    /**
+     * Reference of the invoice.
+     * @type {string}
+     * @memberof InvoiceResponseTypes
+     */
+    'reference': string;
     /**
      * Description of the invoice.
      * @type {string}
@@ -5125,6 +5143,14 @@ export interface VoucherGroupResponse {
 export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
+     * @summary Get a JWT token for the given POS
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    authenticatePointOfSale: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary EAN login and hand out token
      * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
      * @param {*} [options] Override http request option.
@@ -5232,6 +5258,14 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
  * @export
  */
 export declare const AuthenticateApiFp: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Get a JWT token for the given POS
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    authenticatePointOfSale(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
     /**
      *
      * @summary EAN login and hand out token
@@ -5343,6 +5377,14 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
 export declare const AuthenticateApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
+     * @summary Get a JWT token for the given POS
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    authenticatePointOfSale(id: number, options?: any): AxiosPromise<AuthenticationResponse>;
+    /**
+     *
      * @summary EAN login and hand out token
      * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
      * @param {*} [options] Override http request option.
@@ -5452,6 +5494,15 @@ export declare const AuthenticateApiFactory: (configuration?: Configuration, bas
  * @extends {BaseAPI}
  */
 export declare class AuthenticateApi extends BaseAPI {
+    /**
+     *
+     * @summary Get a JWT token for the given POS
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    authenticatePointOfSale(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
     /**
      *
      * @summary EAN login and hand out token
