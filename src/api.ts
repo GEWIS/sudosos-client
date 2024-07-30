@@ -661,6 +661,12 @@ export interface BaseInvoiceResponse {
      */
     'reference': string;
     /**
+     * Special attention to the addressee
+     * @type {string}
+     * @memberof BaseInvoiceResponse
+     */
+    'attention': string;
+    /**
      * Description of the invoice.
      * @type {string}
      * @memberof BaseInvoiceResponse
@@ -690,6 +696,12 @@ export interface BaseInvoiceResponse {
      * @memberof BaseInvoiceResponse
      */
     'country': string;
+    /**
+     * Date of the invoice
+     * @type {string}
+     * @memberof BaseInvoiceResponse
+     */
+    'date': string;
     /**
      * 
      * @type {InvoiceStatusResponse}
@@ -1388,6 +1400,18 @@ export interface CreateInvoiceRequest {
      * @memberof CreateInvoiceRequest
      */
     'country'?: string;
+    /**
+     * Date to use on the invoice, overwrites the creation date.
+     * @type {string}
+     * @memberof CreateInvoiceRequest
+     */
+    'date'?: string;
+    /**
+     * Attention to use on the invoice.
+     * @type {string}
+     * @memberof CreateInvoiceRequest
+     */
+    'attention'?: string;
 }
 /**
  * 
@@ -2379,6 +2403,12 @@ export interface InvoiceResponse {
      */
     'reference': string;
     /**
+     * Special attention to the addressee
+     * @type {string}
+     * @memberof InvoiceResponse
+     */
+    'attention': string;
+    /**
      * Description of the invoice.
      * @type {string}
      * @memberof InvoiceResponse
@@ -2408,6 +2438,12 @@ export interface InvoiceResponse {
      * @memberof InvoiceResponse
      */
     'country': string;
+    /**
+     * Date of the invoice
+     * @type {string}
+     * @memberof InvoiceResponse
+     */
+    'date': string;
     /**
      * 
      * @type {InvoiceStatusResponse}
@@ -2482,6 +2518,12 @@ export interface InvoiceResponseTypes {
      */
     'reference': string;
     /**
+     * Special attention to the addressee
+     * @type {string}
+     * @memberof InvoiceResponseTypes
+     */
+    'attention': string;
+    /**
      * Description of the invoice.
      * @type {string}
      * @memberof InvoiceResponseTypes
@@ -2511,6 +2553,12 @@ export interface InvoiceResponseTypes {
      * @memberof InvoiceResponseTypes
      */
     'country': string;
+    /**
+     * Date of the invoice
+     * @type {string}
+     * @memberof InvoiceResponseTypes
+     */
+    'date': string;
     /**
      * 
      * @type {InvoiceStatusResponse}
@@ -4537,6 +4585,48 @@ export interface UpdateInvoiceRequest {
      * @memberof UpdateInvoiceRequest
      */
     'state'?: UpdateInvoiceRequestStateEnum;
+    /**
+     * Street to use on the invoice.
+     * @type {string}
+     * @memberof UpdateInvoiceRequest
+     */
+    'street'?: string;
+    /**
+     * Postal code to use on the invoice.
+     * @type {string}
+     * @memberof UpdateInvoiceRequest
+     */
+    'postalCode'?: string;
+    /**
+     * City to use on the invoice.
+     * @type {string}
+     * @memberof UpdateInvoiceRequest
+     */
+    'city'?: string;
+    /**
+     * Country to use on the invoice.
+     * @type {string}
+     * @memberof UpdateInvoiceRequest
+     */
+    'country'?: string;
+    /**
+     * Reference to use on the invoice.
+     * @type {string}
+     * @memberof UpdateInvoiceRequest
+     */
+    'reference'?: string;
+    /**
+     * Attention to use on the invoice.
+     * @type {string}
+     * @memberof UpdateInvoiceRequest
+     */
+    'attention'?: string;
+    /**
+     * Date to use on the invoice.
+     * @type {string}
+     * @memberof UpdateInvoiceRequest
+     */
+    'date'?: string;
 }
 
 export const UpdateInvoiceRequestStateEnum = {
