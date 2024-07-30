@@ -3836,6 +3836,25 @@ export interface StripePaymentIntentResponse {
 /**
  *
  * @export
+ * @interface StripePublicKeyResponse
+ */
+export interface StripePublicKeyResponse {
+    /**
+     * Stripe public key
+     * @type {string}
+     * @memberof StripePublicKeyResponse
+     */
+    'publicKey': string;
+    /**
+     * Redirect url after payment
+     * @type {string}
+     * @memberof StripePublicKeyResponse
+     */
+    'returnUrl': string;
+}
+/**
+ *
+ * @export
  * @interface StripeRequest
  */
 export interface StripeRequest {
@@ -5379,6 +5398,13 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
     eanAuthentication: (authenticationEanRequest: AuthenticationEanRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Get the GEWISWeb public token used by SudoSOS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getGEWISWebPublic: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary LDAP login and hand out token    If user has never signed in before this also creates an GEWIS account.
      * @param {AuthenticationLDAPRequest} authenticationLDAPRequest The LDAP login.
      * @param {*} [options] Override http request option.
@@ -5496,6 +5522,13 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
     eanAuthentication(authenticationEanRequest: AuthenticationEanRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
     /**
      *
+     * @summary Get the GEWISWeb public token used by SudoSOS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getGEWISWebPublic(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    /**
+     *
      * @summary LDAP login and hand out token    If user has never signed in before this also creates an GEWIS account.
      * @param {AuthenticationLDAPRequest} authenticationLDAPRequest The LDAP login.
      * @param {*} [options] Override http request option.
@@ -5611,6 +5644,13 @@ export declare const AuthenticateApiFactory: (configuration?: Configuration, bas
      * @throws {RequiredError}
      */
     eanAuthentication(authenticationEanRequest: AuthenticationEanRequest, options?: any): AxiosPromise<AuthenticationResponse>;
+    /**
+     *
+     * @summary Get the GEWISWeb public token used by SudoSOS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getGEWISWebPublic(options?: any): AxiosPromise<string>;
     /**
      *
      * @summary LDAP login and hand out token    If user has never signed in before this also creates an GEWIS account.
@@ -5732,6 +5772,14 @@ export declare class AuthenticateApi extends BaseAPI {
      * @memberof AuthenticateApi
      */
     eanAuthentication(authenticationEanRequest: AuthenticationEanRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
+    /**
+     *
+     * @summary Get the GEWISWeb public token used by SudoSOS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    getGEWISWebPublic(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
     /**
      *
      * @summary LDAP login and hand out token    If user has never signed in before this also creates an GEWIS account.
@@ -9203,6 +9251,13 @@ export declare const StripeApiAxiosParamCreator: (configuration?: Configuration)
      * @throws {RequiredError}
      */
     deposit: (stripeRequest: StripeRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get the Stripe public key
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getStripePublicKey: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * StripeApi - functional programming interface
@@ -9217,6 +9272,13 @@ export declare const StripeApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     deposit(stripeRequest: StripeRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StripePaymentIntentResponse>>;
+    /**
+     *
+     * @summary Get the Stripe public key
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getStripePublicKey(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
 };
 /**
  * StripeApi - factory interface
@@ -9231,6 +9293,13 @@ export declare const StripeApiFactory: (configuration?: Configuration, basePath?
      * @throws {RequiredError}
      */
     deposit(stripeRequest: StripeRequest, options?: any): AxiosPromise<StripePaymentIntentResponse>;
+    /**
+     *
+     * @summary Get the Stripe public key
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getStripePublicKey(options?: any): AxiosPromise<string>;
 };
 /**
  * StripeApi - object-oriented interface
@@ -9248,6 +9317,14 @@ export declare class StripeApi extends BaseAPI {
      * @memberof StripeApi
      */
     deposit(stripeRequest: StripeRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<StripePaymentIntentResponse, any>>;
+    /**
+     *
+     * @summary Get the Stripe public key
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof StripeApi
+     */
+    getStripePublicKey(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
 }
 /**
  * TestOperationsOfTheTestControllerApi - axios parameter creator
