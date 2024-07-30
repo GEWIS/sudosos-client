@@ -645,6 +645,18 @@ export interface BaseInvoiceResponse {
      */
     'addressee': string;
     /**
+     * Reference of the invoice.
+     * @type {string}
+     * @memberof BaseInvoiceResponse
+     */
+    'reference': string;
+    /**
+     * Special attention to the addressee
+     * @type {string}
+     * @memberof BaseInvoiceResponse
+     */
+    'attention': string;
+    /**
      * Description of the invoice.
      * @type {string}
      * @memberof BaseInvoiceResponse
@@ -674,6 +686,12 @@ export interface BaseInvoiceResponse {
      * @memberof BaseInvoiceResponse
      */
     'country': string;
+    /**
+     * Date of the invoice
+     * @type {string}
+     * @memberof BaseInvoiceResponse
+     */
+    'date': string;
     /**
      *
      * @type {InvoiceStatusResponse}
@@ -1015,6 +1033,49 @@ export interface BaseVatGroupResponse {
 /**
  *
  * @export
+ * @interface BaseWriteOffResponse
+ */
+export interface BaseWriteOffResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof BaseWriteOffResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof BaseWriteOffResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof BaseWriteOffResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof BaseWriteOffResponse
+     */
+    'version'?: number;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof BaseWriteOffResponse
+     */
+    'to': BaseUserResponse;
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof BaseWriteOffResponse
+     */
+    'amount': DineroObjectResponse;
+}
+/**
+ *
+ * @export
  * @interface BoilerPayoutRequestResponse
  */
 export interface BoilerPayoutRequestResponse {
@@ -1329,6 +1390,18 @@ export interface CreateInvoiceRequest {
      * @memberof CreateInvoiceRequest
      */
     'country'?: string;
+    /**
+     * Date to use on the invoice, overwrites the creation date.
+     * @type {string}
+     * @memberof CreateInvoiceRequest
+     */
+    'date'?: string;
+    /**
+     * Attention to use on the invoice.
+     * @type {string}
+     * @memberof CreateInvoiceRequest
+     */
+    'attention'?: string;
 }
 /**
  *
@@ -2309,6 +2382,18 @@ export interface InvoiceResponse {
      */
     'addressee': string;
     /**
+     * Reference of the invoice.
+     * @type {string}
+     * @memberof InvoiceResponse
+     */
+    'reference': string;
+    /**
+     * Special attention to the addressee
+     * @type {string}
+     * @memberof InvoiceResponse
+     */
+    'attention': string;
+    /**
      * Description of the invoice.
      * @type {string}
      * @memberof InvoiceResponse
@@ -2338,6 +2423,12 @@ export interface InvoiceResponse {
      * @memberof InvoiceResponse
      */
     'country': string;
+    /**
+     * Date of the invoice
+     * @type {string}
+     * @memberof InvoiceResponse
+     */
+    'date': string;
     /**
      *
      * @type {InvoiceStatusResponse}
@@ -2406,6 +2497,18 @@ export interface InvoiceResponseTypes {
      */
     'addressee': string;
     /**
+     * Reference of the invoice.
+     * @type {string}
+     * @memberof InvoiceResponseTypes
+     */
+    'reference': string;
+    /**
+     * Special attention to the addressee
+     * @type {string}
+     * @memberof InvoiceResponseTypes
+     */
+    'attention': string;
+    /**
      * Description of the invoice.
      * @type {string}
      * @memberof InvoiceResponseTypes
@@ -2435,6 +2538,12 @@ export interface InvoiceResponseTypes {
      * @memberof InvoiceResponseTypes
      */
     'country': string;
+    /**
+     * Date of the invoice
+     * @type {string}
+     * @memberof InvoiceResponseTypes
+     */
+    'date': string;
     /**
      *
      * @type {InvoiceStatusResponse}
@@ -2883,6 +2992,25 @@ export interface PaginatedVoucherGroupResponse {
      * @memberof PaginatedVoucherGroupResponse
      */
     'records': Array<VoucherGroupResponse>;
+}
+/**
+ *
+ * @export
+ * @interface PaginatedWriteOffResponse
+ */
+export interface PaginatedWriteOffResponse {
+    /**
+     *
+     * @type {PaginationResult}
+     * @memberof PaginatedWriteOffResponse
+     */
+    '_pagination': PaginationResult;
+    /**
+     * Returned write-offs
+     * @type {Array<WriteOffResponse>}
+     * @memberof PaginatedWriteOffResponse
+     */
+    'records': Array<WriteOffResponse>;
 }
 /**
  *
@@ -4333,6 +4461,12 @@ export interface TransferResponse {
     'vat'?: VatGroupResponse;
     /**
      *
+     * @type {BaseWriteOffResponse}
+     * @memberof TransferResponse
+     */
+    'writeOff'?: BaseWriteOffResponse;
+    /**
+     *
      * @type {UserFineGroupResponse}
      * @memberof TransferResponse
      */
@@ -4430,6 +4564,48 @@ export interface UpdateInvoiceRequest {
      * @memberof UpdateInvoiceRequest
      */
     'state'?: UpdateInvoiceRequestStateEnum;
+    /**
+     * Street to use on the invoice.
+     * @type {string}
+     * @memberof UpdateInvoiceRequest
+     */
+    'street'?: string;
+    /**
+     * Postal code to use on the invoice.
+     * @type {string}
+     * @memberof UpdateInvoiceRequest
+     */
+    'postalCode'?: string;
+    /**
+     * City to use on the invoice.
+     * @type {string}
+     * @memberof UpdateInvoiceRequest
+     */
+    'city'?: string;
+    /**
+     * Country to use on the invoice.
+     * @type {string}
+     * @memberof UpdateInvoiceRequest
+     */
+    'country'?: string;
+    /**
+     * Reference to use on the invoice.
+     * @type {string}
+     * @memberof UpdateInvoiceRequest
+     */
+    'reference'?: string;
+    /**
+     * Attention to use on the invoice.
+     * @type {string}
+     * @memberof UpdateInvoiceRequest
+     */
+    'attention'?: string;
+    /**
+     * Date to use on the invoice.
+     * @type {string}
+     * @memberof UpdateInvoiceRequest
+     */
+    'date'?: string;
 }
 export declare const UpdateInvoiceRequestStateEnum: {
     readonly Created: "CREATED";
@@ -5119,10 +5295,80 @@ export interface VoucherGroupResponse {
     'amount': number;
 }
 /**
+ *
+ * @export
+ * @interface WriteOffRequest
+ */
+export interface WriteOffRequest {
+    /**
+     * The user who is the receiver of the write-off
+     * @type {number}
+     * @memberof WriteOffRequest
+     */
+    'toId': number;
+}
+/**
+ *
+ * @export
+ * @interface WriteOffResponse
+ */
+export interface WriteOffResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof WriteOffResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof WriteOffResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof WriteOffResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof WriteOffResponse
+     */
+    'version'?: number;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof WriteOffResponse
+     */
+    'to': BaseUserResponse;
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof WriteOffResponse
+     */
+    'amount': DineroObjectResponse;
+    /**
+     *
+     * @type {TransferResponse}
+     * @memberof WriteOffResponse
+     */
+    'transfer': TransferResponse;
+}
+/**
  * AuthenticateApi - axios parameter creator
  * @export
  */
 export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Get a JWT token for the given POS
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    authenticatePointOfSale: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary EAN login and hand out token
@@ -5234,6 +5480,14 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
 export declare const AuthenticateApiFp: (configuration?: Configuration) => {
     /**
      *
+     * @summary Get a JWT token for the given POS
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    authenticatePointOfSale(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
+    /**
+     *
      * @summary EAN login and hand out token
      * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
      * @param {*} [options] Override http request option.
@@ -5341,6 +5595,14 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
  * @export
  */
 export declare const AuthenticateApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     *
+     * @summary Get a JWT token for the given POS
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    authenticatePointOfSale(id: number, options?: any): AxiosPromise<AuthenticationResponse>;
     /**
      *
      * @summary EAN login and hand out token
@@ -5452,6 +5714,15 @@ export declare const AuthenticateApiFactory: (configuration?: Configuration, bas
  * @extends {BaseAPI}
  */
 export declare class AuthenticateApi extends BaseAPI {
+    /**
+     *
+     * @summary Get a JWT token for the given POS
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    authenticatePointOfSale(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
     /**
      *
      * @summary EAN login and hand out token
@@ -10879,4 +11150,141 @@ export declare class VouchergroupsApi extends BaseAPI {
      * @memberof VouchergroupsApi
      */
     updateVoucherGroup(id: number, voucherGroupRequest: VoucherGroupRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VoucherGroupResponse, any>>;
+}
+/**
+ * WriteoffsApi - axios parameter creator
+ * @export
+ */
+export declare const WriteoffsApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Creates a new write-off in the system. Creating a write-off will also close and delete the user\'s account.
+     * @param {WriteOffRequest} writeOffRequest New write off
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createWriteOff: (writeOffRequest: WriteOffRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Returns all write-offs in the system.
+     * @param {number} [toId] Filter on Id of the debtor
+     * @param {number} [amount] Filter on the amount of the write-off
+     * @param {number} [take] Number of write-offs to return
+     * @param {number} [skip] Number of write-offs to skip
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getAllWriteOffs: (toId?: number, amount?: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get a single write-off
+     * @param {number} id The ID of the write-off object that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getSingleWriteOff: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+};
+/**
+ * WriteoffsApi - functional programming interface
+ * @export
+ */
+export declare const WriteoffsApiFp: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Creates a new write-off in the system. Creating a write-off will also close and delete the user\'s account.
+     * @param {WriteOffRequest} writeOffRequest New write off
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createWriteOff(writeOffRequest: WriteOffRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WriteOffResponse>>;
+    /**
+     *
+     * @summary Returns all write-offs in the system.
+     * @param {number} [toId] Filter on Id of the debtor
+     * @param {number} [amount] Filter on the amount of the write-off
+     * @param {number} [take] Number of write-offs to return
+     * @param {number} [skip] Number of write-offs to skip
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getAllWriteOffs(toId?: number, amount?: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedWriteOffResponse>>;
+    /**
+     *
+     * @summary Get a single write-off
+     * @param {number} id The ID of the write-off object that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getSingleWriteOff(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WriteOffResponse>>;
+};
+/**
+ * WriteoffsApi - factory interface
+ * @export
+ */
+export declare const WriteoffsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     *
+     * @summary Creates a new write-off in the system. Creating a write-off will also close and delete the user\'s account.
+     * @param {WriteOffRequest} writeOffRequest New write off
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createWriteOff(writeOffRequest: WriteOffRequest, options?: any): AxiosPromise<WriteOffResponse>;
+    /**
+     *
+     * @summary Returns all write-offs in the system.
+     * @param {number} [toId] Filter on Id of the debtor
+     * @param {number} [amount] Filter on the amount of the write-off
+     * @param {number} [take] Number of write-offs to return
+     * @param {number} [skip] Number of write-offs to skip
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getAllWriteOffs(toId?: number, amount?: number, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedWriteOffResponse>;
+    /**
+     *
+     * @summary Get a single write-off
+     * @param {number} id The ID of the write-off object that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getSingleWriteOff(id: number, options?: any): AxiosPromise<WriteOffResponse>;
+};
+/**
+ * WriteoffsApi - object-oriented interface
+ * @export
+ * @class WriteoffsApi
+ * @extends {BaseAPI}
+ */
+export declare class WriteoffsApi extends BaseAPI {
+    /**
+     *
+     * @summary Creates a new write-off in the system. Creating a write-off will also close and delete the user\'s account.
+     * @param {WriteOffRequest} writeOffRequest New write off
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WriteoffsApi
+     */
+    createWriteOff(writeOffRequest: WriteOffRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<WriteOffResponse, any>>;
+    /**
+     *
+     * @summary Returns all write-offs in the system.
+     * @param {number} [toId] Filter on Id of the debtor
+     * @param {number} [amount] Filter on the amount of the write-off
+     * @param {number} [take] Number of write-offs to return
+     * @param {number} [skip] Number of write-offs to skip
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WriteoffsApi
+     */
+    getAllWriteOffs(toId?: number, amount?: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedWriteOffResponse, any>>;
+    /**
+     *
+     * @summary Get a single write-off
+     * @param {number} id The ID of the write-off object that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WriteoffsApi
+     */
+    getSingleWriteOff(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<WriteOffResponse, any>>;
 }
