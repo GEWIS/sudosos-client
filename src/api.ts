@@ -1031,6 +1031,49 @@ export interface BaseVatGroupResponse {
 /**
  * 
  * @export
+ * @interface BaseWriteOffResponse
+ */
+export interface BaseWriteOffResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof BaseWriteOffResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof BaseWriteOffResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof BaseWriteOffResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof BaseWriteOffResponse
+     */
+    'version'?: number;
+    /**
+     * 
+     * @type {BaseUserResponse}
+     * @memberof BaseWriteOffResponse
+     */
+    'to': BaseUserResponse;
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof BaseWriteOffResponse
+     */
+    'amount': DineroObjectResponse;
+}
+/**
+ * 
+ * @export
  * @interface BoilerPayoutRequestResponse
  */
 export interface BoilerPayoutRequestResponse {
@@ -2923,6 +2966,25 @@ export interface PaginatedVoucherGroupResponse {
 /**
  * 
  * @export
+ * @interface PaginatedWriteOffResponse
+ */
+export interface PaginatedWriteOffResponse {
+    /**
+     * 
+     * @type {PaginationResult}
+     * @memberof PaginatedWriteOffResponse
+     */
+    '_pagination': PaginationResult;
+    /**
+     * Returned write-offs
+     * @type {Array<WriteOffResponse>}
+     * @memberof PaginatedWriteOffResponse
+     */
+    'records': Array<WriteOffResponse>;
+}
+/**
+ * 
+ * @export
  * @interface PaginationResult
  */
 export interface PaginationResult {
@@ -4372,6 +4434,12 @@ export interface TransferResponse {
     'vat'?: VatGroupResponse;
     /**
      * 
+     * @type {BaseWriteOffResponse}
+     * @memberof TransferResponse
+     */
+    'writeOff'?: BaseWriteOffResponse;
+    /**
+     * 
      * @type {UserFineGroupResponse}
      * @memberof TransferResponse
      */
@@ -5159,6 +5227,68 @@ export interface VoucherGroupResponse {
      * @memberof VoucherGroupResponse
      */
     'amount': number;
+}
+/**
+ * 
+ * @export
+ * @interface WriteOffRequest
+ */
+export interface WriteOffRequest {
+    /**
+     * The user who is the receiver of the write-off
+     * @type {number}
+     * @memberof WriteOffRequest
+     */
+    'toId': number;
+}
+/**
+ * 
+ * @export
+ * @interface WriteOffResponse
+ */
+export interface WriteOffResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof WriteOffResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof WriteOffResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof WriteOffResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof WriteOffResponse
+     */
+    'version'?: number;
+    /**
+     * 
+     * @type {BaseUserResponse}
+     * @memberof WriteOffResponse
+     */
+    'to': BaseUserResponse;
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof WriteOffResponse
+     */
+    'amount': DineroObjectResponse;
+    /**
+     * 
+     * @type {TransferResponse}
+     * @memberof WriteOffResponse
+     */
+    'transfer': TransferResponse;
 }
 
 /**
@@ -17505,6 +17635,291 @@ export class VouchergroupsApi extends BaseAPI {
      */
     public updateVoucherGroup(id: number, voucherGroupRequest: VoucherGroupRequest, options?: RawAxiosRequestConfig) {
         return VouchergroupsApiFp(this.configuration).updateVoucherGroup(id, voucherGroupRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
+ * WriteoffsApi - axios parameter creator
+ * @export
+ */
+export const WriteoffsApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Creates a new write-off in the system. Creating a write-off will also close and delete the user\'s account.
+         * @param {WriteOffRequest} writeOffRequest New write off
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createWriteOff: async (writeOffRequest: WriteOffRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'writeOffRequest' is not null or undefined
+            assertParamExists('createWriteOff', 'writeOffRequest', writeOffRequest)
+            const localVarPath = `/writeoffs`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(writeOffRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Returns all write-offs in the system.
+         * @param {number} [toId] Filter on Id of the debtor
+         * @param {number} [amount] Filter on the amount of the write-off
+         * @param {number} [take] Number of write-offs to return
+         * @param {number} [skip] Number of write-offs to skip
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllWriteOffs: async (toId?: number, amount?: number, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/writeoffs`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (toId !== undefined) {
+                localVarQueryParameter['toId'] = toId;
+            }
+
+            if (amount !== undefined) {
+                localVarQueryParameter['amount'] = amount;
+            }
+
+            if (take !== undefined) {
+                localVarQueryParameter['take'] = take;
+            }
+
+            if (skip !== undefined) {
+                localVarQueryParameter['skip'] = skip;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get a single write-off
+         * @param {number} id The ID of the write-off object that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSingleWriteOff: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getSingleWriteOff', 'id', id)
+            const localVarPath = `/writeoffs/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * WriteoffsApi - functional programming interface
+ * @export
+ */
+export const WriteoffsApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = WriteoffsApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Creates a new write-off in the system. Creating a write-off will also close and delete the user\'s account.
+         * @param {WriteOffRequest} writeOffRequest New write off
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createWriteOff(writeOffRequest: WriteOffRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WriteOffResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createWriteOff(writeOffRequest, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['WriteoffsApi.createWriteOff']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Returns all write-offs in the system.
+         * @param {number} [toId] Filter on Id of the debtor
+         * @param {number} [amount] Filter on the amount of the write-off
+         * @param {number} [take] Number of write-offs to return
+         * @param {number} [skip] Number of write-offs to skip
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getAllWriteOffs(toId?: number, amount?: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedWriteOffResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllWriteOffs(toId, amount, take, skip, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['WriteoffsApi.getAllWriteOffs']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get a single write-off
+         * @param {number} id The ID of the write-off object that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getSingleWriteOff(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WriteOffResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSingleWriteOff(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['WriteoffsApi.getSingleWriteOff']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * WriteoffsApi - factory interface
+ * @export
+ */
+export const WriteoffsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = WriteoffsApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Creates a new write-off in the system. Creating a write-off will also close and delete the user\'s account.
+         * @param {WriteOffRequest} writeOffRequest New write off
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createWriteOff(writeOffRequest: WriteOffRequest, options?: any): AxiosPromise<WriteOffResponse> {
+            return localVarFp.createWriteOff(writeOffRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Returns all write-offs in the system.
+         * @param {number} [toId] Filter on Id of the debtor
+         * @param {number} [amount] Filter on the amount of the write-off
+         * @param {number} [take] Number of write-offs to return
+         * @param {number} [skip] Number of write-offs to skip
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllWriteOffs(toId?: number, amount?: number, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedWriteOffResponse> {
+            return localVarFp.getAllWriteOffs(toId, amount, take, skip, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get a single write-off
+         * @param {number} id The ID of the write-off object that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSingleWriteOff(id: number, options?: any): AxiosPromise<WriteOffResponse> {
+            return localVarFp.getSingleWriteOff(id, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * WriteoffsApi - object-oriented interface
+ * @export
+ * @class WriteoffsApi
+ * @extends {BaseAPI}
+ */
+export class WriteoffsApi extends BaseAPI {
+    /**
+     * 
+     * @summary Creates a new write-off in the system. Creating a write-off will also close and delete the user\'s account.
+     * @param {WriteOffRequest} writeOffRequest New write off
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WriteoffsApi
+     */
+    public createWriteOff(writeOffRequest: WriteOffRequest, options?: RawAxiosRequestConfig) {
+        return WriteoffsApiFp(this.configuration).createWriteOff(writeOffRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Returns all write-offs in the system.
+     * @param {number} [toId] Filter on Id of the debtor
+     * @param {number} [amount] Filter on the amount of the write-off
+     * @param {number} [take] Number of write-offs to return
+     * @param {number} [skip] Number of write-offs to skip
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WriteoffsApi
+     */
+    public getAllWriteOffs(toId?: number, amount?: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
+        return WriteoffsApiFp(this.configuration).getAllWriteOffs(toId, amount, take, skip, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get a single write-off
+     * @param {number} id The ID of the write-off object that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WriteoffsApi
+     */
+    public getSingleWriteOff(id: number, options?: RawAxiosRequestConfig) {
+        return WriteoffsApiFp(this.configuration).getSingleWriteOff(id, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
