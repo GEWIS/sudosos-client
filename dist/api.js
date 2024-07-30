@@ -23,7 +23,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProductCategoriesApiFactory = exports.ProductCategoriesApiFp = exports.ProductCategoriesApiAxiosParamCreator = exports.PointofsaleApi = exports.PointofsaleApiFactory = exports.PointofsaleApiFp = exports.PointofsaleApiAxiosParamCreator = exports.PayoutRequestsApi = exports.PayoutRequestsApiFactory = exports.PayoutRequestsApiFp = exports.PayoutRequestsApiAxiosParamCreator = exports.GetAllInvoicesCurrentStateEnum = exports.InvoicesApi = exports.InvoicesApiFactory = exports.InvoicesApiFp = exports.InvoicesApiAxiosParamCreator = exports.FilesApi = exports.FilesApiFactory = exports.FilesApiFp = exports.FilesApiAxiosParamCreator = exports.EventsApi = exports.EventsApiFactory = exports.EventsApiFp = exports.EventsApiAxiosParamCreator = exports.DebtorsApi = exports.DebtorsApiFactory = exports.DebtorsApiFp = exports.DebtorsApiAxiosParamCreator = exports.ContainersApi = exports.ContainersApiFactory = exports.ContainersApiFp = exports.ContainersApiAxiosParamCreator = exports.BannersApi = exports.BannersApiFactory = exports.BannersApiFp = exports.BannersApiAxiosParamCreator = exports.GetAllBalanceOrderDirectionEnum = exports.GetAllBalanceUserTypesEnum = exports.BalanceApi = exports.BalanceApiFactory = exports.BalanceApiFp = exports.BalanceApiAxiosParamCreator = exports.AuthenticateApi = exports.AuthenticateApiFactory = exports.AuthenticateApiFp = exports.AuthenticateApiAxiosParamCreator = exports.UpdateInvoiceRequestStateEnum = exports.PayoutRequestStatusRequestStateEnum = exports.InvoiceStatusResponseStateEnum = exports.FinancialMutationResponseTypeEnum = void 0;
-exports.VouchergroupsApi = exports.VouchergroupsApiFactory = exports.VouchergroupsApiFp = exports.VouchergroupsApiAxiosParamCreator = exports.VatGroupsApi = exports.VatGroupsApiFactory = exports.VatGroupsApiFp = exports.VatGroupsApiAxiosParamCreator = exports.GetAllUsersTypeEnum = exports.UsersApi = exports.UsersApiFactory = exports.UsersApiFp = exports.UsersApiAxiosParamCreator = exports.TransfersApi = exports.TransfersApiFactory = exports.TransfersApiFp = exports.TransfersApiAxiosParamCreator = exports.TransactionsApi = exports.TransactionsApiFactory = exports.TransactionsApiFp = exports.TransactionsApiAxiosParamCreator = exports.TestOperationsOfTheTestControllerApi = exports.TestOperationsOfTheTestControllerApiFactory = exports.TestOperationsOfTheTestControllerApiFp = exports.TestOperationsOfTheTestControllerApiAxiosParamCreator = exports.StripeApi = exports.StripeApiFactory = exports.StripeApiFp = exports.StripeApiAxiosParamCreator = exports.RootApi = exports.RootApiFactory = exports.RootApiFp = exports.RootApiAxiosParamCreator = exports.RbacApi = exports.RbacApiFactory = exports.RbacApiFp = exports.RbacApiAxiosParamCreator = exports.ProductsApi = exports.ProductsApiFactory = exports.ProductsApiFp = exports.ProductsApiAxiosParamCreator = exports.ProductCategoriesApi = void 0;
+exports.WriteoffsApi = exports.WriteoffsApiFactory = exports.WriteoffsApiFp = exports.WriteoffsApiAxiosParamCreator = exports.VouchergroupsApi = exports.VouchergroupsApiFactory = exports.VouchergroupsApiFp = exports.VouchergroupsApiAxiosParamCreator = exports.VatGroupsApi = exports.VatGroupsApiFactory = exports.VatGroupsApiFp = exports.VatGroupsApiAxiosParamCreator = exports.GetAllUsersTypeEnum = exports.UsersApi = exports.UsersApiFactory = exports.UsersApiFp = exports.UsersApiAxiosParamCreator = exports.TransfersApi = exports.TransfersApiFactory = exports.TransfersApiFp = exports.TransfersApiAxiosParamCreator = exports.TransactionsApi = exports.TransactionsApiFactory = exports.TransactionsApiFp = exports.TransactionsApiAxiosParamCreator = exports.TestOperationsOfTheTestControllerApi = exports.TestOperationsOfTheTestControllerApiFactory = exports.TestOperationsOfTheTestControllerApiFp = exports.TestOperationsOfTheTestControllerApiAxiosParamCreator = exports.StripeApi = exports.StripeApiFactory = exports.StripeApiFp = exports.StripeApiAxiosParamCreator = exports.RootApi = exports.RootApiFactory = exports.RootApiFp = exports.RootApiAxiosParamCreator = exports.RbacApi = exports.RbacApiFactory = exports.RbacApiFp = exports.RbacApiAxiosParamCreator = exports.ProductsApi = exports.ProductsApiFactory = exports.ProductsApiFp = exports.ProductsApiAxiosParamCreator = exports.ProductCategoriesApi = void 0;
 const axios_1 = require("axios");
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -58,6 +58,38 @@ exports.UpdateInvoiceRequestStateEnum = {
  */
 const AuthenticateApiAxiosParamCreator = function (configuration) {
     return {
+        /**
+         *
+         * @summary Get a JWT token for the given POS
+         * @param {number} id The id of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authenticatePointOfSale: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('authenticatePointOfSale', 'id', id);
+            const localVarPath = `/authentication/pointofsale/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
         /**
          *
          * @summary EAN login and hand out token
@@ -458,6 +490,22 @@ const AuthenticateApiFp = function (configuration) {
     return {
         /**
          *
+         * @summary Get a JWT token for the given POS
+         * @param {number} id The id of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authenticatePointOfSale(id, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.authenticatePointOfSale(id, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['AuthenticateApi.authenticatePointOfSale']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
          * @summary EAN login and hand out token
          * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
          * @param {*} [options] Override http request option.
@@ -675,6 +723,16 @@ const AuthenticateApiFactory = function (configuration, basePath, axios) {
     return {
         /**
          *
+         * @summary Get a JWT token for the given POS
+         * @param {number} id The id of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authenticatePointOfSale(id, options) {
+            return localVarFp.authenticatePointOfSale(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary EAN login and hand out token
          * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
          * @param {*} [options] Override http request option.
@@ -812,6 +870,17 @@ exports.AuthenticateApiFactory = AuthenticateApiFactory;
  * @extends {BaseAPI}
  */
 class AuthenticateApi extends base_1.BaseAPI {
+    /**
+     *
+     * @summary Get a JWT token for the given POS
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    authenticatePointOfSale(id, options) {
+        return (0, exports.AuthenticateApiFp)(this.configuration).authenticatePointOfSale(id, options).then((request) => request(this.axios, this.basePath));
+    }
     /**
      *
      * @summary EAN login and hand out token
@@ -11563,4 +11632,271 @@ class VouchergroupsApi extends base_1.BaseAPI {
     }
 }
 exports.VouchergroupsApi = VouchergroupsApi;
+/**
+ * WriteoffsApi - axios parameter creator
+ * @export
+ */
+const WriteoffsApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         *
+         * @summary Creates a new write-off in the system. Creating a write-off will also close and delete the user\'s account.
+         * @param {WriteOffRequest} writeOffRequest New write off
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createWriteOff: (writeOffRequest_1, ...args_1) => __awaiter(this, [writeOffRequest_1, ...args_1], void 0, function* (writeOffRequest, options = {}) {
+            // verify required parameter 'writeOffRequest' is not null or undefined
+            (0, common_1.assertParamExists)('createWriteOff', 'writeOffRequest', writeOffRequest);
+            const localVarPath = `/writeoffs`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(writeOffRequest, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
+         * @summary Returns all write-offs in the system.
+         * @param {number} [toId] Filter on Id of the debtor
+         * @param {number} [amount] Filter on the amount of the write-off
+         * @param {number} [take] Number of write-offs to return
+         * @param {number} [skip] Number of write-offs to skip
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllWriteOffs: (toId_1, amount_1, take_1, skip_1, ...args_1) => __awaiter(this, [toId_1, amount_1, take_1, skip_1, ...args_1], void 0, function* (toId, amount, take, skip, options = {}) {
+            const localVarPath = `/writeoffs`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            if (toId !== undefined) {
+                localVarQueryParameter['toId'] = toId;
+            }
+            if (amount !== undefined) {
+                localVarQueryParameter['amount'] = amount;
+            }
+            if (take !== undefined) {
+                localVarQueryParameter['take'] = take;
+            }
+            if (skip !== undefined) {
+                localVarQueryParameter['skip'] = skip;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
+         * @summary Get a single write-off
+         * @param {number} id The ID of the write-off object that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSingleWriteOff: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('getSingleWriteOff', 'id', id);
+            const localVarPath = `/writeoffs/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+    };
+};
+exports.WriteoffsApiAxiosParamCreator = WriteoffsApiAxiosParamCreator;
+/**
+ * WriteoffsApi - functional programming interface
+ * @export
+ */
+const WriteoffsApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.WriteoffsApiAxiosParamCreator)(configuration);
+    return {
+        /**
+         *
+         * @summary Creates a new write-off in the system. Creating a write-off will also close and delete the user\'s account.
+         * @param {WriteOffRequest} writeOffRequest New write off
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createWriteOff(writeOffRequest, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.createWriteOff(writeOffRequest, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['WriteoffsApi.createWriteOff']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
+         * @summary Returns all write-offs in the system.
+         * @param {number} [toId] Filter on Id of the debtor
+         * @param {number} [amount] Filter on the amount of the write-off
+         * @param {number} [take] Number of write-offs to return
+         * @param {number} [skip] Number of write-offs to skip
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllWriteOffs(toId, amount, take, skip, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllWriteOffs(toId, amount, take, skip, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['WriteoffsApi.getAllWriteOffs']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
+         * @summary Get a single write-off
+         * @param {number} id The ID of the write-off object that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSingleWriteOff(id, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getSingleWriteOff(id, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['WriteoffsApi.getSingleWriteOff']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+    };
+};
+exports.WriteoffsApiFp = WriteoffsApiFp;
+/**
+ * WriteoffsApi - factory interface
+ * @export
+ */
+const WriteoffsApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.WriteoffsApiFp)(configuration);
+    return {
+        /**
+         *
+         * @summary Creates a new write-off in the system. Creating a write-off will also close and delete the user\'s account.
+         * @param {WriteOffRequest} writeOffRequest New write off
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createWriteOff(writeOffRequest, options) {
+            return localVarFp.createWriteOff(writeOffRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Returns all write-offs in the system.
+         * @param {number} [toId] Filter on Id of the debtor
+         * @param {number} [amount] Filter on the amount of the write-off
+         * @param {number} [take] Number of write-offs to return
+         * @param {number} [skip] Number of write-offs to skip
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllWriteOffs(toId, amount, take, skip, options) {
+            return localVarFp.getAllWriteOffs(toId, amount, take, skip, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get a single write-off
+         * @param {number} id The ID of the write-off object that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSingleWriteOff(id, options) {
+            return localVarFp.getSingleWriteOff(id, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+exports.WriteoffsApiFactory = WriteoffsApiFactory;
+/**
+ * WriteoffsApi - object-oriented interface
+ * @export
+ * @class WriteoffsApi
+ * @extends {BaseAPI}
+ */
+class WriteoffsApi extends base_1.BaseAPI {
+    /**
+     *
+     * @summary Creates a new write-off in the system. Creating a write-off will also close and delete the user\'s account.
+     * @param {WriteOffRequest} writeOffRequest New write off
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WriteoffsApi
+     */
+    createWriteOff(writeOffRequest, options) {
+        return (0, exports.WriteoffsApiFp)(this.configuration).createWriteOff(writeOffRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Returns all write-offs in the system.
+     * @param {number} [toId] Filter on Id of the debtor
+     * @param {number} [amount] Filter on the amount of the write-off
+     * @param {number} [take] Number of write-offs to return
+     * @param {number} [skip] Number of write-offs to skip
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WriteoffsApi
+     */
+    getAllWriteOffs(toId, amount, take, skip, options) {
+        return (0, exports.WriteoffsApiFp)(this.configuration).getAllWriteOffs(toId, amount, take, skip, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get a single write-off
+     * @param {number} id The ID of the write-off object that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WriteoffsApi
+     */
+    getSingleWriteOff(id, options) {
+        return (0, exports.WriteoffsApiFp)(this.configuration).getSingleWriteOff(id, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+exports.WriteoffsApi = WriteoffsApi;
 //# sourceMappingURL=api.js.map
