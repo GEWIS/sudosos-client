@@ -3857,6 +3857,25 @@ export interface StripePaymentIntentResponse {
 /**
  * 
  * @export
+ * @interface StripePublicKeyResponse
+ */
+export interface StripePublicKeyResponse {
+    /**
+     * Stripe public key
+     * @type {string}
+     * @memberof StripePublicKeyResponse
+     */
+    'publicKey': string;
+    /**
+     * Redirect url after payment
+     * @type {string}
+     * @memberof StripePublicKeyResponse
+     */
+    'returnUrl': string;
+}
+/**
+ * 
+ * @export
  * @interface StripeRequest
  */
 export interface StripeRequest {
@@ -5463,6 +5482,36 @@ export const AuthenticateApiAxiosParamCreator = function (configuration?: Config
         },
         /**
          * 
+         * @summary Get the GEWISWeb public token used by SudoSOS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getGEWISWebPublic: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/authentication/gewisweb`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary LDAP login and hand out token    If user has never signed in before this also creates an GEWIS account.
          * @param {AuthenticationLDAPRequest} authenticationLDAPRequest The LDAP login.
          * @param {*} [options] Override http request option.
@@ -5929,6 +5978,18 @@ export const AuthenticateApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get the GEWISWeb public token used by SudoSOS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getGEWISWebPublic(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getGEWISWebPublic(options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['AuthenticateApi.getGEWISWebPublic']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
          * @summary LDAP login and hand out token    If user has never signed in before this also creates an GEWIS account.
          * @param {AuthenticationLDAPRequest} authenticationLDAPRequest The LDAP login.
          * @param {*} [options] Override http request option.
@@ -6114,6 +6175,15 @@ export const AuthenticateApiFactory = function (configuration?: Configuration, b
         },
         /**
          * 
+         * @summary Get the GEWISWeb public token used by SudoSOS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getGEWISWebPublic(options?: any): AxiosPromise<string> {
+            return localVarFp.getGEWISWebPublic(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary LDAP login and hand out token    If user has never signed in before this also creates an GEWIS account.
          * @param {AuthenticationLDAPRequest} authenticationLDAPRequest The LDAP login.
          * @param {*} [options] Override http request option.
@@ -6263,6 +6333,17 @@ export class AuthenticateApi extends BaseAPI {
      */
     public eanAuthentication(authenticationEanRequest: AuthenticationEanRequest, options?: RawAxiosRequestConfig) {
         return AuthenticateApiFp(this.configuration).eanAuthentication(authenticationEanRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get the GEWISWeb public token used by SudoSOS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    public getGEWISWebPublic(options?: RawAxiosRequestConfig) {
+        return AuthenticateApiFp(this.configuration).getGEWISWebPublic(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -13602,6 +13683,36 @@ export const StripeApiAxiosParamCreator = function (configuration?: Configuratio
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @summary Get the Stripe public key
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getStripePublicKey: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/stripe/public`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -13625,6 +13736,18 @@ export const StripeApiFp = function(configuration?: Configuration) {
             const operationBasePath = operationServerMap['StripeApi.deposit']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
+        /**
+         * 
+         * @summary Get the Stripe public key
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getStripePublicKey(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getStripePublicKey(options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['StripeApi.getStripePublicKey']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
     }
 };
 
@@ -13644,6 +13767,15 @@ export const StripeApiFactory = function (configuration?: Configuration, basePat
          */
         deposit(stripeRequest: StripeRequest, options?: any): AxiosPromise<StripePaymentIntentResponse> {
             return localVarFp.deposit(stripeRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get the Stripe public key
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getStripePublicKey(options?: any): AxiosPromise<string> {
+            return localVarFp.getStripePublicKey(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -13665,6 +13797,17 @@ export class StripeApi extends BaseAPI {
      */
     public deposit(stripeRequest: StripeRequest, options?: RawAxiosRequestConfig) {
         return StripeApiFp(this.configuration).deposit(stripeRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get the Stripe public key
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof StripeApi
+     */
+    public getStripePublicKey(options?: RawAxiosRequestConfig) {
+        return StripeApiFp(this.configuration).getStripePublicKey(options).then((request) => request(this.axios, this.basePath));
     }
 }
 
