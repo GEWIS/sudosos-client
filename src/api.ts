@@ -214,7 +214,7 @@ export interface AuthenticationResponse {
      */
     'user': UserResponse;
     /**
-     * The RBAC roles that the user has.
+     * The RBAC roles that the user has. (DEPRECATED)
      * @type {Array<string>}
      * @memberof AuthenticationResponse
      */
@@ -237,6 +237,12 @@ export interface AuthenticationResponse {
      * @memberof AuthenticationResponse
      */
     'acceptedToS': string;
+    /**
+     * All unique RBAC permissions the user has
+     * @type {Array<RoleWithPermissionsResponse>}
+     * @memberof AuthenticationResponse
+     */
+    'rolesWithPermissions': Array<RoleWithPermissionsResponse>;
 }
 /**
  * 
@@ -649,6 +655,18 @@ export interface BaseInvoiceResponse {
      */
     'addressee': string;
     /**
+     * Reference of the invoice.
+     * @type {string}
+     * @memberof BaseInvoiceResponse
+     */
+    'reference': string;
+    /**
+     * Special attention to the addressee
+     * @type {string}
+     * @memberof BaseInvoiceResponse
+     */
+    'attention': string;
+    /**
      * Description of the invoice.
      * @type {string}
      * @memberof BaseInvoiceResponse
@@ -678,6 +696,12 @@ export interface BaseInvoiceResponse {
      * @memberof BaseInvoiceResponse
      */
     'country': string;
+    /**
+     * Date of the invoice
+     * @type {string}
+     * @memberof BaseInvoiceResponse
+     */
+    'date': string;
     /**
      * 
      * @type {InvoiceStatusResponse}
@@ -1019,6 +1043,49 @@ export interface BaseVatGroupResponse {
 /**
  * 
  * @export
+ * @interface BaseWriteOffResponse
+ */
+export interface BaseWriteOffResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof BaseWriteOffResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof BaseWriteOffResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof BaseWriteOffResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof BaseWriteOffResponse
+     */
+    'version'?: number;
+    /**
+     * 
+     * @type {BaseUserResponse}
+     * @memberof BaseWriteOffResponse
+     */
+    'to': BaseUserResponse;
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof BaseWriteOffResponse
+     */
+    'amount': DineroObjectResponse;
+}
+/**
+ * 
+ * @export
  * @interface BoilerPayoutRequestResponse
  */
 export interface BoilerPayoutRequestResponse {
@@ -1333,6 +1400,49 @@ export interface CreateInvoiceRequest {
      * @memberof CreateInvoiceRequest
      */
     'country'?: string;
+    /**
+     * Date to use on the invoice, overwrites the creation date.
+     * @type {string}
+     * @memberof CreateInvoiceRequest
+     */
+    'date'?: string;
+    /**
+     * Attention to use on the invoice.
+     * @type {string}
+     * @memberof CreateInvoiceRequest
+     */
+    'attention'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface CreatePermissionParams
+ */
+export interface CreatePermissionParams {
+    /**
+     * Entity
+     * @type {string}
+     * @memberof CreatePermissionParams
+     */
+    'entity': string;
+    /**
+     * Action
+     * @type {string}
+     * @memberof CreatePermissionParams
+     */
+    'action': string;
+    /**
+     * Relation
+     * @type {string}
+     * @memberof CreatePermissionParams
+     */
+    'relation': string;
+    /**
+     * Attributes
+     * @type {Array<string>}
+     * @memberof CreatePermissionParams
+     */
+    'attributes': Array<string>;
 }
 /**
  * 
@@ -1357,13 +1467,19 @@ export interface CreatePointOfSaleRequest {
      * @type {Array<number>}
      * @memberof CreatePointOfSaleRequest
      */
-    'containers'?: Array<number>;
+    'containers': Array<number>;
     /**
      * ID of the user who will own the POS, if undefined it will    default to the token ID.
      * @type {number}
      * @memberof CreatePointOfSaleRequest
      */
-    'ownerId'?: number;
+    'ownerId': number;
+    /**
+     * Users that have at least one of the given roles can create transactions in this POS (but not open/close/edit it)
+     * @type {Array<number>}
+     * @memberof CreatePointOfSaleRequest
+     */
+    'cashierRoleIds'?: Array<number>;
 }
 /**
  * 
@@ -1593,25 +1709,6 @@ export interface DineroObjectResponse {
      * @memberof DineroObjectResponse
      */
     'precision': number;
-}
-/**
- * 
- * @export
- * @interface EntityResponse
- */
-export interface EntityResponse {
-    /**
-     * The name of the entity for which the permissions are.
-     * @type {string}
-     * @memberof EntityResponse
-     */
-    'entity': string;
-    /**
-     * The permissions per action.
-     * @type {Array<ActionResponse>}
-     * @memberof EntityResponse
-     */
-    'actions': Array<ActionResponse>;
 }
 /**
  * 
@@ -2300,6 +2397,18 @@ export interface InvoiceResponse {
      */
     'addressee': string;
     /**
+     * Reference of the invoice.
+     * @type {string}
+     * @memberof InvoiceResponse
+     */
+    'reference': string;
+    /**
+     * Special attention to the addressee
+     * @type {string}
+     * @memberof InvoiceResponse
+     */
+    'attention': string;
+    /**
      * Description of the invoice.
      * @type {string}
      * @memberof InvoiceResponse
@@ -2329,6 +2438,12 @@ export interface InvoiceResponse {
      * @memberof InvoiceResponse
      */
     'country': string;
+    /**
+     * Date of the invoice
+     * @type {string}
+     * @memberof InvoiceResponse
+     */
+    'date': string;
     /**
      * 
      * @type {InvoiceStatusResponse}
@@ -2397,6 +2512,18 @@ export interface InvoiceResponseTypes {
      */
     'addressee': string;
     /**
+     * Reference of the invoice.
+     * @type {string}
+     * @memberof InvoiceResponseTypes
+     */
+    'reference': string;
+    /**
+     * Special attention to the addressee
+     * @type {string}
+     * @memberof InvoiceResponseTypes
+     */
+    'attention': string;
+    /**
      * Description of the invoice.
      * @type {string}
      * @memberof InvoiceResponseTypes
@@ -2426,6 +2553,12 @@ export interface InvoiceResponseTypes {
      * @memberof InvoiceResponseTypes
      */
     'country': string;
+    /**
+     * Date of the invoice
+     * @type {string}
+     * @memberof InvoiceResponseTypes
+     */
+    'date': string;
     /**
      * 
      * @type {InvoiceStatusResponse}
@@ -2881,6 +3014,25 @@ export interface PaginatedVoucherGroupResponse {
 /**
  * 
  * @export
+ * @interface PaginatedWriteOffResponse
+ */
+export interface PaginatedWriteOffResponse {
+    /**
+     * 
+     * @type {PaginationResult}
+     * @memberof PaginatedWriteOffResponse
+     */
+    '_pagination': PaginationResult;
+    /**
+     * Returned write-offs
+     * @type {Array<WriteOffResponse>}
+     * @memberof PaginatedWriteOffResponse
+     */
+    'records': Array<WriteOffResponse>;
+}
+/**
+ * 
+ * @export
  * @interface PaginationResult
  */
 export interface PaginationResult {
@@ -3064,6 +3216,50 @@ export interface PayoutRequestStatusResponse {
 /**
  * 
  * @export
+ * @interface PermissionResponse
+ */
+export interface PermissionResponse {
+    /**
+     * The name of the entity for which the permissions are.
+     * @type {string}
+     * @memberof PermissionResponse
+     */
+    'entity': string;
+    /**
+     * The permissions per action.
+     * @type {Array<ActionResponse>}
+     * @memberof PermissionResponse
+     */
+    'actions': Array<ActionResponse>;
+}
+/**
+ * 
+ * @export
+ * @interface PointOfSaleAssociateUsersResponse
+ */
+export interface PointOfSaleAssociateUsersResponse {
+    /**
+     * 
+     * @type {BaseUserResponse}
+     * @memberof PointOfSaleAssociateUsersResponse
+     */
+    'owner': BaseUserResponse;
+    /**
+     * Members that belong to the owner
+     * @type {Array<BaseUserResponse>}
+     * @memberof PointOfSaleAssociateUsersResponse
+     */
+    'ownerMembers': Array<BaseUserResponse>;
+    /**
+     * Users that belong to at least one cashier role of this point of sale
+     * @type {Array<BaseUserResponse>}
+     * @memberof PointOfSaleAssociateUsersResponse
+     */
+    'cashiers': Array<BaseUserResponse>;
+}
+/**
+ * 
+ * @export
  * @interface PointOfSaleResponse
  */
 export interface PointOfSaleResponse {
@@ -3115,6 +3311,12 @@ export interface PointOfSaleResponse {
      * @memberof PointOfSaleResponse
      */
     'useAuthentication': boolean;
+    /**
+     * The roles that are cashiers of this POS
+     * @type {Array<RoleResponse>}
+     * @memberof PointOfSaleResponse
+     */
+    'cashierRoles': Array<RoleResponse>;
 }
 /**
  * 
@@ -3170,6 +3372,12 @@ export interface PointOfSaleWithContainersResponse {
      * @memberof PointOfSaleWithContainersResponse
      */
     'useAuthentication': boolean;
+    /**
+     * The roles that are cashiers of this POS
+     * @type {Array<RoleResponse>}
+     * @memberof PointOfSaleWithContainersResponse
+     */
+    'cashierRoles': Array<RoleResponse>;
     /**
      * The containers in the point-of-sale.
      * @type {Array<ContainerWithProductsResponse>}
@@ -3388,17 +3596,66 @@ export interface RevisionRequest {
  */
 export interface RoleResponse {
     /**
+     * The ID of the role.
+     * @type {number}
+     * @memberof RoleResponse
+     */
+    'id': number;
+    /**
      * The name of the role.
      * @type {string}
      * @memberof RoleResponse
      */
-    'role': string;
+    'name': string;
     /**
-     * The permissions with regards to the entity.
-     * @type {Array<EntityResponse>}
+     * Whether the role is a system default role
+     * @type {boolean}
      * @memberof RoleResponse
      */
-    'entities': Array<EntityResponse>;
+    'systemDefault': boolean;
+    /**
+     * The user types this role is default for
+     * @type {Array<number>}
+     * @memberof RoleResponse
+     */
+    'userTypes'?: Array<number>;
+}
+/**
+ * 
+ * @export
+ * @interface RoleWithPermissionsResponse
+ */
+export interface RoleWithPermissionsResponse {
+    /**
+     * The ID of the role.
+     * @type {number}
+     * @memberof RoleWithPermissionsResponse
+     */
+    'id': number;
+    /**
+     * The name of the role.
+     * @type {string}
+     * @memberof RoleWithPermissionsResponse
+     */
+    'name': string;
+    /**
+     * Whether the role is a system default role
+     * @type {boolean}
+     * @memberof RoleWithPermissionsResponse
+     */
+    'systemDefault': boolean;
+    /**
+     * The user types this role is default for
+     * @type {Array<number>}
+     * @memberof RoleWithPermissionsResponse
+     */
+    'userTypes'?: Array<number>;
+    /**
+     * The permissions with regards to the entity.
+     * @type {Array<PermissionResponse>}
+     * @memberof RoleWithPermissionsResponse
+     */
+    'permissions': Array<PermissionResponse>;
 }
 /**
  * 
@@ -3596,6 +3853,25 @@ export interface StripePaymentIntentResponse {
      * @memberof StripePaymentIntentResponse
      */
     'clientSecret': string;
+}
+/**
+ * 
+ * @export
+ * @interface StripePublicKeyResponse
+ */
+export interface StripePublicKeyResponse {
+    /**
+     * Stripe public key
+     * @type {string}
+     * @memberof StripePublicKeyResponse
+     */
+    'publicKey': string;
+    /**
+     * Redirect url after payment
+     * @type {string}
+     * @memberof StripePublicKeyResponse
+     */
+    'returnUrl': string;
 }
 /**
  * 
@@ -4085,10 +4361,10 @@ export interface TransactionResponse {
     'subTransactions': Array<SubTransactionResponse>;
     /**
      * 
-     * @type {PointOfSaleResponse}
+     * @type {BasePointOfSaleResponse}
      * @memberof TransactionResponse
      */
-    'pointOfSale': PointOfSaleResponse;
+    'pointOfSale': BasePointOfSaleResponse;
     /**
      * 
      * @type {DineroObjectResponse}
@@ -4103,25 +4379,19 @@ export interface TransactionResponse {
  */
 export interface TransferRequest {
     /**
-     * Description of the transfer
+     * Description of the transfer.
      * @type {string}
      * @memberof TransferRequest
      */
-    'description'?: string;
+    'description': string;
     /**
      * 
      * @type {DineroObjectRequest}
      * @memberof TransferRequest
      */
-    'amount'?: DineroObjectRequest;
+    'amount': DineroObjectRequest;
     /**
-     * Type of transfer
-     * @type {number}
-     * @memberof TransferRequest
-     */
-    'type'?: number;
-    /**
-     * from which user the money is being transferred
+     * from which user the money is being transferred.
      * @type {number}
      * @memberof TransferRequest
      */
@@ -4132,6 +4402,12 @@ export interface TransferRequest {
      * @memberof TransferRequest
      */
     'toId'?: number;
+    /**
+     * The vat group id for the transfer.
+     * @type {number}
+     * @memberof TransferRequest
+     */
+    'vatId'?: number;
 }
 /**
  * 
@@ -4174,6 +4450,12 @@ export interface TransferResponse {
      * @type {Dinero}
      * @memberof TransferResponse
      */
+    'amountInclVat': Dinero;
+    /**
+     * 
+     * @type {Dinero}
+     * @memberof TransferResponse
+     */
     'amount': Dinero;
     /**
      * 
@@ -4211,6 +4493,18 @@ export interface TransferResponse {
      * @memberof TransferResponse
      */
     'fine'?: FineResponse;
+    /**
+     * 
+     * @type {VatGroupResponse}
+     * @memberof TransferResponse
+     */
+    'vat'?: VatGroupResponse;
+    /**
+     * 
+     * @type {BaseWriteOffResponse}
+     * @memberof TransferResponse
+     */
+    'writeOff'?: BaseWriteOffResponse;
     /**
      * 
      * @type {UserFineGroupResponse}
@@ -4310,6 +4604,48 @@ export interface UpdateInvoiceRequest {
      * @memberof UpdateInvoiceRequest
      */
     'state'?: UpdateInvoiceRequestStateEnum;
+    /**
+     * Street to use on the invoice.
+     * @type {string}
+     * @memberof UpdateInvoiceRequest
+     */
+    'street'?: string;
+    /**
+     * Postal code to use on the invoice.
+     * @type {string}
+     * @memberof UpdateInvoiceRequest
+     */
+    'postalCode'?: string;
+    /**
+     * City to use on the invoice.
+     * @type {string}
+     * @memberof UpdateInvoiceRequest
+     */
+    'city'?: string;
+    /**
+     * Country to use on the invoice.
+     * @type {string}
+     * @memberof UpdateInvoiceRequest
+     */
+    'country'?: string;
+    /**
+     * Reference to use on the invoice.
+     * @type {string}
+     * @memberof UpdateInvoiceRequest
+     */
+    'reference'?: string;
+    /**
+     * Attention to use on the invoice.
+     * @type {string}
+     * @memberof UpdateInvoiceRequest
+     */
+    'attention'?: string;
+    /**
+     * Date to use on the invoice.
+     * @type {string}
+     * @memberof UpdateInvoiceRequest
+     */
+    'date'?: string;
 }
 
 export const UpdateInvoiceRequestStateEnum = {
@@ -4433,13 +4769,19 @@ export interface UpdatePointOfSaleRequest {
      * @type {Array<number>}
      * @memberof UpdatePointOfSaleRequest
      */
-    'containers'?: Array<number>;
+    'containers': Array<number>;
     /**
      * ID of the POS to update.
      * @type {number}
      * @memberof UpdatePointOfSaleRequest
      */
     'id': number;
+    /**
+     * Users that have at least one of the given roles can create transactions in this POS (but not open/close/edit it)
+     * @type {Array<number>}
+     * @memberof UpdatePointOfSaleRequest
+     */
+    'cashierRoleIds'?: Array<number>;
 }
 /**
  * 
@@ -4495,6 +4837,19 @@ export interface UpdateProductRequest {
      * @memberof UpdateProductRequest
      */
     'priceList'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface UpdateRoleRequest
+ */
+export interface UpdateRoleRequest {
+    /**
+     * Name of the role
+     * @type {string}
+     * @memberof UpdateRoleRequest
+     */
+    'name': string;
 }
 /**
  * 
@@ -4982,6 +5337,68 @@ export interface VoucherGroupResponse {
      */
     'amount': number;
 }
+/**
+ * 
+ * @export
+ * @interface WriteOffRequest
+ */
+export interface WriteOffRequest {
+    /**
+     * The user who is the receiver of the write-off
+     * @type {number}
+     * @memberof WriteOffRequest
+     */
+    'toId': number;
+}
+/**
+ * 
+ * @export
+ * @interface WriteOffResponse
+ */
+export interface WriteOffResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof WriteOffResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof WriteOffResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof WriteOffResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof WriteOffResponse
+     */
+    'version'?: number;
+    /**
+     * 
+     * @type {BaseUserResponse}
+     * @memberof WriteOffResponse
+     */
+    'to': BaseUserResponse;
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof WriteOffResponse
+     */
+    'amount': DineroObjectResponse;
+    /**
+     * 
+     * @type {TransferResponse}
+     * @memberof WriteOffResponse
+     */
+    'transfer': TransferResponse;
+}
 
 /**
  * AuthenticateApi - axios parameter creator
@@ -4989,6 +5406,44 @@ export interface VoucherGroupResponse {
  */
 export const AuthenticateApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * 
+         * @summary Get a JWT token for the given POS
+         * @param {number} id The id of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authenticatePointOfSale: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('authenticatePointOfSale', 'id', id)
+            const localVarPath = `/authentication/pointofsale/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * 
          * @summary EAN login and hand out token
@@ -5019,6 +5474,36 @@ export const AuthenticateApiAxiosParamCreator = function (configuration?: Config
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(authenticationEanRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get the GEWISWeb public token used by SudoSOS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getGEWISWebPublic: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/authentication/gewisweb`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -5467,6 +5952,19 @@ export const AuthenticateApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @summary Get a JWT token for the given POS
+         * @param {number} id The id of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async authenticatePointOfSale(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authenticatePointOfSale(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['AuthenticateApi.authenticatePointOfSale']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
          * @summary EAN login and hand out token
          * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
          * @param {*} [options] Override http request option.
@@ -5476,6 +5974,18 @@ export const AuthenticateApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.eanAuthentication(authenticationEanRequest, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['AuthenticateApi.eanAuthentication']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get the GEWISWeb public token used by SudoSOS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getGEWISWebPublic(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getGEWISWebPublic(options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['AuthenticateApi.getGEWISWebPublic']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
@@ -5645,6 +6155,16 @@ export const AuthenticateApiFactory = function (configuration?: Configuration, b
     return {
         /**
          * 
+         * @summary Get a JWT token for the given POS
+         * @param {number} id The id of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authenticatePointOfSale(id: number, options?: any): AxiosPromise<AuthenticationResponse> {
+            return localVarFp.authenticatePointOfSale(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary EAN login and hand out token
          * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
          * @param {*} [options] Override http request option.
@@ -5652,6 +6172,15 @@ export const AuthenticateApiFactory = function (configuration?: Configuration, b
          */
         eanAuthentication(authenticationEanRequest: AuthenticationEanRequest, options?: any): AxiosPromise<AuthenticationResponse> {
             return localVarFp.eanAuthentication(authenticationEanRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get the GEWISWeb public token used by SudoSOS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getGEWISWebPublic(options?: any): AxiosPromise<string> {
+            return localVarFp.getGEWISWebPublic(options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -5784,6 +6313,18 @@ export const AuthenticateApiFactory = function (configuration?: Configuration, b
 export class AuthenticateApi extends BaseAPI {
     /**
      * 
+     * @summary Get a JWT token for the given POS
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    public authenticatePointOfSale(id: number, options?: RawAxiosRequestConfig) {
+        return AuthenticateApiFp(this.configuration).authenticatePointOfSale(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary EAN login and hand out token
      * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
      * @param {*} [options] Override http request option.
@@ -5792,6 +6333,17 @@ export class AuthenticateApi extends BaseAPI {
      */
     public eanAuthentication(authenticationEanRequest: AuthenticationEanRequest, options?: RawAxiosRequestConfig) {
         return AuthenticateApiFp(this.configuration).eanAuthentication(authenticationEanRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get the GEWISWeb public token used by SudoSOS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    public getGEWISWebPublic(options?: RawAxiosRequestConfig) {
+        return AuthenticateApiFp(this.configuration).getGEWISWebPublic(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -7678,6 +8230,50 @@ export const DebtorsApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @summary Get a report of all fines in pdf format
+         * @param {string} [fromDate] The start date of the report, inclusive
+         * @param {string} [toDate] The end date of the report, exclusive
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFineReportPdf: async (fromDate?: string, toDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/fines/report/pdf`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (fromDate !== undefined) {
+                localVarQueryParameter['fromDate'] = fromDate;
+            }
+
+            if (toDate !== undefined) {
+                localVarQueryParameter['toDate'] = toDate;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
          * @param {HandoutFinesRequest} handoutFinesRequest 
          * @param {*} [options] Override http request option.
@@ -7891,6 +8487,20 @@ export const DebtorsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get a report of all fines in pdf format
+         * @param {string} [fromDate] The start date of the report, inclusive
+         * @param {string} [toDate] The end date of the report, exclusive
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getFineReportPdf(fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getFineReportPdf(fromDate, toDate, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['DebtorsApi.getFineReportPdf']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
          * @param {HandoutFinesRequest} handoutFinesRequest 
          * @param {*} [options] Override http request option.
@@ -7986,6 +8596,17 @@ export const DebtorsApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
+         * @summary Get a report of all fines in pdf format
+         * @param {string} [fromDate] The start date of the report, inclusive
+         * @param {string} [toDate] The end date of the report, exclusive
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFineReportPdf(fromDate?: string, toDate?: string, options?: any): AxiosPromise<string> {
+            return localVarFp.getFineReportPdf(fromDate, toDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
          * @param {HandoutFinesRequest} handoutFinesRequest 
          * @param {*} [options] Override http request option.
@@ -8071,6 +8692,19 @@ export class DebtorsApi extends BaseAPI {
      */
     public getFineReport(fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig) {
         return DebtorsApiFp(this.configuration).getFineReport(fromDate, toDate, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get a report of all fines in pdf format
+     * @param {string} [fromDate] The start date of the report, inclusive
+     * @param {string} [toDate] The end date of the report, exclusive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DebtorsApi
+     */
+    public getFineReportPdf(fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig) {
+        return DebtorsApiFp(this.configuration).getFineReportPdf(fromDate, toDate, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -10934,6 +11568,44 @@ export const PointofsaleApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
+         * @summary Returns a Point of Sale\'s associate users
+         * @param {number} id The id of the Point of Sale of which to get the associate users.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPointOfSaleAssociates: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getPointOfSaleAssociates', 'id', id)
+            const localVarPath = `/pointsofsale/{id}/associates`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Returns the requested Point of Sale
          * @param {number} id The id of the Point of Sale which should be returned
          * @param {*} [options] Override http request option.
@@ -11142,6 +11814,19 @@ export const PointofsaleApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Returns a Point of Sale\'s associate users
+         * @param {number} id The id of the Point of Sale of which to get the associate users.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getPointOfSaleAssociates(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleAssociateUsersResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPointOfSaleAssociates(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['PointofsaleApi.getPointOfSaleAssociates']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Returns the requested Point of Sale
          * @param {number} id The id of the Point of Sale which should be returned
          * @param {*} [options] Override http request option.
@@ -11247,6 +11932,16 @@ export const PointofsaleApiFactory = function (configuration?: Configuration, ba
         },
         /**
          * 
+         * @summary Returns a Point of Sale\'s associate users
+         * @param {number} id The id of the Point of Sale of which to get the associate users.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPointOfSaleAssociates(id: number, options?: any): AxiosPromise<PointOfSaleAssociateUsersResponse> {
+            return localVarFp.getPointOfSaleAssociates(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Returns the requested Point of Sale
          * @param {number} id The id of the Point of Sale which should be returned
          * @param {*} [options] Override http request option.
@@ -11349,6 +12044,18 @@ export class PointofsaleApi extends BaseAPI {
      */
     public getAllPointsOfSale(take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return PointofsaleApiFp(this.configuration).getAllPointsOfSale(take, skip, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Returns a Point of Sale\'s associate users
+     * @param {number} id The id of the Point of Sale of which to get the associate users.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PointofsaleApi
+     */
+    public getPointOfSaleAssociates(id: number, options?: RawAxiosRequestConfig) {
+        return PointofsaleApiFp(this.configuration).getPointOfSaleAssociates(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -12261,7 +12968,171 @@ export const RbacApiAxiosParamCreator = function (configuration?: Configuration)
     return {
         /**
          * 
-         * @summary Returns all existing roles
+         * @summary Add new permissions to an existing role
+         * @param {number} id The ID of the role which should get the new permissions
+         * @param {Array<CreatePermissionParams>} createPermissionParams The permissions that need to be added
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addPermissions: async (id: number, createPermissionParams: Array<CreatePermissionParams>, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('addPermissions', 'id', id)
+            // verify required parameter 'createPermissionParams' is not null or undefined
+            assertParamExists('addPermissions', 'createPermissionParams', createPermissionParams)
+            const localVarPath = `/rbac/roles/{id}/permissions`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(createPermissionParams, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Create a new role
+         * @param {UpdateRoleRequest} updateRoleRequest The role which should be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createRole: async (updateRoleRequest: UpdateRoleRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'updateRoleRequest' is not null or undefined
+            assertParamExists('createRole', 'updateRoleRequest', updateRoleRequest)
+            const localVarPath = `/rbac/roles`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(updateRoleRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Delete a permission from an existing role
+         * @param {number} id The ID of the role
+         * @param {number} entity The entity of the permission
+         * @param {number} action The action of the permission
+         * @param {number} relation The relation of the permission
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deletePermission: async (id: number, entity: number, action: number, relation: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('deletePermission', 'id', id)
+            // verify required parameter 'entity' is not null or undefined
+            assertParamExists('deletePermission', 'entity', entity)
+            // verify required parameter 'action' is not null or undefined
+            assertParamExists('deletePermission', 'action', action)
+            // verify required parameter 'relation' is not null or undefined
+            assertParamExists('deletePermission', 'relation', relation)
+            const localVarPath = `/rbac/roles/{id}/permissions/{entity}/{action}/{relation}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)))
+                .replace(`{${"entity"}}`, encodeURIComponent(String(entity)))
+                .replace(`{${"action"}}`, encodeURIComponent(String(action)))
+                .replace(`{${"relation"}}`, encodeURIComponent(String(relation)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Delete an existing role
+         * @param {number} id The ID of the role which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteRole: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('deleteRole', 'id', id)
+            const localVarPath = `/rbac/roles/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get all existing roles
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -12293,6 +13164,88 @@ export const RbacApiAxiosParamCreator = function (configuration?: Configuration)
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @summary Get a single existing role with its permissions
+         * @param {number} id The ID of the role that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSingleRole: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getSingleRole', 'id', id)
+            const localVarPath = `/rbac/roles/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Update an existing role
+         * @param {number} id The ID of the role which should be updated
+         * @param {UpdateRoleRequest} updateRoleRequest The role which should be updated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateRole: async (id: number, updateRoleRequest: UpdateRoleRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('updateRole', 'id', id)
+            // verify required parameter 'updateRoleRequest' is not null or undefined
+            assertParamExists('updateRole', 'updateRoleRequest', updateRoleRequest)
+            const localVarPath = `/rbac/roles/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(updateRoleRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -12305,7 +13258,63 @@ export const RbacApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @summary Returns all existing roles
+         * @summary Add new permissions to an existing role
+         * @param {number} id The ID of the role which should get the new permissions
+         * @param {Array<CreatePermissionParams>} createPermissionParams The permissions that need to be added
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addPermissions(id: number, createPermissionParams: Array<CreatePermissionParams>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<PermissionResponse>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addPermissions(id, createPermissionParams, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['RbacApi.addPermissions']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Create a new role
+         * @param {UpdateRoleRequest} updateRoleRequest The role which should be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createRole(updateRoleRequest: UpdateRoleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RoleResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createRole(updateRoleRequest, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['RbacApi.createRole']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Delete a permission from an existing role
+         * @param {number} id The ID of the role
+         * @param {number} entity The entity of the permission
+         * @param {number} action The action of the permission
+         * @param {number} relation The relation of the permission
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deletePermission(id: number, entity: number, action: number, relation: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deletePermission(id, entity, action, relation, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['RbacApi.deletePermission']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Delete an existing role
+         * @param {number} id The ID of the role which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteRole(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteRole(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['RbacApi.deleteRole']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get all existing roles
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -12313,6 +13322,33 @@ export const RbacApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getAllRoles(options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['RbacApi.getAllRoles']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get a single existing role with its permissions
+         * @param {number} id The ID of the role that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getSingleRole(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RoleWithPermissionsResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSingleRole(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['RbacApi.getSingleRole']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Update an existing role
+         * @param {number} id The ID of the role which should be updated
+         * @param {UpdateRoleRequest} updateRoleRequest The role which should be updated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updateRole(id: number, updateRoleRequest: UpdateRoleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RoleResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateRole(id, updateRoleRequest, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['RbacApi.updateRole']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
     }
@@ -12327,12 +13363,77 @@ export const RbacApiFactory = function (configuration?: Configuration, basePath?
     return {
         /**
          * 
-         * @summary Returns all existing roles
+         * @summary Add new permissions to an existing role
+         * @param {number} id The ID of the role which should get the new permissions
+         * @param {Array<CreatePermissionParams>} createPermissionParams The permissions that need to be added
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addPermissions(id: number, createPermissionParams: Array<CreatePermissionParams>, options?: any): AxiosPromise<Array<PermissionResponse>> {
+            return localVarFp.addPermissions(id, createPermissionParams, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Create a new role
+         * @param {UpdateRoleRequest} updateRoleRequest The role which should be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createRole(updateRoleRequest: UpdateRoleRequest, options?: any): AxiosPromise<RoleResponse> {
+            return localVarFp.createRole(updateRoleRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Delete a permission from an existing role
+         * @param {number} id The ID of the role
+         * @param {number} entity The entity of the permission
+         * @param {number} action The action of the permission
+         * @param {number} relation The relation of the permission
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deletePermission(id: number, entity: number, action: number, relation: number, options?: any): AxiosPromise<string> {
+            return localVarFp.deletePermission(id, entity, action, relation, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Delete an existing role
+         * @param {number} id The ID of the role which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteRole(id: number, options?: any): AxiosPromise<string> {
+            return localVarFp.deleteRole(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get all existing roles
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         getAllRoles(options?: any): AxiosPromise<Array<RoleResponse>> {
             return localVarFp.getAllRoles(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get a single existing role with its permissions
+         * @param {number} id The ID of the role that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSingleRole(id: number, options?: any): AxiosPromise<RoleWithPermissionsResponse> {
+            return localVarFp.getSingleRole(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Update an existing role
+         * @param {number} id The ID of the role which should be updated
+         * @param {UpdateRoleRequest} updateRoleRequest The role which should be updated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateRole(id: number, updateRoleRequest: UpdateRoleRequest, options?: any): AxiosPromise<RoleResponse> {
+            return localVarFp.updateRole(id, updateRoleRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -12346,13 +13447,90 @@ export const RbacApiFactory = function (configuration?: Configuration, basePath?
 export class RbacApi extends BaseAPI {
     /**
      * 
-     * @summary Returns all existing roles
+     * @summary Add new permissions to an existing role
+     * @param {number} id The ID of the role which should get the new permissions
+     * @param {Array<CreatePermissionParams>} createPermissionParams The permissions that need to be added
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    public addPermissions(id: number, createPermissionParams: Array<CreatePermissionParams>, options?: RawAxiosRequestConfig) {
+        return RbacApiFp(this.configuration).addPermissions(id, createPermissionParams, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Create a new role
+     * @param {UpdateRoleRequest} updateRoleRequest The role which should be created
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    public createRole(updateRoleRequest: UpdateRoleRequest, options?: RawAxiosRequestConfig) {
+        return RbacApiFp(this.configuration).createRole(updateRoleRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Delete a permission from an existing role
+     * @param {number} id The ID of the role
+     * @param {number} entity The entity of the permission
+     * @param {number} action The action of the permission
+     * @param {number} relation The relation of the permission
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    public deletePermission(id: number, entity: number, action: number, relation: number, options?: RawAxiosRequestConfig) {
+        return RbacApiFp(this.configuration).deletePermission(id, entity, action, relation, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Delete an existing role
+     * @param {number} id The ID of the role which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    public deleteRole(id: number, options?: RawAxiosRequestConfig) {
+        return RbacApiFp(this.configuration).deleteRole(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get all existing roles
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RbacApi
      */
     public getAllRoles(options?: RawAxiosRequestConfig) {
         return RbacApiFp(this.configuration).getAllRoles(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get a single existing role with its permissions
+     * @param {number} id The ID of the role that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    public getSingleRole(id: number, options?: RawAxiosRequestConfig) {
+        return RbacApiFp(this.configuration).getSingleRole(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Update an existing role
+     * @param {number} id The ID of the role which should be updated
+     * @param {UpdateRoleRequest} updateRoleRequest The role which should be updated
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    public updateRole(id: number, updateRoleRequest: UpdateRoleRequest, options?: RawAxiosRequestConfig) {
+        return RbacApiFp(this.configuration).updateRole(id, updateRoleRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -12505,6 +13683,36 @@ export const StripeApiAxiosParamCreator = function (configuration?: Configuratio
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @summary Get the Stripe public key
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getStripePublicKey: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/stripe/public`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -12528,6 +13736,18 @@ export const StripeApiFp = function(configuration?: Configuration) {
             const operationBasePath = operationServerMap['StripeApi.deposit']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
+        /**
+         * 
+         * @summary Get the Stripe public key
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getStripePublicKey(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getStripePublicKey(options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['StripeApi.getStripePublicKey']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
     }
 };
 
@@ -12547,6 +13767,15 @@ export const StripeApiFactory = function (configuration?: Configuration, basePat
          */
         deposit(stripeRequest: StripeRequest, options?: any): AxiosPromise<StripePaymentIntentResponse> {
             return localVarFp.deposit(stripeRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get the Stripe public key
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getStripePublicKey(options?: any): AxiosPromise<string> {
+            return localVarFp.getStripePublicKey(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -12568,6 +13797,17 @@ export class StripeApi extends BaseAPI {
      */
     public deposit(stripeRequest: StripeRequest, options?: RawAxiosRequestConfig) {
         return StripeApiFp(this.configuration).deposit(stripeRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get the Stripe public key
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof StripeApi
+     */
+    public getStripePublicKey(options?: RawAxiosRequestConfig) {
+        return StripeApiFp(this.configuration).getStripePublicKey(options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -14079,12 +15319,14 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Get all financial mutations of a user (from or to).
          * @param {number} id The id of the user to get the mutations from
+         * @param {string} [fromDate] Start date for selected transactions (inclusive)
+         * @param {string} [tillDate] End date for selected transactions (exclusive)
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersFinancialMutations: async (id: number, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getUsersFinancialMutations: async (id: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getUsersFinancialMutations', 'id', id)
             const localVarPath = `/users/{id}/financialmutations`
@@ -14103,6 +15345,14 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             // authentication JWT required
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (fromDate !== undefined) {
+                localVarQueryParameter['fromDate'] = fromDate;
+            }
+
+            if (tillDate !== undefined) {
+                localVarQueryParameter['tillDate'] = tillDate;
+            }
 
             if (take !== undefined) {
                 localVarQueryParameter['take'] = take;
@@ -14888,7 +16138,7 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUserRoles(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RoleResponse>>> {
+        async getUserRoles(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RoleWithPermissionsResponse>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getUserRoles(id, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['UsersApi.getUserRoles']?.[index]?.url;
@@ -14913,13 +16163,15 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get all financial mutations of a user (from or to).
          * @param {number} id The id of the user to get the mutations from
+         * @param {string} [fromDate] Start date for selected transactions (inclusive)
+         * @param {string} [tillDate] End date for selected transactions (exclusive)
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUsersFinancialMutations(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedFinancialMutationResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUsersFinancialMutations(id, take, skip, options);
+        async getUsersFinancialMutations(id: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedFinancialMutationResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getUsersFinancialMutations(id, fromDate, tillDate, take, skip, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['UsersApi.getUsersFinancialMutations']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
@@ -15244,7 +16496,7 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserRoles(id: number, options?: any): AxiosPromise<Array<RoleResponse>> {
+        getUserRoles(id: number, options?: any): AxiosPromise<Array<RoleWithPermissionsResponse>> {
             return localVarFp.getUserRoles(id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -15263,13 +16515,15 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * 
          * @summary Get all financial mutations of a user (from or to).
          * @param {number} id The id of the user to get the mutations from
+         * @param {string} [fromDate] Start date for selected transactions (inclusive)
+         * @param {string} [tillDate] End date for selected transactions (exclusive)
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersFinancialMutations(id: number, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedFinancialMutationResponse> {
-            return localVarFp.getUsersFinancialMutations(id, take, skip, options).then((request) => request(axios, basePath));
+        getUsersFinancialMutations(id: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedFinancialMutationResponse> {
+            return localVarFp.getUsersFinancialMutations(id, fromDate, tillDate, take, skip, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -15600,14 +16854,16 @@ export class UsersApi extends BaseAPI {
      * 
      * @summary Get all financial mutations of a user (from or to).
      * @param {number} id The id of the user to get the mutations from
+     * @param {string} [fromDate] Start date for selected transactions (inclusive)
+     * @param {string} [tillDate] End date for selected transactions (exclusive)
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public getUsersFinancialMutations(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
-        return UsersApiFp(this.configuration).getUsersFinancialMutations(id, take, skip, options).then((request) => request(this.axios, this.basePath));
+    public getUsersFinancialMutations(id: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
+        return UsersApiFp(this.configuration).getUsersFinancialMutations(id, fromDate, tillDate, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -16612,6 +17868,291 @@ export class VouchergroupsApi extends BaseAPI {
      */
     public updateVoucherGroup(id: number, voucherGroupRequest: VoucherGroupRequest, options?: RawAxiosRequestConfig) {
         return VouchergroupsApiFp(this.configuration).updateVoucherGroup(id, voucherGroupRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
+ * WriteoffsApi - axios parameter creator
+ * @export
+ */
+export const WriteoffsApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Creates a new write-off in the system. Creating a write-off will also close and delete the user\'s account.
+         * @param {WriteOffRequest} writeOffRequest New write off
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createWriteOff: async (writeOffRequest: WriteOffRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'writeOffRequest' is not null or undefined
+            assertParamExists('createWriteOff', 'writeOffRequest', writeOffRequest)
+            const localVarPath = `/writeoffs`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(writeOffRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Returns all write-offs in the system.
+         * @param {number} [toId] Filter on Id of the debtor
+         * @param {number} [amount] Filter on the amount of the write-off
+         * @param {number} [take] Number of write-offs to return
+         * @param {number} [skip] Number of write-offs to skip
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllWriteOffs: async (toId?: number, amount?: number, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/writeoffs`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (toId !== undefined) {
+                localVarQueryParameter['toId'] = toId;
+            }
+
+            if (amount !== undefined) {
+                localVarQueryParameter['amount'] = amount;
+            }
+
+            if (take !== undefined) {
+                localVarQueryParameter['take'] = take;
+            }
+
+            if (skip !== undefined) {
+                localVarQueryParameter['skip'] = skip;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get a single write-off
+         * @param {number} id The ID of the write-off object that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSingleWriteOff: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getSingleWriteOff', 'id', id)
+            const localVarPath = `/writeoffs/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * WriteoffsApi - functional programming interface
+ * @export
+ */
+export const WriteoffsApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = WriteoffsApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Creates a new write-off in the system. Creating a write-off will also close and delete the user\'s account.
+         * @param {WriteOffRequest} writeOffRequest New write off
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createWriteOff(writeOffRequest: WriteOffRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WriteOffResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createWriteOff(writeOffRequest, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['WriteoffsApi.createWriteOff']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Returns all write-offs in the system.
+         * @param {number} [toId] Filter on Id of the debtor
+         * @param {number} [amount] Filter on the amount of the write-off
+         * @param {number} [take] Number of write-offs to return
+         * @param {number} [skip] Number of write-offs to skip
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getAllWriteOffs(toId?: number, amount?: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedWriteOffResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllWriteOffs(toId, amount, take, skip, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['WriteoffsApi.getAllWriteOffs']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get a single write-off
+         * @param {number} id The ID of the write-off object that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getSingleWriteOff(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WriteOffResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSingleWriteOff(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['WriteoffsApi.getSingleWriteOff']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * WriteoffsApi - factory interface
+ * @export
+ */
+export const WriteoffsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = WriteoffsApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Creates a new write-off in the system. Creating a write-off will also close and delete the user\'s account.
+         * @param {WriteOffRequest} writeOffRequest New write off
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createWriteOff(writeOffRequest: WriteOffRequest, options?: any): AxiosPromise<WriteOffResponse> {
+            return localVarFp.createWriteOff(writeOffRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Returns all write-offs in the system.
+         * @param {number} [toId] Filter on Id of the debtor
+         * @param {number} [amount] Filter on the amount of the write-off
+         * @param {number} [take] Number of write-offs to return
+         * @param {number} [skip] Number of write-offs to skip
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllWriteOffs(toId?: number, amount?: number, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedWriteOffResponse> {
+            return localVarFp.getAllWriteOffs(toId, amount, take, skip, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get a single write-off
+         * @param {number} id The ID of the write-off object that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSingleWriteOff(id: number, options?: any): AxiosPromise<WriteOffResponse> {
+            return localVarFp.getSingleWriteOff(id, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * WriteoffsApi - object-oriented interface
+ * @export
+ * @class WriteoffsApi
+ * @extends {BaseAPI}
+ */
+export class WriteoffsApi extends BaseAPI {
+    /**
+     * 
+     * @summary Creates a new write-off in the system. Creating a write-off will also close and delete the user\'s account.
+     * @param {WriteOffRequest} writeOffRequest New write off
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WriteoffsApi
+     */
+    public createWriteOff(writeOffRequest: WriteOffRequest, options?: RawAxiosRequestConfig) {
+        return WriteoffsApiFp(this.configuration).createWriteOff(writeOffRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Returns all write-offs in the system.
+     * @param {number} [toId] Filter on Id of the debtor
+     * @param {number} [amount] Filter on the amount of the write-off
+     * @param {number} [take] Number of write-offs to return
+     * @param {number} [skip] Number of write-offs to skip
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WriteoffsApi
+     */
+    public getAllWriteOffs(toId?: number, amount?: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
+        return WriteoffsApiFp(this.configuration).getAllWriteOffs(toId, amount, take, skip, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get a single write-off
+     * @param {number} id The ID of the write-off object that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WriteoffsApi
+     */
+    public getSingleWriteOff(id: number, options?: RawAxiosRequestConfig) {
+        return WriteoffsApiFp(this.configuration).getSingleWriteOff(id, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
