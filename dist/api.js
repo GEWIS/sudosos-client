@@ -23,7 +23,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProductCategoriesApiFactory = exports.ProductCategoriesApiFp = exports.ProductCategoriesApiAxiosParamCreator = exports.PointofsaleApi = exports.PointofsaleApiFactory = exports.PointofsaleApiFp = exports.PointofsaleApiAxiosParamCreator = exports.PayoutRequestsApi = exports.PayoutRequestsApiFactory = exports.PayoutRequestsApiFp = exports.PayoutRequestsApiAxiosParamCreator = exports.GetAllInvoicesCurrentStateEnum = exports.InvoicesApi = exports.InvoicesApiFactory = exports.InvoicesApiFp = exports.InvoicesApiAxiosParamCreator = exports.FilesApi = exports.FilesApiFactory = exports.FilesApiFp = exports.FilesApiAxiosParamCreator = exports.EventsApi = exports.EventsApiFactory = exports.EventsApiFp = exports.EventsApiAxiosParamCreator = exports.DebtorsApi = exports.DebtorsApiFactory = exports.DebtorsApiFp = exports.DebtorsApiAxiosParamCreator = exports.ContainersApi = exports.ContainersApiFactory = exports.ContainersApiFp = exports.ContainersApiAxiosParamCreator = exports.BannersApi = exports.BannersApiFactory = exports.BannersApiFp = exports.BannersApiAxiosParamCreator = exports.GetAllBalanceOrderDirectionEnum = exports.GetAllBalanceUserTypesEnum = exports.BalanceApi = exports.BalanceApiFactory = exports.BalanceApiFp = exports.BalanceApiAxiosParamCreator = exports.AuthenticateApi = exports.AuthenticateApiFactory = exports.AuthenticateApiFp = exports.AuthenticateApiAxiosParamCreator = exports.UpdateInvoiceRequestStateEnum = exports.PayoutRequestStatusRequestStateEnum = exports.InvoiceStatusResponseStateEnum = exports.FinancialMutationResponseTypeEnum = void 0;
-exports.VouchergroupsApi = exports.VouchergroupsApiFactory = exports.VouchergroupsApiFp = exports.VouchergroupsApiAxiosParamCreator = exports.VatGroupsApi = exports.VatGroupsApiFactory = exports.VatGroupsApiFp = exports.VatGroupsApiAxiosParamCreator = exports.GetAllUsersTypeEnum = exports.UsersApi = exports.UsersApiFactory = exports.UsersApiFp = exports.UsersApiAxiosParamCreator = exports.TransfersApi = exports.TransfersApiFactory = exports.TransfersApiFp = exports.TransfersApiAxiosParamCreator = exports.TransactionsApi = exports.TransactionsApiFactory = exports.TransactionsApiFp = exports.TransactionsApiAxiosParamCreator = exports.TestOperationsOfTheTestControllerApi = exports.TestOperationsOfTheTestControllerApiFactory = exports.TestOperationsOfTheTestControllerApiFp = exports.TestOperationsOfTheTestControllerApiAxiosParamCreator = exports.StripeApi = exports.StripeApiFactory = exports.StripeApiFp = exports.StripeApiAxiosParamCreator = exports.RootApi = exports.RootApiFactory = exports.RootApiFp = exports.RootApiAxiosParamCreator = exports.RbacApi = exports.RbacApiFactory = exports.RbacApiFp = exports.RbacApiAxiosParamCreator = exports.ProductsApi = exports.ProductsApiFactory = exports.ProductsApiFp = exports.ProductsApiAxiosParamCreator = exports.ProductCategoriesApi = void 0;
+exports.WriteoffsApi = exports.WriteoffsApiFactory = exports.WriteoffsApiFp = exports.WriteoffsApiAxiosParamCreator = exports.VouchergroupsApi = exports.VouchergroupsApiFactory = exports.VouchergroupsApiFp = exports.VouchergroupsApiAxiosParamCreator = exports.VatGroupsApi = exports.VatGroupsApiFactory = exports.VatGroupsApiFp = exports.VatGroupsApiAxiosParamCreator = exports.GetAllUsersTypeEnum = exports.UsersApi = exports.UsersApiFactory = exports.UsersApiFp = exports.UsersApiAxiosParamCreator = exports.TransfersApi = exports.TransfersApiFactory = exports.TransfersApiFp = exports.TransfersApiAxiosParamCreator = exports.TransactionsApi = exports.TransactionsApiFactory = exports.TransactionsApiFp = exports.TransactionsApiAxiosParamCreator = exports.TestOperationsOfTheTestControllerApi = exports.TestOperationsOfTheTestControllerApiFactory = exports.TestOperationsOfTheTestControllerApiFp = exports.TestOperationsOfTheTestControllerApiAxiosParamCreator = exports.StripeApi = exports.StripeApiFactory = exports.StripeApiFp = exports.StripeApiAxiosParamCreator = exports.RootApi = exports.RootApiFactory = exports.RootApiFp = exports.RootApiAxiosParamCreator = exports.RbacApi = exports.RbacApiFactory = exports.RbacApiFp = exports.RbacApiAxiosParamCreator = exports.ProductsApi = exports.ProductsApiFactory = exports.ProductsApiFp = exports.ProductsApiAxiosParamCreator = exports.ProductCategoriesApi = void 0;
 const axios_1 = require("axios");
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -60,6 +60,38 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
+         * @summary Get a JWT token for the given POS
+         * @param {number} id The id of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authenticatePointOfSale: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('authenticatePointOfSale', 'id', id);
+            const localVarPath = `/authentication/pointofsale/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
          * @summary EAN login and hand out token
          * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
          * @param {*} [options] Override http request option.
@@ -83,6 +115,31 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
             localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(authenticationEanRequest, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
+         * @summary Get the GEWISWeb public token used by SudoSOS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getGEWISWebPublic: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+            const localVarPath = `/authentication/gewisweb`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -458,6 +515,22 @@ const AuthenticateApiFp = function (configuration) {
     return {
         /**
          *
+         * @summary Get a JWT token for the given POS
+         * @param {number} id The id of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authenticatePointOfSale(id, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.authenticatePointOfSale(id, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['AuthenticateApi.authenticatePointOfSale']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
          * @summary EAN login and hand out token
          * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
          * @param {*} [options] Override http request option.
@@ -469,6 +542,21 @@ const AuthenticateApiFp = function (configuration) {
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.eanAuthentication(authenticationEanRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['AuthenticateApi.eanAuthentication']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
+         * @summary Get the GEWISWeb public token used by SudoSOS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getGEWISWebPublic(options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getGEWISWebPublic(options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['AuthenticateApi.getGEWISWebPublic']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
             });
         },
@@ -675,6 +763,16 @@ const AuthenticateApiFactory = function (configuration, basePath, axios) {
     return {
         /**
          *
+         * @summary Get a JWT token for the given POS
+         * @param {number} id The id of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authenticatePointOfSale(id, options) {
+            return localVarFp.authenticatePointOfSale(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary EAN login and hand out token
          * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
          * @param {*} [options] Override http request option.
@@ -682,6 +780,15 @@ const AuthenticateApiFactory = function (configuration, basePath, axios) {
          */
         eanAuthentication(authenticationEanRequest, options) {
             return localVarFp.eanAuthentication(authenticationEanRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get the GEWISWeb public token used by SudoSOS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getGEWISWebPublic(options) {
+            return localVarFp.getGEWISWebPublic(options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -814,6 +921,17 @@ exports.AuthenticateApiFactory = AuthenticateApiFactory;
 class AuthenticateApi extends base_1.BaseAPI {
     /**
      *
+     * @summary Get a JWT token for the given POS
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    authenticatePointOfSale(id, options) {
+        return (0, exports.AuthenticateApiFp)(this.configuration).authenticatePointOfSale(id, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
      * @summary EAN login and hand out token
      * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
      * @param {*} [options] Override http request option.
@@ -822,6 +940,16 @@ class AuthenticateApi extends base_1.BaseAPI {
      */
     eanAuthentication(authenticationEanRequest, options) {
         return (0, exports.AuthenticateApiFp)(this.configuration).eanAuthentication(authenticationEanRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get the GEWISWeb public token used by SudoSOS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    getGEWISWebPublic(options) {
+        return (0, exports.AuthenticateApiFp)(this.configuration).getGEWISWebPublic(options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -2567,6 +2695,42 @@ const DebtorsApiAxiosParamCreator = function (configuration) {
         }),
         /**
          *
+         * @summary Get a report of all fines in pdf format
+         * @param {string} [fromDate] The start date of the report, inclusive
+         * @param {string} [toDate] The end date of the report, exclusive
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFineReportPdf: (fromDate_1, toDate_1, ...args_1) => __awaiter(this, [fromDate_1, toDate_1, ...args_1], void 0, function* (fromDate, toDate, options = {}) {
+            const localVarPath = `/fines/report/pdf`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            if (fromDate !== undefined) {
+                localVarQueryParameter['fromDate'] = fromDate;
+            }
+            if (toDate !== undefined) {
+                localVarQueryParameter['toDate'] = toDate;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
          * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
          * @param {HandoutFinesRequest} handoutFinesRequest
          * @param {*} [options] Override http request option.
@@ -2761,6 +2925,23 @@ const DebtorsApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Get a report of all fines in pdf format
+         * @param {string} [fromDate] The start date of the report, inclusive
+         * @param {string} [toDate] The end date of the report, exclusive
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFineReportPdf(fromDate, toDate, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getFineReportPdf(fromDate, toDate, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['DebtorsApi.getFineReportPdf']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
          * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
          * @param {HandoutFinesRequest} handoutFinesRequest
          * @param {*} [options] Override http request option.
@@ -2868,6 +3049,17 @@ const DebtorsApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary Get a report of all fines in pdf format
+         * @param {string} [fromDate] The start date of the report, inclusive
+         * @param {string} [toDate] The end date of the report, exclusive
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFineReportPdf(fromDate, toDate, options) {
+            return localVarFp.getFineReportPdf(fromDate, toDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
          * @param {HandoutFinesRequest} handoutFinesRequest
          * @param {*} [options] Override http request option.
@@ -2951,6 +3143,18 @@ class DebtorsApi extends base_1.BaseAPI {
      */
     getFineReport(fromDate, toDate, options) {
         return (0, exports.DebtorsApiFp)(this.configuration).getFineReport(fromDate, toDate, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get a report of all fines in pdf format
+     * @param {string} [fromDate] The start date of the report, inclusive
+     * @param {string} [toDate] The end date of the report, exclusive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DebtorsApi
+     */
+    getFineReportPdf(fromDate, toDate, options) {
+        return (0, exports.DebtorsApiFp)(this.configuration).getFineReportPdf(fromDate, toDate, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -5609,6 +5813,38 @@ const PointofsaleApiAxiosParamCreator = function (configuration) {
         }),
         /**
          *
+         * @summary Returns a Point of Sale\'s associate users
+         * @param {number} id The id of the Point of Sale of which to get the associate users.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPointOfSaleAssociates: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('getPointOfSaleAssociates', 'id', id);
+            const localVarPath = `/pointsofsale/{id}/associates`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
          * @summary Returns the requested Point of Sale
          * @param {number} id The id of the Point of Sale which should be returned
          * @param {*} [options] Override http request option.
@@ -5811,6 +6047,22 @@ const PointofsaleApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Returns a Point of Sale\'s associate users
+         * @param {number} id The id of the Point of Sale of which to get the associate users.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPointOfSaleAssociates(id, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getPointOfSaleAssociates(id, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['PointofsaleApi.getPointOfSaleAssociates']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
          * @summary Returns the requested Point of Sale
          * @param {number} id The id of the Point of Sale which should be returned
          * @param {*} [options] Override http request option.
@@ -5925,6 +6177,16 @@ const PointofsaleApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary Returns a Point of Sale\'s associate users
+         * @param {number} id The id of the Point of Sale of which to get the associate users.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPointOfSaleAssociates(id, options) {
+            return localVarFp.getPointOfSaleAssociates(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Returns the requested Point of Sale
          * @param {number} id The id of the Point of Sale which should be returned
          * @param {*} [options] Override http request option.
@@ -6023,6 +6285,17 @@ class PointofsaleApi extends base_1.BaseAPI {
      */
     getAllPointsOfSale(take, skip, options) {
         return (0, exports.PointofsaleApiFp)(this.configuration).getAllPointsOfSale(take, skip, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Returns a Point of Sale\'s associate users
+     * @param {number} id The id of the Point of Sale of which to get the associate users.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PointofsaleApi
+     */
+    getPointOfSaleAssociates(id, options) {
+        return (0, exports.PointofsaleApiFp)(this.configuration).getPointOfSaleAssociates(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -6878,7 +7151,147 @@ const RbacApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
-         * @summary Returns all existing roles
+         * @summary Add new permissions to an existing role
+         * @param {number} id The ID of the role which should get the new permissions
+         * @param {Array<CreatePermissionParams>} createPermissionParams The permissions that need to be added
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addPermissions: (id_1, createPermissionParams_1, ...args_1) => __awaiter(this, [id_1, createPermissionParams_1, ...args_1], void 0, function* (id, createPermissionParams, options = {}) {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('addPermissions', 'id', id);
+            // verify required parameter 'createPermissionParams' is not null or undefined
+            (0, common_1.assertParamExists)('addPermissions', 'createPermissionParams', createPermissionParams);
+            const localVarPath = `/rbac/roles/{id}/permissions`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(createPermissionParams, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
+         * @summary Create a new role
+         * @param {UpdateRoleRequest} updateRoleRequest The role which should be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createRole: (updateRoleRequest_1, ...args_1) => __awaiter(this, [updateRoleRequest_1, ...args_1], void 0, function* (updateRoleRequest, options = {}) {
+            // verify required parameter 'updateRoleRequest' is not null or undefined
+            (0, common_1.assertParamExists)('createRole', 'updateRoleRequest', updateRoleRequest);
+            const localVarPath = `/rbac/roles`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(updateRoleRequest, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
+         * @summary Delete a permission from an existing role
+         * @param {number} id The ID of the role
+         * @param {number} entity The entity of the permission
+         * @param {number} action The action of the permission
+         * @param {number} relation The relation of the permission
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deletePermission: (id_1, entity_1, action_1, relation_1, ...args_1) => __awaiter(this, [id_1, entity_1, action_1, relation_1, ...args_1], void 0, function* (id, entity, action, relation, options = {}) {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('deletePermission', 'id', id);
+            // verify required parameter 'entity' is not null or undefined
+            (0, common_1.assertParamExists)('deletePermission', 'entity', entity);
+            // verify required parameter 'action' is not null or undefined
+            (0, common_1.assertParamExists)('deletePermission', 'action', action);
+            // verify required parameter 'relation' is not null or undefined
+            (0, common_1.assertParamExists)('deletePermission', 'relation', relation);
+            const localVarPath = `/rbac/roles/{id}/permissions/{entity}/{action}/{relation}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)))
+                .replace(`{${"entity"}}`, encodeURIComponent(String(entity)))
+                .replace(`{${"action"}}`, encodeURIComponent(String(action)))
+                .replace(`{${"relation"}}`, encodeURIComponent(String(relation)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'DELETE' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
+         * @summary Delete an existing role
+         * @param {number} id The ID of the role which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteRole: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('deleteRole', 'id', id);
+            const localVarPath = `/rbac/roles/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'DELETE' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
+         * @summary Get all existing roles
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -6904,6 +7317,75 @@ const RbacApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         }),
+        /**
+         *
+         * @summary Get a single existing role with its permissions
+         * @param {number} id The ID of the role that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSingleRole: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('getSingleRole', 'id', id);
+            const localVarPath = `/rbac/roles/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
+         * @summary Update an existing role
+         * @param {number} id The ID of the role which should be updated
+         * @param {UpdateRoleRequest} updateRoleRequest The role which should be updated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateRole: (id_1, updateRoleRequest_1, ...args_1) => __awaiter(this, [id_1, updateRoleRequest_1, ...args_1], void 0, function* (id, updateRoleRequest, options = {}) {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('updateRole', 'id', id);
+            // verify required parameter 'updateRoleRequest' is not null or undefined
+            (0, common_1.assertParamExists)('updateRole', 'updateRoleRequest', updateRoleRequest);
+            const localVarPath = `/rbac/roles/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'PATCH' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(updateRoleRequest, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
     };
 };
 exports.RbacApiAxiosParamCreator = RbacApiAxiosParamCreator;
@@ -6916,7 +7398,75 @@ const RbacApiFp = function (configuration) {
     return {
         /**
          *
-         * @summary Returns all existing roles
+         * @summary Add new permissions to an existing role
+         * @param {number} id The ID of the role which should get the new permissions
+         * @param {Array<CreatePermissionParams>} createPermissionParams The permissions that need to be added
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addPermissions(id, createPermissionParams, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.addPermissions(id, createPermissionParams, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['RbacApi.addPermissions']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
+         * @summary Create a new role
+         * @param {UpdateRoleRequest} updateRoleRequest The role which should be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createRole(updateRoleRequest, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.createRole(updateRoleRequest, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['RbacApi.createRole']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
+         * @summary Delete a permission from an existing role
+         * @param {number} id The ID of the role
+         * @param {number} entity The entity of the permission
+         * @param {number} action The action of the permission
+         * @param {number} relation The relation of the permission
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deletePermission(id, entity, action, relation, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.deletePermission(id, entity, action, relation, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['RbacApi.deletePermission']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
+         * @summary Delete an existing role
+         * @param {number} id The ID of the role which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteRole(id, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteRole(id, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['RbacApi.deleteRole']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
+         * @summary Get all existing roles
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -6926,6 +7476,39 @@ const RbacApiFp = function (configuration) {
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllRoles(options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['RbacApi.getAllRoles']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
+         * @summary Get a single existing role with its permissions
+         * @param {number} id The ID of the role that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSingleRole(id, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getSingleRole(id, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['RbacApi.getSingleRole']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
+         * @summary Update an existing role
+         * @param {number} id The ID of the role which should be updated
+         * @param {UpdateRoleRequest} updateRoleRequest The role which should be updated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateRole(id, updateRoleRequest, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.updateRole(id, updateRoleRequest, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['RbacApi.updateRole']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
             });
         },
@@ -6941,12 +7524,77 @@ const RbacApiFactory = function (configuration, basePath, axios) {
     return {
         /**
          *
-         * @summary Returns all existing roles
+         * @summary Add new permissions to an existing role
+         * @param {number} id The ID of the role which should get the new permissions
+         * @param {Array<CreatePermissionParams>} createPermissionParams The permissions that need to be added
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addPermissions(id, createPermissionParams, options) {
+            return localVarFp.addPermissions(id, createPermissionParams, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Create a new role
+         * @param {UpdateRoleRequest} updateRoleRequest The role which should be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createRole(updateRoleRequest, options) {
+            return localVarFp.createRole(updateRoleRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Delete a permission from an existing role
+         * @param {number} id The ID of the role
+         * @param {number} entity The entity of the permission
+         * @param {number} action The action of the permission
+         * @param {number} relation The relation of the permission
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deletePermission(id, entity, action, relation, options) {
+            return localVarFp.deletePermission(id, entity, action, relation, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Delete an existing role
+         * @param {number} id The ID of the role which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteRole(id, options) {
+            return localVarFp.deleteRole(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get all existing roles
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         getAllRoles(options) {
             return localVarFp.getAllRoles(options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get a single existing role with its permissions
+         * @param {number} id The ID of the role that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSingleRole(id, options) {
+            return localVarFp.getSingleRole(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Update an existing role
+         * @param {number} id The ID of the role which should be updated
+         * @param {UpdateRoleRequest} updateRoleRequest The role which should be updated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateRole(id, updateRoleRequest, options) {
+            return localVarFp.updateRole(id, updateRoleRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -6960,13 +7608,84 @@ exports.RbacApiFactory = RbacApiFactory;
 class RbacApi extends base_1.BaseAPI {
     /**
      *
-     * @summary Returns all existing roles
+     * @summary Add new permissions to an existing role
+     * @param {number} id The ID of the role which should get the new permissions
+     * @param {Array<CreatePermissionParams>} createPermissionParams The permissions that need to be added
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    addPermissions(id, createPermissionParams, options) {
+        return (0, exports.RbacApiFp)(this.configuration).addPermissions(id, createPermissionParams, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Create a new role
+     * @param {UpdateRoleRequest} updateRoleRequest The role which should be created
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    createRole(updateRoleRequest, options) {
+        return (0, exports.RbacApiFp)(this.configuration).createRole(updateRoleRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Delete a permission from an existing role
+     * @param {number} id The ID of the role
+     * @param {number} entity The entity of the permission
+     * @param {number} action The action of the permission
+     * @param {number} relation The relation of the permission
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    deletePermission(id, entity, action, relation, options) {
+        return (0, exports.RbacApiFp)(this.configuration).deletePermission(id, entity, action, relation, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Delete an existing role
+     * @param {number} id The ID of the role which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    deleteRole(id, options) {
+        return (0, exports.RbacApiFp)(this.configuration).deleteRole(id, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get all existing roles
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RbacApi
      */
     getAllRoles(options) {
         return (0, exports.RbacApiFp)(this.configuration).getAllRoles(options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get a single existing role with its permissions
+     * @param {number} id The ID of the role that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    getSingleRole(id, options) {
+        return (0, exports.RbacApiFp)(this.configuration).getSingleRole(id, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Update an existing role
+     * @param {number} id The ID of the role which should be updated
+     * @param {UpdateRoleRequest} updateRoleRequest The role which should be updated
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    updateRole(id, updateRoleRequest, options) {
+        return (0, exports.RbacApiFp)(this.configuration).updateRole(id, updateRoleRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.RbacApi = RbacApi;
@@ -7106,6 +7825,31 @@ const StripeApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         }),
+        /**
+         *
+         * @summary Get the Stripe public key
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getStripePublicKey: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+            const localVarPath = `/stripe/public`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
     };
 };
 exports.StripeApiAxiosParamCreator = StripeApiAxiosParamCreator;
@@ -7132,6 +7876,21 @@ const StripeApiFp = function (configuration) {
                 return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
             });
         },
+        /**
+         *
+         * @summary Get the Stripe public key
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getStripePublicKey(options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getStripePublicKey(options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['StripeApi.getStripePublicKey']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
     };
 };
 exports.StripeApiFp = StripeApiFp;
@@ -7151,6 +7910,15 @@ const StripeApiFactory = function (configuration, basePath, axios) {
          */
         deposit(stripeRequest, options) {
             return localVarFp.deposit(stripeRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get the Stripe public key
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getStripePublicKey(options) {
+            return localVarFp.getStripePublicKey(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -7172,6 +7940,16 @@ class StripeApi extends base_1.BaseAPI {
      */
     deposit(stripeRequest, options) {
         return (0, exports.StripeApiFp)(this.configuration).deposit(stripeRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get the Stripe public key
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof StripeApi
+     */
+    getStripePublicKey(options) {
+        return (0, exports.StripeApiFp)(this.configuration).getStripePublicKey(options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.StripeApi = StripeApi;
@@ -8529,12 +9307,14 @@ const UsersApiAxiosParamCreator = function (configuration) {
          *
          * @summary Get all financial mutations of a user (from or to).
          * @param {number} id The id of the user to get the mutations from
+         * @param {string} [fromDate] Start date for selected transactions (inclusive)
+         * @param {string} [tillDate] End date for selected transactions (exclusive)
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersFinancialMutations: (id_1, take_1, skip_1, ...args_1) => __awaiter(this, [id_1, take_1, skip_1, ...args_1], void 0, function* (id, take, skip, options = {}) {
+        getUsersFinancialMutations: (id_1, fromDate_1, tillDate_1, take_1, skip_1, ...args_1) => __awaiter(this, [id_1, fromDate_1, tillDate_1, take_1, skip_1, ...args_1], void 0, function* (id, fromDate, tillDate, take, skip, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getUsersFinancialMutations', 'id', id);
             const localVarPath = `/users/{id}/financialmutations`
@@ -8551,6 +9331,12 @@ const UsersApiAxiosParamCreator = function (configuration) {
             // authentication JWT required
             // http bearer authentication required
             yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            if (fromDate !== undefined) {
+                localVarQueryParameter['fromDate'] = fromDate;
+            }
+            if (tillDate !== undefined) {
+                localVarQueryParameter['tillDate'] = tillDate;
+            }
             if (take !== undefined) {
                 localVarQueryParameter['take'] = take;
             }
@@ -9295,15 +10081,17 @@ const UsersApiFp = function (configuration) {
          *
          * @summary Get all financial mutations of a user (from or to).
          * @param {number} id The id of the user to get the mutations from
+         * @param {string} [fromDate] Start date for selected transactions (inclusive)
+         * @param {string} [tillDate] End date for selected transactions (exclusive)
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersFinancialMutations(id, take, skip, options) {
+        getUsersFinancialMutations(id, fromDate, tillDate, take, skip, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUsersFinancialMutations(id, take, skip, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUsersFinancialMutations(id, fromDate, tillDate, take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.getUsersFinancialMutations']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
@@ -9684,13 +10472,15 @@ const UsersApiFactory = function (configuration, basePath, axios) {
          *
          * @summary Get all financial mutations of a user (from or to).
          * @param {number} id The id of the user to get the mutations from
+         * @param {string} [fromDate] Start date for selected transactions (inclusive)
+         * @param {string} [tillDate] End date for selected transactions (exclusive)
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersFinancialMutations(id, take, skip, options) {
-            return localVarFp.getUsersFinancialMutations(id, take, skip, options).then((request) => request(axios, basePath));
+        getUsersFinancialMutations(id, fromDate, tillDate, take, skip, options) {
+            return localVarFp.getUsersFinancialMutations(id, fromDate, tillDate, take, skip, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -10008,14 +10798,16 @@ class UsersApi extends base_1.BaseAPI {
      *
      * @summary Get all financial mutations of a user (from or to).
      * @param {number} id The id of the user to get the mutations from
+     * @param {string} [fromDate] Start date for selected transactions (inclusive)
+     * @param {string} [tillDate] End date for selected transactions (exclusive)
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUsersFinancialMutations(id, take, skip, options) {
-        return (0, exports.UsersApiFp)(this.configuration).getUsersFinancialMutations(id, take, skip, options).then((request) => request(this.axios, this.basePath));
+    getUsersFinancialMutations(id, fromDate, tillDate, take, skip, options) {
+        return (0, exports.UsersApiFp)(this.configuration).getUsersFinancialMutations(id, fromDate, tillDate, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -10958,4 +11750,271 @@ class VouchergroupsApi extends base_1.BaseAPI {
     }
 }
 exports.VouchergroupsApi = VouchergroupsApi;
+/**
+ * WriteoffsApi - axios parameter creator
+ * @export
+ */
+const WriteoffsApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         *
+         * @summary Creates a new write-off in the system. Creating a write-off will also close and delete the user\'s account.
+         * @param {WriteOffRequest} writeOffRequest New write off
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createWriteOff: (writeOffRequest_1, ...args_1) => __awaiter(this, [writeOffRequest_1, ...args_1], void 0, function* (writeOffRequest, options = {}) {
+            // verify required parameter 'writeOffRequest' is not null or undefined
+            (0, common_1.assertParamExists)('createWriteOff', 'writeOffRequest', writeOffRequest);
+            const localVarPath = `/writeoffs`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(writeOffRequest, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
+         * @summary Returns all write-offs in the system.
+         * @param {number} [toId] Filter on Id of the debtor
+         * @param {number} [amount] Filter on the amount of the write-off
+         * @param {number} [take] Number of write-offs to return
+         * @param {number} [skip] Number of write-offs to skip
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllWriteOffs: (toId_1, amount_1, take_1, skip_1, ...args_1) => __awaiter(this, [toId_1, amount_1, take_1, skip_1, ...args_1], void 0, function* (toId, amount, take, skip, options = {}) {
+            const localVarPath = `/writeoffs`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            if (toId !== undefined) {
+                localVarQueryParameter['toId'] = toId;
+            }
+            if (amount !== undefined) {
+                localVarQueryParameter['amount'] = amount;
+            }
+            if (take !== undefined) {
+                localVarQueryParameter['take'] = take;
+            }
+            if (skip !== undefined) {
+                localVarQueryParameter['skip'] = skip;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
+         * @summary Get a single write-off
+         * @param {number} id The ID of the write-off object that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSingleWriteOff: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('getSingleWriteOff', 'id', id);
+            const localVarPath = `/writeoffs/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+    };
+};
+exports.WriteoffsApiAxiosParamCreator = WriteoffsApiAxiosParamCreator;
+/**
+ * WriteoffsApi - functional programming interface
+ * @export
+ */
+const WriteoffsApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.WriteoffsApiAxiosParamCreator)(configuration);
+    return {
+        /**
+         *
+         * @summary Creates a new write-off in the system. Creating a write-off will also close and delete the user\'s account.
+         * @param {WriteOffRequest} writeOffRequest New write off
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createWriteOff(writeOffRequest, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.createWriteOff(writeOffRequest, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['WriteoffsApi.createWriteOff']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
+         * @summary Returns all write-offs in the system.
+         * @param {number} [toId] Filter on Id of the debtor
+         * @param {number} [amount] Filter on the amount of the write-off
+         * @param {number} [take] Number of write-offs to return
+         * @param {number} [skip] Number of write-offs to skip
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllWriteOffs(toId, amount, take, skip, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllWriteOffs(toId, amount, take, skip, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['WriteoffsApi.getAllWriteOffs']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
+         * @summary Get a single write-off
+         * @param {number} id The ID of the write-off object that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSingleWriteOff(id, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getSingleWriteOff(id, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['WriteoffsApi.getSingleWriteOff']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+    };
+};
+exports.WriteoffsApiFp = WriteoffsApiFp;
+/**
+ * WriteoffsApi - factory interface
+ * @export
+ */
+const WriteoffsApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.WriteoffsApiFp)(configuration);
+    return {
+        /**
+         *
+         * @summary Creates a new write-off in the system. Creating a write-off will also close and delete the user\'s account.
+         * @param {WriteOffRequest} writeOffRequest New write off
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createWriteOff(writeOffRequest, options) {
+            return localVarFp.createWriteOff(writeOffRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Returns all write-offs in the system.
+         * @param {number} [toId] Filter on Id of the debtor
+         * @param {number} [amount] Filter on the amount of the write-off
+         * @param {number} [take] Number of write-offs to return
+         * @param {number} [skip] Number of write-offs to skip
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllWriteOffs(toId, amount, take, skip, options) {
+            return localVarFp.getAllWriteOffs(toId, amount, take, skip, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get a single write-off
+         * @param {number} id The ID of the write-off object that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSingleWriteOff(id, options) {
+            return localVarFp.getSingleWriteOff(id, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+exports.WriteoffsApiFactory = WriteoffsApiFactory;
+/**
+ * WriteoffsApi - object-oriented interface
+ * @export
+ * @class WriteoffsApi
+ * @extends {BaseAPI}
+ */
+class WriteoffsApi extends base_1.BaseAPI {
+    /**
+     *
+     * @summary Creates a new write-off in the system. Creating a write-off will also close and delete the user\'s account.
+     * @param {WriteOffRequest} writeOffRequest New write off
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WriteoffsApi
+     */
+    createWriteOff(writeOffRequest, options) {
+        return (0, exports.WriteoffsApiFp)(this.configuration).createWriteOff(writeOffRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Returns all write-offs in the system.
+     * @param {number} [toId] Filter on Id of the debtor
+     * @param {number} [amount] Filter on the amount of the write-off
+     * @param {number} [take] Number of write-offs to return
+     * @param {number} [skip] Number of write-offs to skip
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WriteoffsApi
+     */
+    getAllWriteOffs(toId, amount, take, skip, options) {
+        return (0, exports.WriteoffsApiFp)(this.configuration).getAllWriteOffs(toId, amount, take, skip, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get a single write-off
+     * @param {number} id The ID of the write-off object that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WriteoffsApi
+     */
+    getSingleWriteOff(id, options) {
+        return (0, exports.WriteoffsApiFp)(this.configuration).getSingleWriteOff(id, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+exports.WriteoffsApi = WriteoffsApi;
 //# sourceMappingURL=api.js.map

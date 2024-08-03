@@ -204,7 +204,7 @@ export interface AuthenticationResponse {
      */
     'user': UserResponse;
     /**
-     * The RBAC roles that the user has.
+     * The RBAC roles that the user has. (DEPRECATED)
      * @type {Array<string>}
      * @memberof AuthenticationResponse
      */
@@ -227,6 +227,12 @@ export interface AuthenticationResponse {
      * @memberof AuthenticationResponse
      */
     'acceptedToS': string;
+    /**
+     * All unique RBAC permissions the user has
+     * @type {Array<RoleWithPermissionsResponse>}
+     * @memberof AuthenticationResponse
+     */
+    'rolesWithPermissions': Array<RoleWithPermissionsResponse>;
 }
 /**
  *
@@ -639,6 +645,18 @@ export interface BaseInvoiceResponse {
      */
     'addressee': string;
     /**
+     * Reference of the invoice.
+     * @type {string}
+     * @memberof BaseInvoiceResponse
+     */
+    'reference': string;
+    /**
+     * Special attention to the addressee
+     * @type {string}
+     * @memberof BaseInvoiceResponse
+     */
+    'attention': string;
+    /**
      * Description of the invoice.
      * @type {string}
      * @memberof BaseInvoiceResponse
@@ -668,6 +686,12 @@ export interface BaseInvoiceResponse {
      * @memberof BaseInvoiceResponse
      */
     'country': string;
+    /**
+     * Date of the invoice
+     * @type {string}
+     * @memberof BaseInvoiceResponse
+     */
+    'date': string;
     /**
      *
      * @type {InvoiceStatusResponse}
@@ -1009,6 +1033,49 @@ export interface BaseVatGroupResponse {
 /**
  *
  * @export
+ * @interface BaseWriteOffResponse
+ */
+export interface BaseWriteOffResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof BaseWriteOffResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof BaseWriteOffResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof BaseWriteOffResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof BaseWriteOffResponse
+     */
+    'version'?: number;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof BaseWriteOffResponse
+     */
+    'to': BaseUserResponse;
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof BaseWriteOffResponse
+     */
+    'amount': DineroObjectResponse;
+}
+/**
+ *
+ * @export
  * @interface BoilerPayoutRequestResponse
  */
 export interface BoilerPayoutRequestResponse {
@@ -1323,6 +1390,49 @@ export interface CreateInvoiceRequest {
      * @memberof CreateInvoiceRequest
      */
     'country'?: string;
+    /**
+     * Date to use on the invoice, overwrites the creation date.
+     * @type {string}
+     * @memberof CreateInvoiceRequest
+     */
+    'date'?: string;
+    /**
+     * Attention to use on the invoice.
+     * @type {string}
+     * @memberof CreateInvoiceRequest
+     */
+    'attention'?: string;
+}
+/**
+ *
+ * @export
+ * @interface CreatePermissionParams
+ */
+export interface CreatePermissionParams {
+    /**
+     * Entity
+     * @type {string}
+     * @memberof CreatePermissionParams
+     */
+    'entity': string;
+    /**
+     * Action
+     * @type {string}
+     * @memberof CreatePermissionParams
+     */
+    'action': string;
+    /**
+     * Relation
+     * @type {string}
+     * @memberof CreatePermissionParams
+     */
+    'relation': string;
+    /**
+     * Attributes
+     * @type {Array<string>}
+     * @memberof CreatePermissionParams
+     */
+    'attributes': Array<string>;
 }
 /**
  *
@@ -1347,13 +1457,19 @@ export interface CreatePointOfSaleRequest {
      * @type {Array<number>}
      * @memberof CreatePointOfSaleRequest
      */
-    'containers'?: Array<number>;
+    'containers': Array<number>;
     /**
      * ID of the user who will own the POS, if undefined it will    default to the token ID.
      * @type {number}
      * @memberof CreatePointOfSaleRequest
      */
-    'ownerId'?: number;
+    'ownerId': number;
+    /**
+     * Users that have at least one of the given roles can create transactions in this POS (but not open/close/edit it)
+     * @type {Array<number>}
+     * @memberof CreatePointOfSaleRequest
+     */
+    'cashierRoleIds'?: Array<number>;
 }
 /**
  *
@@ -1583,25 +1699,6 @@ export interface DineroObjectResponse {
      * @memberof DineroObjectResponse
      */
     'precision': number;
-}
-/**
- *
- * @export
- * @interface EntityResponse
- */
-export interface EntityResponse {
-    /**
-     * The name of the entity for which the permissions are.
-     * @type {string}
-     * @memberof EntityResponse
-     */
-    'entity': string;
-    /**
-     * The permissions per action.
-     * @type {Array<ActionResponse>}
-     * @memberof EntityResponse
-     */
-    'actions': Array<ActionResponse>;
 }
 /**
  *
@@ -2285,6 +2382,18 @@ export interface InvoiceResponse {
      */
     'addressee': string;
     /**
+     * Reference of the invoice.
+     * @type {string}
+     * @memberof InvoiceResponse
+     */
+    'reference': string;
+    /**
+     * Special attention to the addressee
+     * @type {string}
+     * @memberof InvoiceResponse
+     */
+    'attention': string;
+    /**
      * Description of the invoice.
      * @type {string}
      * @memberof InvoiceResponse
@@ -2314,6 +2423,12 @@ export interface InvoiceResponse {
      * @memberof InvoiceResponse
      */
     'country': string;
+    /**
+     * Date of the invoice
+     * @type {string}
+     * @memberof InvoiceResponse
+     */
+    'date': string;
     /**
      *
      * @type {InvoiceStatusResponse}
@@ -2382,6 +2497,18 @@ export interface InvoiceResponseTypes {
      */
     'addressee': string;
     /**
+     * Reference of the invoice.
+     * @type {string}
+     * @memberof InvoiceResponseTypes
+     */
+    'reference': string;
+    /**
+     * Special attention to the addressee
+     * @type {string}
+     * @memberof InvoiceResponseTypes
+     */
+    'attention': string;
+    /**
      * Description of the invoice.
      * @type {string}
      * @memberof InvoiceResponseTypes
@@ -2411,6 +2538,12 @@ export interface InvoiceResponseTypes {
      * @memberof InvoiceResponseTypes
      */
     'country': string;
+    /**
+     * Date of the invoice
+     * @type {string}
+     * @memberof InvoiceResponseTypes
+     */
+    'date': string;
     /**
      *
      * @type {InvoiceStatusResponse}
@@ -2863,6 +2996,25 @@ export interface PaginatedVoucherGroupResponse {
 /**
  *
  * @export
+ * @interface PaginatedWriteOffResponse
+ */
+export interface PaginatedWriteOffResponse {
+    /**
+     *
+     * @type {PaginationResult}
+     * @memberof PaginatedWriteOffResponse
+     */
+    '_pagination': PaginationResult;
+    /**
+     * Returned write-offs
+     * @type {Array<WriteOffResponse>}
+     * @memberof PaginatedWriteOffResponse
+     */
+    'records': Array<WriteOffResponse>;
+}
+/**
+ *
+ * @export
  * @interface PaginationResult
  */
 export interface PaginationResult {
@@ -3043,6 +3195,50 @@ export interface PayoutRequestStatusResponse {
 /**
  *
  * @export
+ * @interface PermissionResponse
+ */
+export interface PermissionResponse {
+    /**
+     * The name of the entity for which the permissions are.
+     * @type {string}
+     * @memberof PermissionResponse
+     */
+    'entity': string;
+    /**
+     * The permissions per action.
+     * @type {Array<ActionResponse>}
+     * @memberof PermissionResponse
+     */
+    'actions': Array<ActionResponse>;
+}
+/**
+ *
+ * @export
+ * @interface PointOfSaleAssociateUsersResponse
+ */
+export interface PointOfSaleAssociateUsersResponse {
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof PointOfSaleAssociateUsersResponse
+     */
+    'owner': BaseUserResponse;
+    /**
+     * Members that belong to the owner
+     * @type {Array<BaseUserResponse>}
+     * @memberof PointOfSaleAssociateUsersResponse
+     */
+    'ownerMembers': Array<BaseUserResponse>;
+    /**
+     * Users that belong to at least one cashier role of this point of sale
+     * @type {Array<BaseUserResponse>}
+     * @memberof PointOfSaleAssociateUsersResponse
+     */
+    'cashiers': Array<BaseUserResponse>;
+}
+/**
+ *
+ * @export
  * @interface PointOfSaleResponse
  */
 export interface PointOfSaleResponse {
@@ -3094,6 +3290,12 @@ export interface PointOfSaleResponse {
      * @memberof PointOfSaleResponse
      */
     'useAuthentication': boolean;
+    /**
+     * The roles that are cashiers of this POS
+     * @type {Array<RoleResponse>}
+     * @memberof PointOfSaleResponse
+     */
+    'cashierRoles': Array<RoleResponse>;
 }
 /**
  *
@@ -3149,6 +3351,12 @@ export interface PointOfSaleWithContainersResponse {
      * @memberof PointOfSaleWithContainersResponse
      */
     'useAuthentication': boolean;
+    /**
+     * The roles that are cashiers of this POS
+     * @type {Array<RoleResponse>}
+     * @memberof PointOfSaleWithContainersResponse
+     */
+    'cashierRoles': Array<RoleResponse>;
     /**
      * The containers in the point-of-sale.
      * @type {Array<ContainerWithProductsResponse>}
@@ -3367,17 +3575,66 @@ export interface RevisionRequest {
  */
 export interface RoleResponse {
     /**
+     * The ID of the role.
+     * @type {number}
+     * @memberof RoleResponse
+     */
+    'id': number;
+    /**
      * The name of the role.
      * @type {string}
      * @memberof RoleResponse
      */
-    'role': string;
+    'name': string;
     /**
-     * The permissions with regards to the entity.
-     * @type {Array<EntityResponse>}
+     * Whether the role is a system default role
+     * @type {boolean}
      * @memberof RoleResponse
      */
-    'entities': Array<EntityResponse>;
+    'systemDefault': boolean;
+    /**
+     * The user types this role is default for
+     * @type {Array<number>}
+     * @memberof RoleResponse
+     */
+    'userTypes'?: Array<number>;
+}
+/**
+ *
+ * @export
+ * @interface RoleWithPermissionsResponse
+ */
+export interface RoleWithPermissionsResponse {
+    /**
+     * The ID of the role.
+     * @type {number}
+     * @memberof RoleWithPermissionsResponse
+     */
+    'id': number;
+    /**
+     * The name of the role.
+     * @type {string}
+     * @memberof RoleWithPermissionsResponse
+     */
+    'name': string;
+    /**
+     * Whether the role is a system default role
+     * @type {boolean}
+     * @memberof RoleWithPermissionsResponse
+     */
+    'systemDefault': boolean;
+    /**
+     * The user types this role is default for
+     * @type {Array<number>}
+     * @memberof RoleWithPermissionsResponse
+     */
+    'userTypes'?: Array<number>;
+    /**
+     * The permissions with regards to the entity.
+     * @type {Array<PermissionResponse>}
+     * @memberof RoleWithPermissionsResponse
+     */
+    'permissions': Array<PermissionResponse>;
 }
 /**
  *
@@ -3575,6 +3832,25 @@ export interface StripePaymentIntentResponse {
      * @memberof StripePaymentIntentResponse
      */
     'clientSecret': string;
+}
+/**
+ *
+ * @export
+ * @interface StripePublicKeyResponse
+ */
+export interface StripePublicKeyResponse {
+    /**
+     * Stripe public key
+     * @type {string}
+     * @memberof StripePublicKeyResponse
+     */
+    'publicKey': string;
+    /**
+     * Redirect url after payment
+     * @type {string}
+     * @memberof StripePublicKeyResponse
+     */
+    'returnUrl': string;
 }
 /**
  *
@@ -4064,10 +4340,10 @@ export interface TransactionResponse {
     'subTransactions': Array<SubTransactionResponse>;
     /**
      *
-     * @type {PointOfSaleResponse}
+     * @type {BasePointOfSaleResponse}
      * @memberof TransactionResponse
      */
-    'pointOfSale': PointOfSaleResponse;
+    'pointOfSale': BasePointOfSaleResponse;
     /**
      *
      * @type {DineroObjectResponse}
@@ -4082,25 +4358,19 @@ export interface TransactionResponse {
  */
 export interface TransferRequest {
     /**
-     * Description of the transfer
+     * Description of the transfer.
      * @type {string}
      * @memberof TransferRequest
      */
-    'description'?: string;
+    'description': string;
     /**
      *
      * @type {DineroObjectRequest}
      * @memberof TransferRequest
      */
-    'amount'?: DineroObjectRequest;
+    'amount': DineroObjectRequest;
     /**
-     * Type of transfer
-     * @type {number}
-     * @memberof TransferRequest
-     */
-    'type'?: number;
-    /**
-     * from which user the money is being transferred
+     * from which user the money is being transferred.
      * @type {number}
      * @memberof TransferRequest
      */
@@ -4111,6 +4381,12 @@ export interface TransferRequest {
      * @memberof TransferRequest
      */
     'toId'?: number;
+    /**
+     * The vat group id for the transfer.
+     * @type {number}
+     * @memberof TransferRequest
+     */
+    'vatId'?: number;
 }
 /**
  *
@@ -4153,6 +4429,12 @@ export interface TransferResponse {
      * @type {Dinero}
      * @memberof TransferResponse
      */
+    'amountInclVat': Dinero;
+    /**
+     *
+     * @type {Dinero}
+     * @memberof TransferResponse
+     */
     'amount': Dinero;
     /**
      *
@@ -4190,6 +4472,18 @@ export interface TransferResponse {
      * @memberof TransferResponse
      */
     'fine'?: FineResponse;
+    /**
+     *
+     * @type {VatGroupResponse}
+     * @memberof TransferResponse
+     */
+    'vat'?: VatGroupResponse;
+    /**
+     *
+     * @type {BaseWriteOffResponse}
+     * @memberof TransferResponse
+     */
+    'writeOff'?: BaseWriteOffResponse;
     /**
      *
      * @type {UserFineGroupResponse}
@@ -4289,6 +4583,48 @@ export interface UpdateInvoiceRequest {
      * @memberof UpdateInvoiceRequest
      */
     'state'?: UpdateInvoiceRequestStateEnum;
+    /**
+     * Street to use on the invoice.
+     * @type {string}
+     * @memberof UpdateInvoiceRequest
+     */
+    'street'?: string;
+    /**
+     * Postal code to use on the invoice.
+     * @type {string}
+     * @memberof UpdateInvoiceRequest
+     */
+    'postalCode'?: string;
+    /**
+     * City to use on the invoice.
+     * @type {string}
+     * @memberof UpdateInvoiceRequest
+     */
+    'city'?: string;
+    /**
+     * Country to use on the invoice.
+     * @type {string}
+     * @memberof UpdateInvoiceRequest
+     */
+    'country'?: string;
+    /**
+     * Reference to use on the invoice.
+     * @type {string}
+     * @memberof UpdateInvoiceRequest
+     */
+    'reference'?: string;
+    /**
+     * Attention to use on the invoice.
+     * @type {string}
+     * @memberof UpdateInvoiceRequest
+     */
+    'attention'?: string;
+    /**
+     * Date to use on the invoice.
+     * @type {string}
+     * @memberof UpdateInvoiceRequest
+     */
+    'date'?: string;
 }
 export declare const UpdateInvoiceRequestStateEnum: {
     readonly Created: "CREATED";
@@ -4409,13 +4745,19 @@ export interface UpdatePointOfSaleRequest {
      * @type {Array<number>}
      * @memberof UpdatePointOfSaleRequest
      */
-    'containers'?: Array<number>;
+    'containers': Array<number>;
     /**
      * ID of the POS to update.
      * @type {number}
      * @memberof UpdatePointOfSaleRequest
      */
     'id': number;
+    /**
+     * Users that have at least one of the given roles can create transactions in this POS (but not open/close/edit it)
+     * @type {Array<number>}
+     * @memberof UpdatePointOfSaleRequest
+     */
+    'cashierRoleIds'?: Array<number>;
 }
 /**
  *
@@ -4471,6 +4813,19 @@ export interface UpdateProductRequest {
      * @memberof UpdateProductRequest
      */
     'priceList'?: boolean;
+}
+/**
+ *
+ * @export
+ * @interface UpdateRoleRequest
+ */
+export interface UpdateRoleRequest {
+    /**
+     * Name of the role
+     * @type {string}
+     * @memberof UpdateRoleRequest
+     */
+    'name': string;
 }
 /**
  *
@@ -4959,10 +5314,80 @@ export interface VoucherGroupResponse {
     'amount': number;
 }
 /**
+ *
+ * @export
+ * @interface WriteOffRequest
+ */
+export interface WriteOffRequest {
+    /**
+     * The user who is the receiver of the write-off
+     * @type {number}
+     * @memberof WriteOffRequest
+     */
+    'toId': number;
+}
+/**
+ *
+ * @export
+ * @interface WriteOffResponse
+ */
+export interface WriteOffResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof WriteOffResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof WriteOffResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof WriteOffResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof WriteOffResponse
+     */
+    'version'?: number;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof WriteOffResponse
+     */
+    'to': BaseUserResponse;
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof WriteOffResponse
+     */
+    'amount': DineroObjectResponse;
+    /**
+     *
+     * @type {TransferResponse}
+     * @memberof WriteOffResponse
+     */
+    'transfer': TransferResponse;
+}
+/**
  * AuthenticateApi - axios parameter creator
  * @export
  */
 export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Get a JWT token for the given POS
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    authenticatePointOfSale: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary EAN login and hand out token
@@ -4971,6 +5396,13 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
      * @throws {RequiredError}
      */
     eanAuthentication: (authenticationEanRequest: AuthenticationEanRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get the GEWISWeb public token used by SudoSOS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getGEWISWebPublic: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary LDAP login and hand out token    If user has never signed in before this also creates an GEWIS account.
@@ -5074,12 +5506,27 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
 export declare const AuthenticateApiFp: (configuration?: Configuration) => {
     /**
      *
+     * @summary Get a JWT token for the given POS
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    authenticatePointOfSale(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
+    /**
+     *
      * @summary EAN login and hand out token
      * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     eanAuthentication(authenticationEanRequest: AuthenticationEanRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
+    /**
+     *
+     * @summary Get the GEWISWeb public token used by SudoSOS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getGEWISWebPublic(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
     /**
      *
      * @summary LDAP login and hand out token    If user has never signed in before this also creates an GEWIS account.
@@ -5183,12 +5630,27 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
 export declare const AuthenticateApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
+     * @summary Get a JWT token for the given POS
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    authenticatePointOfSale(id: number, options?: any): AxiosPromise<AuthenticationResponse>;
+    /**
+     *
      * @summary EAN login and hand out token
      * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     eanAuthentication(authenticationEanRequest: AuthenticationEanRequest, options?: any): AxiosPromise<AuthenticationResponse>;
+    /**
+     *
+     * @summary Get the GEWISWeb public token used by SudoSOS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getGEWISWebPublic(options?: any): AxiosPromise<string>;
     /**
      *
      * @summary LDAP login and hand out token    If user has never signed in before this also creates an GEWIS account.
@@ -5294,6 +5756,15 @@ export declare const AuthenticateApiFactory: (configuration?: Configuration, bas
 export declare class AuthenticateApi extends BaseAPI {
     /**
      *
+     * @summary Get a JWT token for the given POS
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    authenticatePointOfSale(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
+    /**
+     *
      * @summary EAN login and hand out token
      * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
      * @param {*} [options] Override http request option.
@@ -5301,6 +5772,14 @@ export declare class AuthenticateApi extends BaseAPI {
      * @memberof AuthenticateApi
      */
     eanAuthentication(authenticationEanRequest: AuthenticationEanRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
+    /**
+     *
+     * @summary Get the GEWISWeb public token used by SudoSOS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    getGEWISWebPublic(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
     /**
      *
      * @summary LDAP login and hand out token    If user has never signed in before this also creates an GEWIS account.
@@ -6199,6 +6678,15 @@ export declare const DebtorsApiAxiosParamCreator: (configuration?: Configuration
     getFineReport: (fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Get a report of all fines in pdf format
+     * @param {string} [fromDate] The start date of the report, inclusive
+     * @param {string} [toDate] The end date of the report, exclusive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getFineReportPdf: (fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
      * @param {HandoutFinesRequest} handoutFinesRequest
      * @param {*} [options] Override http request option.
@@ -6264,6 +6752,15 @@ export declare const DebtorsApiFp: (configuration?: Configuration) => {
     getFineReport(fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FineReportResponse>>;
     /**
      *
+     * @summary Get a report of all fines in pdf format
+     * @param {string} [fromDate] The start date of the report, inclusive
+     * @param {string} [toDate] The end date of the report, exclusive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getFineReportPdf(fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    /**
+     *
      * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
      * @param {HandoutFinesRequest} handoutFinesRequest
      * @param {*} [options] Override http request option.
@@ -6327,6 +6824,15 @@ export declare const DebtorsApiFactory: (configuration?: Configuration, basePath
      * @throws {RequiredError}
      */
     getFineReport(fromDate?: string, toDate?: string, options?: any): AxiosPromise<FineReportResponse>;
+    /**
+     *
+     * @summary Get a report of all fines in pdf format
+     * @param {string} [fromDate] The start date of the report, inclusive
+     * @param {string} [toDate] The end date of the report, exclusive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getFineReportPdf(fromDate?: string, toDate?: string, options?: any): AxiosPromise<string>;
     /**
      *
      * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
@@ -6397,6 +6903,16 @@ export declare class DebtorsApi extends BaseAPI {
      * @memberof DebtorsApi
      */
     getFineReport(fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FineReportResponse, any>>;
+    /**
+     *
+     * @summary Get a report of all fines in pdf format
+     * @param {string} [fromDate] The start date of the report, inclusive
+     * @param {string} [toDate] The end date of the report, exclusive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DebtorsApi
+     */
+    getFineReportPdf(fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
     /**
      *
      * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
@@ -7695,6 +8211,14 @@ export declare const PointofsaleApiAxiosParamCreator: (configuration?: Configura
     getAllPointsOfSale: (take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Returns a Point of Sale\'s associate users
+     * @param {number} id The id of the Point of Sale of which to get the associate users.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPointOfSaleAssociates: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Returns the requested Point of Sale
      * @param {number} id The id of the Point of Sale which should be returned
      * @param {*} [options] Override http request option.
@@ -7771,6 +8295,14 @@ export declare const PointofsaleApiFp: (configuration?: Configuration) => {
     getAllPointsOfSale(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedPointOfSaleResponse>>;
     /**
      *
+     * @summary Returns a Point of Sale\'s associate users
+     * @param {number} id The id of the Point of Sale of which to get the associate users.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPointOfSaleAssociates(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleAssociateUsersResponse>>;
+    /**
+     *
      * @summary Returns the requested Point of Sale
      * @param {number} id The id of the Point of Sale which should be returned
      * @param {*} [options] Override http request option.
@@ -7845,6 +8377,14 @@ export declare const PointofsaleApiFactory: (configuration?: Configuration, base
      * @throws {RequiredError}
      */
     getAllPointsOfSale(take?: number, skip?: number, options?: any): AxiosPromise<PaginatedPointOfSaleResponse>;
+    /**
+     *
+     * @summary Returns a Point of Sale\'s associate users
+     * @param {number} id The id of the Point of Sale of which to get the associate users.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPointOfSaleAssociates(id: number, options?: any): AxiosPromise<PointOfSaleAssociateUsersResponse>;
     /**
      *
      * @summary Returns the requested Point of Sale
@@ -7928,6 +8468,15 @@ export declare class PointofsaleApi extends BaseAPI {
      * @memberof PointofsaleApi
      */
     getAllPointsOfSale(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedPointOfSaleResponse, any>>;
+    /**
+     *
+     * @summary Returns a Point of Sale\'s associate users
+     * @param {number} id The id of the Point of Sale of which to get the associate users.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PointofsaleApi
+     */
+    getPointOfSaleAssociates(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PointOfSaleAssociateUsersResponse, any>>;
     /**
      *
      * @summary Returns the requested Point of Sale
@@ -8368,11 +8917,64 @@ export declare class ProductsApi extends BaseAPI {
 export declare const RbacApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
-     * @summary Returns all existing roles
+     * @summary Add new permissions to an existing role
+     * @param {number} id The ID of the role which should get the new permissions
+     * @param {Array<CreatePermissionParams>} createPermissionParams The permissions that need to be added
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    addPermissions: (id: number, createPermissionParams: Array<CreatePermissionParams>, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Create a new role
+     * @param {UpdateRoleRequest} updateRoleRequest The role which should be created
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createRole: (updateRoleRequest: UpdateRoleRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Delete a permission from an existing role
+     * @param {number} id The ID of the role
+     * @param {number} entity The entity of the permission
+     * @param {number} action The action of the permission
+     * @param {number} relation The relation of the permission
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletePermission: (id: number, entity: number, action: number, relation: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Delete an existing role
+     * @param {number} id The ID of the role which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteRole: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get all existing roles
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getAllRoles: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get a single existing role with its permissions
+     * @param {number} id The ID of the role that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getSingleRole: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Update an existing role
+     * @param {number} id The ID of the role which should be updated
+     * @param {UpdateRoleRequest} updateRoleRequest The role which should be updated
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateRole: (id: number, updateRoleRequest: UpdateRoleRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * RbacApi - functional programming interface
@@ -8381,11 +8983,64 @@ export declare const RbacApiAxiosParamCreator: (configuration?: Configuration) =
 export declare const RbacApiFp: (configuration?: Configuration) => {
     /**
      *
-     * @summary Returns all existing roles
+     * @summary Add new permissions to an existing role
+     * @param {number} id The ID of the role which should get the new permissions
+     * @param {Array<CreatePermissionParams>} createPermissionParams The permissions that need to be added
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    addPermissions(id: number, createPermissionParams: Array<CreatePermissionParams>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<PermissionResponse>>>;
+    /**
+     *
+     * @summary Create a new role
+     * @param {UpdateRoleRequest} updateRoleRequest The role which should be created
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createRole(updateRoleRequest: UpdateRoleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RoleResponse>>;
+    /**
+     *
+     * @summary Delete a permission from an existing role
+     * @param {number} id The ID of the role
+     * @param {number} entity The entity of the permission
+     * @param {number} action The action of the permission
+     * @param {number} relation The relation of the permission
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletePermission(id: number, entity: number, action: number, relation: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    /**
+     *
+     * @summary Delete an existing role
+     * @param {number} id The ID of the role which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteRole(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    /**
+     *
+     * @summary Get all existing roles
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getAllRoles(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RoleResponse>>>;
+    /**
+     *
+     * @summary Get a single existing role with its permissions
+     * @param {number} id The ID of the role that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getSingleRole(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RoleWithPermissionsResponse>>;
+    /**
+     *
+     * @summary Update an existing role
+     * @param {number} id The ID of the role which should be updated
+     * @param {UpdateRoleRequest} updateRoleRequest The role which should be updated
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateRole(id: number, updateRoleRequest: UpdateRoleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RoleResponse>>;
 };
 /**
  * RbacApi - factory interface
@@ -8394,11 +9049,64 @@ export declare const RbacApiFp: (configuration?: Configuration) => {
 export declare const RbacApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
-     * @summary Returns all existing roles
+     * @summary Add new permissions to an existing role
+     * @param {number} id The ID of the role which should get the new permissions
+     * @param {Array<CreatePermissionParams>} createPermissionParams The permissions that need to be added
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    addPermissions(id: number, createPermissionParams: Array<CreatePermissionParams>, options?: any): AxiosPromise<Array<PermissionResponse>>;
+    /**
+     *
+     * @summary Create a new role
+     * @param {UpdateRoleRequest} updateRoleRequest The role which should be created
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createRole(updateRoleRequest: UpdateRoleRequest, options?: any): AxiosPromise<RoleResponse>;
+    /**
+     *
+     * @summary Delete a permission from an existing role
+     * @param {number} id The ID of the role
+     * @param {number} entity The entity of the permission
+     * @param {number} action The action of the permission
+     * @param {number} relation The relation of the permission
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletePermission(id: number, entity: number, action: number, relation: number, options?: any): AxiosPromise<string>;
+    /**
+     *
+     * @summary Delete an existing role
+     * @param {number} id The ID of the role which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteRole(id: number, options?: any): AxiosPromise<string>;
+    /**
+     *
+     * @summary Get all existing roles
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getAllRoles(options?: any): AxiosPromise<Array<RoleResponse>>;
+    /**
+     *
+     * @summary Get a single existing role with its permissions
+     * @param {number} id The ID of the role that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getSingleRole(id: number, options?: any): AxiosPromise<RoleWithPermissionsResponse>;
+    /**
+     *
+     * @summary Update an existing role
+     * @param {number} id The ID of the role which should be updated
+     * @param {UpdateRoleRequest} updateRoleRequest The role which should be updated
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateRole(id: number, updateRoleRequest: UpdateRoleRequest, options?: any): AxiosPromise<RoleResponse>;
 };
 /**
  * RbacApi - object-oriented interface
@@ -8409,12 +9117,71 @@ export declare const RbacApiFactory: (configuration?: Configuration, basePath?: 
 export declare class RbacApi extends BaseAPI {
     /**
      *
-     * @summary Returns all existing roles
+     * @summary Add new permissions to an existing role
+     * @param {number} id The ID of the role which should get the new permissions
+     * @param {Array<CreatePermissionParams>} createPermissionParams The permissions that need to be added
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    addPermissions(id: number, createPermissionParams: Array<CreatePermissionParams>, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PermissionResponse[], any>>;
+    /**
+     *
+     * @summary Create a new role
+     * @param {UpdateRoleRequest} updateRoleRequest The role which should be created
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    createRole(updateRoleRequest: UpdateRoleRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleResponse, any>>;
+    /**
+     *
+     * @summary Delete a permission from an existing role
+     * @param {number} id The ID of the role
+     * @param {number} entity The entity of the permission
+     * @param {number} action The action of the permission
+     * @param {number} relation The relation of the permission
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    deletePermission(id: number, entity: number, action: number, relation: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    /**
+     *
+     * @summary Delete an existing role
+     * @param {number} id The ID of the role which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    deleteRole(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    /**
+     *
+     * @summary Get all existing roles
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RbacApi
      */
     getAllRoles(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleResponse[], any>>;
+    /**
+     *
+     * @summary Get a single existing role with its permissions
+     * @param {number} id The ID of the role that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    getSingleRole(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleWithPermissionsResponse, any>>;
+    /**
+     *
+     * @summary Update an existing role
+     * @param {number} id The ID of the role which should be updated
+     * @param {UpdateRoleRequest} updateRoleRequest The role which should be updated
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    updateRole(id: number, updateRoleRequest: UpdateRoleRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleResponse, any>>;
 }
 /**
  * RootApi - axios parameter creator
@@ -8484,6 +9251,13 @@ export declare const StripeApiAxiosParamCreator: (configuration?: Configuration)
      * @throws {RequiredError}
      */
     deposit: (stripeRequest: StripeRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get the Stripe public key
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getStripePublicKey: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * StripeApi - functional programming interface
@@ -8498,6 +9272,13 @@ export declare const StripeApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     deposit(stripeRequest: StripeRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StripePaymentIntentResponse>>;
+    /**
+     *
+     * @summary Get the Stripe public key
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getStripePublicKey(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
 };
 /**
  * StripeApi - factory interface
@@ -8512,6 +9293,13 @@ export declare const StripeApiFactory: (configuration?: Configuration, basePath?
      * @throws {RequiredError}
      */
     deposit(stripeRequest: StripeRequest, options?: any): AxiosPromise<StripePaymentIntentResponse>;
+    /**
+     *
+     * @summary Get the Stripe public key
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getStripePublicKey(options?: any): AxiosPromise<string>;
 };
 /**
  * StripeApi - object-oriented interface
@@ -8529,6 +9317,14 @@ export declare class StripeApi extends BaseAPI {
      * @memberof StripeApi
      */
     deposit(stripeRequest: StripeRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<StripePaymentIntentResponse, any>>;
+    /**
+     *
+     * @summary Get the Stripe public key
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof StripeApi
+     */
+    getStripePublicKey(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
 }
 /**
  * TestOperationsOfTheTestControllerApi - axios parameter creator
@@ -9103,12 +9899,14 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      *
      * @summary Get all financial mutations of a user (from or to).
      * @param {number} id The id of the user to get the mutations from
+     * @param {string} [fromDate] Start date for selected transactions (inclusive)
+     * @param {string} [tillDate] End date for selected transactions (exclusive)
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUsersFinancialMutations: (id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getUsersFinancialMutations: (id: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns the user\'s Points of Sale
@@ -9343,7 +10141,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUserRoles(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RoleResponse>>>;
+    getUserRoles(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RoleWithPermissionsResponse>>>;
     /**
      *
      * @summary Returns the user\'s containers
@@ -9358,12 +10156,14 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      *
      * @summary Get all financial mutations of a user (from or to).
      * @param {number} id The id of the user to get the mutations from
+     * @param {string} [fromDate] Start date for selected transactions (inclusive)
+     * @param {string} [tillDate] End date for selected transactions (exclusive)
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUsersFinancialMutations(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedFinancialMutationResponse>>;
+    getUsersFinancialMutations(id: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedFinancialMutationResponse>>;
     /**
      *
      * @summary Returns the user\'s Points of Sale
@@ -9598,7 +10398,7 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUserRoles(id: number, options?: any): AxiosPromise<Array<RoleResponse>>;
+    getUserRoles(id: number, options?: any): AxiosPromise<Array<RoleWithPermissionsResponse>>;
     /**
      *
      * @summary Returns the user\'s containers
@@ -9613,12 +10413,14 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
      *
      * @summary Get all financial mutations of a user (from or to).
      * @param {number} id The id of the user to get the mutations from
+     * @param {string} [fromDate] Start date for selected transactions (inclusive)
+     * @param {string} [tillDate] End date for selected transactions (exclusive)
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUsersFinancialMutations(id: number, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedFinancialMutationResponse>;
+    getUsersFinancialMutations(id: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedFinancialMutationResponse>;
     /**
      *
      * @summary Returns the user\'s Points of Sale
@@ -9867,7 +10669,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUserRoles(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleResponse[], any>>;
+    getUserRoles(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleWithPermissionsResponse[], any>>;
     /**
      *
      * @summary Returns the user\'s containers
@@ -9883,13 +10685,15 @@ export declare class UsersApi extends BaseAPI {
      *
      * @summary Get all financial mutations of a user (from or to).
      * @param {number} id The id of the user to get the mutations from
+     * @param {string} [fromDate] Start date for selected transactions (inclusive)
+     * @param {string} [tillDate] End date for selected transactions (exclusive)
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUsersFinancialMutations(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedFinancialMutationResponse, any>>;
+    getUsersFinancialMutations(id: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedFinancialMutationResponse, any>>;
     /**
      *
      * @summary Returns the user\'s Points of Sale
@@ -10423,4 +11227,141 @@ export declare class VouchergroupsApi extends BaseAPI {
      * @memberof VouchergroupsApi
      */
     updateVoucherGroup(id: number, voucherGroupRequest: VoucherGroupRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VoucherGroupResponse, any>>;
+}
+/**
+ * WriteoffsApi - axios parameter creator
+ * @export
+ */
+export declare const WriteoffsApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Creates a new write-off in the system. Creating a write-off will also close and delete the user\'s account.
+     * @param {WriteOffRequest} writeOffRequest New write off
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createWriteOff: (writeOffRequest: WriteOffRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Returns all write-offs in the system.
+     * @param {number} [toId] Filter on Id of the debtor
+     * @param {number} [amount] Filter on the amount of the write-off
+     * @param {number} [take] Number of write-offs to return
+     * @param {number} [skip] Number of write-offs to skip
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getAllWriteOffs: (toId?: number, amount?: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get a single write-off
+     * @param {number} id The ID of the write-off object that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getSingleWriteOff: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+};
+/**
+ * WriteoffsApi - functional programming interface
+ * @export
+ */
+export declare const WriteoffsApiFp: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Creates a new write-off in the system. Creating a write-off will also close and delete the user\'s account.
+     * @param {WriteOffRequest} writeOffRequest New write off
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createWriteOff(writeOffRequest: WriteOffRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WriteOffResponse>>;
+    /**
+     *
+     * @summary Returns all write-offs in the system.
+     * @param {number} [toId] Filter on Id of the debtor
+     * @param {number} [amount] Filter on the amount of the write-off
+     * @param {number} [take] Number of write-offs to return
+     * @param {number} [skip] Number of write-offs to skip
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getAllWriteOffs(toId?: number, amount?: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedWriteOffResponse>>;
+    /**
+     *
+     * @summary Get a single write-off
+     * @param {number} id The ID of the write-off object that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getSingleWriteOff(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WriteOffResponse>>;
+};
+/**
+ * WriteoffsApi - factory interface
+ * @export
+ */
+export declare const WriteoffsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     *
+     * @summary Creates a new write-off in the system. Creating a write-off will also close and delete the user\'s account.
+     * @param {WriteOffRequest} writeOffRequest New write off
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createWriteOff(writeOffRequest: WriteOffRequest, options?: any): AxiosPromise<WriteOffResponse>;
+    /**
+     *
+     * @summary Returns all write-offs in the system.
+     * @param {number} [toId] Filter on Id of the debtor
+     * @param {number} [amount] Filter on the amount of the write-off
+     * @param {number} [take] Number of write-offs to return
+     * @param {number} [skip] Number of write-offs to skip
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getAllWriteOffs(toId?: number, amount?: number, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedWriteOffResponse>;
+    /**
+     *
+     * @summary Get a single write-off
+     * @param {number} id The ID of the write-off object that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getSingleWriteOff(id: number, options?: any): AxiosPromise<WriteOffResponse>;
+};
+/**
+ * WriteoffsApi - object-oriented interface
+ * @export
+ * @class WriteoffsApi
+ * @extends {BaseAPI}
+ */
+export declare class WriteoffsApi extends BaseAPI {
+    /**
+     *
+     * @summary Creates a new write-off in the system. Creating a write-off will also close and delete the user\'s account.
+     * @param {WriteOffRequest} writeOffRequest New write off
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WriteoffsApi
+     */
+    createWriteOff(writeOffRequest: WriteOffRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<WriteOffResponse, any>>;
+    /**
+     *
+     * @summary Returns all write-offs in the system.
+     * @param {number} [toId] Filter on Id of the debtor
+     * @param {number} [amount] Filter on the amount of the write-off
+     * @param {number} [take] Number of write-offs to return
+     * @param {number} [skip] Number of write-offs to skip
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WriteoffsApi
+     */
+    getAllWriteOffs(toId?: number, amount?: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedWriteOffResponse, any>>;
+    /**
+     *
+     * @summary Get a single write-off
+     * @param {number} id The ID of the write-off object that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WriteoffsApi
+     */
+    getSingleWriteOff(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<WriteOffResponse, any>>;
 }
