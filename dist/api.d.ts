@@ -3178,6 +3178,19 @@ export interface PayoutRequestStatusResponse {
 /**
  *
  * @export
+ * @interface PdfUrlResponse
+ */
+export interface PdfUrlResponse {
+    /**
+     * The pdf url
+     * @type {string}
+     * @memberof PdfUrlResponse
+     */
+    'pdf'?: string;
+}
+/**
+ *
+ * @export
  * @interface PermissionResponse
  */
 export interface PermissionResponse {
@@ -8012,7 +8025,7 @@ export declare const PayoutRequestsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getPayoutRequestPdf(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    getPayoutRequestPdf(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PdfUrlResponse>>;
     /**
      *
      * @summary Get a single payout request
@@ -8065,7 +8078,7 @@ export declare const PayoutRequestsApiFactory: (configuration?: Configuration, b
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getPayoutRequestPdf(id: number, options?: any): AxiosPromise<string>;
+    getPayoutRequestPdf(id: number, options?: any): AxiosPromise<PdfUrlResponse>;
     /**
      *
      * @summary Get a single payout request
@@ -8123,7 +8136,7 @@ export declare class PayoutRequestsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PayoutRequestsApi
      */
-    getPayoutRequestPdf(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    getPayoutRequestPdf(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PdfUrlResponse, any>>;
     /**
      *
      * @summary Get a single payout request
