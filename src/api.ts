@@ -3205,6 +3205,19 @@ export interface PayoutRequestStatusResponse {
 /**
  * 
  * @export
+ * @interface PdfUrlResponse
+ */
+export interface PdfUrlResponse {
+    /**
+     * The pdf url
+     * @type {string}
+     * @memberof PdfUrlResponse
+     */
+    'pdf'?: string;
+}
+/**
+ * 
+ * @export
  * @interface PermissionResponse
  */
 export interface PermissionResponse {
@@ -11161,7 +11174,7 @@ export const PayoutRequestsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getPayoutRequestPdf(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+        async getPayoutRequestPdf(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PdfUrlResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getPayoutRequestPdf(id, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['PayoutRequestsApi.getPayoutRequestPdf']?.[index]?.url;
@@ -11237,7 +11250,7 @@ export const PayoutRequestsApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPayoutRequestPdf(id: number, options?: any): AxiosPromise<string> {
+        getPayoutRequestPdf(id: number, options?: any): AxiosPromise<PdfUrlResponse> {
             return localVarFp.getPayoutRequestPdf(id, options).then((request) => request(axios, basePath));
         },
         /**
