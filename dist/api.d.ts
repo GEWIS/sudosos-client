@@ -764,8 +764,21 @@ export interface BasePayoutRequestResponse {
      * @type {string}
      * @memberof BasePayoutRequestResponse
      */
-    'status'?: string;
+    'status'?: BasePayoutRequestResponseStatusEnum;
+    /**
+     * The PDF of the payout request
+     * @type {string}
+     * @memberof BasePayoutRequestResponse
+     */
+    'pdf'?: string;
 }
+export declare const BasePayoutRequestResponseStatusEnum: {
+    readonly Created: "CREATED";
+    readonly Approved: "APPROVED";
+    readonly Denied: "DENIED";
+    readonly Cancelled: "CANCELLED";
+};
+export type BasePayoutRequestResponseStatusEnum = typeof BasePayoutRequestResponseStatusEnum[keyof typeof BasePayoutRequestResponseStatusEnum];
 /**
  *
  * @export
@@ -1070,55 +1083,6 @@ export interface BaseWriteOffResponse {
      *
      * @type {DineroObjectResponse}
      * @memberof BaseWriteOffResponse
-     */
-    'amount': DineroObjectResponse;
-}
-/**
- *
- * @export
- * @interface BoilerPayoutRequestResponse
- */
-export interface BoilerPayoutRequestResponse {
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof BoilerPayoutRequestResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof BoilerPayoutRequestResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof BoilerPayoutRequestResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof BoilerPayoutRequestResponse
-     */
-    'version'?: number;
-    /**
-     *
-     * @type {BaseUserResponse}
-     * @memberof BoilerPayoutRequestResponse
-     */
-    'requestedBy': BaseUserResponse;
-    /**
-     *
-     * @type {BaseUserResponse}
-     * @memberof BoilerPayoutRequestResponse
-     */
-    'approvedBy'?: BaseUserResponse;
-    /**
-     *
-     * @type {DineroObjectResponse}
-     * @memberof BoilerPayoutRequestResponse
      */
     'amount': DineroObjectResponse;
 }
@@ -3117,11 +3081,23 @@ export interface PayoutRequestResponse {
      */
     'amount': DineroObjectResponse;
     /**
+     * The current status of the payout request
+     * @type {string}
+     * @memberof PayoutRequestResponse
+     */
+    'status'?: PayoutRequestResponseStatusEnum;
+    /**
+     * The PDF of the payout request
+     * @type {string}
+     * @memberof PayoutRequestResponse
+     */
+    'pdf'?: string;
+    /**
      * Statuses of this payout response over time
      * @type {Array<PayoutRequestStatusResponse>}
      * @memberof PayoutRequestResponse
      */
-    'status': Array<PayoutRequestStatusResponse>;
+    'statuses': Array<PayoutRequestStatusResponse>;
     /**
      * Bank account number
      * @type {string}
@@ -3135,6 +3111,13 @@ export interface PayoutRequestResponse {
      */
     'bankAccountName': string;
 }
+export declare const PayoutRequestResponseStatusEnum: {
+    readonly Created: "CREATED";
+    readonly Approved: "APPROVED";
+    readonly Denied: "DENIED";
+    readonly Cancelled: "CANCELLED";
+};
+export type PayoutRequestResponseStatusEnum = typeof PayoutRequestResponseStatusEnum[keyof typeof PayoutRequestResponseStatusEnum];
 /**
  *
  * @export
@@ -3191,6 +3174,19 @@ export interface PayoutRequestStatusResponse {
      * @memberof PayoutRequestStatusResponse
      */
     'state': string;
+}
+/**
+ *
+ * @export
+ * @interface PdfUrlResponse
+ */
+export interface PdfUrlResponse {
+    /**
+     * The pdf url
+     * @type {string}
+     * @memberof PdfUrlResponse
+     */
+    'pdf'?: string;
 }
 /**
  *
@@ -8029,7 +8025,7 @@ export declare const PayoutRequestsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getPayoutRequestPdf(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    getPayoutRequestPdf(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PdfUrlResponse>>;
     /**
      *
      * @summary Get a single payout request
@@ -8082,7 +8078,7 @@ export declare const PayoutRequestsApiFactory: (configuration?: Configuration, b
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getPayoutRequestPdf(id: number, options?: any): AxiosPromise<string>;
+    getPayoutRequestPdf(id: number, options?: any): AxiosPromise<PdfUrlResponse>;
     /**
      *
      * @summary Get a single payout request
@@ -8140,7 +8136,7 @@ export declare class PayoutRequestsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PayoutRequestsApi
      */
-    getPayoutRequestPdf(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    getPayoutRequestPdf(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PdfUrlResponse, any>>;
     /**
      *
      * @summary Get a single payout request
