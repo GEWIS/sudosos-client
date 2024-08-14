@@ -3732,10 +3732,10 @@ export interface StripeDepositResponse {
     'stripeId': string;
     /**
      * Current status of the deposit
-     * @type {Array<StripeDepositStatusResponse>}
+     * @type {Array<StripePaymentIntentStatusResponse>}
      * @memberof StripeDepositResponse
      */
-    'depositStatus': Array<StripeDepositStatusResponse>;
+    'depositStatus': Array<StripePaymentIntentStatusResponse>;
     /**
      *
      * @type {DineroObjectResponse}
@@ -3748,43 +3748,6 @@ export interface StripeDepositResponse {
      * @memberof StripeDepositResponse
      */
     'to': BaseUserResponse;
-}
-/**
- *
- * @export
- * @interface StripeDepositStatusResponse
- */
-export interface StripeDepositStatusResponse {
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof StripeDepositStatusResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof StripeDepositStatusResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof StripeDepositStatusResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof StripeDepositStatusResponse
-     */
-    'version'?: number;
-    /**
-     * State of the Stripe deposit. It can be 1 (\'CREATED\'), 2 (\'PROCESSING\'), 3 (\'SUCCEEDED\'), or 4 (\'FAILED\')
-     * @type {number}
-     * @memberof StripeDepositStatusResponse
-     */
-    'state': number;
 }
 /**
  *
@@ -3828,6 +3791,43 @@ export interface StripePaymentIntentResponse {
      * @memberof StripePaymentIntentResponse
      */
     'clientSecret': string;
+}
+/**
+ *
+ * @export
+ * @interface StripePaymentIntentStatusResponse
+ */
+export interface StripePaymentIntentStatusResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof StripePaymentIntentStatusResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof StripePaymentIntentStatusResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof StripePaymentIntentStatusResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof StripePaymentIntentStatusResponse
+     */
+    'version'?: number;
+    /**
+     * State of the Stripe deposit. It can be 1 (\'CREATED\'), 2 (\'PROCESSING\'), 3 (\'SUCCEEDED\'), or 4 (\'FAILED\')
+     * @type {number}
+     * @memberof StripePaymentIntentStatusResponse
+     */
+    'state': number;
 }
 /**
  *
