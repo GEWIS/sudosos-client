@@ -6389,12 +6389,14 @@ const ProductCategoriesApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Returns all existing productcategories
+         * @param {boolean} [onlyRoot] Whether to return only root categories
+         * @param {boolean} [onlyLeaf] Whether to return only leaf categories
          * @param {number} [take] How many product categories the endpoint should return
          * @param {number} [skip] How many product categories should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllProductCategories: (take_1, skip_1, ...args_1) => __awaiter(this, [take_1, skip_1, ...args_1], void 0, function* (take, skip, options = {}) {
+        getAllProductCategories: (onlyRoot_1, onlyLeaf_1, take_1, skip_1, ...args_1) => __awaiter(this, [onlyRoot_1, onlyLeaf_1, take_1, skip_1, ...args_1], void 0, function* (onlyRoot, onlyLeaf, take, skip, options = {}) {
             const localVarPath = `/productcategories`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -6408,6 +6410,12 @@ const ProductCategoriesApiAxiosParamCreator = function (configuration) {
             // authentication JWT required
             // http bearer authentication required
             yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            if (onlyRoot !== undefined) {
+                localVarQueryParameter['onlyRoot'] = onlyRoot;
+            }
+            if (onlyLeaf !== undefined) {
+                localVarQueryParameter['onlyLeaf'] = onlyLeaf;
+            }
             if (take !== undefined) {
                 localVarQueryParameter['take'] = take;
             }
@@ -6520,15 +6528,17 @@ const ProductCategoriesApiFp = function (configuration) {
         /**
          *
          * @summary Returns all existing productcategories
+         * @param {boolean} [onlyRoot] Whether to return only root categories
+         * @param {boolean} [onlyLeaf] Whether to return only leaf categories
          * @param {number} [take] How many product categories the endpoint should return
          * @param {number} [skip] How many product categories should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllProductCategories(take, skip, options) {
+        getAllProductCategories(onlyRoot, onlyLeaf, take, skip, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllProductCategories(take, skip, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllProductCategories(onlyRoot, onlyLeaf, take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['ProductCategoriesApi.getAllProductCategories']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
@@ -6590,13 +6600,15 @@ const ProductCategoriesApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Returns all existing productcategories
+         * @param {boolean} [onlyRoot] Whether to return only root categories
+         * @param {boolean} [onlyLeaf] Whether to return only leaf categories
          * @param {number} [take] How many product categories the endpoint should return
          * @param {number} [skip] How many product categories should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllProductCategories(take, skip, options) {
-            return localVarFp.getAllProductCategories(take, skip, options).then((request) => request(axios, basePath));
+        getAllProductCategories(onlyRoot, onlyLeaf, take, skip, options) {
+            return localVarFp.getAllProductCategories(onlyRoot, onlyLeaf, take, skip, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -6643,14 +6655,16 @@ class ProductCategoriesApi extends base_1.BaseAPI {
     /**
      *
      * @summary Returns all existing productcategories
+     * @param {boolean} [onlyRoot] Whether to return only root categories
+     * @param {boolean} [onlyLeaf] Whether to return only leaf categories
      * @param {number} [take] How many product categories the endpoint should return
      * @param {number} [skip] How many product categories should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProductCategoriesApi
      */
-    getAllProductCategories(take, skip, options) {
-        return (0, exports.ProductCategoriesApiFp)(this.configuration).getAllProductCategories(take, skip, options).then((request) => request(this.axios, this.basePath));
+    getAllProductCategories(onlyRoot, onlyLeaf, take, skip, options) {
+        return (0, exports.ProductCategoriesApiFp)(this.configuration).getAllProductCategories(onlyRoot, onlyLeaf, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
