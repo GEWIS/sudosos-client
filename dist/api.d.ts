@@ -3371,7 +3371,13 @@ export interface ProductCategoryRequest {
      * @type {string}
      * @memberof ProductCategoryRequest
      */
-    'name'?: string;
+    'name': string;
+    /**
+     * ID of the parent product category
+     * @type {number}
+     * @memberof ProductCategoryRequest
+     */
+    'parentCategoryId'?: number;
 }
 /**
  *
@@ -3409,6 +3415,12 @@ export interface ProductCategoryResponse {
      * @memberof ProductCategoryResponse
      */
     'name': string;
+    /**
+     *
+     * @type {ProductCategoryResponse}
+     * @memberof ProductCategoryResponse
+     */
+    'parent'?: ProductCategoryResponse;
 }
 /**
  *
@@ -8520,12 +8532,14 @@ export declare const ProductCategoriesApiAxiosParamCreator: (configuration?: Con
     /**
      *
      * @summary Returns all existing productcategories
+     * @param {boolean} [onlyRoot] Whether to return only root categories
+     * @param {boolean} [onlyLeaf] Whether to return only leaf categories
      * @param {number} [take] How many product categories the endpoint should return
      * @param {number} [skip] How many product categories should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllProductCategories: (take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getAllProductCategories: (onlyRoot?: boolean, onlyLeaf?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns the requested productcategory
@@ -8560,12 +8574,14 @@ export declare const ProductCategoriesApiFp: (configuration?: Configuration) => 
     /**
      *
      * @summary Returns all existing productcategories
+     * @param {boolean} [onlyRoot] Whether to return only root categories
+     * @param {boolean} [onlyLeaf] Whether to return only leaf categories
      * @param {number} [take] How many product categories the endpoint should return
      * @param {number} [skip] How many product categories should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllProductCategories(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductCategoryResponse>>;
+    getAllProductCategories(onlyRoot?: boolean, onlyLeaf?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductCategoryResponse>>;
     /**
      *
      * @summary Returns the requested productcategory
@@ -8600,12 +8616,14 @@ export declare const ProductCategoriesApiFactory: (configuration?: Configuration
     /**
      *
      * @summary Returns all existing productcategories
+     * @param {boolean} [onlyRoot] Whether to return only root categories
+     * @param {boolean} [onlyLeaf] Whether to return only leaf categories
      * @param {number} [take] How many product categories the endpoint should return
      * @param {number} [skip] How many product categories should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllProductCategories(take?: number, skip?: number, options?: any): AxiosPromise<PaginatedProductCategoryResponse>;
+    getAllProductCategories(onlyRoot?: boolean, onlyLeaf?: boolean, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedProductCategoryResponse>;
     /**
      *
      * @summary Returns the requested productcategory
@@ -8643,13 +8661,15 @@ export declare class ProductCategoriesApi extends BaseAPI {
     /**
      *
      * @summary Returns all existing productcategories
+     * @param {boolean} [onlyRoot] Whether to return only root categories
+     * @param {boolean} [onlyLeaf] Whether to return only leaf categories
      * @param {number} [take] How many product categories the endpoint should return
      * @param {number} [skip] How many product categories should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProductCategoriesApi
      */
-    getAllProductCategories(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedProductCategoryResponse, any>>;
+    getAllProductCategories(onlyRoot?: boolean, onlyLeaf?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedProductCategoryResponse, any>>;
     /**
      *
      * @summary Returns the requested productcategory

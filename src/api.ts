@@ -3398,7 +3398,13 @@ export interface ProductCategoryRequest {
      * @type {string}
      * @memberof ProductCategoryRequest
      */
-    'name'?: string;
+    'name': string;
+    /**
+     * ID of the parent product category
+     * @type {number}
+     * @memberof ProductCategoryRequest
+     */
+    'parentCategoryId'?: number;
 }
 /**
  * 
@@ -3436,6 +3442,12 @@ export interface ProductCategoryResponse {
      * @memberof ProductCategoryResponse
      */
     'name': string;
+    /**
+     * 
+     * @type {ProductCategoryResponse}
+     * @memberof ProductCategoryResponse
+     */
+    'parent'?: ProductCategoryResponse;
 }
 /**
  * 
@@ -12151,12 +12163,14 @@ export const ProductCategoriesApiAxiosParamCreator = function (configuration?: C
         /**
          * 
          * @summary Returns all existing productcategories
+         * @param {boolean} [onlyRoot] Whether to return only root categories
+         * @param {boolean} [onlyLeaf] Whether to return only leaf categories
          * @param {number} [take] How many product categories the endpoint should return
          * @param {number} [skip] How many product categories should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllProductCategories: async (take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllProductCategories: async (onlyRoot?: boolean, onlyLeaf?: boolean, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/productcategories`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -12172,6 +12186,14 @@ export const ProductCategoriesApiAxiosParamCreator = function (configuration?: C
             // authentication JWT required
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (onlyRoot !== undefined) {
+                localVarQueryParameter['onlyRoot'] = onlyRoot;
+            }
+
+            if (onlyLeaf !== undefined) {
+                localVarQueryParameter['onlyLeaf'] = onlyLeaf;
+            }
 
             if (take !== undefined) {
                 localVarQueryParameter['take'] = take;
@@ -12300,13 +12322,15 @@ export const ProductCategoriesApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Returns all existing productcategories
+         * @param {boolean} [onlyRoot] Whether to return only root categories
+         * @param {boolean} [onlyLeaf] Whether to return only leaf categories
          * @param {number} [take] How many product categories the endpoint should return
          * @param {number} [skip] How many product categories should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllProductCategories(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductCategoryResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllProductCategories(take, skip, options);
+        async getAllProductCategories(onlyRoot?: boolean, onlyLeaf?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductCategoryResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllProductCategories(onlyRoot, onlyLeaf, take, skip, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['ProductCategoriesApi.getAllProductCategories']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
@@ -12361,13 +12385,15 @@ export const ProductCategoriesApiFactory = function (configuration?: Configurati
         /**
          * 
          * @summary Returns all existing productcategories
+         * @param {boolean} [onlyRoot] Whether to return only root categories
+         * @param {boolean} [onlyLeaf] Whether to return only leaf categories
          * @param {number} [take] How many product categories the endpoint should return
          * @param {number} [skip] How many product categories should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllProductCategories(take?: number, skip?: number, options?: any): AxiosPromise<PaginatedProductCategoryResponse> {
-            return localVarFp.getAllProductCategories(take, skip, options).then((request) => request(axios, basePath));
+        getAllProductCategories(onlyRoot?: boolean, onlyLeaf?: boolean, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedProductCategoryResponse> {
+            return localVarFp.getAllProductCategories(onlyRoot, onlyLeaf, take, skip, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -12415,14 +12441,16 @@ export class ProductCategoriesApi extends BaseAPI {
     /**
      * 
      * @summary Returns all existing productcategories
+     * @param {boolean} [onlyRoot] Whether to return only root categories
+     * @param {boolean} [onlyLeaf] Whether to return only leaf categories
      * @param {number} [take] How many product categories the endpoint should return
      * @param {number} [skip] How many product categories should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProductCategoriesApi
      */
-    public getAllProductCategories(take?: number, skip?: number, options?: RawAxiosRequestConfig) {
-        return ProductCategoriesApiFp(this.configuration).getAllProductCategories(take, skip, options).then((request) => request(this.axios, this.basePath));
+    public getAllProductCategories(onlyRoot?: boolean, onlyLeaf?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
+        return ProductCategoriesApiFp(this.configuration).getAllProductCategories(onlyRoot, onlyLeaf, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
