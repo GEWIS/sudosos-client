@@ -22,14 +22,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProductCategoriesApiFactory = exports.ProductCategoriesApiFp = exports.ProductCategoriesApiAxiosParamCreator = exports.PointofsaleApi = exports.PointofsaleApiFactory = exports.PointofsaleApiFp = exports.PointofsaleApiAxiosParamCreator = exports.PayoutRequestsApi = exports.PayoutRequestsApiFactory = exports.PayoutRequestsApiFp = exports.PayoutRequestsApiAxiosParamCreator = exports.GetAllInvoicesCurrentStateEnum = exports.InvoicesApi = exports.InvoicesApiFactory = exports.InvoicesApiFp = exports.InvoicesApiAxiosParamCreator = exports.FilesApi = exports.FilesApiFactory = exports.FilesApiFp = exports.FilesApiAxiosParamCreator = exports.EventsApi = exports.EventsApiFactory = exports.EventsApiFp = exports.EventsApiAxiosParamCreator = exports.DebtorsApi = exports.DebtorsApiFactory = exports.DebtorsApiFp = exports.DebtorsApiAxiosParamCreator = exports.ContainersApi = exports.ContainersApiFactory = exports.ContainersApiFp = exports.ContainersApiAxiosParamCreator = exports.BannersApi = exports.BannersApiFactory = exports.BannersApiFp = exports.BannersApiAxiosParamCreator = exports.GetAllBalanceOrderDirectionEnum = exports.GetAllBalanceUserTypesEnum = exports.BalanceApi = exports.BalanceApiFactory = exports.BalanceApiFp = exports.BalanceApiAxiosParamCreator = exports.AuthenticateApi = exports.AuthenticateApiFactory = exports.AuthenticateApiFp = exports.AuthenticateApiAxiosParamCreator = exports.UpdateInvoiceRequestStateEnum = exports.PayoutRequestStatusRequestStateEnum = exports.InvoiceStatusResponseStateEnum = exports.FinancialMutationResponseTypeEnum = void 0;
-exports.WriteoffsApi = exports.WriteoffsApiFactory = exports.WriteoffsApiFp = exports.WriteoffsApiAxiosParamCreator = exports.VouchergroupsApi = exports.VouchergroupsApiFactory = exports.VouchergroupsApiFp = exports.VouchergroupsApiAxiosParamCreator = exports.VatGroupsApi = exports.VatGroupsApiFactory = exports.VatGroupsApiFp = exports.VatGroupsApiAxiosParamCreator = exports.GetAllUsersTypeEnum = exports.UsersApi = exports.UsersApiFactory = exports.UsersApiFp = exports.UsersApiAxiosParamCreator = exports.TransfersApi = exports.TransfersApiFactory = exports.TransfersApiFp = exports.TransfersApiAxiosParamCreator = exports.TransactionsApi = exports.TransactionsApiFactory = exports.TransactionsApiFp = exports.TransactionsApiAxiosParamCreator = exports.TestOperationsOfTheTestControllerApi = exports.TestOperationsOfTheTestControllerApiFactory = exports.TestOperationsOfTheTestControllerApiFp = exports.TestOperationsOfTheTestControllerApiAxiosParamCreator = exports.StripeApi = exports.StripeApiFactory = exports.StripeApiFp = exports.StripeApiAxiosParamCreator = exports.RootApi = exports.RootApiFactory = exports.RootApiFp = exports.RootApiAxiosParamCreator = exports.RbacApi = exports.RbacApiFactory = exports.RbacApiFp = exports.RbacApiAxiosParamCreator = exports.ProductsApi = exports.ProductsApiFactory = exports.ProductsApiFp = exports.ProductsApiAxiosParamCreator = exports.ProductCategoriesApi = void 0;
+exports.ProductCategoriesApiAxiosParamCreator = exports.PointofsaleApi = exports.PointofsaleApiFactory = exports.PointofsaleApiFp = exports.PointofsaleApiAxiosParamCreator = exports.PayoutRequestsApi = exports.PayoutRequestsApiFactory = exports.PayoutRequestsApiFp = exports.PayoutRequestsApiAxiosParamCreator = exports.GetAllInvoicesCurrentStateEnum = exports.InvoicesApi = exports.InvoicesApiFactory = exports.InvoicesApiFp = exports.InvoicesApiAxiosParamCreator = exports.FilesApi = exports.FilesApiFactory = exports.FilesApiFp = exports.FilesApiAxiosParamCreator = exports.EventsApi = exports.EventsApiFactory = exports.EventsApiFp = exports.EventsApiAxiosParamCreator = exports.DebtorsApi = exports.DebtorsApiFactory = exports.DebtorsApiFp = exports.DebtorsApiAxiosParamCreator = exports.ContainersApi = exports.ContainersApiFactory = exports.ContainersApiFp = exports.ContainersApiAxiosParamCreator = exports.BannersApi = exports.BannersApiFactory = exports.BannersApiFp = exports.BannersApiAxiosParamCreator = exports.GetAllBalanceOrderDirectionEnum = exports.GetAllBalanceUserTypesEnum = exports.BalanceApi = exports.BalanceApiFactory = exports.BalanceApiFp = exports.BalanceApiAxiosParamCreator = exports.AuthenticateApi = exports.AuthenticateApiFactory = exports.AuthenticateApiFp = exports.AuthenticateApiAxiosParamCreator = exports.UpdateInvoiceRequestStateEnum = exports.PayoutRequestStatusRequestStateEnum = exports.PayoutRequestResponseStatusEnum = exports.InvoiceStatusResponseStateEnum = exports.FinancialMutationResponseTypeEnum = exports.BasePayoutRequestResponseStatusEnum = void 0;
+exports.WriteoffsApi = exports.WriteoffsApiFactory = exports.WriteoffsApiFp = exports.WriteoffsApiAxiosParamCreator = exports.VouchergroupsApi = exports.VouchergroupsApiFactory = exports.VouchergroupsApiFp = exports.VouchergroupsApiAxiosParamCreator = exports.VatGroupsApi = exports.VatGroupsApiFactory = exports.VatGroupsApiFp = exports.VatGroupsApiAxiosParamCreator = exports.GetAllUsersTypeEnum = exports.UsersApi = exports.UsersApiFactory = exports.UsersApiFp = exports.UsersApiAxiosParamCreator = exports.TransfersApi = exports.TransfersApiFactory = exports.TransfersApiFp = exports.TransfersApiAxiosParamCreator = exports.TransactionsApi = exports.TransactionsApiFactory = exports.TransactionsApiFp = exports.TransactionsApiAxiosParamCreator = exports.TestOperationsOfTheTestControllerApi = exports.TestOperationsOfTheTestControllerApiFactory = exports.TestOperationsOfTheTestControllerApiFp = exports.TestOperationsOfTheTestControllerApiAxiosParamCreator = exports.StripeApi = exports.StripeApiFactory = exports.StripeApiFp = exports.StripeApiAxiosParamCreator = exports.RootApi = exports.RootApiFactory = exports.RootApiFp = exports.RootApiAxiosParamCreator = exports.RbacApi = exports.RbacApiFactory = exports.RbacApiFp = exports.RbacApiAxiosParamCreator = exports.ProductsApi = exports.ProductsApiFactory = exports.ProductsApiFp = exports.ProductsApiAxiosParamCreator = exports.ProductCategoriesApi = exports.ProductCategoriesApiFactory = exports.ProductCategoriesApiFp = void 0;
 const axios_1 = require("axios");
 // Some imports not used depending on template conditions
 // @ts-ignore
 const common_1 = require("./common");
 // @ts-ignore
 const base_1 = require("./base");
+exports.BasePayoutRequestResponseStatusEnum = {
+    Created: 'CREATED',
+    Approved: 'APPROVED',
+    Denied: 'DENIED',
+    Cancelled: 'CANCELLED'
+};
 exports.FinancialMutationResponseTypeEnum = {
     Transfer: 'transfer',
     Transaction: 'transaction'
@@ -39,6 +45,12 @@ exports.InvoiceStatusResponseStateEnum = {
     Sent: 'SENT',
     Paid: 'PAID',
     Deleted: 'DELETED'
+};
+exports.PayoutRequestResponseStatusEnum = {
+    Created: 'CREATED',
+    Approved: 'APPROVED',
+    Denied: 'DENIED',
+    Cancelled: 'CANCELLED'
 };
 exports.PayoutRequestStatusRequestStateEnum = {
     Created: 'CREATED',
@@ -6377,12 +6389,14 @@ const ProductCategoriesApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Returns all existing productcategories
+         * @param {boolean} [onlyRoot] Whether to return only root categories
+         * @param {boolean} [onlyLeaf] Whether to return only leaf categories
          * @param {number} [take] How many product categories the endpoint should return
          * @param {number} [skip] How many product categories should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllProductCategories: (take_1, skip_1, ...args_1) => __awaiter(this, [take_1, skip_1, ...args_1], void 0, function* (take, skip, options = {}) {
+        getAllProductCategories: (onlyRoot_1, onlyLeaf_1, take_1, skip_1, ...args_1) => __awaiter(this, [onlyRoot_1, onlyLeaf_1, take_1, skip_1, ...args_1], void 0, function* (onlyRoot, onlyLeaf, take, skip, options = {}) {
             const localVarPath = `/productcategories`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -6396,6 +6410,12 @@ const ProductCategoriesApiAxiosParamCreator = function (configuration) {
             // authentication JWT required
             // http bearer authentication required
             yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            if (onlyRoot !== undefined) {
+                localVarQueryParameter['onlyRoot'] = onlyRoot;
+            }
+            if (onlyLeaf !== undefined) {
+                localVarQueryParameter['onlyLeaf'] = onlyLeaf;
+            }
             if (take !== undefined) {
                 localVarQueryParameter['take'] = take;
             }
@@ -6508,15 +6528,17 @@ const ProductCategoriesApiFp = function (configuration) {
         /**
          *
          * @summary Returns all existing productcategories
+         * @param {boolean} [onlyRoot] Whether to return only root categories
+         * @param {boolean} [onlyLeaf] Whether to return only leaf categories
          * @param {number} [take] How many product categories the endpoint should return
          * @param {number} [skip] How many product categories should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllProductCategories(take, skip, options) {
+        getAllProductCategories(onlyRoot, onlyLeaf, take, skip, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllProductCategories(take, skip, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllProductCategories(onlyRoot, onlyLeaf, take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['ProductCategoriesApi.getAllProductCategories']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
@@ -6578,13 +6600,15 @@ const ProductCategoriesApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Returns all existing productcategories
+         * @param {boolean} [onlyRoot] Whether to return only root categories
+         * @param {boolean} [onlyLeaf] Whether to return only leaf categories
          * @param {number} [take] How many product categories the endpoint should return
          * @param {number} [skip] How many product categories should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllProductCategories(take, skip, options) {
-            return localVarFp.getAllProductCategories(take, skip, options).then((request) => request(axios, basePath));
+        getAllProductCategories(onlyRoot, onlyLeaf, take, skip, options) {
+            return localVarFp.getAllProductCategories(onlyRoot, onlyLeaf, take, skip, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -6631,14 +6655,16 @@ class ProductCategoriesApi extends base_1.BaseAPI {
     /**
      *
      * @summary Returns all existing productcategories
+     * @param {boolean} [onlyRoot] Whether to return only root categories
+     * @param {boolean} [onlyLeaf] Whether to return only leaf categories
      * @param {number} [take] How many product categories the endpoint should return
      * @param {number} [skip] How many product categories should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProductCategoriesApi
      */
-    getAllProductCategories(take, skip, options) {
-        return (0, exports.ProductCategoriesApiFp)(this.configuration).getAllProductCategories(take, skip, options).then((request) => request(this.axios, this.basePath));
+    getAllProductCategories(onlyRoot, onlyLeaf, take, skip, options) {
+        return (0, exports.ProductCategoriesApiFp)(this.configuration).getAllProductCategories(onlyRoot, onlyLeaf, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
