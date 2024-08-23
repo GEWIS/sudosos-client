@@ -764,8 +764,21 @@ export interface BasePayoutRequestResponse {
      * @type {string}
      * @memberof BasePayoutRequestResponse
      */
-    'status'?: string;
+    'status'?: BasePayoutRequestResponseStatusEnum;
+    /**
+     * The PDF of the payout request
+     * @type {string}
+     * @memberof BasePayoutRequestResponse
+     */
+    'pdf'?: string;
 }
+export declare const BasePayoutRequestResponseStatusEnum: {
+    readonly Created: "CREATED";
+    readonly Approved: "APPROVED";
+    readonly Denied: "DENIED";
+    readonly Cancelled: "CANCELLED";
+};
+export type BasePayoutRequestResponseStatusEnum = typeof BasePayoutRequestResponseStatusEnum[keyof typeof BasePayoutRequestResponseStatusEnum];
 /**
  *
  * @export
@@ -1070,55 +1083,6 @@ export interface BaseWriteOffResponse {
      *
      * @type {DineroObjectResponse}
      * @memberof BaseWriteOffResponse
-     */
-    'amount': DineroObjectResponse;
-}
-/**
- *
- * @export
- * @interface BoilerPayoutRequestResponse
- */
-export interface BoilerPayoutRequestResponse {
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof BoilerPayoutRequestResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof BoilerPayoutRequestResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof BoilerPayoutRequestResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof BoilerPayoutRequestResponse
-     */
-    'version'?: number;
-    /**
-     *
-     * @type {BaseUserResponse}
-     * @memberof BoilerPayoutRequestResponse
-     */
-    'requestedBy': BaseUserResponse;
-    /**
-     *
-     * @type {BaseUserResponse}
-     * @memberof BoilerPayoutRequestResponse
-     */
-    'approvedBy'?: BaseUserResponse;
-    /**
-     *
-     * @type {DineroObjectResponse}
-     * @memberof BoilerPayoutRequestResponse
      */
     'amount': DineroObjectResponse;
 }
@@ -3117,11 +3081,23 @@ export interface PayoutRequestResponse {
      */
     'amount': DineroObjectResponse;
     /**
+     * The current status of the payout request
+     * @type {string}
+     * @memberof PayoutRequestResponse
+     */
+    'status'?: PayoutRequestResponseStatusEnum;
+    /**
+     * The PDF of the payout request
+     * @type {string}
+     * @memberof PayoutRequestResponse
+     */
+    'pdf'?: string;
+    /**
      * Statuses of this payout response over time
      * @type {Array<PayoutRequestStatusResponse>}
      * @memberof PayoutRequestResponse
      */
-    'status': Array<PayoutRequestStatusResponse>;
+    'statuses': Array<PayoutRequestStatusResponse>;
     /**
      * Bank account number
      * @type {string}
@@ -3135,6 +3111,13 @@ export interface PayoutRequestResponse {
      */
     'bankAccountName': string;
 }
+export declare const PayoutRequestResponseStatusEnum: {
+    readonly Created: "CREATED";
+    readonly Approved: "APPROVED";
+    readonly Denied: "DENIED";
+    readonly Cancelled: "CANCELLED";
+};
+export type PayoutRequestResponseStatusEnum = typeof PayoutRequestResponseStatusEnum[keyof typeof PayoutRequestResponseStatusEnum];
 /**
  *
  * @export
@@ -3191,6 +3174,19 @@ export interface PayoutRequestStatusResponse {
      * @memberof PayoutRequestStatusResponse
      */
     'state': string;
+}
+/**
+ *
+ * @export
+ * @interface PdfUrlResponse
+ */
+export interface PdfUrlResponse {
+    /**
+     * The pdf url
+     * @type {string}
+     * @memberof PdfUrlResponse
+     */
+    'pdf'?: string;
 }
 /**
  *
@@ -3375,7 +3371,13 @@ export interface ProductCategoryRequest {
      * @type {string}
      * @memberof ProductCategoryRequest
      */
-    'name'?: string;
+    'name': string;
+    /**
+     * ID of the parent product category
+     * @type {number}
+     * @memberof ProductCategoryRequest
+     */
+    'parentCategoryId'?: number;
 }
 /**
  *
@@ -3413,6 +3415,12 @@ export interface ProductCategoryResponse {
      * @memberof ProductCategoryResponse
      */
     'name': string;
+    /**
+     *
+     * @type {ProductCategoryResponse}
+     * @memberof ProductCategoryResponse
+     */
+    'parent'?: ProductCategoryResponse;
 }
 /**
  *
@@ -3736,10 +3744,10 @@ export interface StripeDepositResponse {
     'stripeId': string;
     /**
      * Current status of the deposit
-     * @type {Array<StripeDepositStatusResponse>}
+     * @type {Array<StripePaymentIntentStatusResponse>}
      * @memberof StripeDepositResponse
      */
-    'depositStatus': Array<StripeDepositStatusResponse>;
+    'depositStatus': Array<StripePaymentIntentStatusResponse>;
     /**
      *
      * @type {DineroObjectResponse}
@@ -3752,43 +3760,6 @@ export interface StripeDepositResponse {
      * @memberof StripeDepositResponse
      */
     'to': BaseUserResponse;
-}
-/**
- *
- * @export
- * @interface StripeDepositStatusResponse
- */
-export interface StripeDepositStatusResponse {
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof StripeDepositStatusResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof StripeDepositStatusResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof StripeDepositStatusResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof StripeDepositStatusResponse
-     */
-    'version'?: number;
-    /**
-     * State of the Stripe deposit. It can be 1 (\'CREATED\'), 2 (\'PROCESSING\'), 3 (\'SUCCEEDED\'), or 4 (\'FAILED\')
-     * @type {number}
-     * @memberof StripeDepositStatusResponse
-     */
-    'state': number;
 }
 /**
  *
@@ -3832,6 +3803,43 @@ export interface StripePaymentIntentResponse {
      * @memberof StripePaymentIntentResponse
      */
     'clientSecret': string;
+}
+/**
+ *
+ * @export
+ * @interface StripePaymentIntentStatusResponse
+ */
+export interface StripePaymentIntentStatusResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof StripePaymentIntentStatusResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof StripePaymentIntentStatusResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof StripePaymentIntentStatusResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof StripePaymentIntentStatusResponse
+     */
+    'version'?: number;
+    /**
+     * State of the Stripe deposit. It can be 1 (\'CREATED\'), 2 (\'PROCESSING\'), 3 (\'SUCCEEDED\'), or 4 (\'FAILED\')
+     * @type {number}
+     * @memberof StripePaymentIntentStatusResponse
+     */
+    'state': number;
 }
 /**
  *
@@ -8029,7 +8037,7 @@ export declare const PayoutRequestsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getPayoutRequestPdf(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    getPayoutRequestPdf(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PdfUrlResponse>>;
     /**
      *
      * @summary Get a single payout request
@@ -8082,7 +8090,7 @@ export declare const PayoutRequestsApiFactory: (configuration?: Configuration, b
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getPayoutRequestPdf(id: number, options?: any): AxiosPromise<string>;
+    getPayoutRequestPdf(id: number, options?: any): AxiosPromise<PdfUrlResponse>;
     /**
      *
      * @summary Get a single payout request
@@ -8140,7 +8148,7 @@ export declare class PayoutRequestsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PayoutRequestsApi
      */
-    getPayoutRequestPdf(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    getPayoutRequestPdf(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PdfUrlResponse, any>>;
     /**
      *
      * @summary Get a single payout request
@@ -8524,12 +8532,14 @@ export declare const ProductCategoriesApiAxiosParamCreator: (configuration?: Con
     /**
      *
      * @summary Returns all existing productcategories
+     * @param {boolean} [onlyRoot] Whether to return only root categories
+     * @param {boolean} [onlyLeaf] Whether to return only leaf categories
      * @param {number} [take] How many product categories the endpoint should return
      * @param {number} [skip] How many product categories should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllProductCategories: (take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getAllProductCategories: (onlyRoot?: boolean, onlyLeaf?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns the requested productcategory
@@ -8564,12 +8574,14 @@ export declare const ProductCategoriesApiFp: (configuration?: Configuration) => 
     /**
      *
      * @summary Returns all existing productcategories
+     * @param {boolean} [onlyRoot] Whether to return only root categories
+     * @param {boolean} [onlyLeaf] Whether to return only leaf categories
      * @param {number} [take] How many product categories the endpoint should return
      * @param {number} [skip] How many product categories should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllProductCategories(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductCategoryResponse>>;
+    getAllProductCategories(onlyRoot?: boolean, onlyLeaf?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductCategoryResponse>>;
     /**
      *
      * @summary Returns the requested productcategory
@@ -8604,12 +8616,14 @@ export declare const ProductCategoriesApiFactory: (configuration?: Configuration
     /**
      *
      * @summary Returns all existing productcategories
+     * @param {boolean} [onlyRoot] Whether to return only root categories
+     * @param {boolean} [onlyLeaf] Whether to return only leaf categories
      * @param {number} [take] How many product categories the endpoint should return
      * @param {number} [skip] How many product categories should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllProductCategories(take?: number, skip?: number, options?: any): AxiosPromise<PaginatedProductCategoryResponse>;
+    getAllProductCategories(onlyRoot?: boolean, onlyLeaf?: boolean, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedProductCategoryResponse>;
     /**
      *
      * @summary Returns the requested productcategory
@@ -8647,13 +8661,15 @@ export declare class ProductCategoriesApi extends BaseAPI {
     /**
      *
      * @summary Returns all existing productcategories
+     * @param {boolean} [onlyRoot] Whether to return only root categories
+     * @param {boolean} [onlyLeaf] Whether to return only leaf categories
      * @param {number} [take] How many product categories the endpoint should return
      * @param {number} [skip] How many product categories should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProductCategoriesApi
      */
-    getAllProductCategories(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedProductCategoryResponse, any>>;
+    getAllProductCategories(onlyRoot?: boolean, onlyLeaf?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedProductCategoryResponse, any>>;
     /**
      *
      * @summary Returns the requested productcategory
