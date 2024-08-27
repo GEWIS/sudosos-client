@@ -663,6 +663,12 @@ export interface BaseInvoiceResponse {
      */
     'description': string;
     /**
+     *
+     * @type {InvoiceStatusResponse}
+     * @memberof BaseInvoiceResponse
+     */
+    'currentState': InvoiceStatusResponse;
+    /**
      * Street of the invoice.
      * @type {string}
      * @memberof BaseInvoiceResponse
@@ -694,12 +700,6 @@ export interface BaseInvoiceResponse {
     'date': string;
     /**
      *
-     * @type {InvoiceStatusResponse}
-     * @memberof BaseInvoiceResponse
-     */
-    'currentState': InvoiceStatusResponse;
-    /**
-     *
      * @type {TransferResponse}
      * @memberof BaseInvoiceResponse
      */
@@ -710,6 +710,12 @@ export interface BaseInvoiceResponse {
      * @memberof BaseInvoiceResponse
      */
     'pdf'?: string;
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof BaseInvoiceResponse
+     */
+    'totalInclVat': DineroObjectResponse;
 }
 /**
  *
@@ -1299,7 +1305,7 @@ export interface CreateInvoiceRequest {
      * @type {string}
      * @memberof CreateInvoiceRequest
      */
-    'description'?: string;
+    'description': string;
     /**
      * The reference of the invoice.
      * @type {string}
@@ -1317,19 +1323,7 @@ export interface CreateInvoiceRequest {
      * @type {Array<number>}
      * @memberof CreateInvoiceRequest
      */
-    'transactionIDs'?: Array<number>;
-    /**
-     * For creating an Invoice for all transactions from a specific date.
-     * @type {string}
-     * @memberof CreateInvoiceRequest
-     */
-    'fromDate'?: string;
-    /**
-     * If the invoice is an credit Invoice  If an invoice is a credit invoice the relevant subtransactions are defined as all the sub transactions which have `subTransaction.toId == forId`.
-     * @type {boolean}
-     * @memberof CreateInvoiceRequest
-     */
-    'isCreditInvoice': boolean;
+    'transactionIDs': Array<number>;
     /**
      * Street to use on the invoice, overwrites the users default.
      * @type {string}
@@ -2302,6 +2296,12 @@ export interface InvoiceEntryResponse {
      * @memberof InvoiceEntryResponse
      */
     'vatPercentage': number;
+    /**
+     * If the entry is a custom entry or not.
+     * @type {boolean}
+     * @memberof InvoiceEntryResponse
+     */
+    'custom': boolean;
 }
 /**
  *
@@ -2364,6 +2364,12 @@ export interface InvoiceResponse {
      */
     'description': string;
     /**
+     *
+     * @type {InvoiceStatusResponse}
+     * @memberof InvoiceResponse
+     */
+    'currentState': InvoiceStatusResponse;
+    /**
      * Street of the invoice.
      * @type {string}
      * @memberof InvoiceResponse
@@ -2395,12 +2401,6 @@ export interface InvoiceResponse {
     'date': string;
     /**
      *
-     * @type {InvoiceStatusResponse}
-     * @memberof InvoiceResponse
-     */
-    'currentState': InvoiceStatusResponse;
-    /**
-     *
      * @type {TransferResponse}
      * @memberof InvoiceResponse
      */
@@ -2411,6 +2411,12 @@ export interface InvoiceResponse {
      * @memberof InvoiceResponse
      */
     'pdf'?: string;
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof InvoiceResponse
+     */
+    'totalInclVat': DineroObjectResponse;
     /**
      * The entries of the invoice
      * @type {Array<InvoiceEntryResponse>}
@@ -2479,6 +2485,12 @@ export interface InvoiceResponseTypes {
      */
     'description': string;
     /**
+     *
+     * @type {InvoiceStatusResponse}
+     * @memberof InvoiceResponseTypes
+     */
+    'currentState': InvoiceStatusResponse;
+    /**
      * Street of the invoice.
      * @type {string}
      * @memberof InvoiceResponseTypes
@@ -2510,12 +2522,6 @@ export interface InvoiceResponseTypes {
     'date': string;
     /**
      *
-     * @type {InvoiceStatusResponse}
-     * @memberof InvoiceResponseTypes
-     */
-    'currentState': InvoiceStatusResponse;
-    /**
-     *
      * @type {TransferResponse}
      * @memberof InvoiceResponseTypes
      */
@@ -2526,6 +2532,12 @@ export interface InvoiceResponseTypes {
      * @memberof InvoiceResponseTypes
      */
     'pdf'?: string;
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof InvoiceResponseTypes
+     */
+    'totalInclVat': DineroObjectResponse;
     /**
      * The entries of the invoice
      * @type {Array<InvoiceEntryResponse>}
@@ -7628,6 +7640,16 @@ export declare const InvoicesApiAxiosParamCreator: (configuration?: Configuratio
     getAllInvoices: (toId?: number, invoiceId?: number, currentState?: GetAllInvoicesCurrentStateEnum, returnEntries?: boolean, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Get eligible transactions for invoice creation.
+     * @param {number} forId Filter on Id of the debtor
+     * @param {string} fromDate Start date for selected transactions (inclusive)
+     * @param {string} [tillDate] End date for selected transactions (exclusive)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getEligibleTransactions: (forId: number, fromDate: string, tillDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Get an invoice pdf.
      * @param {number} id The id of the invoice to return
      * @param {*} [options] Override http request option.
@@ -7716,6 +7738,16 @@ export declare const InvoicesApiFp: (configuration?: Configuration) => {
     getAllInvoices(toId?: number, invoiceId?: number, currentState?: GetAllInvoicesCurrentStateEnum, returnEntries?: boolean, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedInvoiceResponse>>;
     /**
      *
+     * @summary Get eligible transactions for invoice creation.
+     * @param {number} forId Filter on Id of the debtor
+     * @param {string} fromDate Start date for selected transactions (inclusive)
+     * @param {string} [tillDate] End date for selected transactions (exclusive)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getEligibleTransactions(forId: number, fromDate: string, tillDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionResponse>>;
+    /**
+     *
      * @summary Get an invoice pdf.
      * @param {number} id The id of the invoice to return
      * @param {*} [options] Override http request option.
@@ -7802,6 +7834,16 @@ export declare const InvoicesApiFactory: (configuration?: Configuration, basePat
      * @throws {RequiredError}
      */
     getAllInvoices(toId?: number, invoiceId?: number, currentState?: GetAllInvoicesCurrentStateEnum, returnEntries?: boolean, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedInvoiceResponse>;
+    /**
+     *
+     * @summary Get eligible transactions for invoice creation.
+     * @param {number} forId Filter on Id of the debtor
+     * @param {string} fromDate Start date for selected transactions (inclusive)
+     * @param {string} [tillDate] End date for selected transactions (exclusive)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getEligibleTransactions(forId: number, fromDate: string, tillDate?: string, options?: any): AxiosPromise<TransactionResponse>;
     /**
      *
      * @summary Get an invoice pdf.
@@ -7896,6 +7938,17 @@ export declare class InvoicesApi extends BaseAPI {
      * @memberof InvoicesApi
      */
     getAllInvoices(toId?: number, invoiceId?: number, currentState?: GetAllInvoicesCurrentStateEnum, returnEntries?: boolean, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedInvoiceResponse, any>>;
+    /**
+     *
+     * @summary Get eligible transactions for invoice creation.
+     * @param {number} forId Filter on Id of the debtor
+     * @param {string} fromDate Start date for selected transactions (inclusive)
+     * @param {string} [tillDate] End date for selected transactions (exclusive)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InvoicesApi
+     */
+    getEligibleTransactions(forId: number, fromDate: string, tillDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionResponse, any>>;
     /**
      *
      * @summary Get an invoice pdf.

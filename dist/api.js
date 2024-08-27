@@ -4635,6 +4635,50 @@ const InvoicesApiAxiosParamCreator = function (configuration) {
         }),
         /**
          *
+         * @summary Get eligible transactions for invoice creation.
+         * @param {number} forId Filter on Id of the debtor
+         * @param {string} fromDate Start date for selected transactions (inclusive)
+         * @param {string} [tillDate] End date for selected transactions (exclusive)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getEligibleTransactions: (forId_1, fromDate_1, tillDate_1, ...args_1) => __awaiter(this, [forId_1, fromDate_1, tillDate_1, ...args_1], void 0, function* (forId, fromDate, tillDate, options = {}) {
+            // verify required parameter 'forId' is not null or undefined
+            (0, common_1.assertParamExists)('getEligibleTransactions', 'forId', forId);
+            // verify required parameter 'fromDate' is not null or undefined
+            (0, common_1.assertParamExists)('getEligibleTransactions', 'fromDate', fromDate);
+            const localVarPath = `/invoices/eligible-transactions`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            if (forId !== undefined) {
+                localVarQueryParameter['forId'] = forId;
+            }
+            if (fromDate !== undefined) {
+                localVarQueryParameter['fromDate'] = fromDate;
+            }
+            if (tillDate !== undefined) {
+                localVarQueryParameter['tillDate'] = tillDate;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
          * @summary Get an invoice pdf.
          * @param {number} id The id of the invoice to return
          * @param {*} [options] Override http request option.
@@ -4890,6 +4934,24 @@ const InvoicesApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Get eligible transactions for invoice creation.
+         * @param {number} forId Filter on Id of the debtor
+         * @param {string} fromDate Start date for selected transactions (inclusive)
+         * @param {string} [tillDate] End date for selected transactions (exclusive)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getEligibleTransactions(forId, fromDate, tillDate, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getEligibleTransactions(forId, fromDate, tillDate, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['InvoicesApi.getEligibleTransactions']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
          * @summary Get an invoice pdf.
          * @param {number} id The id of the invoice to return
          * @param {*} [options] Override http request option.
@@ -5030,6 +5092,18 @@ const InvoicesApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary Get eligible transactions for invoice creation.
+         * @param {number} forId Filter on Id of the debtor
+         * @param {string} fromDate Start date for selected transactions (inclusive)
+         * @param {string} [tillDate] End date for selected transactions (exclusive)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getEligibleTransactions(forId, fromDate, tillDate, options) {
+            return localVarFp.getEligibleTransactions(forId, fromDate, tillDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Get an invoice pdf.
          * @param {number} id The id of the invoice to return
          * @param {*} [options] Override http request option.
@@ -5141,6 +5215,19 @@ class InvoicesApi extends base_1.BaseAPI {
      */
     getAllInvoices(toId, invoiceId, currentState, returnEntries, fromDate, tillDate, take, skip, options) {
         return (0, exports.InvoicesApiFp)(this.configuration).getAllInvoices(toId, invoiceId, currentState, returnEntries, fromDate, tillDate, take, skip, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get eligible transactions for invoice creation.
+     * @param {number} forId Filter on Id of the debtor
+     * @param {string} fromDate Start date for selected transactions (inclusive)
+     * @param {string} [tillDate] End date for selected transactions (exclusive)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InvoicesApi
+     */
+    getEligibleTransactions(forId, fromDate, tillDate, options) {
+        return (0, exports.InvoicesApiFp)(this.configuration).getEligibleTransactions(forId, fromDate, tillDate, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
