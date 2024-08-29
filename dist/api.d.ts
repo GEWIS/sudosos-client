@@ -1493,6 +1493,37 @@ export interface CreateProductRequest {
 /**
  *
  * @export
+ * @interface CreateSellerPayoutRequest
+ */
+export interface CreateSellerPayoutRequest {
+    /**
+     * The user to create the Seller Payout for
+     * @type {number}
+     * @memberof CreateSellerPayoutRequest
+     */
+    'requestedById': number;
+    /**
+     * Reference of the seller payout
+     * @type {string}
+     * @memberof CreateSellerPayoutRequest
+     */
+    'reference': string;
+    /**
+     * The lower bound of the range of transactions to be paid out
+     * @type {string}
+     * @memberof CreateSellerPayoutRequest
+     */
+    'startDate': string;
+    /**
+     * the upper bound of the range of transactions to be paid out.
+     * @type {string}
+     * @memberof CreateSellerPayoutRequest
+     */
+    'endDate': string;
+}
+/**
+ *
+ * @export
  * @interface CreateShiftRequest
  */
 export interface CreateShiftRequest {
@@ -2896,6 +2927,25 @@ export interface PaginatedProductResponse {
 /**
  *
  * @export
+ * @interface PaginatedSellerPayoutResponse
+ */
+export interface PaginatedSellerPayoutResponse {
+    /**
+     *
+     * @type {PaginationResult}
+     * @memberof PaginatedSellerPayoutResponse
+     */
+    '_pagination': PaginationResult;
+    /**
+     *
+     * @type {Array<SellerPayoutResponse>}
+     * @memberof PaginatedSellerPayoutResponse
+     */
+    'records': Array<SellerPayoutResponse>;
+}
+/**
+ *
+ * @export
  * @interface PaginatedTransferResponse
  */
 export interface PaginatedTransferResponse {
@@ -3781,10 +3831,10 @@ export interface ReportVatEntryResponse {
     'totalInclVat': DineroObjectResponse;
     /**
      *
-     * @type {BaseVatGroupResponse}
+     * @type {VatGroupResponse}
      * @memberof ReportVatEntryResponse
      */
-    'vat': BaseVatGroupResponse;
+    'vat': VatGroupResponse;
 }
 /**
  *
@@ -3885,6 +3935,67 @@ export interface RoleWithPermissionsResponse {
      * @memberof RoleWithPermissionsResponse
      */
     'permissions': Array<PermissionResponse>;
+}
+/**
+ *
+ * @export
+ * @interface SellerPayoutResponse
+ */
+export interface SellerPayoutResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof SellerPayoutResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof SellerPayoutResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof SellerPayoutResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof SellerPayoutResponse
+     */
+    'version'?: number;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof SellerPayoutResponse
+     */
+    'requestedBy': BaseUserResponse;
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof SellerPayoutResponse
+     */
+    'amount': DineroObjectResponse;
+    /**
+     * The lower bound of the time range used for this seller payout (inclusive)
+     * @type {string}
+     * @memberof SellerPayoutResponse
+     */
+    'startDate': string;
+    /**
+     * The upper bound of the time range used for this seller payout (exclusive)
+     * @type {string}
+     * @memberof SellerPayoutResponse
+     */
+    'endDate': string;
+    /**
+     * Reference of the payout
+     * @type {string}
+     * @memberof SellerPayoutResponse
+     */
+    'reference': string;
 }
 /**
  *
@@ -4608,6 +4719,12 @@ export interface TransactionResponse {
  */
 export interface TransferRequest {
     /**
+     * Date on which the transfer should be created
+     * @type {string}
+     * @memberof TransferRequest
+     */
+    'createdAt'?: string;
+    /**
      * Description of the transfer.
      * @type {string}
      * @memberof TransferRequest
@@ -5076,6 +5193,19 @@ export interface UpdateRoleRequest {
      * @memberof UpdateRoleRequest
      */
     'name': string;
+}
+/**
+ *
+ * @export
+ * @interface UpdateSellerPayoutRequest
+ */
+export interface UpdateSellerPayoutRequest {
+    /**
+     *
+     * @type {DineroObjectRequest}
+     * @memberof UpdateSellerPayoutRequest
+     */
+    'amount': DineroObjectRequest;
 }
 /**
  *
@@ -6929,12 +7059,13 @@ export declare const DebtorsApiAxiosParamCreator: (configuration?: Configuration
     /**
      *
      * @summary Get a report of all fines in pdf format
-     * @param {string} [fromDate] The start date of the report, inclusive
-     * @param {string} [toDate] The end date of the report, exclusive
+     * @param {string} fromDate The start date of the report, inclusive
+     * @param {string} toDate The end date of the report, exclusive
+     * @param {GetFineReportPdfFileTypeEnum} fileType The file type of the report
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getFineReportPdf: (fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getFineReportPdf: (fromDate: string, toDate: string, fileType: GetFineReportPdfFileTypeEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
@@ -7003,12 +7134,13 @@ export declare const DebtorsApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Get a report of all fines in pdf format
-     * @param {string} [fromDate] The start date of the report, inclusive
-     * @param {string} [toDate] The end date of the report, exclusive
+     * @param {string} fromDate The start date of the report, inclusive
+     * @param {string} toDate The end date of the report, exclusive
+     * @param {GetFineReportPdfFileTypeEnum} fileType The file type of the report
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getFineReportPdf(fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    getFineReportPdf(fromDate: string, toDate: string, fileType: GetFineReportPdfFileTypeEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
     /**
      *
      * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
@@ -7077,12 +7209,13 @@ export declare const DebtorsApiFactory: (configuration?: Configuration, basePath
     /**
      *
      * @summary Get a report of all fines in pdf format
-     * @param {string} [fromDate] The start date of the report, inclusive
-     * @param {string} [toDate] The end date of the report, exclusive
+     * @param {string} fromDate The start date of the report, inclusive
+     * @param {string} toDate The end date of the report, exclusive
+     * @param {GetFineReportPdfFileTypeEnum} fileType The file type of the report
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getFineReportPdf(fromDate?: string, toDate?: string, options?: any): AxiosPromise<string>;
+    getFineReportPdf(fromDate: string, toDate: string, fileType: GetFineReportPdfFileTypeEnum, options?: any): AxiosPromise<string>;
     /**
      *
      * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
@@ -7156,13 +7289,14 @@ export declare class DebtorsApi extends BaseAPI {
     /**
      *
      * @summary Get a report of all fines in pdf format
-     * @param {string} [fromDate] The start date of the report, inclusive
-     * @param {string} [toDate] The end date of the report, exclusive
+     * @param {string} fromDate The start date of the report, inclusive
+     * @param {string} toDate The end date of the report, exclusive
+     * @param {GetFineReportPdfFileTypeEnum} fileType The file type of the report
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DebtorsApi
      */
-    getFineReportPdf(fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    getFineReportPdf(fromDate: string, toDate: string, fileType: GetFineReportPdfFileTypeEnum, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
     /**
      *
      * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
@@ -7201,6 +7335,14 @@ export declare class DebtorsApi extends BaseAPI {
      */
     returnSingleFineHandoutEvent(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FineHandoutEventResponse, any>>;
 }
+/**
+ * @export
+ */
+export declare const GetFineReportPdfFileTypeEnum: {
+    readonly Pdf: "PDF";
+    readonly Tex: "TEX";
+};
+export type GetFineReportPdfFileTypeEnum = typeof GetFineReportPdfFileTypeEnum[keyof typeof GetFineReportPdfFileTypeEnum];
 /**
  * EventsApi - axios parameter creator
  * @export
@@ -9538,6 +9680,283 @@ export declare class RootApi extends BaseAPI {
     ping(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
 }
 /**
+ * SellerPayoutsApi - axios parameter creator
+ * @export
+ */
+export declare const SellerPayoutsApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Create a new seller payout
+     * @param {CreateSellerPayoutRequest} createSellerPayoutRequest New seller payout
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createSellerPayout: (createSellerPayoutRequest: CreateSellerPayoutRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Delete an existing seller payout
+     * @param {number} id ID of the seller payout that should be updated
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteSellerPayout: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Return all seller payouts
+     * @param {number} [requestedById] Requested by user ID
+     * @param {string} [fromDate] Lower bound on seller payout creation date (inclusive)
+     * @param {string} [tillDate] Upper bound on seller payout creation date (exclusive)
+     * @param {number} [take] Number of write-offs to return
+     * @param {number} [skip] Number of write-offs to skip
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getAllSellerPayouts: (requestedById?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get a single seller payout\'s sales report
+     * @param {number} id ID of the seller payout that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getSellerPayoutReport: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get a single seller payout\'s sales report as PDF
+     * @param {number} id ID of the seller payout that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getSellerPayoutReportPdf: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get a single seller payout
+     * @param {number} id ID of the seller payout that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getSingleSellerPayout: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Update an existing seller payout
+     * @param {number} id ID of the seller payout that should be updated
+     * @param {UpdateSellerPayoutRequest} updateSellerPayoutRequest Updated seller payout
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateSellerPayout: (id: number, updateSellerPayoutRequest: UpdateSellerPayoutRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+};
+/**
+ * SellerPayoutsApi - functional programming interface
+ * @export
+ */
+export declare const SellerPayoutsApiFp: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Create a new seller payout
+     * @param {CreateSellerPayoutRequest} createSellerPayoutRequest New seller payout
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createSellerPayout(createSellerPayoutRequest: CreateSellerPayoutRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SellerPayoutResponse>>;
+    /**
+     *
+     * @summary Delete an existing seller payout
+     * @param {number} id ID of the seller payout that should be updated
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteSellerPayout(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    /**
+     *
+     * @summary Return all seller payouts
+     * @param {number} [requestedById] Requested by user ID
+     * @param {string} [fromDate] Lower bound on seller payout creation date (inclusive)
+     * @param {string} [tillDate] Upper bound on seller payout creation date (exclusive)
+     * @param {number} [take] Number of write-offs to return
+     * @param {number} [skip] Number of write-offs to skip
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getAllSellerPayouts(requestedById?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedSellerPayoutResponse>>;
+    /**
+     *
+     * @summary Get a single seller payout\'s sales report
+     * @param {number} id ID of the seller payout that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getSellerPayoutReport(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ReportResponse>>;
+    /**
+     *
+     * @summary Get a single seller payout\'s sales report as PDF
+     * @param {number} id ID of the seller payout that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getSellerPayoutReportPdf(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    /**
+     *
+     * @summary Get a single seller payout
+     * @param {number} id ID of the seller payout that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getSingleSellerPayout(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SellerPayoutResponse>>;
+    /**
+     *
+     * @summary Update an existing seller payout
+     * @param {number} id ID of the seller payout that should be updated
+     * @param {UpdateSellerPayoutRequest} updateSellerPayoutRequest Updated seller payout
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateSellerPayout(id: number, updateSellerPayoutRequest: UpdateSellerPayoutRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SellerPayoutResponse>>;
+};
+/**
+ * SellerPayoutsApi - factory interface
+ * @export
+ */
+export declare const SellerPayoutsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     *
+     * @summary Create a new seller payout
+     * @param {CreateSellerPayoutRequest} createSellerPayoutRequest New seller payout
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createSellerPayout(createSellerPayoutRequest: CreateSellerPayoutRequest, options?: any): AxiosPromise<SellerPayoutResponse>;
+    /**
+     *
+     * @summary Delete an existing seller payout
+     * @param {number} id ID of the seller payout that should be updated
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteSellerPayout(id: number, options?: any): AxiosPromise<string>;
+    /**
+     *
+     * @summary Return all seller payouts
+     * @param {number} [requestedById] Requested by user ID
+     * @param {string} [fromDate] Lower bound on seller payout creation date (inclusive)
+     * @param {string} [tillDate] Upper bound on seller payout creation date (exclusive)
+     * @param {number} [take] Number of write-offs to return
+     * @param {number} [skip] Number of write-offs to skip
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getAllSellerPayouts(requestedById?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedSellerPayoutResponse>;
+    /**
+     *
+     * @summary Get a single seller payout\'s sales report
+     * @param {number} id ID of the seller payout that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getSellerPayoutReport(id: number, options?: any): AxiosPromise<ReportResponse>;
+    /**
+     *
+     * @summary Get a single seller payout\'s sales report as PDF
+     * @param {number} id ID of the seller payout that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getSellerPayoutReportPdf(id: number, options?: any): AxiosPromise<string>;
+    /**
+     *
+     * @summary Get a single seller payout
+     * @param {number} id ID of the seller payout that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getSingleSellerPayout(id: number, options?: any): AxiosPromise<SellerPayoutResponse>;
+    /**
+     *
+     * @summary Update an existing seller payout
+     * @param {number} id ID of the seller payout that should be updated
+     * @param {UpdateSellerPayoutRequest} updateSellerPayoutRequest Updated seller payout
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateSellerPayout(id: number, updateSellerPayoutRequest: UpdateSellerPayoutRequest, options?: any): AxiosPromise<SellerPayoutResponse>;
+};
+/**
+ * SellerPayoutsApi - object-oriented interface
+ * @export
+ * @class SellerPayoutsApi
+ * @extends {BaseAPI}
+ */
+export declare class SellerPayoutsApi extends BaseAPI {
+    /**
+     *
+     * @summary Create a new seller payout
+     * @param {CreateSellerPayoutRequest} createSellerPayoutRequest New seller payout
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SellerPayoutsApi
+     */
+    createSellerPayout(createSellerPayoutRequest: CreateSellerPayoutRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SellerPayoutResponse, any>>;
+    /**
+     *
+     * @summary Delete an existing seller payout
+     * @param {number} id ID of the seller payout that should be updated
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SellerPayoutsApi
+     */
+    deleteSellerPayout(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    /**
+     *
+     * @summary Return all seller payouts
+     * @param {number} [requestedById] Requested by user ID
+     * @param {string} [fromDate] Lower bound on seller payout creation date (inclusive)
+     * @param {string} [tillDate] Upper bound on seller payout creation date (exclusive)
+     * @param {number} [take] Number of write-offs to return
+     * @param {number} [skip] Number of write-offs to skip
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SellerPayoutsApi
+     */
+    getAllSellerPayouts(requestedById?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedSellerPayoutResponse, any>>;
+    /**
+     *
+     * @summary Get a single seller payout\'s sales report
+     * @param {number} id ID of the seller payout that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SellerPayoutsApi
+     */
+    getSellerPayoutReport(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ReportResponse, any>>;
+    /**
+     *
+     * @summary Get a single seller payout\'s sales report as PDF
+     * @param {number} id ID of the seller payout that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SellerPayoutsApi
+     */
+    getSellerPayoutReportPdf(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    /**
+     *
+     * @summary Get a single seller payout
+     * @param {number} id ID of the seller payout that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SellerPayoutsApi
+     */
+    getSingleSellerPayout(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SellerPayoutResponse, any>>;
+    /**
+     *
+     * @summary Update an existing seller payout
+     * @param {number} id ID of the seller payout that should be updated
+     * @param {UpdateSellerPayoutRequest} updateSellerPayoutRequest Updated seller payout
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SellerPayoutsApi
+     */
+    updateSellerPayout(id: number, updateSellerPayoutRequest: UpdateSellerPayoutRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SellerPayoutResponse, any>>;
+}
+/**
  * StripeApi - axios parameter creator
  * @export
  */
@@ -10236,6 +10655,17 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
     getUsersProducts: (id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Get purchase report pdf for the given user
+     * @param {number} id The id of the user to get the purchase report for
+     * @param {string} fromDate Start date for selected purchases (inclusive)
+     * @param {string} tillDate End date for selected purchases (exclusive)
+     * @param {GetUsersPurchaseReportPdfFileTypeEnum} [fileType] The file type of the report
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUsersPurchaseReportPdf: (id: number, fromDate: string, tillDate: string, fileType?: GetUsersPurchaseReportPdfFileTypeEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Get purchases report for the given user
      * @param {number} id The id of the user to get the purchases report for
      * @param {string} fromDate Start date for selected purchases (inclusive)
@@ -10254,6 +10684,18 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @throws {RequiredError}
      */
     getUsersSalesReport: (id: number, fromDate: string, tillDate: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get sales report for the given user
+     * @param {number} id The id of the user to get the sales report for
+     * @param {string} fromDate Start date for selected sales (inclusive)
+     * @param {string} tillDate End date for selected sales (exclusive)
+     * @param {string} [description] Description of the report
+     * @param {GetUsersSalesReportPdfFileTypeEnum} [fileType] The file type of the report
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUsersSalesReportPdf: (id: number, fromDate: string, tillDate: string, description?: string, fileType?: GetUsersSalesReportPdfFileTypeEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get transactions from a user.
@@ -10514,6 +10956,17 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
     getUsersProducts(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedProductResponse>>;
     /**
      *
+     * @summary Get purchase report pdf for the given user
+     * @param {number} id The id of the user to get the purchase report for
+     * @param {string} fromDate Start date for selected purchases (inclusive)
+     * @param {string} tillDate End date for selected purchases (exclusive)
+     * @param {GetUsersPurchaseReportPdfFileTypeEnum} [fileType] The file type of the report
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUsersPurchaseReportPdf(id: number, fromDate: string, tillDate: string, fileType?: GetUsersPurchaseReportPdfFileTypeEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    /**
+     *
      * @summary Get purchases report for the given user
      * @param {number} id The id of the user to get the purchases report for
      * @param {string} fromDate Start date for selected purchases (inclusive)
@@ -10532,6 +10985,18 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     getUsersSalesReport(id: number, fromDate: string, tillDate: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ReportResponse>>>;
+    /**
+     *
+     * @summary Get sales report for the given user
+     * @param {number} id The id of the user to get the sales report for
+     * @param {string} fromDate Start date for selected sales (inclusive)
+     * @param {string} tillDate End date for selected sales (exclusive)
+     * @param {string} [description] Description of the report
+     * @param {GetUsersSalesReportPdfFileTypeEnum} [fileType] The file type of the report
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUsersSalesReportPdf(id: number, fromDate: string, tillDate: string, description?: string, fileType?: GetUsersSalesReportPdfFileTypeEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
     /**
      *
      * @summary Get transactions from a user.
@@ -10792,6 +11257,17 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
     getUsersProducts(id: number, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedProductResponse>;
     /**
      *
+     * @summary Get purchase report pdf for the given user
+     * @param {number} id The id of the user to get the purchase report for
+     * @param {string} fromDate Start date for selected purchases (inclusive)
+     * @param {string} tillDate End date for selected purchases (exclusive)
+     * @param {GetUsersPurchaseReportPdfFileTypeEnum} [fileType] The file type of the report
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUsersPurchaseReportPdf(id: number, fromDate: string, tillDate: string, fileType?: GetUsersPurchaseReportPdfFileTypeEnum, options?: any): AxiosPromise<string>;
+    /**
+     *
      * @summary Get purchases report for the given user
      * @param {number} id The id of the user to get the purchases report for
      * @param {string} fromDate Start date for selected purchases (inclusive)
@@ -10810,6 +11286,18 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
      * @throws {RequiredError}
      */
     getUsersSalesReport(id: number, fromDate: string, tillDate: string, options?: any): AxiosPromise<Array<ReportResponse>>;
+    /**
+     *
+     * @summary Get sales report for the given user
+     * @param {number} id The id of the user to get the sales report for
+     * @param {string} fromDate Start date for selected sales (inclusive)
+     * @param {string} tillDate End date for selected sales (exclusive)
+     * @param {string} [description] Description of the report
+     * @param {GetUsersSalesReportPdfFileTypeEnum} [fileType] The file type of the report
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUsersSalesReportPdf(id: number, fromDate: string, tillDate: string, description?: string, fileType?: GetUsersSalesReportPdfFileTypeEnum, options?: any): AxiosPromise<string>;
     /**
      *
      * @summary Get transactions from a user.
@@ -11089,6 +11577,18 @@ export declare class UsersApi extends BaseAPI {
     getUsersProducts(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedProductResponse, any>>;
     /**
      *
+     * @summary Get purchase report pdf for the given user
+     * @param {number} id The id of the user to get the purchase report for
+     * @param {string} fromDate Start date for selected purchases (inclusive)
+     * @param {string} tillDate End date for selected purchases (exclusive)
+     * @param {GetUsersPurchaseReportPdfFileTypeEnum} [fileType] The file type of the report
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    getUsersPurchaseReportPdf(id: number, fromDate: string, tillDate: string, fileType?: GetUsersPurchaseReportPdfFileTypeEnum, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    /**
+     *
      * @summary Get purchases report for the given user
      * @param {number} id The id of the user to get the purchases report for
      * @param {string} fromDate Start date for selected purchases (inclusive)
@@ -11109,6 +11609,19 @@ export declare class UsersApi extends BaseAPI {
      * @memberof UsersApi
      */
     getUsersSalesReport(id: number, fromDate: string, tillDate: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ReportResponse[], any>>;
+    /**
+     *
+     * @summary Get sales report for the given user
+     * @param {number} id The id of the user to get the sales report for
+     * @param {string} fromDate Start date for selected sales (inclusive)
+     * @param {string} tillDate End date for selected sales (exclusive)
+     * @param {string} [description] Description of the report
+     * @param {GetUsersSalesReportPdfFileTypeEnum} [fileType] The file type of the report
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    getUsersSalesReportPdf(id: number, fromDate: string, tillDate: string, description?: string, fileType?: GetUsersSalesReportPdfFileTypeEnum, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
     /**
      *
      * @summary Get transactions from a user.
@@ -11228,6 +11741,22 @@ export declare const GetAllUsersTypeEnum: {
     readonly AutomaticInvoice: "AUTOMATIC_INVOICE";
 };
 export type GetAllUsersTypeEnum = typeof GetAllUsersTypeEnum[keyof typeof GetAllUsersTypeEnum];
+/**
+ * @export
+ */
+export declare const GetUsersPurchaseReportPdfFileTypeEnum: {
+    readonly Pdf: "PDF";
+    readonly Tex: "TEX";
+};
+export type GetUsersPurchaseReportPdfFileTypeEnum = typeof GetUsersPurchaseReportPdfFileTypeEnum[keyof typeof GetUsersPurchaseReportPdfFileTypeEnum];
+/**
+ * @export
+ */
+export declare const GetUsersSalesReportPdfFileTypeEnum: {
+    readonly Pdf: "PDF";
+    readonly Tex: "TEX";
+};
+export type GetUsersSalesReportPdfFileTypeEnum = typeof GetUsersSalesReportPdfFileTypeEnum[keyof typeof GetUsersSalesReportPdfFileTypeEnum];
 /**
  * VatGroupsApi - axios parameter creator
  * @export
