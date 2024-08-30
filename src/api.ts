@@ -673,6 +673,12 @@ export interface BaseInvoiceResponse {
      */
     'description': string;
     /**
+     * 
+     * @type {InvoiceStatusResponse}
+     * @memberof BaseInvoiceResponse
+     */
+    'currentState': InvoiceStatusResponse;
+    /**
      * Street of the invoice.
      * @type {string}
      * @memberof BaseInvoiceResponse
@@ -704,12 +710,6 @@ export interface BaseInvoiceResponse {
     'date': string;
     /**
      * 
-     * @type {InvoiceStatusResponse}
-     * @memberof BaseInvoiceResponse
-     */
-    'currentState': InvoiceStatusResponse;
-    /**
-     * 
      * @type {TransferResponse}
      * @memberof BaseInvoiceResponse
      */
@@ -720,6 +720,12 @@ export interface BaseInvoiceResponse {
      * @memberof BaseInvoiceResponse
      */
     'pdf'?: string;
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof BaseInvoiceResponse
+     */
+    'totalInclVat': DineroObjectResponse;
 }
 /**
  * 
@@ -1312,7 +1318,7 @@ export interface CreateInvoiceRequest {
      * @type {string}
      * @memberof CreateInvoiceRequest
      */
-    'description'?: string;
+    'description': string;
     /**
      * The reference of the invoice.
      * @type {string}
@@ -1330,19 +1336,7 @@ export interface CreateInvoiceRequest {
      * @type {Array<number>}
      * @memberof CreateInvoiceRequest
      */
-    'transactionIDs'?: Array<number>;
-    /**
-     * For creating an Invoice for all transactions from a specific date.
-     * @type {string}
-     * @memberof CreateInvoiceRequest
-     */
-    'fromDate'?: string;
-    /**
-     * If the invoice is an credit Invoice  If an invoice is a credit invoice the relevant subtransactions are defined as all the sub transactions which have `subTransaction.toId == forId`.
-     * @type {boolean}
-     * @memberof CreateInvoiceRequest
-     */
-    'isCreditInvoice': boolean;
+    'transactionIDs': Array<number>;
     /**
      * Street to use on the invoice, overwrites the users default.
      * @type {string}
@@ -1508,6 +1502,37 @@ export interface CreateProductRequest {
      * @memberof CreateProductRequest
      */
     'ownerId': number;
+}
+/**
+ * 
+ * @export
+ * @interface CreateSellerPayoutRequest
+ */
+export interface CreateSellerPayoutRequest {
+    /**
+     * The user to create the Seller Payout for
+     * @type {number}
+     * @memberof CreateSellerPayoutRequest
+     */
+    'requestedById': number;
+    /**
+     * Reference of the seller payout
+     * @type {string}
+     * @memberof CreateSellerPayoutRequest
+     */
+    'reference': string;
+    /**
+     * The lower bound of the range of transactions to be paid out
+     * @type {string}
+     * @memberof CreateSellerPayoutRequest
+     */
+    'startDate': string;
+    /**
+     * the upper bound of the range of transactions to be paid out.
+     * @type {string}
+     * @memberof CreateSellerPayoutRequest
+     */
+    'endDate': string;
 }
 /**
  * 
@@ -2320,6 +2345,12 @@ export interface InvoiceEntryResponse {
      * @memberof InvoiceEntryResponse
      */
     'vatPercentage': number;
+    /**
+     * If the entry is a custom entry or not.
+     * @type {boolean}
+     * @memberof InvoiceEntryResponse
+     */
+    'custom': boolean;
 }
 /**
  * 
@@ -2382,6 +2413,12 @@ export interface InvoiceResponse {
      */
     'description': string;
     /**
+     * 
+     * @type {InvoiceStatusResponse}
+     * @memberof InvoiceResponse
+     */
+    'currentState': InvoiceStatusResponse;
+    /**
      * Street of the invoice.
      * @type {string}
      * @memberof InvoiceResponse
@@ -2413,12 +2450,6 @@ export interface InvoiceResponse {
     'date': string;
     /**
      * 
-     * @type {InvoiceStatusResponse}
-     * @memberof InvoiceResponse
-     */
-    'currentState': InvoiceStatusResponse;
-    /**
-     * 
      * @type {TransferResponse}
      * @memberof InvoiceResponse
      */
@@ -2429,6 +2460,12 @@ export interface InvoiceResponse {
      * @memberof InvoiceResponse
      */
     'pdf'?: string;
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof InvoiceResponse
+     */
+    'totalInclVat': DineroObjectResponse;
     /**
      * The entries of the invoice
      * @type {Array<InvoiceEntryResponse>}
@@ -2497,6 +2534,12 @@ export interface InvoiceResponseTypes {
      */
     'description': string;
     /**
+     * 
+     * @type {InvoiceStatusResponse}
+     * @memberof InvoiceResponseTypes
+     */
+    'currentState': InvoiceStatusResponse;
+    /**
      * Street of the invoice.
      * @type {string}
      * @memberof InvoiceResponseTypes
@@ -2528,12 +2571,6 @@ export interface InvoiceResponseTypes {
     'date': string;
     /**
      * 
-     * @type {InvoiceStatusResponse}
-     * @memberof InvoiceResponseTypes
-     */
-    'currentState': InvoiceStatusResponse;
-    /**
-     * 
      * @type {TransferResponse}
      * @memberof InvoiceResponseTypes
      */
@@ -2544,6 +2581,12 @@ export interface InvoiceResponseTypes {
      * @memberof InvoiceResponseTypes
      */
     'pdf'?: string;
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof InvoiceResponseTypes
+     */
+    'totalInclVat': DineroObjectResponse;
     /**
      * The entries of the invoice
      * @type {Array<InvoiceEntryResponse>}
@@ -2901,6 +2944,25 @@ export interface PaginatedProductResponse {
      * @memberof PaginatedProductResponse
      */
     'records': Array<ProductResponse>;
+}
+/**
+ * 
+ * @export
+ * @interface PaginatedSellerPayoutResponse
+ */
+export interface PaginatedSellerPayoutResponse {
+    /**
+     * 
+     * @type {PaginationResult}
+     * @memberof PaginatedSellerPayoutResponse
+     */
+    '_pagination': PaginationResult;
+    /**
+     * 
+     * @type {Array<SellerPayoutResponse>}
+     * @memberof PaginatedSellerPayoutResponse
+     */
+    'records': Array<SellerPayoutResponse>;
 }
 /**
  * 
@@ -3574,6 +3636,236 @@ export interface RelationResponse {
 /**
  * 
  * @export
+ * @interface ReportCategoryEntryResponse
+ */
+export interface ReportCategoryEntryResponse {
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof ReportCategoryEntryResponse
+     */
+    'totalExclVat': DineroObjectResponse;
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof ReportCategoryEntryResponse
+     */
+    'totalInclVat': DineroObjectResponse;
+    /**
+     * 
+     * @type {ProductCategoryResponse}
+     * @memberof ReportCategoryEntryResponse
+     */
+    'category': ProductCategoryResponse;
+}
+/**
+ * 
+ * @export
+ * @interface ReportContainerEntryResponse
+ */
+export interface ReportContainerEntryResponse {
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof ReportContainerEntryResponse
+     */
+    'totalExclVat': DineroObjectResponse;
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof ReportContainerEntryResponse
+     */
+    'totalInclVat': DineroObjectResponse;
+    /**
+     * 
+     * @type {BaseContainerResponse}
+     * @memberof ReportContainerEntryResponse
+     */
+    'container': BaseContainerResponse;
+}
+/**
+ * 
+ * @export
+ * @interface ReportDataResponse
+ */
+export interface ReportDataResponse {
+    /**
+     * products
+     * @type {Array<ReportProductEntryResponse>}
+     * @memberof ReportDataResponse
+     */
+    'products'?: Array<ReportProductEntryResponse>;
+    /**
+     * categories
+     * @type {Array<ReportCategoryEntryResponse>}
+     * @memberof ReportDataResponse
+     */
+    'categories'?: Array<ReportCategoryEntryResponse>;
+    /**
+     * vat
+     * @type {Array<ReportVatEntryResponse>}
+     * @memberof ReportDataResponse
+     */
+    'vat'?: Array<ReportVatEntryResponse>;
+    /**
+     * pos
+     * @type {Array<ReportPosEntryResponse>}
+     * @memberof ReportDataResponse
+     */
+    'pos'?: Array<ReportPosEntryResponse>;
+    /**
+     * containers
+     * @type {Array<ReportContainerEntryResponse>}
+     * @memberof ReportDataResponse
+     */
+    'containers'?: Array<ReportContainerEntryResponse>;
+}
+/**
+ * 
+ * @export
+ * @interface ReportEntryResponse
+ */
+export interface ReportEntryResponse {
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof ReportEntryResponse
+     */
+    'totalExclVat': DineroObjectResponse;
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof ReportEntryResponse
+     */
+    'totalInclVat': DineroObjectResponse;
+}
+/**
+ * 
+ * @export
+ * @interface ReportPosEntryResponse
+ */
+export interface ReportPosEntryResponse {
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof ReportPosEntryResponse
+     */
+    'totalExclVat': DineroObjectResponse;
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof ReportPosEntryResponse
+     */
+    'totalInclVat': DineroObjectResponse;
+    /**
+     * 
+     * @type {BasePointOfSaleResponse}
+     * @memberof ReportPosEntryResponse
+     */
+    'pos': BasePointOfSaleResponse;
+}
+/**
+ * 
+ * @export
+ * @interface ReportProductEntryResponse
+ */
+export interface ReportProductEntryResponse {
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof ReportProductEntryResponse
+     */
+    'totalExclVat': DineroObjectResponse;
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof ReportProductEntryResponse
+     */
+    'totalInclVat': DineroObjectResponse;
+    /**
+     * count
+     * @type {number}
+     * @memberof ReportProductEntryResponse
+     */
+    'count': number;
+    /**
+     * 
+     * @type {BaseProductResponse}
+     * @memberof ReportProductEntryResponse
+     */
+    'product': BaseProductResponse;
+}
+/**
+ * 
+ * @export
+ * @interface ReportResponse
+ */
+export interface ReportResponse {
+    /**
+     * forId
+     * @type {number}
+     * @memberof ReportResponse
+     */
+    'forId': number;
+    /**
+     * fromDate
+     * @type {string}
+     * @memberof ReportResponse
+     */
+    'fromDate': string;
+    /**
+     * tillDate
+     * @type {string}
+     * @memberof ReportResponse
+     */
+    'tillDate': string;
+    /**
+     * 
+     * @type {ReportDataResponse}
+     * @memberof ReportResponse
+     */
+    'data': ReportDataResponse;
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof ReportResponse
+     */
+    'totalExclVat': DineroObjectResponse;
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof ReportResponse
+     */
+    'totalInclVat': DineroObjectResponse;
+}
+/**
+ * 
+ * @export
+ * @interface ReportVatEntryResponse
+ */
+export interface ReportVatEntryResponse {
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof ReportVatEntryResponse
+     */
+    'totalExclVat': DineroObjectResponse;
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof ReportVatEntryResponse
+     */
+    'totalInclVat': DineroObjectResponse;
+    /**
+     * 
+     * @type {VatGroupResponse}
+     * @memberof ReportVatEntryResponse
+     */
+    'vat': VatGroupResponse;
+}
+/**
+ * 
+ * @export
  * @interface ResetLocalRequest
  */
 export interface ResetLocalRequest {
@@ -3670,6 +3962,67 @@ export interface RoleWithPermissionsResponse {
      * @memberof RoleWithPermissionsResponse
      */
     'permissions': Array<PermissionResponse>;
+}
+/**
+ * 
+ * @export
+ * @interface SellerPayoutResponse
+ */
+export interface SellerPayoutResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof SellerPayoutResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof SellerPayoutResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof SellerPayoutResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof SellerPayoutResponse
+     */
+    'version'?: number;
+    /**
+     * 
+     * @type {BaseUserResponse}
+     * @memberof SellerPayoutResponse
+     */
+    'requestedBy': BaseUserResponse;
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof SellerPayoutResponse
+     */
+    'amount': DineroObjectResponse;
+    /**
+     * The lower bound of the time range used for this seller payout (inclusive)
+     * @type {string}
+     * @memberof SellerPayoutResponse
+     */
+    'startDate': string;
+    /**
+     * The upper bound of the time range used for this seller payout (exclusive)
+     * @type {string}
+     * @memberof SellerPayoutResponse
+     */
+    'endDate': string;
+    /**
+     * Reference of the payout
+     * @type {string}
+     * @memberof SellerPayoutResponse
+     */
+    'reference': string;
 }
 /**
  * 
@@ -4393,6 +4746,12 @@ export interface TransactionResponse {
  */
 export interface TransferRequest {
     /**
+     * Date on which the transfer should be created
+     * @type {string}
+     * @memberof TransferRequest
+     */
+    'createdAt'?: string;
+    /**
      * Description of the transfer.
      * @type {string}
      * @memberof TransferRequest
@@ -4868,6 +5227,19 @@ export interface UpdateRoleRequest {
 /**
  * 
  * @export
+ * @interface UpdateSellerPayoutRequest
+ */
+export interface UpdateSellerPayoutRequest {
+    /**
+     * 
+     * @type {DineroObjectRequest}
+     * @memberof UpdateSellerPayoutRequest
+     */
+    'amount': DineroObjectRequest;
+}
+/**
+ * 
+ * @export
  * @interface UpdateShiftRequest
  */
 export interface UpdateShiftRequest {
@@ -5239,7 +5611,7 @@ export interface VatGroupResponse {
      * @type {string}
      * @memberof VatGroupResponse
      */
-    'name'?: string;
+    'name': string;
     /**
      * Whether this group is soft-deleted
      * @type {boolean}
@@ -8245,12 +8617,19 @@ export const DebtorsApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Get a report of all fines in pdf format
-         * @param {string} [fromDate] The start date of the report, inclusive
-         * @param {string} [toDate] The end date of the report, exclusive
+         * @param {string} fromDate The start date of the report, inclusive
+         * @param {string} toDate The end date of the report, exclusive
+         * @param {GetFineReportPdfFileTypeEnum} fileType The file type of the report
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getFineReportPdf: async (fromDate?: string, toDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getFineReportPdf: async (fromDate: string, toDate: string, fileType: GetFineReportPdfFileTypeEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'fromDate' is not null or undefined
+            assertParamExists('getFineReportPdf', 'fromDate', fromDate)
+            // verify required parameter 'toDate' is not null or undefined
+            assertParamExists('getFineReportPdf', 'toDate', toDate)
+            // verify required parameter 'fileType' is not null or undefined
+            assertParamExists('getFineReportPdf', 'fileType', fileType)
             const localVarPath = `/fines/report/pdf`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -8273,6 +8652,10 @@ export const DebtorsApiAxiosParamCreator = function (configuration?: Configurati
 
             if (toDate !== undefined) {
                 localVarQueryParameter['toDate'] = toDate;
+            }
+
+            if (fileType !== undefined) {
+                localVarQueryParameter['fileType'] = fileType;
             }
 
 
@@ -8502,13 +8885,14 @@ export const DebtorsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Get a report of all fines in pdf format
-         * @param {string} [fromDate] The start date of the report, inclusive
-         * @param {string} [toDate] The end date of the report, exclusive
+         * @param {string} fromDate The start date of the report, inclusive
+         * @param {string} toDate The end date of the report, exclusive
+         * @param {GetFineReportPdfFileTypeEnum} fileType The file type of the report
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getFineReportPdf(fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getFineReportPdf(fromDate, toDate, options);
+        async getFineReportPdf(fromDate: string, toDate: string, fileType: GetFineReportPdfFileTypeEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getFineReportPdf(fromDate, toDate, fileType, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['DebtorsApi.getFineReportPdf']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
@@ -8611,13 +8995,14 @@ export const DebtorsApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Get a report of all fines in pdf format
-         * @param {string} [fromDate] The start date of the report, inclusive
-         * @param {string} [toDate] The end date of the report, exclusive
+         * @param {string} fromDate The start date of the report, inclusive
+         * @param {string} toDate The end date of the report, exclusive
+         * @param {GetFineReportPdfFileTypeEnum} fileType The file type of the report
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getFineReportPdf(fromDate?: string, toDate?: string, options?: any): AxiosPromise<string> {
-            return localVarFp.getFineReportPdf(fromDate, toDate, options).then((request) => request(axios, basePath));
+        getFineReportPdf(fromDate: string, toDate: string, fileType: GetFineReportPdfFileTypeEnum, options?: any): AxiosPromise<string> {
+            return localVarFp.getFineReportPdf(fromDate, toDate, fileType, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -8711,14 +9096,15 @@ export class DebtorsApi extends BaseAPI {
     /**
      * 
      * @summary Get a report of all fines in pdf format
-     * @param {string} [fromDate] The start date of the report, inclusive
-     * @param {string} [toDate] The end date of the report, exclusive
+     * @param {string} fromDate The start date of the report, inclusive
+     * @param {string} toDate The end date of the report, exclusive
+     * @param {GetFineReportPdfFileTypeEnum} fileType The file type of the report
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DebtorsApi
      */
-    public getFineReportPdf(fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig) {
-        return DebtorsApiFp(this.configuration).getFineReportPdf(fromDate, toDate, options).then((request) => request(this.axios, this.basePath));
+    public getFineReportPdf(fromDate: string, toDate: string, fileType: GetFineReportPdfFileTypeEnum, options?: RawAxiosRequestConfig) {
+        return DebtorsApiFp(this.configuration).getFineReportPdf(fromDate, toDate, fileType, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -8771,6 +9157,14 @@ export class DebtorsApi extends BaseAPI {
     }
 }
 
+/**
+ * @export
+ */
+export const GetFineReportPdfFileTypeEnum = {
+    Pdf: 'PDF',
+    Tex: 'TEX'
+} as const;
+export type GetFineReportPdfFileTypeEnum = typeof GetFineReportPdfFileTypeEnum[keyof typeof GetFineReportPdfFileTypeEnum];
 
 
 /**
@@ -10309,6 +10703,59 @@ export const InvoicesApiAxiosParamCreator = function (configuration?: Configurat
         },
         /**
          * 
+         * @summary Get eligible transactions for invoice creation.
+         * @param {number} forId Filter on Id of the debtor
+         * @param {string} fromDate Start date for selected transactions (inclusive)
+         * @param {string} [tillDate] End date for selected transactions (exclusive)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getEligibleTransactions: async (forId: number, fromDate: string, tillDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'forId' is not null or undefined
+            assertParamExists('getEligibleTransactions', 'forId', forId)
+            // verify required parameter 'fromDate' is not null or undefined
+            assertParamExists('getEligibleTransactions', 'fromDate', fromDate)
+            const localVarPath = `/invoices/eligible-transactions`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (forId !== undefined) {
+                localVarQueryParameter['forId'] = forId;
+            }
+
+            if (fromDate !== undefined) {
+                localVarQueryParameter['fromDate'] = fromDate;
+            }
+
+            if (tillDate !== undefined) {
+                localVarQueryParameter['tillDate'] = tillDate;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Get an invoice pdf.
          * @param {number} id The id of the invoice to return
          * @param {*} [options] Override http request option.
@@ -10585,6 +11032,21 @@ export const InvoicesApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get eligible transactions for invoice creation.
+         * @param {number} forId Filter on Id of the debtor
+         * @param {string} fromDate Start date for selected transactions (inclusive)
+         * @param {string} [tillDate] End date for selected transactions (exclusive)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getEligibleTransactions(forId: number, fromDate: string, tillDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getEligibleTransactions(forId, fromDate, tillDate, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['InvoicesApi.getEligibleTransactions']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Get an invoice pdf.
          * @param {number} id The id of the invoice to return
          * @param {*} [options] Override http request option.
@@ -10710,6 +11172,18 @@ export const InvoicesApiFactory = function (configuration?: Configuration, baseP
         },
         /**
          * 
+         * @summary Get eligible transactions for invoice creation.
+         * @param {number} forId Filter on Id of the debtor
+         * @param {string} fromDate Start date for selected transactions (inclusive)
+         * @param {string} [tillDate] End date for selected transactions (exclusive)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getEligibleTransactions(forId: number, fromDate: string, tillDate?: string, options?: any): AxiosPromise<TransactionResponse> {
+            return localVarFp.getEligibleTransactions(forId, fromDate, tillDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Get an invoice pdf.
          * @param {number} id The id of the invoice to return
          * @param {*} [options] Override http request option.
@@ -10824,6 +11298,20 @@ export class InvoicesApi extends BaseAPI {
      */
     public getAllInvoices(toId?: number, invoiceId?: number, currentState?: GetAllInvoicesCurrentStateEnum, returnEntries?: boolean, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return InvoicesApiFp(this.configuration).getAllInvoices(toId, invoiceId, currentState, returnEntries, fromDate, tillDate, take, skip, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get eligible transactions for invoice creation.
+     * @param {number} forId Filter on Id of the debtor
+     * @param {string} fromDate Start date for selected transactions (inclusive)
+     * @param {string} [tillDate] End date for selected transactions (exclusive)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InvoicesApi
+     */
+    public getEligibleTransactions(forId: number, fromDate: string, tillDate?: string, options?: RawAxiosRequestConfig) {
+        return InvoicesApiFp(this.configuration).getEligibleTransactions(forId, fromDate, tillDate, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -13668,6 +14156,600 @@ export class RootApi extends BaseAPI {
 
 
 /**
+ * SellerPayoutsApi - axios parameter creator
+ * @export
+ */
+export const SellerPayoutsApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Create a new seller payout
+         * @param {CreateSellerPayoutRequest} createSellerPayoutRequest New seller payout
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createSellerPayout: async (createSellerPayoutRequest: CreateSellerPayoutRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'createSellerPayoutRequest' is not null or undefined
+            assertParamExists('createSellerPayout', 'createSellerPayoutRequest', createSellerPayoutRequest)
+            const localVarPath = `/seller-payouts`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(createSellerPayoutRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Delete an existing seller payout
+         * @param {number} id ID of the seller payout that should be updated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteSellerPayout: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('deleteSellerPayout', 'id', id)
+            const localVarPath = `/seller-payouts/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Return all seller payouts
+         * @param {number} [requestedById] Requested by user ID
+         * @param {string} [fromDate] Lower bound on seller payout creation date (inclusive)
+         * @param {string} [tillDate] Upper bound on seller payout creation date (exclusive)
+         * @param {number} [take] Number of write-offs to return
+         * @param {number} [skip] Number of write-offs to skip
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllSellerPayouts: async (requestedById?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/seller-payouts`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (requestedById !== undefined) {
+                localVarQueryParameter['requestedById'] = requestedById;
+            }
+
+            if (fromDate !== undefined) {
+                localVarQueryParameter['fromDate'] = fromDate;
+            }
+
+            if (tillDate !== undefined) {
+                localVarQueryParameter['tillDate'] = tillDate;
+            }
+
+            if (take !== undefined) {
+                localVarQueryParameter['take'] = take;
+            }
+
+            if (skip !== undefined) {
+                localVarQueryParameter['skip'] = skip;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get a single seller payout\'s sales report
+         * @param {number} id ID of the seller payout that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSellerPayoutReport: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getSellerPayoutReport', 'id', id)
+            const localVarPath = `/seller-payouts/{id}/report`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get a single seller payout\'s sales report as PDF
+         * @param {number} id ID of the seller payout that should be returned
+         * @param {boolean} [force] Force the generation of the PDF
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSellerPayoutReportPdf: async (id: number, force?: boolean, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getSellerPayoutReportPdf', 'id', id)
+            const localVarPath = `/seller-payouts/{id}/report/pdf`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (force !== undefined) {
+                localVarQueryParameter['force'] = force;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get a single seller payout
+         * @param {number} id ID of the seller payout that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSingleSellerPayout: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getSingleSellerPayout', 'id', id)
+            const localVarPath = `/seller-payouts/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Update an existing seller payout
+         * @param {number} id ID of the seller payout that should be updated
+         * @param {UpdateSellerPayoutRequest} updateSellerPayoutRequest Updated seller payout
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateSellerPayout: async (id: number, updateSellerPayoutRequest: UpdateSellerPayoutRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('updateSellerPayout', 'id', id)
+            // verify required parameter 'updateSellerPayoutRequest' is not null or undefined
+            assertParamExists('updateSellerPayout', 'updateSellerPayoutRequest', updateSellerPayoutRequest)
+            const localVarPath = `/seller-payouts/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(updateSellerPayoutRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * SellerPayoutsApi - functional programming interface
+ * @export
+ */
+export const SellerPayoutsApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = SellerPayoutsApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Create a new seller payout
+         * @param {CreateSellerPayoutRequest} createSellerPayoutRequest New seller payout
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createSellerPayout(createSellerPayoutRequest: CreateSellerPayoutRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SellerPayoutResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createSellerPayout(createSellerPayoutRequest, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['SellerPayoutsApi.createSellerPayout']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Delete an existing seller payout
+         * @param {number} id ID of the seller payout that should be updated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteSellerPayout(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteSellerPayout(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['SellerPayoutsApi.deleteSellerPayout']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Return all seller payouts
+         * @param {number} [requestedById] Requested by user ID
+         * @param {string} [fromDate] Lower bound on seller payout creation date (inclusive)
+         * @param {string} [tillDate] Upper bound on seller payout creation date (exclusive)
+         * @param {number} [take] Number of write-offs to return
+         * @param {number} [skip] Number of write-offs to skip
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getAllSellerPayouts(requestedById?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedSellerPayoutResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllSellerPayouts(requestedById, fromDate, tillDate, take, skip, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['SellerPayoutsApi.getAllSellerPayouts']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get a single seller payout\'s sales report
+         * @param {number} id ID of the seller payout that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getSellerPayoutReport(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ReportResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSellerPayoutReport(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['SellerPayoutsApi.getSellerPayoutReport']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get a single seller payout\'s sales report as PDF
+         * @param {number} id ID of the seller payout that should be returned
+         * @param {boolean} [force] Force the generation of the PDF
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getSellerPayoutReportPdf(id: number, force?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PdfUrlResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSellerPayoutReportPdf(id, force, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['SellerPayoutsApi.getSellerPayoutReportPdf']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get a single seller payout
+         * @param {number} id ID of the seller payout that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getSingleSellerPayout(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SellerPayoutResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSingleSellerPayout(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['SellerPayoutsApi.getSingleSellerPayout']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Update an existing seller payout
+         * @param {number} id ID of the seller payout that should be updated
+         * @param {UpdateSellerPayoutRequest} updateSellerPayoutRequest Updated seller payout
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updateSellerPayout(id: number, updateSellerPayoutRequest: UpdateSellerPayoutRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SellerPayoutResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateSellerPayout(id, updateSellerPayoutRequest, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['SellerPayoutsApi.updateSellerPayout']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * SellerPayoutsApi - factory interface
+ * @export
+ */
+export const SellerPayoutsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = SellerPayoutsApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Create a new seller payout
+         * @param {CreateSellerPayoutRequest} createSellerPayoutRequest New seller payout
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createSellerPayout(createSellerPayoutRequest: CreateSellerPayoutRequest, options?: any): AxiosPromise<SellerPayoutResponse> {
+            return localVarFp.createSellerPayout(createSellerPayoutRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Delete an existing seller payout
+         * @param {number} id ID of the seller payout that should be updated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteSellerPayout(id: number, options?: any): AxiosPromise<string> {
+            return localVarFp.deleteSellerPayout(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Return all seller payouts
+         * @param {number} [requestedById] Requested by user ID
+         * @param {string} [fromDate] Lower bound on seller payout creation date (inclusive)
+         * @param {string} [tillDate] Upper bound on seller payout creation date (exclusive)
+         * @param {number} [take] Number of write-offs to return
+         * @param {number} [skip] Number of write-offs to skip
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllSellerPayouts(requestedById?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedSellerPayoutResponse> {
+            return localVarFp.getAllSellerPayouts(requestedById, fromDate, tillDate, take, skip, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get a single seller payout\'s sales report
+         * @param {number} id ID of the seller payout that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSellerPayoutReport(id: number, options?: any): AxiosPromise<ReportResponse> {
+            return localVarFp.getSellerPayoutReport(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get a single seller payout\'s sales report as PDF
+         * @param {number} id ID of the seller payout that should be returned
+         * @param {boolean} [force] Force the generation of the PDF
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSellerPayoutReportPdf(id: number, force?: boolean, options?: any): AxiosPromise<PdfUrlResponse> {
+            return localVarFp.getSellerPayoutReportPdf(id, force, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get a single seller payout
+         * @param {number} id ID of the seller payout that should be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSingleSellerPayout(id: number, options?: any): AxiosPromise<SellerPayoutResponse> {
+            return localVarFp.getSingleSellerPayout(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Update an existing seller payout
+         * @param {number} id ID of the seller payout that should be updated
+         * @param {UpdateSellerPayoutRequest} updateSellerPayoutRequest Updated seller payout
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateSellerPayout(id: number, updateSellerPayoutRequest: UpdateSellerPayoutRequest, options?: any): AxiosPromise<SellerPayoutResponse> {
+            return localVarFp.updateSellerPayout(id, updateSellerPayoutRequest, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * SellerPayoutsApi - object-oriented interface
+ * @export
+ * @class SellerPayoutsApi
+ * @extends {BaseAPI}
+ */
+export class SellerPayoutsApi extends BaseAPI {
+    /**
+     * 
+     * @summary Create a new seller payout
+     * @param {CreateSellerPayoutRequest} createSellerPayoutRequest New seller payout
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SellerPayoutsApi
+     */
+    public createSellerPayout(createSellerPayoutRequest: CreateSellerPayoutRequest, options?: RawAxiosRequestConfig) {
+        return SellerPayoutsApiFp(this.configuration).createSellerPayout(createSellerPayoutRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Delete an existing seller payout
+     * @param {number} id ID of the seller payout that should be updated
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SellerPayoutsApi
+     */
+    public deleteSellerPayout(id: number, options?: RawAxiosRequestConfig) {
+        return SellerPayoutsApiFp(this.configuration).deleteSellerPayout(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Return all seller payouts
+     * @param {number} [requestedById] Requested by user ID
+     * @param {string} [fromDate] Lower bound on seller payout creation date (inclusive)
+     * @param {string} [tillDate] Upper bound on seller payout creation date (exclusive)
+     * @param {number} [take] Number of write-offs to return
+     * @param {number} [skip] Number of write-offs to skip
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SellerPayoutsApi
+     */
+    public getAllSellerPayouts(requestedById?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
+        return SellerPayoutsApiFp(this.configuration).getAllSellerPayouts(requestedById, fromDate, tillDate, take, skip, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get a single seller payout\'s sales report
+     * @param {number} id ID of the seller payout that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SellerPayoutsApi
+     */
+    public getSellerPayoutReport(id: number, options?: RawAxiosRequestConfig) {
+        return SellerPayoutsApiFp(this.configuration).getSellerPayoutReport(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get a single seller payout\'s sales report as PDF
+     * @param {number} id ID of the seller payout that should be returned
+     * @param {boolean} [force] Force the generation of the PDF
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SellerPayoutsApi
+     */
+    public getSellerPayoutReportPdf(id: number, force?: boolean, options?: RawAxiosRequestConfig) {
+        return SellerPayoutsApiFp(this.configuration).getSellerPayoutReportPdf(id, force, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get a single seller payout
+     * @param {number} id ID of the seller payout that should be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SellerPayoutsApi
+     */
+    public getSingleSellerPayout(id: number, options?: RawAxiosRequestConfig) {
+        return SellerPayoutsApiFp(this.configuration).getSingleSellerPayout(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Update an existing seller payout
+     * @param {number} id ID of the seller payout that should be updated
+     * @param {UpdateSellerPayoutRequest} updateSellerPayoutRequest Updated seller payout
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SellerPayoutsApi
+     */
+    public updateSellerPayout(id: number, updateSellerPayoutRequest: UpdateSellerPayoutRequest, options?: RawAxiosRequestConfig) {
+        return SellerPayoutsApiFp(this.configuration).updateSellerPayout(id, updateSellerPayoutRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
  * StripeApi - axios parameter creator
  * @export
  */
@@ -15539,6 +16621,229 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
+         * @summary Get purchase report pdf for the given user
+         * @param {number} id The id of the user to get the purchase report for
+         * @param {string} fromDate Start date for selected purchases (inclusive)
+         * @param {string} tillDate End date for selected purchases (exclusive)
+         * @param {GetUsersPurchaseReportPdfFileTypeEnum} [fileType] The file type of the report
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUsersPurchaseReportPdf: async (id: number, fromDate: string, tillDate: string, fileType?: GetUsersPurchaseReportPdfFileTypeEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getUsersPurchaseReportPdf', 'id', id)
+            // verify required parameter 'fromDate' is not null or undefined
+            assertParamExists('getUsersPurchaseReportPdf', 'fromDate', fromDate)
+            // verify required parameter 'tillDate' is not null or undefined
+            assertParamExists('getUsersPurchaseReportPdf', 'tillDate', tillDate)
+            const localVarPath = `/users/{id}/transactions/purchases/report/pdf`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (fromDate !== undefined) {
+                localVarQueryParameter['fromDate'] = fromDate;
+            }
+
+            if (tillDate !== undefined) {
+                localVarQueryParameter['tillDate'] = tillDate;
+            }
+
+            if (fileType !== undefined) {
+                localVarQueryParameter['fileType'] = fileType;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get purchases report for the given user
+         * @param {number} id The id of the user to get the purchases report for
+         * @param {string} fromDate Start date for selected purchases (inclusive)
+         * @param {string} tillDate End date for selected purchases (exclusive)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUsersPurchasesReport: async (id: number, fromDate: string, tillDate: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getUsersPurchasesReport', 'id', id)
+            // verify required parameter 'fromDate' is not null or undefined
+            assertParamExists('getUsersPurchasesReport', 'fromDate', fromDate)
+            // verify required parameter 'tillDate' is not null or undefined
+            assertParamExists('getUsersPurchasesReport', 'tillDate', tillDate)
+            const localVarPath = `/users/{id}/transactions/purchases/report`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (fromDate !== undefined) {
+                localVarQueryParameter['fromDate'] = fromDate;
+            }
+
+            if (tillDate !== undefined) {
+                localVarQueryParameter['tillDate'] = tillDate;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get sales report for the given user
+         * @param {number} id The id of the user to get the sales report for
+         * @param {string} fromDate Start date for selected sales (inclusive)
+         * @param {string} tillDate End date for selected sales (exclusive)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUsersSalesReport: async (id: number, fromDate: string, tillDate: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getUsersSalesReport', 'id', id)
+            // verify required parameter 'fromDate' is not null or undefined
+            assertParamExists('getUsersSalesReport', 'fromDate', fromDate)
+            // verify required parameter 'tillDate' is not null or undefined
+            assertParamExists('getUsersSalesReport', 'tillDate', tillDate)
+            const localVarPath = `/users/{id}/transactions/sales/report`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (fromDate !== undefined) {
+                localVarQueryParameter['fromDate'] = fromDate;
+            }
+
+            if (tillDate !== undefined) {
+                localVarQueryParameter['tillDate'] = tillDate;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get sales report for the given user
+         * @param {number} id The id of the user to get the sales report for
+         * @param {string} fromDate Start date for selected sales (inclusive)
+         * @param {string} tillDate End date for selected sales (exclusive)
+         * @param {string} [description] Description of the report
+         * @param {GetUsersSalesReportPdfFileTypeEnum} [fileType] The file type of the report
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUsersSalesReportPdf: async (id: number, fromDate: string, tillDate: string, description?: string, fileType?: GetUsersSalesReportPdfFileTypeEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getUsersSalesReportPdf', 'id', id)
+            // verify required parameter 'fromDate' is not null or undefined
+            assertParamExists('getUsersSalesReportPdf', 'fromDate', fromDate)
+            // verify required parameter 'tillDate' is not null or undefined
+            assertParamExists('getUsersSalesReportPdf', 'tillDate', tillDate)
+            const localVarPath = `/users/{id}/transactions/sales/report/pdf`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (fromDate !== undefined) {
+                localVarQueryParameter['fromDate'] = fromDate;
+            }
+
+            if (tillDate !== undefined) {
+                localVarQueryParameter['tillDate'] = tillDate;
+            }
+
+            if (description !== undefined) {
+                localVarQueryParameter['description'] = description;
+            }
+
+            if (fileType !== undefined) {
+                localVarQueryParameter['fileType'] = fileType;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Get transactions from a user.
          * @param {number} id The id of the user that should be involved in all returned transactions
          * @param {number} [fromId] From-user for selected transactions
@@ -15630,6 +16935,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {number} [toId] To-user for selected transactions
          * @param {boolean} [exclusiveToId] If all sub-transactions should be to the toId user, default true
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         getUsersTransactionsReport: async (id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, exclusiveToId?: boolean, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
@@ -16251,6 +17557,69 @@ export const UsersApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get purchase report pdf for the given user
+         * @param {number} id The id of the user to get the purchase report for
+         * @param {string} fromDate Start date for selected purchases (inclusive)
+         * @param {string} tillDate End date for selected purchases (exclusive)
+         * @param {GetUsersPurchaseReportPdfFileTypeEnum} [fileType] The file type of the report
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getUsersPurchaseReportPdf(id: number, fromDate: string, tillDate: string, fileType?: GetUsersPurchaseReportPdfFileTypeEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getUsersPurchaseReportPdf(id, fromDate, tillDate, fileType, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.getUsersPurchaseReportPdf']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get purchases report for the given user
+         * @param {number} id The id of the user to get the purchases report for
+         * @param {string} fromDate Start date for selected purchases (inclusive)
+         * @param {string} tillDate End date for selected purchases (exclusive)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getUsersPurchasesReport(id: number, fromDate: string, tillDate: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ReportResponse>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getUsersPurchasesReport(id, fromDate, tillDate, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.getUsersPurchasesReport']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get sales report for the given user
+         * @param {number} id The id of the user to get the sales report for
+         * @param {string} fromDate Start date for selected sales (inclusive)
+         * @param {string} tillDate End date for selected sales (exclusive)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getUsersSalesReport(id: number, fromDate: string, tillDate: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ReportResponse>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getUsersSalesReport(id, fromDate, tillDate, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.getUsersSalesReport']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get sales report for the given user
+         * @param {number} id The id of the user to get the sales report for
+         * @param {string} fromDate Start date for selected sales (inclusive)
+         * @param {string} tillDate End date for selected sales (exclusive)
+         * @param {string} [description] Description of the report
+         * @param {GetUsersSalesReportPdfFileTypeEnum} [fileType] The file type of the report
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getUsersSalesReportPdf(id: number, fromDate: string, tillDate: string, description?: string, fileType?: GetUsersSalesReportPdfFileTypeEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getUsersSalesReportPdf(id, fromDate, tillDate, description, fileType, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.getUsersSalesReportPdf']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Get transactions from a user.
          * @param {number} id The id of the user that should be involved in all returned transactions
          * @param {number} [fromId] From-user for selected transactions
@@ -16281,6 +17650,7 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {number} [toId] To-user for selected transactions
          * @param {boolean} [exclusiveToId] If all sub-transactions should be to the toId user, default true
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         async getUsersTransactionsReport(id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, exclusiveToId?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TransactionReportResponse>>> {
@@ -16591,6 +17961,57 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
+         * @summary Get purchase report pdf for the given user
+         * @param {number} id The id of the user to get the purchase report for
+         * @param {string} fromDate Start date for selected purchases (inclusive)
+         * @param {string} tillDate End date for selected purchases (exclusive)
+         * @param {GetUsersPurchaseReportPdfFileTypeEnum} [fileType] The file type of the report
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUsersPurchaseReportPdf(id: number, fromDate: string, tillDate: string, fileType?: GetUsersPurchaseReportPdfFileTypeEnum, options?: any): AxiosPromise<string> {
+            return localVarFp.getUsersPurchaseReportPdf(id, fromDate, tillDate, fileType, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get purchases report for the given user
+         * @param {number} id The id of the user to get the purchases report for
+         * @param {string} fromDate Start date for selected purchases (inclusive)
+         * @param {string} tillDate End date for selected purchases (exclusive)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUsersPurchasesReport(id: number, fromDate: string, tillDate: string, options?: any): AxiosPromise<Array<ReportResponse>> {
+            return localVarFp.getUsersPurchasesReport(id, fromDate, tillDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get sales report for the given user
+         * @param {number} id The id of the user to get the sales report for
+         * @param {string} fromDate Start date for selected sales (inclusive)
+         * @param {string} tillDate End date for selected sales (exclusive)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUsersSalesReport(id: number, fromDate: string, tillDate: string, options?: any): AxiosPromise<Array<ReportResponse>> {
+            return localVarFp.getUsersSalesReport(id, fromDate, tillDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get sales report for the given user
+         * @param {number} id The id of the user to get the sales report for
+         * @param {string} fromDate Start date for selected sales (inclusive)
+         * @param {string} tillDate End date for selected sales (exclusive)
+         * @param {string} [description] Description of the report
+         * @param {GetUsersSalesReportPdfFileTypeEnum} [fileType] The file type of the report
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUsersSalesReportPdf(id: number, fromDate: string, tillDate: string, description?: string, fileType?: GetUsersSalesReportPdfFileTypeEnum, options?: any): AxiosPromise<string> {
+            return localVarFp.getUsersSalesReportPdf(id, fromDate, tillDate, description, fileType, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Get transactions from a user.
          * @param {number} id The id of the user that should be involved in all returned transactions
          * @param {number} [fromId] From-user for selected transactions
@@ -16618,6 +18039,7 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * @param {number} [toId] To-user for selected transactions
          * @param {boolean} [exclusiveToId] If all sub-transactions should be to the toId user, default true
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         getUsersTransactionsReport(id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, exclusiveToId?: boolean, options?: any): AxiosPromise<Array<TransactionReportResponse>> {
@@ -16938,6 +18360,65 @@ export class UsersApi extends BaseAPI {
 
     /**
      * 
+     * @summary Get purchase report pdf for the given user
+     * @param {number} id The id of the user to get the purchase report for
+     * @param {string} fromDate Start date for selected purchases (inclusive)
+     * @param {string} tillDate End date for selected purchases (exclusive)
+     * @param {GetUsersPurchaseReportPdfFileTypeEnum} [fileType] The file type of the report
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    public getUsersPurchaseReportPdf(id: number, fromDate: string, tillDate: string, fileType?: GetUsersPurchaseReportPdfFileTypeEnum, options?: RawAxiosRequestConfig) {
+        return UsersApiFp(this.configuration).getUsersPurchaseReportPdf(id, fromDate, tillDate, fileType, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get purchases report for the given user
+     * @param {number} id The id of the user to get the purchases report for
+     * @param {string} fromDate Start date for selected purchases (inclusive)
+     * @param {string} tillDate End date for selected purchases (exclusive)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    public getUsersPurchasesReport(id: number, fromDate: string, tillDate: string, options?: RawAxiosRequestConfig) {
+        return UsersApiFp(this.configuration).getUsersPurchasesReport(id, fromDate, tillDate, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get sales report for the given user
+     * @param {number} id The id of the user to get the sales report for
+     * @param {string} fromDate Start date for selected sales (inclusive)
+     * @param {string} tillDate End date for selected sales (exclusive)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    public getUsersSalesReport(id: number, fromDate: string, tillDate: string, options?: RawAxiosRequestConfig) {
+        return UsersApiFp(this.configuration).getUsersSalesReport(id, fromDate, tillDate, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get sales report for the given user
+     * @param {number} id The id of the user to get the sales report for
+     * @param {string} fromDate Start date for selected sales (inclusive)
+     * @param {string} tillDate End date for selected sales (exclusive)
+     * @param {string} [description] Description of the report
+     * @param {GetUsersSalesReportPdfFileTypeEnum} [fileType] The file type of the report
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    public getUsersSalesReportPdf(id: number, fromDate: string, tillDate: string, description?: string, fileType?: GetUsersSalesReportPdfFileTypeEnum, options?: RawAxiosRequestConfig) {
+        return UsersApiFp(this.configuration).getUsersSalesReportPdf(id, fromDate, tillDate, description, fileType, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary Get transactions from a user.
      * @param {number} id The id of the user that should be involved in all returned transactions
      * @param {number} [fromId] From-user for selected transactions
@@ -16967,6 +18448,7 @@ export class UsersApi extends BaseAPI {
      * @param {number} [toId] To-user for selected transactions
      * @param {boolean} [exclusiveToId] If all sub-transactions should be to the toId user, default true
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof UsersApi
      */
@@ -17081,6 +18563,22 @@ export const GetAllUsersTypeEnum = {
     AutomaticInvoice: 'AUTOMATIC_INVOICE'
 } as const;
 export type GetAllUsersTypeEnum = typeof GetAllUsersTypeEnum[keyof typeof GetAllUsersTypeEnum];
+/**
+ * @export
+ */
+export const GetUsersPurchaseReportPdfFileTypeEnum = {
+    Pdf: 'PDF',
+    Tex: 'TEX'
+} as const;
+export type GetUsersPurchaseReportPdfFileTypeEnum = typeof GetUsersPurchaseReportPdfFileTypeEnum[keyof typeof GetUsersPurchaseReportPdfFileTypeEnum];
+/**
+ * @export
+ */
+export const GetUsersSalesReportPdfFileTypeEnum = {
+    Pdf: 'PDF',
+    Tex: 'TEX'
+} as const;
+export type GetUsersSalesReportPdfFileTypeEnum = typeof GetUsersSalesReportPdfFileTypeEnum[keyof typeof GetUsersSalesReportPdfFileTypeEnum];
 
 
 /**
