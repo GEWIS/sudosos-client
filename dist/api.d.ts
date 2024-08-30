@@ -9724,10 +9724,11 @@ export declare const SellerPayoutsApiAxiosParamCreator: (configuration?: Configu
      *
      * @summary Get a single seller payout\'s sales report as PDF
      * @param {number} id ID of the seller payout that should be returned
+     * @param {boolean} [force] Force the generation of the PDF
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSellerPayoutReportPdf: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getSellerPayoutReportPdf: (id: number, force?: boolean, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get a single seller payout
@@ -9791,10 +9792,11 @@ export declare const SellerPayoutsApiFp: (configuration?: Configuration) => {
      *
      * @summary Get a single seller payout\'s sales report as PDF
      * @param {number} id ID of the seller payout that should be returned
+     * @param {boolean} [force] Force the generation of the PDF
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSellerPayoutReportPdf(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    getSellerPayoutReportPdf(id: number, force?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PdfUrlResponse>>;
     /**
      *
      * @summary Get a single seller payout
@@ -9858,10 +9860,11 @@ export declare const SellerPayoutsApiFactory: (configuration?: Configuration, ba
      *
      * @summary Get a single seller payout\'s sales report as PDF
      * @param {number} id ID of the seller payout that should be returned
+     * @param {boolean} [force] Force the generation of the PDF
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSellerPayoutReportPdf(id: number, options?: any): AxiosPromise<string>;
+    getSellerPayoutReportPdf(id: number, force?: boolean, options?: any): AxiosPromise<PdfUrlResponse>;
     /**
      *
      * @summary Get a single seller payout
@@ -9931,11 +9934,12 @@ export declare class SellerPayoutsApi extends BaseAPI {
      *
      * @summary Get a single seller payout\'s sales report as PDF
      * @param {number} id ID of the seller payout that should be returned
+     * @param {boolean} [force] Force the generation of the PDF
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SellerPayoutsApi
      */
-    getSellerPayoutReportPdf(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    getSellerPayoutReportPdf(id: number, force?: boolean, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PdfUrlResponse, any>>;
     /**
      *
      * @summary Get a single seller payout

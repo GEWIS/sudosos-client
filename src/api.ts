@@ -14336,10 +14336,11 @@ export const SellerPayoutsApiAxiosParamCreator = function (configuration?: Confi
          * 
          * @summary Get a single seller payout\'s sales report as PDF
          * @param {number} id ID of the seller payout that should be returned
+         * @param {boolean} [force] Force the generation of the PDF
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSellerPayoutReportPdf: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getSellerPayoutReportPdf: async (id: number, force?: boolean, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getSellerPayoutReportPdf', 'id', id)
             const localVarPath = `/seller-payouts/{id}/report/pdf`
@@ -14354,6 +14355,10 @@ export const SellerPayoutsApiAxiosParamCreator = function (configuration?: Confi
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (force !== undefined) {
+                localVarQueryParameter['force'] = force;
+            }
 
 
     
@@ -14518,11 +14523,12 @@ export const SellerPayoutsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get a single seller payout\'s sales report as PDF
          * @param {number} id ID of the seller payout that should be returned
+         * @param {boolean} [force] Force the generation of the PDF
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getSellerPayoutReportPdf(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getSellerPayoutReportPdf(id, options);
+        async getSellerPayoutReportPdf(id: number, force?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PdfUrlResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSellerPayoutReportPdf(id, force, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['SellerPayoutsApi.getSellerPayoutReportPdf']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
@@ -14612,11 +14618,12 @@ export const SellerPayoutsApiFactory = function (configuration?: Configuration, 
          * 
          * @summary Get a single seller payout\'s sales report as PDF
          * @param {number} id ID of the seller payout that should be returned
+         * @param {boolean} [force] Force the generation of the PDF
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSellerPayoutReportPdf(id: number, options?: any): AxiosPromise<string> {
-            return localVarFp.getSellerPayoutReportPdf(id, options).then((request) => request(axios, basePath));
+        getSellerPayoutReportPdf(id: number, force?: boolean, options?: any): AxiosPromise<PdfUrlResponse> {
+            return localVarFp.getSellerPayoutReportPdf(id, force, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -14705,12 +14712,13 @@ export class SellerPayoutsApi extends BaseAPI {
      * 
      * @summary Get a single seller payout\'s sales report as PDF
      * @param {number} id ID of the seller payout that should be returned
+     * @param {boolean} [force] Force the generation of the PDF
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SellerPayoutsApi
      */
-    public getSellerPayoutReportPdf(id: number, options?: RawAxiosRequestConfig) {
-        return SellerPayoutsApiFp(this.configuration).getSellerPayoutReportPdf(id, options).then((request) => request(this.axios, this.basePath));
+    public getSellerPayoutReportPdf(id: number, force?: boolean, options?: RawAxiosRequestConfig) {
+        return SellerPayoutsApiFp(this.configuration).getSellerPayoutReportPdf(id, force, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
