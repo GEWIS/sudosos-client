@@ -4000,6 +4000,19 @@ export interface SellerPayoutResponse {
 /**
  *
  * @export
+ * @interface ServerStatusResponse
+ */
+export interface ServerStatusResponse {
+    /**
+     * Whether the server is in maintenance mode
+     * @type {boolean}
+     * @memberof ServerStatusResponse
+     */
+    'maintenanceMode': boolean;
+}
+/**
+ *
+ * @export
  * @interface SimpleFileRequest
  */
 export interface SimpleFileRequest {
@@ -5062,6 +5075,19 @@ export interface UpdateLocalRequest {
      * @memberof UpdateLocalRequest
      */
     'password': string;
+}
+/**
+ *
+ * @export
+ * @interface UpdateMaintenanceModeRequest
+ */
+export interface UpdateMaintenanceModeRequest {
+    /**
+     * Whether maintenance mode should be enabled or disabled
+     * @type {boolean}
+     * @memberof UpdateMaintenanceModeRequest
+     */
+    'enabled': boolean;
 }
 /**
  *
@@ -9631,7 +9657,7 @@ export declare class RbacApi extends BaseAPI {
 export declare const RootApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
-     * @summary Ping the backend to check whether everything is working correctly
+     * @summary Get the current status of the backend
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -9644,11 +9670,11 @@ export declare const RootApiAxiosParamCreator: (configuration?: Configuration) =
 export declare const RootApiFp: (configuration?: Configuration) => {
     /**
      *
-     * @summary Ping the backend to check whether everything is working correctly
+     * @summary Get the current status of the backend
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    ping(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    ping(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServerStatusResponse>>;
 };
 /**
  * RootApi - factory interface
@@ -9657,11 +9683,11 @@ export declare const RootApiFp: (configuration?: Configuration) => {
 export declare const RootApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
-     * @summary Ping the backend to check whether everything is working correctly
+     * @summary Get the current status of the backend
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    ping(options?: any): AxiosPromise<string>;
+    ping(options?: any): AxiosPromise<ServerStatusResponse>;
 };
 /**
  * RootApi - object-oriented interface
@@ -9672,12 +9698,12 @@ export declare const RootApiFactory: (configuration?: Configuration, basePath?: 
 export declare class RootApi extends BaseAPI {
     /**
      *
-     * @summary Ping the backend to check whether everything is working correctly
+     * @summary Get the current status of the backend
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RootApi
      */
-    ping(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    ping(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ServerStatusResponse, any>>;
 }
 /**
  * SellerPayoutsApi - axios parameter creator
@@ -9959,6 +9985,65 @@ export declare class SellerPayoutsApi extends BaseAPI {
      * @memberof SellerPayoutsApi
      */
     updateSellerPayout(id: number, updateSellerPayoutRequest: UpdateSellerPayoutRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SellerPayoutResponse, any>>;
+}
+/**
+ * ServerSettingsApi - axios parameter creator
+ * @export
+ */
+export declare const ServerSettingsApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Enable/disable maintenance mode
+     * @param {UpdateMaintenanceModeRequest} updateMaintenanceModeRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    setMaintenanceMode: (updateMaintenanceModeRequest: UpdateMaintenanceModeRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+};
+/**
+ * ServerSettingsApi - functional programming interface
+ * @export
+ */
+export declare const ServerSettingsApiFp: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Enable/disable maintenance mode
+     * @param {UpdateMaintenanceModeRequest} updateMaintenanceModeRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    setMaintenanceMode(updateMaintenanceModeRequest: UpdateMaintenanceModeRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+};
+/**
+ * ServerSettingsApi - factory interface
+ * @export
+ */
+export declare const ServerSettingsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     *
+     * @summary Enable/disable maintenance mode
+     * @param {UpdateMaintenanceModeRequest} updateMaintenanceModeRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    setMaintenanceMode(updateMaintenanceModeRequest: UpdateMaintenanceModeRequest, options?: any): AxiosPromise<string>;
+};
+/**
+ * ServerSettingsApi - object-oriented interface
+ * @export
+ * @class ServerSettingsApi
+ * @extends {BaseAPI}
+ */
+export declare class ServerSettingsApi extends BaseAPI {
+    /**
+     *
+     * @summary Enable/disable maintenance mode
+     * @param {UpdateMaintenanceModeRequest} updateMaintenanceModeRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ServerSettingsApi
+     */
+    setMaintenanceMode(updateMaintenanceModeRequest: UpdateMaintenanceModeRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
 }
 /**
  * StripeApi - axios parameter creator
