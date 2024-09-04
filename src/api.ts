@@ -1597,10 +1597,10 @@ export interface CreateUserRequest {
     'email': string;
     /**
      * 
-     * @type {number}
+     * @type {string}
      * @memberof CreateUserRequest
      */
-    'type': number;
+    'type': string;
 }
 /**
  * 
@@ -3921,10 +3921,10 @@ export interface RoleResponse {
     'systemDefault': boolean;
     /**
      * The user types this role is default for
-     * @type {Array<number>}
+     * @type {Array<string>}
      * @memberof RoleResponse
      */
-    'userTypes'?: Array<number>;
+    'userTypes'?: Array<string>;
 }
 /**
  * 
@@ -3952,10 +3952,10 @@ export interface RoleWithPermissionsResponse {
     'systemDefault': boolean;
     /**
      * The user types this role is default for
-     * @type {Array<number>}
+     * @type {Array<string>}
      * @memberof RoleWithPermissionsResponse
      */
-    'userTypes'?: Array<number>;
+    'userTypes'?: Array<string>;
     /**
      * The permissions with regards to the entity.
      * @type {Array<PermissionResponse>}
@@ -4023,6 +4023,19 @@ export interface SellerPayoutResponse {
      * @memberof SellerPayoutResponse
      */
     'reference': string;
+}
+/**
+ * 
+ * @export
+ * @interface ServerStatusResponse
+ */
+export interface ServerStatusResponse {
+    /**
+     * Whether the server is in maintenance mode
+     * @type {boolean}
+     * @memberof ServerStatusResponse
+     */
+    'maintenanceMode': boolean;
 }
 /**
  * 
@@ -5092,6 +5105,19 @@ export interface UpdateLocalRequest {
      * @memberof UpdateLocalRequest
      */
     'password': string;
+}
+/**
+ * 
+ * @export
+ * @interface UpdateMaintenanceModeRequest
+ */
+export interface UpdateMaintenanceModeRequest {
+    /**
+     * Whether maintenance mode should be enabled or disabled
+     * @type {boolean}
+     * @memberof UpdateMaintenanceModeRequest
+     */
+    'enabled': boolean;
 }
 /**
  * 
@@ -14062,7 +14088,7 @@ export const RootApiAxiosParamCreator = function (configuration?: Configuration)
     return {
         /**
          * 
-         * @summary Ping the backend to check whether everything is working correctly
+         * @summary Get the current status of the backend
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -14102,11 +14128,11 @@ export const RootApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @summary Ping the backend to check whether everything is working correctly
+         * @summary Get the current status of the backend
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async ping(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+        async ping(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServerStatusResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.ping(options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['RootApi.ping']?.[index]?.url;
@@ -14124,11 +14150,11 @@ export const RootApiFactory = function (configuration?: Configuration, basePath?
     return {
         /**
          * 
-         * @summary Ping the backend to check whether everything is working correctly
+         * @summary Get the current status of the backend
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        ping(options?: any): AxiosPromise<string> {
+        ping(options?: any): AxiosPromise<ServerStatusResponse> {
             return localVarFp.ping(options).then((request) => request(axios, basePath));
         },
     };
@@ -14143,7 +14169,7 @@ export const RootApiFactory = function (configuration?: Configuration, basePath?
 export class RootApi extends BaseAPI {
     /**
      * 
-     * @summary Ping the backend to check whether everything is working correctly
+     * @summary Get the current status of the backend
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RootApi
@@ -14744,6 +14770,120 @@ export class SellerPayoutsApi extends BaseAPI {
      */
     public updateSellerPayout(id: number, updateSellerPayoutRequest: UpdateSellerPayoutRequest, options?: RawAxiosRequestConfig) {
         return SellerPayoutsApiFp(this.configuration).updateSellerPayout(id, updateSellerPayoutRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
+ * ServerSettingsApi - axios parameter creator
+ * @export
+ */
+export const ServerSettingsApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Enable/disable maintenance mode
+         * @param {UpdateMaintenanceModeRequest} updateMaintenanceModeRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        setMaintenanceMode: async (updateMaintenanceModeRequest: UpdateMaintenanceModeRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'updateMaintenanceModeRequest' is not null or undefined
+            assertParamExists('setMaintenanceMode', 'updateMaintenanceModeRequest', updateMaintenanceModeRequest)
+            const localVarPath = `/server-settings/maintenance-mode`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(updateMaintenanceModeRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * ServerSettingsApi - functional programming interface
+ * @export
+ */
+export const ServerSettingsApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = ServerSettingsApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Enable/disable maintenance mode
+         * @param {UpdateMaintenanceModeRequest} updateMaintenanceModeRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async setMaintenanceMode(updateMaintenanceModeRequest: UpdateMaintenanceModeRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.setMaintenanceMode(updateMaintenanceModeRequest, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['ServerSettingsApi.setMaintenanceMode']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * ServerSettingsApi - factory interface
+ * @export
+ */
+export const ServerSettingsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = ServerSettingsApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Enable/disable maintenance mode
+         * @param {UpdateMaintenanceModeRequest} updateMaintenanceModeRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        setMaintenanceMode(updateMaintenanceModeRequest: UpdateMaintenanceModeRequest, options?: any): AxiosPromise<string> {
+            return localVarFp.setMaintenanceMode(updateMaintenanceModeRequest, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * ServerSettingsApi - object-oriented interface
+ * @export
+ * @class ServerSettingsApi
+ * @extends {BaseAPI}
+ */
+export class ServerSettingsApi extends BaseAPI {
+    /**
+     * 
+     * @summary Enable/disable maintenance mode
+     * @param {UpdateMaintenanceModeRequest} updateMaintenanceModeRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ServerSettingsApi
+     */
+    public setMaintenanceMode(updateMaintenanceModeRequest: UpdateMaintenanceModeRequest, options?: RawAxiosRequestConfig) {
+        return ServerSettingsApiFp(this.configuration).setMaintenanceMode(updateMaintenanceModeRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

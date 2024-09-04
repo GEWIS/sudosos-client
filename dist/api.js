@@ -23,8 +23,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PointofsaleApi = exports.PointofsaleApiFactory = exports.PointofsaleApiFp = exports.PointofsaleApiAxiosParamCreator = exports.PayoutRequestsApi = exports.PayoutRequestsApiFactory = exports.PayoutRequestsApiFp = exports.PayoutRequestsApiAxiosParamCreator = exports.GetAllInvoicesCurrentStateEnum = exports.InvoicesApi = exports.InvoicesApiFactory = exports.InvoicesApiFp = exports.InvoicesApiAxiosParamCreator = exports.FilesApi = exports.FilesApiFactory = exports.FilesApiFp = exports.FilesApiAxiosParamCreator = exports.EventsApi = exports.EventsApiFactory = exports.EventsApiFp = exports.EventsApiAxiosParamCreator = exports.GetFineReportPdfFileTypeEnum = exports.DebtorsApi = exports.DebtorsApiFactory = exports.DebtorsApiFp = exports.DebtorsApiAxiosParamCreator = exports.ContainersApi = exports.ContainersApiFactory = exports.ContainersApiFp = exports.ContainersApiAxiosParamCreator = exports.BannersApi = exports.BannersApiFactory = exports.BannersApiFp = exports.BannersApiAxiosParamCreator = exports.GetAllBalanceOrderDirectionEnum = exports.GetAllBalanceUserTypesEnum = exports.BalanceApi = exports.BalanceApiFactory = exports.BalanceApiFp = exports.BalanceApiAxiosParamCreator = exports.AuthenticateApi = exports.AuthenticateApiFactory = exports.AuthenticateApiFp = exports.AuthenticateApiAxiosParamCreator = exports.UpdateInvoiceRequestStateEnum = exports.PayoutRequestStatusRequestStateEnum = exports.PayoutRequestResponseStatusEnum = exports.InvoiceStatusResponseStateEnum = exports.FinancialMutationResponseTypeEnum = exports.BasePayoutRequestResponseStatusEnum = void 0;
-exports.VouchergroupsApiFactory = exports.VouchergroupsApiFp = exports.VouchergroupsApiAxiosParamCreator = exports.VatGroupsApi = exports.VatGroupsApiFactory = exports.VatGroupsApiFp = exports.VatGroupsApiAxiosParamCreator = exports.GetUsersSalesReportPdfFileTypeEnum = exports.GetUsersPurchaseReportPdfFileTypeEnum = exports.GetAllUsersTypeEnum = exports.UsersApi = exports.UsersApiFactory = exports.UsersApiFp = exports.UsersApiAxiosParamCreator = exports.TransfersApi = exports.TransfersApiFactory = exports.TransfersApiFp = exports.TransfersApiAxiosParamCreator = exports.TransactionsApi = exports.TransactionsApiFactory = exports.TransactionsApiFp = exports.TransactionsApiAxiosParamCreator = exports.TestOperationsOfTheTestControllerApi = exports.TestOperationsOfTheTestControllerApiFactory = exports.TestOperationsOfTheTestControllerApiFp = exports.TestOperationsOfTheTestControllerApiAxiosParamCreator = exports.StripeApi = exports.StripeApiFactory = exports.StripeApiFp = exports.StripeApiAxiosParamCreator = exports.SellerPayoutsApi = exports.SellerPayoutsApiFactory = exports.SellerPayoutsApiFp = exports.SellerPayoutsApiAxiosParamCreator = exports.RootApi = exports.RootApiFactory = exports.RootApiFp = exports.RootApiAxiosParamCreator = exports.RbacApi = exports.RbacApiFactory = exports.RbacApiFp = exports.RbacApiAxiosParamCreator = exports.ProductsApi = exports.ProductsApiFactory = exports.ProductsApiFp = exports.ProductsApiAxiosParamCreator = exports.ProductCategoriesApi = exports.ProductCategoriesApiFactory = exports.ProductCategoriesApiFp = exports.ProductCategoriesApiAxiosParamCreator = void 0;
-exports.WriteoffsApi = exports.WriteoffsApiFactory = exports.WriteoffsApiFp = exports.WriteoffsApiAxiosParamCreator = exports.VouchergroupsApi = void 0;
+exports.VatGroupsApiFactory = exports.VatGroupsApiFp = exports.VatGroupsApiAxiosParamCreator = exports.GetUsersSalesReportPdfFileTypeEnum = exports.GetUsersPurchaseReportPdfFileTypeEnum = exports.GetAllUsersTypeEnum = exports.UsersApi = exports.UsersApiFactory = exports.UsersApiFp = exports.UsersApiAxiosParamCreator = exports.TransfersApi = exports.TransfersApiFactory = exports.TransfersApiFp = exports.TransfersApiAxiosParamCreator = exports.TransactionsApi = exports.TransactionsApiFactory = exports.TransactionsApiFp = exports.TransactionsApiAxiosParamCreator = exports.TestOperationsOfTheTestControllerApi = exports.TestOperationsOfTheTestControllerApiFactory = exports.TestOperationsOfTheTestControllerApiFp = exports.TestOperationsOfTheTestControllerApiAxiosParamCreator = exports.StripeApi = exports.StripeApiFactory = exports.StripeApiFp = exports.StripeApiAxiosParamCreator = exports.ServerSettingsApi = exports.ServerSettingsApiFactory = exports.ServerSettingsApiFp = exports.ServerSettingsApiAxiosParamCreator = exports.SellerPayoutsApi = exports.SellerPayoutsApiFactory = exports.SellerPayoutsApiFp = exports.SellerPayoutsApiAxiosParamCreator = exports.RootApi = exports.RootApiFactory = exports.RootApiFp = exports.RootApiAxiosParamCreator = exports.RbacApi = exports.RbacApiFactory = exports.RbacApiFp = exports.RbacApiAxiosParamCreator = exports.ProductsApi = exports.ProductsApiFactory = exports.ProductsApiFp = exports.ProductsApiAxiosParamCreator = exports.ProductCategoriesApi = exports.ProductCategoriesApiFactory = exports.ProductCategoriesApiFp = exports.ProductCategoriesApiAxiosParamCreator = void 0;
+exports.WriteoffsApi = exports.WriteoffsApiFactory = exports.WriteoffsApiFp = exports.WriteoffsApiAxiosParamCreator = exports.VouchergroupsApi = exports.VouchergroupsApiFactory = exports.VouchergroupsApiFp = exports.VouchergroupsApiAxiosParamCreator = exports.VatGroupsApi = void 0;
 const axios_1 = require("axios");
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -7831,7 +7831,7 @@ const RootApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
-         * @summary Ping the backend to check whether everything is working correctly
+         * @summary Get the current status of the backend
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -7866,7 +7866,7 @@ const RootApiFp = function (configuration) {
     return {
         /**
          *
-         * @summary Ping the backend to check whether everything is working correctly
+         * @summary Get the current status of the backend
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -7891,7 +7891,7 @@ const RootApiFactory = function (configuration, basePath, axios) {
     return {
         /**
          *
-         * @summary Ping the backend to check whether everything is working correctly
+         * @summary Get the current status of the backend
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -7910,7 +7910,7 @@ exports.RootApiFactory = RootApiFactory;
 class RootApi extends base_1.BaseAPI {
     /**
      *
-     * @summary Ping the backend to check whether everything is working correctly
+     * @summary Get the current status of the backend
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RootApi
@@ -8479,6 +8479,114 @@ class SellerPayoutsApi extends base_1.BaseAPI {
     }
 }
 exports.SellerPayoutsApi = SellerPayoutsApi;
+/**
+ * ServerSettingsApi - axios parameter creator
+ * @export
+ */
+const ServerSettingsApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         *
+         * @summary Enable/disable maintenance mode
+         * @param {UpdateMaintenanceModeRequest} updateMaintenanceModeRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        setMaintenanceMode: (updateMaintenanceModeRequest_1, ...args_1) => __awaiter(this, [updateMaintenanceModeRequest_1, ...args_1], void 0, function* (updateMaintenanceModeRequest, options = {}) {
+            // verify required parameter 'updateMaintenanceModeRequest' is not null or undefined
+            (0, common_1.assertParamExists)('setMaintenanceMode', 'updateMaintenanceModeRequest', updateMaintenanceModeRequest);
+            const localVarPath = `/server-settings/maintenance-mode`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'PUT' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(updateMaintenanceModeRequest, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+    };
+};
+exports.ServerSettingsApiAxiosParamCreator = ServerSettingsApiAxiosParamCreator;
+/**
+ * ServerSettingsApi - functional programming interface
+ * @export
+ */
+const ServerSettingsApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.ServerSettingsApiAxiosParamCreator)(configuration);
+    return {
+        /**
+         *
+         * @summary Enable/disable maintenance mode
+         * @param {UpdateMaintenanceModeRequest} updateMaintenanceModeRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        setMaintenanceMode(updateMaintenanceModeRequest, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.setMaintenanceMode(updateMaintenanceModeRequest, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['ServerSettingsApi.setMaintenanceMode']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+    };
+};
+exports.ServerSettingsApiFp = ServerSettingsApiFp;
+/**
+ * ServerSettingsApi - factory interface
+ * @export
+ */
+const ServerSettingsApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.ServerSettingsApiFp)(configuration);
+    return {
+        /**
+         *
+         * @summary Enable/disable maintenance mode
+         * @param {UpdateMaintenanceModeRequest} updateMaintenanceModeRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        setMaintenanceMode(updateMaintenanceModeRequest, options) {
+            return localVarFp.setMaintenanceMode(updateMaintenanceModeRequest, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+exports.ServerSettingsApiFactory = ServerSettingsApiFactory;
+/**
+ * ServerSettingsApi - object-oriented interface
+ * @export
+ * @class ServerSettingsApi
+ * @extends {BaseAPI}
+ */
+class ServerSettingsApi extends base_1.BaseAPI {
+    /**
+     *
+     * @summary Enable/disable maintenance mode
+     * @param {UpdateMaintenanceModeRequest} updateMaintenanceModeRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ServerSettingsApi
+     */
+    setMaintenanceMode(updateMaintenanceModeRequest, options) {
+        return (0, exports.ServerSettingsApiFp)(this.configuration).setMaintenanceMode(updateMaintenanceModeRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+exports.ServerSettingsApi = ServerSettingsApi;
 /**
  * StripeApi - axios parameter creator
  * @export
