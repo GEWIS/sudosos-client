@@ -8522,11 +8522,11 @@ export const DebtorsApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @summary Return all users that had at most -5 euros balance both now and on the reference date.    For all these users, also return their fine based on the reference date.
          * @param {Array<string>} referenceDates Dates to base the fines on. Every returned user has at    least five euros debt on every reference date. The height of the fine is based on the first date in the array.
-         * @param {Array<number>} [userTypes] List of all user types fines should be calculated for 1 (MEMBER), 2 (ORGAN), 3 (VOUCHER), 4 (LOCAL_USER), 5 (LOCAL_ADMIN), 6 (INVOICE), 7 (AUTOMATIC_INVOICE).
+         * @param {Array<string>} [userTypes] List of all user types fines should be calculated for (MEMBER, ORGAN, VOUCHER, LOCAL_USER, LOCAL_ADMIN, INVOICE, AUTOMATIC_INVOICE).
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        calculateFines: async (referenceDates: Array<string>, userTypes?: Array<number>, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        calculateFines: async (referenceDates: Array<string>, userTypes?: Array<string>, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'referenceDates' is not null or undefined
             assertParamExists('calculateFines', 'referenceDates', referenceDates)
             const localVarPath = `/fines/eligible`;
@@ -8877,11 +8877,11 @@ export const DebtorsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Return all users that had at most -5 euros balance both now and on the reference date.    For all these users, also return their fine based on the reference date.
          * @param {Array<string>} referenceDates Dates to base the fines on. Every returned user has at    least five euros debt on every reference date. The height of the fine is based on the first date in the array.
-         * @param {Array<number>} [userTypes] List of all user types fines should be calculated for 1 (MEMBER), 2 (ORGAN), 3 (VOUCHER), 4 (LOCAL_USER), 5 (LOCAL_ADMIN), 6 (INVOICE), 7 (AUTOMATIC_INVOICE).
+         * @param {Array<string>} [userTypes] List of all user types fines should be calculated for (MEMBER, ORGAN, VOUCHER, LOCAL_USER, LOCAL_ADMIN, INVOICE, AUTOMATIC_INVOICE).
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async calculateFines(referenceDates: Array<string>, userTypes?: Array<number>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UserToFineResponse>>> {
+        async calculateFines(referenceDates: Array<string>, userTypes?: Array<string>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UserToFineResponse>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.calculateFines(referenceDates, userTypes, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['DebtorsApi.calculateFines']?.[index]?.url;
@@ -8996,11 +8996,11 @@ export const DebtorsApiFactory = function (configuration?: Configuration, basePa
          * 
          * @summary Return all users that had at most -5 euros balance both now and on the reference date.    For all these users, also return their fine based on the reference date.
          * @param {Array<string>} referenceDates Dates to base the fines on. Every returned user has at    least five euros debt on every reference date. The height of the fine is based on the first date in the array.
-         * @param {Array<number>} [userTypes] List of all user types fines should be calculated for 1 (MEMBER), 2 (ORGAN), 3 (VOUCHER), 4 (LOCAL_USER), 5 (LOCAL_ADMIN), 6 (INVOICE), 7 (AUTOMATIC_INVOICE).
+         * @param {Array<string>} [userTypes] List of all user types fines should be calculated for (MEMBER, ORGAN, VOUCHER, LOCAL_USER, LOCAL_ADMIN, INVOICE, AUTOMATIC_INVOICE).
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        calculateFines(referenceDates: Array<string>, userTypes?: Array<number>, options?: any): AxiosPromise<Array<UserToFineResponse>> {
+        calculateFines(referenceDates: Array<string>, userTypes?: Array<string>, options?: any): AxiosPromise<Array<UserToFineResponse>> {
             return localVarFp.calculateFines(referenceDates, userTypes, options).then((request) => request(axios, basePath));
         },
         /**
@@ -9091,12 +9091,12 @@ export class DebtorsApi extends BaseAPI {
      * 
      * @summary Return all users that had at most -5 euros balance both now and on the reference date.    For all these users, also return their fine based on the reference date.
      * @param {Array<string>} referenceDates Dates to base the fines on. Every returned user has at    least five euros debt on every reference date. The height of the fine is based on the first date in the array.
-     * @param {Array<number>} [userTypes] List of all user types fines should be calculated for 1 (MEMBER), 2 (ORGAN), 3 (VOUCHER), 4 (LOCAL_USER), 5 (LOCAL_ADMIN), 6 (INVOICE), 7 (AUTOMATIC_INVOICE).
+     * @param {Array<string>} [userTypes] List of all user types fines should be calculated for (MEMBER, ORGAN, VOUCHER, LOCAL_USER, LOCAL_ADMIN, INVOICE, AUTOMATIC_INVOICE).
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DebtorsApi
      */
-    public calculateFines(referenceDates: Array<string>, userTypes?: Array<number>, options?: RawAxiosRequestConfig) {
+    public calculateFines(referenceDates: Array<string>, userTypes?: Array<string>, options?: RawAxiosRequestConfig) {
         return DebtorsApiFp(this.configuration).calculateFines(referenceDates, userTypes, options).then((request) => request(this.axios, this.basePath));
     }
 
