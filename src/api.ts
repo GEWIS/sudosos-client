@@ -1326,12 +1326,6 @@ export interface CreateInvoiceRequest {
      */
     'reference': string;
     /**
-     * Custom entries to be added to the invoice
-     * @type {Array<InvoiceEntryRequest>}
-     * @memberof CreateInvoiceRequest
-     */
-    'customEntries'?: Array<InvoiceEntryRequest>;
-    /**
      * IDs of the transactions to add to the Invoice.
      * @type {Array<number>}
      * @memberof CreateInvoiceRequest
@@ -1373,6 +1367,12 @@ export interface CreateInvoiceRequest {
      * @memberof CreateInvoiceRequest
      */
     'attention'?: string;
+    /**
+     * 
+     * @type {DineroObjectRequest}
+     * @memberof CreateInvoiceRequest
+     */
+    'amount': DineroObjectRequest;
 }
 /**
  * 
@@ -5032,6 +5032,12 @@ export interface UpdateInvoiceRequest {
      * @memberof UpdateInvoiceRequest
      */
     'date'?: string;
+    /**
+     * 
+     * @type {DineroObjectRequest}
+     * @memberof UpdateInvoiceRequest
+     */
+    'amount'?: DineroObjectRequest;
 }
 
 export const UpdateInvoiceRequestStateEnum = {
