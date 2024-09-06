@@ -2604,7 +2604,7 @@ const DebtorsApiAxiosParamCreator = function (configuration) {
          *
          * @summary Return all users that had at most -5 euros balance both now and on the reference date.    For all these users, also return their fine based on the reference date.
          * @param {Array<string>} referenceDates Dates to base the fines on. Every returned user has at    least five euros debt on every reference date. The height of the fine is based on the first date in the array.
-         * @param {Array<number>} [userTypes] List of all user types fines should be calculated for 1 (MEMBER), 2 (ORGAN), 3 (VOUCHER), 4 (LOCAL_USER), 5 (LOCAL_ADMIN), 6 (INVOICE), 7 (AUTOMATIC_INVOICE).
+         * @param {Array<string>} [userTypes] List of all user types fines should be calculated for (MEMBER, ORGAN, VOUCHER, LOCAL_USER, LOCAL_ADMIN, INVOICE, AUTOMATIC_INVOICE).
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2900,7 +2900,7 @@ const DebtorsApiFp = function (configuration) {
          *
          * @summary Return all users that had at most -5 euros balance both now and on the reference date.    For all these users, also return their fine based on the reference date.
          * @param {Array<string>} referenceDates Dates to base the fines on. Every returned user has at    least five euros debt on every reference date. The height of the fine is based on the first date in the array.
-         * @param {Array<number>} [userTypes] List of all user types fines should be calculated for 1 (MEMBER), 2 (ORGAN), 3 (VOUCHER), 4 (LOCAL_USER), 5 (LOCAL_ADMIN), 6 (INVOICE), 7 (AUTOMATIC_INVOICE).
+         * @param {Array<string>} [userTypes] List of all user types fines should be calculated for (MEMBER, ORGAN, VOUCHER, LOCAL_USER, LOCAL_ADMIN, INVOICE, AUTOMATIC_INVOICE).
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -3043,7 +3043,7 @@ const DebtorsApiFactory = function (configuration, basePath, axios) {
          *
          * @summary Return all users that had at most -5 euros balance both now and on the reference date.    For all these users, also return their fine based on the reference date.
          * @param {Array<string>} referenceDates Dates to base the fines on. Every returned user has at    least five euros debt on every reference date. The height of the fine is based on the first date in the array.
-         * @param {Array<number>} [userTypes] List of all user types fines should be calculated for 1 (MEMBER), 2 (ORGAN), 3 (VOUCHER), 4 (LOCAL_USER), 5 (LOCAL_ADMIN), 6 (INVOICE), 7 (AUTOMATIC_INVOICE).
+         * @param {Array<string>} [userTypes] List of all user types fines should be calculated for (MEMBER, ORGAN, VOUCHER, LOCAL_USER, LOCAL_ADMIN, INVOICE, AUTOMATIC_INVOICE).
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -3138,7 +3138,7 @@ class DebtorsApi extends base_1.BaseAPI {
      *
      * @summary Return all users that had at most -5 euros balance both now and on the reference date.    For all these users, also return their fine based on the reference date.
      * @param {Array<string>} referenceDates Dates to base the fines on. Every returned user has at    least five euros debt on every reference date. The height of the fine is based on the first date in the array.
-     * @param {Array<number>} [userTypes] List of all user types fines should be calculated for 1 (MEMBER), 2 (ORGAN), 3 (VOUCHER), 4 (LOCAL_USER), 5 (LOCAL_ADMIN), 6 (INVOICE), 7 (AUTOMATIC_INVOICE).
+     * @param {Array<string>} [userTypes] List of all user types fines should be calculated for (MEMBER, ORGAN, VOUCHER, LOCAL_USER, LOCAL_ADMIN, INVOICE, AUTOMATIC_INVOICE).
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DebtorsApi
