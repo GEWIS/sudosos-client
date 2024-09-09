@@ -10784,10 +10784,11 @@ export const InvoicesApiAxiosParamCreator = function (configuration?: Configurat
          * 
          * @summary Get an invoice pdf.
          * @param {number} id The id of the invoice to return
+         * @param {boolean} [force] Force creation of pdf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInvoicePdf: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getInvoicePdf: async (id: number, force?: boolean, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getInvoicePdf', 'id', id)
             const localVarPath = `/invoices/{id}/pdf`
@@ -10806,6 +10807,10 @@ export const InvoicesApiAxiosParamCreator = function (configuration?: Configurat
             // authentication JWT required
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (force !== undefined) {
+                localVarQueryParameter['force'] = force;
+            }
 
 
     
@@ -11075,11 +11080,12 @@ export const InvoicesApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get an invoice pdf.
          * @param {number} id The id of the invoice to return
+         * @param {boolean} [force] Force creation of pdf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getInvoicePdf(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getInvoicePdf(id, options);
+        async getInvoicePdf(id: number, force?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getInvoicePdf(id, force, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['InvoicesApi.getInvoicePdf']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
@@ -11212,11 +11218,12 @@ export const InvoicesApiFactory = function (configuration?: Configuration, baseP
          * 
          * @summary Get an invoice pdf.
          * @param {number} id The id of the invoice to return
+         * @param {boolean} [force] Force creation of pdf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInvoicePdf(id: number, options?: any): AxiosPromise<string> {
-            return localVarFp.getInvoicePdf(id, options).then((request) => request(axios, basePath));
+        getInvoicePdf(id: number, force?: boolean, options?: any): AxiosPromise<string> {
+            return localVarFp.getInvoicePdf(id, force, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -11344,12 +11351,13 @@ export class InvoicesApi extends BaseAPI {
      * 
      * @summary Get an invoice pdf.
      * @param {number} id The id of the invoice to return
+     * @param {boolean} [force] Force creation of pdf
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof InvoicesApi
      */
-    public getInvoicePdf(id: number, options?: RawAxiosRequestConfig) {
-        return InvoicesApiFp(this.configuration).getInvoicePdf(id, options).then((request) => request(this.axios, this.basePath));
+    public getInvoicePdf(id: number, force?: boolean, options?: RawAxiosRequestConfig) {
+        return InvoicesApiFp(this.configuration).getInvoicePdf(id, force, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
