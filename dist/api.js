@@ -4702,10 +4702,11 @@ const InvoicesApiAxiosParamCreator = function (configuration) {
          *
          * @summary Get an invoice pdf.
          * @param {number} id The id of the invoice to return
+         * @param {boolean} [force] Force creation of pdf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInvoicePdf: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        getInvoicePdf: (id_1, force_1, ...args_1) => __awaiter(this, [id_1, force_1, ...args_1], void 0, function* (id, force, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getInvoicePdf', 'id', id);
             const localVarPath = `/invoices/{id}/pdf`
@@ -4722,6 +4723,9 @@ const InvoicesApiAxiosParamCreator = function (configuration) {
             // authentication JWT required
             // http bearer authentication required
             yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            if (force !== undefined) {
+                localVarQueryParameter['force'] = force;
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
@@ -4975,13 +4979,14 @@ const InvoicesApiFp = function (configuration) {
          *
          * @summary Get an invoice pdf.
          * @param {number} id The id of the invoice to return
+         * @param {boolean} [force] Force creation of pdf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInvoicePdf(id, options) {
+        getInvoicePdf(id, force, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getInvoicePdf(id, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getInvoicePdf(id, force, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['InvoicesApi.getInvoicePdf']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
@@ -5127,11 +5132,12 @@ const InvoicesApiFactory = function (configuration, basePath, axios) {
          *
          * @summary Get an invoice pdf.
          * @param {number} id The id of the invoice to return
+         * @param {boolean} [force] Force creation of pdf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInvoicePdf(id, options) {
-            return localVarFp.getInvoicePdf(id, options).then((request) => request(axios, basePath));
+        getInvoicePdf(id, force, options) {
+            return localVarFp.getInvoicePdf(id, force, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -5254,12 +5260,13 @@ class InvoicesApi extends base_1.BaseAPI {
      *
      * @summary Get an invoice pdf.
      * @param {number} id The id of the invoice to return
+     * @param {boolean} [force] Force creation of pdf
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof InvoicesApi
      */
-    getInvoicePdf(id, options) {
-        return (0, exports.InvoicesApiFp)(this.configuration).getInvoicePdf(id, options).then((request) => request(this.axios, this.basePath));
+    getInvoicePdf(id, force, options) {
+        return (0, exports.InvoicesApiFp)(this.configuration).getInvoicePdf(id, force, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *

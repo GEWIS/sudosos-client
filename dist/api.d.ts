@@ -8056,10 +8056,11 @@ export declare const InvoicesApiAxiosParamCreator: (configuration?: Configuratio
      *
      * @summary Get an invoice pdf.
      * @param {number} id The id of the invoice to return
+     * @param {boolean} [force] Force creation of pdf
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getInvoicePdf: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getInvoicePdf: (id: number, force?: boolean, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns a single invoice in the system.
@@ -8154,10 +8155,11 @@ export declare const InvoicesApiFp: (configuration?: Configuration) => {
      *
      * @summary Get an invoice pdf.
      * @param {number} id The id of the invoice to return
+     * @param {boolean} [force] Force creation of pdf
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getInvoicePdf(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    getInvoicePdf(id: number, force?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
     /**
      *
      * @summary Returns a single invoice in the system.
@@ -8252,10 +8254,11 @@ export declare const InvoicesApiFactory: (configuration?: Configuration, basePat
      *
      * @summary Get an invoice pdf.
      * @param {number} id The id of the invoice to return
+     * @param {boolean} [force] Force creation of pdf
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getInvoicePdf(id: number, options?: any): AxiosPromise<string>;
+    getInvoicePdf(id: number, force?: boolean, options?: any): AxiosPromise<string>;
     /**
      *
      * @summary Returns a single invoice in the system.
@@ -8357,11 +8360,12 @@ export declare class InvoicesApi extends BaseAPI {
      *
      * @summary Get an invoice pdf.
      * @param {number} id The id of the invoice to return
+     * @param {boolean} [force] Force creation of pdf
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof InvoicesApi
      */
-    getInvoicePdf(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    getInvoicePdf(id: number, force?: boolean, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
     /**
      *
      * @summary Returns a single invoice in the system.
