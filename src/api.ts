@@ -1326,12 +1326,6 @@ export interface CreateInvoiceRequest {
      */
     'reference': string;
     /**
-     * Custom entries to be added to the invoice
-     * @type {Array<InvoiceEntryRequest>}
-     * @memberof CreateInvoiceRequest
-     */
-    'customEntries'?: Array<InvoiceEntryRequest>;
-    /**
      * IDs of the transactions to add to the Invoice.
      * @type {Array<number>}
      * @memberof CreateInvoiceRequest
@@ -1373,6 +1367,12 @@ export interface CreateInvoiceRequest {
      * @memberof CreateInvoiceRequest
      */
     'attention'?: string;
+    /**
+     * 
+     * @type {DineroObjectRequest}
+     * @memberof CreateInvoiceRequest
+     */
+    'amount': DineroObjectRequest;
 }
 /**
  * 
@@ -5032,6 +5032,12 @@ export interface UpdateInvoiceRequest {
      * @memberof UpdateInvoiceRequest
      */
     'date'?: string;
+    /**
+     * 
+     * @type {DineroObjectRequest}
+     * @memberof UpdateInvoiceRequest
+     */
+    'amount'?: DineroObjectRequest;
 }
 
 export const UpdateInvoiceRequestStateEnum = {
@@ -8516,11 +8522,11 @@ export const DebtorsApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @summary Return all users that had at most -5 euros balance both now and on the reference date.    For all these users, also return their fine based on the reference date.
          * @param {Array<string>} referenceDates Dates to base the fines on. Every returned user has at    least five euros debt on every reference date. The height of the fine is based on the first date in the array.
-         * @param {Array<number>} [userTypes] List of all user types fines should be calculated for 1 (MEMBER), 2 (ORGAN), 3 (VOUCHER), 4 (LOCAL_USER), 5 (LOCAL_ADMIN), 6 (INVOICE), 7 (AUTOMATIC_INVOICE).
+         * @param {Array<string>} [userTypes] List of all user types fines should be calculated for (MEMBER, ORGAN, VOUCHER, LOCAL_USER, LOCAL_ADMIN, INVOICE, AUTOMATIC_INVOICE).
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        calculateFines: async (referenceDates: Array<string>, userTypes?: Array<number>, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        calculateFines: async (referenceDates: Array<string>, userTypes?: Array<string>, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'referenceDates' is not null or undefined
             assertParamExists('calculateFines', 'referenceDates', referenceDates)
             const localVarPath = `/fines/eligible`;
@@ -8871,11 +8877,11 @@ export const DebtorsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Return all users that had at most -5 euros balance both now and on the reference date.    For all these users, also return their fine based on the reference date.
          * @param {Array<string>} referenceDates Dates to base the fines on. Every returned user has at    least five euros debt on every reference date. The height of the fine is based on the first date in the array.
-         * @param {Array<number>} [userTypes] List of all user types fines should be calculated for 1 (MEMBER), 2 (ORGAN), 3 (VOUCHER), 4 (LOCAL_USER), 5 (LOCAL_ADMIN), 6 (INVOICE), 7 (AUTOMATIC_INVOICE).
+         * @param {Array<string>} [userTypes] List of all user types fines should be calculated for (MEMBER, ORGAN, VOUCHER, LOCAL_USER, LOCAL_ADMIN, INVOICE, AUTOMATIC_INVOICE).
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async calculateFines(referenceDates: Array<string>, userTypes?: Array<number>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UserToFineResponse>>> {
+        async calculateFines(referenceDates: Array<string>, userTypes?: Array<string>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UserToFineResponse>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.calculateFines(referenceDates, userTypes, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['DebtorsApi.calculateFines']?.[index]?.url;
@@ -8990,11 +8996,11 @@ export const DebtorsApiFactory = function (configuration?: Configuration, basePa
          * 
          * @summary Return all users that had at most -5 euros balance both now and on the reference date.    For all these users, also return their fine based on the reference date.
          * @param {Array<string>} referenceDates Dates to base the fines on. Every returned user has at    least five euros debt on every reference date. The height of the fine is based on the first date in the array.
-         * @param {Array<number>} [userTypes] List of all user types fines should be calculated for 1 (MEMBER), 2 (ORGAN), 3 (VOUCHER), 4 (LOCAL_USER), 5 (LOCAL_ADMIN), 6 (INVOICE), 7 (AUTOMATIC_INVOICE).
+         * @param {Array<string>} [userTypes] List of all user types fines should be calculated for (MEMBER, ORGAN, VOUCHER, LOCAL_USER, LOCAL_ADMIN, INVOICE, AUTOMATIC_INVOICE).
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        calculateFines(referenceDates: Array<string>, userTypes?: Array<number>, options?: any): AxiosPromise<Array<UserToFineResponse>> {
+        calculateFines(referenceDates: Array<string>, userTypes?: Array<string>, options?: any): AxiosPromise<Array<UserToFineResponse>> {
             return localVarFp.calculateFines(referenceDates, userTypes, options).then((request) => request(axios, basePath));
         },
         /**
@@ -9085,12 +9091,12 @@ export class DebtorsApi extends BaseAPI {
      * 
      * @summary Return all users that had at most -5 euros balance both now and on the reference date.    For all these users, also return their fine based on the reference date.
      * @param {Array<string>} referenceDates Dates to base the fines on. Every returned user has at    least five euros debt on every reference date. The height of the fine is based on the first date in the array.
-     * @param {Array<number>} [userTypes] List of all user types fines should be calculated for 1 (MEMBER), 2 (ORGAN), 3 (VOUCHER), 4 (LOCAL_USER), 5 (LOCAL_ADMIN), 6 (INVOICE), 7 (AUTOMATIC_INVOICE).
+     * @param {Array<string>} [userTypes] List of all user types fines should be calculated for (MEMBER, ORGAN, VOUCHER, LOCAL_USER, LOCAL_ADMIN, INVOICE, AUTOMATIC_INVOICE).
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DebtorsApi
      */
-    public calculateFines(referenceDates: Array<string>, userTypes?: Array<number>, options?: RawAxiosRequestConfig) {
+    public calculateFines(referenceDates: Array<string>, userTypes?: Array<string>, options?: RawAxiosRequestConfig) {
         return DebtorsApiFp(this.configuration).calculateFines(referenceDates, userTypes, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10784,10 +10790,11 @@ export const InvoicesApiAxiosParamCreator = function (configuration?: Configurat
          * 
          * @summary Get an invoice pdf.
          * @param {number} id The id of the invoice to return
+         * @param {boolean} [force] Force creation of pdf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInvoicePdf: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getInvoicePdf: async (id: number, force?: boolean, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getInvoicePdf', 'id', id)
             const localVarPath = `/invoices/{id}/pdf`
@@ -10806,6 +10813,10 @@ export const InvoicesApiAxiosParamCreator = function (configuration?: Configurat
             // authentication JWT required
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (force !== undefined) {
+                localVarQueryParameter['force'] = force;
+            }
 
 
     
@@ -11075,11 +11086,12 @@ export const InvoicesApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get an invoice pdf.
          * @param {number} id The id of the invoice to return
+         * @param {boolean} [force] Force creation of pdf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getInvoicePdf(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getInvoicePdf(id, options);
+        async getInvoicePdf(id: number, force?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getInvoicePdf(id, force, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['InvoicesApi.getInvoicePdf']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
@@ -11212,11 +11224,12 @@ export const InvoicesApiFactory = function (configuration?: Configuration, baseP
          * 
          * @summary Get an invoice pdf.
          * @param {number} id The id of the invoice to return
+         * @param {boolean} [force] Force creation of pdf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInvoicePdf(id: number, options?: any): AxiosPromise<string> {
-            return localVarFp.getInvoicePdf(id, options).then((request) => request(axios, basePath));
+        getInvoicePdf(id: number, force?: boolean, options?: any): AxiosPromise<string> {
+            return localVarFp.getInvoicePdf(id, force, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -11344,12 +11357,13 @@ export class InvoicesApi extends BaseAPI {
      * 
      * @summary Get an invoice pdf.
      * @param {number} id The id of the invoice to return
+     * @param {boolean} [force] Force creation of pdf
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof InvoicesApi
      */
-    public getInvoicePdf(id: number, options?: RawAxiosRequestConfig) {
-        return InvoicesApiFp(this.configuration).getInvoicePdf(id, options).then((request) => request(this.axios, this.basePath));
+    public getInvoicePdf(id: number, force?: boolean, options?: RawAxiosRequestConfig) {
+        return InvoicesApiFp(this.configuration).getInvoicePdf(id, force, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

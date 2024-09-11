@@ -1313,12 +1313,6 @@ export interface CreateInvoiceRequest {
      */
     'reference': string;
     /**
-     * Custom entries to be added to the invoice
-     * @type {Array<InvoiceEntryRequest>}
-     * @memberof CreateInvoiceRequest
-     */
-    'customEntries'?: Array<InvoiceEntryRequest>;
-    /**
      * IDs of the transactions to add to the Invoice.
      * @type {Array<number>}
      * @memberof CreateInvoiceRequest
@@ -1360,6 +1354,12 @@ export interface CreateInvoiceRequest {
      * @memberof CreateInvoiceRequest
      */
     'attention'?: string;
+    /**
+     *
+     * @type {DineroObjectRequest}
+     * @memberof CreateInvoiceRequest
+     */
+    'amount': DineroObjectRequest;
 }
 /**
  *
@@ -5005,6 +5005,12 @@ export interface UpdateInvoiceRequest {
      * @memberof UpdateInvoiceRequest
      */
     'date'?: string;
+    /**
+     *
+     * @type {DineroObjectRequest}
+     * @memberof UpdateInvoiceRequest
+     */
+    'amount'?: DineroObjectRequest;
 }
 export declare const UpdateInvoiceRequestStateEnum: {
     readonly Created: "CREATED";
@@ -7060,11 +7066,11 @@ export declare const DebtorsApiAxiosParamCreator: (configuration?: Configuration
      *
      * @summary Return all users that had at most -5 euros balance both now and on the reference date.    For all these users, also return their fine based on the reference date.
      * @param {Array<string>} referenceDates Dates to base the fines on. Every returned user has at    least five euros debt on every reference date. The height of the fine is based on the first date in the array.
-     * @param {Array<number>} [userTypes] List of all user types fines should be calculated for 1 (MEMBER), 2 (ORGAN), 3 (VOUCHER), 4 (LOCAL_USER), 5 (LOCAL_ADMIN), 6 (INVOICE), 7 (AUTOMATIC_INVOICE).
+     * @param {Array<string>} [userTypes] List of all user types fines should be calculated for (MEMBER, ORGAN, VOUCHER, LOCAL_USER, LOCAL_ADMIN, INVOICE, AUTOMATIC_INVOICE).
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    calculateFines: (referenceDates: Array<string>, userTypes?: Array<number>, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    calculateFines: (referenceDates: Array<string>, userTypes?: Array<string>, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Delete a fine
@@ -7135,11 +7141,11 @@ export declare const DebtorsApiFp: (configuration?: Configuration) => {
      *
      * @summary Return all users that had at most -5 euros balance both now and on the reference date.    For all these users, also return their fine based on the reference date.
      * @param {Array<string>} referenceDates Dates to base the fines on. Every returned user has at    least five euros debt on every reference date. The height of the fine is based on the first date in the array.
-     * @param {Array<number>} [userTypes] List of all user types fines should be calculated for 1 (MEMBER), 2 (ORGAN), 3 (VOUCHER), 4 (LOCAL_USER), 5 (LOCAL_ADMIN), 6 (INVOICE), 7 (AUTOMATIC_INVOICE).
+     * @param {Array<string>} [userTypes] List of all user types fines should be calculated for (MEMBER, ORGAN, VOUCHER, LOCAL_USER, LOCAL_ADMIN, INVOICE, AUTOMATIC_INVOICE).
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    calculateFines(referenceDates: Array<string>, userTypes?: Array<number>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UserToFineResponse>>>;
+    calculateFines(referenceDates: Array<string>, userTypes?: Array<string>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UserToFineResponse>>>;
     /**
      *
      * @summary Delete a fine
@@ -7210,11 +7216,11 @@ export declare const DebtorsApiFactory: (configuration?: Configuration, basePath
      *
      * @summary Return all users that had at most -5 euros balance both now and on the reference date.    For all these users, also return their fine based on the reference date.
      * @param {Array<string>} referenceDates Dates to base the fines on. Every returned user has at    least five euros debt on every reference date. The height of the fine is based on the first date in the array.
-     * @param {Array<number>} [userTypes] List of all user types fines should be calculated for 1 (MEMBER), 2 (ORGAN), 3 (VOUCHER), 4 (LOCAL_USER), 5 (LOCAL_ADMIN), 6 (INVOICE), 7 (AUTOMATIC_INVOICE).
+     * @param {Array<string>} [userTypes] List of all user types fines should be calculated for (MEMBER, ORGAN, VOUCHER, LOCAL_USER, LOCAL_ADMIN, INVOICE, AUTOMATIC_INVOICE).
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    calculateFines(referenceDates: Array<string>, userTypes?: Array<number>, options?: any): AxiosPromise<Array<UserToFineResponse>>;
+    calculateFines(referenceDates: Array<string>, userTypes?: Array<string>, options?: any): AxiosPromise<Array<UserToFineResponse>>;
     /**
      *
      * @summary Delete a fine
@@ -7287,12 +7293,12 @@ export declare class DebtorsApi extends BaseAPI {
      *
      * @summary Return all users that had at most -5 euros balance both now and on the reference date.    For all these users, also return their fine based on the reference date.
      * @param {Array<string>} referenceDates Dates to base the fines on. Every returned user has at    least five euros debt on every reference date. The height of the fine is based on the first date in the array.
-     * @param {Array<number>} [userTypes] List of all user types fines should be calculated for 1 (MEMBER), 2 (ORGAN), 3 (VOUCHER), 4 (LOCAL_USER), 5 (LOCAL_ADMIN), 6 (INVOICE), 7 (AUTOMATIC_INVOICE).
+     * @param {Array<string>} [userTypes] List of all user types fines should be calculated for (MEMBER, ORGAN, VOUCHER, LOCAL_USER, LOCAL_ADMIN, INVOICE, AUTOMATIC_INVOICE).
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DebtorsApi
      */
-    calculateFines(referenceDates: Array<string>, userTypes?: Array<number>, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserToFineResponse[], any>>;
+    calculateFines(referenceDates: Array<string>, userTypes?: Array<string>, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserToFineResponse[], any>>;
     /**
      *
      * @summary Delete a fine
@@ -8050,10 +8056,11 @@ export declare const InvoicesApiAxiosParamCreator: (configuration?: Configuratio
      *
      * @summary Get an invoice pdf.
      * @param {number} id The id of the invoice to return
+     * @param {boolean} [force] Force creation of pdf
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getInvoicePdf: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getInvoicePdf: (id: number, force?: boolean, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns a single invoice in the system.
@@ -8148,10 +8155,11 @@ export declare const InvoicesApiFp: (configuration?: Configuration) => {
      *
      * @summary Get an invoice pdf.
      * @param {number} id The id of the invoice to return
+     * @param {boolean} [force] Force creation of pdf
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getInvoicePdf(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    getInvoicePdf(id: number, force?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
     /**
      *
      * @summary Returns a single invoice in the system.
@@ -8246,10 +8254,11 @@ export declare const InvoicesApiFactory: (configuration?: Configuration, basePat
      *
      * @summary Get an invoice pdf.
      * @param {number} id The id of the invoice to return
+     * @param {boolean} [force] Force creation of pdf
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getInvoicePdf(id: number, options?: any): AxiosPromise<string>;
+    getInvoicePdf(id: number, force?: boolean, options?: any): AxiosPromise<string>;
     /**
      *
      * @summary Returns a single invoice in the system.
@@ -8351,11 +8360,12 @@ export declare class InvoicesApi extends BaseAPI {
      *
      * @summary Get an invoice pdf.
      * @param {number} id The id of the invoice to return
+     * @param {boolean} [force] Force creation of pdf
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof InvoicesApi
      */
-    getInvoicePdf(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    getInvoicePdf(id: number, force?: boolean, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
     /**
      *
      * @summary Returns a single invoice in the system.
