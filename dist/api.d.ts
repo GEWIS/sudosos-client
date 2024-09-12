@@ -11073,7 +11073,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUsersPurchasesReport(id: number, fromDate: string, tillDate: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ReportResponse>>>;
+    getUsersPurchasesReport(id: number, fromDate: string, tillDate: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ReportResponse>>;
     /**
      *
      * @summary Get sales report for the given user
@@ -11083,7 +11083,7 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUsersSalesReport(id: number, fromDate: string, tillDate: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ReportResponse>>>;
+    getUsersSalesReport(id: number, fromDate: string, tillDate: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ReportResponse>>;
     /**
      *
      * @summary Get sales report for the given user
@@ -11374,7 +11374,7 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUsersPurchasesReport(id: number, fromDate: string, tillDate: string, options?: any): AxiosPromise<Array<ReportResponse>>;
+    getUsersPurchasesReport(id: number, fromDate: string, tillDate: string, options?: any): AxiosPromise<ReportResponse>;
     /**
      *
      * @summary Get sales report for the given user
@@ -11384,7 +11384,7 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getUsersSalesReport(id: number, fromDate: string, tillDate: string, options?: any): AxiosPromise<Array<ReportResponse>>;
+    getUsersSalesReport(id: number, fromDate: string, tillDate: string, options?: any): AxiosPromise<ReportResponse>;
     /**
      *
      * @summary Get sales report for the given user
@@ -11696,7 +11696,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUsersPurchasesReport(id: number, fromDate: string, tillDate: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ReportResponse[], any>>;
+    getUsersPurchasesReport(id: number, fromDate: string, tillDate: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ReportResponse, any>>;
     /**
      *
      * @summary Get sales report for the given user
@@ -11707,7 +11707,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUsersSalesReport(id: number, fromDate: string, tillDate: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ReportResponse[], any>>;
+    getUsersSalesReport(id: number, fromDate: string, tillDate: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ReportResponse, any>>;
     /**
      *
      * @summary Get sales report for the given user

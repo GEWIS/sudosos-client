@@ -14361,6 +14361,10 @@ export const SellerPayoutsApiAxiosParamCreator = function (configuration?: Confi
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -14395,6 +14399,10 @@ export const SellerPayoutsApiAxiosParamCreator = function (configuration?: Confi
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
             if (force !== undefined) {
                 localVarQueryParameter['force'] = force;
@@ -17734,7 +17742,7 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUsersPurchasesReport(id: number, fromDate: string, tillDate: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ReportResponse>>> {
+        async getUsersPurchasesReport(id: number, fromDate: string, tillDate: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ReportResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getUsersPurchasesReport(id, fromDate, tillDate, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['UsersApi.getUsersPurchasesReport']?.[index]?.url;
@@ -17749,7 +17757,7 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUsersSalesReport(id: number, fromDate: string, tillDate: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ReportResponse>>> {
+        async getUsersSalesReport(id: number, fromDate: string, tillDate: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ReportResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getUsersSalesReport(id, fromDate, tillDate, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['UsersApi.getUsersSalesReport']?.[index]?.url;
@@ -18135,7 +18143,7 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersPurchasesReport(id: number, fromDate: string, tillDate: string, options?: any): AxiosPromise<Array<ReportResponse>> {
+        getUsersPurchasesReport(id: number, fromDate: string, tillDate: string, options?: any): AxiosPromise<ReportResponse> {
             return localVarFp.getUsersPurchasesReport(id, fromDate, tillDate, options).then((request) => request(axios, basePath));
         },
         /**
@@ -18147,7 +18155,7 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersSalesReport(id: number, fromDate: string, tillDate: string, options?: any): AxiosPromise<Array<ReportResponse>> {
+        getUsersSalesReport(id: number, fromDate: string, tillDate: string, options?: any): AxiosPromise<ReportResponse> {
             return localVarFp.getUsersSalesReport(id, fromDate, tillDate, options).then((request) => request(axios, basePath));
         },
         /**
