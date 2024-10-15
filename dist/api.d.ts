@@ -5726,6 +5726,19 @@ export interface VoucherGroupResponse {
     'amount': number;
 }
 /**
+ * The total request and all its fields are optional for backwards compatibility\'s sake. If this request object is extended, it is probably best to make everything required and remove the backwards compatibility, as the frontend will (and should) already use this new object. See https://github.com/GEWIS/sudosos-backend/pull/344
+ * @export
+ * @interface WaiveFinesRequest
+ */
+export interface WaiveFinesRequest {
+    /**
+     *
+     * @type {DineroObjectRequest}
+     * @memberof WaiveFinesRequest
+     */
+    'amount'?: DineroObjectRequest;
+}
+/**
  *
  * @export
  * @interface WriteOffRequest
@@ -10887,10 +10900,11 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      *
      * @summary Waive all given user\'s fines
      * @param {number} id The id of the user
+     * @param {WaiveFinesRequest} [waiveFinesRequest] Optional body, see https://github.com/GEWIS/sudosos-backend/pull/344
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    waiveUserFines: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    waiveUserFines: (id: number, waiveFinesRequest?: WaiveFinesRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * UsersApi - functional programming interface
@@ -11188,10 +11202,11 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      *
      * @summary Waive all given user\'s fines
      * @param {number} id The id of the user
+     * @param {WaiveFinesRequest} [waiveFinesRequest] Optional body, see https://github.com/GEWIS/sudosos-backend/pull/344
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    waiveUserFines(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    waiveUserFines(id: number, waiveFinesRequest?: WaiveFinesRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
 };
 /**
  * UsersApi - factory interface
@@ -11489,10 +11504,11 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
      *
      * @summary Waive all given user\'s fines
      * @param {number} id The id of the user
+     * @param {WaiveFinesRequest} [waiveFinesRequest] Optional body, see https://github.com/GEWIS/sudosos-backend/pull/344
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    waiveUserFines(id: number, options?: any): AxiosPromise<void>;
+    waiveUserFines(id: number, waiveFinesRequest?: WaiveFinesRequest, options?: any): AxiosPromise<void>;
 };
 /**
  * UsersApi - object-oriented interface
@@ -11821,11 +11837,12 @@ export declare class UsersApi extends BaseAPI {
      *
      * @summary Waive all given user\'s fines
      * @param {number} id The id of the user
+     * @param {WaiveFinesRequest} [waiveFinesRequest] Optional body, see https://github.com/GEWIS/sudosos-backend/pull/344
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    waiveUserFines(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    waiveUserFines(id: number, waiveFinesRequest?: WaiveFinesRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
 }
 /**
  * @export
