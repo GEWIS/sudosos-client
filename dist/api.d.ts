@@ -241,11 +241,53 @@ export interface AuthenticationResponse {
  */
 export interface BalanceResponse {
     /**
-     * ID of the user this balance belongs to
+     * The unique id of the entity.
      * @type {number}
      * @memberof BalanceResponse
      */
     'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof BalanceResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof BalanceResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof BalanceResponse
+     */
+    'version'?: number;
+    /**
+     * The name of the user.
+     * @type {string}
+     * @memberof BalanceResponse
+     */
+    'firstName': string;
+    /**
+     * The last name of the user
+     * @type {string}
+     * @memberof BalanceResponse
+     */
+    'lastName': string;
+    /**
+     * The nickname of the user
+     * @type {string}
+     * @memberof BalanceResponse
+     */
+    'nickname'?: string;
+    /**
+     * The user\'s type
+     * @type {string}
+     * @memberof BalanceResponse
+     */
+    'type': string;
     /**
      * Date at which this user had this balance
      * @type {string}
@@ -264,6 +306,12 @@ export interface BalanceResponse {
      * @memberof BalanceResponse
      */
     'fine'?: DineroObjectResponse;
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof BalanceResponse
+     */
+    'fineWaived'?: DineroObjectResponse;
     /**
      * Timestamp of the first fine
      * @type {string}
@@ -5726,6 +5774,19 @@ export interface VoucherGroupResponse {
     'amount': number;
 }
 /**
+ * The total request and all its fields are optional for backwards compatibility\'s sake. If this request object is extended, it is probably best to make everything required and remove the backwards compatibility, as the frontend will (and should) already use this new object. See https://github.com/GEWIS/sudosos-backend/pull/344
+ * @export
+ * @interface WaiveFinesRequest
+ */
+export interface WaiveFinesRequest {
+    /**
+     *
+     * @type {DineroObjectRequest}
+     * @memberof WaiveFinesRequest
+     */
+    'amount'?: DineroObjectRequest;
+}
+/**
  *
  * @export
  * @interface WriteOffRequest
@@ -10887,10 +10948,11 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      *
      * @summary Waive all given user\'s fines
      * @param {number} id The id of the user
+     * @param {WaiveFinesRequest} [waiveFinesRequest] Optional body, see https://github.com/GEWIS/sudosos-backend/pull/344
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    waiveUserFines: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    waiveUserFines: (id: number, waiveFinesRequest?: WaiveFinesRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * UsersApi - functional programming interface
@@ -11188,10 +11250,11 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      *
      * @summary Waive all given user\'s fines
      * @param {number} id The id of the user
+     * @param {WaiveFinesRequest} [waiveFinesRequest] Optional body, see https://github.com/GEWIS/sudosos-backend/pull/344
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    waiveUserFines(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    waiveUserFines(id: number, waiveFinesRequest?: WaiveFinesRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
 };
 /**
  * UsersApi - factory interface
@@ -11489,10 +11552,11 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
      *
      * @summary Waive all given user\'s fines
      * @param {number} id The id of the user
+     * @param {WaiveFinesRequest} [waiveFinesRequest] Optional body, see https://github.com/GEWIS/sudosos-backend/pull/344
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    waiveUserFines(id: number, options?: any): AxiosPromise<void>;
+    waiveUserFines(id: number, waiveFinesRequest?: WaiveFinesRequest, options?: any): AxiosPromise<void>;
 };
 /**
  * UsersApi - object-oriented interface
@@ -11821,11 +11885,12 @@ export declare class UsersApi extends BaseAPI {
      *
      * @summary Waive all given user\'s fines
      * @param {number} id The id of the user
+     * @param {WaiveFinesRequest} [waiveFinesRequest] Optional body, see https://github.com/GEWIS/sudosos-backend/pull/344
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    waiveUserFines(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    waiveUserFines(id: number, waiveFinesRequest?: WaiveFinesRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
 }
 /**
  * @export

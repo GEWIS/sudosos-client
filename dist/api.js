@@ -10822,10 +10822,11 @@ const UsersApiAxiosParamCreator = function (configuration) {
          *
          * @summary Waive all given user\'s fines
          * @param {number} id The id of the user
+         * @param {WaiveFinesRequest} [waiveFinesRequest] Optional body, see https://github.com/GEWIS/sudosos-backend/pull/344
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        waiveUserFines: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        waiveUserFines: (id_1, waiveFinesRequest_1, ...args_1) => __awaiter(this, [id_1, waiveFinesRequest_1, ...args_1], void 0, function* (id, waiveFinesRequest, options = {}) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('waiveUserFines', 'id', id);
             const localVarPath = `/users/{id}/fines/waive`
@@ -10842,9 +10843,11 @@ const UsersApiAxiosParamCreator = function (configuration) {
             // authentication JWT required
             // http bearer authentication required
             yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(waiveFinesRequest, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -11383,13 +11386,14 @@ const UsersApiFp = function (configuration) {
          *
          * @summary Waive all given user\'s fines
          * @param {number} id The id of the user
+         * @param {WaiveFinesRequest} [waiveFinesRequest] Optional body, see https://github.com/GEWIS/sudosos-backend/pull/344
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        waiveUserFines(id, options) {
+        waiveUserFines(id, waiveFinesRequest, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.waiveUserFines(id, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.waiveUserFines(id, waiveFinesRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.waiveUserFines']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
@@ -11754,11 +11758,12 @@ const UsersApiFactory = function (configuration, basePath, axios) {
          *
          * @summary Waive all given user\'s fines
          * @param {number} id The id of the user
+         * @param {WaiveFinesRequest} [waiveFinesRequest] Optional body, see https://github.com/GEWIS/sudosos-backend/pull/344
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        waiveUserFines(id, options) {
-            return localVarFp.waiveUserFines(id, options).then((request) => request(axios, basePath));
+        waiveUserFines(id, waiveFinesRequest, options) {
+            return localVarFp.waiveUserFines(id, waiveFinesRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -12148,12 +12153,13 @@ class UsersApi extends base_1.BaseAPI {
      *
      * @summary Waive all given user\'s fines
      * @param {number} id The id of the user
+     * @param {WaiveFinesRequest} [waiveFinesRequest] Optional body, see https://github.com/GEWIS/sudosos-backend/pull/344
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    waiveUserFines(id, options) {
-        return (0, exports.UsersApiFp)(this.configuration).waiveUserFines(id, options).then((request) => request(this.axios, this.basePath));
+    waiveUserFines(id, waiveFinesRequest, options) {
+        return (0, exports.UsersApiFp)(this.configuration).waiveUserFines(id, waiveFinesRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.UsersApi = UsersApi;
