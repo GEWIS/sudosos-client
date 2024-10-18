@@ -3250,6 +3250,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @param {number} userId The id of the user
          * @param {EventAnswerAssignmentRequest} eventAnswerAssignmentRequest
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         assignEventShift: (eventId_1, shiftId_1, userId_1, eventAnswerAssignmentRequest_1, ...args_1) => __awaiter(this, [eventId_1, shiftId_1, userId_1, eventAnswerAssignmentRequest_1, ...args_1], void 0, function* (eventId, shiftId, userId, eventAnswerAssignmentRequest, options = {}) {
@@ -3292,6 +3293,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @summary Create an event with its corresponding answers objects
          * @param {CreateEventRequest} createEventRequest
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         createEvent: (createEventRequest_1, ...args_1) => __awaiter(this, [createEventRequest_1, ...args_1], void 0, function* (createEventRequest, options = {}) {
@@ -3325,6 +3327,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @summary Create an event shift
          * @param {CreateShiftRequest} createShiftRequest
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         createEventShift: (createShiftRequest_1, ...args_1) => __awaiter(this, [createShiftRequest_1, ...args_1], void 0, function* (createShiftRequest, options = {}) {
@@ -3358,6 +3361,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @summary Delete an event with its answers
          * @param {number} id The id of the event which should be deleted
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         deleteEvent: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
@@ -3390,6 +3394,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @summary Delete an event shift with its answers
          * @param {number} id The id of the event which should be deleted
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         deleteEventShift: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
@@ -3423,6 +3428,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @param {number} [take] How many entries the endpoint should return
          * @param {number} [skip] How many entries should be skipped (for pagination)
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         getAllEventShifts: (take_1, skip_1, ...args_1) => __awaiter(this, [take_1, skip_1, ...args_1], void 0, function* (take, skip, options = {}) {
@@ -3464,6 +3470,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @param {number} [take] How many entries the endpoint should return
          * @param {number} [skip] How many entries should be skipped (for pagination)
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         getAllEvents: (name_1, createdById_1, beforeDate_1, afterDate_1, type_1, take_1, skip_1, ...args_1) => __awaiter(this, [name_1, createdById_1, beforeDate_1, afterDate_1, type_1, take_1, skip_1, ...args_1], void 0, function* (name, createdById, beforeDate, afterDate, type, take, skip, options = {}) {
@@ -3517,6 +3524,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @param {string} [afterDate] Only include events after this date
          * @param {string} [beforeDate] Only include events before this date
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         getEventShiftCount: (id_1, eventType_1, afterDate_1, beforeDate_1, ...args_1) => __awaiter(this, [id_1, eventType_1, afterDate_1, beforeDate_1, ...args_1], void 0, function* (id, eventType, afterDate, beforeDate, options = {}) {
@@ -3558,6 +3566,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @summary Get a single event with its answers and shifts
          * @param {number} id The id of the event which should be returned
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         getSingleEvent: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
@@ -3591,6 +3600,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @param {number} id The id of the event which should be returned
          * @param {UpdateEventRequest} updateEventRequest
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         updateEvent: (id_1, updateEventRequest_1, ...args_1) => __awaiter(this, [id_1, updateEventRequest_1, ...args_1], void 0, function* (id, updateEventRequest, options = {}) {
@@ -3628,6 +3638,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @param {number} id The id of the event which should be returned
          * @param {UpdateShiftRequest} updateShiftRequest
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         updateEventShift: (id_1, updateShiftRequest_1, ...args_1) => __awaiter(this, [id_1, updateShiftRequest_1, ...args_1], void 0, function* (id, updateShiftRequest, options = {}) {
@@ -3667,6 +3678,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @param {number} userId The id of the user
          * @param {EventAnswerAvailabilityRequest} eventAnswerAvailabilityRequest
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         updateEventShiftAvailability: (eventId_1, shiftId_1, userId_1, eventAnswerAvailabilityRequest_1, ...args_1) => __awaiter(this, [eventId_1, shiftId_1, userId_1, eventAnswerAvailabilityRequest_1, ...args_1], void 0, function* (eventId, shiftId, userId, eventAnswerAvailabilityRequest, options = {}) {
@@ -3722,6 +3734,7 @@ const EventsApiFp = function (configuration) {
          * @param {number} userId The id of the user
          * @param {EventAnswerAssignmentRequest} eventAnswerAssignmentRequest
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         assignEventShift(eventId, shiftId, userId, eventAnswerAssignmentRequest, options) {
@@ -3738,6 +3751,7 @@ const EventsApiFp = function (configuration) {
          * @summary Create an event with its corresponding answers objects
          * @param {CreateEventRequest} createEventRequest
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         createEvent(createEventRequest, options) {
@@ -3754,6 +3768,7 @@ const EventsApiFp = function (configuration) {
          * @summary Create an event shift
          * @param {CreateShiftRequest} createShiftRequest
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         createEventShift(createShiftRequest, options) {
@@ -3770,6 +3785,7 @@ const EventsApiFp = function (configuration) {
          * @summary Delete an event with its answers
          * @param {number} id The id of the event which should be deleted
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         deleteEvent(id, options) {
@@ -3786,6 +3802,7 @@ const EventsApiFp = function (configuration) {
          * @summary Delete an event shift with its answers
          * @param {number} id The id of the event which should be deleted
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         deleteEventShift(id, options) {
@@ -3803,6 +3820,7 @@ const EventsApiFp = function (configuration) {
          * @param {number} [take] How many entries the endpoint should return
          * @param {number} [skip] How many entries should be skipped (for pagination)
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         getAllEventShifts(take, skip, options) {
@@ -3825,6 +3843,7 @@ const EventsApiFp = function (configuration) {
          * @param {number} [take] How many entries the endpoint should return
          * @param {number} [skip] How many entries should be skipped (for pagination)
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         getAllEvents(name, createdById, beforeDate, afterDate, type, take, skip, options) {
@@ -3844,6 +3863,7 @@ const EventsApiFp = function (configuration) {
          * @param {string} [afterDate] Only include events after this date
          * @param {string} [beforeDate] Only include events before this date
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         getEventShiftCount(id, eventType, afterDate, beforeDate, options) {
@@ -3860,6 +3880,7 @@ const EventsApiFp = function (configuration) {
          * @summary Get a single event with its answers and shifts
          * @param {number} id The id of the event which should be returned
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         getSingleEvent(id, options) {
@@ -3877,6 +3898,7 @@ const EventsApiFp = function (configuration) {
          * @param {number} id The id of the event which should be returned
          * @param {UpdateEventRequest} updateEventRequest
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         updateEvent(id, updateEventRequest, options) {
@@ -3894,6 +3916,7 @@ const EventsApiFp = function (configuration) {
          * @param {number} id The id of the event which should be returned
          * @param {UpdateShiftRequest} updateShiftRequest
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         updateEventShift(id, updateShiftRequest, options) {
@@ -3913,6 +3936,7 @@ const EventsApiFp = function (configuration) {
          * @param {number} userId The id of the user
          * @param {EventAnswerAvailabilityRequest} eventAnswerAvailabilityRequest
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         updateEventShiftAvailability(eventId, shiftId, userId, eventAnswerAvailabilityRequest, options) {
@@ -3942,6 +3966,7 @@ const EventsApiFactory = function (configuration, basePath, axios) {
          * @param {number} userId The id of the user
          * @param {EventAnswerAssignmentRequest} eventAnswerAssignmentRequest
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         assignEventShift(eventId, shiftId, userId, eventAnswerAssignmentRequest, options) {
@@ -3952,6 +3977,7 @@ const EventsApiFactory = function (configuration, basePath, axios) {
          * @summary Create an event with its corresponding answers objects
          * @param {CreateEventRequest} createEventRequest
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         createEvent(createEventRequest, options) {
@@ -3962,6 +3988,7 @@ const EventsApiFactory = function (configuration, basePath, axios) {
          * @summary Create an event shift
          * @param {CreateShiftRequest} createShiftRequest
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         createEventShift(createShiftRequest, options) {
@@ -3972,6 +3999,7 @@ const EventsApiFactory = function (configuration, basePath, axios) {
          * @summary Delete an event with its answers
          * @param {number} id The id of the event which should be deleted
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         deleteEvent(id, options) {
@@ -3982,6 +4010,7 @@ const EventsApiFactory = function (configuration, basePath, axios) {
          * @summary Delete an event shift with its answers
          * @param {number} id The id of the event which should be deleted
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         deleteEventShift(id, options) {
@@ -3993,6 +4022,7 @@ const EventsApiFactory = function (configuration, basePath, axios) {
          * @param {number} [take] How many entries the endpoint should return
          * @param {number} [skip] How many entries should be skipped (for pagination)
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         getAllEventShifts(take, skip, options) {
@@ -4009,6 +4039,7 @@ const EventsApiFactory = function (configuration, basePath, axios) {
          * @param {number} [take] How many entries the endpoint should return
          * @param {number} [skip] How many entries should be skipped (for pagination)
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         getAllEvents(name, createdById, beforeDate, afterDate, type, take, skip, options) {
@@ -4022,6 +4053,7 @@ const EventsApiFactory = function (configuration, basePath, axios) {
          * @param {string} [afterDate] Only include events after this date
          * @param {string} [beforeDate] Only include events before this date
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         getEventShiftCount(id, eventType, afterDate, beforeDate, options) {
@@ -4032,6 +4064,7 @@ const EventsApiFactory = function (configuration, basePath, axios) {
          * @summary Get a single event with its answers and shifts
          * @param {number} id The id of the event which should be returned
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         getSingleEvent(id, options) {
@@ -4043,6 +4076,7 @@ const EventsApiFactory = function (configuration, basePath, axios) {
          * @param {number} id The id of the event which should be returned
          * @param {UpdateEventRequest} updateEventRequest
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         updateEvent(id, updateEventRequest, options) {
@@ -4054,6 +4088,7 @@ const EventsApiFactory = function (configuration, basePath, axios) {
          * @param {number} id The id of the event which should be returned
          * @param {UpdateShiftRequest} updateShiftRequest
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         updateEventShift(id, updateShiftRequest, options) {
@@ -4067,6 +4102,7 @@ const EventsApiFactory = function (configuration, basePath, axios) {
          * @param {number} userId The id of the user
          * @param {EventAnswerAvailabilityRequest} eventAnswerAvailabilityRequest
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         updateEventShiftAvailability(eventId, shiftId, userId, eventAnswerAvailabilityRequest, options) {
@@ -4090,6 +4126,7 @@ class EventsApi extends base_1.BaseAPI {
      * @param {number} userId The id of the user
      * @param {EventAnswerAssignmentRequest} eventAnswerAssignmentRequest
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof EventsApi
      */
@@ -4101,6 +4138,7 @@ class EventsApi extends base_1.BaseAPI {
      * @summary Create an event with its corresponding answers objects
      * @param {CreateEventRequest} createEventRequest
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof EventsApi
      */
@@ -4112,6 +4150,7 @@ class EventsApi extends base_1.BaseAPI {
      * @summary Create an event shift
      * @param {CreateShiftRequest} createShiftRequest
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof EventsApi
      */
@@ -4123,6 +4162,7 @@ class EventsApi extends base_1.BaseAPI {
      * @summary Delete an event with its answers
      * @param {number} id The id of the event which should be deleted
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof EventsApi
      */
@@ -4134,6 +4174,7 @@ class EventsApi extends base_1.BaseAPI {
      * @summary Delete an event shift with its answers
      * @param {number} id The id of the event which should be deleted
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof EventsApi
      */
@@ -4146,6 +4187,7 @@ class EventsApi extends base_1.BaseAPI {
      * @param {number} [take] How many entries the endpoint should return
      * @param {number} [skip] How many entries should be skipped (for pagination)
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof EventsApi
      */
@@ -4163,6 +4205,7 @@ class EventsApi extends base_1.BaseAPI {
      * @param {number} [take] How many entries the endpoint should return
      * @param {number} [skip] How many entries should be skipped (for pagination)
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof EventsApi
      */
@@ -4177,6 +4220,7 @@ class EventsApi extends base_1.BaseAPI {
      * @param {string} [afterDate] Only include events after this date
      * @param {string} [beforeDate] Only include events before this date
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof EventsApi
      */
@@ -4188,6 +4232,7 @@ class EventsApi extends base_1.BaseAPI {
      * @summary Get a single event with its answers and shifts
      * @param {number} id The id of the event which should be returned
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof EventsApi
      */
@@ -4200,6 +4245,7 @@ class EventsApi extends base_1.BaseAPI {
      * @param {number} id The id of the event which should be returned
      * @param {UpdateEventRequest} updateEventRequest
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof EventsApi
      */
@@ -4212,6 +4258,7 @@ class EventsApi extends base_1.BaseAPI {
      * @param {number} id The id of the event which should be returned
      * @param {UpdateShiftRequest} updateShiftRequest
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof EventsApi
      */
@@ -4226,6 +4273,7 @@ class EventsApi extends base_1.BaseAPI {
      * @param {number} userId The id of the user
      * @param {EventAnswerAvailabilityRequest} eventAnswerAvailabilityRequest
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof EventsApi
      */
