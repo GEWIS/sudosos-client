@@ -7183,7 +7183,7 @@ export const BalanceApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BalanceResponse>>> {
+        async getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBalanceResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, allowDeleted, take, skip, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['BalanceApi.getAllBalance']?.[index]?.url;
@@ -7242,7 +7242,7 @@ export const BalanceApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: any): AxiosPromise<Array<BalanceResponse>> {
+        getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedBalanceResponse> {
             return localVarFp.getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, allowDeleted, take, skip, options).then((request) => request(axios, basePath));
         },
         /**

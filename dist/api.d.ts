@@ -6436,7 +6436,7 @@ export declare const BalanceApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BalanceResponse>>>;
+    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBalanceResponse>>;
     /**
      *
      * @summary Retrieves the requested balance
@@ -6476,7 +6476,7 @@ export declare const BalanceApiFactory: (configuration?: Configuration, basePath
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: any): AxiosPromise<Array<BalanceResponse>>;
+    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedBalanceResponse>;
     /**
      *
      * @summary Retrieves the requested balance
@@ -6519,7 +6519,7 @@ export declare class BalanceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BalanceApi
      */
-    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BalanceResponse[], any>>;
+    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBalanceResponse, any>>;
     /**
      *
      * @summary Retrieves the requested balance
