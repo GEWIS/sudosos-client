@@ -6380,7 +6380,7 @@ export declare class AuthenticateApi extends BaseAPI {
 export declare const BalanceApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
-     * @summary Get balance of the current user
+     * @summary Get balance of all users
      * @param {string} [date] Timestamp to get balances for
      * @param {number} [minBalance] Minimum balance
      * @param {number} [maxBalance] Maximum balance
@@ -6420,7 +6420,7 @@ export declare const BalanceApiAxiosParamCreator: (configuration?: Configuration
 export declare const BalanceApiFp: (configuration?: Configuration) => {
     /**
      *
-     * @summary Get balance of the current user
+     * @summary Get balance of all users
      * @param {string} [date] Timestamp to get balances for
      * @param {number} [minBalance] Minimum balance
      * @param {number} [maxBalance] Maximum balance
@@ -6460,7 +6460,7 @@ export declare const BalanceApiFp: (configuration?: Configuration) => {
 export declare const BalanceApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
-     * @summary Get balance of the current user
+     * @summary Get balance of all users
      * @param {string} [date] Timestamp to get balances for
      * @param {number} [minBalance] Minimum balance
      * @param {number} [maxBalance] Maximum balance
@@ -6502,7 +6502,7 @@ export declare const BalanceApiFactory: (configuration?: Configuration, basePath
 export declare class BalanceApi extends BaseAPI {
     /**
      *
-     * @summary Get balance of the current user
+     * @summary Get balance of all users
      * @param {string} [date] Timestamp to get balances for
      * @param {number} [minBalance] Minimum balance
      * @param {number} [maxBalance] Maximum balance

@@ -6991,7 +6991,7 @@ export const BalanceApiAxiosParamCreator = function (configuration?: Configurati
     return {
         /**
          * 
-         * @summary Get balance of the current user
+         * @summary Get balance of all users
          * @param {string} [date] Timestamp to get balances for
          * @param {number} [minBalance] Minimum balance
          * @param {number} [maxBalance] Maximum balance
@@ -7167,7 +7167,7 @@ export const BalanceApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @summary Get balance of the current user
+         * @summary Get balance of all users
          * @param {string} [date] Timestamp to get balances for
          * @param {number} [minBalance] Minimum balance
          * @param {number} [maxBalance] Maximum balance
@@ -7226,7 +7226,7 @@ export const BalanceApiFactory = function (configuration?: Configuration, basePa
     return {
         /**
          * 
-         * @summary Get balance of the current user
+         * @summary Get balance of all users
          * @param {string} [date] Timestamp to get balances for
          * @param {number} [minBalance] Minimum balance
          * @param {number} [maxBalance] Maximum balance
@@ -7276,7 +7276,7 @@ export const BalanceApiFactory = function (configuration?: Configuration, basePa
 export class BalanceApi extends BaseAPI {
     /**
      * 
-     * @summary Get balance of the current user
+     * @summary Get balance of all users
      * @param {string} [date] Timestamp to get balances for
      * @param {number} [minBalance] Minimum balance
      * @param {number} [maxBalance] Maximum balance
