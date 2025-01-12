@@ -13,21 +13,12 @@
 
     "update-swagger:main": "mv ./node_modules/@sudosos/sudosos-backend-main ./sudosos-backend && npm run run-swagger && cp ./sudosos-backend/out/swagger.json ./swagger-main.json",
     "update-swagger:dev": "mv ./node_modules/@sudosos/sudosos-backend-develop ./sudosos-backend && npm run run-swagger && cp ./sudosos-backend/out/swagger.json ./swagger-develop.json",
-    "run-swagger": "(cd ./sudosos-backend && npx npm install && npx npm run swagger )"
+    "run-swagger": "(cd ./sudosos-backend && npx npm install --force && npx npm run swagger )"
   },
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.7.0",
     "@sudosos/sudosos-backend-main": "github:GEWIS/sudosos-backend#main",
-    "@sudosos/sudosos-backend-develop": "github:GEWIS/sudosos-backend#develop",
-    "@types/node": "^18.7.7",
-    "@typescript-eslint/eslint-plugin": "^6.17.0",
-    "@typescript-eslint/parser": "^6.17.0",
-    "eslint": "^8.55.0",
-    "eslint-config-airbnb-typescript": "^17.1.0",
-    "eslint-plugin-chai-expect": "^3.0.0",
-    "eslint-plugin-chai-friendly": "^0.7.1",
-    "eslint-plugin-header": "^3.1.1",
-    "eslint-plugin-import": "^2.29.0"
+    "@sudosos/sudosos-backend-develop": "github:GEWIS/sudosos-backend#develop"
   },
   "repository": {
     "type": "git",
