@@ -509,6 +509,25 @@ export interface BaseContainerResponse {
 /**
  * 
  * @export
+ * @interface BaseContainerSummaryResponse
+ */
+export interface BaseContainerSummaryResponse {
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof BaseContainerSummaryResponse
+     */
+    'totalInclVat': DineroObjectResponse;
+    /**
+     * 
+     * @type {number}
+     * @memberof BaseContainerSummaryResponse
+     */
+    'amountOfProducts': number;
+}
+/**
+ * 
+ * @export
  * @interface BaseEventAnswerResponse
  */
 export interface BaseEventAnswerResponse {
@@ -1219,6 +1238,111 @@ export interface ContainerResponse {
      * @memberof ContainerResponse
      */
     'owner': BaseUserResponse;
+}
+/**
+ * 
+ * @export
+ * @interface ContainerSummaryRecord
+ */
+export interface ContainerSummaryRecord {
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof ContainerSummaryRecord
+     */
+    'totalInclVat': DineroObjectResponse;
+    /**
+     * 
+     * @type {number}
+     * @memberof ContainerSummaryRecord
+     */
+    'amountOfProducts': number;
+    /**
+     * 
+     * @type {ContainerSummaryRecordAllOfUser}
+     * @memberof ContainerSummaryRecord
+     */
+    'user': ContainerSummaryRecordAllOfUser;
+    /**
+     * 
+     * @type {number}
+     * @memberof ContainerSummaryRecord
+     */
+    'containerId': number;
+}
+/**
+ * 
+ * @export
+ * @interface ContainerSummaryRecordAllOfUser
+ */
+export interface ContainerSummaryRecordAllOfUser {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof ContainerSummaryRecordAllOfUser
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof ContainerSummaryRecordAllOfUser
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof ContainerSummaryRecordAllOfUser
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof ContainerSummaryRecordAllOfUser
+     */
+    'version'?: number;
+    /**
+     * The name of the user.
+     * @type {string}
+     * @memberof ContainerSummaryRecordAllOfUser
+     */
+    'firstName': string;
+    /**
+     * The last name of the user
+     * @type {string}
+     * @memberof ContainerSummaryRecordAllOfUser
+     */
+    'lastName': string;
+    /**
+     * The nickname of the user
+     * @type {string}
+     * @memberof ContainerSummaryRecordAllOfUser
+     */
+    'nickname'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface ContainerSummaryResponse
+ */
+export interface ContainerSummaryResponse {
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof ContainerSummaryResponse
+     */
+    'totalInclVat': DineroObjectResponse;
+    /**
+     * 
+     * @type {number}
+     * @memberof ContainerSummaryResponse
+     */
+    'amountOfProducts': number;
+    /**
+     * All summaries matching the request, excluding all people who have extensiveDataProcessing disabled.
+     * @type {Array<ContainerSummaryRecord>}
+     * @memberof ContainerSummaryResponse
+     */
+    'summaries': Array<ContainerSummaryRecord>;
 }
 /**
  * 
@@ -6991,7 +7115,7 @@ export const BalanceApiAxiosParamCreator = function (configuration?: Configurati
     return {
         /**
          * 
-         * @summary Get balance of the current user
+         * @summary Get balance of all users
          * @param {string} [date] Timestamp to get balances for
          * @param {number} [minBalance] Minimum balance
          * @param {number} [maxBalance] Maximum balance
@@ -7167,7 +7291,7 @@ export const BalanceApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @summary Get balance of the current user
+         * @summary Get balance of all users
          * @param {string} [date] Timestamp to get balances for
          * @param {number} [minBalance] Minimum balance
          * @param {number} [maxBalance] Maximum balance
@@ -7183,7 +7307,7 @@ export const BalanceApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BalanceResponse>>> {
+        async getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBalanceResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, allowDeleted, take, skip, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['BalanceApi.getAllBalance']?.[index]?.url;
@@ -7226,7 +7350,7 @@ export const BalanceApiFactory = function (configuration?: Configuration, basePa
     return {
         /**
          * 
-         * @summary Get balance of the current user
+         * @summary Get balance of all users
          * @param {string} [date] Timestamp to get balances for
          * @param {number} [minBalance] Minimum balance
          * @param {number} [maxBalance] Maximum balance
@@ -7242,7 +7366,7 @@ export const BalanceApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: any): AxiosPromise<Array<BalanceResponse>> {
+        getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedBalanceResponse> {
             return localVarFp.getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, allowDeleted, take, skip, options).then((request) => request(axios, basePath));
         },
         /**
@@ -7276,7 +7400,7 @@ export const BalanceApiFactory = function (configuration?: Configuration, basePa
 export class BalanceApi extends BaseAPI {
     /**
      * 
-     * @summary Get balance of the current user
+     * @summary Get balance of all users
      * @param {string} [date] Timestamp to get balances for
      * @param {number} [minBalance] Minimum balance
      * @param {number} [maxBalance] Maximum balance
@@ -13729,13 +13853,13 @@ export const RbacApiAxiosParamCreator = function (configuration?: Configuration)
          * 
          * @summary Delete a permission from an existing role
          * @param {number} id The ID of the role
-         * @param {number} entity The entity of the permission
-         * @param {number} action The action of the permission
-         * @param {number} relation The relation of the permission
+         * @param {string} entity The entity of the permission
+         * @param {string} action The action of the permission
+         * @param {string} relation The relation of the permission
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deletePermission: async (id: number, entity: number, action: number, relation: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deletePermission: async (id: number, entity: string, action: string, relation: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('deletePermission', 'id', id)
             // verify required parameter 'entity' is not null or undefined
@@ -13966,13 +14090,13 @@ export const RbacApiFp = function(configuration?: Configuration) {
          * 
          * @summary Delete a permission from an existing role
          * @param {number} id The ID of the role
-         * @param {number} entity The entity of the permission
-         * @param {number} action The action of the permission
-         * @param {number} relation The relation of the permission
+         * @param {string} entity The entity of the permission
+         * @param {string} action The action of the permission
+         * @param {string} relation The relation of the permission
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deletePermission(id: number, entity: number, action: number, relation: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+        async deletePermission(id: number, entity: string, action: string, relation: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deletePermission(id, entity, action, relation, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['RbacApi.deletePermission']?.[index]?.url;
@@ -14065,13 +14189,13 @@ export const RbacApiFactory = function (configuration?: Configuration, basePath?
          * 
          * @summary Delete a permission from an existing role
          * @param {number} id The ID of the role
-         * @param {number} entity The entity of the permission
-         * @param {number} action The action of the permission
-         * @param {number} relation The relation of the permission
+         * @param {string} entity The entity of the permission
+         * @param {string} action The action of the permission
+         * @param {string} relation The relation of the permission
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deletePermission(id: number, entity: number, action: number, relation: number, options?: any): AxiosPromise<string> {
+        deletePermission(id: number, entity: string, action: string, relation: string, options?: any): AxiosPromise<string> {
             return localVarFp.deletePermission(id, entity, action, relation, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14153,14 +14277,14 @@ export class RbacApi extends BaseAPI {
      * 
      * @summary Delete a permission from an existing role
      * @param {number} id The ID of the role
-     * @param {number} entity The entity of the permission
-     * @param {number} action The action of the permission
-     * @param {number} relation The relation of the permission
+     * @param {string} entity The entity of the permission
+     * @param {string} action The action of the permission
+     * @param {string} relation The relation of the permission
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RbacApi
      */
-    public deletePermission(id: number, entity: number, action: number, relation: number, options?: RawAxiosRequestConfig) {
+    public deletePermission(id: number, entity: string, action: string, relation: string, options?: RawAxiosRequestConfig) {
         return RbacApiFp(this.configuration).deletePermission(id, entity, action, relation, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -15314,6 +15438,122 @@ export class TestOperationsOfTheTestControllerApi extends BaseAPI {
 
 
 /**
+ * TransactionSummariesApi - axios parameter creator
+ * @export
+ */
+export const TransactionSummariesApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Returns a summary of all purchases within a container
+         * @param {number} id The ID of the container
+         * @param {*} [options] Override http request option.
+         * @deprecated
+         * @throws {RequiredError}
+         */
+        getSingleContainerSummary: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getSingleContainerSummary', 'id', id)
+            const localVarPath = `/transactions/summary/container/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * TransactionSummariesApi - functional programming interface
+ * @export
+ */
+export const TransactionSummariesApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = TransactionSummariesApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Returns a summary of all purchases within a container
+         * @param {number} id The ID of the container
+         * @param {*} [options] Override http request option.
+         * @deprecated
+         * @throws {RequiredError}
+         */
+        async getSingleContainerSummary(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ContainerSummaryResponse>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSingleContainerSummary(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['TransactionSummariesApi.getSingleContainerSummary']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * TransactionSummariesApi - factory interface
+ * @export
+ */
+export const TransactionSummariesApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = TransactionSummariesApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Returns a summary of all purchases within a container
+         * @param {number} id The ID of the container
+         * @param {*} [options] Override http request option.
+         * @deprecated
+         * @throws {RequiredError}
+         */
+        getSingleContainerSummary(id: number, options?: any): AxiosPromise<Array<ContainerSummaryResponse>> {
+            return localVarFp.getSingleContainerSummary(id, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * TransactionSummariesApi - object-oriented interface
+ * @export
+ * @class TransactionSummariesApi
+ * @extends {BaseAPI}
+ */
+export class TransactionSummariesApi extends BaseAPI {
+    /**
+     * 
+     * @summary Returns a summary of all purchases within a container
+     * @param {number} id The ID of the container
+     * @param {*} [options] Override http request option.
+     * @deprecated
+     * @throws {RequiredError}
+     * @memberof TransactionSummariesApi
+     */
+    public getSingleContainerSummary(id: number, options?: RawAxiosRequestConfig) {
+        return TransactionSummariesApiFp(this.configuration).getSingleContainerSummary(id, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
  * TransactionsApi - axios parameter creator
  * @export
  */
@@ -15403,6 +15643,7 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
          * @param {number} [fromId] From-user for selected transactions
          * @param {number} [createdById] User that created selected transaction
          * @param {number} [toId] To-user for selected transactions transactions. Requires ContainerId
+         * @param {number} [excludeById] Your own ID to not include in transactions
          * @param {number} [pointOfSaleId] Point of sale ID for selected transactions
          * @param {number} [productId] Product ID for selected transactions
          * @param {number} [productRevision] Product Revision for selected transactions. Requires ProductID
@@ -15413,7 +15654,7 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllTransactions: async (fromId?: number, createdById?: number, toId?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllTransactions: async (fromId?: number, createdById?: number, toId?: number, excludeById?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/transactions`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -15440,6 +15681,10 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
 
             if (toId !== undefined) {
                 localVarQueryParameter['toId'] = toId;
+            }
+
+            if (excludeById !== undefined) {
+                localVarQueryParameter['excludeById'] = excludeById;
             }
 
             if (pointOfSaleId !== undefined) {
@@ -15645,6 +15890,7 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
          * @param {number} [fromId] From-user for selected transactions
          * @param {number} [createdById] User that created selected transaction
          * @param {number} [toId] To-user for selected transactions transactions. Requires ContainerId
+         * @param {number} [excludeById] Your own ID to not include in transactions
          * @param {number} [pointOfSaleId] Point of sale ID for selected transactions
          * @param {number} [productId] Product ID for selected transactions
          * @param {number} [productRevision] Product Revision for selected transactions. Requires ProductID
@@ -15655,8 +15901,8 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllTransactions(fromId?: number, createdById?: number, toId?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBaseTransactionResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllTransactions(fromId, createdById, toId, pointOfSaleId, productId, productRevision, fromDate, tillDate, take, skip, options);
+        async getAllTransactions(fromId?: number, createdById?: number, toId?: number, excludeById?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBaseTransactionResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllTransactions(fromId, createdById, toId, excludeById, pointOfSaleId, productId, productRevision, fromDate, tillDate, take, skip, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['TransactionsApi.getAllTransactions']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
@@ -15737,6 +15983,7 @@ export const TransactionsApiFactory = function (configuration?: Configuration, b
          * @param {number} [fromId] From-user for selected transactions
          * @param {number} [createdById] User that created selected transaction
          * @param {number} [toId] To-user for selected transactions transactions. Requires ContainerId
+         * @param {number} [excludeById] Your own ID to not include in transactions
          * @param {number} [pointOfSaleId] Point of sale ID for selected transactions
          * @param {number} [productId] Product ID for selected transactions
          * @param {number} [productRevision] Product Revision for selected transactions. Requires ProductID
@@ -15747,8 +15994,8 @@ export const TransactionsApiFactory = function (configuration?: Configuration, b
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllTransactions(fromId?: number, createdById?: number, toId?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedBaseTransactionResponse> {
-            return localVarFp.getAllTransactions(fromId, createdById, toId, pointOfSaleId, productId, productRevision, fromDate, tillDate, take, skip, options).then((request) => request(axios, basePath));
+        getAllTransactions(fromId?: number, createdById?: number, toId?: number, excludeById?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedBaseTransactionResponse> {
+            return localVarFp.getAllTransactions(fromId, createdById, toId, excludeById, pointOfSaleId, productId, productRevision, fromDate, tillDate, take, skip, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -15821,6 +16068,7 @@ export class TransactionsApi extends BaseAPI {
      * @param {number} [fromId] From-user for selected transactions
      * @param {number} [createdById] User that created selected transaction
      * @param {number} [toId] To-user for selected transactions transactions. Requires ContainerId
+     * @param {number} [excludeById] Your own ID to not include in transactions
      * @param {number} [pointOfSaleId] Point of sale ID for selected transactions
      * @param {number} [productId] Product ID for selected transactions
      * @param {number} [productRevision] Product Revision for selected transactions. Requires ProductID
@@ -15832,8 +16080,8 @@ export class TransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    public getAllTransactions(fromId?: number, createdById?: number, toId?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
-        return TransactionsApiFp(this.configuration).getAllTransactions(fromId, createdById, toId, pointOfSaleId, productId, productRevision, fromDate, tillDate, take, skip, options).then((request) => request(this.axios, this.basePath));
+    public getAllTransactions(fromId?: number, createdById?: number, toId?: number, excludeById?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
+        return TransactionsApiFp(this.configuration).getAllTransactions(fromId, createdById, toId, excludeById, pointOfSaleId, productId, productRevision, fromDate, tillDate, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -16365,6 +16613,44 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             }
 
             const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get a user using the nfc code
+         * @param {number} nfcCode The nfc code of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        findUserNfc: async (nfcCode: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'nfcCode' is not null or undefined
+            assertParamExists('findUserNfc', 'nfcCode', nfcCode)
+            const localVarPath = `/users/nfc/{nfcCode}`
+                .replace(`{${"nfcCode"}}`, encodeURIComponent(String(nfcCode)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -17681,6 +17967,19 @@ export const UsersApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get a user using the nfc code
+         * @param {number} nfcCode The nfc code of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async findUserNfc(nfcCode: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.findUserNfc(nfcCode, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.findUserNfc']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Get a list of all users
          * @param {number} [take] How many users the endpoint should return
          * @param {number} [skip] How many users should be skipped (for pagination)
@@ -18119,6 +18418,16 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
+         * @summary Get a user using the nfc code
+         * @param {number} nfcCode The nfc code of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        findUserNfc(nfcCode: number, options?: any): AxiosPromise<UserResponse> {
+            return localVarFp.findUserNfc(nfcCode, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Get a list of all users
          * @param {number} [take] How many users the endpoint should return
          * @param {number} [skip] How many users should be skipped (for pagination)
@@ -18493,6 +18802,18 @@ export class UsersApi extends BaseAPI {
      */
     public deleteUserNfc(id: number, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).deleteUserNfc(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get a user using the nfc code
+     * @param {number} nfcCode The nfc code of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    public findUserNfc(nfcCode: number, options?: RawAxiosRequestConfig) {
+        return UsersApiFp(this.configuration).findUserNfc(nfcCode, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
