@@ -10014,7 +10014,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Get a user using the nfc code
-         * @param {number} nfcCode The nfc code of the user
+         * @param {string} nfcCode The nfc code of the user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -11160,7 +11160,7 @@ const UsersApiFp = function (configuration) {
         /**
          *
          * @summary Get a user using the nfc code
-         * @param {number} nfcCode The nfc code of the user
+         * @param {string} nfcCode The nfc code of the user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -11686,7 +11686,7 @@ const UsersApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Get a user using the nfc code
-         * @param {number} nfcCode The nfc code of the user
+         * @param {string} nfcCode The nfc code of the user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -12068,7 +12068,7 @@ class UsersApi extends base_1.BaseAPI {
     /**
      *
      * @summary Get a user using the nfc code
-     * @param {number} nfcCode The nfc code of the user
+     * @param {string} nfcCode The nfc code of the user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
