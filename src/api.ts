@@ -16634,11 +16634,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @summary Get a user using the nfc code
-         * @param {number} nfcCode The nfc code of the user
+         * @param {string} nfcCode The nfc code of the user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        findUserNfc: async (nfcCode: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        findUserNfc: async (nfcCode: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'nfcCode' is not null or undefined
             assertParamExists('findUserNfc', 'nfcCode', nfcCode)
             const localVarPath = `/users/nfc/{nfcCode}`
@@ -17968,11 +17968,11 @@ export const UsersApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Get a user using the nfc code
-         * @param {number} nfcCode The nfc code of the user
+         * @param {string} nfcCode The nfc code of the user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async findUserNfc(nfcCode: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserResponse>> {
+        async findUserNfc(nfcCode: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.findUserNfc(nfcCode, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['UsersApi.findUserNfc']?.[index]?.url;
@@ -18419,11 +18419,11 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
         /**
          * 
          * @summary Get a user using the nfc code
-         * @param {number} nfcCode The nfc code of the user
+         * @param {string} nfcCode The nfc code of the user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        findUserNfc(nfcCode: number, options?: any): AxiosPromise<UserResponse> {
+        findUserNfc(nfcCode: string, options?: any): AxiosPromise<UserResponse> {
             return localVarFp.findUserNfc(nfcCode, options).then((request) => request(axios, basePath));
         },
         /**
@@ -18807,12 +18807,12 @@ export class UsersApi extends BaseAPI {
     /**
      * 
      * @summary Get a user using the nfc code
-     * @param {number} nfcCode The nfc code of the user
+     * @param {string} nfcCode The nfc code of the user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public findUserNfc(nfcCode: number, options?: RawAxiosRequestConfig) {
+    public findUserNfc(nfcCode: string, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).findUserNfc(nfcCode, options).then((request) => request(this.axios, this.basePath));
     }
 

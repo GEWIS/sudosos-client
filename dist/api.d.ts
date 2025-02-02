@@ -10959,11 +10959,11 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
     /**
      *
      * @summary Get a user using the nfc code
-     * @param {number} nfcCode The nfc code of the user
+     * @param {string} nfcCode The nfc code of the user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    findUserNfc: (nfcCode: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    findUserNfc: (nfcCode: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get a list of all users
@@ -11269,11 +11269,11 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Get a user using the nfc code
-     * @param {number} nfcCode The nfc code of the user
+     * @param {string} nfcCode The nfc code of the user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    findUserNfc(nfcCode: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserResponse>>;
+    findUserNfc(nfcCode: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserResponse>>;
     /**
      *
      * @summary Get a list of all users
@@ -11579,11 +11579,11 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
     /**
      *
      * @summary Get a user using the nfc code
-     * @param {number} nfcCode The nfc code of the user
+     * @param {string} nfcCode The nfc code of the user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    findUserNfc(nfcCode: number, options?: any): AxiosPromise<UserResponse>;
+    findUserNfc(nfcCode: string, options?: any): AxiosPromise<UserResponse>;
     /**
      *
      * @summary Get a list of all users
@@ -11897,12 +11897,12 @@ export declare class UsersApi extends BaseAPI {
     /**
      *
      * @summary Get a user using the nfc code
-     * @param {number} nfcCode The nfc code of the user
+     * @param {string} nfcCode The nfc code of the user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    findUserNfc(nfcCode: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserResponse, any>>;
+    findUserNfc(nfcCode: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserResponse, any>>;
     /**
      *
      * @summary Get a list of all users
