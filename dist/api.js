@@ -23,8 +23,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PointofsaleApi = exports.PointofsaleApiFactory = exports.PointofsaleApiFp = exports.PointofsaleApiAxiosParamCreator = exports.PayoutRequestsApi = exports.PayoutRequestsApiFactory = exports.PayoutRequestsApiFp = exports.PayoutRequestsApiAxiosParamCreator = exports.GetAllInvoicesCurrentStateEnum = exports.InvoicesApi = exports.InvoicesApiFactory = exports.InvoicesApiFp = exports.InvoicesApiAxiosParamCreator = exports.FilesApi = exports.FilesApiFactory = exports.FilesApiFp = exports.FilesApiAxiosParamCreator = exports.EventsApi = exports.EventsApiFactory = exports.EventsApiFp = exports.EventsApiAxiosParamCreator = exports.GetFineReportPdfFileTypeEnum = exports.DebtorsApi = exports.DebtorsApiFactory = exports.DebtorsApiFp = exports.DebtorsApiAxiosParamCreator = exports.ContainersApi = exports.ContainersApiFactory = exports.ContainersApiFp = exports.ContainersApiAxiosParamCreator = exports.BannersApi = exports.BannersApiFactory = exports.BannersApiFp = exports.BannersApiAxiosParamCreator = exports.GetAllBalanceOrderDirectionEnum = exports.GetAllBalanceUserTypesEnum = exports.BalanceApi = exports.BalanceApiFactory = exports.BalanceApiFp = exports.BalanceApiAxiosParamCreator = exports.AuthenticateApi = exports.AuthenticateApiFactory = exports.AuthenticateApiFp = exports.AuthenticateApiAxiosParamCreator = exports.UpdateInvoiceRequestStateEnum = exports.PayoutRequestStatusRequestStateEnum = exports.PayoutRequestResponseStatusEnum = exports.InvoiceStatusResponseStateEnum = exports.FinancialMutationResponseTypeEnum = exports.BasePayoutRequestResponseStatusEnum = void 0;
-exports.VatGroupsApiFactory = exports.VatGroupsApiFp = exports.VatGroupsApiAxiosParamCreator = exports.GetUsersSalesReportPdfFileTypeEnum = exports.GetUsersPurchaseReportPdfFileTypeEnum = exports.GetAllUsersTypeEnum = exports.UsersApi = exports.UsersApiFactory = exports.UsersApiFp = exports.UsersApiAxiosParamCreator = exports.TransfersApi = exports.TransfersApiFactory = exports.TransfersApiFp = exports.TransfersApiAxiosParamCreator = exports.TransactionsApi = exports.TransactionsApiFactory = exports.TransactionsApiFp = exports.TransactionsApiAxiosParamCreator = exports.TestOperationsOfTheTestControllerApi = exports.TestOperationsOfTheTestControllerApiFactory = exports.TestOperationsOfTheTestControllerApiFp = exports.TestOperationsOfTheTestControllerApiAxiosParamCreator = exports.StripeApi = exports.StripeApiFactory = exports.StripeApiFp = exports.StripeApiAxiosParamCreator = exports.ServerSettingsApi = exports.ServerSettingsApiFactory = exports.ServerSettingsApiFp = exports.ServerSettingsApiAxiosParamCreator = exports.SellerPayoutsApi = exports.SellerPayoutsApiFactory = exports.SellerPayoutsApiFp = exports.SellerPayoutsApiAxiosParamCreator = exports.RootApi = exports.RootApiFactory = exports.RootApiFp = exports.RootApiAxiosParamCreator = exports.RbacApi = exports.RbacApiFactory = exports.RbacApiFp = exports.RbacApiAxiosParamCreator = exports.ProductsApi = exports.ProductsApiFactory = exports.ProductsApiFp = exports.ProductsApiAxiosParamCreator = exports.ProductCategoriesApi = exports.ProductCategoriesApiFactory = exports.ProductCategoriesApiFp = exports.ProductCategoriesApiAxiosParamCreator = void 0;
-exports.WriteoffsApi = exports.WriteoffsApiFactory = exports.WriteoffsApiFp = exports.WriteoffsApiAxiosParamCreator = exports.VouchergroupsApi = exports.VouchergroupsApiFactory = exports.VouchergroupsApiFp = exports.VouchergroupsApiAxiosParamCreator = exports.VatGroupsApi = void 0;
+exports.GetUsersPurchaseReportPdfFileTypeEnum = exports.GetAllUsersTypeEnum = exports.UsersApi = exports.UsersApiFactory = exports.UsersApiFp = exports.UsersApiAxiosParamCreator = exports.TransfersApi = exports.TransfersApiFactory = exports.TransfersApiFp = exports.TransfersApiAxiosParamCreator = exports.TransactionsApi = exports.TransactionsApiFactory = exports.TransactionsApiFp = exports.TransactionsApiAxiosParamCreator = exports.TransactionSummariesApi = exports.TransactionSummariesApiFactory = exports.TransactionSummariesApiFp = exports.TransactionSummariesApiAxiosParamCreator = exports.TestOperationsOfTheTestControllerApi = exports.TestOperationsOfTheTestControllerApiFactory = exports.TestOperationsOfTheTestControllerApiFp = exports.TestOperationsOfTheTestControllerApiAxiosParamCreator = exports.StripeApi = exports.StripeApiFactory = exports.StripeApiFp = exports.StripeApiAxiosParamCreator = exports.ServerSettingsApi = exports.ServerSettingsApiFactory = exports.ServerSettingsApiFp = exports.ServerSettingsApiAxiosParamCreator = exports.SellerPayoutsApi = exports.SellerPayoutsApiFactory = exports.SellerPayoutsApiFp = exports.SellerPayoutsApiAxiosParamCreator = exports.RootApi = exports.RootApiFactory = exports.RootApiFp = exports.RootApiAxiosParamCreator = exports.RbacApi = exports.RbacApiFactory = exports.RbacApiFp = exports.RbacApiAxiosParamCreator = exports.ProductsApi = exports.ProductsApiFactory = exports.ProductsApiFp = exports.ProductsApiAxiosParamCreator = exports.ProductCategoriesApi = exports.ProductCategoriesApiFactory = exports.ProductCategoriesApiFp = exports.ProductCategoriesApiAxiosParamCreator = void 0;
+exports.WriteoffsApi = exports.WriteoffsApiFactory = exports.WriteoffsApiFp = exports.WriteoffsApiAxiosParamCreator = exports.VouchergroupsApi = exports.VouchergroupsApiFactory = exports.VouchergroupsApiFp = exports.VouchergroupsApiAxiosParamCreator = exports.VatGroupsApi = exports.VatGroupsApiFactory = exports.VatGroupsApiFp = exports.VatGroupsApiAxiosParamCreator = exports.GetUsersSalesReportPdfFileTypeEnum = void 0;
 const axios_1 = require("axios");
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -78,7 +78,7 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authenticatePointOfSale: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        authenticatePointOfSale: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('authenticatePointOfSale', 'id', id);
             const localVarPath = `/authentication/pointofsale/{id}`
@@ -110,7 +110,7 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        eanAuthentication: (authenticationEanRequest_1, ...args_1) => __awaiter(this, [authenticationEanRequest_1, ...args_1], void 0, function* (authenticationEanRequest, options = {}) {
+        eanAuthentication: (authenticationEanRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'authenticationEanRequest' is not null or undefined
             (0, common_1.assertParamExists)('eanAuthentication', 'authenticationEanRequest', authenticationEanRequest);
             const localVarPath = `/authentication/ean`;
@@ -139,7 +139,7 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getGEWISWebPublic: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+        getGEWISWebPublic: (options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/authentication/gewisweb`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -165,7 +165,7 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        gewisLDAPAuthentication: (authenticationLDAPRequest_1, ...args_1) => __awaiter(this, [authenticationLDAPRequest_1, ...args_1], void 0, function* (authenticationLDAPRequest, options = {}) {
+        gewisLDAPAuthentication: (authenticationLDAPRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'authenticationLDAPRequest' is not null or undefined
             (0, common_1.assertParamExists)('gewisLDAPAuthentication', 'authenticationLDAPRequest', authenticationLDAPRequest);
             const localVarPath = `/authentication/GEWIS/LDAP`;
@@ -195,7 +195,7 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        gewisPinAuthentication: (gEWISAuthenticationPinRequest_1, ...args_1) => __awaiter(this, [gEWISAuthenticationPinRequest_1, ...args_1], void 0, function* (gEWISAuthenticationPinRequest, options = {}) {
+        gewisPinAuthentication: (gEWISAuthenticationPinRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'gEWISAuthenticationPinRequest' is not null or undefined
             (0, common_1.assertParamExists)('gewisPinAuthentication', 'gEWISAuthenticationPinRequest', gEWISAuthenticationPinRequest);
             const localVarPath = `/authentication/GEWIS/pin`;
@@ -225,7 +225,7 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        gewisWebAuthentication: (gewiswebAuthenticationRequest_1, ...args_1) => __awaiter(this, [gewiswebAuthenticationRequest_1, ...args_1], void 0, function* (gewiswebAuthenticationRequest, options = {}) {
+        gewisWebAuthentication: (gewiswebAuthenticationRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'gewiswebAuthenticationRequest' is not null or undefined
             (0, common_1.assertParamExists)('gewisWebAuthentication', 'gewiswebAuthenticationRequest', gewiswebAuthenticationRequest);
             const localVarPath = `/authentication/gewisweb`;
@@ -255,7 +255,7 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        keyAuthentication: (authenticationKeyRequest_1, ...args_1) => __awaiter(this, [authenticationKeyRequest_1, ...args_1], void 0, function* (authenticationKeyRequest, options = {}) {
+        keyAuthentication: (authenticationKeyRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'authenticationKeyRequest' is not null or undefined
             (0, common_1.assertParamExists)('keyAuthentication', 'authenticationKeyRequest', authenticationKeyRequest);
             const localVarPath = `/authentication/key`;
@@ -285,7 +285,7 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        ldapAuthentication: (authenticationLDAPRequest_1, ...args_1) => __awaiter(this, [authenticationLDAPRequest_1, ...args_1], void 0, function* (authenticationLDAPRequest, options = {}) {
+        ldapAuthentication: (authenticationLDAPRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'authenticationLDAPRequest' is not null or undefined
             (0, common_1.assertParamExists)('ldapAuthentication', 'authenticationLDAPRequest', authenticationLDAPRequest);
             const localVarPath = `/authentication/LDAP`;
@@ -315,7 +315,7 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        localAuthentication: (authenticationLocalRequest_1, ...args_1) => __awaiter(this, [authenticationLocalRequest_1, ...args_1], void 0, function* (authenticationLocalRequest, options = {}) {
+        localAuthentication: (authenticationLocalRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'authenticationLocalRequest' is not null or undefined
             (0, common_1.assertParamExists)('localAuthentication', 'authenticationLocalRequest', authenticationLocalRequest);
             const localVarPath = `/authentication/local`;
@@ -345,7 +345,7 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        mockAuthentication: (authenticationMockRequest_1, ...args_1) => __awaiter(this, [authenticationMockRequest_1, ...args_1], void 0, function* (authenticationMockRequest, options = {}) {
+        mockAuthentication: (authenticationMockRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'authenticationMockRequest' is not null or undefined
             (0, common_1.assertParamExists)('mockAuthentication', 'authenticationMockRequest', authenticationMockRequest);
             const localVarPath = `/authentication/mock`;
@@ -375,7 +375,7 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        nfcAuthentication: (authenticationNfcRequest_1, ...args_1) => __awaiter(this, [authenticationNfcRequest_1, ...args_1], void 0, function* (authenticationNfcRequest, options = {}) {
+        nfcAuthentication: (authenticationNfcRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'authenticationNfcRequest' is not null or undefined
             (0, common_1.assertParamExists)('nfcAuthentication', 'authenticationNfcRequest', authenticationNfcRequest);
             const localVarPath = `/authentication/nfc`;
@@ -405,7 +405,7 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinAuthentication: (authenticationPinRequest_1, ...args_1) => __awaiter(this, [authenticationPinRequest_1, ...args_1], void 0, function* (authenticationPinRequest, options = {}) {
+        pinAuthentication: (authenticationPinRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'authenticationPinRequest' is not null or undefined
             (0, common_1.assertParamExists)('pinAuthentication', 'authenticationPinRequest', authenticationPinRequest);
             const localVarPath = `/authentication/pin`;
@@ -434,7 +434,7 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        refreshToken: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+        refreshToken: (options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/authentication/refreshToken`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -463,7 +463,7 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        resetLocal: (resetLocalRequest_1, ...args_1) => __awaiter(this, [resetLocalRequest_1, ...args_1], void 0, function* (resetLocalRequest, options = {}) {
+        resetLocal: (resetLocalRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'resetLocalRequest' is not null or undefined
             (0, common_1.assertParamExists)('resetLocal', 'resetLocalRequest', resetLocalRequest);
             const localVarPath = `/authentication/local/reset`;
@@ -493,7 +493,7 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        resetLocalWithToken: (authenticationResetTokenRequest_1, ...args_1) => __awaiter(this, [authenticationResetTokenRequest_1, ...args_1], void 0, function* (authenticationResetTokenRequest, options = {}) {
+        resetLocalWithToken: (authenticationResetTokenRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'authenticationResetTokenRequest' is not null or undefined
             (0, common_1.assertParamExists)('resetLocalWithToken', 'authenticationResetTokenRequest', authenticationResetTokenRequest);
             const localVarPath = `/authentication/local`;
@@ -534,8 +534,8 @@ const AuthenticateApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         authenticatePointOfSale(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.authenticatePointOfSale(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['AuthenticateApi.authenticatePointOfSale']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -550,8 +550,8 @@ const AuthenticateApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         eanAuthentication(authenticationEanRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.eanAuthentication(authenticationEanRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['AuthenticateApi.eanAuthentication']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -565,8 +565,8 @@ const AuthenticateApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getGEWISWebPublic(options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getGEWISWebPublic(options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['AuthenticateApi.getGEWISWebPublic']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -581,8 +581,8 @@ const AuthenticateApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         gewisLDAPAuthentication(authenticationLDAPRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.gewisLDAPAuthentication(authenticationLDAPRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['AuthenticateApi.gewisLDAPAuthentication']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -597,8 +597,8 @@ const AuthenticateApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         gewisPinAuthentication(gEWISAuthenticationPinRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.gewisPinAuthentication(gEWISAuthenticationPinRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['AuthenticateApi.gewisPinAuthentication']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -613,8 +613,8 @@ const AuthenticateApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         gewisWebAuthentication(gewiswebAuthenticationRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.gewisWebAuthentication(gewiswebAuthenticationRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['AuthenticateApi.gewisWebAuthentication']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -629,8 +629,8 @@ const AuthenticateApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         keyAuthentication(authenticationKeyRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.keyAuthentication(authenticationKeyRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['AuthenticateApi.keyAuthentication']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -645,8 +645,8 @@ const AuthenticateApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         ldapAuthentication(authenticationLDAPRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.ldapAuthentication(authenticationLDAPRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['AuthenticateApi.ldapAuthentication']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -661,8 +661,8 @@ const AuthenticateApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         localAuthentication(authenticationLocalRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.localAuthentication(authenticationLocalRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['AuthenticateApi.localAuthentication']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -677,8 +677,8 @@ const AuthenticateApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         mockAuthentication(authenticationMockRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.mockAuthentication(authenticationMockRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['AuthenticateApi.mockAuthentication']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -693,8 +693,8 @@ const AuthenticateApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         nfcAuthentication(authenticationNfcRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.nfcAuthentication(authenticationNfcRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['AuthenticateApi.nfcAuthentication']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -709,8 +709,8 @@ const AuthenticateApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         pinAuthentication(authenticationPinRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.pinAuthentication(authenticationPinRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['AuthenticateApi.pinAuthentication']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -724,8 +724,8 @@ const AuthenticateApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         refreshToken(options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.refreshToken(options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['AuthenticateApi.refreshToken']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -740,8 +740,8 @@ const AuthenticateApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         resetLocal(resetLocalRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.resetLocal(resetLocalRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['AuthenticateApi.resetLocal']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -756,8 +756,8 @@ const AuthenticateApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         resetLocalWithToken(authenticationResetTokenRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.resetLocalWithToken(authenticationResetTokenRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['AuthenticateApi.resetLocalWithToken']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -1105,7 +1105,7 @@ const BalanceApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
-         * @summary Get balance of the current user
+         * @summary Get balance of all users
          * @param {string} [date] Timestamp to get balances for
          * @param {number} [minBalance] Minimum balance
          * @param {number} [maxBalance] Maximum balance
@@ -1121,7 +1121,7 @@ const BalanceApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllBalance: (date_1, minBalance_1, maxBalance_1, hasFine_1, minFine_1, maxFine_1, userTypes_1, orderBy_1, orderDirection_1, allowDeleted_1, take_1, skip_1, ...args_1) => __awaiter(this, [date_1, minBalance_1, maxBalance_1, hasFine_1, minFine_1, maxFine_1, userTypes_1, orderBy_1, orderDirection_1, allowDeleted_1, take_1, skip_1, ...args_1], void 0, function* (date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, allowDeleted, take, skip, options = {}) {
+        getAllBalance: (date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, allowDeleted, take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/balances/all`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -1186,7 +1186,7 @@ const BalanceApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getBalanceId: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        getBalanceId: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getBalanceId', 'id', id);
             const localVarPath = `/balances/{id}`
@@ -1217,7 +1217,7 @@ const BalanceApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getBalances: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+        getBalances: (options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/balances`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -1251,7 +1251,7 @@ const BalanceApiFp = function (configuration) {
     return {
         /**
          *
-         * @summary Get balance of the current user
+         * @summary Get balance of all users
          * @param {string} [date] Timestamp to get balances for
          * @param {number} [minBalance] Minimum balance
          * @param {number} [maxBalance] Maximum balance
@@ -1268,8 +1268,8 @@ const BalanceApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, allowDeleted, take, skip, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, allowDeleted, take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['BalanceApi.getAllBalance']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -1284,8 +1284,8 @@ const BalanceApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getBalanceId(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getBalanceId(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['BalanceApi.getBalanceId']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -1299,8 +1299,8 @@ const BalanceApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getBalances(options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getBalances(options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['BalanceApi.getBalances']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -1319,7 +1319,7 @@ const BalanceApiFactory = function (configuration, basePath, axios) {
     return {
         /**
          *
-         * @summary Get balance of the current user
+         * @summary Get balance of all users
          * @param {string} [date] Timestamp to get balances for
          * @param {number} [minBalance] Minimum balance
          * @param {number} [maxBalance] Maximum balance
@@ -1369,7 +1369,7 @@ exports.BalanceApiFactory = BalanceApiFactory;
 class BalanceApi extends base_1.BaseAPI {
     /**
      *
-     * @summary Get balance of the current user
+     * @summary Get balance of all users
      * @param {string} [date] Timestamp to get balances for
      * @param {number} [minBalance] Minimum balance
      * @param {number} [maxBalance] Maximum balance
@@ -1436,7 +1436,7 @@ const BannersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        _delete: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        _delete: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('_delete', 'id', id);
             const localVarPath = `/banners/{id}`
@@ -1468,7 +1468,7 @@ const BannersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        create: (bannerRequest_1, ...args_1) => __awaiter(this, [bannerRequest_1, ...args_1], void 0, function* (bannerRequest, options = {}) {
+        create: (bannerRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'bannerRequest' is not null or undefined
             (0, common_1.assertParamExists)('create', 'bannerRequest', bannerRequest);
             const localVarPath = `/banners`;
@@ -1502,7 +1502,7 @@ const BannersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getActive: (take_1, skip_1, ...args_1) => __awaiter(this, [take_1, skip_1, ...args_1], void 0, function* (take, skip, options = {}) {
+        getActive: (take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/banners/active`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -1538,7 +1538,7 @@ const BannersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllBanners: (take_1, skip_1, ...args_1) => __awaiter(this, [take_1, skip_1, ...args_1], void 0, function* (take, skip, options = {}) {
+        getAllBanners: (take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/banners`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -1574,7 +1574,7 @@ const BannersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllOpenBanners: (take_1, skip_1, ...args_1) => __awaiter(this, [take_1, skip_1, ...args_1], void 0, function* (take, skip, options = {}) {
+        getAllOpenBanners: (take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/open/banners`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -1606,7 +1606,7 @@ const BannersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getBanner: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        getBanner: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getBanner', 'id', id);
             const localVarPath = `/banners/{id}`
@@ -1639,7 +1639,7 @@ const BannersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        update: (id_1, bannerRequest_1, ...args_1) => __awaiter(this, [id_1, bannerRequest_1, ...args_1], void 0, function* (id, bannerRequest, options = {}) {
+        update: (id, bannerRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('update', 'id', id);
             // verify required parameter 'bannerRequest' is not null or undefined
@@ -1676,7 +1676,7 @@ const BannersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateImage: (id_1, file_1, ...args_1) => __awaiter(this, [id_1, file_1, ...args_1], void 0, function* (id, file, options = {}) {
+        updateImage: (id, file, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateImage', 'id', id);
             const localVarPath = `/banners/{id}/image`
@@ -1725,8 +1725,8 @@ const BannersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         _delete(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator._delete(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['BannersApi._delete']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -1741,8 +1741,8 @@ const BannersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         create(bannerRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.create(bannerRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['BannersApi.create']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -1758,8 +1758,8 @@ const BannersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getActive(take, skip, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getActive(take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['BannersApi.getActive']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -1775,8 +1775,8 @@ const BannersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getAllBanners(take, skip, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllBanners(take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['BannersApi.getAllBanners']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -1792,8 +1792,8 @@ const BannersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getAllOpenBanners(take, skip, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllOpenBanners(take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['BannersApi.getAllOpenBanners']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -1808,8 +1808,8 @@ const BannersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getBanner(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getBanner(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['BannersApi.getBanner']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -1825,8 +1825,8 @@ const BannersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         update(id, bannerRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.update(id, bannerRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['BannersApi.update']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -1842,8 +1842,8 @@ const BannersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         updateImage(id, file, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.updateImage(id, file, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['BannersApi.updateImage']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -2063,7 +2063,7 @@ const ContainersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createContainer: (createContainerRequest_1, ...args_1) => __awaiter(this, [createContainerRequest_1, ...args_1], void 0, function* (createContainerRequest, options = {}) {
+        createContainer: (createContainerRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'createContainerRequest' is not null or undefined
             (0, common_1.assertParamExists)('createContainer', 'createContainerRequest', createContainerRequest);
             const localVarPath = `/containers`;
@@ -2096,7 +2096,7 @@ const ContainersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteContainer: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        deleteContainer: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('deleteContainer', 'id', id);
             const localVarPath = `/containers/{id}`
@@ -2129,7 +2129,7 @@ const ContainersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllContainers: (take_1, skip_1, ...args_1) => __awaiter(this, [take_1, skip_1, ...args_1], void 0, function* (take, skip, options = {}) {
+        getAllContainers: (take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/containers`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -2164,7 +2164,7 @@ const ContainersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getProductsContainer: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        getProductsContainer: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getProductsContainer', 'id', id);
             const localVarPath = `/containers/{id}/products`
@@ -2197,7 +2197,7 @@ const ContainersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPublicContainers: (take_1, skip_1, ...args_1) => __awaiter(this, [take_1, skip_1, ...args_1], void 0, function* (take, skip, options = {}) {
+        getPublicContainers: (take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/containers/public`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -2232,7 +2232,7 @@ const ContainersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSingleContainer: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        getSingleContainer: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getSingleContainer', 'id', id);
             const localVarPath = `/containers/{id}`
@@ -2265,7 +2265,7 @@ const ContainersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateContainer: (id_1, updateContainerRequest_1, ...args_1) => __awaiter(this, [id_1, updateContainerRequest_1, ...args_1], void 0, function* (id, updateContainerRequest, options = {}) {
+        updateContainer: (id, updateContainerRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateContainer', 'id', id);
             // verify required parameter 'updateContainerRequest' is not null or undefined
@@ -2312,8 +2312,8 @@ const ContainersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         createContainer(createContainerRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.createContainer(createContainerRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['ContainersApi.createContainer']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -2328,8 +2328,8 @@ const ContainersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         deleteContainer(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteContainer(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['ContainersApi.deleteContainer']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -2345,8 +2345,8 @@ const ContainersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getAllContainers(take, skip, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllContainers(take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['ContainersApi.getAllContainers']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -2361,8 +2361,8 @@ const ContainersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getProductsContainer(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getProductsContainer(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['ContainersApi.getProductsContainer']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -2378,8 +2378,8 @@ const ContainersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getPublicContainers(take, skip, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getPublicContainers(take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['ContainersApi.getPublicContainers']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -2394,8 +2394,8 @@ const ContainersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getSingleContainer(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getSingleContainer(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['ContainersApi.getSingleContainer']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -2411,8 +2411,8 @@ const ContainersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         updateContainer(id, updateContainerRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.updateContainer(id, updateContainerRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['ContainersApi.updateContainer']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -2608,7 +2608,7 @@ const DebtorsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        calculateFines: (referenceDates_1, userTypes_1, ...args_1) => __awaiter(this, [referenceDates_1, userTypes_1, ...args_1], void 0, function* (referenceDates, userTypes, options = {}) {
+        calculateFines: (referenceDates, userTypes, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'referenceDates' is not null or undefined
             (0, common_1.assertParamExists)('calculateFines', 'referenceDates', referenceDates);
             const localVarPath = `/fines/eligible`;
@@ -2645,7 +2645,7 @@ const DebtorsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteFine: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        deleteFine: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('deleteFine', 'id', id);
             const localVarPath = `/fines/single/{id}`
@@ -2678,7 +2678,7 @@ const DebtorsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getFineReport: (fromDate_1, toDate_1, ...args_1) => __awaiter(this, [fromDate_1, toDate_1, ...args_1], void 0, function* (fromDate, toDate, options = {}) {
+        getFineReport: (fromDate, toDate, options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/fines/report`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -2715,7 +2715,7 @@ const DebtorsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getFineReportPdf: (fromDate_1, toDate_1, fileType_1, ...args_1) => __awaiter(this, [fromDate_1, toDate_1, fileType_1, ...args_1], void 0, function* (fromDate, toDate, fileType, options = {}) {
+        getFineReportPdf: (fromDate, toDate, fileType, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'fromDate' is not null or undefined
             (0, common_1.assertParamExists)('getFineReportPdf', 'fromDate', fromDate);
             // verify required parameter 'toDate' is not null or undefined
@@ -2759,7 +2759,7 @@ const DebtorsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        handoutFines: (handoutFinesRequest_1, ...args_1) => __awaiter(this, [handoutFinesRequest_1, ...args_1], void 0, function* (handoutFinesRequest, options = {}) {
+        handoutFines: (handoutFinesRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'handoutFinesRequest' is not null or undefined
             (0, common_1.assertParamExists)('handoutFines', 'handoutFinesRequest', handoutFinesRequest);
             const localVarPath = `/fines/handout`;
@@ -2792,7 +2792,7 @@ const DebtorsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        notifyAboutFutureFines: (handoutFinesRequest_1, ...args_1) => __awaiter(this, [handoutFinesRequest_1, ...args_1], void 0, function* (handoutFinesRequest, options = {}) {
+        notifyAboutFutureFines: (handoutFinesRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'handoutFinesRequest' is not null or undefined
             (0, common_1.assertParamExists)('notifyAboutFutureFines', 'handoutFinesRequest', handoutFinesRequest);
             const localVarPath = `/fines/notify`;
@@ -2826,7 +2826,7 @@ const DebtorsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        returnAllFineHandoutEvents: (take_1, skip_1, ...args_1) => __awaiter(this, [take_1, skip_1, ...args_1], void 0, function* (take, skip, options = {}) {
+        returnAllFineHandoutEvents: (take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/fines`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -2861,7 +2861,7 @@ const DebtorsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        returnSingleFineHandoutEvent: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        returnSingleFineHandoutEvent: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('returnSingleFineHandoutEvent', 'id', id);
             const localVarPath = `/fines/{id}`
@@ -2905,8 +2905,8 @@ const DebtorsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         calculateFines(referenceDates, userTypes, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.calculateFines(referenceDates, userTypes, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['DebtorsApi.calculateFines']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -2921,8 +2921,8 @@ const DebtorsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         deleteFine(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteFine(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['DebtorsApi.deleteFine']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -2938,8 +2938,8 @@ const DebtorsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getFineReport(fromDate, toDate, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getFineReport(fromDate, toDate, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['DebtorsApi.getFineReport']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -2956,8 +2956,8 @@ const DebtorsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getFineReportPdf(fromDate, toDate, fileType, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getFineReportPdf(fromDate, toDate, fileType, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['DebtorsApi.getFineReportPdf']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -2972,8 +2972,8 @@ const DebtorsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         handoutFines(handoutFinesRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.handoutFines(handoutFinesRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['DebtorsApi.handoutFines']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -2988,8 +2988,8 @@ const DebtorsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         notifyAboutFutureFines(handoutFinesRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.notifyAboutFutureFines(handoutFinesRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['DebtorsApi.notifyAboutFutureFines']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -3005,8 +3005,8 @@ const DebtorsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         returnAllFineHandoutEvents(take, skip, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.returnAllFineHandoutEvents(take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['DebtorsApi.returnAllFineHandoutEvents']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -3021,8 +3021,8 @@ const DebtorsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         returnSingleFineHandoutEvent(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.returnSingleFineHandoutEvent(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['DebtorsApi.returnSingleFineHandoutEvent']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -3253,7 +3253,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @deprecated
          * @throws {RequiredError}
          */
-        assignEventShift: (eventId_1, shiftId_1, userId_1, eventAnswerAssignmentRequest_1, ...args_1) => __awaiter(this, [eventId_1, shiftId_1, userId_1, eventAnswerAssignmentRequest_1, ...args_1], void 0, function* (eventId, shiftId, userId, eventAnswerAssignmentRequest, options = {}) {
+        assignEventShift: (eventId, shiftId, userId, eventAnswerAssignmentRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'eventId' is not null or undefined
             (0, common_1.assertParamExists)('assignEventShift', 'eventId', eventId);
             // verify required parameter 'shiftId' is not null or undefined
@@ -3296,7 +3296,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @deprecated
          * @throws {RequiredError}
          */
-        createEvent: (createEventRequest_1, ...args_1) => __awaiter(this, [createEventRequest_1, ...args_1], void 0, function* (createEventRequest, options = {}) {
+        createEvent: (createEventRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'createEventRequest' is not null or undefined
             (0, common_1.assertParamExists)('createEvent', 'createEventRequest', createEventRequest);
             const localVarPath = `/events`;
@@ -3330,7 +3330,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @deprecated
          * @throws {RequiredError}
          */
-        createEventShift: (createShiftRequest_1, ...args_1) => __awaiter(this, [createShiftRequest_1, ...args_1], void 0, function* (createShiftRequest, options = {}) {
+        createEventShift: (createShiftRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'createShiftRequest' is not null or undefined
             (0, common_1.assertParamExists)('createEventShift', 'createShiftRequest', createShiftRequest);
             const localVarPath = `/eventshifts`;
@@ -3364,7 +3364,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @deprecated
          * @throws {RequiredError}
          */
-        deleteEvent: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        deleteEvent: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('deleteEvent', 'id', id);
             const localVarPath = `/events/{id}`
@@ -3397,7 +3397,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @deprecated
          * @throws {RequiredError}
          */
-        deleteEventShift: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        deleteEventShift: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('deleteEventShift', 'id', id);
             const localVarPath = `/eventshifts/{id}`
@@ -3431,7 +3431,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @deprecated
          * @throws {RequiredError}
          */
-        getAllEventShifts: (take_1, skip_1, ...args_1) => __awaiter(this, [take_1, skip_1, ...args_1], void 0, function* (take, skip, options = {}) {
+        getAllEventShifts: (take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/eventshifts`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -3473,7 +3473,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @deprecated
          * @throws {RequiredError}
          */
-        getAllEvents: (name_1, createdById_1, beforeDate_1, afterDate_1, type_1, take_1, skip_1, ...args_1) => __awaiter(this, [name_1, createdById_1, beforeDate_1, afterDate_1, type_1, take_1, skip_1, ...args_1], void 0, function* (name, createdById, beforeDate, afterDate, type, take, skip, options = {}) {
+        getAllEvents: (name, createdById, beforeDate, afterDate, type, take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/events`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -3527,7 +3527,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @deprecated
          * @throws {RequiredError}
          */
-        getEventShiftCount: (id_1, eventType_1, afterDate_1, beforeDate_1, ...args_1) => __awaiter(this, [id_1, eventType_1, afterDate_1, beforeDate_1, ...args_1], void 0, function* (id, eventType, afterDate, beforeDate, options = {}) {
+        getEventShiftCount: (id, eventType, afterDate, beforeDate, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getEventShiftCount', 'id', id);
             const localVarPath = `/eventshifts/{id}/counts`
@@ -3569,7 +3569,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @deprecated
          * @throws {RequiredError}
          */
-        getSingleEvent: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        getSingleEvent: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getSingleEvent', 'id', id);
             const localVarPath = `/events/{id}`
@@ -3603,7 +3603,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @deprecated
          * @throws {RequiredError}
          */
-        updateEvent: (id_1, updateEventRequest_1, ...args_1) => __awaiter(this, [id_1, updateEventRequest_1, ...args_1], void 0, function* (id, updateEventRequest, options = {}) {
+        updateEvent: (id, updateEventRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateEvent', 'id', id);
             // verify required parameter 'updateEventRequest' is not null or undefined
@@ -3641,7 +3641,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @deprecated
          * @throws {RequiredError}
          */
-        updateEventShift: (id_1, updateShiftRequest_1, ...args_1) => __awaiter(this, [id_1, updateShiftRequest_1, ...args_1], void 0, function* (id, updateShiftRequest, options = {}) {
+        updateEventShift: (id, updateShiftRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateEventShift', 'id', id);
             // verify required parameter 'updateShiftRequest' is not null or undefined
@@ -3681,7 +3681,7 @@ const EventsApiAxiosParamCreator = function (configuration) {
          * @deprecated
          * @throws {RequiredError}
          */
-        updateEventShiftAvailability: (eventId_1, shiftId_1, userId_1, eventAnswerAvailabilityRequest_1, ...args_1) => __awaiter(this, [eventId_1, shiftId_1, userId_1, eventAnswerAvailabilityRequest_1, ...args_1], void 0, function* (eventId, shiftId, userId, eventAnswerAvailabilityRequest, options = {}) {
+        updateEventShiftAvailability: (eventId, shiftId, userId, eventAnswerAvailabilityRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'eventId' is not null or undefined
             (0, common_1.assertParamExists)('updateEventShiftAvailability', 'eventId', eventId);
             // verify required parameter 'shiftId' is not null or undefined
@@ -3738,8 +3738,8 @@ const EventsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         assignEventShift(eventId, shiftId, userId, eventAnswerAssignmentRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.assignEventShift(eventId, shiftId, userId, eventAnswerAssignmentRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['EventsApi.assignEventShift']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -3755,8 +3755,8 @@ const EventsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         createEvent(createEventRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.createEvent(createEventRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['EventsApi.createEvent']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -3772,8 +3772,8 @@ const EventsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         createEventShift(createShiftRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.createEventShift(createShiftRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['EventsApi.createEventShift']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -3789,8 +3789,8 @@ const EventsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         deleteEvent(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteEvent(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['EventsApi.deleteEvent']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -3806,8 +3806,8 @@ const EventsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         deleteEventShift(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteEventShift(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['EventsApi.deleteEventShift']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -3824,8 +3824,8 @@ const EventsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getAllEventShifts(take, skip, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllEventShifts(take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['EventsApi.getAllEventShifts']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -3847,8 +3847,8 @@ const EventsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getAllEvents(name, createdById, beforeDate, afterDate, type, take, skip, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllEvents(name, createdById, beforeDate, afterDate, type, take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['EventsApi.getAllEvents']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -3867,8 +3867,8 @@ const EventsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getEventShiftCount(id, eventType, afterDate, beforeDate, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getEventShiftCount(id, eventType, afterDate, beforeDate, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['EventsApi.getEventShiftCount']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -3884,8 +3884,8 @@ const EventsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getSingleEvent(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getSingleEvent(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['EventsApi.getSingleEvent']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -3902,8 +3902,8 @@ const EventsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         updateEvent(id, updateEventRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.updateEvent(id, updateEventRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['EventsApi.updateEvent']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -3920,8 +3920,8 @@ const EventsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         updateEventShift(id, updateShiftRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.updateEventShift(id, updateShiftRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['EventsApi.updateEventShift']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -3940,8 +3940,8 @@ const EventsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         updateEventShiftAvailability(eventId, shiftId, userId, eventAnswerAvailabilityRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.updateEventShiftAvailability(eventId, shiftId, userId, eventAnswerAvailabilityRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['EventsApi.updateEventShiftAvailability']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -4296,7 +4296,7 @@ const FilesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createFile: (name_1, file_1, ...args_1) => __awaiter(this, [name_1, file_1, ...args_1], void 0, function* (name, file, options = {}) {
+        createFile: (name, file, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'name' is not null or undefined
             (0, common_1.assertParamExists)('createFile', 'name', name);
             const localVarPath = `/files`;
@@ -4336,7 +4336,7 @@ const FilesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteFile: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        deleteFile: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('deleteFile', 'id', id);
             const localVarPath = `/files/{id}`
@@ -4368,7 +4368,7 @@ const FilesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getFile: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        getFile: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getFile', 'id', id);
             const localVarPath = `/files/{id}`
@@ -4412,8 +4412,8 @@ const FilesApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         createFile(name, file, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.createFile(name, file, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['FilesApi.createFile']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -4428,8 +4428,8 @@ const FilesApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         deleteFile(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteFile(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['FilesApi.deleteFile']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -4444,8 +4444,8 @@ const FilesApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getFile(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getFile(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['FilesApi.getFile']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -4552,7 +4552,7 @@ const InvoicesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createInvoice: (createInvoiceRequest_1, ...args_1) => __awaiter(this, [createInvoiceRequest_1, ...args_1], void 0, function* (createInvoiceRequest, options = {}) {
+        createInvoice: (createInvoiceRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'createInvoiceRequest' is not null or undefined
             (0, common_1.assertParamExists)('createInvoice', 'createInvoiceRequest', createInvoiceRequest);
             const localVarPath = `/invoices`;
@@ -4585,7 +4585,7 @@ const InvoicesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteInvoice: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        deleteInvoice: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('deleteInvoice', 'id', id);
             const localVarPath = `/invoices/{id}`
@@ -4617,7 +4617,7 @@ const InvoicesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteInvoiceUser: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        deleteInvoiceUser: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('deleteInvoiceUser', 'id', id);
             const localVarPath = `/invoices/users/{id}`
@@ -4656,7 +4656,7 @@ const InvoicesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllInvoices: (toId_1, invoiceId_1, currentState_1, returnEntries_1, fromDate_1, tillDate_1, take_1, skip_1, ...args_1) => __awaiter(this, [toId_1, invoiceId_1, currentState_1, returnEntries_1, fromDate_1, tillDate_1, take_1, skip_1, ...args_1], void 0, function* (toId, invoiceId, currentState, returnEntries, fromDate, tillDate, take, skip, options = {}) {
+        getAllInvoices: (toId, invoiceId, currentState, returnEntries, fromDate, tillDate, take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/invoices`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -4711,7 +4711,7 @@ const InvoicesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getEligibleTransactions: (forId_1, fromDate_1, tillDate_1, ...args_1) => __awaiter(this, [forId_1, fromDate_1, tillDate_1, ...args_1], void 0, function* (forId, fromDate, tillDate, options = {}) {
+        getEligibleTransactions: (forId, fromDate, tillDate, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'forId' is not null or undefined
             (0, common_1.assertParamExists)('getEligibleTransactions', 'forId', forId);
             // verify required parameter 'fromDate' is not null or undefined
@@ -4754,7 +4754,7 @@ const InvoicesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInvoicePdf: (id_1, force_1, ...args_1) => __awaiter(this, [id_1, force_1, ...args_1], void 0, function* (id, force, options = {}) {
+        getInvoicePdf: (id, force, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getInvoicePdf', 'id', id);
             const localVarPath = `/invoices/{id}/pdf`
@@ -4790,7 +4790,7 @@ const InvoicesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSingleInvoice: (id_1, returnEntries_1, ...args_1) => __awaiter(this, [id_1, returnEntries_1, ...args_1], void 0, function* (id, returnEntries, options = {}) {
+        getSingleInvoice: (id, returnEntries, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getSingleInvoice', 'id', id);
             const localVarPath = `/invoices/{id}`
@@ -4825,7 +4825,7 @@ const InvoicesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSingleInvoiceUser: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        getSingleInvoiceUser: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getSingleInvoiceUser', 'id', id);
             const localVarPath = `/invoices/users/{id}`
@@ -4858,7 +4858,7 @@ const InvoicesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        putInvoiceUser: (id_1, updateInvoiceUserRequest_1, ...args_1) => __awaiter(this, [id_1, updateInvoiceUserRequest_1, ...args_1], void 0, function* (id, updateInvoiceUserRequest, options = {}) {
+        putInvoiceUser: (id, updateInvoiceUserRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('putInvoiceUser', 'id', id);
             // verify required parameter 'updateInvoiceUserRequest' is not null or undefined
@@ -4895,7 +4895,7 @@ const InvoicesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateInvoice: (id_1, updateInvoiceRequest_1, ...args_1) => __awaiter(this, [id_1, updateInvoiceRequest_1, ...args_1], void 0, function* (id, updateInvoiceRequest, options = {}) {
+        updateInvoice: (id, updateInvoiceRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateInvoice', 'id', id);
             // verify required parameter 'updateInvoiceRequest' is not null or undefined
@@ -4942,8 +4942,8 @@ const InvoicesApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         createInvoice(createInvoiceRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.createInvoice(createInvoiceRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['InvoicesApi.createInvoice']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -4958,8 +4958,8 @@ const InvoicesApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         deleteInvoice(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteInvoice(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['InvoicesApi.deleteInvoice']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -4974,8 +4974,8 @@ const InvoicesApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         deleteInvoiceUser(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteInvoiceUser(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['InvoicesApi.deleteInvoiceUser']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -4997,8 +4997,8 @@ const InvoicesApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getAllInvoices(toId, invoiceId, currentState, returnEntries, fromDate, tillDate, take, skip, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllInvoices(toId, invoiceId, currentState, returnEntries, fromDate, tillDate, take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['InvoicesApi.getAllInvoices']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -5015,8 +5015,8 @@ const InvoicesApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getEligibleTransactions(forId, fromDate, tillDate, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getEligibleTransactions(forId, fromDate, tillDate, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['InvoicesApi.getEligibleTransactions']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -5032,8 +5032,8 @@ const InvoicesApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getInvoicePdf(id, force, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getInvoicePdf(id, force, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['InvoicesApi.getInvoicePdf']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -5049,8 +5049,8 @@ const InvoicesApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getSingleInvoice(id, returnEntries, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getSingleInvoice(id, returnEntries, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['InvoicesApi.getSingleInvoice']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -5065,8 +5065,8 @@ const InvoicesApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getSingleInvoiceUser(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getSingleInvoiceUser(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['InvoicesApi.getSingleInvoiceUser']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -5082,8 +5082,8 @@ const InvoicesApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         putInvoiceUser(id, updateInvoiceUserRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.putInvoiceUser(id, updateInvoiceUserRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['InvoicesApi.putInvoiceUser']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -5099,8 +5099,8 @@ const InvoicesApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         updateInvoice(id, updateInvoiceRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.updateInvoice(id, updateInvoiceRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['InvoicesApi.updateInvoice']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -5382,7 +5382,7 @@ const PayoutRequestsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createPayoutRequest: (payoutRequestRequest_1, ...args_1) => __awaiter(this, [payoutRequestRequest_1, ...args_1], void 0, function* (payoutRequestRequest, options = {}) {
+        createPayoutRequest: (payoutRequestRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'payoutRequestRequest' is not null or undefined
             (0, common_1.assertParamExists)('createPayoutRequest', 'payoutRequestRequest', payoutRequestRequest);
             const localVarPath = `/payoutrequests`;
@@ -5421,7 +5421,7 @@ const PayoutRequestsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllPayoutRequests: (requestedById_1, approvedById_1, fromDate_1, tillDate_1, status_1, take_1, skip_1, ...args_1) => __awaiter(this, [requestedById_1, approvedById_1, fromDate_1, tillDate_1, status_1, take_1, skip_1, ...args_1], void 0, function* (requestedById, approvedById, fromDate, tillDate, status, take, skip, options = {}) {
+        getAllPayoutRequests: (requestedById, approvedById, fromDate, tillDate, status, take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/payoutrequests`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -5475,7 +5475,7 @@ const PayoutRequestsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPayoutRequestPdf: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        getPayoutRequestPdf: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getPayoutRequestPdf', 'id', id);
             const localVarPath = `/payoutrequests/{id}/pdf`
@@ -5507,7 +5507,7 @@ const PayoutRequestsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSinglePayoutRequest: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        getSinglePayoutRequest: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getSinglePayoutRequest', 'id', id);
             const localVarPath = `/payoutrequests/{id}`
@@ -5540,7 +5540,7 @@ const PayoutRequestsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setPayoutRequestStatus: (id_1, payoutRequestStatusRequest_1, ...args_1) => __awaiter(this, [id_1, payoutRequestStatusRequest_1, ...args_1], void 0, function* (id, payoutRequestStatusRequest, options = {}) {
+        setPayoutRequestStatus: (id, payoutRequestStatusRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('setPayoutRequestStatus', 'id', id);
             // verify required parameter 'payoutRequestStatusRequest' is not null or undefined
@@ -5587,8 +5587,8 @@ const PayoutRequestsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         createPayoutRequest(payoutRequestRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.createPayoutRequest(payoutRequestRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['PayoutRequestsApi.createPayoutRequest']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -5609,8 +5609,8 @@ const PayoutRequestsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getAllPayoutRequests(requestedById, approvedById, fromDate, tillDate, status, take, skip, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllPayoutRequests(requestedById, approvedById, fromDate, tillDate, status, take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['PayoutRequestsApi.getAllPayoutRequests']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -5625,8 +5625,8 @@ const PayoutRequestsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getPayoutRequestPdf(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getPayoutRequestPdf(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['PayoutRequestsApi.getPayoutRequestPdf']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -5641,8 +5641,8 @@ const PayoutRequestsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getSinglePayoutRequest(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getSinglePayoutRequest(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['PayoutRequestsApi.getSinglePayoutRequest']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -5658,8 +5658,8 @@ const PayoutRequestsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         setPayoutRequestStatus(id, payoutRequestStatusRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.setPayoutRequestStatus(id, payoutRequestStatusRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['PayoutRequestsApi.setPayoutRequestStatus']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -5820,7 +5820,7 @@ const PointofsaleApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createPointOfSale: (createPointOfSaleRequest_1, ...args_1) => __awaiter(this, [createPointOfSaleRequest_1, ...args_1], void 0, function* (createPointOfSaleRequest, options = {}) {
+        createPointOfSale: (createPointOfSaleRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'createPointOfSaleRequest' is not null or undefined
             (0, common_1.assertParamExists)('createPointOfSale', 'createPointOfSaleRequest', createPointOfSaleRequest);
             const localVarPath = `/pointsofsale`;
@@ -5853,7 +5853,7 @@ const PointofsaleApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deletePointOfSale: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        deletePointOfSale: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('deletePointOfSale', 'id', id);
             const localVarPath = `/pointsofsale/{id}`
@@ -5887,7 +5887,7 @@ const PointofsaleApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllPointOfSaleContainers: (id_1, take_1, skip_1, ...args_1) => __awaiter(this, [id_1, take_1, skip_1, ...args_1], void 0, function* (id, take, skip, options = {}) {
+        getAllPointOfSaleContainers: (id, take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getAllPointOfSaleContainers', 'id', id);
             const localVarPath = `/pointsofsale/{id}/containers`
@@ -5925,7 +5925,7 @@ const PointofsaleApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllPointOfSaleProducts: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        getAllPointOfSaleProducts: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getAllPointOfSaleProducts', 'id', id);
             const localVarPath = `/pointsofsale/{id}/products`
@@ -5958,7 +5958,7 @@ const PointofsaleApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllPointsOfSale: (take_1, skip_1, ...args_1) => __awaiter(this, [take_1, skip_1, ...args_1], void 0, function* (take, skip, options = {}) {
+        getAllPointsOfSale: (take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/pointsofsale`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -5993,7 +5993,7 @@ const PointofsaleApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPointOfSaleAssociates: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        getPointOfSaleAssociates: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getPointOfSaleAssociates', 'id', id);
             const localVarPath = `/pointsofsale/{id}/associates`
@@ -6025,7 +6025,7 @@ const PointofsaleApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSinglePointOfSale: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        getSinglePointOfSale: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getSinglePointOfSale', 'id', id);
             const localVarPath = `/pointsofsale/{id}`
@@ -6059,7 +6059,7 @@ const PointofsaleApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTransactions: (id_1, take_1, skip_1, ...args_1) => __awaiter(this, [id_1, take_1, skip_1, ...args_1], void 0, function* (id, take, skip, options = {}) {
+        getTransactions: (id, take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getTransactions', 'id', id);
             const localVarPath = `/pointsofsale/{id}/transactions`
@@ -6098,7 +6098,7 @@ const PointofsaleApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updatePointOfSale: (id_1, updatePointOfSaleRequest_1, ...args_1) => __awaiter(this, [id_1, updatePointOfSaleRequest_1, ...args_1], void 0, function* (id, updatePointOfSaleRequest, options = {}) {
+        updatePointOfSale: (id, updatePointOfSaleRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updatePointOfSale', 'id', id);
             // verify required parameter 'updatePointOfSaleRequest' is not null or undefined
@@ -6145,8 +6145,8 @@ const PointofsaleApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         createPointOfSale(createPointOfSaleRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.createPointOfSale(createPointOfSaleRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['PointofsaleApi.createPointOfSale']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -6161,8 +6161,8 @@ const PointofsaleApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         deletePointOfSale(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.deletePointOfSale(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['PointofsaleApi.deletePointOfSale']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -6179,8 +6179,8 @@ const PointofsaleApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getAllPointOfSaleContainers(id, take, skip, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllPointOfSaleContainers(id, take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['PointofsaleApi.getAllPointOfSaleContainers']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -6195,8 +6195,8 @@ const PointofsaleApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getAllPointOfSaleProducts(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllPointOfSaleProducts(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['PointofsaleApi.getAllPointOfSaleProducts']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -6212,8 +6212,8 @@ const PointofsaleApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getAllPointsOfSale(take, skip, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllPointsOfSale(take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['PointofsaleApi.getAllPointsOfSale']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -6228,8 +6228,8 @@ const PointofsaleApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getPointOfSaleAssociates(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getPointOfSaleAssociates(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['PointofsaleApi.getPointOfSaleAssociates']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -6244,8 +6244,8 @@ const PointofsaleApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getSinglePointOfSale(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getSinglePointOfSale(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['PointofsaleApi.getSinglePointOfSale']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -6262,8 +6262,8 @@ const PointofsaleApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getTransactions(id, take, skip, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getTransactions(id, take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['PointofsaleApi.getTransactions']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -6279,8 +6279,8 @@ const PointofsaleApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         updatePointOfSale(id, updatePointOfSaleRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.updatePointOfSale(id, updatePointOfSaleRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['PointofsaleApi.updatePointOfSale']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -6523,7 +6523,7 @@ const ProductCategoriesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createProductCategory: (productCategoryRequest_1, ...args_1) => __awaiter(this, [productCategoryRequest_1, ...args_1], void 0, function* (productCategoryRequest, options = {}) {
+        createProductCategory: (productCategoryRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'productCategoryRequest' is not null or undefined
             (0, common_1.assertParamExists)('createProductCategory', 'productCategoryRequest', productCategoryRequest);
             const localVarPath = `/productcategories`;
@@ -6559,7 +6559,7 @@ const ProductCategoriesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllProductCategories: (onlyRoot_1, onlyLeaf_1, take_1, skip_1, ...args_1) => __awaiter(this, [onlyRoot_1, onlyLeaf_1, take_1, skip_1, ...args_1], void 0, function* (onlyRoot, onlyLeaf, take, skip, options = {}) {
+        getAllProductCategories: (onlyRoot, onlyLeaf, take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/productcategories`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -6600,7 +6600,7 @@ const ProductCategoriesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSingleProductCategory: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        getSingleProductCategory: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getSingleProductCategory', 'id', id);
             const localVarPath = `/productcategories/{id}`
@@ -6633,7 +6633,7 @@ const ProductCategoriesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateProductCategory: (id_1, productCategoryRequest_1, ...args_1) => __awaiter(this, [id_1, productCategoryRequest_1, ...args_1], void 0, function* (id, productCategoryRequest, options = {}) {
+        updateProductCategory: (id, productCategoryRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateProductCategory', 'id', id);
             // verify required parameter 'productCategoryRequest' is not null or undefined
@@ -6680,8 +6680,8 @@ const ProductCategoriesApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         createProductCategory(productCategoryRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.createProductCategory(productCategoryRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['ProductCategoriesApi.createProductCategory']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -6699,8 +6699,8 @@ const ProductCategoriesApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getAllProductCategories(onlyRoot, onlyLeaf, take, skip, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllProductCategories(onlyRoot, onlyLeaf, take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['ProductCategoriesApi.getAllProductCategories']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -6715,8 +6715,8 @@ const ProductCategoriesApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getSingleProductCategory(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getSingleProductCategory(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['ProductCategoriesApi.getSingleProductCategory']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -6732,8 +6732,8 @@ const ProductCategoriesApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         updateProductCategory(id, productCategoryRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.updateProductCategory(id, productCategoryRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['ProductCategoriesApi.updateProductCategory']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -6867,7 +6867,7 @@ const ProductsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createProduct: (createProductRequest_1, ...args_1) => __awaiter(this, [createProductRequest_1, ...args_1], void 0, function* (createProductRequest, options = {}) {
+        createProduct: (createProductRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'createProductRequest' is not null or undefined
             (0, common_1.assertParamExists)('createProduct', 'createProductRequest', createProductRequest);
             const localVarPath = `/products`;
@@ -6900,7 +6900,7 @@ const ProductsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteProduct: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        deleteProduct: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('deleteProduct', 'id', id);
             const localVarPath = `/products/{id}`
@@ -6933,7 +6933,7 @@ const ProductsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllProducts: (take_1, skip_1, ...args_1) => __awaiter(this, [take_1, skip_1, ...args_1], void 0, function* (take, skip, options = {}) {
+        getAllProducts: (take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/products`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -6968,7 +6968,7 @@ const ProductsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSingleProduct: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        getSingleProduct: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getSingleProduct', 'id', id);
             const localVarPath = `/products/{id}`
@@ -7001,7 +7001,7 @@ const ProductsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateProduct: (id_1, updateProductRequest_1, ...args_1) => __awaiter(this, [id_1, updateProductRequest_1, ...args_1], void 0, function* (id, updateProductRequest, options = {}) {
+        updateProduct: (id, updateProductRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateProduct', 'id', id);
             // verify required parameter 'updateProductRequest' is not null or undefined
@@ -7038,7 +7038,7 @@ const ProductsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateProductImage: (id_1, file_1, ...args_1) => __awaiter(this, [id_1, file_1, ...args_1], void 0, function* (id, file, options = {}) {
+        updateProductImage: (id, file, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateProductImage', 'id', id);
             const localVarPath = `/products/{id}/image`
@@ -7087,8 +7087,8 @@ const ProductsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         createProduct(createProductRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.createProduct(createProductRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['ProductsApi.createProduct']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -7103,8 +7103,8 @@ const ProductsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         deleteProduct(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteProduct(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['ProductsApi.deleteProduct']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -7120,8 +7120,8 @@ const ProductsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getAllProducts(take, skip, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllProducts(take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['ProductsApi.getAllProducts']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -7136,8 +7136,8 @@ const ProductsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getSingleProduct(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getSingleProduct(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['ProductsApi.getSingleProduct']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -7153,8 +7153,8 @@ const ProductsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         updateProduct(id, updateProductRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.updateProduct(id, updateProductRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['ProductsApi.updateProduct']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -7170,8 +7170,8 @@ const ProductsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         updateProductImage(id, file, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.updateProductImage(id, file, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['ProductsApi.updateProductImage']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -7346,7 +7346,7 @@ const RbacApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addPermissions: (id_1, createPermissionParams_1, ...args_1) => __awaiter(this, [id_1, createPermissionParams_1, ...args_1], void 0, function* (id, createPermissionParams, options = {}) {
+        addPermissions: (id, createPermissionParams, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('addPermissions', 'id', id);
             // verify required parameter 'createPermissionParams' is not null or undefined
@@ -7379,7 +7379,7 @@ const RbacApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createRole: (updateRoleRequest_1, ...args_1) => __awaiter(this, [updateRoleRequest_1, ...args_1], void 0, function* (updateRoleRequest, options = {}) {
+        createRole: (updateRoleRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'updateRoleRequest' is not null or undefined
             (0, common_1.assertParamExists)('createRole', 'updateRoleRequest', updateRoleRequest);
             const localVarPath = `/rbac/roles`;
@@ -7409,13 +7409,13 @@ const RbacApiAxiosParamCreator = function (configuration) {
          *
          * @summary Delete a permission from an existing role
          * @param {number} id The ID of the role
-         * @param {number} entity The entity of the permission
-         * @param {number} action The action of the permission
-         * @param {number} relation The relation of the permission
+         * @param {string} entity The entity of the permission
+         * @param {string} action The action of the permission
+         * @param {string} relation The relation of the permission
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deletePermission: (id_1, entity_1, action_1, relation_1, ...args_1) => __awaiter(this, [id_1, entity_1, action_1, relation_1, ...args_1], void 0, function* (id, entity, action, relation, options = {}) {
+        deletePermission: (id, entity, action, relation, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('deletePermission', 'id', id);
             // verify required parameter 'entity' is not null or undefined
@@ -7453,7 +7453,7 @@ const RbacApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteRole: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        deleteRole: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('deleteRole', 'id', id);
             const localVarPath = `/rbac/roles/{id}`
@@ -7484,7 +7484,7 @@ const RbacApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllRoles: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+        getAllRoles: (options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/rbac/roles`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -7513,7 +7513,7 @@ const RbacApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSingleRole: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        getSingleRole: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getSingleRole', 'id', id);
             const localVarPath = `/rbac/roles/{id}`
@@ -7546,7 +7546,7 @@ const RbacApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateRole: (id_1, updateRoleRequest_1, ...args_1) => __awaiter(this, [id_1, updateRoleRequest_1, ...args_1], void 0, function* (id, updateRoleRequest, options = {}) {
+        updateRole: (id, updateRoleRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateRole', 'id', id);
             // verify required parameter 'updateRoleRequest' is not null or undefined
@@ -7594,8 +7594,8 @@ const RbacApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         addPermissions(id, createPermissionParams, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.addPermissions(id, createPermissionParams, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['RbacApi.addPermissions']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -7610,8 +7610,8 @@ const RbacApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         createRole(updateRoleRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.createRole(updateRoleRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['RbacApi.createRole']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -7622,15 +7622,15 @@ const RbacApiFp = function (configuration) {
          *
          * @summary Delete a permission from an existing role
          * @param {number} id The ID of the role
-         * @param {number} entity The entity of the permission
-         * @param {number} action The action of the permission
-         * @param {number} relation The relation of the permission
+         * @param {string} entity The entity of the permission
+         * @param {string} action The action of the permission
+         * @param {string} relation The relation of the permission
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         deletePermission(id, entity, action, relation, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.deletePermission(id, entity, action, relation, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['RbacApi.deletePermission']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -7645,8 +7645,8 @@ const RbacApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         deleteRole(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteRole(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['RbacApi.deleteRole']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -7660,8 +7660,8 @@ const RbacApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getAllRoles(options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllRoles(options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['RbacApi.getAllRoles']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -7676,8 +7676,8 @@ const RbacApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getSingleRole(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getSingleRole(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['RbacApi.getSingleRole']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -7693,8 +7693,8 @@ const RbacApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         updateRole(id, updateRoleRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.updateRole(id, updateRoleRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['RbacApi.updateRole']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -7736,9 +7736,9 @@ const RbacApiFactory = function (configuration, basePath, axios) {
          *
          * @summary Delete a permission from an existing role
          * @param {number} id The ID of the role
-         * @param {number} entity The entity of the permission
-         * @param {number} action The action of the permission
-         * @param {number} relation The relation of the permission
+         * @param {string} entity The entity of the permission
+         * @param {string} action The action of the permission
+         * @param {string} relation The relation of the permission
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -7822,9 +7822,9 @@ class RbacApi extends base_1.BaseAPI {
      *
      * @summary Delete a permission from an existing role
      * @param {number} id The ID of the role
-     * @param {number} entity The entity of the permission
-     * @param {number} action The action of the permission
-     * @param {number} relation The relation of the permission
+     * @param {string} entity The entity of the permission
+     * @param {string} action The action of the permission
+     * @param {string} relation The relation of the permission
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RbacApi
@@ -7890,7 +7890,7 @@ const RootApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        ping: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+        ping: (options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/ping`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -7926,8 +7926,8 @@ const RootApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         ping(options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.ping(options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['RootApi.ping']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -7988,7 +7988,7 @@ const SellerPayoutsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createSellerPayout: (createSellerPayoutRequest_1, ...args_1) => __awaiter(this, [createSellerPayoutRequest_1, ...args_1], void 0, function* (createSellerPayoutRequest, options = {}) {
+        createSellerPayout: (createSellerPayoutRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'createSellerPayoutRequest' is not null or undefined
             (0, common_1.assertParamExists)('createSellerPayout', 'createSellerPayoutRequest', createSellerPayoutRequest);
             const localVarPath = `/seller-payouts`;
@@ -8021,7 +8021,7 @@ const SellerPayoutsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteSellerPayout: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        deleteSellerPayout: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('deleteSellerPayout', 'id', id);
             const localVarPath = `/seller-payouts/{id}`
@@ -8057,7 +8057,7 @@ const SellerPayoutsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllSellerPayouts: (requestedById_1, fromDate_1, tillDate_1, take_1, skip_1, ...args_1) => __awaiter(this, [requestedById_1, fromDate_1, tillDate_1, take_1, skip_1, ...args_1], void 0, function* (requestedById, fromDate, tillDate, take, skip, options = {}) {
+        getAllSellerPayouts: (requestedById, fromDate, tillDate, take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/seller-payouts`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -8101,7 +8101,7 @@ const SellerPayoutsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSellerPayoutReport: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        getSellerPayoutReport: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getSellerPayoutReport', 'id', id);
             const localVarPath = `/seller-payouts/{id}/report`
@@ -8134,7 +8134,7 @@ const SellerPayoutsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSellerPayoutReportPdf: (id_1, force_1, ...args_1) => __awaiter(this, [id_1, force_1, ...args_1], void 0, function* (id, force, options = {}) {
+        getSellerPayoutReportPdf: (id, force, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getSellerPayoutReportPdf', 'id', id);
             const localVarPath = `/seller-payouts/{id}/report/pdf`
@@ -8169,7 +8169,7 @@ const SellerPayoutsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSingleSellerPayout: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        getSingleSellerPayout: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getSingleSellerPayout', 'id', id);
             const localVarPath = `/seller-payouts/{id}`
@@ -8202,7 +8202,7 @@ const SellerPayoutsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateSellerPayout: (id_1, updateSellerPayoutRequest_1, ...args_1) => __awaiter(this, [id_1, updateSellerPayoutRequest_1, ...args_1], void 0, function* (id, updateSellerPayoutRequest, options = {}) {
+        updateSellerPayout: (id, updateSellerPayoutRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateSellerPayout', 'id', id);
             // verify required parameter 'updateSellerPayoutRequest' is not null or undefined
@@ -8249,8 +8249,8 @@ const SellerPayoutsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         createSellerPayout(createSellerPayoutRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.createSellerPayout(createSellerPayoutRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['SellerPayoutsApi.createSellerPayout']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -8265,8 +8265,8 @@ const SellerPayoutsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         deleteSellerPayout(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteSellerPayout(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['SellerPayoutsApi.deleteSellerPayout']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -8285,8 +8285,8 @@ const SellerPayoutsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getAllSellerPayouts(requestedById, fromDate, tillDate, take, skip, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllSellerPayouts(requestedById, fromDate, tillDate, take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['SellerPayoutsApi.getAllSellerPayouts']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -8301,8 +8301,8 @@ const SellerPayoutsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getSellerPayoutReport(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getSellerPayoutReport(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['SellerPayoutsApi.getSellerPayoutReport']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -8318,8 +8318,8 @@ const SellerPayoutsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getSellerPayoutReportPdf(id, force, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getSellerPayoutReportPdf(id, force, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['SellerPayoutsApi.getSellerPayoutReportPdf']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -8334,8 +8334,8 @@ const SellerPayoutsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getSingleSellerPayout(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getSingleSellerPayout(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['SellerPayoutsApi.getSingleSellerPayout']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -8351,8 +8351,8 @@ const SellerPayoutsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         updateSellerPayout(id, updateSellerPayoutRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.updateSellerPayout(id, updateSellerPayoutRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['SellerPayoutsApi.updateSellerPayout']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -8553,7 +8553,7 @@ const ServerSettingsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setMaintenanceMode: (updateMaintenanceModeRequest_1, ...args_1) => __awaiter(this, [updateMaintenanceModeRequest_1, ...args_1], void 0, function* (updateMaintenanceModeRequest, options = {}) {
+        setMaintenanceMode: (updateMaintenanceModeRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'updateMaintenanceModeRequest' is not null or undefined
             (0, common_1.assertParamExists)('setMaintenanceMode', 'updateMaintenanceModeRequest', updateMaintenanceModeRequest);
             const localVarPath = `/server-settings/maintenance-mode`;
@@ -8597,8 +8597,8 @@ const ServerSettingsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         setMaintenanceMode(updateMaintenanceModeRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.setMaintenanceMode(updateMaintenanceModeRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['ServerSettingsApi.setMaintenanceMode']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -8661,7 +8661,7 @@ const StripeApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deposit: (stripeRequest_1, ...args_1) => __awaiter(this, [stripeRequest_1, ...args_1], void 0, function* (stripeRequest, options = {}) {
+        deposit: (stripeRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'stripeRequest' is not null or undefined
             (0, common_1.assertParamExists)('deposit', 'stripeRequest', stripeRequest);
             const localVarPath = `/stripe/deposit`;
@@ -8693,7 +8693,7 @@ const StripeApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStripePublicKey: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+        getStripePublicKey: (options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/stripe/public`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -8730,8 +8730,8 @@ const StripeApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         deposit(stripeRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.deposit(stripeRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['StripeApi.deposit']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -8745,8 +8745,8 @@ const StripeApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getStripePublicKey(options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getStripePublicKey(options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['StripeApi.getStripePublicKey']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -8827,7 +8827,7 @@ const TestOperationsOfTheTestControllerApiAxiosParamCreator = function (configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        helloworld: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+        helloworld: (options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/test/helloworld`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -8866,8 +8866,8 @@ const TestOperationsOfTheTestControllerApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         helloworld(options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.helloworld(options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['TestOperationsOfTheTestControllerApi.helloworld']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -8916,6 +8916,117 @@ class TestOperationsOfTheTestControllerApi extends base_1.BaseAPI {
 }
 exports.TestOperationsOfTheTestControllerApi = TestOperationsOfTheTestControllerApi;
 /**
+ * TransactionSummariesApi - axios parameter creator
+ * @export
+ */
+const TransactionSummariesApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         *
+         * @summary Returns a summary of all purchases within a container
+         * @param {number} id The ID of the container
+         * @param {*} [options] Override http request option.
+         * @deprecated
+         * @throws {RequiredError}
+         */
+        getSingleContainerSummary: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('getSingleContainerSummary', 'id', id);
+            const localVarPath = `/transactions/summary/container/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+    };
+};
+exports.TransactionSummariesApiAxiosParamCreator = TransactionSummariesApiAxiosParamCreator;
+/**
+ * TransactionSummariesApi - functional programming interface
+ * @export
+ */
+const TransactionSummariesApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.TransactionSummariesApiAxiosParamCreator)(configuration);
+    return {
+        /**
+         *
+         * @summary Returns a summary of all purchases within a container
+         * @param {number} id The ID of the container
+         * @param {*} [options] Override http request option.
+         * @deprecated
+         * @throws {RequiredError}
+         */
+        getSingleContainerSummary(id, options) {
+            var _a, _b, _c;
+            return __awaiter(this, void 0, void 0, function* () {
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getSingleContainerSummary(id, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['TransactionSummariesApi.getSingleContainerSummary']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+    };
+};
+exports.TransactionSummariesApiFp = TransactionSummariesApiFp;
+/**
+ * TransactionSummariesApi - factory interface
+ * @export
+ */
+const TransactionSummariesApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.TransactionSummariesApiFp)(configuration);
+    return {
+        /**
+         *
+         * @summary Returns a summary of all purchases within a container
+         * @param {number} id The ID of the container
+         * @param {*} [options] Override http request option.
+         * @deprecated
+         * @throws {RequiredError}
+         */
+        getSingleContainerSummary(id, options) {
+            return localVarFp.getSingleContainerSummary(id, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+exports.TransactionSummariesApiFactory = TransactionSummariesApiFactory;
+/**
+ * TransactionSummariesApi - object-oriented interface
+ * @export
+ * @class TransactionSummariesApi
+ * @extends {BaseAPI}
+ */
+class TransactionSummariesApi extends base_1.BaseAPI {
+    /**
+     *
+     * @summary Returns a summary of all purchases within a container
+     * @param {number} id The ID of the container
+     * @param {*} [options] Override http request option.
+     * @deprecated
+     * @throws {RequiredError}
+     * @memberof TransactionSummariesApi
+     */
+    getSingleContainerSummary(id, options) {
+        return (0, exports.TransactionSummariesApiFp)(this.configuration).getSingleContainerSummary(id, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+exports.TransactionSummariesApi = TransactionSummariesApi;
+/**
  * TransactionsApi - axios parameter creator
  * @export
  */
@@ -8928,7 +9039,7 @@ const TransactionsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTransaction: (transactionRequest_1, ...args_1) => __awaiter(this, [transactionRequest_1, ...args_1], void 0, function* (transactionRequest, options = {}) {
+        createTransaction: (transactionRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'transactionRequest' is not null or undefined
             (0, common_1.assertParamExists)('createTransaction', 'transactionRequest', transactionRequest);
             const localVarPath = `/transactions`;
@@ -8961,7 +9072,7 @@ const TransactionsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteTransaction: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        deleteTransaction: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('deleteTransaction', 'id', id);
             const localVarPath = `/transactions/{id}`
@@ -8992,6 +9103,7 @@ const TransactionsApiAxiosParamCreator = function (configuration) {
          * @param {number} [fromId] From-user for selected transactions
          * @param {number} [createdById] User that created selected transaction
          * @param {number} [toId] To-user for selected transactions transactions. Requires ContainerId
+         * @param {number} [excludeById] Your own ID to not include in transactions
          * @param {number} [pointOfSaleId] Point of sale ID for selected transactions
          * @param {number} [productId] Product ID for selected transactions
          * @param {number} [productRevision] Product Revision for selected transactions. Requires ProductID
@@ -9002,7 +9114,7 @@ const TransactionsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllTransactions: (fromId_1, createdById_1, toId_1, pointOfSaleId_1, productId_1, productRevision_1, fromDate_1, tillDate_1, take_1, skip_1, ...args_1) => __awaiter(this, [fromId_1, createdById_1, toId_1, pointOfSaleId_1, productId_1, productRevision_1, fromDate_1, tillDate_1, take_1, skip_1, ...args_1], void 0, function* (fromId, createdById, toId, pointOfSaleId, productId, productRevision, fromDate, tillDate, take, skip, options = {}) {
+        getAllTransactions: (fromId, createdById, toId, excludeById, pointOfSaleId, productId, productRevision, fromDate, tillDate, take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/transactions`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -9024,6 +9136,9 @@ const TransactionsApiAxiosParamCreator = function (configuration) {
             }
             if (toId !== undefined) {
                 localVarQueryParameter['toId'] = toId;
+            }
+            if (excludeById !== undefined) {
+                localVarQueryParameter['excludeById'] = excludeById;
             }
             if (pointOfSaleId !== undefined) {
                 localVarQueryParameter['pointOfSaleId'] = pointOfSaleId;
@@ -9061,7 +9176,7 @@ const TransactionsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSingleTransaction: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        getSingleTransaction: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getSingleTransaction', 'id', id);
             const localVarPath = `/transactions/{id}`
@@ -9094,7 +9209,7 @@ const TransactionsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateTransaction: (id_1, transactionRequest_1, ...args_1) => __awaiter(this, [id_1, transactionRequest_1, ...args_1], void 0, function* (id, transactionRequest, options = {}) {
+        updateTransaction: (id, transactionRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateTransaction', 'id', id);
             // verify required parameter 'transactionRequest' is not null or undefined
@@ -9130,7 +9245,7 @@ const TransactionsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        validateTransaction: (transactionRequest_1, ...args_1) => __awaiter(this, [transactionRequest_1, ...args_1], void 0, function* (transactionRequest, options = {}) {
+        validateTransaction: (transactionRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'transactionRequest' is not null or undefined
             (0, common_1.assertParamExists)('validateTransaction', 'transactionRequest', transactionRequest);
             const localVarPath = `/transactions/validate`;
@@ -9174,8 +9289,8 @@ const TransactionsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         createTransaction(transactionRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.createTransaction(transactionRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['TransactionsApi.createTransaction']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -9190,8 +9305,8 @@ const TransactionsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         deleteTransaction(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteTransaction(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['TransactionsApi.deleteTransaction']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -9204,6 +9319,7 @@ const TransactionsApiFp = function (configuration) {
          * @param {number} [fromId] From-user for selected transactions
          * @param {number} [createdById] User that created selected transaction
          * @param {number} [toId] To-user for selected transactions transactions. Requires ContainerId
+         * @param {number} [excludeById] Your own ID to not include in transactions
          * @param {number} [pointOfSaleId] Point of sale ID for selected transactions
          * @param {number} [productId] Product ID for selected transactions
          * @param {number} [productRevision] Product Revision for selected transactions. Requires ProductID
@@ -9214,10 +9330,10 @@ const TransactionsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllTransactions(fromId, createdById, toId, pointOfSaleId, productId, productRevision, fromDate, tillDate, take, skip, options) {
+        getAllTransactions(fromId, createdById, toId, excludeById, pointOfSaleId, productId, productRevision, fromDate, tillDate, take, skip, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllTransactions(fromId, createdById, toId, pointOfSaleId, productId, productRevision, fromDate, tillDate, take, skip, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllTransactions(fromId, createdById, toId, excludeById, pointOfSaleId, productId, productRevision, fromDate, tillDate, take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['TransactionsApi.getAllTransactions']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
@@ -9231,8 +9347,8 @@ const TransactionsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getSingleTransaction(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getSingleTransaction(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['TransactionsApi.getSingleTransaction']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -9248,8 +9364,8 @@ const TransactionsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         updateTransaction(id, transactionRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.updateTransaction(id, transactionRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['TransactionsApi.updateTransaction']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -9264,8 +9380,8 @@ const TransactionsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         validateTransaction(transactionRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.validateTransaction(transactionRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['TransactionsApi.validateTransaction']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -9308,6 +9424,7 @@ const TransactionsApiFactory = function (configuration, basePath, axios) {
          * @param {number} [fromId] From-user for selected transactions
          * @param {number} [createdById] User that created selected transaction
          * @param {number} [toId] To-user for selected transactions transactions. Requires ContainerId
+         * @param {number} [excludeById] Your own ID to not include in transactions
          * @param {number} [pointOfSaleId] Point of sale ID for selected transactions
          * @param {number} [productId] Product ID for selected transactions
          * @param {number} [productRevision] Product Revision for selected transactions. Requires ProductID
@@ -9318,8 +9435,8 @@ const TransactionsApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllTransactions(fromId, createdById, toId, pointOfSaleId, productId, productRevision, fromDate, tillDate, take, skip, options) {
-            return localVarFp.getAllTransactions(fromId, createdById, toId, pointOfSaleId, productId, productRevision, fromDate, tillDate, take, skip, options).then((request) => request(axios, basePath));
+        getAllTransactions(fromId, createdById, toId, excludeById, pointOfSaleId, productId, productRevision, fromDate, tillDate, take, skip, options) {
+            return localVarFp.getAllTransactions(fromId, createdById, toId, excludeById, pointOfSaleId, productId, productRevision, fromDate, tillDate, take, skip, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -9390,6 +9507,7 @@ class TransactionsApi extends base_1.BaseAPI {
      * @param {number} [fromId] From-user for selected transactions
      * @param {number} [createdById] User that created selected transaction
      * @param {number} [toId] To-user for selected transactions transactions. Requires ContainerId
+     * @param {number} [excludeById] Your own ID to not include in transactions
      * @param {number} [pointOfSaleId] Point of sale ID for selected transactions
      * @param {number} [productId] Product ID for selected transactions
      * @param {number} [productRevision] Product Revision for selected transactions. Requires ProductID
@@ -9401,8 +9519,8 @@ class TransactionsApi extends base_1.BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    getAllTransactions(fromId, createdById, toId, pointOfSaleId, productId, productRevision, fromDate, tillDate, take, skip, options) {
-        return (0, exports.TransactionsApiFp)(this.configuration).getAllTransactions(fromId, createdById, toId, pointOfSaleId, productId, productRevision, fromDate, tillDate, take, skip, options).then((request) => request(this.axios, this.basePath));
+    getAllTransactions(fromId, createdById, toId, excludeById, pointOfSaleId, productId, productRevision, fromDate, tillDate, take, skip, options) {
+        return (0, exports.TransactionsApiFp)(this.configuration).getAllTransactions(fromId, createdById, toId, excludeById, pointOfSaleId, productId, productRevision, fromDate, tillDate, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -9453,7 +9571,7 @@ const TransfersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTransfer: (transferRequest_1, ...args_1) => __awaiter(this, [transferRequest_1, ...args_1], void 0, function* (transferRequest, options = {}) {
+        createTransfer: (transferRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'transferRequest' is not null or undefined
             (0, common_1.assertParamExists)('createTransfer', 'transferRequest', transferRequest);
             const localVarPath = `/transfers`;
@@ -9487,7 +9605,7 @@ const TransfersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllTransfers: (take_1, skip_1, ...args_1) => __awaiter(this, [take_1, skip_1, ...args_1], void 0, function* (take, skip, options = {}) {
+        getAllTransfers: (take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/transfers`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -9522,7 +9640,7 @@ const TransfersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSingleTransfer: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        getSingleTransfer: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getSingleTransfer', 'id', id);
             const localVarPath = `/transfers/{id}`
@@ -9565,8 +9683,8 @@ const TransfersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         createTransfer(transferRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.createTransfer(transferRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['TransfersApi.createTransfer']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -9582,8 +9700,8 @@ const TransfersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getAllTransfers(take, skip, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllTransfers(take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['TransfersApi.getAllTransfers']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -9598,8 +9716,8 @@ const TransfersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getSingleTransfer(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getSingleTransfer(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['TransfersApi.getSingleTransfer']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -9706,7 +9824,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        acceptTos: (acceptTosRequest_1, ...args_1) => __awaiter(this, [acceptTosRequest_1, ...args_1], void 0, function* (acceptTosRequest, options = {}) {
+        acceptTos: (acceptTosRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'acceptTosRequest' is not null or undefined
             (0, common_1.assertParamExists)('acceptTos', 'acceptTosRequest', acceptTosRequest);
             const localVarPath = `/users/acceptTos`;
@@ -9739,7 +9857,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authenticateAs: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        authenticateAs: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('authenticateAs', 'id', id);
             const localVarPath = `/users/{id}/authenticate`
@@ -9771,7 +9889,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createUser: (createUserRequest_1, ...args_1) => __awaiter(this, [createUserRequest_1, ...args_1], void 0, function* (createUserRequest, options = {}) {
+        createUser: (createUserRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'createUserRequest' is not null or undefined
             (0, common_1.assertParamExists)('createUser', 'createUserRequest', createUserRequest);
             const localVarPath = `/users`;
@@ -9804,7 +9922,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteUser: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        deleteUser: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('deleteUser', 'id', id);
             const localVarPath = `/users/{id}`
@@ -9836,7 +9954,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteUserKey: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        deleteUserKey: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('deleteUserKey', 'id', id);
             const localVarPath = `/users/{id}/authenticator/key`
@@ -9868,7 +9986,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteUserNfc: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        deleteUserNfc: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('deleteUserNfc', 'id', id);
             const localVarPath = `/users/{id}/authenticator/nfc`
@@ -9895,6 +10013,38 @@ const UsersApiAxiosParamCreator = function (configuration) {
         }),
         /**
          *
+         * @summary Get a user using the nfc code
+         * @param {string} nfcCode The nfc code of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        findUserNfc: (nfcCode, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            // verify required parameter 'nfcCode' is not null or undefined
+            (0, common_1.assertParamExists)('findUserNfc', 'nfcCode', nfcCode);
+            const localVarPath = `/users/nfc/{nfcCode}`
+                .replace(`{${"nfcCode"}}`, encodeURIComponent(String(nfcCode)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
          * @summary Get a list of all users
          * @param {number} [take] How many users the endpoint should return
          * @param {number} [skip] How many users should be skipped (for pagination)
@@ -9906,7 +10056,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllUsers: (take_1, skip_1, search_1, active_1, ofAge_1, id_1, type_1, ...args_1) => __awaiter(this, [take_1, skip_1, search_1, active_1, ofAge_1, id_1, type_1, ...args_1], void 0, function* (take, skip, search, active, ofAge, id, type, options = {}) {
+        getAllUsers: (take, skip, search, active, ofAge, id, type, options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/users`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -9958,7 +10108,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllUsersOfUserType: (userType_1, take_1, skip_1, ...args_1) => __awaiter(this, [userType_1, take_1, skip_1, ...args_1], void 0, function* (userType, take, skip, options = {}) {
+        getAllUsersOfUserType: (userType, take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'userType' is not null or undefined
             (0, common_1.assertParamExists)('getAllUsersOfUserType', 'userType', userType);
             const localVarPath = `/users/usertype/{userType}`
@@ -9996,7 +10146,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getIndividualUser: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        getIndividualUser: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getIndividualUser', 'id', id);
             const localVarPath = `/users/{id}`
@@ -10030,7 +10180,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getOrganMembers: (id_1, take_1, skip_1, ...args_1) => __awaiter(this, [id_1, take_1, skip_1, ...args_1], void 0, function* (id, take, skip, options = {}) {
+        getOrganMembers: (id, take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getOrganMembers', 'id', id);
             const localVarPath = `/users/{id}/members`
@@ -10068,7 +10218,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserAuthenticatable: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        getUserAuthenticatable: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getUserAuthenticatable', 'id', id);
             const localVarPath = `/users/{id}/authenticate`
@@ -10100,7 +10250,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserRoles: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        getUserRoles: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getUserRoles', 'id', id);
             const localVarPath = `/users/{id}/roles`
@@ -10134,7 +10284,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersContainers: (id_1, take_1, skip_1, ...args_1) => __awaiter(this, [id_1, take_1, skip_1, ...args_1], void 0, function* (id, take, skip, options = {}) {
+        getUsersContainers: (id, take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getUsersContainers', 'id', id);
             const localVarPath = `/users/{id}/containers`
@@ -10176,7 +10326,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersFinancialMutations: (id_1, fromDate_1, tillDate_1, take_1, skip_1, ...args_1) => __awaiter(this, [id_1, fromDate_1, tillDate_1, take_1, skip_1, ...args_1], void 0, function* (id, fromDate, tillDate, take, skip, options = {}) {
+        getUsersFinancialMutations: (id, fromDate, tillDate, take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getUsersFinancialMutations', 'id', id);
             const localVarPath = `/users/{id}/financialmutations`
@@ -10222,7 +10372,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersPointsOfSale: (id_1, take_1, skip_1, ...args_1) => __awaiter(this, [id_1, take_1, skip_1, ...args_1], void 0, function* (id, take, skip, options = {}) {
+        getUsersPointsOfSale: (id, take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getUsersPointsOfSale', 'id', id);
             const localVarPath = `/users/{id}/pointsofsale`
@@ -10260,7 +10410,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersProcessingDeposits: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        getUsersProcessingDeposits: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getUsersProcessingDeposits', 'id', id);
             const localVarPath = `/users/{id}/deposits`
@@ -10294,7 +10444,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersProducts: (id_1, take_1, skip_1, ...args_1) => __awaiter(this, [id_1, take_1, skip_1, ...args_1], void 0, function* (id, take, skip, options = {}) {
+        getUsersProducts: (id, take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getUsersProducts', 'id', id);
             const localVarPath = `/users/{id}/products`
@@ -10335,7 +10485,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersPurchaseReportPdf: (id_1, fromDate_1, tillDate_1, fileType_1, ...args_1) => __awaiter(this, [id_1, fromDate_1, tillDate_1, fileType_1, ...args_1], void 0, function* (id, fromDate, tillDate, fileType, options = {}) {
+        getUsersPurchaseReportPdf: (id, fromDate, tillDate, fileType, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getUsersPurchaseReportPdf', 'id', id);
             // verify required parameter 'fromDate' is not null or undefined
@@ -10382,7 +10532,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersPurchasesReport: (id_1, fromDate_1, tillDate_1, ...args_1) => __awaiter(this, [id_1, fromDate_1, tillDate_1, ...args_1], void 0, function* (id, fromDate, tillDate, options = {}) {
+        getUsersPurchasesReport: (id, fromDate, tillDate, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getUsersPurchasesReport', 'id', id);
             // verify required parameter 'fromDate' is not null or undefined
@@ -10426,7 +10576,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersSalesReport: (id_1, fromDate_1, tillDate_1, ...args_1) => __awaiter(this, [id_1, fromDate_1, tillDate_1, ...args_1], void 0, function* (id, fromDate, tillDate, options = {}) {
+        getUsersSalesReport: (id, fromDate, tillDate, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getUsersSalesReport', 'id', id);
             // verify required parameter 'fromDate' is not null or undefined
@@ -10472,7 +10622,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersSalesReportPdf: (id_1, fromDate_1, tillDate_1, description_1, fileType_1, ...args_1) => __awaiter(this, [id_1, fromDate_1, tillDate_1, description_1, fileType_1, ...args_1], void 0, function* (id, fromDate, tillDate, description, fileType, options = {}) {
+        getUsersSalesReportPdf: (id, fromDate, tillDate, description, fileType, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getUsersSalesReportPdf', 'id', id);
             // verify required parameter 'fromDate' is not null or undefined
@@ -10529,7 +10679,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersTransactions: (id_1, fromId_1, createdById_1, toId_1, productId_1, productRevision_1, fromDate_1, tillDate_1, take_1, skip_1, ...args_1) => __awaiter(this, [id_1, fromId_1, createdById_1, toId_1, productId_1, productRevision_1, fromDate_1, tillDate_1, take_1, skip_1, ...args_1], void 0, function* (id, fromId, createdById, toId, productId, productRevision, fromDate, tillDate, take, skip, options = {}) {
+        getUsersTransactions: (id, fromId, createdById, toId, productId, productRevision, fromDate, tillDate, take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getUsersTransactions', 'id', id);
             const localVarPath = `/users/{id}/transactions`
@@ -10594,7 +10744,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @deprecated
          * @throws {RequiredError}
          */
-        getUsersTransactionsReport: (id_1, fromDate_1, tillDate_1, fromId_1, toId_1, exclusiveToId_1, ...args_1) => __awaiter(this, [id_1, fromDate_1, tillDate_1, fromId_1, toId_1, exclusiveToId_1, ...args_1], void 0, function* (id, fromDate, tillDate, fromId, toId, exclusiveToId, options = {}) {
+        getUsersTransactionsReport: (id, fromDate, tillDate, fromId, toId, exclusiveToId, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getUsersTransactionsReport', 'id', id);
             const localVarPath = `/users/{id}/transactions/report`
@@ -10646,7 +10796,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersTransfers: (id_1, take_1, skip_1, fromId_1, toId_1, id2_1, ...args_1) => __awaiter(this, [id_1, take_1, skip_1, fromId_1, toId_1, id2_1, ...args_1], void 0, function* (id, take, skip, fromId, toId, id2, options = {}) {
+        getUsersTransfers: (id, take, skip, fromId, toId, id2, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getUsersTransfers', 'id', id);
             const localVarPath = `/users/{id}/transfers`
@@ -10694,7 +10844,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUser: (id_1, updateUserRequest_1, ...args_1) => __awaiter(this, [id_1, updateUserRequest_1, ...args_1], void 0, function* (id, updateUserRequest, options = {}) {
+        updateUser: (id, updateUserRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateUser', 'id', id);
             // verify required parameter 'updateUserRequest' is not null or undefined
@@ -10730,7 +10880,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUserKey: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        updateUserKey: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateUserKey', 'id', id);
             const localVarPath = `/users/{id}/authenticator/key`
@@ -10763,7 +10913,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUserLocalPassword: (id_1, updateLocalRequest_1, ...args_1) => __awaiter(this, [id_1, updateLocalRequest_1, ...args_1], void 0, function* (id, updateLocalRequest, options = {}) {
+        updateUserLocalPassword: (id, updateLocalRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateUserLocalPassword', 'id', id);
             // verify required parameter 'updateLocalRequest' is not null or undefined
@@ -10800,7 +10950,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUserNfc: (id_1, updateNfcRequest_1, ...args_1) => __awaiter(this, [id_1, updateNfcRequest_1, ...args_1], void 0, function* (id, updateNfcRequest, options = {}) {
+        updateUserNfc: (id, updateNfcRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateUserNfc', 'id', id);
             // verify required parameter 'updateNfcRequest' is not null or undefined
@@ -10837,7 +10987,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUserPin: (id_1, updatePinRequest_1, ...args_1) => __awaiter(this, [id_1, updatePinRequest_1, ...args_1], void 0, function* (id, updatePinRequest, options = {}) {
+        updateUserPin: (id, updatePinRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateUserPin', 'id', id);
             // verify required parameter 'updatePinRequest' is not null or undefined
@@ -10874,7 +11024,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        waiveUserFines: (id_1, waiveFinesRequest_1, ...args_1) => __awaiter(this, [id_1, waiveFinesRequest_1, ...args_1], void 0, function* (id, waiveFinesRequest, options = {}) {
+        waiveUserFines: (id, waiveFinesRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('waiveUserFines', 'id', id);
             const localVarPath = `/users/{id}/fines/waive`
@@ -10919,8 +11069,8 @@ const UsersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         acceptTos(acceptTosRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.acceptTos(acceptTosRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.acceptTos']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -10935,8 +11085,8 @@ const UsersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         authenticateAs(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.authenticateAs(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.authenticateAs']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -10951,8 +11101,8 @@ const UsersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         createUser(createUserRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.createUser(createUserRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.createUser']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -10967,8 +11117,8 @@ const UsersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         deleteUser(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteUser(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.deleteUser']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -10983,8 +11133,8 @@ const UsersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         deleteUserKey(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteUserKey(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.deleteUserKey']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -10999,11 +11149,27 @@ const UsersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         deleteUserNfc(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteUserNfc(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.deleteUserNfc']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
+         * @summary Get a user using the nfc code
+         * @param {string} nfcCode The nfc code of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        findUserNfc(nfcCode, options) {
+            var _a, _b, _c;
+            return __awaiter(this, void 0, void 0, function* () {
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.findUserNfc(nfcCode, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.findUserNfc']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
             });
         },
@@ -11021,8 +11187,8 @@ const UsersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getAllUsers(take, skip, search, active, ofAge, id, type, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllUsers(take, skip, search, active, ofAge, id, type, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.getAllUsers']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -11039,8 +11205,8 @@ const UsersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getAllUsersOfUserType(userType, take, skip, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllUsersOfUserType(userType, take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.getAllUsersOfUserType']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -11055,8 +11221,8 @@ const UsersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getIndividualUser(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getIndividualUser(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.getIndividualUser']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -11073,8 +11239,8 @@ const UsersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getOrganMembers(id, take, skip, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getOrganMembers(id, take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.getOrganMembers']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -11089,8 +11255,8 @@ const UsersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getUserAuthenticatable(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserAuthenticatable(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.getUserAuthenticatable']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -11105,8 +11271,8 @@ const UsersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getUserRoles(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserRoles(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.getUserRoles']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -11123,8 +11289,8 @@ const UsersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getUsersContainers(id, take, skip, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getUsersContainers(id, take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.getUsersContainers']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -11143,8 +11309,8 @@ const UsersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getUsersFinancialMutations(id, fromDate, tillDate, take, skip, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getUsersFinancialMutations(id, fromDate, tillDate, take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.getUsersFinancialMutations']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -11161,8 +11327,8 @@ const UsersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getUsersPointsOfSale(id, take, skip, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getUsersPointsOfSale(id, take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.getUsersPointsOfSale']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -11177,8 +11343,8 @@ const UsersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getUsersProcessingDeposits(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getUsersProcessingDeposits(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.getUsersProcessingDeposits']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -11195,8 +11361,8 @@ const UsersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getUsersProducts(id, take, skip, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getUsersProducts(id, take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.getUsersProducts']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -11214,8 +11380,8 @@ const UsersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getUsersPurchaseReportPdf(id, fromDate, tillDate, fileType, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getUsersPurchaseReportPdf(id, fromDate, tillDate, fileType, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.getUsersPurchaseReportPdf']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -11232,8 +11398,8 @@ const UsersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getUsersPurchasesReport(id, fromDate, tillDate, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getUsersPurchasesReport(id, fromDate, tillDate, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.getUsersPurchasesReport']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -11250,8 +11416,8 @@ const UsersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getUsersSalesReport(id, fromDate, tillDate, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getUsersSalesReport(id, fromDate, tillDate, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.getUsersSalesReport']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -11270,8 +11436,8 @@ const UsersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getUsersSalesReportPdf(id, fromDate, tillDate, description, fileType, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getUsersSalesReportPdf(id, fromDate, tillDate, description, fileType, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.getUsersSalesReportPdf']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -11295,8 +11461,8 @@ const UsersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getUsersTransactions(id, fromId, createdById, toId, productId, productRevision, fromDate, tillDate, take, skip, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getUsersTransactions(id, fromId, createdById, toId, productId, productRevision, fromDate, tillDate, take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.getUsersTransactions']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -11317,8 +11483,8 @@ const UsersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getUsersTransactionsReport(id, fromDate, tillDate, fromId, toId, exclusiveToId, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getUsersTransactionsReport(id, fromDate, tillDate, fromId, toId, exclusiveToId, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.getUsersTransactionsReport']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -11338,8 +11504,8 @@ const UsersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getUsersTransfers(id, take, skip, fromId, toId, id2, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getUsersTransfers(id, take, skip, fromId, toId, id2, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.getUsersTransfers']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -11355,8 +11521,8 @@ const UsersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         updateUser(id, updateUserRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.updateUser(id, updateUserRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.updateUser']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -11371,8 +11537,8 @@ const UsersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         updateUserKey(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.updateUserKey(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.updateUserKey']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -11388,8 +11554,8 @@ const UsersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         updateUserLocalPassword(id, updateLocalRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.updateUserLocalPassword(id, updateLocalRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.updateUserLocalPassword']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -11405,8 +11571,8 @@ const UsersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         updateUserNfc(id, updateNfcRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.updateUserNfc(id, updateNfcRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.updateUserNfc']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -11422,8 +11588,8 @@ const UsersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         updateUserPin(id, updatePinRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.updateUserPin(id, updatePinRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.updateUserPin']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -11439,8 +11605,8 @@ const UsersApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         waiveUserFines(id, waiveFinesRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.waiveUserFines(id, waiveFinesRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['UsersApi.waiveUserFines']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -11516,6 +11682,16 @@ const UsersApiFactory = function (configuration, basePath, axios) {
          */
         deleteUserNfc(id, options) {
             return localVarFp.deleteUserNfc(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get a user using the nfc code
+         * @param {string} nfcCode The nfc code of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        findUserNfc(nfcCode, options) {
+            return localVarFp.findUserNfc(nfcCode, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -11891,6 +12067,17 @@ class UsersApi extends base_1.BaseAPI {
     }
     /**
      *
+     * @summary Get a user using the nfc code
+     * @param {string} nfcCode The nfc code of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    findUserNfc(nfcCode, options) {
+        return (0, exports.UsersApiFp)(this.configuration).findUserNfc(nfcCode, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
      * @summary Get a list of all users
      * @param {number} [take] How many users the endpoint should return
      * @param {number} [skip] How many users should be skipped (for pagination)
@@ -12250,7 +12437,7 @@ const VatGroupsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createVatGroup: (vatGroupRequest_1, ...args_1) => __awaiter(this, [vatGroupRequest_1, ...args_1], void 0, function* (vatGroupRequest, options = {}) {
+        createVatGroup: (vatGroupRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'vatGroupRequest' is not null or undefined
             (0, common_1.assertParamExists)('createVatGroup', 'vatGroupRequest', vatGroupRequest);
             const localVarPath = `/vatgroups`;
@@ -12288,7 +12475,7 @@ const VatGroupsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllVatGroups: (vatGroupId_1, name_1, percentage_1, deleted_1, take_1, skip_1, ...args_1) => __awaiter(this, [vatGroupId_1, name_1, percentage_1, deleted_1, take_1, skip_1, ...args_1], void 0, function* (vatGroupId, name, percentage, deleted, take, skip, options = {}) {
+        getAllVatGroups: (vatGroupId, name, percentage, deleted, take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/vatgroups`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -12335,7 +12522,7 @@ const VatGroupsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSingleVatGroup: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        getSingleVatGroup: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getSingleVatGroup', 'id', id);
             const localVarPath = `/vatgroups/{id}`
@@ -12368,7 +12555,7 @@ const VatGroupsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getVatDeclarationAmounts: (year_1, period_1, ...args_1) => __awaiter(this, [year_1, period_1, ...args_1], void 0, function* (year, period, options = {}) {
+        getVatDeclarationAmounts: (year, period, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'year' is not null or undefined
             (0, common_1.assertParamExists)('getVatDeclarationAmounts', 'year', year);
             // verify required parameter 'period' is not null or undefined
@@ -12408,7 +12595,7 @@ const VatGroupsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateVatGroup: (id_1, updateVatGroupRequest_1, ...args_1) => __awaiter(this, [id_1, updateVatGroupRequest_1, ...args_1], void 0, function* (id, updateVatGroupRequest, options = {}) {
+        updateVatGroup: (id, updateVatGroupRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateVatGroup', 'id', id);
             // verify required parameter 'updateVatGroupRequest' is not null or undefined
@@ -12455,8 +12642,8 @@ const VatGroupsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         createVatGroup(vatGroupRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.createVatGroup(vatGroupRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['VatGroupsApi.createVatGroup']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -12476,8 +12663,8 @@ const VatGroupsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getAllVatGroups(vatGroupId, name, percentage, deleted, take, skip, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllVatGroups(vatGroupId, name, percentage, deleted, take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['VatGroupsApi.getAllVatGroups']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -12492,8 +12679,8 @@ const VatGroupsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getSingleVatGroup(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getSingleVatGroup(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['VatGroupsApi.getSingleVatGroup']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -12509,8 +12696,8 @@ const VatGroupsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getVatDeclarationAmounts(year, period, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getVatDeclarationAmounts(year, period, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['VatGroupsApi.getVatDeclarationAmounts']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -12526,8 +12713,8 @@ const VatGroupsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         updateVatGroup(id, updateVatGroupRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.updateVatGroup(id, updateVatGroupRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['VatGroupsApi.updateVatGroup']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -12688,7 +12875,7 @@ const VouchergroupsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createVouchergroup: (voucherGroupRequest_1, ...args_1) => __awaiter(this, [voucherGroupRequest_1, ...args_1], void 0, function* (voucherGroupRequest, options = {}) {
+        createVouchergroup: (voucherGroupRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'voucherGroupRequest' is not null or undefined
             (0, common_1.assertParamExists)('createVouchergroup', 'voucherGroupRequest', voucherGroupRequest);
             const localVarPath = `/vouchergroups`;
@@ -12722,7 +12909,7 @@ const VouchergroupsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllVouchergroups: (take_1, skip_1, ...args_1) => __awaiter(this, [take_1, skip_1, ...args_1], void 0, function* (take, skip, options = {}) {
+        getAllVouchergroups: (take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/vouchergroups`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -12757,7 +12944,7 @@ const VouchergroupsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getVouchergroupId: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        getVouchergroupId: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getVouchergroupId', 'id', id);
             const localVarPath = `/vouchergroups/{id}`
@@ -12790,7 +12977,7 @@ const VouchergroupsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateVoucherGroup: (id_1, voucherGroupRequest_1, ...args_1) => __awaiter(this, [id_1, voucherGroupRequest_1, ...args_1], void 0, function* (id, voucherGroupRequest, options = {}) {
+        updateVoucherGroup: (id, voucherGroupRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('updateVoucherGroup', 'id', id);
             // verify required parameter 'voucherGroupRequest' is not null or undefined
@@ -12837,8 +13024,8 @@ const VouchergroupsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         createVouchergroup(voucherGroupRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.createVouchergroup(voucherGroupRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['VouchergroupsApi.createVouchergroup']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -12854,8 +13041,8 @@ const VouchergroupsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getAllVouchergroups(take, skip, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllVouchergroups(take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['VouchergroupsApi.getAllVouchergroups']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -12870,8 +13057,8 @@ const VouchergroupsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getVouchergroupId(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getVouchergroupId(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['VouchergroupsApi.getVouchergroupId']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -12887,8 +13074,8 @@ const VouchergroupsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         updateVoucherGroup(id, voucherGroupRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.updateVoucherGroup(id, voucherGroupRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['VouchergroupsApi.updateVoucherGroup']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -13018,7 +13205,7 @@ const WriteoffsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createWriteOff: (writeOffRequest_1, ...args_1) => __awaiter(this, [writeOffRequest_1, ...args_1], void 0, function* (writeOffRequest, options = {}) {
+        createWriteOff: (writeOffRequest, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'writeOffRequest' is not null or undefined
             (0, common_1.assertParamExists)('createWriteOff', 'writeOffRequest', writeOffRequest);
             const localVarPath = `/writeoffs`;
@@ -13054,7 +13241,7 @@ const WriteoffsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllWriteOffs: (toId_1, amount_1, take_1, skip_1, ...args_1) => __awaiter(this, [toId_1, amount_1, take_1, skip_1, ...args_1], void 0, function* (toId, amount, take, skip, options = {}) {
+        getAllWriteOffs: (toId, amount, take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/writeoffs`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -13095,7 +13282,7 @@ const WriteoffsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSingleWriteOff: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        getSingleWriteOff: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getSingleWriteOff', 'id', id);
             const localVarPath = `/writeoffs/{id}`
@@ -13138,8 +13325,8 @@ const WriteoffsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         createWriteOff(writeOffRequest, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.createWriteOff(writeOffRequest, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['WriteoffsApi.createWriteOff']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -13157,8 +13344,8 @@ const WriteoffsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getAllWriteOffs(toId, amount, take, skip, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllWriteOffs(toId, amount, take, skip, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['WriteoffsApi.getAllWriteOffs']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
@@ -13173,8 +13360,8 @@ const WriteoffsApiFp = function (configuration) {
          * @throws {RequiredError}
          */
         getSingleWriteOff(id, options) {
+            var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getSingleWriteOff(id, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['WriteoffsApi.getSingleWriteOff']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;

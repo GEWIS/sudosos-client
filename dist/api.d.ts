@@ -499,6 +499,25 @@ export interface BaseContainerResponse {
 /**
  *
  * @export
+ * @interface BaseContainerSummaryResponse
+ */
+export interface BaseContainerSummaryResponse {
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof BaseContainerSummaryResponse
+     */
+    'totalInclVat': DineroObjectResponse;
+    /**
+     *
+     * @type {number}
+     * @memberof BaseContainerSummaryResponse
+     */
+    'amountOfProducts': number;
+}
+/**
+ *
+ * @export
  * @interface BaseEventAnswerResponse
  */
 export interface BaseEventAnswerResponse {
@@ -1206,6 +1225,111 @@ export interface ContainerResponse {
      * @memberof ContainerResponse
      */
     'owner': BaseUserResponse;
+}
+/**
+ *
+ * @export
+ * @interface ContainerSummaryRecord
+ */
+export interface ContainerSummaryRecord {
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof ContainerSummaryRecord
+     */
+    'totalInclVat': DineroObjectResponse;
+    /**
+     *
+     * @type {number}
+     * @memberof ContainerSummaryRecord
+     */
+    'amountOfProducts': number;
+    /**
+     *
+     * @type {ContainerSummaryRecordAllOfUser}
+     * @memberof ContainerSummaryRecord
+     */
+    'user': ContainerSummaryRecordAllOfUser;
+    /**
+     *
+     * @type {number}
+     * @memberof ContainerSummaryRecord
+     */
+    'containerId': number;
+}
+/**
+ *
+ * @export
+ * @interface ContainerSummaryRecordAllOfUser
+ */
+export interface ContainerSummaryRecordAllOfUser {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof ContainerSummaryRecordAllOfUser
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof ContainerSummaryRecordAllOfUser
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof ContainerSummaryRecordAllOfUser
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof ContainerSummaryRecordAllOfUser
+     */
+    'version'?: number;
+    /**
+     * The name of the user.
+     * @type {string}
+     * @memberof ContainerSummaryRecordAllOfUser
+     */
+    'firstName': string;
+    /**
+     * The last name of the user
+     * @type {string}
+     * @memberof ContainerSummaryRecordAllOfUser
+     */
+    'lastName': string;
+    /**
+     * The nickname of the user
+     * @type {string}
+     * @memberof ContainerSummaryRecordAllOfUser
+     */
+    'nickname'?: string;
+}
+/**
+ *
+ * @export
+ * @interface ContainerSummaryResponse
+ */
+export interface ContainerSummaryResponse {
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof ContainerSummaryResponse
+     */
+    'totalInclVat': DineroObjectResponse;
+    /**
+     *
+     * @type {number}
+     * @memberof ContainerSummaryResponse
+     */
+    'amountOfProducts': number;
+    /**
+     * All summaries matching the request, excluding all people who have extensiveDataProcessing disabled.
+     * @type {Array<ContainerSummaryRecord>}
+     * @memberof ContainerSummaryResponse
+     */
+    'summaries': Array<ContainerSummaryRecord>;
 }
 /**
  *
@@ -6380,7 +6504,7 @@ export declare class AuthenticateApi extends BaseAPI {
 export declare const BalanceApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
-     * @summary Get balance of the current user
+     * @summary Get balance of all users
      * @param {string} [date] Timestamp to get balances for
      * @param {number} [minBalance] Minimum balance
      * @param {number} [maxBalance] Maximum balance
@@ -6420,7 +6544,7 @@ export declare const BalanceApiAxiosParamCreator: (configuration?: Configuration
 export declare const BalanceApiFp: (configuration?: Configuration) => {
     /**
      *
-     * @summary Get balance of the current user
+     * @summary Get balance of all users
      * @param {string} [date] Timestamp to get balances for
      * @param {number} [minBalance] Minimum balance
      * @param {number} [maxBalance] Maximum balance
@@ -6436,7 +6560,7 @@ export declare const BalanceApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BalanceResponse>>>;
+    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBalanceResponse>>;
     /**
      *
      * @summary Retrieves the requested balance
@@ -6460,7 +6584,7 @@ export declare const BalanceApiFp: (configuration?: Configuration) => {
 export declare const BalanceApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
-     * @summary Get balance of the current user
+     * @summary Get balance of all users
      * @param {string} [date] Timestamp to get balances for
      * @param {number} [minBalance] Minimum balance
      * @param {number} [maxBalance] Maximum balance
@@ -6476,7 +6600,7 @@ export declare const BalanceApiFactory: (configuration?: Configuration, basePath
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: any): AxiosPromise<Array<BalanceResponse>>;
+    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedBalanceResponse>;
     /**
      *
      * @summary Retrieves the requested balance
@@ -6502,7 +6626,7 @@ export declare const BalanceApiFactory: (configuration?: Configuration, basePath
 export declare class BalanceApi extends BaseAPI {
     /**
      *
-     * @summary Get balance of the current user
+     * @summary Get balance of all users
      * @param {string} [date] Timestamp to get balances for
      * @param {number} [minBalance] Minimum balance
      * @param {number} [maxBalance] Maximum balance
@@ -6519,7 +6643,7 @@ export declare class BalanceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BalanceApi
      */
-    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BalanceResponse[], any>>;
+    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBalanceResponse, any>>;
     /**
      *
      * @summary Retrieves the requested balance
@@ -9534,13 +9658,13 @@ export declare const RbacApiAxiosParamCreator: (configuration?: Configuration) =
      *
      * @summary Delete a permission from an existing role
      * @param {number} id The ID of the role
-     * @param {number} entity The entity of the permission
-     * @param {number} action The action of the permission
-     * @param {number} relation The relation of the permission
+     * @param {string} entity The entity of the permission
+     * @param {string} action The action of the permission
+     * @param {string} relation The relation of the permission
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deletePermission: (id: number, entity: number, action: number, relation: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    deletePermission: (id: number, entity: string, action: string, relation: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Delete an existing role
@@ -9600,13 +9724,13 @@ export declare const RbacApiFp: (configuration?: Configuration) => {
      *
      * @summary Delete a permission from an existing role
      * @param {number} id The ID of the role
-     * @param {number} entity The entity of the permission
-     * @param {number} action The action of the permission
-     * @param {number} relation The relation of the permission
+     * @param {string} entity The entity of the permission
+     * @param {string} action The action of the permission
+     * @param {string} relation The relation of the permission
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deletePermission(id: number, entity: number, action: number, relation: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    deletePermission(id: number, entity: string, action: string, relation: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
     /**
      *
      * @summary Delete an existing role
@@ -9666,13 +9790,13 @@ export declare const RbacApiFactory: (configuration?: Configuration, basePath?: 
      *
      * @summary Delete a permission from an existing role
      * @param {number} id The ID of the role
-     * @param {number} entity The entity of the permission
-     * @param {number} action The action of the permission
-     * @param {number} relation The relation of the permission
+     * @param {string} entity The entity of the permission
+     * @param {string} action The action of the permission
+     * @param {string} relation The relation of the permission
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deletePermission(id: number, entity: number, action: number, relation: number, options?: any): AxiosPromise<string>;
+    deletePermission(id: number, entity: string, action: string, relation: string, options?: any): AxiosPromise<string>;
     /**
      *
      * @summary Delete an existing role
@@ -9736,14 +9860,14 @@ export declare class RbacApi extends BaseAPI {
      *
      * @summary Delete a permission from an existing role
      * @param {number} id The ID of the role
-     * @param {number} entity The entity of the permission
-     * @param {number} action The action of the permission
-     * @param {number} relation The relation of the permission
+     * @param {string} entity The entity of the permission
+     * @param {string} action The action of the permission
+     * @param {string} relation The relation of the permission
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RbacApi
      */
-    deletePermission(id: number, entity: number, action: number, relation: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    deletePermission(id: number, entity: string, action: string, relation: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
     /**
      *
      * @summary Delete an existing role
@@ -10320,6 +10444,69 @@ export declare class TestOperationsOfTheTestControllerApi extends BaseAPI {
     helloworld(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
 }
 /**
+ * TransactionSummariesApi - axios parameter creator
+ * @export
+ */
+export declare const TransactionSummariesApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Returns a summary of all purchases within a container
+     * @param {number} id The ID of the container
+     * @param {*} [options] Override http request option.
+     * @deprecated
+     * @throws {RequiredError}
+     */
+    getSingleContainerSummary: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+};
+/**
+ * TransactionSummariesApi - functional programming interface
+ * @export
+ */
+export declare const TransactionSummariesApiFp: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Returns a summary of all purchases within a container
+     * @param {number} id The ID of the container
+     * @param {*} [options] Override http request option.
+     * @deprecated
+     * @throws {RequiredError}
+     */
+    getSingleContainerSummary(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ContainerSummaryResponse>>>;
+};
+/**
+ * TransactionSummariesApi - factory interface
+ * @export
+ */
+export declare const TransactionSummariesApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     *
+     * @summary Returns a summary of all purchases within a container
+     * @param {number} id The ID of the container
+     * @param {*} [options] Override http request option.
+     * @deprecated
+     * @throws {RequiredError}
+     */
+    getSingleContainerSummary(id: number, options?: any): AxiosPromise<Array<ContainerSummaryResponse>>;
+};
+/**
+ * TransactionSummariesApi - object-oriented interface
+ * @export
+ * @class TransactionSummariesApi
+ * @extends {BaseAPI}
+ */
+export declare class TransactionSummariesApi extends BaseAPI {
+    /**
+     *
+     * @summary Returns a summary of all purchases within a container
+     * @param {number} id The ID of the container
+     * @param {*} [options] Override http request option.
+     * @deprecated
+     * @throws {RequiredError}
+     * @memberof TransactionSummariesApi
+     */
+    getSingleContainerSummary(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ContainerSummaryResponse[], any>>;
+}
+/**
  * TransactionsApi - axios parameter creator
  * @export
  */
@@ -10346,6 +10533,7 @@ export declare const TransactionsApiAxiosParamCreator: (configuration?: Configur
      * @param {number} [fromId] From-user for selected transactions
      * @param {number} [createdById] User that created selected transaction
      * @param {number} [toId] To-user for selected transactions transactions. Requires ContainerId
+     * @param {number} [excludeById] Your own ID to not include in transactions
      * @param {number} [pointOfSaleId] Point of sale ID for selected transactions
      * @param {number} [productId] Product ID for selected transactions
      * @param {number} [productRevision] Product Revision for selected transactions. Requires ProductID
@@ -10356,7 +10544,7 @@ export declare const TransactionsApiAxiosParamCreator: (configuration?: Configur
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllTransactions: (fromId?: number, createdById?: number, toId?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getAllTransactions: (fromId?: number, createdById?: number, toId?: number, excludeById?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get a single transaction
@@ -10410,6 +10598,7 @@ export declare const TransactionsApiFp: (configuration?: Configuration) => {
      * @param {number} [fromId] From-user for selected transactions
      * @param {number} [createdById] User that created selected transaction
      * @param {number} [toId] To-user for selected transactions transactions. Requires ContainerId
+     * @param {number} [excludeById] Your own ID to not include in transactions
      * @param {number} [pointOfSaleId] Point of sale ID for selected transactions
      * @param {number} [productId] Product ID for selected transactions
      * @param {number} [productRevision] Product Revision for selected transactions. Requires ProductID
@@ -10420,7 +10609,7 @@ export declare const TransactionsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllTransactions(fromId?: number, createdById?: number, toId?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBaseTransactionResponse>>;
+    getAllTransactions(fromId?: number, createdById?: number, toId?: number, excludeById?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBaseTransactionResponse>>;
     /**
      *
      * @summary Get a single transaction
@@ -10474,6 +10663,7 @@ export declare const TransactionsApiFactory: (configuration?: Configuration, bas
      * @param {number} [fromId] From-user for selected transactions
      * @param {number} [createdById] User that created selected transaction
      * @param {number} [toId] To-user for selected transactions transactions. Requires ContainerId
+     * @param {number} [excludeById] Your own ID to not include in transactions
      * @param {number} [pointOfSaleId] Point of sale ID for selected transactions
      * @param {number} [productId] Product ID for selected transactions
      * @param {number} [productRevision] Product Revision for selected transactions. Requires ProductID
@@ -10484,7 +10674,7 @@ export declare const TransactionsApiFactory: (configuration?: Configuration, bas
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllTransactions(fromId?: number, createdById?: number, toId?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedBaseTransactionResponse>;
+    getAllTransactions(fromId?: number, createdById?: number, toId?: number, excludeById?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedBaseTransactionResponse>;
     /**
      *
      * @summary Get a single transaction
@@ -10542,6 +10732,7 @@ export declare class TransactionsApi extends BaseAPI {
      * @param {number} [fromId] From-user for selected transactions
      * @param {number} [createdById] User that created selected transaction
      * @param {number} [toId] To-user for selected transactions transactions. Requires ContainerId
+     * @param {number} [excludeById] Your own ID to not include in transactions
      * @param {number} [pointOfSaleId] Point of sale ID for selected transactions
      * @param {number} [productId] Product ID for selected transactions
      * @param {number} [productRevision] Product Revision for selected transactions. Requires ProductID
@@ -10553,7 +10744,7 @@ export declare class TransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    getAllTransactions(fromId?: number, createdById?: number, toId?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBaseTransactionResponse, any>>;
+    getAllTransactions(fromId?: number, createdById?: number, toId?: number, excludeById?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBaseTransactionResponse, any>>;
     /**
      *
      * @summary Get a single transaction
@@ -10765,6 +10956,14 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @throws {RequiredError}
      */
     deleteUserNfc: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get a user using the nfc code
+     * @param {string} nfcCode The nfc code of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    findUserNfc: (nfcCode: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get a list of all users
@@ -11069,6 +11268,14 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
     deleteUserNfc(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
+     * @summary Get a user using the nfc code
+     * @param {string} nfcCode The nfc code of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    findUserNfc(nfcCode: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserResponse>>;
+    /**
+     *
      * @summary Get a list of all users
      * @param {number} [take] How many users the endpoint should return
      * @param {number} [skip] How many users should be skipped (for pagination)
@@ -11369,6 +11576,14 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
      * @throws {RequiredError}
      */
     deleteUserNfc(id: number, options?: any): AxiosPromise<void>;
+    /**
+     *
+     * @summary Get a user using the nfc code
+     * @param {string} nfcCode The nfc code of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    findUserNfc(nfcCode: string, options?: any): AxiosPromise<UserResponse>;
     /**
      *
      * @summary Get a list of all users
@@ -11679,6 +11894,15 @@ export declare class UsersApi extends BaseAPI {
      * @memberof UsersApi
      */
     deleteUserNfc(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    /**
+     *
+     * @summary Get a user using the nfc code
+     * @param {string} nfcCode The nfc code of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    findUserNfc(nfcCode: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserResponse, any>>;
     /**
      *
      * @summary Get a list of all users
