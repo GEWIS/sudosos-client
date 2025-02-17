@@ -354,7 +354,7 @@ export interface BalanceResponse {
     'lastTransferId'?: number;
 }
 /**
- * 
+ * API Request for creating a `banner` entity.
  * @export
  * @interface BannerRequest
  */
@@ -2883,7 +2883,7 @@ export interface PaginatedBalanceResponse {
     'records'?: Array<BalanceResponse>;
 }
 /**
- * 
+ * Paginated API Response for the `banner` entity.
  * @export
  * @interface PaginatedBannerResponse
  */
