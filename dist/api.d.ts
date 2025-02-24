@@ -680,6 +680,12 @@ export interface BaseFineHandoutEventResponse {
      * @memberof BaseFineHandoutEventResponse
      */
     'createdBy': BaseUserResponse;
+    /**
+     * The amount of fines that were handed out
+     * @type {number}
+     * @memberof BaseFineHandoutEventResponse
+     */
+    'count': number;
 }
 /**
  *
@@ -2185,6 +2191,12 @@ export interface FineHandoutEventResponse {
      * @memberof FineHandoutEventResponse
      */
     'createdBy': BaseUserResponse;
+    /**
+     * The amount of fines that were handed out
+     * @type {number}
+     * @memberof FineHandoutEventResponse
+     */
+    'count': number;
     /**
      * Fines that have been handed out
      * @type {Array<FineResponse>}
