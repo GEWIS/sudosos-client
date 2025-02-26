@@ -344,7 +344,7 @@ export interface BalanceResponse {
     'lastTransferId'?: number;
 }
 /**
- *
+ * API Request for creating a `banner` entity.
  * @export
  * @interface BannerRequest
  */
@@ -680,6 +680,12 @@ export interface BaseFineHandoutEventResponse {
      * @memberof BaseFineHandoutEventResponse
      */
     'createdBy': BaseUserResponse;
+    /**
+     * The amount of fines that were handed out
+     * @type {number}
+     * @memberof BaseFineHandoutEventResponse
+     */
+    'count': number;
 }
 /**
  *
@@ -2186,6 +2192,12 @@ export interface FineHandoutEventResponse {
      */
     'createdBy': BaseUserResponse;
     /**
+     * The amount of fines that were handed out
+     * @type {number}
+     * @memberof FineHandoutEventResponse
+     */
+    'count': number;
+    /**
      * Fines that have been handed out
      * @type {Array<FineResponse>}
      * @memberof FineHandoutEventResponse
@@ -2862,7 +2874,7 @@ export interface PaginatedBalanceResponse {
     'records'?: Array<BalanceResponse>;
 }
 /**
- *
+ * Paginated API Response for the `banner` entity.
  * @export
  * @interface PaginatedBannerResponse
  */
