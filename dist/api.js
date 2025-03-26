@@ -1105,6 +1105,40 @@ const BalanceApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
+         * @summary Get the calculated total balances in SudoSOS
+         * @param {string} date The date for which to calculate the balance.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        calculateTotalBalances: (date, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            // verify required parameter 'date' is not null or undefined
+            (0, common_1.assertParamExists)('calculateTotalBalances', 'date', date);
+            const localVarPath = `/balances/summary`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            if (date !== undefined) {
+                localVarQueryParameter['date'] = date;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
          * @summary Get balance of all users
          * @param {string} [date] Timestamp to get balances for
          * @param {number} [minBalance] Minimum balance
@@ -1251,6 +1285,22 @@ const BalanceApiFp = function (configuration) {
     return {
         /**
          *
+         * @summary Get the calculated total balances in SudoSOS
+         * @param {string} date The date for which to calculate the balance.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        calculateTotalBalances(date, options) {
+            var _a, _b, _c;
+            return __awaiter(this, void 0, void 0, function* () {
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.calculateTotalBalances(date, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['BalanceApi.calculateTotalBalances']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
+        /**
+         *
          * @summary Get balance of all users
          * @param {string} [date] Timestamp to get balances for
          * @param {number} [minBalance] Minimum balance
@@ -1319,6 +1369,16 @@ const BalanceApiFactory = function (configuration, basePath, axios) {
     return {
         /**
          *
+         * @summary Get the calculated total balances in SudoSOS
+         * @param {string} date The date for which to calculate the balance.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        calculateTotalBalances(date, options) {
+            return localVarFp.calculateTotalBalances(date, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Get balance of all users
          * @param {string} [date] Timestamp to get balances for
          * @param {number} [minBalance] Minimum balance
@@ -1367,6 +1427,17 @@ exports.BalanceApiFactory = BalanceApiFactory;
  * @extends {BaseAPI}
  */
 class BalanceApi extends base_1.BaseAPI {
+    /**
+     *
+     * @summary Get the calculated total balances in SudoSOS
+     * @param {string} date The date for which to calculate the balance.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BalanceApi
+     */
+    calculateTotalBalances(date, options) {
+        return (0, exports.BalanceApiFp)(this.configuration).calculateTotalBalances(date, options).then((request) => request(this.axios, this.basePath));
+    }
     /**
      *
      * @summary Get balance of all users
