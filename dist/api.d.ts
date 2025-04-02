@@ -4598,6 +4598,37 @@ export interface SubTransactionRowResponse {
 /**
  *
  * @export
+ * @interface TotalBalanceResponse
+ */
+export interface TotalBalanceResponse {
+    /**
+     * Date at which this total balance was calculated
+     * @type {string}
+     * @memberof TotalBalanceResponse
+     */
+    'date': string;
+    /**
+     * The total amount of positive balance in SudoSOS
+     * @type {number}
+     * @memberof TotalBalanceResponse
+     */
+    'totalPositive': number;
+    /**
+     * The total amount of negative balance in SudoSOS
+     * @type {number}
+     * @memberof TotalBalanceResponse
+     */
+    'totalNegative': number;
+    /**
+     *
+     * @type {UserTypeTotalBalanceResponse}
+     * @memberof TotalBalanceResponse
+     */
+    'userTypeBalances': UserTypeTotalBalanceResponse;
+}
+/**
+ *
+ * @export
  * @interface TransactionFilterParameters
  */
 export interface TransactionFilterParameters {
@@ -5678,6 +5709,31 @@ export interface UserToFineResponse {
 /**
  *
  * @export
+ * @interface UserTypeTotalBalanceResponse
+ */
+export interface UserTypeTotalBalanceResponse {
+    /**
+     * The user type
+     * @type {string}
+     * @memberof UserTypeTotalBalanceResponse
+     */
+    'userType': string;
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof UserTypeTotalBalanceResponse
+     */
+    'totalPositive': DineroObjectResponse;
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof UserTypeTotalBalanceResponse
+     */
+    'totalNegative': DineroObjectResponse;
+}
+/**
+ *
+ * @export
  * @interface VatDeclarationResponse
  */
 export interface VatDeclarationResponse {
@@ -6516,6 +6572,14 @@ export declare class AuthenticateApi extends BaseAPI {
 export declare const BalanceApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
+     * @summary Get the calculated total balances in SudoSOS
+     * @param {string} date The date for which to calculate the balance.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    calculateTotalBalances: (date: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Get balance of all users
      * @param {string} [date] Timestamp to get balances for
      * @param {number} [minBalance] Minimum balance
@@ -6554,6 +6618,14 @@ export declare const BalanceApiAxiosParamCreator: (configuration?: Configuration
  * @export
  */
 export declare const BalanceApiFp: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Get the calculated total balances in SudoSOS
+     * @param {string} date The date for which to calculate the balance.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    calculateTotalBalances(date: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TotalBalanceResponse>>;
     /**
      *
      * @summary Get balance of all users
@@ -6596,6 +6668,14 @@ export declare const BalanceApiFp: (configuration?: Configuration) => {
 export declare const BalanceApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
+     * @summary Get the calculated total balances in SudoSOS
+     * @param {string} date The date for which to calculate the balance.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    calculateTotalBalances(date: string, options?: any): AxiosPromise<TotalBalanceResponse>;
+    /**
+     *
      * @summary Get balance of all users
      * @param {string} [date] Timestamp to get balances for
      * @param {number} [minBalance] Minimum balance
@@ -6636,6 +6716,15 @@ export declare const BalanceApiFactory: (configuration?: Configuration, basePath
  * @extends {BaseAPI}
  */
 export declare class BalanceApi extends BaseAPI {
+    /**
+     *
+     * @summary Get the calculated total balances in SudoSOS
+     * @param {string} date The date for which to calculate the balance.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BalanceApi
+     */
+    calculateTotalBalances(date: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TotalBalanceResponse, any>>;
     /**
      *
      * @summary Get balance of all users
