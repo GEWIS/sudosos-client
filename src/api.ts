@@ -7235,12 +7235,13 @@ export const BalanceApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [orderBy] Column to order balance by - eg: id,amount
          * @param {GetAllBalanceOrderDirectionEnum} [orderDirection] Order direction
          * @param {boolean} [allowDeleted] Whether to include deleted users
+         * @param {boolean} [inactive] Whether to only return inactive users
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllBalance: async (date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllBalance: async (date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, inactive?: boolean, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/balances/all`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -7295,6 +7296,10 @@ export const BalanceApiAxiosParamCreator = function (configuration?: Configurati
 
             if (allowDeleted !== undefined) {
                 localVarQueryParameter['allowDeleted'] = allowDeleted;
+            }
+
+            if (inactive !== undefined) {
+                localVarQueryParameter['inactive'] = inactive;
             }
 
             if (take !== undefined) {
@@ -7424,13 +7429,14 @@ export const BalanceApiFp = function(configuration?: Configuration) {
          * @param {string} [orderBy] Column to order balance by - eg: id,amount
          * @param {GetAllBalanceOrderDirectionEnum} [orderDirection] Order direction
          * @param {boolean} [allowDeleted] Whether to include deleted users
+         * @param {boolean} [inactive] Whether to only return inactive users
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBalanceResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, allowDeleted, take, skip, options);
+        async getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, inactive?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBalanceResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, allowDeleted, inactive, take, skip, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['BalanceApi.getAllBalance']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
@@ -7493,13 +7499,14 @@ export const BalanceApiFactory = function (configuration?: Configuration, basePa
          * @param {string} [orderBy] Column to order balance by - eg: id,amount
          * @param {GetAllBalanceOrderDirectionEnum} [orderDirection] Order direction
          * @param {boolean} [allowDeleted] Whether to include deleted users
+         * @param {boolean} [inactive] Whether to only return inactive users
          * @param {number} [take] How many transactions the endpoint should return
          * @param {number} [skip] How many transactions should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedBalanceResponse> {
-            return localVarFp.getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, allowDeleted, take, skip, options).then((request) => request(axios, basePath));
+        getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, inactive?: boolean, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedBalanceResponse> {
+            return localVarFp.getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, allowDeleted, inactive, take, skip, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -7555,14 +7562,15 @@ export class BalanceApi extends BaseAPI {
      * @param {string} [orderBy] Column to order balance by - eg: id,amount
      * @param {GetAllBalanceOrderDirectionEnum} [orderDirection] Order direction
      * @param {boolean} [allowDeleted] Whether to include deleted users
+     * @param {boolean} [inactive] Whether to only return inactive users
      * @param {number} [take] How many transactions the endpoint should return
      * @param {number} [skip] How many transactions should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BalanceApi
      */
-    public getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
-        return BalanceApiFp(this.configuration).getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, allowDeleted, take, skip, options).then((request) => request(this.axios, this.basePath));
+    public getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, inactive?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
+        return BalanceApiFp(this.configuration).getAllBalance(date, minBalance, maxBalance, hasFine, minFine, maxFine, userTypes, orderBy, orderDirection, allowDeleted, inactive, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
