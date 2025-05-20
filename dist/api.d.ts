@@ -9787,6 +9787,14 @@ export declare const RbacApiAxiosParamCreator: (configuration?: Configuration) =
     getAllRoles: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Get all users linked to a specific role
+     * @param {number} id The ID of the role that the users are linked to
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getRoleUsers: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Get a single existing role with its permissions
      * @param {number} id The ID of the role that should be returned
      * @param {*} [options] Override http request option.
@@ -9853,6 +9861,14 @@ export declare const RbacApiFp: (configuration?: Configuration) => {
     getAllRoles(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RoleResponse>>>;
     /**
      *
+     * @summary Get all users linked to a specific role
+     * @param {number} id The ID of the role that the users are linked to
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getRoleUsers(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUserResponse>>;
+    /**
+     *
      * @summary Get a single existing role with its permissions
      * @param {number} id The ID of the role that should be returned
      * @param {*} [options] Override http request option.
@@ -9917,6 +9933,14 @@ export declare const RbacApiFactory: (configuration?: Configuration, basePath?: 
      * @throws {RequiredError}
      */
     getAllRoles(options?: any): AxiosPromise<Array<RoleResponse>>;
+    /**
+     *
+     * @summary Get all users linked to a specific role
+     * @param {number} id The ID of the role that the users are linked to
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getRoleUsers(id: number, options?: any): AxiosPromise<PaginatedUserResponse>;
     /**
      *
      * @summary Get a single existing role with its permissions
@@ -9990,6 +10014,15 @@ export declare class RbacApi extends BaseAPI {
      * @memberof RbacApi
      */
     getAllRoles(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleResponse[], any>>;
+    /**
+     *
+     * @summary Get all users linked to a specific role
+     * @param {number} id The ID of the role that the users are linked to
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    getRoleUsers(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedUserResponse, any>>;
     /**
      *
      * @summary Get a single existing role with its permissions
