@@ -14121,6 +14121,44 @@ export const RbacApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
+         * @summary Get all users linked to a specific role
+         * @param {number} id The ID of the role that the users are linked to
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getRoleUsers: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getRoleUsers', 'id', id)
+            const localVarPath = `/rbac/roles/{id}/users`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Get a single existing role with its permissions
          * @param {number} id The ID of the role that should be returned
          * @param {*} [options] Override http request option.
@@ -14281,6 +14319,19 @@ export const RbacApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get all users linked to a specific role
+         * @param {number} id The ID of the role that the users are linked to
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getRoleUsers(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUserResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getRoleUsers(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['RbacApi.getRoleUsers']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Get a single existing role with its permissions
          * @param {number} id The ID of the role that should be returned
          * @param {*} [options] Override http request option.
@@ -14368,6 +14419,16 @@ export const RbacApiFactory = function (configuration?: Configuration, basePath?
          */
         getAllRoles(options?: any): AxiosPromise<Array<RoleResponse>> {
             return localVarFp.getAllRoles(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get all users linked to a specific role
+         * @param {number} id The ID of the role that the users are linked to
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getRoleUsers(id: number, options?: any): AxiosPromise<PaginatedUserResponse> {
+            return localVarFp.getRoleUsers(id, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -14461,6 +14522,18 @@ export class RbacApi extends BaseAPI {
      */
     public getAllRoles(options?: RawAxiosRequestConfig) {
         return RbacApiFp(this.configuration).getAllRoles(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get all users linked to a specific role
+     * @param {number} id The ID of the role that the users are linked to
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    public getRoleUsers(id: number, options?: RawAxiosRequestConfig) {
+        return RbacApiFp(this.configuration).getRoleUsers(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
