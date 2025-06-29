@@ -15867,8 +15867,9 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
          * @summary Get a list of all transactions
          * @param {number} [fromId] From-user for selected transactions
          * @param {number} [createdById] User that created selected transaction
-         * @param {number} [toId] To-user for selected transactions transactions. Requires ContainerId
-         * @param {number} [excludeById] Your own ID to not include in transactions
+         * @param {number} [toId] To-user for selected transactions
+         * @param {number} [excludeById] Created by user to exclude from transactions
+         * @param {number} [excludeFromId] From user to exclude from transactions
          * @param {number} [pointOfSaleId] Point of sale ID for selected transactions
          * @param {number} [productId] Product ID for selected transactions
          * @param {number} [productRevision] Product Revision for selected transactions. Requires ProductID
@@ -15879,7 +15880,7 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllTransactions: async (fromId?: number, createdById?: number, toId?: number, excludeById?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllTransactions: async (fromId?: number, createdById?: number, toId?: number, excludeById?: number, excludeFromId?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/transactions`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -15910,6 +15911,10 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
 
             if (excludeById !== undefined) {
                 localVarQueryParameter['excludeById'] = excludeById;
+            }
+
+            if (excludeFromId !== undefined) {
+                localVarQueryParameter['excludeFromId'] = excludeFromId;
             }
 
             if (pointOfSaleId !== undefined) {
@@ -16114,8 +16119,9 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
          * @summary Get a list of all transactions
          * @param {number} [fromId] From-user for selected transactions
          * @param {number} [createdById] User that created selected transaction
-         * @param {number} [toId] To-user for selected transactions transactions. Requires ContainerId
-         * @param {number} [excludeById] Your own ID to not include in transactions
+         * @param {number} [toId] To-user for selected transactions
+         * @param {number} [excludeById] Created by user to exclude from transactions
+         * @param {number} [excludeFromId] From user to exclude from transactions
          * @param {number} [pointOfSaleId] Point of sale ID for selected transactions
          * @param {number} [productId] Product ID for selected transactions
          * @param {number} [productRevision] Product Revision for selected transactions. Requires ProductID
@@ -16126,8 +16132,8 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllTransactions(fromId?: number, createdById?: number, toId?: number, excludeById?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBaseTransactionResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllTransactions(fromId, createdById, toId, excludeById, pointOfSaleId, productId, productRevision, fromDate, tillDate, take, skip, options);
+        async getAllTransactions(fromId?: number, createdById?: number, toId?: number, excludeById?: number, excludeFromId?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBaseTransactionResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllTransactions(fromId, createdById, toId, excludeById, excludeFromId, pointOfSaleId, productId, productRevision, fromDate, tillDate, take, skip, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['TransactionsApi.getAllTransactions']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
@@ -16207,8 +16213,9 @@ export const TransactionsApiFactory = function (configuration?: Configuration, b
          * @summary Get a list of all transactions
          * @param {number} [fromId] From-user for selected transactions
          * @param {number} [createdById] User that created selected transaction
-         * @param {number} [toId] To-user for selected transactions transactions. Requires ContainerId
-         * @param {number} [excludeById] Your own ID to not include in transactions
+         * @param {number} [toId] To-user for selected transactions
+         * @param {number} [excludeById] Created by user to exclude from transactions
+         * @param {number} [excludeFromId] From user to exclude from transactions
          * @param {number} [pointOfSaleId] Point of sale ID for selected transactions
          * @param {number} [productId] Product ID for selected transactions
          * @param {number} [productRevision] Product Revision for selected transactions. Requires ProductID
@@ -16219,8 +16226,8 @@ export const TransactionsApiFactory = function (configuration?: Configuration, b
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllTransactions(fromId?: number, createdById?: number, toId?: number, excludeById?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedBaseTransactionResponse> {
-            return localVarFp.getAllTransactions(fromId, createdById, toId, excludeById, pointOfSaleId, productId, productRevision, fromDate, tillDate, take, skip, options).then((request) => request(axios, basePath));
+        getAllTransactions(fromId?: number, createdById?: number, toId?: number, excludeById?: number, excludeFromId?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedBaseTransactionResponse> {
+            return localVarFp.getAllTransactions(fromId, createdById, toId, excludeById, excludeFromId, pointOfSaleId, productId, productRevision, fromDate, tillDate, take, skip, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -16292,8 +16299,9 @@ export class TransactionsApi extends BaseAPI {
      * @summary Get a list of all transactions
      * @param {number} [fromId] From-user for selected transactions
      * @param {number} [createdById] User that created selected transaction
-     * @param {number} [toId] To-user for selected transactions transactions. Requires ContainerId
-     * @param {number} [excludeById] Your own ID to not include in transactions
+     * @param {number} [toId] To-user for selected transactions
+     * @param {number} [excludeById] Created by user to exclude from transactions
+     * @param {number} [excludeFromId] From user to exclude from transactions
      * @param {number} [pointOfSaleId] Point of sale ID for selected transactions
      * @param {number} [productId] Product ID for selected transactions
      * @param {number} [productRevision] Product Revision for selected transactions. Requires ProductID
@@ -16305,8 +16313,8 @@ export class TransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    public getAllTransactions(fromId?: number, createdById?: number, toId?: number, excludeById?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
-        return TransactionsApiFp(this.configuration).getAllTransactions(fromId, createdById, toId, excludeById, pointOfSaleId, productId, productRevision, fromDate, tillDate, take, skip, options).then((request) => request(this.axios, this.basePath));
+    public getAllTransactions(fromId?: number, createdById?: number, toId?: number, excludeById?: number, excludeFromId?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
+        return TransactionsApiFp(this.configuration).getAllTransactions(fromId, createdById, toId, excludeById, excludeFromId, pointOfSaleId, productId, productRevision, fromDate, tillDate, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
