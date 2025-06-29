@@ -20290,10 +20290,12 @@ export const WriteoffsApiAxiosParamCreator = function (configuration?: Configura
          * @param {number} [amount] Filter on the amount of the write-off
          * @param {number} [take] Number of write-offs to return
          * @param {number} [skip] Number of write-offs to skip
+         * @param {string} [fromDate] Start date for selected write-offs (inclusive)
+         * @param {string} [tillDate] End date for selected write-offs (exclusive)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllWriteOffs: async (toId?: number, amount?: number, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllWriteOffs: async (toId?: number, amount?: number, take?: number, skip?: number, fromDate?: string, tillDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/writeoffs`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -20324,6 +20326,14 @@ export const WriteoffsApiAxiosParamCreator = function (configuration?: Configura
 
             if (skip !== undefined) {
                 localVarQueryParameter['skip'] = skip;
+            }
+
+            if (fromDate !== undefined) {
+                localVarQueryParameter['fromDate'] = fromDate;
+            }
+
+            if (tillDate !== undefined) {
+                localVarQueryParameter['tillDate'] = tillDate;
             }
 
 
@@ -20405,11 +20415,13 @@ export const WriteoffsApiFp = function(configuration?: Configuration) {
          * @param {number} [amount] Filter on the amount of the write-off
          * @param {number} [take] Number of write-offs to return
          * @param {number} [skip] Number of write-offs to skip
+         * @param {string} [fromDate] Start date for selected write-offs (inclusive)
+         * @param {string} [tillDate] End date for selected write-offs (exclusive)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllWriteOffs(toId?: number, amount?: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedWriteOffResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllWriteOffs(toId, amount, take, skip, options);
+        async getAllWriteOffs(toId?: number, amount?: number, take?: number, skip?: number, fromDate?: string, tillDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedWriteOffResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllWriteOffs(toId, amount, take, skip, fromDate, tillDate, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['WriteoffsApi.getAllWriteOffs']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
@@ -20454,11 +20466,13 @@ export const WriteoffsApiFactory = function (configuration?: Configuration, base
          * @param {number} [amount] Filter on the amount of the write-off
          * @param {number} [take] Number of write-offs to return
          * @param {number} [skip] Number of write-offs to skip
+         * @param {string} [fromDate] Start date for selected write-offs (inclusive)
+         * @param {string} [tillDate] End date for selected write-offs (exclusive)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllWriteOffs(toId?: number, amount?: number, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedWriteOffResponse> {
-            return localVarFp.getAllWriteOffs(toId, amount, take, skip, options).then((request) => request(axios, basePath));
+        getAllWriteOffs(toId?: number, amount?: number, take?: number, skip?: number, fromDate?: string, tillDate?: string, options?: any): AxiosPromise<PaginatedWriteOffResponse> {
+            return localVarFp.getAllWriteOffs(toId, amount, take, skip, fromDate, tillDate, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -20499,12 +20513,14 @@ export class WriteoffsApi extends BaseAPI {
      * @param {number} [amount] Filter on the amount of the write-off
      * @param {number} [take] Number of write-offs to return
      * @param {number} [skip] Number of write-offs to skip
+     * @param {string} [fromDate] Start date for selected write-offs (inclusive)
+     * @param {string} [tillDate] End date for selected write-offs (exclusive)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WriteoffsApi
      */
-    public getAllWriteOffs(toId?: number, amount?: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
-        return WriteoffsApiFp(this.configuration).getAllWriteOffs(toId, amount, take, skip, options).then((request) => request(this.axios, this.basePath));
+    public getAllWriteOffs(toId?: number, amount?: number, take?: number, skip?: number, fromDate?: string, tillDate?: string, options?: RawAxiosRequestConfig) {
+        return WriteoffsApiFp(this.configuration).getAllWriteOffs(toId, amount, take, skip, fromDate, tillDate, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
