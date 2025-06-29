@@ -13385,10 +13385,12 @@ const WriteoffsApiAxiosParamCreator = function (configuration) {
          * @param {number} [amount] Filter on the amount of the write-off
          * @param {number} [take] Number of write-offs to return
          * @param {number} [skip] Number of write-offs to skip
+         * @param {string} [fromDate] Start date for selected write-offs (inclusive)
+         * @param {string} [tillDate] End date for selected write-offs (exclusive)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllWriteOffs: (toId, amount, take, skip, options = {}) => __awaiter(this, void 0, void 0, function* () {
+        getAllWriteOffs: (toId, amount, take, skip, fromDate, tillDate, options = {}) => __awaiter(this, void 0, void 0, function* () {
             const localVarPath = `/writeoffs`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -13413,6 +13415,12 @@ const WriteoffsApiAxiosParamCreator = function (configuration) {
             }
             if (skip !== undefined) {
                 localVarQueryParameter['skip'] = skip;
+            }
+            if (fromDate !== undefined) {
+                localVarQueryParameter['fromDate'] = fromDate;
+            }
+            if (tillDate !== undefined) {
+                localVarQueryParameter['tillDate'] = tillDate;
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -13487,13 +13495,15 @@ const WriteoffsApiFp = function (configuration) {
          * @param {number} [amount] Filter on the amount of the write-off
          * @param {number} [take] Number of write-offs to return
          * @param {number} [skip] Number of write-offs to skip
+         * @param {string} [fromDate] Start date for selected write-offs (inclusive)
+         * @param {string} [tillDate] End date for selected write-offs (exclusive)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllWriteOffs(toId, amount, take, skip, options) {
+        getAllWriteOffs(toId, amount, take, skip, fromDate, tillDate, options) {
             var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllWriteOffs(toId, amount, take, skip, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllWriteOffs(toId, amount, take, skip, fromDate, tillDate, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['WriteoffsApi.getAllWriteOffs']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
@@ -13542,11 +13552,13 @@ const WriteoffsApiFactory = function (configuration, basePath, axios) {
          * @param {number} [amount] Filter on the amount of the write-off
          * @param {number} [take] Number of write-offs to return
          * @param {number} [skip] Number of write-offs to skip
+         * @param {string} [fromDate] Start date for selected write-offs (inclusive)
+         * @param {string} [tillDate] End date for selected write-offs (exclusive)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllWriteOffs(toId, amount, take, skip, options) {
-            return localVarFp.getAllWriteOffs(toId, amount, take, skip, options).then((request) => request(axios, basePath));
+        getAllWriteOffs(toId, amount, take, skip, fromDate, tillDate, options) {
+            return localVarFp.getAllWriteOffs(toId, amount, take, skip, fromDate, tillDate, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -13586,12 +13598,14 @@ class WriteoffsApi extends base_1.BaseAPI {
      * @param {number} [amount] Filter on the amount of the write-off
      * @param {number} [take] Number of write-offs to return
      * @param {number} [skip] Number of write-offs to skip
+     * @param {string} [fromDate] Start date for selected write-offs (inclusive)
+     * @param {string} [tillDate] End date for selected write-offs (exclusive)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WriteoffsApi
      */
-    getAllWriteOffs(toId, amount, take, skip, options) {
-        return (0, exports.WriteoffsApiFp)(this.configuration).getAllWriteOffs(toId, amount, take, skip, options).then((request) => request(this.axios, this.basePath));
+    getAllWriteOffs(toId, amount, take, skip, fromDate, tillDate, options) {
+        return (0, exports.WriteoffsApiFp)(this.configuration).getAllWriteOffs(toId, amount, take, skip, fromDate, tillDate, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
