@@ -9787,6 +9787,14 @@ export declare const RbacApiAxiosParamCreator: (configuration?: Configuration) =
     getAllRoles: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Get all users linked to a specific role
+     * @param {number} id The ID of the role that the users are linked to
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getRoleUsers: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Get a single existing role with its permissions
      * @param {number} id The ID of the role that should be returned
      * @param {*} [options] Override http request option.
@@ -9853,6 +9861,14 @@ export declare const RbacApiFp: (configuration?: Configuration) => {
     getAllRoles(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RoleResponse>>>;
     /**
      *
+     * @summary Get all users linked to a specific role
+     * @param {number} id The ID of the role that the users are linked to
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getRoleUsers(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUserResponse>>;
+    /**
+     *
      * @summary Get a single existing role with its permissions
      * @param {number} id The ID of the role that should be returned
      * @param {*} [options] Override http request option.
@@ -9917,6 +9933,14 @@ export declare const RbacApiFactory: (configuration?: Configuration, basePath?: 
      * @throws {RequiredError}
      */
     getAllRoles(options?: any): AxiosPromise<Array<RoleResponse>>;
+    /**
+     *
+     * @summary Get all users linked to a specific role
+     * @param {number} id The ID of the role that the users are linked to
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getRoleUsers(id: number, options?: any): AxiosPromise<PaginatedUserResponse>;
     /**
      *
      * @summary Get a single existing role with its permissions
@@ -9990,6 +10014,15 @@ export declare class RbacApi extends BaseAPI {
      * @memberof RbacApi
      */
     getAllRoles(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleResponse[], any>>;
+    /**
+     *
+     * @summary Get all users linked to a specific role
+     * @param {number} id The ID of the role that the users are linked to
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    getRoleUsers(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedUserResponse, any>>;
     /**
      *
      * @summary Get a single existing role with its permissions
@@ -12715,10 +12748,12 @@ export declare const WriteoffsApiAxiosParamCreator: (configuration?: Configurati
      * @param {number} [amount] Filter on the amount of the write-off
      * @param {number} [take] Number of write-offs to return
      * @param {number} [skip] Number of write-offs to skip
+     * @param {string} [fromDate] Start date for selected write-offs (inclusive)
+     * @param {string} [tillDate] End date for selected write-offs (exclusive)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllWriteOffs: (toId?: number, amount?: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getAllWriteOffs: (toId?: number, amount?: number, take?: number, skip?: number, fromDate?: string, tillDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get a single write-off
@@ -12748,10 +12783,12 @@ export declare const WriteoffsApiFp: (configuration?: Configuration) => {
      * @param {number} [amount] Filter on the amount of the write-off
      * @param {number} [take] Number of write-offs to return
      * @param {number} [skip] Number of write-offs to skip
+     * @param {string} [fromDate] Start date for selected write-offs (inclusive)
+     * @param {string} [tillDate] End date for selected write-offs (exclusive)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllWriteOffs(toId?: number, amount?: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedWriteOffResponse>>;
+    getAllWriteOffs(toId?: number, amount?: number, take?: number, skip?: number, fromDate?: string, tillDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedWriteOffResponse>>;
     /**
      *
      * @summary Get a single write-off
@@ -12781,10 +12818,12 @@ export declare const WriteoffsApiFactory: (configuration?: Configuration, basePa
      * @param {number} [amount] Filter on the amount of the write-off
      * @param {number} [take] Number of write-offs to return
      * @param {number} [skip] Number of write-offs to skip
+     * @param {string} [fromDate] Start date for selected write-offs (inclusive)
+     * @param {string} [tillDate] End date for selected write-offs (exclusive)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllWriteOffs(toId?: number, amount?: number, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedWriteOffResponse>;
+    getAllWriteOffs(toId?: number, amount?: number, take?: number, skip?: number, fromDate?: string, tillDate?: string, options?: any): AxiosPromise<PaginatedWriteOffResponse>;
     /**
      *
      * @summary Get a single write-off
@@ -12817,11 +12856,13 @@ export declare class WriteoffsApi extends BaseAPI {
      * @param {number} [amount] Filter on the amount of the write-off
      * @param {number} [take] Number of write-offs to return
      * @param {number} [skip] Number of write-offs to skip
+     * @param {string} [fromDate] Start date for selected write-offs (inclusive)
+     * @param {string} [tillDate] End date for selected write-offs (exclusive)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WriteoffsApi
      */
-    getAllWriteOffs(toId?: number, amount?: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedWriteOffResponse, any>>;
+    getAllWriteOffs(toId?: number, amount?: number, take?: number, skip?: number, fromDate?: string, tillDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedWriteOffResponse, any>>;
     /**
      *
      * @summary Get a single write-off

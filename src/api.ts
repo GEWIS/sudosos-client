@@ -14121,6 +14121,44 @@ export const RbacApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
+         * @summary Get all users linked to a specific role
+         * @param {number} id The ID of the role that the users are linked to
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getRoleUsers: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getRoleUsers', 'id', id)
+            const localVarPath = `/rbac/roles/{id}/users`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Get a single existing role with its permissions
          * @param {number} id The ID of the role that should be returned
          * @param {*} [options] Override http request option.
@@ -14281,6 +14319,19 @@ export const RbacApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get all users linked to a specific role
+         * @param {number} id The ID of the role that the users are linked to
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getRoleUsers(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUserResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getRoleUsers(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['RbacApi.getRoleUsers']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Get a single existing role with its permissions
          * @param {number} id The ID of the role that should be returned
          * @param {*} [options] Override http request option.
@@ -14368,6 +14419,16 @@ export const RbacApiFactory = function (configuration?: Configuration, basePath?
          */
         getAllRoles(options?: any): AxiosPromise<Array<RoleResponse>> {
             return localVarFp.getAllRoles(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get all users linked to a specific role
+         * @param {number} id The ID of the role that the users are linked to
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getRoleUsers(id: number, options?: any): AxiosPromise<PaginatedUserResponse> {
+            return localVarFp.getRoleUsers(id, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -14461,6 +14522,18 @@ export class RbacApi extends BaseAPI {
      */
     public getAllRoles(options?: RawAxiosRequestConfig) {
         return RbacApiFp(this.configuration).getAllRoles(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get all users linked to a specific role
+     * @param {number} id The ID of the role that the users are linked to
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RbacApi
+     */
+    public getRoleUsers(id: number, options?: RawAxiosRequestConfig) {
+        return RbacApiFp(this.configuration).getRoleUsers(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -20217,10 +20290,12 @@ export const WriteoffsApiAxiosParamCreator = function (configuration?: Configura
          * @param {number} [amount] Filter on the amount of the write-off
          * @param {number} [take] Number of write-offs to return
          * @param {number} [skip] Number of write-offs to skip
+         * @param {string} [fromDate] Start date for selected write-offs (inclusive)
+         * @param {string} [tillDate] End date for selected write-offs (exclusive)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllWriteOffs: async (toId?: number, amount?: number, take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllWriteOffs: async (toId?: number, amount?: number, take?: number, skip?: number, fromDate?: string, tillDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/writeoffs`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -20251,6 +20326,14 @@ export const WriteoffsApiAxiosParamCreator = function (configuration?: Configura
 
             if (skip !== undefined) {
                 localVarQueryParameter['skip'] = skip;
+            }
+
+            if (fromDate !== undefined) {
+                localVarQueryParameter['fromDate'] = fromDate;
+            }
+
+            if (tillDate !== undefined) {
+                localVarQueryParameter['tillDate'] = tillDate;
             }
 
 
@@ -20332,11 +20415,13 @@ export const WriteoffsApiFp = function(configuration?: Configuration) {
          * @param {number} [amount] Filter on the amount of the write-off
          * @param {number} [take] Number of write-offs to return
          * @param {number} [skip] Number of write-offs to skip
+         * @param {string} [fromDate] Start date for selected write-offs (inclusive)
+         * @param {string} [tillDate] End date for selected write-offs (exclusive)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllWriteOffs(toId?: number, amount?: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedWriteOffResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllWriteOffs(toId, amount, take, skip, options);
+        async getAllWriteOffs(toId?: number, amount?: number, take?: number, skip?: number, fromDate?: string, tillDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedWriteOffResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllWriteOffs(toId, amount, take, skip, fromDate, tillDate, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['WriteoffsApi.getAllWriteOffs']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
@@ -20381,11 +20466,13 @@ export const WriteoffsApiFactory = function (configuration?: Configuration, base
          * @param {number} [amount] Filter on the amount of the write-off
          * @param {number} [take] Number of write-offs to return
          * @param {number} [skip] Number of write-offs to skip
+         * @param {string} [fromDate] Start date for selected write-offs (inclusive)
+         * @param {string} [tillDate] End date for selected write-offs (exclusive)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllWriteOffs(toId?: number, amount?: number, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedWriteOffResponse> {
-            return localVarFp.getAllWriteOffs(toId, amount, take, skip, options).then((request) => request(axios, basePath));
+        getAllWriteOffs(toId?: number, amount?: number, take?: number, skip?: number, fromDate?: string, tillDate?: string, options?: any): AxiosPromise<PaginatedWriteOffResponse> {
+            return localVarFp.getAllWriteOffs(toId, amount, take, skip, fromDate, tillDate, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -20426,12 +20513,14 @@ export class WriteoffsApi extends BaseAPI {
      * @param {number} [amount] Filter on the amount of the write-off
      * @param {number} [take] Number of write-offs to return
      * @param {number} [skip] Number of write-offs to skip
+     * @param {string} [fromDate] Start date for selected write-offs (inclusive)
+     * @param {string} [tillDate] End date for selected write-offs (exclusive)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WriteoffsApi
      */
-    public getAllWriteOffs(toId?: number, amount?: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
-        return WriteoffsApiFp(this.configuration).getAllWriteOffs(toId, amount, take, skip, options).then((request) => request(this.axios, this.basePath));
+    public getAllWriteOffs(toId?: number, amount?: number, take?: number, skip?: number, fromDate?: string, tillDate?: string, options?: RawAxiosRequestConfig) {
+        return WriteoffsApiFp(this.configuration).getAllWriteOffs(toId, amount, take, skip, fromDate, tillDate, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
