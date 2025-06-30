@@ -8792,10 +8792,11 @@ export declare const PayoutRequestsApiAxiosParamCreator: (configuration?: Config
      *
      * @summary Get a payout request pdf
      * @param {number} id The ID of the payout request object that should be returned
+     * @param {boolean} [force] Whether to force regeneration of the pdf
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getPayoutRequestPdf: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getPayoutRequestPdf: (id: number, force?: boolean, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get a single payout request
@@ -8845,10 +8846,11 @@ export declare const PayoutRequestsApiFp: (configuration?: Configuration) => {
      *
      * @summary Get a payout request pdf
      * @param {number} id The ID of the payout request object that should be returned
+     * @param {boolean} [force] Whether to force regeneration of the pdf
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getPayoutRequestPdf(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PdfUrlResponse>>;
+    getPayoutRequestPdf(id: number, force?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PdfUrlResponse>>;
     /**
      *
      * @summary Get a single payout request
@@ -8898,10 +8900,11 @@ export declare const PayoutRequestsApiFactory: (configuration?: Configuration, b
      *
      * @summary Get a payout request pdf
      * @param {number} id The ID of the payout request object that should be returned
+     * @param {boolean} [force] Whether to force regeneration of the pdf
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getPayoutRequestPdf(id: number, options?: any): AxiosPromise<PdfUrlResponse>;
+    getPayoutRequestPdf(id: number, force?: boolean, options?: any): AxiosPromise<PdfUrlResponse>;
     /**
      *
      * @summary Get a single payout request
@@ -8955,11 +8958,12 @@ export declare class PayoutRequestsApi extends BaseAPI {
      *
      * @summary Get a payout request pdf
      * @param {number} id The ID of the payout request object that should be returned
+     * @param {boolean} [force] Whether to force regeneration of the pdf
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PayoutRequestsApi
      */
-    getPayoutRequestPdf(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PdfUrlResponse, any>>;
+    getPayoutRequestPdf(id: number, force?: boolean, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PdfUrlResponse, any>>;
     /**
      *
      * @summary Get a single payout request
@@ -12766,6 +12770,15 @@ export declare const WriteoffsApiAxiosParamCreator: (configuration?: Configurati
      * @throws {RequiredError}
      */
     getSingleWriteOff: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get a write-off pdf
+     * @param {number} id The ID of the write-off object that should be returned
+     * @param {boolean} [force] Whether to force regeneration of the pdf
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getWriteOffPdf: (id: number, force?: boolean, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * WriteoffsApi - functional programming interface
@@ -12801,6 +12814,15 @@ export declare const WriteoffsApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     getSingleWriteOff(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WriteOffResponse>>;
+    /**
+     *
+     * @summary Get a write-off pdf
+     * @param {number} id The ID of the write-off object that should be returned
+     * @param {boolean} [force] Whether to force regeneration of the pdf
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getWriteOffPdf(id: number, force?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PdfUrlResponse>>;
 };
 /**
  * WriteoffsApi - factory interface
@@ -12836,6 +12858,15 @@ export declare const WriteoffsApiFactory: (configuration?: Configuration, basePa
      * @throws {RequiredError}
      */
     getSingleWriteOff(id: number, options?: any): AxiosPromise<WriteOffResponse>;
+    /**
+     *
+     * @summary Get a write-off pdf
+     * @param {number} id The ID of the write-off object that should be returned
+     * @param {boolean} [force] Whether to force regeneration of the pdf
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getWriteOffPdf(id: number, force?: boolean, options?: any): AxiosPromise<PdfUrlResponse>;
 };
 /**
  * WriteoffsApi - object-oriented interface
@@ -12876,4 +12907,14 @@ export declare class WriteoffsApi extends BaseAPI {
      * @memberof WriteoffsApi
      */
     getSingleWriteOff(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<WriteOffResponse, any>>;
+    /**
+     *
+     * @summary Get a write-off pdf
+     * @param {number} id The ID of the write-off object that should be returned
+     * @param {boolean} [force] Whether to force regeneration of the pdf
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WriteoffsApi
+     */
+    getWriteOffPdf(id: number, force?: boolean, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PdfUrlResponse, any>>;
 }
