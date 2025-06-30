@@ -5550,10 +5550,11 @@ const PayoutRequestsApiAxiosParamCreator = function (configuration) {
          *
          * @summary Get a payout request pdf
          * @param {number} id The ID of the payout request object that should be returned
+         * @param {boolean} [force] Whether to force regeneration of the pdf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPayoutRequestPdf: (id, options = {}) => __awaiter(this, void 0, void 0, function* () {
+        getPayoutRequestPdf: (id, force, options = {}) => __awaiter(this, void 0, void 0, function* () {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getPayoutRequestPdf', 'id', id);
             const localVarPath = `/payoutrequests/{id}/pdf`
@@ -5570,6 +5571,9 @@ const PayoutRequestsApiAxiosParamCreator = function (configuration) {
             // authentication JWT required
             // http bearer authentication required
             yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            if (force !== undefined) {
+                localVarQueryParameter['force'] = force;
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
@@ -5699,13 +5703,14 @@ const PayoutRequestsApiFp = function (configuration) {
          *
          * @summary Get a payout request pdf
          * @param {number} id The ID of the payout request object that should be returned
+         * @param {boolean} [force] Whether to force regeneration of the pdf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPayoutRequestPdf(id, options) {
+        getPayoutRequestPdf(id, force, options) {
             var _a, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getPayoutRequestPdf(id, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getPayoutRequestPdf(id, force, options);
                 const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const operationBasePath = (_c = (_b = base_1.operationServerMap['PayoutRequestsApi.getPayoutRequestPdf']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
@@ -5784,11 +5789,12 @@ const PayoutRequestsApiFactory = function (configuration, basePath, axios) {
          *
          * @summary Get a payout request pdf
          * @param {number} id The ID of the payout request object that should be returned
+         * @param {boolean} [force] Whether to force regeneration of the pdf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPayoutRequestPdf(id, options) {
-            return localVarFp.getPayoutRequestPdf(id, options).then((request) => request(axios, basePath));
+        getPayoutRequestPdf(id, force, options) {
+            return localVarFp.getPayoutRequestPdf(id, force, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -5853,12 +5859,13 @@ class PayoutRequestsApi extends base_1.BaseAPI {
      *
      * @summary Get a payout request pdf
      * @param {number} id The ID of the payout request object that should be returned
+     * @param {boolean} [force] Whether to force regeneration of the pdf
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PayoutRequestsApi
      */
-    getPayoutRequestPdf(id, options) {
-        return (0, exports.PayoutRequestsApiFp)(this.configuration).getPayoutRequestPdf(id, options).then((request) => request(this.axios, this.basePath));
+    getPayoutRequestPdf(id, force, options) {
+        return (0, exports.PayoutRequestsApiFp)(this.configuration).getPayoutRequestPdf(id, force, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -13469,6 +13476,42 @@ const WriteoffsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         }),
+        /**
+         *
+         * @summary Get a write-off pdf
+         * @param {number} id The ID of the write-off object that should be returned
+         * @param {boolean} [force] Whether to force regeneration of the pdf
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getWriteOffPdf: (id, force, options = {}) => __awaiter(this, void 0, void 0, function* () {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('getWriteOffPdf', 'id', id);
+            const localVarPath = `/writeoffs/{id}/pdf`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            if (force !== undefined) {
+                localVarQueryParameter['force'] = force;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
     };
 };
 exports.WriteoffsApiAxiosParamCreator = WriteoffsApiAxiosParamCreator;
@@ -13532,6 +13575,23 @@ const WriteoffsApiFp = function (configuration) {
                 return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
             });
         },
+        /**
+         *
+         * @summary Get a write-off pdf
+         * @param {number} id The ID of the write-off object that should be returned
+         * @param {boolean} [force] Whether to force regeneration of the pdf
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getWriteOffPdf(id, force, options) {
+            var _a, _b, _c;
+            return __awaiter(this, void 0, void 0, function* () {
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getWriteOffPdf(id, force, options);
+                const index = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const operationBasePath = (_c = (_b = base_1.operationServerMap['WriteoffsApi.getWriteOffPdf']) === null || _b === void 0 ? void 0 : _b[index]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+            });
+        },
     };
 };
 exports.WriteoffsApiFp = WriteoffsApiFp;
@@ -13576,6 +13636,17 @@ const WriteoffsApiFactory = function (configuration, basePath, axios) {
          */
         getSingleWriteOff(id, options) {
             return localVarFp.getSingleWriteOff(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get a write-off pdf
+         * @param {number} id The ID of the write-off object that should be returned
+         * @param {boolean} [force] Whether to force regeneration of the pdf
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getWriteOffPdf(id, force, options) {
+            return localVarFp.getWriteOffPdf(id, force, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -13624,6 +13695,18 @@ class WriteoffsApi extends base_1.BaseAPI {
      */
     getSingleWriteOff(id, options) {
         return (0, exports.WriteoffsApiFp)(this.configuration).getSingleWriteOff(id, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get a write-off pdf
+     * @param {number} id The ID of the write-off object that should be returned
+     * @param {boolean} [force] Whether to force regeneration of the pdf
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WriteoffsApi
+     */
+    getWriteOffPdf(id, force, options) {
+        return (0, exports.WriteoffsApiFp)(this.configuration).getWriteOffPdf(id, force, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.WriteoffsApi = WriteoffsApi;
