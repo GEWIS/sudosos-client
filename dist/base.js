@@ -33,12 +33,11 @@ exports.COLLECTION_FORMATS = {
  */
 class BaseAPI {
     constructor(configuration, basePath = exports.BASE_PATH, axios = axios_1.default) {
-        var _a;
         this.basePath = basePath;
         this.axios = axios;
         if (configuration) {
             this.configuration = configuration;
-            this.basePath = (_a = configuration.basePath) !== null && _a !== void 0 ? _a : basePath;
+            this.basePath = configuration.basePath ?? basePath;
         }
     }
 }
@@ -63,4 +62,3 @@ exports.RequiredError = RequiredError;
  * @export
  */
 exports.operationServerMap = {};
-//# sourceMappingURL=base.js.map
