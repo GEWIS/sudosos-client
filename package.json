@@ -8,17 +8,16 @@
   "scripts": {
     "build": "tsc",
     "gen": "openapi-generator-cli generate -i swagger.json  -g typescript-axios -o ./src --openapi-normalizer REFACTOR_ALLOF_WITH_PROPERTIES_ONLY=true",
-
     "genbuild": "npm run gen && npm run build && (git add ./src && git add ./dist)",
-
     "update-swagger:main": "mv ./node_modules/@sudosos/sudosos-backend-main ./sudosos-backend && npm run run-swagger && cp ./sudosos-backend/out/swagger.json ./swagger-main.json",
     "update-swagger:dev": "mv ./node_modules/@sudosos/sudosos-backend-develop ./sudosos-backend && npm run run-swagger && cp ./sudosos-backend/out/swagger.json ./swagger-develop.json",
     "run-swagger": "(cd ./sudosos-backend && npx npm install --force && npx npm run swagger )"
   },
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.7.0",
+    "@sudosos/sudosos-backend-develop": "github:GEWIS/sudosos-backend#develop",
     "@sudosos/sudosos-backend-main": "github:GEWIS/sudosos-backend#main",
-    "@sudosos/sudosos-backend-develop": "github:GEWIS/sudosos-backend#develop"
+    "typescript": "~5.5.3"
   },
   "repository": {
     "type": "git",
