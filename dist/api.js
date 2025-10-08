@@ -1053,10 +1053,11 @@ const BalanceApiAxiosParamCreator = function (configuration) {
          *
          * @summary Get the calculated total balances in SudoSOS
          * @param {string} date The date for which to calculate the balance.
+         * @param {boolean} [allowDeleted] Whether to include deleted users
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        calculateTotalBalances: async (date, options = {}) => {
+        calculateTotalBalances: async (date, allowDeleted, options = {}) => {
             // verify required parameter 'date' is not null or undefined
             (0, common_1.assertParamExists)('calculateTotalBalances', 'date', date);
             const localVarPath = `/balances/summary`;
@@ -1074,6 +1075,9 @@ const BalanceApiAxiosParamCreator = function (configuration) {
             await (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
             if (date !== undefined) {
                 localVarQueryParameter['date'] = date;
+            }
+            if (allowDeleted !== undefined) {
+                localVarQueryParameter['allowDeleted'] = allowDeleted;
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -1237,11 +1241,12 @@ const BalanceApiFp = function (configuration) {
          *
          * @summary Get the calculated total balances in SudoSOS
          * @param {string} date The date for which to calculate the balance.
+         * @param {boolean} [allowDeleted] Whether to include deleted users
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async calculateTotalBalances(date, options) {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.calculateTotalBalances(date, options);
+        async calculateTotalBalances(date, allowDeleted, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.calculateTotalBalances(date, allowDeleted, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = base_1.operationServerMap['BalanceApi.calculateTotalBalances']?.[index]?.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
@@ -1310,11 +1315,12 @@ const BalanceApiFactory = function (configuration, basePath, axios) {
          *
          * @summary Get the calculated total balances in SudoSOS
          * @param {string} date The date for which to calculate the balance.
+         * @param {boolean} [allowDeleted] Whether to include deleted users
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        calculateTotalBalances(date, options) {
-            return localVarFp.calculateTotalBalances(date, options).then((request) => request(axios, basePath));
+        calculateTotalBalances(date, allowDeleted, options) {
+            return localVarFp.calculateTotalBalances(date, allowDeleted, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -1371,12 +1377,13 @@ class BalanceApi extends base_1.BaseAPI {
      *
      * @summary Get the calculated total balances in SudoSOS
      * @param {string} date The date for which to calculate the balance.
+     * @param {boolean} [allowDeleted] Whether to include deleted users
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BalanceApi
      */
-    calculateTotalBalances(date, options) {
-        return (0, exports.BalanceApiFp)(this.configuration).calculateTotalBalances(date, options).then((request) => request(this.axios, this.basePath));
+    calculateTotalBalances(date, allowDeleted, options) {
+        return (0, exports.BalanceApiFp)(this.configuration).calculateTotalBalances(date, allowDeleted, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -9641,6 +9648,43 @@ const UsersApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
+         * @summary Adds a role to a user
+         * @param {number} id The id of the user
+         * @param {AddRoleRequest} addRoleRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addUserRole: async (id, addRoleRequest, options = {}) => {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('addUserRole', 'id', id);
+            // verify required parameter 'addRoleRequest' is not null or undefined
+            (0, common_1.assertParamExists)('addUserRole', 'addRoleRequest', addRoleRequest);
+            const localVarPath = `/users/{id}/roles`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            await (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(addRoleRequest, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
          * @summary Authenticate as another user
          * @param {number} id The id of the user that should be authenticated as
          * @param {*} [options] Override http request option.
@@ -9780,6 +9824,42 @@ const UsersApiAxiosParamCreator = function (configuration) {
             (0, common_1.assertParamExists)('deleteUserNfc', 'id', id);
             const localVarPath = `/users/{id}/authenticator/nfc`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            await (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Deletes a role from a user
+         * @param {number} id The id of the user
+         * @param {number} roleId The id of the role
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteUserRole: async (id, roleId, options = {}) => {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('deleteUserRole', 'id', id);
+            // verify required parameter 'roleId' is not null or undefined
+            (0, common_1.assertParamExists)('deleteUserRole', 'roleId', roleId);
+            const localVarPath = `/users/{id}/roles/{roleId}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)))
+                .replace(`{${"roleId"}}`, encodeURIComponent(String(roleId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
             let baseOptions;
@@ -10865,6 +10945,20 @@ const UsersApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Adds a role to a user
+         * @param {number} id The id of the user
+         * @param {AddRoleRequest} addRoleRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addUserRole(id, addRoleRequest, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addUserRole(id, addRoleRequest, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = base_1.operationServerMap['UsersApi.addUserRole']?.[index]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         *
          * @summary Authenticate as another user
          * @param {number} id The id of the user that should be authenticated as
          * @param {*} [options] Override http request option.
@@ -10926,6 +11020,20 @@ const UsersApiFp = function (configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteUserNfc(id, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = base_1.operationServerMap['UsersApi.deleteUserNfc']?.[index]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Deletes a role from a user
+         * @param {number} id The id of the user
+         * @param {number} roleId The id of the role
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteUserRole(id, roleId, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteUserRole(id, roleId, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = base_1.operationServerMap['UsersApi.deleteUserRole']?.[index]?.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
@@ -11331,6 +11439,17 @@ const UsersApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary Adds a role to a user
+         * @param {number} id The id of the user
+         * @param {AddRoleRequest} addRoleRequest
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addUserRole(id, addRoleRequest, options) {
+            return localVarFp.addUserRole(id, addRoleRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Authenticate as another user
          * @param {number} id The id of the user that should be authenticated as
          * @param {*} [options] Override http request option.
@@ -11378,6 +11497,17 @@ const UsersApiFactory = function (configuration, basePath, axios) {
          */
         deleteUserNfc(id, options) {
             return localVarFp.deleteUserNfc(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Deletes a role from a user
+         * @param {number} id The id of the user
+         * @param {number} roleId The id of the role
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteUserRole(id, roleId, options) {
+            return localVarFp.deleteUserRole(id, roleId, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -11708,6 +11838,18 @@ class UsersApi extends base_1.BaseAPI {
     }
     /**
      *
+     * @summary Adds a role to a user
+     * @param {number} id The id of the user
+     * @param {AddRoleRequest} addRoleRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    addUserRole(id, addRoleRequest, options) {
+        return (0, exports.UsersApiFp)(this.configuration).addUserRole(id, addRoleRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
      * @summary Authenticate as another user
      * @param {number} id The id of the user that should be authenticated as
      * @param {*} [options] Override http request option.
@@ -11760,6 +11902,18 @@ class UsersApi extends base_1.BaseAPI {
      */
     deleteUserNfc(id, options) {
         return (0, exports.UsersApiFp)(this.configuration).deleteUserNfc(id, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Deletes a role from a user
+     * @param {number} id The id of the user
+     * @param {number} roleId The id of the role
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    deleteUserRole(id, roleId, options) {
+        return (0, exports.UsersApiFp)(this.configuration).deleteUserRole(id, roleId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
