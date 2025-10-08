@@ -48,6 +48,19 @@ export interface ActionResponse {
 /**
  *
  * @export
+ * @interface AddRoleRequest
+ */
+export interface AddRoleRequest {
+    /**
+     * Role to add to the user.
+     * @type {number}
+     * @memberof AddRoleRequest
+     */
+    'roleId': number;
+}
+/**
+ *
+ * @export
  * @interface AuthenticationEanRequest
  */
 export interface AuthenticationEanRequest {
@@ -6439,7 +6452,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    authenticatePointOfSale(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
+    authenticatePointOfSale(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
     /**
      *
      * @summary EAN login and hand out token
@@ -6448,7 +6461,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    eanAuthentication(authenticationEanRequest: AuthenticationEanRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
+    eanAuthentication(authenticationEanRequest: AuthenticationEanRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
     /**
      *
      * @summary Get the GEWISWeb public token used by SudoSOS
@@ -6456,7 +6469,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    getGEWISWebPublic(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    getGEWISWebPublic(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any, {}>>;
     /**
      *
      * @summary LDAP login and hand out token    If user has never signed in before this also creates an GEWIS account.
@@ -6465,7 +6478,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    gewisLDAPAuthentication(authenticationLDAPRequest: AuthenticationLDAPRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
+    gewisLDAPAuthentication(authenticationLDAPRequest: AuthenticationLDAPRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
     /**
      *
      * @summary PIN login and hand out token.
@@ -6474,7 +6487,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    gewisPinAuthentication(gEWISAuthenticationPinRequest: GEWISAuthenticationPinRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
+    gewisPinAuthentication(gEWISAuthenticationPinRequest: GEWISAuthenticationPinRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
     /**
      *
      * @summary GEWIS login verification based on gewisweb JWT tokens. This method verifies the validity of the gewisweb JWT token, and returns a SudoSOS token if the GEWIS token is valid.
@@ -6483,7 +6496,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    gewisWebAuthentication(gewiswebAuthenticationRequest: GewiswebAuthenticationRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
+    gewisWebAuthentication(gewiswebAuthenticationRequest: GewiswebAuthenticationRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
     /**
      *
      * @summary Key login and hand out token.
@@ -6492,7 +6505,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    keyAuthentication(authenticationKeyRequest: AuthenticationKeyRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
+    keyAuthentication(authenticationKeyRequest: AuthenticationKeyRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
     /**
      *
      * @summary LDAP login and hand out token If user has never signed in before this also creates an account.
@@ -6501,7 +6514,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    ldapAuthentication(authenticationLDAPRequest: AuthenticationLDAPRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
+    ldapAuthentication(authenticationLDAPRequest: AuthenticationLDAPRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
     /**
      *
      * @summary Local login and hand out token
@@ -6510,7 +6523,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    localAuthentication(authenticationLocalRequest: AuthenticationLocalRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
+    localAuthentication(authenticationLocalRequest: AuthenticationLocalRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
     /**
      *
      * @summary Mock login and hand out token.
@@ -6519,7 +6532,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    mockAuthentication(authenticationMockRequest: AuthenticationMockRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
+    mockAuthentication(authenticationMockRequest: AuthenticationMockRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
     /**
      *
      * @summary NFC login and hand out token
@@ -6528,7 +6541,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    nfcAuthentication(authenticationNfcRequest: AuthenticationNfcRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
+    nfcAuthentication(authenticationNfcRequest: AuthenticationNfcRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
     /**
      *
      * @summary PIN login and hand out token
@@ -6537,7 +6550,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    pinAuthentication(authenticationPinRequest: AuthenticationPinRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
+    pinAuthentication(authenticationPinRequest: AuthenticationPinRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
     /**
      *
      * @summary Get a new JWT token, lesser if the existing token is also lesser
@@ -6545,7 +6558,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    refreshToken(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
+    refreshToken(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
     /**
      *
      * @summary Creates a reset token for the local authentication
@@ -6554,7 +6567,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    resetLocal(resetLocalRequest: ResetLocalRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    resetLocal(resetLocalRequest: ResetLocalRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
     /**
      *
      * @summary Reset local authentication using the provided token
@@ -6563,7 +6576,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    resetLocalWithToken(authenticationResetTokenRequest: AuthenticationResetTokenRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    resetLocalWithToken(authenticationResetTokenRequest: AuthenticationResetTokenRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
 }
 /**
  * BalanceApi - axios parameter creator
@@ -6574,10 +6587,11 @@ export declare const BalanceApiAxiosParamCreator: (configuration?: Configuration
      *
      * @summary Get the calculated total balances in SudoSOS
      * @param {string} date The date for which to calculate the balance.
+     * @param {boolean} [allowDeleted] Whether to include deleted users
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    calculateTotalBalances: (date: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    calculateTotalBalances: (date: string, allowDeleted?: boolean, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get balance of all users
@@ -6623,10 +6637,11 @@ export declare const BalanceApiFp: (configuration?: Configuration) => {
      *
      * @summary Get the calculated total balances in SudoSOS
      * @param {string} date The date for which to calculate the balance.
+     * @param {boolean} [allowDeleted] Whether to include deleted users
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    calculateTotalBalances(date: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TotalBalanceResponse>>;
+    calculateTotalBalances(date: string, allowDeleted?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TotalBalanceResponse>>;
     /**
      *
      * @summary Get balance of all users
@@ -6672,10 +6687,11 @@ export declare const BalanceApiFactory: (configuration?: Configuration, basePath
      *
      * @summary Get the calculated total balances in SudoSOS
      * @param {string} date The date for which to calculate the balance.
+     * @param {boolean} [allowDeleted] Whether to include deleted users
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    calculateTotalBalances(date: string, options?: any): AxiosPromise<TotalBalanceResponse>;
+    calculateTotalBalances(date: string, allowDeleted?: boolean, options?: any): AxiosPromise<TotalBalanceResponse>;
     /**
      *
      * @summary Get balance of all users
@@ -6723,11 +6739,12 @@ export declare class BalanceApi extends BaseAPI {
      *
      * @summary Get the calculated total balances in SudoSOS
      * @param {string} date The date for which to calculate the balance.
+     * @param {boolean} [allowDeleted] Whether to include deleted users
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BalanceApi
      */
-    calculateTotalBalances(date: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TotalBalanceResponse, any>>;
+    calculateTotalBalances(date: string, allowDeleted?: boolean, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TotalBalanceResponse, any, {}>>;
     /**
      *
      * @summary Get balance of all users
@@ -6748,7 +6765,7 @@ export declare class BalanceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BalanceApi
      */
-    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, inactive?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBalanceResponse, any>>;
+    getAllBalance(date?: string, minBalance?: number, maxBalance?: number, hasFine?: boolean, minFine?: number, maxFine?: number, userTypes?: GetAllBalanceUserTypesEnum, orderBy?: string, orderDirection?: GetAllBalanceOrderDirectionEnum, allowDeleted?: boolean, inactive?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBalanceResponse, any, {}>>;
     /**
      *
      * @summary Retrieves the requested balance
@@ -6757,7 +6774,7 @@ export declare class BalanceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BalanceApi
      */
-    getBalanceId(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BalanceResponse, any>>;
+    getBalanceId(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BalanceResponse, any, {}>>;
     /**
      *
      * @summary Get balance of the current user
@@ -6765,7 +6782,7 @@ export declare class BalanceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BalanceApi
      */
-    getBalances(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BalanceResponse, any>>;
+    getBalances(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BalanceResponse, any, {}>>;
 }
 /**
  * @export
@@ -7020,7 +7037,7 @@ export declare class BannersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BannersApi
      */
-    _delete(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    _delete(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
     /**
      *
      * @summary Saves a banner to the database
@@ -7029,7 +7046,7 @@ export declare class BannersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BannersApi
      */
-    create(bannerRequest: BannerRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BannerResponse, any>>;
+    create(bannerRequest: BannerRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BannerResponse, any, {}>>;
     /**
      *
      * @summary Returns all active banners
@@ -7039,7 +7056,7 @@ export declare class BannersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BannersApi
      */
-    getActive(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBannerResponse, any>>;
+    getActive(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBannerResponse, any, {}>>;
     /**
      *
      * @summary Returns all existing banners
@@ -7049,7 +7066,7 @@ export declare class BannersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BannersApi
      */
-    getAllBanners(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBannerResponse, any>>;
+    getAllBanners(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBannerResponse, any, {}>>;
     /**
      *
      * @summary Returns all existing banners
@@ -7059,7 +7076,7 @@ export declare class BannersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BannersApi
      */
-    getAllOpenBanners(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBannerResponse, any>>;
+    getAllOpenBanners(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBannerResponse, any, {}>>;
     /**
      *
      * @summary Returns the requested banner
@@ -7068,7 +7085,7 @@ export declare class BannersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BannersApi
      */
-    getBanner(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BannerResponse, any>>;
+    getBanner(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BannerResponse, any, {}>>;
     /**
      *
      * @summary Updates the requested banner
@@ -7078,7 +7095,7 @@ export declare class BannersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BannersApi
      */
-    update(id: number, bannerRequest: BannerRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BannerResponse, any>>;
+    update(id: number, bannerRequest: BannerRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BannerResponse, any, {}>>;
     /**
      *
      * @summary Uploads a banner image to the given banner
@@ -7088,7 +7105,7 @@ export declare class BannersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BannersApi
      */
-    updateImage(id: number, file?: File, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    updateImage(id: number, file?: File, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
 }
 /**
  * ContainersApi - axios parameter creator
@@ -7300,7 +7317,7 @@ export declare class ContainersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ContainersApi
      */
-    createContainer(createContainerRequest: CreateContainerRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ContainerWithProductsResponse, any>>;
+    createContainer(createContainerRequest: CreateContainerRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ContainerWithProductsResponse, any, {}>>;
     /**
      *
      * @summary (Soft) delete the given container. Cannot be undone.
@@ -7309,7 +7326,7 @@ export declare class ContainersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ContainersApi
      */
-    deleteContainer(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    deleteContainer(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any, {}>>;
     /**
      *
      * @summary Returns all existing containers
@@ -7319,7 +7336,7 @@ export declare class ContainersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ContainersApi
      */
-    getAllContainers(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedContainerResponse, any>>;
+    getAllContainers(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedContainerResponse, any, {}>>;
     /**
      *
      * @summary Returns all the products in the container
@@ -7328,7 +7345,7 @@ export declare class ContainersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ContainersApi
      */
-    getProductsContainer(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductResponse[], any>>;
+    getProductsContainer(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductResponse[], any, {}>>;
     /**
      *
      * @summary Returns all public container
@@ -7338,7 +7355,7 @@ export declare class ContainersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ContainersApi
      */
-    getPublicContainers(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedContainerResponse, any>>;
+    getPublicContainers(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedContainerResponse, any, {}>>;
     /**
      *
      * @summary Returns the requested container
@@ -7347,7 +7364,7 @@ export declare class ContainersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ContainersApi
      */
-    getSingleContainer(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ContainerWithProductsResponse, any>>;
+    getSingleContainer(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ContainerWithProductsResponse, any, {}>>;
     /**
      *
      * @summary Update an existing container.
@@ -7357,7 +7374,7 @@ export declare class ContainersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ContainersApi
      */
-    updateContainer(id: number, updateContainerRequest: UpdateContainerRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ContainerWithProductsResponse, any>>;
+    updateContainer(id: number, updateContainerRequest: UpdateContainerRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ContainerWithProductsResponse, any, {}>>;
 }
 /**
  * DebtorsApi - axios parameter creator
@@ -7600,7 +7617,7 @@ export declare class DebtorsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DebtorsApi
      */
-    calculateFines(referenceDates: Array<string>, userTypes?: Array<string>, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserToFineResponse[], any>>;
+    calculateFines(referenceDates: Array<string>, userTypes?: Array<string>, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserToFineResponse[], any, {}>>;
     /**
      *
      * @summary Delete a fine
@@ -7609,7 +7626,7 @@ export declare class DebtorsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DebtorsApi
      */
-    deleteFine(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    deleteFine(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
     /**
      *
      * @summary Get a report of all fines
@@ -7619,7 +7636,7 @@ export declare class DebtorsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DebtorsApi
      */
-    getFineReport(fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FineReportResponse, any>>;
+    getFineReport(fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FineReportResponse, any, {}>>;
     /**
      *
      * @summary Get a report of all fines in pdf format
@@ -7630,7 +7647,7 @@ export declare class DebtorsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DebtorsApi
      */
-    getFineReportPdf(fromDate: string, toDate: string, fileType: GetFineReportPdfFileTypeEnum, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    getFineReportPdf(fromDate: string, toDate: string, fileType: GetFineReportPdfFileTypeEnum, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any, {}>>;
     /**
      *
      * @summary Handout fines to all given users. Fines will be handed out \"now\" to prevent rewriting history.
@@ -7639,7 +7656,7 @@ export declare class DebtorsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DebtorsApi
      */
-    handoutFines(handoutFinesRequest: HandoutFinesRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FineHandoutEventResponse, any>>;
+    handoutFines(handoutFinesRequest: HandoutFinesRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FineHandoutEventResponse, any, {}>>;
     /**
      *
      * @summary Send an email to all given users about their possible future fine.
@@ -7648,7 +7665,7 @@ export declare class DebtorsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DebtorsApi
      */
-    notifyAboutFutureFines(handoutFinesRequest: HandoutFinesRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    notifyAboutFutureFines(handoutFinesRequest: HandoutFinesRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
     /**
      *
      * @summary Get all fine handout events
@@ -7658,7 +7675,7 @@ export declare class DebtorsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DebtorsApi
      */
-    returnAllFineHandoutEvents(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedFineHandoutEventResponse, any>>;
+    returnAllFineHandoutEvents(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedFineHandoutEventResponse, any, {}>>;
     /**
      *
      * @summary Get all fine handout events
@@ -7667,7 +7684,7 @@ export declare class DebtorsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DebtorsApi
      */
-    returnSingleFineHandoutEvent(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FineHandoutEventResponse, any>>;
+    returnSingleFineHandoutEvent(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FineHandoutEventResponse, any, {}>>;
 }
 /**
  * @export
@@ -8092,7 +8109,7 @@ export declare class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    assignEventShift(eventId: number, shiftId: number, userId: number, eventAnswerAssignmentRequest: EventAnswerAssignmentRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BaseEventAnswerResponse, any>>;
+    assignEventShift(eventId: number, shiftId: number, userId: number, eventAnswerAssignmentRequest: EventAnswerAssignmentRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BaseEventAnswerResponse, any, {}>>;
     /**
      *
      * @summary Create an event with its corresponding answers objects
@@ -8102,7 +8119,7 @@ export declare class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    createEvent(createEventRequest: CreateEventRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<EventResponse, any>>;
+    createEvent(createEventRequest: CreateEventRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<EventResponse, any, {}>>;
     /**
      *
      * @summary Create an event shift
@@ -8112,7 +8129,7 @@ export declare class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    createEventShift(createShiftRequest: CreateShiftRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<EventShiftResponse, any>>;
+    createEventShift(createShiftRequest: CreateShiftRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<EventShiftResponse, any, {}>>;
     /**
      *
      * @summary Delete an event with its answers
@@ -8122,7 +8139,7 @@ export declare class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    deleteEvent(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    deleteEvent(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
     /**
      *
      * @summary Delete an event shift with its answers
@@ -8132,7 +8149,7 @@ export declare class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    deleteEventShift(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    deleteEventShift(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
     /**
      *
      * @summary Get all event shifts
@@ -8143,7 +8160,7 @@ export declare class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    getAllEventShifts(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedEventShiftResponse, any>>;
+    getAllEventShifts(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedEventShiftResponse, any, {}>>;
     /**
      *
      * @summary Get all events
@@ -8159,7 +8176,7 @@ export declare class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    getAllEvents(name?: string, createdById?: number, beforeDate?: string, afterDate?: string, type?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBaseEventResponse, any>>;
+    getAllEvents(name?: string, createdById?: number, beforeDate?: string, afterDate?: string, type?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBaseEventResponse, any, {}>>;
     /**
      *
      * @summary Get the number of times a user has been selected for the given shift
@@ -8172,7 +8189,7 @@ export declare class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    getEventShiftCount(id: number, eventType?: string, afterDate?: string, beforeDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedEventShiftResponse[], any>>;
+    getEventShiftCount(id: number, eventType?: string, afterDate?: string, beforeDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedEventShiftResponse[], any, {}>>;
     /**
      *
      * @summary Get a single event with its answers and shifts
@@ -8182,7 +8199,7 @@ export declare class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    getSingleEvent(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<EventResponse, any>>;
+    getSingleEvent(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<EventResponse, any, {}>>;
     /**
      *
      * @summary Update an event with its corresponding answers objects
@@ -8193,7 +8210,7 @@ export declare class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    updateEvent(id: number, updateEventRequest: UpdateEventRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<EventResponse, any>>;
+    updateEvent(id: number, updateEventRequest: UpdateEventRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<EventResponse, any, {}>>;
     /**
      *
      * @summary Update an event shift
@@ -8204,7 +8221,7 @@ export declare class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    updateEventShift(id: number, updateShiftRequest: UpdateShiftRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<EventShiftResponse, any>>;
+    updateEventShift(id: number, updateShiftRequest: UpdateShiftRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<EventShiftResponse, any, {}>>;
     /**
      *
      * @summary Update the availability of a user for a shift in an event
@@ -8217,7 +8234,7 @@ export declare class EventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EventsApi
      */
-    updateEventShiftAvailability(eventId: number, shiftId: number, userId: number, eventAnswerAvailabilityRequest: EventAnswerAvailabilityRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BaseEventAnswerResponse, any>>;
+    updateEventShiftAvailability(eventId: number, shiftId: number, userId: number, eventAnswerAvailabilityRequest: EventAnswerAvailabilityRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BaseEventAnswerResponse, any, {}>>;
 }
 /**
  * FilesApi - axios parameter creator
@@ -8328,7 +8345,7 @@ export declare class FilesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FilesApi
      */
-    createFile(name: string, file?: File, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SimpleFileResponse, any>>;
+    createFile(name: string, file?: File, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SimpleFileResponse, any, {}>>;
     /**
      *
      * @summary Delete the file with the given id.
@@ -8337,7 +8354,7 @@ export declare class FilesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FilesApi
      */
-    deleteFile(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    deleteFile(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
     /**
      *
      * @summary Download a file with the given id.
@@ -8346,7 +8363,7 @@ export declare class FilesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FilesApi
      */
-    getFile(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    getFile(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any, {}>>;
 }
 /**
  * InvoicesApi - axios parameter creator
@@ -8660,7 +8677,7 @@ export declare class InvoicesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoicesApi
      */
-    createInvoice(createInvoiceRequest: CreateInvoiceRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<InvoiceResponse, any>>;
+    createInvoice(createInvoiceRequest: CreateInvoiceRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<InvoiceResponse, any, {}>>;
     /**
      *
      * @summary Deletes an invoice.
@@ -8669,7 +8686,7 @@ export declare class InvoicesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoicesApi
      */
-    deleteInvoice(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    deleteInvoice(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
     /**
      *
      * @summary Delete invoice user defaults.
@@ -8678,7 +8695,7 @@ export declare class InvoicesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoicesApi
      */
-    deleteInvoiceUser(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    deleteInvoiceUser(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
     /**
      *
      * @summary Returns all invoices in the system.
@@ -8694,7 +8711,7 @@ export declare class InvoicesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoicesApi
      */
-    getAllInvoices(toId?: number, invoiceId?: number, currentState?: GetAllInvoicesCurrentStateEnum, returnEntries?: boolean, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedInvoiceResponse, any>>;
+    getAllInvoices(toId?: number, invoiceId?: number, currentState?: GetAllInvoicesCurrentStateEnum, returnEntries?: boolean, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedInvoiceResponse, any, {}>>;
     /**
      *
      * @summary Get eligible transactions for invoice creation.
@@ -8705,7 +8722,7 @@ export declare class InvoicesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoicesApi
      */
-    getEligibleTransactions(forId: number, fromDate: string, tillDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionResponse, any>>;
+    getEligibleTransactions(forId: number, fromDate: string, tillDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionResponse, any, {}>>;
     /**
      *
      * @summary Get an invoice pdf.
@@ -8715,7 +8732,7 @@ export declare class InvoicesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoicesApi
      */
-    getInvoicePdf(id: number, force?: boolean, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    getInvoicePdf(id: number, force?: boolean, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any, {}>>;
     /**
      *
      * @summary Returns a single invoice in the system.
@@ -8725,7 +8742,7 @@ export declare class InvoicesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoicesApi
      */
-    getSingleInvoice(id: number, returnEntries?: boolean, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<InvoiceResponse, any>>;
+    getSingleInvoice(id: number, returnEntries?: boolean, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<InvoiceResponse, any, {}>>;
     /**
      *
      * @summary Get invoice user defaults.
@@ -8734,7 +8751,7 @@ export declare class InvoicesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoicesApi
      */
-    getSingleInvoiceUser(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<InvoiceUserResponse, any>>;
+    getSingleInvoiceUser(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<InvoiceUserResponse, any, {}>>;
     /**
      *
      * @summary Update or create invoice user defaults.
@@ -8744,7 +8761,7 @@ export declare class InvoicesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoicesApi
      */
-    putInvoiceUser(id: number, updateInvoiceUserRequest: UpdateInvoiceUserRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<InvoiceUserResponse, any>>;
+    putInvoiceUser(id: number, updateInvoiceUserRequest: UpdateInvoiceUserRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<InvoiceUserResponse, any, {}>>;
     /**
      *
      * @summary Adds an invoice to the system.
@@ -8754,7 +8771,7 @@ export declare class InvoicesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InvoicesApi
      */
-    updateInvoice(id: number, updateInvoiceRequest: UpdateInvoiceRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BaseInvoiceResponse, any>>;
+    updateInvoice(id: number, updateInvoiceRequest: UpdateInvoiceRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BaseInvoiceResponse, any, {}>>;
 }
 /**
  * @export
@@ -8938,7 +8955,7 @@ export declare class PayoutRequestsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PayoutRequestsApi
      */
-    createPayoutRequest(payoutRequestRequest: PayoutRequestRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PayoutRequestResponse, any>>;
+    createPayoutRequest(payoutRequestRequest: PayoutRequestRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PayoutRequestResponse, any, {}>>;
     /**
      *
      * @summary Returns all payout requests given the filter parameters
@@ -8953,7 +8970,7 @@ export declare class PayoutRequestsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PayoutRequestsApi
      */
-    getAllPayoutRequests(requestedById?: GetAllPayoutRequestsRequestedByIdParameter, approvedById?: GetAllPayoutRequestsRequestedByIdParameter, fromDate?: string, tillDate?: string, status?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBasePayoutRequestResponse, any>>;
+    getAllPayoutRequests(requestedById?: GetAllPayoutRequestsRequestedByIdParameter, approvedById?: GetAllPayoutRequestsRequestedByIdParameter, fromDate?: string, tillDate?: string, status?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBasePayoutRequestResponse, any, {}>>;
     /**
      *
      * @summary Get a payout request pdf
@@ -8963,7 +8980,7 @@ export declare class PayoutRequestsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PayoutRequestsApi
      */
-    getPayoutRequestPdf(id: number, force?: boolean, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PdfUrlResponse, any>>;
+    getPayoutRequestPdf(id: number, force?: boolean, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PdfUrlResponse, any, {}>>;
     /**
      *
      * @summary Get a single payout request
@@ -8972,7 +8989,7 @@ export declare class PayoutRequestsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PayoutRequestsApi
      */
-    getSinglePayoutRequest(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PayoutRequestResponse, any>>;
+    getSinglePayoutRequest(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PayoutRequestResponse, any, {}>>;
     /**
      *
      * @summary Create a new status for a payout request
@@ -8982,7 +8999,7 @@ export declare class PayoutRequestsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PayoutRequestsApi
      */
-    setPayoutRequestStatus(id: number, payoutRequestStatusRequest: PayoutRequestStatusRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PayoutRequestResponse, any>>;
+    setPayoutRequestStatus(id: number, payoutRequestStatusRequest: PayoutRequestStatusRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PayoutRequestResponse, any, {}>>;
 }
 /**
  * PointofsaleApi - axios parameter creator
@@ -9251,7 +9268,7 @@ export declare class PointofsaleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PointofsaleApi
      */
-    createPointOfSale(createPointOfSaleRequest: CreatePointOfSaleRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PointOfSaleWithContainersResponse, any>>;
+    createPointOfSale(createPointOfSaleRequest: CreatePointOfSaleRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PointOfSaleWithContainersResponse, any, {}>>;
     /**
      *
      * @summary (Soft) delete the given point of sale. Cannot be undone.
@@ -9260,7 +9277,7 @@ export declare class PointofsaleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PointofsaleApi
      */
-    deletePointOfSale(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    deletePointOfSale(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any, {}>>;
     /**
      *
      * @summary Returns the containers of the requested Point of Sale, empty list if POS does not exist
@@ -9271,7 +9288,7 @@ export declare class PointofsaleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PointofsaleApi
      */
-    getAllPointOfSaleContainers(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedContainerResponse, any>>;
+    getAllPointOfSaleContainers(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedContainerResponse, any, {}>>;
     /**
      *
      * @summary Returns the products of the requested Point of Sale, empty list if POS does not exist
@@ -9280,7 +9297,7 @@ export declare class PointofsaleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PointofsaleApi
      */
-    getAllPointOfSaleProducts(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductResponse[], any>>;
+    getAllPointOfSaleProducts(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductResponse[], any, {}>>;
     /**
      *
      * @summary Returns all existing Point of Sales
@@ -9290,7 +9307,7 @@ export declare class PointofsaleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PointofsaleApi
      */
-    getAllPointsOfSale(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedPointOfSaleResponse, any>>;
+    getAllPointsOfSale(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedPointOfSaleResponse, any, {}>>;
     /**
      *
      * @summary Returns a Point of Sale\'s associate users
@@ -9299,7 +9316,7 @@ export declare class PointofsaleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PointofsaleApi
      */
-    getPointOfSaleAssociates(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PointOfSaleAssociateUsersResponse, any>>;
+    getPointOfSaleAssociates(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PointOfSaleAssociateUsersResponse, any, {}>>;
     /**
      *
      * @summary Returns the requested Point of Sale
@@ -9308,7 +9325,7 @@ export declare class PointofsaleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PointofsaleApi
      */
-    getSinglePointOfSale(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PointOfSaleWithContainersResponse, any>>;
+    getSinglePointOfSale(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PointOfSaleWithContainersResponse, any, {}>>;
     /**
      *
      * @summary Returns a Point of Sale transactions
@@ -9319,7 +9336,7 @@ export declare class PointofsaleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PointofsaleApi
      */
-    getTransactions(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBaseTransactionResponse, any>>;
+    getTransactions(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBaseTransactionResponse, any, {}>>;
     /**
      *
      * @summary Update an existing Point of Sale.
@@ -9329,7 +9346,7 @@ export declare class PointofsaleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PointofsaleApi
      */
-    updatePointOfSale(id: number, updatePointOfSaleRequest: UpdatePointOfSaleRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PointOfSaleWithContainersResponse, any>>;
+    updatePointOfSale(id: number, updatePointOfSaleRequest: UpdatePointOfSaleRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PointOfSaleWithContainersResponse, any, {}>>;
 }
 /**
  * ProductCategoriesApi - axios parameter creator
@@ -9472,7 +9489,7 @@ export declare class ProductCategoriesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProductCategoriesApi
      */
-    createProductCategory(productCategoryRequest: ProductCategoryRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductCategoryResponse, any>>;
+    createProductCategory(productCategoryRequest: ProductCategoryRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductCategoryResponse, any, {}>>;
     /**
      *
      * @summary Returns all existing productcategories
@@ -9484,7 +9501,7 @@ export declare class ProductCategoriesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProductCategoriesApi
      */
-    getAllProductCategories(onlyRoot?: boolean, onlyLeaf?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedProductCategoryResponse, any>>;
+    getAllProductCategories(onlyRoot?: boolean, onlyLeaf?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedProductCategoryResponse, any, {}>>;
     /**
      *
      * @summary Returns the requested productcategory
@@ -9493,7 +9510,7 @@ export declare class ProductCategoriesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProductCategoriesApi
      */
-    getSingleProductCategory(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductCategoryResponse, any>>;
+    getSingleProductCategory(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductCategoryResponse, any, {}>>;
     /**
      *
      * @summary Update an existing productcategory.
@@ -9503,7 +9520,7 @@ export declare class ProductCategoriesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProductCategoriesApi
      */
-    updateProductCategory(id: number, productCategoryRequest: ProductCategoryRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductCategoryResponse, any>>;
+    updateProductCategory(id: number, productCategoryRequest: ProductCategoryRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductCategoryResponse, any, {}>>;
 }
 /**
  * ProductsApi - axios parameter creator
@@ -9691,7 +9708,7 @@ export declare class ProductsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProductsApi
      */
-    createProduct(createProductRequest: CreateProductRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductResponse, any>>;
+    createProduct(createProductRequest: CreateProductRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductResponse, any, {}>>;
     /**
      *
      * @summary (Soft) delete the given product. Cannot be undone.
@@ -9700,7 +9717,7 @@ export declare class ProductsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProductsApi
      */
-    deleteProduct(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    deleteProduct(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any, {}>>;
     /**
      *
      * @summary Returns all existing products
@@ -9710,7 +9727,7 @@ export declare class ProductsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProductsApi
      */
-    getAllProducts(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedProductResponse, any>>;
+    getAllProducts(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedProductResponse, any, {}>>;
     /**
      *
      * @summary Returns the requested product
@@ -9719,7 +9736,7 @@ export declare class ProductsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProductsApi
      */
-    getSingleProduct(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductResponse, any>>;
+    getSingleProduct(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductResponse, any, {}>>;
     /**
      *
      * @summary Update an existing product.
@@ -9729,7 +9746,7 @@ export declare class ProductsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProductsApi
      */
-    updateProduct(id: number, updateProductRequest: UpdateProductRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductResponse, any>>;
+    updateProduct(id: number, updateProductRequest: UpdateProductRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProductResponse, any, {}>>;
     /**
      *
      * @summary Upload a new image for a product
@@ -9739,7 +9756,7 @@ export declare class ProductsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProductsApi
      */
-    updateProductImage(id: number, file?: File, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    updateProductImage(id: number, file?: File, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
 }
 /**
  * RbacApi - axios parameter creator
@@ -9979,7 +9996,7 @@ export declare class RbacApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof RbacApi
      */
-    addPermissions(id: number, createPermissionParams: Array<CreatePermissionParams>, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PermissionResponse[], any>>;
+    addPermissions(id: number, createPermissionParams: Array<CreatePermissionParams>, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PermissionResponse[], any, {}>>;
     /**
      *
      * @summary Create a new role
@@ -9988,7 +10005,7 @@ export declare class RbacApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof RbacApi
      */
-    createRole(updateRoleRequest: UpdateRoleRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleResponse, any>>;
+    createRole(updateRoleRequest: UpdateRoleRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleResponse, any, {}>>;
     /**
      *
      * @summary Delete a permission from an existing role
@@ -10000,7 +10017,7 @@ export declare class RbacApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof RbacApi
      */
-    deletePermission(id: number, entity: string, action: string, relation: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    deletePermission(id: number, entity: string, action: string, relation: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any, {}>>;
     /**
      *
      * @summary Delete an existing role
@@ -10009,7 +10026,7 @@ export declare class RbacApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof RbacApi
      */
-    deleteRole(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    deleteRole(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any, {}>>;
     /**
      *
      * @summary Get all existing roles
@@ -10017,7 +10034,7 @@ export declare class RbacApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof RbacApi
      */
-    getAllRoles(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleResponse[], any>>;
+    getAllRoles(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleResponse[], any, {}>>;
     /**
      *
      * @summary Get all users linked to a specific role
@@ -10026,7 +10043,7 @@ export declare class RbacApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof RbacApi
      */
-    getRoleUsers(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedUserResponse, any>>;
+    getRoleUsers(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedUserResponse, any, {}>>;
     /**
      *
      * @summary Get a single existing role with its permissions
@@ -10035,7 +10052,7 @@ export declare class RbacApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof RbacApi
      */
-    getSingleRole(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleWithPermissionsResponse, any>>;
+    getSingleRole(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleWithPermissionsResponse, any, {}>>;
     /**
      *
      * @summary Update an existing role
@@ -10045,7 +10062,7 @@ export declare class RbacApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof RbacApi
      */
-    updateRole(id: number, updateRoleRequest: UpdateRoleRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleResponse, any>>;
+    updateRole(id: number, updateRoleRequest: UpdateRoleRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleResponse, any, {}>>;
 }
 /**
  * RootApi - axios parameter creator
@@ -10100,7 +10117,7 @@ export declare class RootApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof RootApi
      */
-    ping(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ServerStatusResponse, any>>;
+    ping(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ServerStatusResponse, any, {}>>;
 }
 /**
  * SellerPayoutsApi - axios parameter creator
@@ -10321,7 +10338,7 @@ export declare class SellerPayoutsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SellerPayoutsApi
      */
-    createSellerPayout(createSellerPayoutRequest: CreateSellerPayoutRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SellerPayoutResponse, any>>;
+    createSellerPayout(createSellerPayoutRequest: CreateSellerPayoutRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SellerPayoutResponse, any, {}>>;
     /**
      *
      * @summary Delete an existing seller payout
@@ -10330,7 +10347,7 @@ export declare class SellerPayoutsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SellerPayoutsApi
      */
-    deleteSellerPayout(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    deleteSellerPayout(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any, {}>>;
     /**
      *
      * @summary Return all seller payouts
@@ -10343,7 +10360,7 @@ export declare class SellerPayoutsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SellerPayoutsApi
      */
-    getAllSellerPayouts(requestedById?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedSellerPayoutResponse, any>>;
+    getAllSellerPayouts(requestedById?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedSellerPayoutResponse, any, {}>>;
     /**
      *
      * @summary Get a single seller payout\'s sales report
@@ -10352,7 +10369,7 @@ export declare class SellerPayoutsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SellerPayoutsApi
      */
-    getSellerPayoutReport(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ReportResponse, any>>;
+    getSellerPayoutReport(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ReportResponse, any, {}>>;
     /**
      *
      * @summary Get a single seller payout\'s sales report as PDF
@@ -10362,7 +10379,7 @@ export declare class SellerPayoutsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SellerPayoutsApi
      */
-    getSellerPayoutReportPdf(id: number, force?: boolean, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PdfUrlResponse, any>>;
+    getSellerPayoutReportPdf(id: number, force?: boolean, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PdfUrlResponse, any, {}>>;
     /**
      *
      * @summary Get a single seller payout
@@ -10371,7 +10388,7 @@ export declare class SellerPayoutsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SellerPayoutsApi
      */
-    getSingleSellerPayout(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SellerPayoutResponse, any>>;
+    getSingleSellerPayout(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SellerPayoutResponse, any, {}>>;
     /**
      *
      * @summary Update an existing seller payout
@@ -10381,7 +10398,7 @@ export declare class SellerPayoutsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SellerPayoutsApi
      */
-    updateSellerPayout(id: number, updateSellerPayoutRequest: UpdateSellerPayoutRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SellerPayoutResponse, any>>;
+    updateSellerPayout(id: number, updateSellerPayoutRequest: UpdateSellerPayoutRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SellerPayoutResponse, any, {}>>;
 }
 /**
  * ServerSettingsApi - axios parameter creator
@@ -10440,7 +10457,7 @@ export declare class ServerSettingsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ServerSettingsApi
      */
-    setMaintenanceMode(updateMaintenanceModeRequest: UpdateMaintenanceModeRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    setMaintenanceMode(updateMaintenanceModeRequest: UpdateMaintenanceModeRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any, {}>>;
 }
 /**
  * StripeApi - axios parameter creator
@@ -10520,7 +10537,7 @@ export declare class StripeApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof StripeApi
      */
-    deposit(stripeRequest: StripeRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<StripePaymentIntentResponse, any>>;
+    deposit(stripeRequest: StripeRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<StripePaymentIntentResponse, any, {}>>;
     /**
      *
      * @summary Get the Stripe public key
@@ -10528,7 +10545,7 @@ export declare class StripeApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof StripeApi
      */
-    getStripePublicKey(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    getStripePublicKey(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any, {}>>;
 }
 /**
  * TestOperationsOfTheTestControllerApi - axios parameter creator
@@ -10583,7 +10600,7 @@ export declare class TestOperationsOfTheTestControllerApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TestOperationsOfTheTestControllerApi
      */
-    helloworld(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    helloworld(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
 }
 /**
  * TransactionSummariesApi - axios parameter creator
@@ -10646,7 +10663,7 @@ export declare class TransactionSummariesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionSummariesApi
      */
-    getSingleContainerSummary(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ContainerSummaryResponse[], any>>;
+    getSingleContainerSummary(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ContainerSummaryResponse[], any, {}>>;
 }
 /**
  * TransactionsApi - axios parameter creator
@@ -10861,7 +10878,7 @@ export declare class TransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    createTransaction(transactionRequest: TransactionRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionResponse, any>>;
+    createTransaction(transactionRequest: TransactionRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionResponse, any, {}>>;
     /**
      *
      * @summary Deletes a transaction
@@ -10870,7 +10887,7 @@ export declare class TransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    deleteTransaction(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    deleteTransaction(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
     /**
      *
      * @summary Get a list of all transactions
@@ -10890,7 +10907,7 @@ export declare class TransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    getAllTransactions(fromId?: number, createdById?: number, toId?: number, excludeById?: number, excludeFromId?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBaseTransactionResponse, any>>;
+    getAllTransactions(fromId?: number, createdById?: number, toId?: number, excludeById?: number, excludeFromId?: number, pointOfSaleId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBaseTransactionResponse, any, {}>>;
     /**
      *
      * @summary Get a single transaction
@@ -10899,7 +10916,7 @@ export declare class TransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    getSingleTransaction(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionResponse, any>>;
+    getSingleTransaction(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionResponse, any, {}>>;
     /**
      *
      * @summary Updates the requested transaction
@@ -10909,7 +10926,7 @@ export declare class TransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    updateTransaction(id: number, transactionRequest: TransactionRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionResponse, any>>;
+    updateTransaction(id: number, transactionRequest: TransactionRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionResponse, any, {}>>;
     /**
      *
      * @summary Function to validate the transaction immediatly after it is created
@@ -10918,7 +10935,7 @@ export declare class TransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransactionsApi
      */
-    validateTransaction(transactionRequest: TransactionRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<boolean, any>>;
+    validateTransaction(transactionRequest: TransactionRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<boolean, any, {}>>;
 }
 /**
  * TransfersApi - axios parameter creator
@@ -11028,7 +11045,7 @@ export declare class TransfersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransfersApi
      */
-    createTransfer(transferRequest: TransferRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransferResponse, any>>;
+    createTransfer(transferRequest: TransferRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransferResponse, any, {}>>;
     /**
      *
      * @summary Returns all existing transfers
@@ -11038,7 +11055,7 @@ export declare class TransfersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransfersApi
      */
-    getAllTransfers(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransferResponse[], any>>;
+    getAllTransfers(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransferResponse[], any, {}>>;
     /**
      *
      * @summary Returns the requested transfer
@@ -11047,7 +11064,7 @@ export declare class TransfersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TransfersApi
      */
-    getSingleTransfer(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransferResponse, any>>;
+    getSingleTransfer(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransferResponse, any, {}>>;
 }
 /**
  * UsersApi - axios parameter creator
@@ -11062,6 +11079,15 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @throws {RequiredError}
      */
     acceptTos: (acceptTosRequest: AcceptTosRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Adds a role to a user
+     * @param {number} id The id of the user
+     * @param {AddRoleRequest} addRoleRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    addUserRole: (id: number, addRoleRequest: AddRoleRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Authenticate as another user
@@ -11102,6 +11128,15 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @throws {RequiredError}
      */
     deleteUserNfc: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Deletes a role from a user
+     * @param {number} id The id of the user
+     * @param {number} roleId The id of the role
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteUserRole: (id: number, roleId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get a user using the nfc code
@@ -11374,6 +11409,15 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
     acceptTos(acceptTosRequest: AcceptTosRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
+     * @summary Adds a role to a user
+     * @param {number} id The id of the user
+     * @param {AddRoleRequest} addRoleRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    addUserRole(id: number, addRoleRequest: AddRoleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     *
      * @summary Authenticate as another user
      * @param {number} id The id of the user that should be authenticated as
      * @param {*} [options] Override http request option.
@@ -11412,6 +11456,15 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     deleteUserNfc(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     *
+     * @summary Deletes a role from a user
+     * @param {number} id The id of the user
+     * @param {number} roleId The id of the role
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteUserRole(id: number, roleId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
      * @summary Get a user using the nfc code
@@ -11684,6 +11737,15 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
     acceptTos(acceptTosRequest: AcceptTosRequest, options?: any): AxiosPromise<void>;
     /**
      *
+     * @summary Adds a role to a user
+     * @param {number} id The id of the user
+     * @param {AddRoleRequest} addRoleRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    addUserRole(id: number, addRoleRequest: AddRoleRequest, options?: any): AxiosPromise<void>;
+    /**
+     *
      * @summary Authenticate as another user
      * @param {number} id The id of the user that should be authenticated as
      * @param {*} [options] Override http request option.
@@ -11722,6 +11784,15 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
      * @throws {RequiredError}
      */
     deleteUserNfc(id: number, options?: any): AxiosPromise<void>;
+    /**
+     *
+     * @summary Deletes a role from a user
+     * @param {number} id The id of the user
+     * @param {number} roleId The id of the role
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteUserRole(id: number, roleId: number, options?: any): AxiosPromise<void>;
     /**
      *
      * @summary Get a user using the nfc code
@@ -11994,7 +12065,17 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    acceptTos(acceptTosRequest: AcceptTosRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    acceptTos(acceptTosRequest: AcceptTosRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    /**
+     *
+     * @summary Adds a role to a user
+     * @param {number} id The id of the user
+     * @param {AddRoleRequest} addRoleRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    addUserRole(id: number, addRoleRequest: AddRoleRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
     /**
      *
      * @summary Authenticate as another user
@@ -12003,7 +12084,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    authenticateAs(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any>>;
+    authenticateAs(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
     /**
      *
      * @summary Create a new user
@@ -12012,7 +12093,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    createUser(createUserRequest: CreateUserRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserResponse, any>>;
+    createUser(createUserRequest: CreateUserRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserResponse, any, {}>>;
     /**
      *
      * @summary Delete a single user
@@ -12021,7 +12102,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    deleteUser(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    deleteUser(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
     /**
      *
      * @summary Delete a users key code
@@ -12030,7 +12111,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    deleteUserKey(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    deleteUserKey(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
     /**
      *
      * @summary Delete a nfc code
@@ -12039,7 +12120,17 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    deleteUserNfc(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    deleteUserNfc(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    /**
+     *
+     * @summary Deletes a role from a user
+     * @param {number} id The id of the user
+     * @param {number} roleId The id of the role
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    deleteUserRole(id: number, roleId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
     /**
      *
      * @summary Get a user using the nfc code
@@ -12048,7 +12139,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    findUserNfc(nfcCode: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserResponse, any>>;
+    findUserNfc(nfcCode: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserResponse, any, {}>>;
     /**
      *
      * @summary Get a list of all users
@@ -12063,7 +12154,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getAllUsers(take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: GetAllUsersTypeEnum, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedUserResponse, any>>;
+    getAllUsers(take?: number, skip?: number, search?: string, active?: boolean, ofAge?: boolean, id?: number, type?: GetAllUsersTypeEnum, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedUserResponse, any, {}>>;
     /**
      *
      * @summary Get all users of user type
@@ -12074,7 +12165,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getAllUsersOfUserType(userType: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedUserResponse, any>>;
+    getAllUsersOfUserType(userType: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedUserResponse, any, {}>>;
     /**
      *
      * @summary Get an individual user
@@ -12083,7 +12174,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getIndividualUser(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserResponse, any>>;
+    getIndividualUser(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserResponse, any, {}>>;
     /**
      *
      * @summary Get an organs members
@@ -12094,7 +12185,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getOrganMembers(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedUserResponse, any>>;
+    getOrganMembers(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedUserResponse, any, {}>>;
     /**
      *
      * @summary Get all users that the user can authenticate as
@@ -12103,7 +12194,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUserAuthenticatable(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserResponse[], any>>;
+    getUserAuthenticatable(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserResponse[], any, {}>>;
     /**
      *
      * @summary Get all roles assigned to the user.
@@ -12112,7 +12203,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUserRoles(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleWithPermissionsResponse[], any>>;
+    getUserRoles(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleWithPermissionsResponse[], any, {}>>;
     /**
      *
      * @summary Returns the user\'s containers
@@ -12123,7 +12214,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUsersContainers(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedContainerResponse, any>>;
+    getUsersContainers(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedContainerResponse, any, {}>>;
     /**
      *
      * @summary Get all financial mutations of a user (from or to).
@@ -12136,7 +12227,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUsersFinancialMutations(id: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedFinancialMutationResponse, any>>;
+    getUsersFinancialMutations(id: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedFinancialMutationResponse, any, {}>>;
     /**
      *
      * @summary Returns the user\'s Points of Sale
@@ -12147,7 +12238,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUsersPointsOfSale(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedPointOfSaleResponse, any>>;
+    getUsersPointsOfSale(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedPointOfSaleResponse, any, {}>>;
     /**
      *
      * @summary Get all deposits of a user that are still being processed by Stripe
@@ -12156,7 +12247,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUsersProcessingDeposits(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleResponse[], any>>;
+    getUsersProcessingDeposits(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleResponse[], any, {}>>;
     /**
      *
      * @summary Get an user\'s products
@@ -12167,7 +12258,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUsersProducts(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedProductResponse, any>>;
+    getUsersProducts(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedProductResponse, any, {}>>;
     /**
      *
      * @summary Get purchase report pdf for the given user
@@ -12179,7 +12270,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUsersPurchaseReportPdf(id: number, fromDate: string, tillDate: string, fileType?: GetUsersPurchaseReportPdfFileTypeEnum, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    getUsersPurchaseReportPdf(id: number, fromDate: string, tillDate: string, fileType?: GetUsersPurchaseReportPdfFileTypeEnum, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any, {}>>;
     /**
      *
      * @summary Get purchases report for the given user
@@ -12190,7 +12281,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUsersPurchasesReport(id: number, fromDate: string, tillDate: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ReportResponse, any>>;
+    getUsersPurchasesReport(id: number, fromDate: string, tillDate: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ReportResponse, any, {}>>;
     /**
      *
      * @summary Get sales report for the given user
@@ -12201,7 +12292,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUsersSalesReport(id: number, fromDate: string, tillDate: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ReportResponse, any>>;
+    getUsersSalesReport(id: number, fromDate: string, tillDate: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ReportResponse, any, {}>>;
     /**
      *
      * @summary Get sales report for the given user
@@ -12214,7 +12305,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUsersSalesReportPdf(id: number, fromDate: string, tillDate: string, description?: string, fileType?: GetUsersSalesReportPdfFileTypeEnum, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    getUsersSalesReportPdf(id: number, fromDate: string, tillDate: string, description?: string, fileType?: GetUsersSalesReportPdfFileTypeEnum, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any, {}>>;
     /**
      *
      * @summary Get transactions from a user.
@@ -12232,7 +12323,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUsersTransactions(id: number, fromId?: number, createdById?: number, toId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBaseTransactionResponse, any>>;
+    getUsersTransactions(id: number, fromId?: number, createdById?: number, toId?: number, productId?: number, productRevision?: number, fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBaseTransactionResponse, any, {}>>;
     /**
      *
      * @summary Get transaction report for the given user
@@ -12247,7 +12338,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUsersTransactionsReport(id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, exclusiveToId?: boolean, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionReportResponse[], any>>;
+    getUsersTransactionsReport(id: number, fromDate?: string, tillDate?: string, fromId?: number, toId?: number, exclusiveToId?: boolean, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionReportResponse[], any, {}>>;
     /**
      *
      * @summary Get transfers to or from an user.
@@ -12261,7 +12352,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    getUsersTransfers(id: number, take?: number, skip?: number, fromId?: number, toId?: number, id2?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedTransferResponse, any>>;
+    getUsersTransfers(id: number, take?: number, skip?: number, fromId?: number, toId?: number, id2?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedTransferResponse, any, {}>>;
     /**
      *
      * @summary Update a user
@@ -12271,7 +12362,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    updateUser(id: number, updateUserRequest: UpdateUserRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserResponse, any>>;
+    updateUser(id: number, updateUserRequest: UpdateUserRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserResponse, any, {}>>;
     /**
      *
      * @summary POST an users update to new key code
@@ -12280,7 +12371,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    updateUserKey(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UpdateKeyResponse, any>>;
+    updateUserKey(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UpdateKeyResponse, any, {}>>;
     /**
      *
      * @summary Put a user\'s local password
@@ -12290,7 +12381,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    updateUserLocalPassword(id: number, updateLocalRequest: UpdateLocalRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    updateUserLocalPassword(id: number, updateLocalRequest: UpdateLocalRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
     /**
      *
      * @summary Put a users NFC code
@@ -12300,7 +12391,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    updateUserNfc(id: number, updateNfcRequest: UpdateNfcRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    updateUserNfc(id: number, updateNfcRequest: UpdateNfcRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
     /**
      *
      * @summary Put an users pin code
@@ -12310,7 +12401,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    updateUserPin(id: number, updatePinRequest: UpdatePinRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    updateUserPin(id: number, updatePinRequest: UpdatePinRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
     /**
      *
      * @summary Waive all given user\'s fines
@@ -12320,7 +12411,7 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    waiveUserFines(id: number, waiveFinesRequest?: WaiveFinesRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    waiveUserFines(id: number, waiveFinesRequest?: WaiveFinesRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
 }
 /**
  * @export
@@ -12525,7 +12616,7 @@ export declare class VatGroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VatGroupsApi
      */
-    createVatGroup(vatGroupRequest: VatGroupRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VatGroupResponse, any>>;
+    createVatGroup(vatGroupRequest: VatGroupRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VatGroupResponse, any, {}>>;
     /**
      *
      * @summary Get a list of all VAT groups
@@ -12539,7 +12630,7 @@ export declare class VatGroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VatGroupsApi
      */
-    getAllVatGroups(vatGroupId?: number, name?: string, percentage?: number, deleted?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedVatGroupResponse, any>>;
+    getAllVatGroups(vatGroupId?: number, name?: string, percentage?: number, deleted?: boolean, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedVatGroupResponse, any, {}>>;
     /**
      *
      * @summary Returns the requested VAT group
@@ -12548,7 +12639,7 @@ export declare class VatGroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VatGroupsApi
      */
-    getSingleVatGroup(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VatGroupResponse, any>>;
+    getSingleVatGroup(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VatGroupResponse, any, {}>>;
     /**
      *
      * @summary Get the VAT collections needed for VAT declarations
@@ -12558,7 +12649,7 @@ export declare class VatGroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VatGroupsApi
      */
-    getVatDeclarationAmounts(year: number, period: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedVatGroupResponse, any>>;
+    getVatDeclarationAmounts(year: number, period: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedVatGroupResponse, any, {}>>;
     /**
      *
      * @summary Create a new VAT group
@@ -12568,7 +12659,7 @@ export declare class VatGroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VatGroupsApi
      */
-    updateVatGroup(id: number, updateVatGroupRequest: UpdateVatGroupRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VatGroupResponse, any>>;
+    updateVatGroup(id: number, updateVatGroupRequest: UpdateVatGroupRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VatGroupResponse, any, {}>>;
 }
 /**
  * VouchergroupsApi - axios parameter creator
@@ -12705,7 +12796,7 @@ export declare class VouchergroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VouchergroupsApi
      */
-    createVouchergroup(voucherGroupRequest: VoucherGroupRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VoucherGroupResponse, any>>;
+    createVouchergroup(voucherGroupRequest: VoucherGroupRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VoucherGroupResponse, any, {}>>;
     /**
      *
      * @summary Returns all existing voucher groups
@@ -12715,7 +12806,7 @@ export declare class VouchergroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VouchergroupsApi
      */
-    getAllVouchergroups(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedVoucherGroupResponse, any>>;
+    getAllVouchergroups(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedVoucherGroupResponse, any, {}>>;
     /**
      *
      * @summary Returns the requested voucher group
@@ -12724,7 +12815,7 @@ export declare class VouchergroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VouchergroupsApi
      */
-    getVouchergroupId(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VoucherGroupResponse, any>>;
+    getVouchergroupId(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VoucherGroupResponse, any, {}>>;
     /**
      *
      * @summary Updates the requested voucher group
@@ -12734,7 +12825,7 @@ export declare class VouchergroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VouchergroupsApi
      */
-    updateVoucherGroup(id: number, voucherGroupRequest: VoucherGroupRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VoucherGroupResponse, any>>;
+    updateVoucherGroup(id: number, voucherGroupRequest: VoucherGroupRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VoucherGroupResponse, any, {}>>;
 }
 /**
  * WriteoffsApi - axios parameter creator
@@ -12883,7 +12974,7 @@ export declare class WriteoffsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof WriteoffsApi
      */
-    createWriteOff(writeOffRequest: WriteOffRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<WriteOffResponse, any>>;
+    createWriteOff(writeOffRequest: WriteOffRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<WriteOffResponse, any, {}>>;
     /**
      *
      * @summary Returns all write-offs in the system.
@@ -12897,7 +12988,7 @@ export declare class WriteoffsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof WriteoffsApi
      */
-    getAllWriteOffs(toId?: number, amount?: number, take?: number, skip?: number, fromDate?: string, tillDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedWriteOffResponse, any>>;
+    getAllWriteOffs(toId?: number, amount?: number, take?: number, skip?: number, fromDate?: string, tillDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedWriteOffResponse, any, {}>>;
     /**
      *
      * @summary Get a single write-off
@@ -12906,7 +12997,7 @@ export declare class WriteoffsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof WriteoffsApi
      */
-    getSingleWriteOff(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<WriteOffResponse, any>>;
+    getSingleWriteOff(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<WriteOffResponse, any, {}>>;
     /**
      *
      * @summary Get a write-off pdf
@@ -12916,5 +13007,5 @@ export declare class WriteoffsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof WriteoffsApi
      */
-    getWriteOffPdf(id: number, force?: boolean, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PdfUrlResponse, any>>;
+    getWriteOffPdf(id: number, force?: boolean, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PdfUrlResponse, any, {}>>;
 }
