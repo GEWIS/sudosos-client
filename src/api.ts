@@ -192,6 +192,19 @@ export interface AuthenticationPinRequest {
 /**
  * 
  * @export
+ * @interface AuthenticationQRConfirmRequest
+ */
+export interface AuthenticationQRConfirmRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof AuthenticationQRConfirmRequest
+     */
+    'sessionId': string;
+}
+/**
+ * 
+ * @export
  * @interface AuthenticationResetTokenRequest
  */
 export interface AuthenticationResetTokenRequest {
@@ -3826,6 +3839,54 @@ export interface ProductResponse {
 /**
  * 
  * @export
+ * @interface QRCodeResponse
+ */
+export interface QRCodeResponse {
+    /**
+     * The session ID
+     * @type {string}
+     * @memberof QRCodeResponse
+     */
+    'sessionId': string;
+    /**
+     * The QR code URL
+     * @type {string}
+     * @memberof QRCodeResponse
+     */
+    'qrCodeUrl': string;
+    /**
+     * The expiry date of the QR code
+     * @type {string}
+     * @memberof QRCodeResponse
+     */
+    'expiresAt': string;
+}
+/**
+ * 
+ * @export
+ * @interface QRStatusResponse
+ */
+export interface QRStatusResponse {
+    /**
+     * The status of the QR code
+     * @type {string}
+     * @memberof QRStatusResponse
+     */
+    'status': QRStatusResponseStatusEnum;
+}
+
+export const QRStatusResponseStatusEnum = {
+    Pending: 'PENDING',
+    Confirmed: 'CONFIRMED',
+    Expired: 'EXPIRED',
+    Cancelled: 'CANCELLED'
+} as const;
+
+export type QRStatusResponseStatusEnum = typeof QRStatusResponseStatusEnum[keyof typeof QRStatusResponseStatusEnum];
+
+/**
+ * 
+ * @export
  * @interface RelationResponse
  */
 export interface RelationResponse {
@@ -6142,6 +6203,82 @@ export const AuthenticateApiAxiosParamCreator = function (configuration?: Config
         },
         /**
          * 
+         * @summary Cancel QR code authentication
+         * @param {string} sessionId The session ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        cancelQRCode: async (sessionId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'sessionId' is not null or undefined
+            assertParamExists('cancelQRCode', 'sessionId', sessionId)
+            const localVarPath = `/authentication/qr/{sessionId}/cancel`
+                .replace(`{${"sessionId"}}`, encodeURIComponent(String(sessionId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Confirm QR code authentication from mobile app
+         * @param {string} sessionId The session ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        confirmQRCode: async (sessionId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'sessionId' is not null or undefined
+            assertParamExists('confirmQRCode', 'sessionId', sessionId)
+            const localVarPath = `/authentication/qr/{sessionId}/confirm`
+                .replace(`{${"sessionId"}}`, encodeURIComponent(String(sessionId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary EAN login and hand out token
          * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
          * @param {*} [options] Override http request option.
@@ -6178,12 +6315,76 @@ export const AuthenticateApiAxiosParamCreator = function (configuration?: Config
         },
         /**
          * 
+         * @summary Generate a QR code for authentication
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        generateQRCode: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/authentication/qr/generate`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Get the GEWISWeb public token used by SudoSOS
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         getGEWISWebPublic: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/authentication/gewisweb`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get the status of a QR authentication session
+         * @param {string} sessionId The session ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getQRStatus: async (sessionId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'sessionId' is not null or undefined
+            assertParamExists('getQRStatus', 'sessionId', sessionId)
+            const localVarPath = `/authentication/qr/{sessionId}/status`
+                .replace(`{${"sessionId"}}`, encodeURIComponent(String(sessionId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -6661,6 +6862,32 @@ export const AuthenticateApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Cancel QR code authentication
+         * @param {string} sessionId The session ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async cancelQRCode(sessionId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.cancelQRCode(sessionId, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['AuthenticateApi.cancelQRCode']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Confirm QR code authentication from mobile app
+         * @param {string} sessionId The session ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async confirmQRCode(sessionId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.confirmQRCode(sessionId, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['AuthenticateApi.confirmQRCode']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
          * @summary EAN login and hand out token
          * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
          * @param {*} [options] Override http request option.
@@ -6674,6 +6901,18 @@ export const AuthenticateApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Generate a QR code for authentication
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async generateQRCode(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<QRCodeResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.generateQRCode(options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['AuthenticateApi.generateQRCode']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Get the GEWISWeb public token used by SudoSOS
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -6682,6 +6921,19 @@ export const AuthenticateApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getGEWISWebPublic(options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['AuthenticateApi.getGEWISWebPublic']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get the status of a QR authentication session
+         * @param {string} sessionId The session ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getQRStatus(sessionId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<QRStatusResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getQRStatus(sessionId, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['AuthenticateApi.getQRStatus']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
@@ -6861,6 +7113,26 @@ export const AuthenticateApiFactory = function (configuration?: Configuration, b
         },
         /**
          * 
+         * @summary Cancel QR code authentication
+         * @param {string} sessionId The session ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        cancelQRCode(sessionId: string, options?: any): AxiosPromise<void> {
+            return localVarFp.cancelQRCode(sessionId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Confirm QR code authentication from mobile app
+         * @param {string} sessionId The session ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        confirmQRCode(sessionId: string, options?: any): AxiosPromise<void> {
+            return localVarFp.confirmQRCode(sessionId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary EAN login and hand out token
          * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
          * @param {*} [options] Override http request option.
@@ -6871,12 +7143,31 @@ export const AuthenticateApiFactory = function (configuration?: Configuration, b
         },
         /**
          * 
+         * @summary Generate a QR code for authentication
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        generateQRCode(options?: any): AxiosPromise<QRCodeResponse> {
+            return localVarFp.generateQRCode(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Get the GEWISWeb public token used by SudoSOS
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         getGEWISWebPublic(options?: any): AxiosPromise<string> {
             return localVarFp.getGEWISWebPublic(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get the status of a QR authentication session
+         * @param {string} sessionId The session ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getQRStatus(sessionId: string, options?: any): AxiosPromise<QRStatusResponse> {
+            return localVarFp.getQRStatus(sessionId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -7021,6 +7312,30 @@ export class AuthenticateApi extends BaseAPI {
 
     /**
      * 
+     * @summary Cancel QR code authentication
+     * @param {string} sessionId The session ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    public cancelQRCode(sessionId: string, options?: RawAxiosRequestConfig) {
+        return AuthenticateApiFp(this.configuration).cancelQRCode(sessionId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Confirm QR code authentication from mobile app
+     * @param {string} sessionId The session ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    public confirmQRCode(sessionId: string, options?: RawAxiosRequestConfig) {
+        return AuthenticateApiFp(this.configuration).confirmQRCode(sessionId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary EAN login and hand out token
      * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
      * @param {*} [options] Override http request option.
@@ -7033,6 +7348,17 @@ export class AuthenticateApi extends BaseAPI {
 
     /**
      * 
+     * @summary Generate a QR code for authentication
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    public generateQRCode(options?: RawAxiosRequestConfig) {
+        return AuthenticateApiFp(this.configuration).generateQRCode(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary Get the GEWISWeb public token used by SudoSOS
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -7040,6 +7366,18 @@ export class AuthenticateApi extends BaseAPI {
      */
     public getGEWISWebPublic(options?: RawAxiosRequestConfig) {
         return AuthenticateApiFp(this.configuration).getGEWISWebPublic(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get the status of a QR authentication session
+     * @param {string} sessionId The session ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    public getQRStatus(sessionId: string, options?: RawAxiosRequestConfig) {
+        return AuthenticateApiFp(this.configuration).getQRStatus(sessionId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
