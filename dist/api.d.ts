@@ -182,6 +182,19 @@ export interface AuthenticationPinRequest {
 /**
  *
  * @export
+ * @interface AuthenticationQRConfirmRequest
+ */
+export interface AuthenticationQRConfirmRequest {
+    /**
+     *
+     * @type {string}
+     * @memberof AuthenticationQRConfirmRequest
+     */
+    'sessionId': string;
+}
+/**
+ *
+ * @export
  * @interface AuthenticationResetTokenRequest
  */
 export interface AuthenticationResetTokenRequest {
@@ -3799,6 +3812,51 @@ export interface ProductResponse {
 /**
  *
  * @export
+ * @interface QRCodeResponse
+ */
+export interface QRCodeResponse {
+    /**
+     * The session ID
+     * @type {string}
+     * @memberof QRCodeResponse
+     */
+    'sessionId': string;
+    /**
+     * The QR code URL
+     * @type {string}
+     * @memberof QRCodeResponse
+     */
+    'qrCodeUrl': string;
+    /**
+     * The expiry date of the QR code
+     * @type {string}
+     * @memberof QRCodeResponse
+     */
+    'expiresAt': string;
+}
+/**
+ *
+ * @export
+ * @interface QRStatusResponse
+ */
+export interface QRStatusResponse {
+    /**
+     * The status of the QR code
+     * @type {string}
+     * @memberof QRStatusResponse
+     */
+    'status': QRStatusResponseStatusEnum;
+}
+export declare const QRStatusResponseStatusEnum: {
+    readonly Pending: "PENDING";
+    readonly Confirmed: "CONFIRMED";
+    readonly Expired: "EXPIRED";
+    readonly Cancelled: "CANCELLED";
+};
+export type QRStatusResponseStatusEnum = typeof QRStatusResponseStatusEnum[keyof typeof QRStatusResponseStatusEnum];
+/**
+ *
+ * @export
  * @interface RelationResponse
  */
 export interface RelationResponse {
@@ -6080,6 +6138,22 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
     authenticatePointOfSale: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Cancel QR code authentication
+     * @param {string} sessionId The session ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    cancelQRCode: (sessionId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Confirm QR code authentication from mobile app
+     * @param {string} sessionId The session ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    confirmQRCode: (sessionId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary EAN login and hand out token
      * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
      * @param {*} [options] Override http request option.
@@ -6088,11 +6162,26 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
     eanAuthentication: (authenticationEanRequest: AuthenticationEanRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Generate a QR code for authentication
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    generateQRCode: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Get the GEWISWeb public token used by SudoSOS
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getGEWISWebPublic: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get the status of a QR authentication session
+     * @param {string} sessionId The session ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getQRStatus: (sessionId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary LDAP login and hand out token    If user has never signed in before this also creates an GEWIS account.
@@ -6204,6 +6293,22 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
     authenticatePointOfSale(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
     /**
      *
+     * @summary Cancel QR code authentication
+     * @param {string} sessionId The session ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    cancelQRCode(sessionId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     *
+     * @summary Confirm QR code authentication from mobile app
+     * @param {string} sessionId The session ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    confirmQRCode(sessionId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     *
      * @summary EAN login and hand out token
      * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
      * @param {*} [options] Override http request option.
@@ -6212,11 +6317,26 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
     eanAuthentication(authenticationEanRequest: AuthenticationEanRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
     /**
      *
+     * @summary Generate a QR code for authentication
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    generateQRCode(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<QRCodeResponse>>;
+    /**
+     *
      * @summary Get the GEWISWeb public token used by SudoSOS
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getGEWISWebPublic(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    /**
+     *
+     * @summary Get the status of a QR authentication session
+     * @param {string} sessionId The session ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getQRStatus(sessionId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<QRStatusResponse>>;
     /**
      *
      * @summary LDAP login and hand out token    If user has never signed in before this also creates an GEWIS account.
@@ -6328,6 +6448,22 @@ export declare const AuthenticateApiFactory: (configuration?: Configuration, bas
     authenticatePointOfSale(id: number, options?: any): AxiosPromise<AuthenticationResponse>;
     /**
      *
+     * @summary Cancel QR code authentication
+     * @param {string} sessionId The session ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    cancelQRCode(sessionId: string, options?: any): AxiosPromise<void>;
+    /**
+     *
+     * @summary Confirm QR code authentication from mobile app
+     * @param {string} sessionId The session ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    confirmQRCode(sessionId: string, options?: any): AxiosPromise<void>;
+    /**
+     *
      * @summary EAN login and hand out token
      * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
      * @param {*} [options] Override http request option.
@@ -6336,11 +6472,26 @@ export declare const AuthenticateApiFactory: (configuration?: Configuration, bas
     eanAuthentication(authenticationEanRequest: AuthenticationEanRequest, options?: any): AxiosPromise<AuthenticationResponse>;
     /**
      *
+     * @summary Generate a QR code for authentication
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    generateQRCode(options?: any): AxiosPromise<QRCodeResponse>;
+    /**
+     *
      * @summary Get the GEWISWeb public token used by SudoSOS
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getGEWISWebPublic(options?: any): AxiosPromise<string>;
+    /**
+     *
+     * @summary Get the status of a QR authentication session
+     * @param {string} sessionId The session ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getQRStatus(sessionId: string, options?: any): AxiosPromise<QRStatusResponse>;
     /**
      *
      * @summary LDAP login and hand out token    If user has never signed in before this also creates an GEWIS account.
@@ -6455,6 +6606,24 @@ export declare class AuthenticateApi extends BaseAPI {
     authenticatePointOfSale(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
     /**
      *
+     * @summary Cancel QR code authentication
+     * @param {string} sessionId The session ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    cancelQRCode(sessionId: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    /**
+     *
+     * @summary Confirm QR code authentication from mobile app
+     * @param {string} sessionId The session ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    confirmQRCode(sessionId: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    /**
+     *
      * @summary EAN login and hand out token
      * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
      * @param {*} [options] Override http request option.
@@ -6464,12 +6633,29 @@ export declare class AuthenticateApi extends BaseAPI {
     eanAuthentication(authenticationEanRequest: AuthenticationEanRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
     /**
      *
+     * @summary Generate a QR code for authentication
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    generateQRCode(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<QRCodeResponse, any, {}>>;
+    /**
+     *
      * @summary Get the GEWISWeb public token used by SudoSOS
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
     getGEWISWebPublic(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any, {}>>;
+    /**
+     *
+     * @summary Get the status of a QR authentication session
+     * @param {string} sessionId The session ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    getQRStatus(sessionId: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<QRStatusResponse, any, {}>>;
     /**
      *
      * @summary LDAP login and hand out token    If user has never signed in before this also creates an GEWIS account.
