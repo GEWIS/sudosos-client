@@ -10734,6 +10734,70 @@ export declare class StripeApi extends BaseAPI {
     getStripePublicKey(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any, {}>>;
 }
 /**
+ * SyncApi - axios parameter creator
+ * @export
+ */
+export declare const SyncApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     * Performs a dry-run synchronization of users using the specified services. This endpoint always performs a dry-run and does not apply any actual database changes.
+     * @summary Get dry-run sync results for users
+     * @param {GetUserSyncResultsServiceEnum} [service] Array of sync services to use (ldap, gewisdb). If not provided, all available services will be used.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserSyncResults: (service?: GetUserSyncResultsServiceEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+};
+/**
+ * SyncApi - functional programming interface
+ * @export
+ */
+export declare const SyncApiFp: (configuration?: Configuration) => {
+    /**
+     * Performs a dry-run synchronization of users using the specified services. This endpoint always performs a dry-run and does not apply any actual database changes.
+     * @summary Get dry-run sync results for users
+     * @param {GetUserSyncResultsServiceEnum} [service] Array of sync services to use (ldap, gewisdb). If not provided, all available services will be used.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserSyncResults(service?: GetUserSyncResultsServiceEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>>;
+};
+/**
+ * SyncApi - factory interface
+ * @export
+ */
+export declare const SyncApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     * Performs a dry-run synchronization of users using the specified services. This endpoint always performs a dry-run and does not apply any actual database changes.
+     * @summary Get dry-run sync results for users
+     * @param {GetUserSyncResultsServiceEnum} [service] Array of sync services to use (ldap, gewisdb). If not provided, all available services will be used.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserSyncResults(service?: GetUserSyncResultsServiceEnum, options?: any): AxiosPromise<object>;
+};
+/**
+ * SyncApi - object-oriented interface
+ * @export
+ * @class SyncApi
+ * @extends {BaseAPI}
+ */
+export declare class SyncApi extends BaseAPI {
+    /**
+     * Performs a dry-run synchronization of users using the specified services. This endpoint always performs a dry-run and does not apply any actual database changes.
+     * @summary Get dry-run sync results for users
+     * @param {GetUserSyncResultsServiceEnum} [service] Array of sync services to use (ldap, gewisdb). If not provided, all available services will be used.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SyncApi
+     */
+    getUserSyncResults(service?: GetUserSyncResultsServiceEnum, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<object, any, {}>>;
+}
+/**
+ * @export
+ */
+export declare const GetUserSyncResultsServiceEnum: {};
+export type GetUserSyncResultsServiceEnum = typeof GetUserSyncResultsServiceEnum[keyof typeof GetUserSyncResultsServiceEnum];
+/**
  * TestOperationsOfTheTestControllerApi - axios parameter creator
  * @export
  */
