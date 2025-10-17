@@ -15925,6 +15925,125 @@ export class StripeApi extends BaseAPI {
 
 
 /**
+ * SyncApi - axios parameter creator
+ * @export
+ */
+export const SyncApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * Performs a dry-run synchronization of users using the specified services. This endpoint always performs a dry-run and does not apply any actual database changes.
+         * @summary Get dry-run sync results for users
+         * @param {GetUserSyncResultsServiceEnum} [service] Array of sync services to use (ldap, gewisdb). If not provided, all available services will be used.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUserSyncResults: async (service?: GetUserSyncResultsServiceEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/sync/user`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (service) {
+                localVarQueryParameter['service'] = service;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * SyncApi - functional programming interface
+ * @export
+ */
+export const SyncApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = SyncApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * Performs a dry-run synchronization of users using the specified services. This endpoint always performs a dry-run and does not apply any actual database changes.
+         * @summary Get dry-run sync results for users
+         * @param {GetUserSyncResultsServiceEnum} [service] Array of sync services to use (ldap, gewisdb). If not provided, all available services will be used.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getUserSyncResults(service?: GetUserSyncResultsServiceEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserSyncResults(service, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['SyncApi.getUserSyncResults']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * SyncApi - factory interface
+ * @export
+ */
+export const SyncApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = SyncApiFp(configuration)
+    return {
+        /**
+         * Performs a dry-run synchronization of users using the specified services. This endpoint always performs a dry-run and does not apply any actual database changes.
+         * @summary Get dry-run sync results for users
+         * @param {GetUserSyncResultsServiceEnum} [service] Array of sync services to use (ldap, gewisdb). If not provided, all available services will be used.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUserSyncResults(service?: GetUserSyncResultsServiceEnum, options?: any): AxiosPromise<object> {
+            return localVarFp.getUserSyncResults(service, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * SyncApi - object-oriented interface
+ * @export
+ * @class SyncApi
+ * @extends {BaseAPI}
+ */
+export class SyncApi extends BaseAPI {
+    /**
+     * Performs a dry-run synchronization of users using the specified services. This endpoint always performs a dry-run and does not apply any actual database changes.
+     * @summary Get dry-run sync results for users
+     * @param {GetUserSyncResultsServiceEnum} [service] Array of sync services to use (ldap, gewisdb). If not provided, all available services will be used.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SyncApi
+     */
+    public getUserSyncResults(service?: GetUserSyncResultsServiceEnum, options?: RawAxiosRequestConfig) {
+        return SyncApiFp(this.configuration).getUserSyncResults(service, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+/**
+ * @export
+ */
+export const GetUserSyncResultsServiceEnum = {
+} as const;
+export type GetUserSyncResultsServiceEnum = typeof GetUserSyncResultsServiceEnum[keyof typeof GetUserSyncResultsServiceEnum];
+
+
+/**
  * TestOperationsOfTheTestControllerApi - axios parameter creator
  * @export
  */
