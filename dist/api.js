@@ -13,9 +13,9 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PointofsaleApi = exports.PointofsaleApiFactory = exports.PointofsaleApiFp = exports.PointofsaleApiAxiosParamCreator = exports.PayoutRequestsApi = exports.PayoutRequestsApiFactory = exports.PayoutRequestsApiFp = exports.PayoutRequestsApiAxiosParamCreator = exports.GetAllInvoicesCurrentStateEnum = exports.InvoicesApi = exports.InvoicesApiFactory = exports.InvoicesApiFp = exports.InvoicesApiAxiosParamCreator = exports.FilesApi = exports.FilesApiFactory = exports.FilesApiFp = exports.FilesApiAxiosParamCreator = exports.EventsApi = exports.EventsApiFactory = exports.EventsApiFp = exports.EventsApiAxiosParamCreator = exports.GetFineReportPdfFileTypeEnum = exports.DebtorsApi = exports.DebtorsApiFactory = exports.DebtorsApiFp = exports.DebtorsApiAxiosParamCreator = exports.ContainersApi = exports.ContainersApiFactory = exports.ContainersApiFp = exports.ContainersApiAxiosParamCreator = exports.BannersApi = exports.BannersApiFactory = exports.BannersApiFp = exports.BannersApiAxiosParamCreator = exports.GetAllBalanceOrderDirectionEnum = exports.GetAllBalanceUserTypesEnum = exports.BalanceApi = exports.BalanceApiFactory = exports.BalanceApiFp = exports.BalanceApiAxiosParamCreator = exports.AuthenticateApi = exports.AuthenticateApiFactory = exports.AuthenticateApiFp = exports.AuthenticateApiAxiosParamCreator = exports.UpdateInvoiceRequestStateEnum = exports.PayoutRequestStatusRequestStateEnum = exports.PayoutRequestResponseStatusEnum = exports.InvoiceStatusResponseStateEnum = exports.FinancialMutationResponseTypeEnum = exports.BasePayoutRequestResponseStatusEnum = void 0;
-exports.GetUsersPurchaseReportPdfFileTypeEnum = exports.GetAllUsersTypeEnum = exports.UsersApi = exports.UsersApiFactory = exports.UsersApiFp = exports.UsersApiAxiosParamCreator = exports.TransfersApi = exports.TransfersApiFactory = exports.TransfersApiFp = exports.TransfersApiAxiosParamCreator = exports.TransactionsApi = exports.TransactionsApiFactory = exports.TransactionsApiFp = exports.TransactionsApiAxiosParamCreator = exports.TransactionSummariesApi = exports.TransactionSummariesApiFactory = exports.TransactionSummariesApiFp = exports.TransactionSummariesApiAxiosParamCreator = exports.TestOperationsOfTheTestControllerApi = exports.TestOperationsOfTheTestControllerApiFactory = exports.TestOperationsOfTheTestControllerApiFp = exports.TestOperationsOfTheTestControllerApiAxiosParamCreator = exports.StripeApi = exports.StripeApiFactory = exports.StripeApiFp = exports.StripeApiAxiosParamCreator = exports.ServerSettingsApi = exports.ServerSettingsApiFactory = exports.ServerSettingsApiFp = exports.ServerSettingsApiAxiosParamCreator = exports.SellerPayoutsApi = exports.SellerPayoutsApiFactory = exports.SellerPayoutsApiFp = exports.SellerPayoutsApiAxiosParamCreator = exports.RootApi = exports.RootApiFactory = exports.RootApiFp = exports.RootApiAxiosParamCreator = exports.RbacApi = exports.RbacApiFactory = exports.RbacApiFp = exports.RbacApiAxiosParamCreator = exports.ProductsApi = exports.ProductsApiFactory = exports.ProductsApiFp = exports.ProductsApiAxiosParamCreator = exports.ProductCategoriesApi = exports.ProductCategoriesApiFactory = exports.ProductCategoriesApiFp = exports.ProductCategoriesApiAxiosParamCreator = void 0;
-exports.WriteoffsApi = exports.WriteoffsApiFactory = exports.WriteoffsApiFp = exports.WriteoffsApiAxiosParamCreator = exports.VouchergroupsApi = exports.VouchergroupsApiFactory = exports.VouchergroupsApiFp = exports.VouchergroupsApiAxiosParamCreator = exports.VatGroupsApi = exports.VatGroupsApiFactory = exports.VatGroupsApiFp = exports.VatGroupsApiAxiosParamCreator = exports.GetUsersSalesReportPdfFileTypeEnum = void 0;
+exports.PointofsaleApiFactory = exports.PointofsaleApiFp = exports.PointofsaleApiAxiosParamCreator = exports.PayoutRequestsApi = exports.PayoutRequestsApiFactory = exports.PayoutRequestsApiFp = exports.PayoutRequestsApiAxiosParamCreator = exports.GetAllInvoicesCurrentStateEnum = exports.InvoicesApi = exports.InvoicesApiFactory = exports.InvoicesApiFp = exports.InvoicesApiAxiosParamCreator = exports.FilesApi = exports.FilesApiFactory = exports.FilesApiFp = exports.FilesApiAxiosParamCreator = exports.EventsApi = exports.EventsApiFactory = exports.EventsApiFp = exports.EventsApiAxiosParamCreator = exports.GetFineReportPdfFileTypeEnum = exports.DebtorsApi = exports.DebtorsApiFactory = exports.DebtorsApiFp = exports.DebtorsApiAxiosParamCreator = exports.ContainersApi = exports.ContainersApiFactory = exports.ContainersApiFp = exports.ContainersApiAxiosParamCreator = exports.BannersApi = exports.BannersApiFactory = exports.BannersApiFp = exports.BannersApiAxiosParamCreator = exports.GetAllBalanceOrderDirectionEnum = exports.GetAllBalanceUserTypesEnum = exports.BalanceApi = exports.BalanceApiFactory = exports.BalanceApiFp = exports.BalanceApiAxiosParamCreator = exports.AuthenticateApi = exports.AuthenticateApiFactory = exports.AuthenticateApiFp = exports.AuthenticateApiAxiosParamCreator = exports.UpdateInvoiceRequestStateEnum = exports.QRStatusResponseStatusEnum = exports.PayoutRequestStatusRequestStateEnum = exports.PayoutRequestResponseStatusEnum = exports.InvoiceStatusResponseStateEnum = exports.FinancialMutationResponseTypeEnum = exports.BasePayoutRequestResponseStatusEnum = void 0;
+exports.TransfersApi = exports.TransfersApiFactory = exports.TransfersApiFp = exports.TransfersApiAxiosParamCreator = exports.TransactionsApi = exports.TransactionsApiFactory = exports.TransactionsApiFp = exports.TransactionsApiAxiosParamCreator = exports.TransactionSummariesApi = exports.TransactionSummariesApiFactory = exports.TransactionSummariesApiFp = exports.TransactionSummariesApiAxiosParamCreator = exports.TestOperationsOfTheTestControllerApi = exports.TestOperationsOfTheTestControllerApiFactory = exports.TestOperationsOfTheTestControllerApiFp = exports.TestOperationsOfTheTestControllerApiAxiosParamCreator = exports.GetUserSyncResultsServiceEnum = exports.SyncApi = exports.SyncApiFactory = exports.SyncApiFp = exports.SyncApiAxiosParamCreator = exports.StripeApi = exports.StripeApiFactory = exports.StripeApiFp = exports.StripeApiAxiosParamCreator = exports.ServerSettingsApi = exports.ServerSettingsApiFactory = exports.ServerSettingsApiFp = exports.ServerSettingsApiAxiosParamCreator = exports.SellerPayoutsApi = exports.SellerPayoutsApiFactory = exports.SellerPayoutsApiFp = exports.SellerPayoutsApiAxiosParamCreator = exports.RootApi = exports.RootApiFactory = exports.RootApiFp = exports.RootApiAxiosParamCreator = exports.RbacApi = exports.RbacApiFactory = exports.RbacApiFp = exports.RbacApiAxiosParamCreator = exports.ProductsApi = exports.ProductsApiFactory = exports.ProductsApiFp = exports.ProductsApiAxiosParamCreator = exports.ProductCategoriesApi = exports.ProductCategoriesApiFactory = exports.ProductCategoriesApiFp = exports.ProductCategoriesApiAxiosParamCreator = exports.PointofsaleApi = void 0;
+exports.WriteoffsApi = exports.WriteoffsApiFactory = exports.WriteoffsApiFp = exports.WriteoffsApiAxiosParamCreator = exports.VouchergroupsApi = exports.VouchergroupsApiFactory = exports.VouchergroupsApiFp = exports.VouchergroupsApiAxiosParamCreator = exports.VatGroupsApi = exports.VatGroupsApiFactory = exports.VatGroupsApiFp = exports.VatGroupsApiAxiosParamCreator = exports.GetUsersSalesReportPdfFileTypeEnum = exports.GetUsersPurchaseReportPdfFileTypeEnum = exports.GetAllUsersTypeEnum = exports.UsersApi = exports.UsersApiFactory = exports.UsersApiFp = exports.UsersApiAxiosParamCreator = void 0;
 const axios_1 = require("axios");
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -48,6 +48,12 @@ exports.PayoutRequestStatusRequestStateEnum = {
     Created: 'CREATED',
     Approved: 'APPROVED',
     Denied: 'DENIED',
+    Cancelled: 'CANCELLED'
+};
+exports.QRStatusResponseStatusEnum = {
+    Pending: 'PENDING',
+    Confirmed: 'CONFIRMED',
+    Expired: 'EXPIRED',
     Cancelled: 'CANCELLED'
 };
 exports.UpdateInvoiceRequestStateEnum = {
@@ -96,6 +102,70 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
+         * @summary Cancel QR code authentication
+         * @param {string} sessionId The session ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        cancelQRCode: async (sessionId, options = {}) => {
+            // verify required parameter 'sessionId' is not null or undefined
+            (0, common_1.assertParamExists)('cancelQRCode', 'sessionId', sessionId);
+            const localVarPath = `/authentication/qr/{sessionId}/cancel`
+                .replace(`{${"sessionId"}}`, encodeURIComponent(String(sessionId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            await (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Confirm QR code authentication from mobile app
+         * @param {string} sessionId The session ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        confirmQRCode: async (sessionId, options = {}) => {
+            // verify required parameter 'sessionId' is not null or undefined
+            (0, common_1.assertParamExists)('confirmQRCode', 'sessionId', sessionId);
+            const localVarPath = `/authentication/qr/{sessionId}/confirm`
+                .replace(`{${"sessionId"}}`, encodeURIComponent(String(sessionId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            await (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
          * @summary EAN login and hand out token
          * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
          * @param {*} [options] Override http request option.
@@ -126,12 +196,66 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
+         * @summary Generate a QR code for authentication
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        generateQRCode: async (options = {}) => {
+            const localVarPath = `/authentication/qr/generate`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
          * @summary Get the GEWISWeb public token used by SudoSOS
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         getGEWISWebPublic: async (options = {}) => {
             const localVarPath = `/authentication/gewisweb`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get the status of a QR authentication session
+         * @param {string} sessionId The session ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getQRStatus: async (sessionId, options = {}) => {
+            // verify required parameter 'sessionId' is not null or undefined
+            (0, common_1.assertParamExists)('getQRStatus', 'sessionId', sessionId);
+            const localVarPath = `/authentication/qr/{sessionId}/status`
+                .replace(`{${"sessionId"}}`, encodeURIComponent(String(sessionId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
             let baseOptions;
@@ -532,6 +656,32 @@ const AuthenticateApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Cancel QR code authentication
+         * @param {string} sessionId The session ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async cancelQRCode(sessionId, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.cancelQRCode(sessionId, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = base_1.operationServerMap['AuthenticateApi.cancelQRCode']?.[index]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Confirm QR code authentication from mobile app
+         * @param {string} sessionId The session ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async confirmQRCode(sessionId, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.confirmQRCode(sessionId, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = base_1.operationServerMap['AuthenticateApi.confirmQRCode']?.[index]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         *
          * @summary EAN login and hand out token
          * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
          * @param {*} [options] Override http request option.
@@ -545,6 +695,18 @@ const AuthenticateApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Generate a QR code for authentication
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async generateQRCode(options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.generateQRCode(options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = base_1.operationServerMap['AuthenticateApi.generateQRCode']?.[index]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         *
          * @summary Get the GEWISWeb public token used by SudoSOS
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -553,6 +715,19 @@ const AuthenticateApiFp = function (configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getGEWISWebPublic(options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = base_1.operationServerMap['AuthenticateApi.getGEWISWebPublic']?.[index]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Get the status of a QR authentication session
+         * @param {string} sessionId The session ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getQRStatus(sessionId, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getQRStatus(sessionId, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = base_1.operationServerMap['AuthenticateApi.getQRStatus']?.[index]?.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
@@ -732,6 +907,26 @@ const AuthenticateApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary Cancel QR code authentication
+         * @param {string} sessionId The session ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        cancelQRCode(sessionId, options) {
+            return localVarFp.cancelQRCode(sessionId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Confirm QR code authentication from mobile app
+         * @param {string} sessionId The session ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        confirmQRCode(sessionId, options) {
+            return localVarFp.confirmQRCode(sessionId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary EAN login and hand out token
          * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
          * @param {*} [options] Override http request option.
@@ -742,12 +937,31 @@ const AuthenticateApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary Generate a QR code for authentication
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        generateQRCode(options) {
+            return localVarFp.generateQRCode(options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Get the GEWISWeb public token used by SudoSOS
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         getGEWISWebPublic(options) {
             return localVarFp.getGEWISWebPublic(options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get the status of a QR authentication session
+         * @param {string} sessionId The session ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getQRStatus(sessionId, options) {
+            return localVarFp.getQRStatus(sessionId, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -891,6 +1105,28 @@ class AuthenticateApi extends base_1.BaseAPI {
     }
     /**
      *
+     * @summary Cancel QR code authentication
+     * @param {string} sessionId The session ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    cancelQRCode(sessionId, options) {
+        return (0, exports.AuthenticateApiFp)(this.configuration).cancelQRCode(sessionId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Confirm QR code authentication from mobile app
+     * @param {string} sessionId The session ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    confirmQRCode(sessionId, options) {
+        return (0, exports.AuthenticateApiFp)(this.configuration).confirmQRCode(sessionId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
      * @summary EAN login and hand out token
      * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
      * @param {*} [options] Override http request option.
@@ -902,6 +1138,16 @@ class AuthenticateApi extends base_1.BaseAPI {
     }
     /**
      *
+     * @summary Generate a QR code for authentication
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    generateQRCode(options) {
+        return (0, exports.AuthenticateApiFp)(this.configuration).generateQRCode(options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
      * @summary Get the GEWISWeb public token used by SudoSOS
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -909,6 +1155,17 @@ class AuthenticateApi extends base_1.BaseAPI {
      */
     getGEWISWebPublic(options) {
         return (0, exports.AuthenticateApiFp)(this.configuration).getGEWISWebPublic(options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get the status of a QR authentication session
+     * @param {string} sessionId The session ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    getQRStatus(sessionId, options) {
+        return (0, exports.AuthenticateApiFp)(this.configuration).getQRStatus(sessionId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -8637,6 +8894,114 @@ class StripeApi extends base_1.BaseAPI {
     }
 }
 exports.StripeApi = StripeApi;
+/**
+ * SyncApi - axios parameter creator
+ * @export
+ */
+const SyncApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         * Performs a dry-run synchronization of users using the specified services. This endpoint always performs a dry-run and does not apply any actual database changes.
+         * @summary Get dry-run sync results for users
+         * @param {GetUserSyncResultsServiceEnum} [service] Array of sync services to use (ldap, gewisdb). If not provided, all available services will be used.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUserSyncResults: async (service, options = {}) => {
+            const localVarPath = `/sync/user`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            await (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            if (service) {
+                localVarQueryParameter['service'] = service;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    };
+};
+exports.SyncApiAxiosParamCreator = SyncApiAxiosParamCreator;
+/**
+ * SyncApi - functional programming interface
+ * @export
+ */
+const SyncApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.SyncApiAxiosParamCreator)(configuration);
+    return {
+        /**
+         * Performs a dry-run synchronization of users using the specified services. This endpoint always performs a dry-run and does not apply any actual database changes.
+         * @summary Get dry-run sync results for users
+         * @param {GetUserSyncResultsServiceEnum} [service] Array of sync services to use (ldap, gewisdb). If not provided, all available services will be used.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getUserSyncResults(service, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserSyncResults(service, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = base_1.operationServerMap['SyncApi.getUserSyncResults']?.[index]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+    };
+};
+exports.SyncApiFp = SyncApiFp;
+/**
+ * SyncApi - factory interface
+ * @export
+ */
+const SyncApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.SyncApiFp)(configuration);
+    return {
+        /**
+         * Performs a dry-run synchronization of users using the specified services. This endpoint always performs a dry-run and does not apply any actual database changes.
+         * @summary Get dry-run sync results for users
+         * @param {GetUserSyncResultsServiceEnum} [service] Array of sync services to use (ldap, gewisdb). If not provided, all available services will be used.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUserSyncResults(service, options) {
+            return localVarFp.getUserSyncResults(service, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+exports.SyncApiFactory = SyncApiFactory;
+/**
+ * SyncApi - object-oriented interface
+ * @export
+ * @class SyncApi
+ * @extends {BaseAPI}
+ */
+class SyncApi extends base_1.BaseAPI {
+    /**
+     * Performs a dry-run synchronization of users using the specified services. This endpoint always performs a dry-run and does not apply any actual database changes.
+     * @summary Get dry-run sync results for users
+     * @param {GetUserSyncResultsServiceEnum} [service] Array of sync services to use (ldap, gewisdb). If not provided, all available services will be used.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SyncApi
+     */
+    getUserSyncResults(service, options) {
+        return (0, exports.SyncApiFp)(this.configuration).getUserSyncResults(service, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+exports.SyncApi = SyncApi;
+/**
+ * @export
+ */
+exports.GetUserSyncResultsServiceEnum = {};
 /**
  * TestOperationsOfTheTestControllerApi - axios parameter creator
  * @export
