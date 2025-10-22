@@ -932,6 +932,18 @@ export interface BasePointOfSaleResponse {
      * @memberof BasePointOfSaleResponse
      */
     'name': string;
+    /**
+     * Revision of the POS
+     * @type {number}
+     * @memberof BasePointOfSaleResponse
+     */
+    'revision': number;
+    /**
+     * Whether this POS requires users to authenticate themselves before making a transaction
+     * @type {boolean}
+     * @memberof BasePointOfSaleResponse
+     */
+    'useAuthentication': boolean;
 }
 /**
  *
@@ -969,6 +981,12 @@ export interface BaseProductResponse {
      * @memberof BaseProductResponse
      */
     'name': string;
+    /**
+     * The product revision ID
+     * @type {number}
+     * @memberof BaseProductResponse
+     */
+    'revision': number;
     /**
      *
      * @type {DineroObjectResponse}
@@ -3553,12 +3571,6 @@ export interface PointOfSaleResponse {
      */
     'name': string;
     /**
-     *
-     * @type {BaseUserResponse}
-     * @memberof PointOfSaleResponse
-     */
-    'owner'?: BaseUserResponse;
-    /**
      * Revision of the POS
      * @type {number}
      * @memberof PointOfSaleResponse
@@ -3570,6 +3582,12 @@ export interface PointOfSaleResponse {
      * @memberof PointOfSaleResponse
      */
     'useAuthentication': boolean;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof PointOfSaleResponse
+     */
+    'owner'?: BaseUserResponse;
     /**
      * The roles that are cashiers of this POS
      * @type {Array<RoleResponse>}
@@ -3614,12 +3632,6 @@ export interface PointOfSaleWithContainersResponse {
      */
     'name': string;
     /**
-     *
-     * @type {BaseUserResponse}
-     * @memberof PointOfSaleWithContainersResponse
-     */
-    'owner'?: BaseUserResponse;
-    /**
      * Revision of the POS
      * @type {number}
      * @memberof PointOfSaleWithContainersResponse
@@ -3631,6 +3643,12 @@ export interface PointOfSaleWithContainersResponse {
      * @memberof PointOfSaleWithContainersResponse
      */
     'useAuthentication': boolean;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof PointOfSaleWithContainersResponse
+     */
+    'owner'?: BaseUserResponse;
     /**
      * The roles that are cashiers of this POS
      * @type {Array<RoleResponse>}
@@ -3743,6 +3761,12 @@ export interface ProductResponse {
      */
     'name': string;
     /**
+     * The product revision ID
+     * @type {number}
+     * @memberof ProductResponse
+     */
+    'revision': number;
+    /**
      *
      * @type {DineroObjectResponse}
      * @memberof ProductResponse
@@ -3754,12 +3778,6 @@ export interface ProductResponse {
      * @memberof ProductResponse
      */
     'vat': BaseVatGroupResponse;
-    /**
-     * The product revision ID
-     * @type {number}
-     * @memberof ProductResponse
-     */
-    'revision': number;
     /**
      *
      * @type {BaseUserResponse}
