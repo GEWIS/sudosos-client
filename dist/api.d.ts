@@ -7604,6 +7604,14 @@ export declare const DebtorsApiAxiosParamCreator: (configuration?: Configuration
     deleteFine: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Delete a fine handout event
+     * @param {number} id The id of the fine handout event which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteFineHandout: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Get a report of all fines
      * @param {string} [fromDate] The start date of the report, inclusive
      * @param {string} [toDate] The end date of the report, exclusive
@@ -7679,6 +7687,14 @@ export declare const DebtorsApiFp: (configuration?: Configuration) => {
     deleteFine(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
+     * @summary Delete a fine handout event
+     * @param {number} id The id of the fine handout event which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteFineHandout(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     *
      * @summary Get a report of all fines
      * @param {string} [fromDate] The start date of the report, inclusive
      * @param {string} [toDate] The end date of the report, exclusive
@@ -7752,6 +7768,14 @@ export declare const DebtorsApiFactory: (configuration?: Configuration, basePath
      * @throws {RequiredError}
      */
     deleteFine(id: number, options?: any): AxiosPromise<void>;
+    /**
+     *
+     * @summary Delete a fine handout event
+     * @param {number} id The id of the fine handout event which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteFineHandout(id: number, options?: any): AxiosPromise<void>;
     /**
      *
      * @summary Get a report of all fines
@@ -7831,6 +7855,15 @@ export declare class DebtorsApi extends BaseAPI {
      * @memberof DebtorsApi
      */
     deleteFine(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    /**
+     *
+     * @summary Delete a fine handout event
+     * @param {number} id The id of the fine handout event which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DebtorsApi
+     */
+    deleteFineHandout(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
     /**
      *
      * @summary Get a report of all fines

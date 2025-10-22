@@ -2903,6 +2903,38 @@ const DebtorsApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
+         * @summary Delete a fine handout event
+         * @param {number} id The id of the fine handout event which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteFineHandout: async (id, options = {}) => {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('deleteFineHandout', 'id', id);
+            const localVarPath = `/fines/handout/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            await (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
          * @summary Get a report of all fines
          * @param {string} [fromDate] The start date of the report, inclusive
          * @param {string} [toDate] The end date of the report, exclusive
@@ -3156,6 +3188,19 @@ const DebtorsApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Delete a fine handout event
+         * @param {number} id The id of the fine handout event which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteFineHandout(id, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteFineHandout(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = base_1.operationServerMap['DebtorsApi.deleteFineHandout']?.[index]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         *
          * @summary Get a report of all fines
          * @param {string} [fromDate] The start date of the report, inclusive
          * @param {string} [toDate] The end date of the report, exclusive
@@ -3269,6 +3314,16 @@ const DebtorsApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary Delete a fine handout event
+         * @param {number} id The id of the fine handout event which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteFineHandout(id, options) {
+            return localVarFp.deleteFineHandout(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Get a report of all fines
          * @param {string} [fromDate] The start date of the report, inclusive
          * @param {string} [toDate] The end date of the report, exclusive
@@ -3363,6 +3418,17 @@ class DebtorsApi extends base_1.BaseAPI {
      */
     deleteFine(id, options) {
         return (0, exports.DebtorsApiFp)(this.configuration).deleteFine(id, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Delete a fine handout event
+     * @param {number} id The id of the fine handout event which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DebtorsApi
+     */
+    deleteFineHandout(id, options) {
+        return (0, exports.DebtorsApiFp)(this.configuration).deleteFineHandout(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
