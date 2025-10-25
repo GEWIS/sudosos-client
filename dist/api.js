@@ -6242,6 +6242,42 @@ const PointofsaleApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
+         * @summary Returns a specific revision of the requested Point of Sale
+         * @param {number} id The id of the Point of Sale which should be returned
+         * @param {number} revision The revision number of the Point of Sale
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSinglePointOfSaleRevision: async (id, revision, options = {}) => {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('getSinglePointOfSaleRevision', 'id', id);
+            // verify required parameter 'revision' is not null or undefined
+            (0, common_1.assertParamExists)('getSinglePointOfSaleRevision', 'revision', revision);
+            const localVarPath = `/pointsofsale/{id}/{revision}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)))
+                .replace(`{${"revision"}}`, encodeURIComponent(String(revision)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            await (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
          * @summary Returns a Point of Sale transactions
          * @param {number} id The id of the Point of Sale of which to get the transactions.
          * @param {number} [take] How many transactions the endpoint should return
@@ -6423,6 +6459,20 @@ const PointofsaleApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Returns a specific revision of the requested Point of Sale
+         * @param {number} id The id of the Point of Sale which should be returned
+         * @param {number} revision The revision number of the Point of Sale
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getSinglePointOfSaleRevision(id, revision, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSinglePointOfSaleRevision(id, revision, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = base_1.operationServerMap['PointofsaleApi.getSinglePointOfSaleRevision']?.[index]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         *
          * @summary Returns a Point of Sale transactions
          * @param {number} id The id of the Point of Sale of which to get the transactions.
          * @param {number} [take] How many transactions the endpoint should return
@@ -6532,6 +6582,17 @@ const PointofsaleApiFactory = function (configuration, basePath, axios) {
          */
         getSinglePointOfSale(id, options) {
             return localVarFp.getSinglePointOfSale(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Returns a specific revision of the requested Point of Sale
+         * @param {number} id The id of the Point of Sale which should be returned
+         * @param {number} revision The revision number of the Point of Sale
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSinglePointOfSaleRevision(id, revision, options) {
+            return localVarFp.getSinglePointOfSaleRevision(id, revision, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -6645,6 +6706,18 @@ class PointofsaleApi extends base_1.BaseAPI {
      */
     getSinglePointOfSale(id, options) {
         return (0, exports.PointofsaleApiFp)(this.configuration).getSinglePointOfSale(id, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Returns a specific revision of the requested Point of Sale
+     * @param {number} id The id of the Point of Sale which should be returned
+     * @param {number} revision The revision number of the Point of Sale
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PointofsaleApi
+     */
+    getSinglePointOfSaleRevision(id, revision, options) {
+        return (0, exports.PointofsaleApiFp)(this.configuration).getSinglePointOfSaleRevision(id, revision, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *

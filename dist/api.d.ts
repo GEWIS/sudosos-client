@@ -9304,6 +9304,15 @@ export declare const PointofsaleApiAxiosParamCreator: (configuration?: Configura
     getSinglePointOfSale: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Returns a specific revision of the requested Point of Sale
+     * @param {number} id The id of the Point of Sale which should be returned
+     * @param {number} revision The revision number of the Point of Sale
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getSinglePointOfSaleRevision: (id: number, revision: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Returns a Point of Sale transactions
      * @param {number} id The id of the Point of Sale of which to get the transactions.
      * @param {number} [take] How many transactions the endpoint should return
@@ -9388,6 +9397,15 @@ export declare const PointofsaleApiFp: (configuration?: Configuration) => {
     getSinglePointOfSale(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleWithContainersResponse>>;
     /**
      *
+     * @summary Returns a specific revision of the requested Point of Sale
+     * @param {number} id The id of the Point of Sale which should be returned
+     * @param {number} revision The revision number of the Point of Sale
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getSinglePointOfSaleRevision(id: number, revision: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleWithContainersResponse>>;
+    /**
+     *
      * @summary Returns a Point of Sale transactions
      * @param {number} id The id of the Point of Sale of which to get the transactions.
      * @param {number} [take] How many transactions the endpoint should return
@@ -9470,6 +9488,15 @@ export declare const PointofsaleApiFactory: (configuration?: Configuration, base
      * @throws {RequiredError}
      */
     getSinglePointOfSale(id: number, options?: any): AxiosPromise<PointOfSaleWithContainersResponse>;
+    /**
+     *
+     * @summary Returns a specific revision of the requested Point of Sale
+     * @param {number} id The id of the Point of Sale which should be returned
+     * @param {number} revision The revision number of the Point of Sale
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getSinglePointOfSaleRevision(id: number, revision: number, options?: any): AxiosPromise<PointOfSaleWithContainersResponse>;
     /**
      *
      * @summary Returns a Point of Sale transactions
@@ -9563,6 +9590,16 @@ export declare class PointofsaleApi extends BaseAPI {
      * @memberof PointofsaleApi
      */
     getSinglePointOfSale(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PointOfSaleWithContainersResponse, any, {}>>;
+    /**
+     *
+     * @summary Returns a specific revision of the requested Point of Sale
+     * @param {number} id The id of the Point of Sale which should be returned
+     * @param {number} revision The revision number of the Point of Sale
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PointofsaleApi
+     */
+    getSinglePointOfSaleRevision(id: number, revision: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PointOfSaleWithContainersResponse, any, {}>>;
     /**
      *
      * @summary Returns a Point of Sale transactions
