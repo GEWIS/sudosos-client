@@ -10189,38 +10189,6 @@ const UsersApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
-         * @summary Authenticate as another user
-         * @param {number} id The id of the user that should be authenticated as
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        authenticateAs: async (id, options = {}) => {
-            // verify required parameter 'id' is not null or undefined
-            (0, common_1.assertParamExists)('authenticateAs', 'id', id);
-            const localVarPath = `/users/{id}/authenticate`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication JWT required
-            // http bearer authentication required
-            await (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
          * @summary Create a new user
          * @param {CreateUserRequest} createUserRequest The user which should be created
          * @param {*} [options] Override http request option.
@@ -10576,38 +10544,6 @@ const UsersApiAxiosParamCreator = function (configuration) {
             if (skip !== undefined) {
                 localVarQueryParameter['skip'] = skip;
             }
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @summary Get all users that the user can authenticate as
-         * @param {number} id The id of the user to get authentications of
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserAuthenticatable: async (id, options = {}) => {
-            // verify required parameter 'id' is not null or undefined
-            (0, common_1.assertParamExists)('getUserAuthenticatable', 'id', id);
-            const localVarPath = `/users/{id}/authenticate`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication JWT required
-            // http bearer authentication required
-            await (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -11463,19 +11399,6 @@ const UsersApiFp = function (configuration) {
         },
         /**
          *
-         * @summary Authenticate as another user
-         * @param {number} id The id of the user that should be authenticated as
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async authenticateAs(id, options) {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.authenticateAs(id, options);
-            const index = configuration?.serverIndex ?? 0;
-            const operationBasePath = base_1.operationServerMap['UsersApi.authenticateAs']?.[index]?.url;
-            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
-        },
-        /**
-         *
          * @summary Create a new user
          * @param {CreateUserRequest} createUserRequest The user which should be created
          * @param {*} [options] Override http request option.
@@ -11613,19 +11536,6 @@ const UsersApiFp = function (configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getOrganMembers(id, take, skip, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = base_1.operationServerMap['UsersApi.getOrganMembers']?.[index]?.url;
-            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
-        },
-        /**
-         *
-         * @summary Get all users that the user can authenticate as
-         * @param {number} id The id of the user to get authentications of
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getUserAuthenticatable(id, options) {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserAuthenticatable(id, options);
-            const index = configuration?.serverIndex ?? 0;
-            const operationBasePath = base_1.operationServerMap['UsersApi.getUserAuthenticatable']?.[index]?.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
@@ -11954,16 +11864,6 @@ const UsersApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
-         * @summary Authenticate as another user
-         * @param {number} id The id of the user that should be authenticated as
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        authenticateAs(id, options) {
-            return localVarFp.authenticateAs(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
          * @summary Create a new user
          * @param {CreateUserRequest} createUserRequest The user which should be created
          * @param {*} [options] Override http request option.
@@ -12072,16 +11972,6 @@ const UsersApiFactory = function (configuration, basePath, axios) {
          */
         getOrganMembers(id, take, skip, options) {
             return localVarFp.getOrganMembers(id, take, skip, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @summary Get all users that the user can authenticate as
-         * @param {number} id The id of the user to get authentications of
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserAuthenticatable(id, options) {
-            return localVarFp.getUserAuthenticatable(id, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -12354,17 +12244,6 @@ class UsersApi extends base_1.BaseAPI {
     }
     /**
      *
-     * @summary Authenticate as another user
-     * @param {number} id The id of the user that should be authenticated as
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    authenticateAs(id, options) {
-        return (0, exports.UsersApiFp)(this.configuration).authenticateAs(id, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *
      * @summary Create a new user
      * @param {CreateUserRequest} createUserRequest The user which should be created
      * @param {*} [options] Override http request option.
@@ -12483,17 +12362,6 @@ class UsersApi extends base_1.BaseAPI {
      */
     getOrganMembers(id, take, skip, options) {
         return (0, exports.UsersApiFp)(this.configuration).getOrganMembers(id, take, skip, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *
-     * @summary Get all users that the user can authenticate as
-     * @param {number} id The id of the user to get authentications of
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    getUserAuthenticatable(id, options) {
-        return (0, exports.UsersApiFp)(this.configuration).getUserAuthenticatable(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *

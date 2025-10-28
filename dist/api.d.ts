@@ -11428,14 +11428,6 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
     addUserRole: (id: number, addRoleRequest: AddRoleRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary Authenticate as another user
-     * @param {number} id The id of the user that should be authenticated as
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    authenticateAs: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
      * @summary Create a new user
      * @param {CreateUserRequest} createUserRequest The user which should be created
      * @param {*} [options] Override http request option.
@@ -11525,14 +11517,6 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @throws {RequiredError}
      */
     getOrganMembers: (id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
-     * @summary Get all users that the user can authenticate as
-     * @param {number} id The id of the user to get authentications of
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getUserAuthenticatable: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get all roles assigned to the user.
@@ -11756,14 +11740,6 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
     addUserRole(id: number, addRoleRequest: AddRoleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
-     * @summary Authenticate as another user
-     * @param {number} id The id of the user that should be authenticated as
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    authenticateAs(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
-    /**
-     *
      * @summary Create a new user
      * @param {CreateUserRequest} createUserRequest The user which should be created
      * @param {*} [options] Override http request option.
@@ -11853,14 +11829,6 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     getOrganMembers(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUserResponse>>;
-    /**
-     *
-     * @summary Get all users that the user can authenticate as
-     * @param {number} id The id of the user to get authentications of
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getUserAuthenticatable(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UserResponse>>>;
     /**
      *
      * @summary Get all roles assigned to the user.
@@ -12084,14 +12052,6 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
     addUserRole(id: number, addRoleRequest: AddRoleRequest, options?: any): AxiosPromise<void>;
     /**
      *
-     * @summary Authenticate as another user
-     * @param {number} id The id of the user that should be authenticated as
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    authenticateAs(id: number, options?: any): AxiosPromise<AuthenticationResponse>;
-    /**
-     *
      * @summary Create a new user
      * @param {CreateUserRequest} createUserRequest The user which should be created
      * @param {*} [options] Override http request option.
@@ -12181,14 +12141,6 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
      * @throws {RequiredError}
      */
     getOrganMembers(id: number, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedUserResponse>;
-    /**
-     *
-     * @summary Get all users that the user can authenticate as
-     * @param {number} id The id of the user to get authentications of
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getUserAuthenticatable(id: number, options?: any): AxiosPromise<Array<UserResponse>>;
     /**
      *
      * @summary Get all roles assigned to the user.
@@ -12416,15 +12368,6 @@ export declare class UsersApi extends BaseAPI {
     addUserRole(id: number, addRoleRequest: AddRoleRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
     /**
      *
-     * @summary Authenticate as another user
-     * @param {number} id The id of the user that should be authenticated as
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    authenticateAs(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
-    /**
-     *
      * @summary Create a new user
      * @param {CreateUserRequest} createUserRequest The user which should be created
      * @param {*} [options] Override http request option.
@@ -12524,15 +12467,6 @@ export declare class UsersApi extends BaseAPI {
      * @memberof UsersApi
      */
     getOrganMembers(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedUserResponse, any, {}>>;
-    /**
-     *
-     * @summary Get all users that the user can authenticate as
-     * @param {number} id The id of the user to get authentications of
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    getUserAuthenticatable(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserResponse[], any, {}>>;
     /**
      *
      * @summary Get all roles assigned to the user.
