@@ -932,6 +932,18 @@ export interface BasePointOfSaleResponse {
      * @memberof BasePointOfSaleResponse
      */
     'name': string;
+    /**
+     * Revision of the POS
+     * @type {number}
+     * @memberof BasePointOfSaleResponse
+     */
+    'revision': number;
+    /**
+     * Whether this POS requires users to authenticate themselves before making a transaction
+     * @type {boolean}
+     * @memberof BasePointOfSaleResponse
+     */
+    'useAuthentication': boolean;
 }
 /**
  *
@@ -969,6 +981,12 @@ export interface BaseProductResponse {
      * @memberof BaseProductResponse
      */
     'name': string;
+    /**
+     * The product revision ID
+     * @type {number}
+     * @memberof BaseProductResponse
+     */
+    'revision': number;
     /**
      *
      * @type {DineroObjectResponse}
@@ -3553,12 +3571,6 @@ export interface PointOfSaleResponse {
      */
     'name': string;
     /**
-     *
-     * @type {BaseUserResponse}
-     * @memberof PointOfSaleResponse
-     */
-    'owner'?: BaseUserResponse;
-    /**
      * Revision of the POS
      * @type {number}
      * @memberof PointOfSaleResponse
@@ -3570,6 +3582,12 @@ export interface PointOfSaleResponse {
      * @memberof PointOfSaleResponse
      */
     'useAuthentication': boolean;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof PointOfSaleResponse
+     */
+    'owner'?: BaseUserResponse;
     /**
      * The roles that are cashiers of this POS
      * @type {Array<RoleResponse>}
@@ -3614,12 +3632,6 @@ export interface PointOfSaleWithContainersResponse {
      */
     'name': string;
     /**
-     *
-     * @type {BaseUserResponse}
-     * @memberof PointOfSaleWithContainersResponse
-     */
-    'owner'?: BaseUserResponse;
-    /**
      * Revision of the POS
      * @type {number}
      * @memberof PointOfSaleWithContainersResponse
@@ -3631,6 +3643,12 @@ export interface PointOfSaleWithContainersResponse {
      * @memberof PointOfSaleWithContainersResponse
      */
     'useAuthentication': boolean;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof PointOfSaleWithContainersResponse
+     */
+    'owner'?: BaseUserResponse;
     /**
      * The roles that are cashiers of this POS
      * @type {Array<RoleResponse>}
@@ -3743,6 +3761,12 @@ export interface ProductResponse {
      */
     'name': string;
     /**
+     * The product revision ID
+     * @type {number}
+     * @memberof ProductResponse
+     */
+    'revision': number;
+    /**
      *
      * @type {DineroObjectResponse}
      * @memberof ProductResponse
@@ -3754,12 +3778,6 @@ export interface ProductResponse {
      * @memberof ProductResponse
      */
     'vat': BaseVatGroupResponse;
-    /**
-     * The product revision ID
-     * @type {number}
-     * @memberof ProductResponse
-     */
-    'revision': number;
     /**
      *
      * @type {BaseUserResponse}
@@ -7586,6 +7604,14 @@ export declare const DebtorsApiAxiosParamCreator: (configuration?: Configuration
     deleteFine: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Delete a fine handout event
+     * @param {number} id The id of the fine handout event which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteFineHandout: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Get a report of all fines
      * @param {string} [fromDate] The start date of the report, inclusive
      * @param {string} [toDate] The end date of the report, exclusive
@@ -7661,6 +7687,14 @@ export declare const DebtorsApiFp: (configuration?: Configuration) => {
     deleteFine(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
+     * @summary Delete a fine handout event
+     * @param {number} id The id of the fine handout event which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteFineHandout(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     *
      * @summary Get a report of all fines
      * @param {string} [fromDate] The start date of the report, inclusive
      * @param {string} [toDate] The end date of the report, exclusive
@@ -7734,6 +7768,14 @@ export declare const DebtorsApiFactory: (configuration?: Configuration, basePath
      * @throws {RequiredError}
      */
     deleteFine(id: number, options?: any): AxiosPromise<void>;
+    /**
+     *
+     * @summary Delete a fine handout event
+     * @param {number} id The id of the fine handout event which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteFineHandout(id: number, options?: any): AxiosPromise<void>;
     /**
      *
      * @summary Get a report of all fines
@@ -7813,6 +7855,15 @@ export declare class DebtorsApi extends BaseAPI {
      * @memberof DebtorsApi
      */
     deleteFine(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    /**
+     *
+     * @summary Delete a fine handout event
+     * @param {number} id The id of the fine handout event which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DebtorsApi
+     */
+    deleteFineHandout(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
     /**
      *
      * @summary Get a report of all fines
@@ -9253,6 +9304,15 @@ export declare const PointofsaleApiAxiosParamCreator: (configuration?: Configura
     getSinglePointOfSale: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Returns a specific revision of the requested Point of Sale
+     * @param {number} id The id of the Point of Sale which should be returned
+     * @param {number} revision The revision number of the Point of Sale
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getSinglePointOfSaleRevision: (id: number, revision: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Returns a Point of Sale transactions
      * @param {number} id The id of the Point of Sale of which to get the transactions.
      * @param {number} [take] How many transactions the endpoint should return
@@ -9337,6 +9397,15 @@ export declare const PointofsaleApiFp: (configuration?: Configuration) => {
     getSinglePointOfSale(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleWithContainersResponse>>;
     /**
      *
+     * @summary Returns a specific revision of the requested Point of Sale
+     * @param {number} id The id of the Point of Sale which should be returned
+     * @param {number} revision The revision number of the Point of Sale
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getSinglePointOfSaleRevision(id: number, revision: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleWithContainersResponse>>;
+    /**
+     *
      * @summary Returns a Point of Sale transactions
      * @param {number} id The id of the Point of Sale of which to get the transactions.
      * @param {number} [take] How many transactions the endpoint should return
@@ -9419,6 +9488,15 @@ export declare const PointofsaleApiFactory: (configuration?: Configuration, base
      * @throws {RequiredError}
      */
     getSinglePointOfSale(id: number, options?: any): AxiosPromise<PointOfSaleWithContainersResponse>;
+    /**
+     *
+     * @summary Returns a specific revision of the requested Point of Sale
+     * @param {number} id The id of the Point of Sale which should be returned
+     * @param {number} revision The revision number of the Point of Sale
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getSinglePointOfSaleRevision(id: number, revision: number, options?: any): AxiosPromise<PointOfSaleWithContainersResponse>;
     /**
      *
      * @summary Returns a Point of Sale transactions
@@ -9512,6 +9590,16 @@ export declare class PointofsaleApi extends BaseAPI {
      * @memberof PointofsaleApi
      */
     getSinglePointOfSale(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PointOfSaleWithContainersResponse, any, {}>>;
+    /**
+     *
+     * @summary Returns a specific revision of the requested Point of Sale
+     * @param {number} id The id of the Point of Sale which should be returned
+     * @param {number} revision The revision number of the Point of Sale
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PointofsaleApi
+     */
+    getSinglePointOfSaleRevision(id: number, revision: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PointOfSaleWithContainersResponse, any, {}>>;
     /**
      *
      * @summary Returns a Point of Sale transactions
@@ -11340,14 +11428,6 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
     addUserRole: (id: number, addRoleRequest: AddRoleRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary Authenticate as another user
-     * @param {number} id The id of the user that should be authenticated as
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    authenticateAs: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
      * @summary Create a new user
      * @param {CreateUserRequest} createUserRequest The user which should be created
      * @param {*} [options] Override http request option.
@@ -11437,14 +11517,6 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @throws {RequiredError}
      */
     getOrganMembers: (id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
-     * @summary Get all users that the user can authenticate as
-     * @param {number} id The id of the user to get authentications of
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getUserAuthenticatable: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get all roles assigned to the user.
@@ -11668,14 +11740,6 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
     addUserRole(id: number, addRoleRequest: AddRoleRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
-     * @summary Authenticate as another user
-     * @param {number} id The id of the user that should be authenticated as
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    authenticateAs(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
-    /**
-     *
      * @summary Create a new user
      * @param {CreateUserRequest} createUserRequest The user which should be created
      * @param {*} [options] Override http request option.
@@ -11765,14 +11829,6 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     getOrganMembers(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUserResponse>>;
-    /**
-     *
-     * @summary Get all users that the user can authenticate as
-     * @param {number} id The id of the user to get authentications of
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getUserAuthenticatable(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UserResponse>>>;
     /**
      *
      * @summary Get all roles assigned to the user.
@@ -11996,14 +12052,6 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
     addUserRole(id: number, addRoleRequest: AddRoleRequest, options?: any): AxiosPromise<void>;
     /**
      *
-     * @summary Authenticate as another user
-     * @param {number} id The id of the user that should be authenticated as
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    authenticateAs(id: number, options?: any): AxiosPromise<AuthenticationResponse>;
-    /**
-     *
      * @summary Create a new user
      * @param {CreateUserRequest} createUserRequest The user which should be created
      * @param {*} [options] Override http request option.
@@ -12093,14 +12141,6 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
      * @throws {RequiredError}
      */
     getOrganMembers(id: number, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedUserResponse>;
-    /**
-     *
-     * @summary Get all users that the user can authenticate as
-     * @param {number} id The id of the user to get authentications of
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getUserAuthenticatable(id: number, options?: any): AxiosPromise<Array<UserResponse>>;
     /**
      *
      * @summary Get all roles assigned to the user.
@@ -12328,15 +12368,6 @@ export declare class UsersApi extends BaseAPI {
     addUserRole(id: number, addRoleRequest: AddRoleRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
     /**
      *
-     * @summary Authenticate as another user
-     * @param {number} id The id of the user that should be authenticated as
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    authenticateAs(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
-    /**
-     *
      * @summary Create a new user
      * @param {CreateUserRequest} createUserRequest The user which should be created
      * @param {*} [options] Override http request option.
@@ -12436,15 +12467,6 @@ export declare class UsersApi extends BaseAPI {
      * @memberof UsersApi
      */
     getOrganMembers(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedUserResponse, any, {}>>;
-    /**
-     *
-     * @summary Get all users that the user can authenticate as
-     * @param {number} id The id of the user to get authentications of
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    getUserAuthenticatable(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserResponse[], any, {}>>;
     /**
      *
      * @summary Get all roles assigned to the user.
