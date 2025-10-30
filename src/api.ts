@@ -945,6 +945,18 @@ export interface BasePointOfSaleResponse {
      * @memberof BasePointOfSaleResponse
      */
     'name': string;
+    /**
+     * Revision of the POS
+     * @type {number}
+     * @memberof BasePointOfSaleResponse
+     */
+    'revision': number;
+    /**
+     * Whether this POS requires users to authenticate themselves before making a transaction
+     * @type {boolean}
+     * @memberof BasePointOfSaleResponse
+     */
+    'useAuthentication': boolean;
 }
 /**
  * 
@@ -982,6 +994,12 @@ export interface BaseProductResponse {
      * @memberof BaseProductResponse
      */
     'name': string;
+    /**
+     * The product revision ID
+     * @type {number}
+     * @memberof BaseProductResponse
+     */
+    'revision': number;
     /**
      * 
      * @type {DineroObjectResponse}
@@ -3580,12 +3598,6 @@ export interface PointOfSaleResponse {
      */
     'name': string;
     /**
-     * 
-     * @type {BaseUserResponse}
-     * @memberof PointOfSaleResponse
-     */
-    'owner'?: BaseUserResponse;
-    /**
      * Revision of the POS
      * @type {number}
      * @memberof PointOfSaleResponse
@@ -3597,6 +3609,12 @@ export interface PointOfSaleResponse {
      * @memberof PointOfSaleResponse
      */
     'useAuthentication': boolean;
+    /**
+     * 
+     * @type {BaseUserResponse}
+     * @memberof PointOfSaleResponse
+     */
+    'owner'?: BaseUserResponse;
     /**
      * The roles that are cashiers of this POS
      * @type {Array<RoleResponse>}
@@ -3641,12 +3659,6 @@ export interface PointOfSaleWithContainersResponse {
      */
     'name': string;
     /**
-     * 
-     * @type {BaseUserResponse}
-     * @memberof PointOfSaleWithContainersResponse
-     */
-    'owner'?: BaseUserResponse;
-    /**
      * Revision of the POS
      * @type {number}
      * @memberof PointOfSaleWithContainersResponse
@@ -3658,6 +3670,12 @@ export interface PointOfSaleWithContainersResponse {
      * @memberof PointOfSaleWithContainersResponse
      */
     'useAuthentication': boolean;
+    /**
+     * 
+     * @type {BaseUserResponse}
+     * @memberof PointOfSaleWithContainersResponse
+     */
+    'owner'?: BaseUserResponse;
     /**
      * The roles that are cashiers of this POS
      * @type {Array<RoleResponse>}
@@ -3770,6 +3788,12 @@ export interface ProductResponse {
      */
     'name': string;
     /**
+     * The product revision ID
+     * @type {number}
+     * @memberof ProductResponse
+     */
+    'revision': number;
+    /**
      * 
      * @type {DineroObjectResponse}
      * @memberof ProductResponse
@@ -3781,12 +3805,6 @@ export interface ProductResponse {
      * @memberof ProductResponse
      */
     'vat': BaseVatGroupResponse;
-    /**
-     * The product revision ID
-     * @type {number}
-     * @memberof ProductResponse
-     */
-    'revision': number;
     /**
      * 
      * @type {BaseUserResponse}
@@ -9312,6 +9330,44 @@ export const DebtorsApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @summary Delete a fine handout event
+         * @param {number} id The id of the fine handout event which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteFineHandout: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('deleteFineHandout', 'id', id)
+            const localVarPath = `/fines/handout/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Get a report of all fines
          * @param {string} [fromDate] The start date of the report, inclusive
          * @param {string} [toDate] The end date of the report, exclusive
@@ -9610,6 +9666,19 @@ export const DebtorsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Delete a fine handout event
+         * @param {number} id The id of the fine handout event which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteFineHandout(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteFineHandout(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['DebtorsApi.deleteFineHandout']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Get a report of all fines
          * @param {string} [fromDate] The start date of the report, inclusive
          * @param {string} [toDate] The end date of the report, exclusive
@@ -9723,6 +9792,16 @@ export const DebtorsApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
+         * @summary Delete a fine handout event
+         * @param {number} id The id of the fine handout event which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteFineHandout(id: number, options?: any): AxiosPromise<void> {
+            return localVarFp.deleteFineHandout(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Get a report of all fines
          * @param {string} [fromDate] The start date of the report, inclusive
          * @param {string} [toDate] The end date of the report, exclusive
@@ -9818,6 +9897,18 @@ export class DebtorsApi extends BaseAPI {
      */
     public deleteFine(id: number, options?: RawAxiosRequestConfig) {
         return DebtorsApiFp(this.configuration).deleteFine(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Delete a fine handout event
+     * @param {number} id The id of the fine handout event which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DebtorsApi
+     */
+    public deleteFineHandout(id: number, options?: RawAxiosRequestConfig) {
+        return DebtorsApiFp(this.configuration).deleteFineHandout(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -12950,6 +13041,48 @@ export const PointofsaleApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
+         * @summary Returns a specific revision of the requested Point of Sale
+         * @param {number} id The id of the Point of Sale which should be returned
+         * @param {number} revision The revision number of the Point of Sale
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSinglePointOfSaleRevision: async (id: number, revision: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getSinglePointOfSaleRevision', 'id', id)
+            // verify required parameter 'revision' is not null or undefined
+            assertParamExists('getSinglePointOfSaleRevision', 'revision', revision)
+            const localVarPath = `/pointsofsale/{id}/{revision}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)))
+                .replace(`{${"revision"}}`, encodeURIComponent(String(revision)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Returns a Point of Sale transactions
          * @param {number} id The id of the Point of Sale of which to get the transactions.
          * @param {number} [take] How many transactions the endpoint should return
@@ -13146,6 +13279,20 @@ export const PointofsaleApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Returns a specific revision of the requested Point of Sale
+         * @param {number} id The id of the Point of Sale which should be returned
+         * @param {number} revision The revision number of the Point of Sale
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getSinglePointOfSaleRevision(id: number, revision: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PointOfSaleWithContainersResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSinglePointOfSaleRevision(id, revision, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['PointofsaleApi.getSinglePointOfSaleRevision']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Returns a Point of Sale transactions
          * @param {number} id The id of the Point of Sale of which to get the transactions.
          * @param {number} [take] How many transactions the endpoint should return
@@ -13255,6 +13402,17 @@ export const PointofsaleApiFactory = function (configuration?: Configuration, ba
          */
         getSinglePointOfSale(id: number, options?: any): AxiosPromise<PointOfSaleWithContainersResponse> {
             return localVarFp.getSinglePointOfSale(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Returns a specific revision of the requested Point of Sale
+         * @param {number} id The id of the Point of Sale which should be returned
+         * @param {number} revision The revision number of the Point of Sale
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSinglePointOfSaleRevision(id: number, revision: number, options?: any): AxiosPromise<PointOfSaleWithContainersResponse> {
+            return localVarFp.getSinglePointOfSaleRevision(id, revision, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -13374,6 +13532,19 @@ export class PointofsaleApi extends BaseAPI {
      */
     public getSinglePointOfSale(id: number, options?: RawAxiosRequestConfig) {
         return PointofsaleApiFp(this.configuration).getSinglePointOfSale(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Returns a specific revision of the requested Point of Sale
+     * @param {number} id The id of the Point of Sale which should be returned
+     * @param {number} revision The revision number of the Point of Sale
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PointofsaleApi
+     */
+    public getSinglePointOfSaleRevision(id: number, revision: number, options?: RawAxiosRequestConfig) {
+        return PointofsaleApiFp(this.configuration).getSinglePointOfSaleRevision(id, revision, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -17204,44 +17375,6 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
-         * @summary Authenticate as another user
-         * @param {number} id The id of the user that should be authenticated as
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        authenticateAs: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('authenticateAs', 'id', id)
-            const localVarPath = `/users/{id}/authenticate`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication JWT required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
          * @summary Create a new user
          * @param {CreateUserRequest} createUserRequest The user which should be created
          * @param {*} [options] Override http request option.
@@ -17665,44 +17798,6 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             if (skip !== undefined) {
                 localVarQueryParameter['skip'] = skip;
             }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Get all users that the user can authenticate as
-         * @param {number} id The id of the user to get authentications of
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserAuthenticatable: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('getUserAuthenticatable', 'id', id)
-            const localVarPath = `/users/{id}/authenticate`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication JWT required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
 
     
@@ -18721,19 +18816,6 @@ export const UsersApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Authenticate as another user
-         * @param {number} id The id of the user that should be authenticated as
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async authenticateAs(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.authenticateAs(id, options);
-            const index = configuration?.serverIndex ?? 0;
-            const operationBasePath = operationServerMap['UsersApi.authenticateAs']?.[index]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
-        },
-        /**
-         * 
          * @summary Create a new user
          * @param {CreateUserRequest} createUserRequest The user which should be created
          * @param {*} [options] Override http request option.
@@ -18871,19 +18953,6 @@ export const UsersApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getOrganMembers(id, take, skip, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['UsersApi.getOrganMembers']?.[index]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
-        },
-        /**
-         * 
-         * @summary Get all users that the user can authenticate as
-         * @param {number} id The id of the user to get authentications of
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getUserAuthenticatable(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UserResponse>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserAuthenticatable(id, options);
-            const index = configuration?.serverIndex ?? 0;
-            const operationBasePath = operationServerMap['UsersApi.getUserAuthenticatable']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
@@ -19212,16 +19281,6 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
-         * @summary Authenticate as another user
-         * @param {number} id The id of the user that should be authenticated as
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        authenticateAs(id: number, options?: any): AxiosPromise<AuthenticationResponse> {
-            return localVarFp.authenticateAs(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
          * @summary Create a new user
          * @param {CreateUserRequest} createUserRequest The user which should be created
          * @param {*} [options] Override http request option.
@@ -19330,16 +19389,6 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          */
         getOrganMembers(id: number, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedUserResponse> {
             return localVarFp.getOrganMembers(id, take, skip, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @summary Get all users that the user can authenticate as
-         * @param {number} id The id of the user to get authentications of
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserAuthenticatable(id: number, options?: any): AxiosPromise<Array<UserResponse>> {
-            return localVarFp.getUserAuthenticatable(id, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -19614,18 +19663,6 @@ export class UsersApi extends BaseAPI {
 
     /**
      * 
-     * @summary Authenticate as another user
-     * @param {number} id The id of the user that should be authenticated as
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    public authenticateAs(id: number, options?: RawAxiosRequestConfig) {
-        return UsersApiFp(this.configuration).authenticateAs(id, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
      * @summary Create a new user
      * @param {CreateUserRequest} createUserRequest The user which should be created
      * @param {*} [options] Override http request option.
@@ -19753,18 +19790,6 @@ export class UsersApi extends BaseAPI {
      */
     public getOrganMembers(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).getOrganMembers(id, take, skip, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Get all users that the user can authenticate as
-     * @param {number} id The id of the user to get authentications of
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    public getUserAuthenticatable(id: number, options?: RawAxiosRequestConfig) {
-        return UsersApiFp(this.configuration).getUserAuthenticatable(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
