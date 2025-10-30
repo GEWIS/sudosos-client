@@ -13,9 +13,9 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PointofsaleApiFactory = exports.PointofsaleApiFp = exports.PointofsaleApiAxiosParamCreator = exports.PayoutRequestsApi = exports.PayoutRequestsApiFactory = exports.PayoutRequestsApiFp = exports.PayoutRequestsApiAxiosParamCreator = exports.GetAllInvoicesCurrentStateEnum = exports.InvoicesApi = exports.InvoicesApiFactory = exports.InvoicesApiFp = exports.InvoicesApiAxiosParamCreator = exports.FilesApi = exports.FilesApiFactory = exports.FilesApiFp = exports.FilesApiAxiosParamCreator = exports.EventsApi = exports.EventsApiFactory = exports.EventsApiFp = exports.EventsApiAxiosParamCreator = exports.GetFineReportPdfFileTypeEnum = exports.DebtorsApi = exports.DebtorsApiFactory = exports.DebtorsApiFp = exports.DebtorsApiAxiosParamCreator = exports.ContainersApi = exports.ContainersApiFactory = exports.ContainersApiFp = exports.ContainersApiAxiosParamCreator = exports.BannersApi = exports.BannersApiFactory = exports.BannersApiFp = exports.BannersApiAxiosParamCreator = exports.GetAllBalanceOrderDirectionEnum = exports.GetAllBalanceUserTypesEnum = exports.BalanceApi = exports.BalanceApiFactory = exports.BalanceApiFp = exports.BalanceApiAxiosParamCreator = exports.AuthenticateApi = exports.AuthenticateApiFactory = exports.AuthenticateApiFp = exports.AuthenticateApiAxiosParamCreator = exports.UpdateInvoiceRequestStateEnum = exports.QRStatusResponseStatusEnum = exports.PayoutRequestStatusRequestStateEnum = exports.PayoutRequestResponseStatusEnum = exports.InvoiceStatusResponseStateEnum = exports.FinancialMutationResponseTypeEnum = exports.BasePayoutRequestResponseStatusEnum = void 0;
-exports.TransfersApi = exports.TransfersApiFactory = exports.TransfersApiFp = exports.TransfersApiAxiosParamCreator = exports.TransactionsApi = exports.TransactionsApiFactory = exports.TransactionsApiFp = exports.TransactionsApiAxiosParamCreator = exports.TransactionSummariesApi = exports.TransactionSummariesApiFactory = exports.TransactionSummariesApiFp = exports.TransactionSummariesApiAxiosParamCreator = exports.TestOperationsOfTheTestControllerApi = exports.TestOperationsOfTheTestControllerApiFactory = exports.TestOperationsOfTheTestControllerApiFp = exports.TestOperationsOfTheTestControllerApiAxiosParamCreator = exports.GetUserSyncResultsServiceEnum = exports.SyncApi = exports.SyncApiFactory = exports.SyncApiFp = exports.SyncApiAxiosParamCreator = exports.StripeApi = exports.StripeApiFactory = exports.StripeApiFp = exports.StripeApiAxiosParamCreator = exports.ServerSettingsApi = exports.ServerSettingsApiFactory = exports.ServerSettingsApiFp = exports.ServerSettingsApiAxiosParamCreator = exports.SellerPayoutsApi = exports.SellerPayoutsApiFactory = exports.SellerPayoutsApiFp = exports.SellerPayoutsApiAxiosParamCreator = exports.RootApi = exports.RootApiFactory = exports.RootApiFp = exports.RootApiAxiosParamCreator = exports.RbacApi = exports.RbacApiFactory = exports.RbacApiFp = exports.RbacApiAxiosParamCreator = exports.ProductsApi = exports.ProductsApiFactory = exports.ProductsApiFp = exports.ProductsApiAxiosParamCreator = exports.ProductCategoriesApi = exports.ProductCategoriesApiFactory = exports.ProductCategoriesApiFp = exports.ProductCategoriesApiAxiosParamCreator = exports.PointofsaleApi = void 0;
-exports.WriteoffsApi = exports.WriteoffsApiFactory = exports.WriteoffsApiFp = exports.WriteoffsApiAxiosParamCreator = exports.VouchergroupsApi = exports.VouchergroupsApiFactory = exports.VouchergroupsApiFp = exports.VouchergroupsApiAxiosParamCreator = exports.VatGroupsApi = exports.VatGroupsApiFactory = exports.VatGroupsApiFp = exports.VatGroupsApiAxiosParamCreator = exports.GetUsersSalesReportPdfFileTypeEnum = exports.GetUsersPurchaseReportPdfFileTypeEnum = exports.GetAllUsersTypeEnum = exports.UsersApi = exports.UsersApiFactory = exports.UsersApiFp = exports.UsersApiAxiosParamCreator = void 0;
+exports.PayoutRequestsApiFactory = exports.PayoutRequestsApiFp = exports.PayoutRequestsApiAxiosParamCreator = exports.GetAllInvoicesCurrentStateEnum = exports.InvoicesApi = exports.InvoicesApiFactory = exports.InvoicesApiFp = exports.InvoicesApiAxiosParamCreator = exports.InactiveAdministrativeCostsApi = exports.InactiveAdministrativeCostsApiFactory = exports.InactiveAdministrativeCostsApiFp = exports.InactiveAdministrativeCostsApiAxiosParamCreator = exports.FilesApi = exports.FilesApiFactory = exports.FilesApiFp = exports.FilesApiAxiosParamCreator = exports.EventsApi = exports.EventsApiFactory = exports.EventsApiFp = exports.EventsApiAxiosParamCreator = exports.GetFineReportPdfFileTypeEnum = exports.DebtorsApi = exports.DebtorsApiFactory = exports.DebtorsApiFp = exports.DebtorsApiAxiosParamCreator = exports.ContainersApi = exports.ContainersApiFactory = exports.ContainersApiFp = exports.ContainersApiAxiosParamCreator = exports.BannersApi = exports.BannersApiFactory = exports.BannersApiFp = exports.BannersApiAxiosParamCreator = exports.GetAllBalanceOrderDirectionEnum = exports.GetAllBalanceUserTypesEnum = exports.BalanceApi = exports.BalanceApiFactory = exports.BalanceApiFp = exports.BalanceApiAxiosParamCreator = exports.AuthenticateApi = exports.AuthenticateApiFactory = exports.AuthenticateApiFp = exports.AuthenticateApiAxiosParamCreator = exports.UpdateInvoiceRequestStateEnum = exports.QRStatusResponseStatusEnum = exports.PayoutRequestStatusRequestStateEnum = exports.PayoutRequestResponseStatusEnum = exports.InvoiceStatusResponseStateEnum = exports.FinancialMutationResponseTypeEnum = exports.BasePayoutRequestResponseStatusEnum = void 0;
+exports.TransactionsApi = exports.TransactionsApiFactory = exports.TransactionsApiFp = exports.TransactionsApiAxiosParamCreator = exports.TransactionSummariesApi = exports.TransactionSummariesApiFactory = exports.TransactionSummariesApiFp = exports.TransactionSummariesApiAxiosParamCreator = exports.TestOperationsOfTheTestControllerApi = exports.TestOperationsOfTheTestControllerApiFactory = exports.TestOperationsOfTheTestControllerApiFp = exports.TestOperationsOfTheTestControllerApiAxiosParamCreator = exports.GetUserSyncResultsServiceEnum = exports.SyncApi = exports.SyncApiFactory = exports.SyncApiFp = exports.SyncApiAxiosParamCreator = exports.StripeApi = exports.StripeApiFactory = exports.StripeApiFp = exports.StripeApiAxiosParamCreator = exports.ServerSettingsApi = exports.ServerSettingsApiFactory = exports.ServerSettingsApiFp = exports.ServerSettingsApiAxiosParamCreator = exports.SellerPayoutsApi = exports.SellerPayoutsApiFactory = exports.SellerPayoutsApiFp = exports.SellerPayoutsApiAxiosParamCreator = exports.RootApi = exports.RootApiFactory = exports.RootApiFp = exports.RootApiAxiosParamCreator = exports.RbacApi = exports.RbacApiFactory = exports.RbacApiFp = exports.RbacApiAxiosParamCreator = exports.ProductsApi = exports.ProductsApiFactory = exports.ProductsApiFp = exports.ProductsApiAxiosParamCreator = exports.ProductCategoriesApi = exports.ProductCategoriesApiFactory = exports.ProductCategoriesApiFp = exports.ProductCategoriesApiAxiosParamCreator = exports.PointofsaleApi = exports.PointofsaleApiFactory = exports.PointofsaleApiFp = exports.PointofsaleApiAxiosParamCreator = exports.PayoutRequestsApi = void 0;
+exports.WriteoffsApi = exports.WriteoffsApiFactory = exports.WriteoffsApiFp = exports.WriteoffsApiAxiosParamCreator = exports.VouchergroupsApi = exports.VouchergroupsApiFactory = exports.VouchergroupsApiFp = exports.VouchergroupsApiAxiosParamCreator = exports.VatGroupsApi = exports.VatGroupsApiFactory = exports.VatGroupsApiFp = exports.VatGroupsApiAxiosParamCreator = exports.GetUsersSalesReportPdfFileTypeEnum = exports.GetUsersPurchaseReportPdfFileTypeEnum = exports.GetAllUsersTypeEnum = exports.UsersApi = exports.UsersApiFactory = exports.UsersApiFp = exports.UsersApiAxiosParamCreator = exports.TransfersApi = exports.TransfersApiFactory = exports.TransfersApiFp = exports.TransfersApiAxiosParamCreator = void 0;
 const axios_1 = require("axios");
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -4767,6 +4767,516 @@ class FilesApi extends base_1.BaseAPI {
     }
 }
 exports.FilesApi = FilesApi;
+/**
+ * InactiveAdministrativeCostsApi - axios parameter creator
+ * @export
+ */
+const InactiveAdministrativeCostsApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         *
+         * @summary Adds and inactive administrative cost to the system.
+         * @param {CreateInactiveAdministrativeCostRequest} createInactiveAdministrativeCostRequest The inactive administrative cost which should be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createInactiveAdministrativeCosts: async (createInactiveAdministrativeCostRequest, options = {}) => {
+            // verify required parameter 'createInactiveAdministrativeCostRequest' is not null or undefined
+            (0, common_1.assertParamExists)('createInactiveAdministrativeCosts', 'createInactiveAdministrativeCostRequest', createInactiveAdministrativeCostRequest);
+            const localVarPath = `/inactive-administrative-costs`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            await (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(createInactiveAdministrativeCostRequest, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Deletes an inactive administrative cost.
+         * @param {number} id The id of the inactive administrative cost which should be deleted.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteInactiveAdministrativeCost: async (id, options = {}) => {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('deleteInactiveAdministrativeCost', 'id', id);
+            const localVarPath = `/inactive-administrative-costs/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            await (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Returns all inactive administrative costs in the system.
+         * @param {number} [fromId] Filter on the id of the user
+         * @param {number} [inactiveAdministrativeCostId] Filter on the id of entity
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllInactiveAdministrativeCosts: async (fromId, inactiveAdministrativeCostId, options = {}) => {
+            const localVarPath = `/inactive-administrative-costs`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            await (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            if (fromId !== undefined) {
+                localVarQueryParameter['fromId'] = fromId;
+            }
+            if (inactiveAdministrativeCostId !== undefined) {
+                localVarQueryParameter['inactiveAdministrativeCostId'] = inactiveAdministrativeCostId;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Returns a single inactive administrative cost entity
+         * @param {number} id The id of the requested inactive administrative cost
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getInactiveAdministrativeCosts: async (id, options = {}) => {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('getInactiveAdministrativeCosts', 'id', id);
+            const localVarPath = `/inactive-administrative-costs/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            await (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Find all users who are eligible for notification or creation of inactive administrative cost
+         * @param {boolean} [notification] Whether to check for notification or for fine.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getInactiveAdministrativeCostsEligibleUsers: async (notification, options = {}) => {
+            const localVarPath = `/inactive-administrative-costs/eligible-users`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            await (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            if (notification !== undefined) {
+                localVarQueryParameter['notification'] = notification;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Handout inactive administrative costs to all users who are eligible.
+         * @param {HandoutInactiveAdministrativeCostsRequest} handoutInactiveAdministrativeCostsRequest The users that should be fined
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        handoutInactiveAdministrativeCostsUsers: async (handoutInactiveAdministrativeCostsRequest, options = {}) => {
+            // verify required parameter 'handoutInactiveAdministrativeCostsRequest' is not null or undefined
+            (0, common_1.assertParamExists)('handoutInactiveAdministrativeCostsUsers', 'handoutInactiveAdministrativeCostsRequest', handoutInactiveAdministrativeCostsRequest);
+            const localVarPath = `/inactive-administrative-costs/handout`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            await (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(handoutInactiveAdministrativeCostsRequest, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Notify all users which will pay administrative costs within a year
+         * @param {HandoutInactiveAdministrativeCostsRequest} handoutInactiveAdministrativeCostsRequest The users that should be notified
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        notifyInactiveAdministrativeCostsUsers: async (handoutInactiveAdministrativeCostsRequest, options = {}) => {
+            // verify required parameter 'handoutInactiveAdministrativeCostsRequest' is not null or undefined
+            (0, common_1.assertParamExists)('notifyInactiveAdministrativeCostsUsers', 'handoutInactiveAdministrativeCostsRequest', handoutInactiveAdministrativeCostsRequest);
+            const localVarPath = `/inactive-administrative-costs/notify`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            await (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(handoutInactiveAdministrativeCostsRequest, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    };
+};
+exports.InactiveAdministrativeCostsApiAxiosParamCreator = InactiveAdministrativeCostsApiAxiosParamCreator;
+/**
+ * InactiveAdministrativeCostsApi - functional programming interface
+ * @export
+ */
+const InactiveAdministrativeCostsApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.InactiveAdministrativeCostsApiAxiosParamCreator)(configuration);
+    return {
+        /**
+         *
+         * @summary Adds and inactive administrative cost to the system.
+         * @param {CreateInactiveAdministrativeCostRequest} createInactiveAdministrativeCostRequest The inactive administrative cost which should be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createInactiveAdministrativeCosts(createInactiveAdministrativeCostRequest, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createInactiveAdministrativeCosts(createInactiveAdministrativeCostRequest, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = base_1.operationServerMap['InactiveAdministrativeCostsApi.createInactiveAdministrativeCosts']?.[index]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Deletes an inactive administrative cost.
+         * @param {number} id The id of the inactive administrative cost which should be deleted.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteInactiveAdministrativeCost(id, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteInactiveAdministrativeCost(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = base_1.operationServerMap['InactiveAdministrativeCostsApi.deleteInactiveAdministrativeCost']?.[index]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Returns all inactive administrative costs in the system.
+         * @param {number} [fromId] Filter on the id of the user
+         * @param {number} [inactiveAdministrativeCostId] Filter on the id of entity
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getAllInactiveAdministrativeCosts(fromId, inactiveAdministrativeCostId, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllInactiveAdministrativeCosts(fromId, inactiveAdministrativeCostId, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = base_1.operationServerMap['InactiveAdministrativeCostsApi.getAllInactiveAdministrativeCosts']?.[index]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Returns a single inactive administrative cost entity
+         * @param {number} id The id of the requested inactive administrative cost
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getInactiveAdministrativeCosts(id, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getInactiveAdministrativeCosts(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = base_1.operationServerMap['InactiveAdministrativeCostsApi.getInactiveAdministrativeCosts']?.[index]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Find all users who are eligible for notification or creation of inactive administrative cost
+         * @param {boolean} [notification] Whether to check for notification or for fine.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getInactiveAdministrativeCostsEligibleUsers(notification, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getInactiveAdministrativeCostsEligibleUsers(notification, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = base_1.operationServerMap['InactiveAdministrativeCostsApi.getInactiveAdministrativeCostsEligibleUsers']?.[index]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Handout inactive administrative costs to all users who are eligible.
+         * @param {HandoutInactiveAdministrativeCostsRequest} handoutInactiveAdministrativeCostsRequest The users that should be fined
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async handoutInactiveAdministrativeCostsUsers(handoutInactiveAdministrativeCostsRequest, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.handoutInactiveAdministrativeCostsUsers(handoutInactiveAdministrativeCostsRequest, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = base_1.operationServerMap['InactiveAdministrativeCostsApi.handoutInactiveAdministrativeCostsUsers']?.[index]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Notify all users which will pay administrative costs within a year
+         * @param {HandoutInactiveAdministrativeCostsRequest} handoutInactiveAdministrativeCostsRequest The users that should be notified
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async notifyInactiveAdministrativeCostsUsers(handoutInactiveAdministrativeCostsRequest, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyInactiveAdministrativeCostsUsers(handoutInactiveAdministrativeCostsRequest, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = base_1.operationServerMap['InactiveAdministrativeCostsApi.notifyInactiveAdministrativeCostsUsers']?.[index]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+    };
+};
+exports.InactiveAdministrativeCostsApiFp = InactiveAdministrativeCostsApiFp;
+/**
+ * InactiveAdministrativeCostsApi - factory interface
+ * @export
+ */
+const InactiveAdministrativeCostsApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.InactiveAdministrativeCostsApiFp)(configuration);
+    return {
+        /**
+         *
+         * @summary Adds and inactive administrative cost to the system.
+         * @param {CreateInactiveAdministrativeCostRequest} createInactiveAdministrativeCostRequest The inactive administrative cost which should be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createInactiveAdministrativeCosts(createInactiveAdministrativeCostRequest, options) {
+            return localVarFp.createInactiveAdministrativeCosts(createInactiveAdministrativeCostRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Deletes an inactive administrative cost.
+         * @param {number} id The id of the inactive administrative cost which should be deleted.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteInactiveAdministrativeCost(id, options) {
+            return localVarFp.deleteInactiveAdministrativeCost(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Returns all inactive administrative costs in the system.
+         * @param {number} [fromId] Filter on the id of the user
+         * @param {number} [inactiveAdministrativeCostId] Filter on the id of entity
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllInactiveAdministrativeCosts(fromId, inactiveAdministrativeCostId, options) {
+            return localVarFp.getAllInactiveAdministrativeCosts(fromId, inactiveAdministrativeCostId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Returns a single inactive administrative cost entity
+         * @param {number} id The id of the requested inactive administrative cost
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getInactiveAdministrativeCosts(id, options) {
+            return localVarFp.getInactiveAdministrativeCosts(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Find all users who are eligible for notification or creation of inactive administrative cost
+         * @param {boolean} [notification] Whether to check for notification or for fine.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getInactiveAdministrativeCostsEligibleUsers(notification, options) {
+            return localVarFp.getInactiveAdministrativeCostsEligibleUsers(notification, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Handout inactive administrative costs to all users who are eligible.
+         * @param {HandoutInactiveAdministrativeCostsRequest} handoutInactiveAdministrativeCostsRequest The users that should be fined
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        handoutInactiveAdministrativeCostsUsers(handoutInactiveAdministrativeCostsRequest, options) {
+            return localVarFp.handoutInactiveAdministrativeCostsUsers(handoutInactiveAdministrativeCostsRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Notify all users which will pay administrative costs within a year
+         * @param {HandoutInactiveAdministrativeCostsRequest} handoutInactiveAdministrativeCostsRequest The users that should be notified
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        notifyInactiveAdministrativeCostsUsers(handoutInactiveAdministrativeCostsRequest, options) {
+            return localVarFp.notifyInactiveAdministrativeCostsUsers(handoutInactiveAdministrativeCostsRequest, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+exports.InactiveAdministrativeCostsApiFactory = InactiveAdministrativeCostsApiFactory;
+/**
+ * InactiveAdministrativeCostsApi - object-oriented interface
+ * @export
+ * @class InactiveAdministrativeCostsApi
+ * @extends {BaseAPI}
+ */
+class InactiveAdministrativeCostsApi extends base_1.BaseAPI {
+    /**
+     *
+     * @summary Adds and inactive administrative cost to the system.
+     * @param {CreateInactiveAdministrativeCostRequest} createInactiveAdministrativeCostRequest The inactive administrative cost which should be created
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InactiveAdministrativeCostsApi
+     */
+    createInactiveAdministrativeCosts(createInactiveAdministrativeCostRequest, options) {
+        return (0, exports.InactiveAdministrativeCostsApiFp)(this.configuration).createInactiveAdministrativeCosts(createInactiveAdministrativeCostRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Deletes an inactive administrative cost.
+     * @param {number} id The id of the inactive administrative cost which should be deleted.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InactiveAdministrativeCostsApi
+     */
+    deleteInactiveAdministrativeCost(id, options) {
+        return (0, exports.InactiveAdministrativeCostsApiFp)(this.configuration).deleteInactiveAdministrativeCost(id, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Returns all inactive administrative costs in the system.
+     * @param {number} [fromId] Filter on the id of the user
+     * @param {number} [inactiveAdministrativeCostId] Filter on the id of entity
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InactiveAdministrativeCostsApi
+     */
+    getAllInactiveAdministrativeCosts(fromId, inactiveAdministrativeCostId, options) {
+        return (0, exports.InactiveAdministrativeCostsApiFp)(this.configuration).getAllInactiveAdministrativeCosts(fromId, inactiveAdministrativeCostId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Returns a single inactive administrative cost entity
+     * @param {number} id The id of the requested inactive administrative cost
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InactiveAdministrativeCostsApi
+     */
+    getInactiveAdministrativeCosts(id, options) {
+        return (0, exports.InactiveAdministrativeCostsApiFp)(this.configuration).getInactiveAdministrativeCosts(id, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Find all users who are eligible for notification or creation of inactive administrative cost
+     * @param {boolean} [notification] Whether to check for notification or for fine.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InactiveAdministrativeCostsApi
+     */
+    getInactiveAdministrativeCostsEligibleUsers(notification, options) {
+        return (0, exports.InactiveAdministrativeCostsApiFp)(this.configuration).getInactiveAdministrativeCostsEligibleUsers(notification, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Handout inactive administrative costs to all users who are eligible.
+     * @param {HandoutInactiveAdministrativeCostsRequest} handoutInactiveAdministrativeCostsRequest The users that should be fined
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InactiveAdministrativeCostsApi
+     */
+    handoutInactiveAdministrativeCostsUsers(handoutInactiveAdministrativeCostsRequest, options) {
+        return (0, exports.InactiveAdministrativeCostsApiFp)(this.configuration).handoutInactiveAdministrativeCostsUsers(handoutInactiveAdministrativeCostsRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Notify all users which will pay administrative costs within a year
+     * @param {HandoutInactiveAdministrativeCostsRequest} handoutInactiveAdministrativeCostsRequest The users that should be notified
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InactiveAdministrativeCostsApi
+     */
+    notifyInactiveAdministrativeCostsUsers(handoutInactiveAdministrativeCostsRequest, options) {
+        return (0, exports.InactiveAdministrativeCostsApiFp)(this.configuration).notifyInactiveAdministrativeCostsUsers(handoutInactiveAdministrativeCostsRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+exports.InactiveAdministrativeCostsApi = InactiveAdministrativeCostsApi;
 /**
  * InvoicesApi - axios parameter creator
  * @export
