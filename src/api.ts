@@ -3643,11 +3643,11 @@ export interface PointOfSaleAssociateUsersResponse {
      */
     'owner': BaseUserResponse;
     /**
-     * Members that belong to the owner
-     * @type {Array<BaseUserResponse>}
+     * Members that belong to the owner with stable indices
+     * @type {Array<UserWithIndex>}
      * @memberof PointOfSaleAssociateUsersResponse
      */
-    'ownerMembers': Array<BaseUserResponse>;
+    'ownerMembers': Array<UserWithIndex>;
     /**
      * Users that belong to at least one cashier role of this point of sale
      * @type {Array<BaseUserResponse>}
@@ -5971,6 +5971,19 @@ export interface UserTypeTotalBalanceResponse {
      * @memberof UserTypeTotalBalanceResponse
      */
     'totalNegative': DineroObjectResponse;
+}
+/**
+ * 
+ * @export
+ * @interface UserWithIndex
+ */
+export interface UserWithIndex {
+    /**
+     * Stable position index for sorting
+     * @type {number}
+     * @memberof UserWithIndex
+     */
+    'index': number;
 }
 /**
  * 
@@ -17338,6 +17351,44 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
         },
         /**
          * 
+         * @summary Get all invoices containing subtransaction rows from this transaction
+         * @param {number} id The transaction ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTransactionInvoices: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getTransactionInvoices', 'id', id)
+            const localVarPath = `/transactions/{id}/invoices`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Updates the requested transaction
          * @param {number} id The id of the transaction which should be updated
          * @param {TransactionRequest} transactionRequest The updated transaction
@@ -17495,6 +17546,19 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get all invoices containing subtransaction rows from this transaction
+         * @param {number} id The transaction ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getTransactionInvoices(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BaseInvoiceResponse>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getTransactionInvoices(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['TransactionsApi.getTransactionInvoices']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Updates the requested transaction
          * @param {number} id The id of the transaction which should be updated
          * @param {TransactionRequest} transactionRequest The updated transaction
@@ -17580,6 +17644,16 @@ export const TransactionsApiFactory = function (configuration?: Configuration, b
          */
         getSingleTransaction(id: number, options?: any): AxiosPromise<TransactionResponse> {
             return localVarFp.getSingleTransaction(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get all invoices containing subtransaction rows from this transaction
+         * @param {number} id The transaction ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTransactionInvoices(id: number, options?: any): AxiosPromise<Array<BaseInvoiceResponse>> {
+            return localVarFp.getTransactionInvoices(id, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -17669,6 +17743,18 @@ export class TransactionsApi extends BaseAPI {
      */
     public getSingleTransaction(id: number, options?: RawAxiosRequestConfig) {
         return TransactionsApiFp(this.configuration).getSingleTransaction(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get all invoices containing subtransaction rows from this transaction
+     * @param {number} id The transaction ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TransactionsApi
+     */
+    public getTransactionInvoices(id: number, options?: RawAxiosRequestConfig) {
+        return TransactionsApiFp(this.configuration).getTransactionInvoices(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
