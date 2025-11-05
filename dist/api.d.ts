@@ -3616,11 +3616,11 @@ export interface PointOfSaleAssociateUsersResponse {
      */
     'owner': BaseUserResponse;
     /**
-     * Members that belong to the owner
-     * @type {Array<BaseUserResponse>}
+     * Members that belong to the owner with stable indices
+     * @type {Array<UserWithIndex>}
      * @memberof PointOfSaleAssociateUsersResponse
      */
-    'ownerMembers': Array<BaseUserResponse>;
+    'ownerMembers': Array<UserWithIndex>;
     /**
      * Users that belong to at least one cashier role of this point of sale
      * @type {Array<BaseUserResponse>}
@@ -5938,6 +5938,19 @@ export interface UserTypeTotalBalanceResponse {
      * @memberof UserTypeTotalBalanceResponse
      */
     'totalNegative': DineroObjectResponse;
+}
+/**
+ *
+ * @export
+ * @interface UserWithIndex
+ */
+export interface UserWithIndex {
+    /**
+     * Stable position index for sorting
+     * @type {number}
+     * @memberof UserWithIndex
+     */
+    'index': number;
 }
 /**
  *
@@ -11433,6 +11446,14 @@ export declare const TransactionsApiAxiosParamCreator: (configuration?: Configur
     getSingleTransaction: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Get all invoices containing subtransaction rows from this transaction
+     * @param {number} id The transaction ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getTransactionInvoices: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Updates the requested transaction
      * @param {number} id The id of the transaction which should be updated
      * @param {TransactionRequest} transactionRequest The updated transaction
@@ -11499,6 +11520,14 @@ export declare const TransactionsApiFp: (configuration?: Configuration) => {
     getSingleTransaction(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionResponse>>;
     /**
      *
+     * @summary Get all invoices containing subtransaction rows from this transaction
+     * @param {number} id The transaction ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getTransactionInvoices(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BaseInvoiceResponse>>>;
+    /**
+     *
      * @summary Updates the requested transaction
      * @param {number} id The id of the transaction which should be updated
      * @param {TransactionRequest} transactionRequest The updated transaction
@@ -11563,6 +11592,14 @@ export declare const TransactionsApiFactory: (configuration?: Configuration, bas
      * @throws {RequiredError}
      */
     getSingleTransaction(id: number, options?: any): AxiosPromise<TransactionResponse>;
+    /**
+     *
+     * @summary Get all invoices containing subtransaction rows from this transaction
+     * @param {number} id The transaction ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getTransactionInvoices(id: number, options?: any): AxiosPromise<Array<BaseInvoiceResponse>>;
     /**
      *
      * @summary Updates the requested transaction
@@ -11635,6 +11672,15 @@ export declare class TransactionsApi extends BaseAPI {
      * @memberof TransactionsApi
      */
     getSingleTransaction(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionResponse, any, {}>>;
+    /**
+     *
+     * @summary Get all invoices containing subtransaction rows from this transaction
+     * @param {number} id The transaction ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TransactionsApi
+     */
+    getTransactionInvoices(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BaseInvoiceResponse[], any, {}>>;
     /**
      *
      * @summary Updates the requested transaction
