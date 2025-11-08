@@ -263,6 +263,50 @@ export interface AuthenticationResponse {
 /**
  *
  * @export
+ * @interface AuthenticationSecureNfcRequest
+ */
+export interface AuthenticationSecureNfcRequest {
+    /**
+     *
+     * @type {string}
+     * @memberof AuthenticationSecureNfcRequest
+     */
+    'nfcCode': string;
+    /**
+     * POS identifier
+     * @type {number}
+     * @memberof AuthenticationSecureNfcRequest
+     */
+    'posId': number;
+}
+/**
+ *
+ * @export
+ * @interface AuthenticationSecurePinRequest
+ */
+export interface AuthenticationSecurePinRequest {
+    /**
+     *
+     * @type {number}
+     * @memberof AuthenticationSecurePinRequest
+     */
+    'userId': number;
+    /**
+     *
+     * @type {string}
+     * @memberof AuthenticationSecurePinRequest
+     */
+    'pin': string;
+    /**
+     * POS identifier (required for secure authentication)
+     * @type {number}
+     * @memberof AuthenticationSecurePinRequest
+     */
+    'posId': number;
+}
+/**
+ *
+ * @export
  * @interface BalanceResponse
  */
 export interface BalanceResponse {
@@ -2414,6 +2458,31 @@ export interface GEWISAuthenticationPinRequest {
      * @memberof GEWISAuthenticationPinRequest
      */
     'pin': string;
+}
+/**
+ *
+ * @export
+ * @interface GEWISAuthenticationSecurePinRequest
+ */
+export interface GEWISAuthenticationSecurePinRequest {
+    /**
+     *
+     * @type {number}
+     * @memberof GEWISAuthenticationSecurePinRequest
+     */
+    'gewisId': number;
+    /**
+     *
+     * @type {string}
+     * @memberof GEWISAuthenticationSecurePinRequest
+     */
+    'pin': string;
+    /**
+     * POS identifier
+     * @type {number}
+     * @memberof GEWISAuthenticationSecurePinRequest
+     */
+    'posId': number;
 }
 /**
  *
@@ -6406,7 +6475,7 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
     pinAuthentication: (authenticationPinRequest: AuthenticationPinRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary Get a new JWT token, lesser if the existing token is also lesser
+     * @summary Get a new JWT token, maintaining the same access level (posId) as the original token
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -6427,6 +6496,30 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
      * @throws {RequiredError}
      */
     resetLocalWithToken: (authenticationResetTokenRequest: AuthenticationResetTokenRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Secure GEWIS PIN authentication that requires POS user authentication
+     * @param {GEWISAuthenticationSecurePinRequest} gEWISAuthenticationSecurePinRequest The PIN login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    secureGewisPINAuthentication: (gEWISAuthenticationSecurePinRequest: GEWISAuthenticationSecurePinRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Secure NFC authentication that requires POS user authentication
+     * @param {AuthenticationSecureNfcRequest} authenticationSecureNfcRequest The NFC login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    secureNfcAuthentication: (authenticationSecureNfcRequest: AuthenticationSecureNfcRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Secure PIN authentication that requires POS user authentication
+     * @param {AuthenticationSecurePinRequest} authenticationSecurePinRequest The PIN login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    securePINAuthentication: (authenticationSecurePinRequest: AuthenticationSecurePinRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * AuthenticateApi - functional programming interface
@@ -6561,7 +6654,7 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
     pinAuthentication(authenticationPinRequest: AuthenticationPinRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
     /**
      *
-     * @summary Get a new JWT token, lesser if the existing token is also lesser
+     * @summary Get a new JWT token, maintaining the same access level (posId) as the original token
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -6582,6 +6675,30 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     resetLocalWithToken(authenticationResetTokenRequest: AuthenticationResetTokenRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     *
+     * @summary Secure GEWIS PIN authentication that requires POS user authentication
+     * @param {GEWISAuthenticationSecurePinRequest} gEWISAuthenticationSecurePinRequest The PIN login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    secureGewisPINAuthentication(gEWISAuthenticationSecurePinRequest: GEWISAuthenticationSecurePinRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
+    /**
+     *
+     * @summary Secure NFC authentication that requires POS user authentication
+     * @param {AuthenticationSecureNfcRequest} authenticationSecureNfcRequest The NFC login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    secureNfcAuthentication(authenticationSecureNfcRequest: AuthenticationSecureNfcRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
+    /**
+     *
+     * @summary Secure PIN authentication that requires POS user authentication
+     * @param {AuthenticationSecurePinRequest} authenticationSecurePinRequest The PIN login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    securePINAuthentication(authenticationSecurePinRequest: AuthenticationSecurePinRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
 };
 /**
  * AuthenticateApi - factory interface
@@ -6716,7 +6833,7 @@ export declare const AuthenticateApiFactory: (configuration?: Configuration, bas
     pinAuthentication(authenticationPinRequest: AuthenticationPinRequest, options?: any): AxiosPromise<AuthenticationResponse>;
     /**
      *
-     * @summary Get a new JWT token, lesser if the existing token is also lesser
+     * @summary Get a new JWT token, maintaining the same access level (posId) as the original token
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -6737,6 +6854,30 @@ export declare const AuthenticateApiFactory: (configuration?: Configuration, bas
      * @throws {RequiredError}
      */
     resetLocalWithToken(authenticationResetTokenRequest: AuthenticationResetTokenRequest, options?: any): AxiosPromise<void>;
+    /**
+     *
+     * @summary Secure GEWIS PIN authentication that requires POS user authentication
+     * @param {GEWISAuthenticationSecurePinRequest} gEWISAuthenticationSecurePinRequest The PIN login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    secureGewisPINAuthentication(gEWISAuthenticationSecurePinRequest: GEWISAuthenticationSecurePinRequest, options?: any): AxiosPromise<AuthenticationResponse>;
+    /**
+     *
+     * @summary Secure NFC authentication that requires POS user authentication
+     * @param {AuthenticationSecureNfcRequest} authenticationSecureNfcRequest The NFC login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    secureNfcAuthentication(authenticationSecureNfcRequest: AuthenticationSecureNfcRequest, options?: any): AxiosPromise<AuthenticationResponse>;
+    /**
+     *
+     * @summary Secure PIN authentication that requires POS user authentication
+     * @param {AuthenticationSecurePinRequest} authenticationSecurePinRequest The PIN login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    securePINAuthentication(authenticationSecurePinRequest: AuthenticationSecurePinRequest, options?: any): AxiosPromise<AuthenticationResponse>;
 };
 /**
  * AuthenticateApi - object-oriented interface
@@ -6889,7 +7030,7 @@ export declare class AuthenticateApi extends BaseAPI {
     pinAuthentication(authenticationPinRequest: AuthenticationPinRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
     /**
      *
-     * @summary Get a new JWT token, lesser if the existing token is also lesser
+     * @summary Get a new JWT token, maintaining the same access level (posId) as the original token
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthenticateApi
@@ -6913,6 +7054,33 @@ export declare class AuthenticateApi extends BaseAPI {
      * @memberof AuthenticateApi
      */
     resetLocalWithToken(authenticationResetTokenRequest: AuthenticationResetTokenRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    /**
+     *
+     * @summary Secure GEWIS PIN authentication that requires POS user authentication
+     * @param {GEWISAuthenticationSecurePinRequest} gEWISAuthenticationSecurePinRequest The PIN login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    secureGewisPINAuthentication(gEWISAuthenticationSecurePinRequest: GEWISAuthenticationSecurePinRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
+    /**
+     *
+     * @summary Secure NFC authentication that requires POS user authentication
+     * @param {AuthenticationSecureNfcRequest} authenticationSecureNfcRequest The NFC login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    secureNfcAuthentication(authenticationSecureNfcRequest: AuthenticationSecureNfcRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
+    /**
+     *
+     * @summary Secure PIN authentication that requires POS user authentication
+     * @param {AuthenticationSecurePinRequest} authenticationSecurePinRequest The PIN login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    securePINAuthentication(authenticationSecurePinRequest: AuthenticationSecurePinRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
 }
 /**
  * BalanceApi - axios parameter creator
@@ -11463,7 +11631,7 @@ export declare const TransactionsApiAxiosParamCreator: (configuration?: Configur
     updateTransaction: (id: number, transactionRequest: TransactionRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary Function to validate the transaction immediatly after it is created
+     * @summary Function to validate the transaction before creating it
      * @param {TransactionRequest} transactionRequest The transaction which should be validated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -11537,7 +11705,7 @@ export declare const TransactionsApiFp: (configuration?: Configuration) => {
     updateTransaction(id: number, transactionRequest: TransactionRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionResponse>>;
     /**
      *
-     * @summary Function to validate the transaction immediatly after it is created
+     * @summary Function to validate the transaction before creating it
      * @param {TransactionRequest} transactionRequest The transaction which should be validated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -11611,7 +11779,7 @@ export declare const TransactionsApiFactory: (configuration?: Configuration, bas
     updateTransaction(id: number, transactionRequest: TransactionRequest, options?: any): AxiosPromise<TransactionResponse>;
     /**
      *
-     * @summary Function to validate the transaction immediatly after it is created
+     * @summary Function to validate the transaction before creating it
      * @param {TransactionRequest} transactionRequest The transaction which should be validated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -11693,7 +11861,7 @@ export declare class TransactionsApi extends BaseAPI {
     updateTransaction(id: number, transactionRequest: TransactionRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionResponse, any, {}>>;
     /**
      *
-     * @summary Function to validate the transaction immediatly after it is created
+     * @summary Function to validate the transaction before creating it
      * @param {TransactionRequest} transactionRequest The transaction which should be validated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
