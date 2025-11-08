@@ -545,7 +545,7 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
-         * @summary Get a new JWT token, lesser if the existing token is also lesser
+         * @summary Get a new JWT token, maintaining the same access level (posId) as the original token
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -626,6 +626,96 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
             localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(authenticationResetTokenRequest, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Secure GEWIS PIN authentication that requires POS user authentication
+         * @param {GEWISAuthenticationSecurePinRequest} gEWISAuthenticationSecurePinRequest The PIN login request with posId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        secureGewisPINAuthentication: async (gEWISAuthenticationSecurePinRequest, options = {}) => {
+            // verify required parameter 'gEWISAuthenticationSecurePinRequest' is not null or undefined
+            (0, common_1.assertParamExists)('secureGewisPINAuthentication', 'gEWISAuthenticationSecurePinRequest', gEWISAuthenticationSecurePinRequest);
+            const localVarPath = `/authentication/GEWIS/pin-secure`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(gEWISAuthenticationSecurePinRequest, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Secure NFC authentication that requires POS user authentication
+         * @param {AuthenticationSecureNfcRequest} authenticationSecureNfcRequest The NFC login request with posId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        secureNfcAuthentication: async (authenticationSecureNfcRequest, options = {}) => {
+            // verify required parameter 'authenticationSecureNfcRequest' is not null or undefined
+            (0, common_1.assertParamExists)('secureNfcAuthentication', 'authenticationSecureNfcRequest', authenticationSecureNfcRequest);
+            const localVarPath = `/authentication/nfc-secure`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(authenticationSecureNfcRequest, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Secure PIN authentication that requires POS user authentication
+         * @param {AuthenticationSecurePinRequest} authenticationSecurePinRequest The PIN login request with posId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        securePINAuthentication: async (authenticationSecurePinRequest, options = {}) => {
+            // verify required parameter 'authenticationSecurePinRequest' is not null or undefined
+            (0, common_1.assertParamExists)('securePINAuthentication', 'authenticationSecurePinRequest', authenticationSecurePinRequest);
+            const localVarPath = `/authentication/pin-secure`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(authenticationSecurePinRequest, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -849,7 +939,7 @@ const AuthenticateApiFp = function (configuration) {
         },
         /**
          *
-         * @summary Get a new JWT token, lesser if the existing token is also lesser
+         * @summary Get a new JWT token, maintaining the same access level (posId) as the original token
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -883,6 +973,45 @@ const AuthenticateApiFp = function (configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.resetLocalWithToken(authenticationResetTokenRequest, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = base_1.operationServerMap['AuthenticateApi.resetLocalWithToken']?.[index]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Secure GEWIS PIN authentication that requires POS user authentication
+         * @param {GEWISAuthenticationSecurePinRequest} gEWISAuthenticationSecurePinRequest The PIN login request with posId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async secureGewisPINAuthentication(gEWISAuthenticationSecurePinRequest, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.secureGewisPINAuthentication(gEWISAuthenticationSecurePinRequest, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = base_1.operationServerMap['AuthenticateApi.secureGewisPINAuthentication']?.[index]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Secure NFC authentication that requires POS user authentication
+         * @param {AuthenticationSecureNfcRequest} authenticationSecureNfcRequest The NFC login request with posId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async secureNfcAuthentication(authenticationSecureNfcRequest, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.secureNfcAuthentication(authenticationSecureNfcRequest, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = base_1.operationServerMap['AuthenticateApi.secureNfcAuthentication']?.[index]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Secure PIN authentication that requires POS user authentication
+         * @param {AuthenticationSecurePinRequest} authenticationSecurePinRequest The PIN login request with posId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async securePINAuthentication(authenticationSecurePinRequest, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.securePINAuthentication(authenticationSecurePinRequest, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = base_1.operationServerMap['AuthenticateApi.securePINAuthentication']?.[index]?.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
     };
@@ -1055,7 +1184,7 @@ const AuthenticateApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
-         * @summary Get a new JWT token, lesser if the existing token is also lesser
+         * @summary Get a new JWT token, maintaining the same access level (posId) as the original token
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1081,6 +1210,36 @@ const AuthenticateApiFactory = function (configuration, basePath, axios) {
          */
         resetLocalWithToken(authenticationResetTokenRequest, options) {
             return localVarFp.resetLocalWithToken(authenticationResetTokenRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Secure GEWIS PIN authentication that requires POS user authentication
+         * @param {GEWISAuthenticationSecurePinRequest} gEWISAuthenticationSecurePinRequest The PIN login request with posId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        secureGewisPINAuthentication(gEWISAuthenticationSecurePinRequest, options) {
+            return localVarFp.secureGewisPINAuthentication(gEWISAuthenticationSecurePinRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Secure NFC authentication that requires POS user authentication
+         * @param {AuthenticationSecureNfcRequest} authenticationSecureNfcRequest The NFC login request with posId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        secureNfcAuthentication(authenticationSecureNfcRequest, options) {
+            return localVarFp.secureNfcAuthentication(authenticationSecureNfcRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Secure PIN authentication that requires POS user authentication
+         * @param {AuthenticationSecurePinRequest} authenticationSecurePinRequest The PIN login request with posId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        securePINAuthentication(authenticationSecurePinRequest, options) {
+            return localVarFp.securePINAuthentication(authenticationSecurePinRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -1268,7 +1427,7 @@ class AuthenticateApi extends base_1.BaseAPI {
     }
     /**
      *
-     * @summary Get a new JWT token, lesser if the existing token is also lesser
+     * @summary Get a new JWT token, maintaining the same access level (posId) as the original token
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthenticateApi
@@ -1297,6 +1456,39 @@ class AuthenticateApi extends base_1.BaseAPI {
      */
     resetLocalWithToken(authenticationResetTokenRequest, options) {
         return (0, exports.AuthenticateApiFp)(this.configuration).resetLocalWithToken(authenticationResetTokenRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Secure GEWIS PIN authentication that requires POS user authentication
+     * @param {GEWISAuthenticationSecurePinRequest} gEWISAuthenticationSecurePinRequest The PIN login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    secureGewisPINAuthentication(gEWISAuthenticationSecurePinRequest, options) {
+        return (0, exports.AuthenticateApiFp)(this.configuration).secureGewisPINAuthentication(gEWISAuthenticationSecurePinRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Secure NFC authentication that requires POS user authentication
+     * @param {AuthenticationSecureNfcRequest} authenticationSecureNfcRequest The NFC login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    secureNfcAuthentication(authenticationSecureNfcRequest, options) {
+        return (0, exports.AuthenticateApiFp)(this.configuration).secureNfcAuthentication(authenticationSecureNfcRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Secure PIN authentication that requires POS user authentication
+     * @param {AuthenticationSecurePinRequest} authenticationSecurePinRequest The PIN login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    securePINAuthentication(authenticationSecurePinRequest, options) {
+        return (0, exports.AuthenticateApiFp)(this.configuration).securePINAuthentication(authenticationSecurePinRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.AuthenticateApi = AuthenticateApi;
@@ -10106,7 +10298,7 @@ const TransactionsApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
-         * @summary Function to validate the transaction immediatly after it is created
+         * @summary Function to validate the transaction before creating it
          * @param {TransactionRequest} transactionRequest The transaction which should be validated
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -10239,7 +10431,7 @@ const TransactionsApiFp = function (configuration) {
         },
         /**
          *
-         * @summary Function to validate the transaction immediatly after it is created
+         * @summary Function to validate the transaction before creating it
          * @param {TransactionRequest} transactionRequest The transaction which should be validated
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -10334,7 +10526,7 @@ const TransactionsApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
-         * @summary Function to validate the transaction immediatly after it is created
+         * @summary Function to validate the transaction before creating it
          * @param {TransactionRequest} transactionRequest The transaction which should be validated
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -10432,7 +10624,7 @@ class TransactionsApi extends base_1.BaseAPI {
     }
     /**
      *
-     * @summary Function to validate the transaction immediatly after it is created
+     * @summary Function to validate the transaction before creating it
      * @param {TransactionRequest} transactionRequest The transaction which should be validated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
