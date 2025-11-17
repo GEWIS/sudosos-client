@@ -8545,10 +8545,13 @@ export const BannersApiAxiosParamCreator = function (configuration?: Configurati
          * @summary Returns all existing banners
          * @param {number} [take] How many banners the endpoint should return
          * @param {number} [skip] How many banners should be skipped (for pagination)
+         * @param {boolean} [active] Filter by active status
+         * @param {boolean} [expired] Filter by expired status (endDate &lt;&#x3D; now)
+         * @param {string} [order] Sort order by startDate (ASC or DESC, default: DESC)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllBanners: async (take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllBanners: async (take?: number, skip?: number, active?: boolean, expired?: boolean, order?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/banners`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -8571,6 +8574,18 @@ export const BannersApiAxiosParamCreator = function (configuration?: Configurati
 
             if (skip !== undefined) {
                 localVarQueryParameter['skip'] = skip;
+            }
+
+            if (active !== undefined) {
+                localVarQueryParameter['active'] = active;
+            }
+
+            if (expired !== undefined) {
+                localVarQueryParameter['expired'] = expired;
+            }
+
+            if (order !== undefined) {
+                localVarQueryParameter['order'] = order;
             }
 
 
@@ -8808,11 +8823,14 @@ export const BannersApiFp = function(configuration?: Configuration) {
          * @summary Returns all existing banners
          * @param {number} [take] How many banners the endpoint should return
          * @param {number} [skip] How many banners should be skipped (for pagination)
+         * @param {boolean} [active] Filter by active status
+         * @param {boolean} [expired] Filter by expired status (endDate &lt;&#x3D; now)
+         * @param {string} [order] Sort order by startDate (ASC or DESC, default: DESC)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllBanners(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBannerResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllBanners(take, skip, options);
+        async getAllBanners(take?: number, skip?: number, active?: boolean, expired?: boolean, order?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBannerResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllBanners(take, skip, active, expired, order, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['BannersApi.getAllBanners']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
@@ -8918,11 +8936,14 @@ export const BannersApiFactory = function (configuration?: Configuration, basePa
          * @summary Returns all existing banners
          * @param {number} [take] How many banners the endpoint should return
          * @param {number} [skip] How many banners should be skipped (for pagination)
+         * @param {boolean} [active] Filter by active status
+         * @param {boolean} [expired] Filter by expired status (endDate &lt;&#x3D; now)
+         * @param {string} [order] Sort order by startDate (ASC or DESC, default: DESC)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllBanners(take?: number, skip?: number, options?: any): AxiosPromise<PaginatedBannerResponse> {
-            return localVarFp.getAllBanners(take, skip, options).then((request) => request(axios, basePath));
+        getAllBanners(take?: number, skip?: number, active?: boolean, expired?: boolean, order?: string, options?: any): AxiosPromise<PaginatedBannerResponse> {
+            return localVarFp.getAllBanners(take, skip, active, expired, order, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -9019,12 +9040,15 @@ export class BannersApi extends BaseAPI {
      * @summary Returns all existing banners
      * @param {number} [take] How many banners the endpoint should return
      * @param {number} [skip] How many banners should be skipped (for pagination)
+     * @param {boolean} [active] Filter by active status
+     * @param {boolean} [expired] Filter by expired status (endDate &lt;&#x3D; now)
+     * @param {string} [order] Sort order by startDate (ASC or DESC, default: DESC)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BannersApi
      */
-    public getAllBanners(take?: number, skip?: number, options?: RawAxiosRequestConfig) {
-        return BannersApiFp(this.configuration).getAllBanners(take, skip, options).then((request) => request(this.axios, this.basePath));
+    public getAllBanners(take?: number, skip?: number, active?: boolean, expired?: boolean, order?: string, options?: RawAxiosRequestConfig) {
+        return BannersApiFp(this.configuration).getAllBanners(take, skip, active, expired, order, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
