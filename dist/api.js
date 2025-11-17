@@ -246,6 +246,31 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
+         * @summary Get the JWT public key used by SudoSOS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getJWTPublicKey: async (options = {}) => {
+            const localVarPath = `/authentication/public`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
          * @summary Get the status of a QR authentication session
          * @param {string} sessionId The session ID
          * @param {*} [options] Override http request option.
@@ -815,6 +840,18 @@ const AuthenticateApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Get the JWT public key used by SudoSOS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getJWTPublicKey(options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getJWTPublicKey(options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = base_1.operationServerMap['AuthenticateApi.getJWTPublicKey']?.[index]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         *
          * @summary Get the status of a QR authentication session
          * @param {string} sessionId The session ID
          * @param {*} [options] Override http request option.
@@ -1090,6 +1127,15 @@ const AuthenticateApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary Get the JWT public key used by SudoSOS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getJWTPublicKey(options) {
+            return localVarFp.getJWTPublicKey(options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Get the status of a QR authentication session
          * @param {string} sessionId The session ID
          * @param {*} [options] Override http request option.
@@ -1320,6 +1366,16 @@ class AuthenticateApi extends base_1.BaseAPI {
      */
     getGEWISWebPublic(options) {
         return (0, exports.AuthenticateApiFp)(this.configuration).getGEWISWebPublic(options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get the JWT public key used by SudoSOS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    getJWTPublicKey(options) {
+        return (0, exports.AuthenticateApiFp)(this.configuration).getJWTPublicKey(options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *

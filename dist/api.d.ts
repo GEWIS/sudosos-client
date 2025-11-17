@@ -6395,6 +6395,13 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
     getGEWISWebPublic: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Get the JWT public key used by SudoSOS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getJWTPublicKey: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Get the status of a QR authentication session
      * @param {string} sessionId The session ID
      * @param {*} [options] Override http request option.
@@ -6574,6 +6581,13 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
     getGEWISWebPublic(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
     /**
      *
+     * @summary Get the JWT public key used by SudoSOS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getJWTPublicKey(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    /**
+     *
      * @summary Get the status of a QR authentication session
      * @param {string} sessionId The session ID
      * @param {*} [options] Override http request option.
@@ -6751,6 +6765,13 @@ export declare const AuthenticateApiFactory: (configuration?: Configuration, bas
      * @throws {RequiredError}
      */
     getGEWISWebPublic(options?: any): AxiosPromise<string>;
+    /**
+     *
+     * @summary Get the JWT public key used by SudoSOS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getJWTPublicKey(options?: any): AxiosPromise<string>;
     /**
      *
      * @summary Get the status of a QR authentication session
@@ -6938,6 +6959,14 @@ export declare class AuthenticateApi extends BaseAPI {
      * @memberof AuthenticateApi
      */
     getGEWISWebPublic(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any, {}>>;
+    /**
+     *
+     * @summary Get the JWT public key used by SudoSOS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    getJWTPublicKey(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any, {}>>;
     /**
      *
      * @summary Get the status of a QR authentication session
