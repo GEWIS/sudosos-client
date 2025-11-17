@@ -6594,6 +6594,36 @@ export const AuthenticateApiAxiosParamCreator = function (configuration?: Config
         },
         /**
          * 
+         * @summary Get the JWT public key used by SudoSOS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getJWTPublicKey: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/authentication/public`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Get the status of a QR authentication session
          * @param {string} sessionId The session ID
          * @param {*} [options] Override http request option.
@@ -7260,6 +7290,18 @@ export const AuthenticateApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get the JWT public key used by SudoSOS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getJWTPublicKey(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getJWTPublicKey(options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['AuthenticateApi.getJWTPublicKey']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Get the status of a QR authentication session
          * @param {string} sessionId The session ID
          * @param {*} [options] Override http request option.
@@ -7535,6 +7577,15 @@ export const AuthenticateApiFactory = function (configuration?: Configuration, b
         },
         /**
          * 
+         * @summary Get the JWT public key used by SudoSOS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getJWTPublicKey(options?: any): AxiosPromise<string> {
+            return localVarFp.getJWTPublicKey(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Get the status of a QR authentication session
          * @param {string} sessionId The session ID
          * @param {*} [options] Override http request option.
@@ -7770,6 +7821,17 @@ export class AuthenticateApi extends BaseAPI {
      */
     public getGEWISWebPublic(options?: RawAxiosRequestConfig) {
         return AuthenticateApiFp(this.configuration).getGEWISWebPublic(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get the JWT public key used by SudoSOS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    public getJWTPublicKey(options?: RawAxiosRequestConfig) {
+        return AuthenticateApiFp(this.configuration).getJWTPublicKey(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
