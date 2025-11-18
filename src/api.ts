@@ -273,6 +273,50 @@ export interface AuthenticationResponse {
 /**
  * 
  * @export
+ * @interface AuthenticationSecureNfcRequest
+ */
+export interface AuthenticationSecureNfcRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof AuthenticationSecureNfcRequest
+     */
+    'nfcCode': string;
+    /**
+     * POS identifier
+     * @type {number}
+     * @memberof AuthenticationSecureNfcRequest
+     */
+    'posId': number;
+}
+/**
+ * 
+ * @export
+ * @interface AuthenticationSecurePinRequest
+ */
+export interface AuthenticationSecurePinRequest {
+    /**
+     * 
+     * @type {number}
+     * @memberof AuthenticationSecurePinRequest
+     */
+    'userId': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof AuthenticationSecurePinRequest
+     */
+    'pin': string;
+    /**
+     * POS identifier (required for secure authentication)
+     * @type {number}
+     * @memberof AuthenticationSecurePinRequest
+     */
+    'posId': number;
+}
+/**
+ * 
+ * @export
  * @interface BalanceResponse
  */
 export interface BalanceResponse {
@@ -722,6 +766,55 @@ export interface BaseFineHandoutEventResponse {
      * @memberof BaseFineHandoutEventResponse
      */
     'count': number;
+}
+/**
+ * 
+ * @export
+ * @interface BaseInactiveAdministrativeCostResponse
+ */
+export interface BaseInactiveAdministrativeCostResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof BaseInactiveAdministrativeCostResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof BaseInactiveAdministrativeCostResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof BaseInactiveAdministrativeCostResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof BaseInactiveAdministrativeCostResponse
+     */
+    'version'?: number;
+    /**
+     * 
+     * @type {BaseUserResponse}
+     * @memberof BaseInactiveAdministrativeCostResponse
+     */
+    'from': BaseUserResponse;
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof BaseInactiveAdministrativeCostResponse
+     */
+    'amount': DineroObjectResponse;
+    /**
+     * 
+     * @type {TransferResponse}
+     * @memberof BaseInactiveAdministrativeCostResponse
+     */
+    'transfer'?: TransferResponse;
 }
 /**
  * 
@@ -1522,6 +1615,19 @@ export interface CreateEventRequest {
      * @memberof CreateEventRequest
      */
     'shiftIds': Array<number>;
+}
+/**
+ * 
+ * @export
+ * @interface CreateInactiveAdministrativeCostRequest
+ */
+export interface CreateInactiveAdministrativeCostRequest {
+    /**
+     * The user of the inactive administrative cost
+     * @type {number}
+     * @memberof CreateInactiveAdministrativeCostRequest
+     */
+    'forId': number;
 }
 /**
  * 
@@ -2373,6 +2479,31 @@ export interface GEWISAuthenticationPinRequest {
 /**
  * 
  * @export
+ * @interface GEWISAuthenticationSecurePinRequest
+ */
+export interface GEWISAuthenticationSecurePinRequest {
+    /**
+     * 
+     * @type {number}
+     * @memberof GEWISAuthenticationSecurePinRequest
+     */
+    'gewisId': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GEWISAuthenticationSecurePinRequest
+     */
+    'pin': string;
+    /**
+     * POS identifier
+     * @type {number}
+     * @memberof GEWISAuthenticationSecurePinRequest
+     */
+    'posId': number;
+}
+/**
+ * 
+ * @export
  * @interface GetAllBalanceUserTypesParameterInner
  */
 export interface GetAllBalanceUserTypesParameterInner {
@@ -2523,6 +2654,19 @@ export interface HandoutFinesRequest {
      * @memberof HandoutFinesRequest
      */
     'referenceDate': string;
+}
+/**
+ * 
+ * @export
+ * @interface HandoutInactiveAdministrativeCostsRequest
+ */
+export interface HandoutInactiveAdministrativeCostsRequest {
+    /**
+     * The users that should be handed an inactive administrative cost request.
+     * @type {Array<number>}
+     * @memberof HandoutInactiveAdministrativeCostsRequest
+     */
+    'userIds': Array<number>;
 }
 /**
  * 
@@ -3112,6 +3256,25 @@ export interface PaginatedFineHandoutEventResponse {
 /**
  * 
  * @export
+ * @interface PaginatedInactiveAdministrativeCostResponse
+ */
+export interface PaginatedInactiveAdministrativeCostResponse {
+    /**
+     * 
+     * @type {PaginationResult}
+     * @memberof PaginatedInactiveAdministrativeCostResponse
+     */
+    '_pagination'?: PaginationResult;
+    /**
+     * Returned InactiveAdministrativeCost
+     * @type {Array<BaseInactiveAdministrativeCostResponse>}
+     * @memberof PaginatedInactiveAdministrativeCostResponse
+     */
+    'records'?: Array<BaseInactiveAdministrativeCostResponse>;
+}
+/**
+ * 
+ * @export
  * @interface PaginatedInvoiceResponse
  */
 export interface PaginatedInvoiceResponse {
@@ -3549,11 +3712,11 @@ export interface PointOfSaleAssociateUsersResponse {
      */
     'owner': BaseUserResponse;
     /**
-     * Members that belong to the owner
-     * @type {Array<BaseUserResponse>}
+     * Members that belong to the owner with stable indices
+     * @type {Array<UserWithIndex>}
      * @memberof PointOfSaleAssociateUsersResponse
      */
-    'ownerMembers': Array<BaseUserResponse>;
+    'ownerMembers': Array<UserWithIndex>;
     /**
      * Users that belong to at least one cashier role of this point of sale
      * @type {Array<BaseUserResponse>}
@@ -5216,6 +5379,12 @@ export interface TransferResponse {
      * @memberof TransferResponse
      */
     'waivedFines'?: UserFineGroupResponse;
+    /**
+     * 
+     * @type {BaseInactiveAdministrativeCostResponse}
+     * @memberof TransferResponse
+     */
+    'inactiveAdministrativeCost'?: BaseInactiveAdministrativeCostResponse;
 }
 /**
  * 
@@ -5667,6 +5836,12 @@ export interface UpdateUserRequest {
      * @memberof UpdateUserRequest
      */
     'extensiveDataProcessing'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UpdateUserRequest
+     */
+    'inactiveNotificationSend'?: boolean;
 }
 /**
  * 
@@ -5831,6 +6006,19 @@ export interface UserToFineResponse {
 /**
  * 
  * @export
+ * @interface UserToInactiveAdministrativeCostResponse
+ */
+export interface UserToInactiveAdministrativeCostResponse {
+    /**
+     * User ID
+     * @type {number}
+     * @memberof UserToInactiveAdministrativeCostResponse
+     */
+    'userId'?: number;
+}
+/**
+ * 
+ * @export
  * @interface UserTypeTotalBalanceResponse
  */
 export interface UserTypeTotalBalanceResponse {
@@ -5852,6 +6040,19 @@ export interface UserTypeTotalBalanceResponse {
      * @memberof UserTypeTotalBalanceResponse
      */
     'totalNegative': DineroObjectResponse;
+}
+/**
+ * 
+ * @export
+ * @interface UserWithIndex
+ */
+export interface UserWithIndex {
+    /**
+     * Stable position index for sorting
+     * @type {number}
+     * @memberof UserWithIndex
+     */
+    'index': number;
 }
 /**
  * 
@@ -6393,6 +6594,36 @@ export const AuthenticateApiAxiosParamCreator = function (configuration?: Config
         },
         /**
          * 
+         * @summary Get the JWT public key used by SudoSOS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getJWTPublicKey: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/authentication/public`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Get the status of a QR authentication session
          * @param {string} sessionId The session ID
          * @param {*} [options] Override http request option.
@@ -6751,7 +6982,7 @@ export const AuthenticateApiAxiosParamCreator = function (configuration?: Config
         },
         /**
          * 
-         * @summary Get a new JWT token, lesser if the existing token is also lesser
+         * @summary Get a new JWT token, maintaining the same access level (posId) as the original token
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -6855,6 +7086,122 @@ export const AuthenticateApiAxiosParamCreator = function (configuration?: Config
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @summary Secure GEWIS PIN authentication that requires POS user authentication
+         * @param {GEWISAuthenticationSecurePinRequest} gEWISAuthenticationSecurePinRequest The PIN login request with posId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        secureGewisPINAuthentication: async (gEWISAuthenticationSecurePinRequest: GEWISAuthenticationSecurePinRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'gEWISAuthenticationSecurePinRequest' is not null or undefined
+            assertParamExists('secureGewisPINAuthentication', 'gEWISAuthenticationSecurePinRequest', gEWISAuthenticationSecurePinRequest)
+            const localVarPath = `/authentication/GEWIS/pin-secure`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(gEWISAuthenticationSecurePinRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Secure NFC authentication that requires POS user authentication
+         * @param {AuthenticationSecureNfcRequest} authenticationSecureNfcRequest The NFC login request with posId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        secureNfcAuthentication: async (authenticationSecureNfcRequest: AuthenticationSecureNfcRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'authenticationSecureNfcRequest' is not null or undefined
+            assertParamExists('secureNfcAuthentication', 'authenticationSecureNfcRequest', authenticationSecureNfcRequest)
+            const localVarPath = `/authentication/nfc-secure`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(authenticationSecureNfcRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Secure PIN authentication that requires POS user authentication
+         * @param {AuthenticationSecurePinRequest} authenticationSecurePinRequest The PIN login request with posId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        securePINAuthentication: async (authenticationSecurePinRequest: AuthenticationSecurePinRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'authenticationSecurePinRequest' is not null or undefined
+            assertParamExists('securePINAuthentication', 'authenticationSecurePinRequest', authenticationSecurePinRequest)
+            const localVarPath = `/authentication/pin-secure`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(authenticationSecurePinRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -6939,6 +7286,18 @@ export const AuthenticateApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getGEWISWebPublic(options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['AuthenticateApi.getGEWISWebPublic']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get the JWT public key used by SudoSOS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getJWTPublicKey(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getJWTPublicKey(options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['AuthenticateApi.getJWTPublicKey']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
@@ -7073,7 +7432,7 @@ export const AuthenticateApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Get a new JWT token, lesser if the existing token is also lesser
+         * @summary Get a new JWT token, maintaining the same access level (posId) as the original token
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -7107,6 +7466,45 @@ export const AuthenticateApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.resetLocalWithToken(authenticationResetTokenRequest, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['AuthenticateApi.resetLocalWithToken']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Secure GEWIS PIN authentication that requires POS user authentication
+         * @param {GEWISAuthenticationSecurePinRequest} gEWISAuthenticationSecurePinRequest The PIN login request with posId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async secureGewisPINAuthentication(gEWISAuthenticationSecurePinRequest: GEWISAuthenticationSecurePinRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.secureGewisPINAuthentication(gEWISAuthenticationSecurePinRequest, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['AuthenticateApi.secureGewisPINAuthentication']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Secure NFC authentication that requires POS user authentication
+         * @param {AuthenticationSecureNfcRequest} authenticationSecureNfcRequest The NFC login request with posId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async secureNfcAuthentication(authenticationSecureNfcRequest: AuthenticationSecureNfcRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.secureNfcAuthentication(authenticationSecureNfcRequest, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['AuthenticateApi.secureNfcAuthentication']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Secure PIN authentication that requires POS user authentication
+         * @param {AuthenticationSecurePinRequest} authenticationSecurePinRequest The PIN login request with posId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async securePINAuthentication(authenticationSecurePinRequest: AuthenticationSecurePinRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.securePINAuthentication(authenticationSecurePinRequest, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['AuthenticateApi.securePINAuthentication']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
     }
@@ -7176,6 +7574,15 @@ export const AuthenticateApiFactory = function (configuration?: Configuration, b
          */
         getGEWISWebPublic(options?: any): AxiosPromise<string> {
             return localVarFp.getGEWISWebPublic(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get the JWT public key used by SudoSOS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getJWTPublicKey(options?: any): AxiosPromise<string> {
+            return localVarFp.getJWTPublicKey(options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -7279,7 +7686,7 @@ export const AuthenticateApiFactory = function (configuration?: Configuration, b
         },
         /**
          * 
-         * @summary Get a new JWT token, lesser if the existing token is also lesser
+         * @summary Get a new JWT token, maintaining the same access level (posId) as the original token
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -7305,6 +7712,36 @@ export const AuthenticateApiFactory = function (configuration?: Configuration, b
          */
         resetLocalWithToken(authenticationResetTokenRequest: AuthenticationResetTokenRequest, options?: any): AxiosPromise<void> {
             return localVarFp.resetLocalWithToken(authenticationResetTokenRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Secure GEWIS PIN authentication that requires POS user authentication
+         * @param {GEWISAuthenticationSecurePinRequest} gEWISAuthenticationSecurePinRequest The PIN login request with posId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        secureGewisPINAuthentication(gEWISAuthenticationSecurePinRequest: GEWISAuthenticationSecurePinRequest, options?: any): AxiosPromise<AuthenticationResponse> {
+            return localVarFp.secureGewisPINAuthentication(gEWISAuthenticationSecurePinRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Secure NFC authentication that requires POS user authentication
+         * @param {AuthenticationSecureNfcRequest} authenticationSecureNfcRequest The NFC login request with posId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        secureNfcAuthentication(authenticationSecureNfcRequest: AuthenticationSecureNfcRequest, options?: any): AxiosPromise<AuthenticationResponse> {
+            return localVarFp.secureNfcAuthentication(authenticationSecureNfcRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Secure PIN authentication that requires POS user authentication
+         * @param {AuthenticationSecurePinRequest} authenticationSecurePinRequest The PIN login request with posId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        securePINAuthentication(authenticationSecurePinRequest: AuthenticationSecurePinRequest, options?: any): AxiosPromise<AuthenticationResponse> {
+            return localVarFp.securePINAuthentication(authenticationSecurePinRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -7384,6 +7821,17 @@ export class AuthenticateApi extends BaseAPI {
      */
     public getGEWISWebPublic(options?: RawAxiosRequestConfig) {
         return AuthenticateApiFp(this.configuration).getGEWISWebPublic(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get the JWT public key used by SudoSOS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    public getJWTPublicKey(options?: RawAxiosRequestConfig) {
+        return AuthenticateApiFp(this.configuration).getJWTPublicKey(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -7508,7 +7956,7 @@ export class AuthenticateApi extends BaseAPI {
 
     /**
      * 
-     * @summary Get a new JWT token, lesser if the existing token is also lesser
+     * @summary Get a new JWT token, maintaining the same access level (posId) as the original token
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthenticateApi
@@ -7539,6 +7987,42 @@ export class AuthenticateApi extends BaseAPI {
      */
     public resetLocalWithToken(authenticationResetTokenRequest: AuthenticationResetTokenRequest, options?: RawAxiosRequestConfig) {
         return AuthenticateApiFp(this.configuration).resetLocalWithToken(authenticationResetTokenRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Secure GEWIS PIN authentication that requires POS user authentication
+     * @param {GEWISAuthenticationSecurePinRequest} gEWISAuthenticationSecurePinRequest The PIN login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    public secureGewisPINAuthentication(gEWISAuthenticationSecurePinRequest: GEWISAuthenticationSecurePinRequest, options?: RawAxiosRequestConfig) {
+        return AuthenticateApiFp(this.configuration).secureGewisPINAuthentication(gEWISAuthenticationSecurePinRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Secure NFC authentication that requires POS user authentication
+     * @param {AuthenticationSecureNfcRequest} authenticationSecureNfcRequest The NFC login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    public secureNfcAuthentication(authenticationSecureNfcRequest: AuthenticationSecureNfcRequest, options?: RawAxiosRequestConfig) {
+        return AuthenticateApiFp(this.configuration).secureNfcAuthentication(authenticationSecureNfcRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Secure PIN authentication that requires POS user authentication
+     * @param {AuthenticationSecurePinRequest} authenticationSecurePinRequest The PIN login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    public securePINAuthentication(authenticationSecurePinRequest: AuthenticationSecurePinRequest, options?: RawAxiosRequestConfig) {
+        return AuthenticateApiFp(this.configuration).securePINAuthentication(authenticationSecurePinRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -8123,10 +8607,13 @@ export const BannersApiAxiosParamCreator = function (configuration?: Configurati
          * @summary Returns all existing banners
          * @param {number} [take] How many banners the endpoint should return
          * @param {number} [skip] How many banners should be skipped (for pagination)
+         * @param {boolean} [active] Filter by active status
+         * @param {boolean} [expired] Filter by expired status (endDate &lt;&#x3D; now)
+         * @param {string} [order] Sort order by startDate (ASC or DESC, default: DESC)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllBanners: async (take?: number, skip?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllBanners: async (take?: number, skip?: number, active?: boolean, expired?: boolean, order?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/banners`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -8149,6 +8636,18 @@ export const BannersApiAxiosParamCreator = function (configuration?: Configurati
 
             if (skip !== undefined) {
                 localVarQueryParameter['skip'] = skip;
+            }
+
+            if (active !== undefined) {
+                localVarQueryParameter['active'] = active;
+            }
+
+            if (expired !== undefined) {
+                localVarQueryParameter['expired'] = expired;
+            }
+
+            if (order !== undefined) {
+                localVarQueryParameter['order'] = order;
             }
 
 
@@ -8386,11 +8885,14 @@ export const BannersApiFp = function(configuration?: Configuration) {
          * @summary Returns all existing banners
          * @param {number} [take] How many banners the endpoint should return
          * @param {number} [skip] How many banners should be skipped (for pagination)
+         * @param {boolean} [active] Filter by active status
+         * @param {boolean} [expired] Filter by expired status (endDate &lt;&#x3D; now)
+         * @param {string} [order] Sort order by startDate (ASC or DESC, default: DESC)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllBanners(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBannerResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllBanners(take, skip, options);
+        async getAllBanners(take?: number, skip?: number, active?: boolean, expired?: boolean, order?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBannerResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllBanners(take, skip, active, expired, order, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['BannersApi.getAllBanners']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
@@ -8496,11 +8998,14 @@ export const BannersApiFactory = function (configuration?: Configuration, basePa
          * @summary Returns all existing banners
          * @param {number} [take] How many banners the endpoint should return
          * @param {number} [skip] How many banners should be skipped (for pagination)
+         * @param {boolean} [active] Filter by active status
+         * @param {boolean} [expired] Filter by expired status (endDate &lt;&#x3D; now)
+         * @param {string} [order] Sort order by startDate (ASC or DESC, default: DESC)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllBanners(take?: number, skip?: number, options?: any): AxiosPromise<PaginatedBannerResponse> {
-            return localVarFp.getAllBanners(take, skip, options).then((request) => request(axios, basePath));
+        getAllBanners(take?: number, skip?: number, active?: boolean, expired?: boolean, order?: string, options?: any): AxiosPromise<PaginatedBannerResponse> {
+            return localVarFp.getAllBanners(take, skip, active, expired, order, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -8597,12 +9102,15 @@ export class BannersApi extends BaseAPI {
      * @summary Returns all existing banners
      * @param {number} [take] How many banners the endpoint should return
      * @param {number} [skip] How many banners should be skipped (for pagination)
+     * @param {boolean} [active] Filter by active status
+     * @param {boolean} [expired] Filter by expired status (endDate &lt;&#x3D; now)
+     * @param {string} [order] Sort order by startDate (ASC or DESC, default: DESC)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BannersApi
      */
-    public getAllBanners(take?: number, skip?: number, options?: RawAxiosRequestConfig) {
-        return BannersApiFp(this.configuration).getAllBanners(take, skip, options).then((request) => request(this.axios, this.basePath));
+    public getAllBanners(take?: number, skip?: number, active?: boolean, expired?: boolean, order?: string, options?: RawAxiosRequestConfig) {
+        return BannersApiFp(this.configuration).getAllBanners(take, skip, active, expired, order, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -11379,6 +11887,572 @@ export class FilesApi extends BaseAPI {
      */
     public getFile(id: number, options?: RawAxiosRequestConfig) {
         return FilesApiFp(this.configuration).getFile(id, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
+ * InactiveAdministrativeCostsApi - axios parameter creator
+ * @export
+ */
+export const InactiveAdministrativeCostsApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Adds and inactive administrative cost to the system.
+         * @param {CreateInactiveAdministrativeCostRequest} createInactiveAdministrativeCostRequest The inactive administrative cost which should be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createInactiveAdministrativeCosts: async (createInactiveAdministrativeCostRequest: CreateInactiveAdministrativeCostRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'createInactiveAdministrativeCostRequest' is not null or undefined
+            assertParamExists('createInactiveAdministrativeCosts', 'createInactiveAdministrativeCostRequest', createInactiveAdministrativeCostRequest)
+            const localVarPath = `/inactive-administrative-costs`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(createInactiveAdministrativeCostRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Deletes an inactive administrative cost.
+         * @param {number} id The id of the inactive administrative cost which should be deleted.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteInactiveAdministrativeCost: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('deleteInactiveAdministrativeCost', 'id', id)
+            const localVarPath = `/inactive-administrative-costs/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Returns all inactive administrative costs in the system.
+         * @param {number} [fromId] Filter on the id of the user
+         * @param {number} [inactiveAdministrativeCostId] Filter on the id of entity
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllInactiveAdministrativeCosts: async (fromId?: number, inactiveAdministrativeCostId?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/inactive-administrative-costs`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (fromId !== undefined) {
+                localVarQueryParameter['fromId'] = fromId;
+            }
+
+            if (inactiveAdministrativeCostId !== undefined) {
+                localVarQueryParameter['inactiveAdministrativeCostId'] = inactiveAdministrativeCostId;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Returns a single inactive administrative cost entity
+         * @param {number} id The id of the requested inactive administrative cost
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getInactiveAdministrativeCosts: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getInactiveAdministrativeCosts', 'id', id)
+            const localVarPath = `/inactive-administrative-costs/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Find all users who are eligible for notification or creation of inactive administrative cost
+         * @param {boolean} [notification] Whether to check for notification or for fine.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getInactiveAdministrativeCostsEligibleUsers: async (notification?: boolean, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/inactive-administrative-costs/eligible-users`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (notification !== undefined) {
+                localVarQueryParameter['notification'] = notification;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Handout inactive administrative costs to all users who are eligible.
+         * @param {HandoutInactiveAdministrativeCostsRequest} handoutInactiveAdministrativeCostsRequest The users that should be fined
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        handoutInactiveAdministrativeCostsUsers: async (handoutInactiveAdministrativeCostsRequest: HandoutInactiveAdministrativeCostsRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'handoutInactiveAdministrativeCostsRequest' is not null or undefined
+            assertParamExists('handoutInactiveAdministrativeCostsUsers', 'handoutInactiveAdministrativeCostsRequest', handoutInactiveAdministrativeCostsRequest)
+            const localVarPath = `/inactive-administrative-costs/handout`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(handoutInactiveAdministrativeCostsRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Notify all users which will pay administrative costs within a year
+         * @param {HandoutInactiveAdministrativeCostsRequest} handoutInactiveAdministrativeCostsRequest The users that should be notified
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        notifyInactiveAdministrativeCostsUsers: async (handoutInactiveAdministrativeCostsRequest: HandoutInactiveAdministrativeCostsRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'handoutInactiveAdministrativeCostsRequest' is not null or undefined
+            assertParamExists('notifyInactiveAdministrativeCostsUsers', 'handoutInactiveAdministrativeCostsRequest', handoutInactiveAdministrativeCostsRequest)
+            const localVarPath = `/inactive-administrative-costs/notify`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(handoutInactiveAdministrativeCostsRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * InactiveAdministrativeCostsApi - functional programming interface
+ * @export
+ */
+export const InactiveAdministrativeCostsApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = InactiveAdministrativeCostsApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Adds and inactive administrative cost to the system.
+         * @param {CreateInactiveAdministrativeCostRequest} createInactiveAdministrativeCostRequest The inactive administrative cost which should be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createInactiveAdministrativeCosts(createInactiveAdministrativeCostRequest: CreateInactiveAdministrativeCostRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseInactiveAdministrativeCostResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createInactiveAdministrativeCosts(createInactiveAdministrativeCostRequest, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['InactiveAdministrativeCostsApi.createInactiveAdministrativeCosts']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Deletes an inactive administrative cost.
+         * @param {number} id The id of the inactive administrative cost which should be deleted.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteInactiveAdministrativeCost(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteInactiveAdministrativeCost(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['InactiveAdministrativeCostsApi.deleteInactiveAdministrativeCost']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Returns all inactive administrative costs in the system.
+         * @param {number} [fromId] Filter on the id of the user
+         * @param {number} [inactiveAdministrativeCostId] Filter on the id of entity
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getAllInactiveAdministrativeCosts(fromId?: number, inactiveAdministrativeCostId?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedInactiveAdministrativeCostResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllInactiveAdministrativeCosts(fromId, inactiveAdministrativeCostId, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['InactiveAdministrativeCostsApi.getAllInactiveAdministrativeCosts']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Returns a single inactive administrative cost entity
+         * @param {number} id The id of the requested inactive administrative cost
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getInactiveAdministrativeCosts(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseInactiveAdministrativeCostResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getInactiveAdministrativeCosts(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['InactiveAdministrativeCostsApi.getInactiveAdministrativeCosts']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Find all users who are eligible for notification or creation of inactive administrative cost
+         * @param {boolean} [notification] Whether to check for notification or for fine.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getInactiveAdministrativeCostsEligibleUsers(notification?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UserToInactiveAdministrativeCostResponse>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getInactiveAdministrativeCostsEligibleUsers(notification, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['InactiveAdministrativeCostsApi.getInactiveAdministrativeCostsEligibleUsers']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Handout inactive administrative costs to all users who are eligible.
+         * @param {HandoutInactiveAdministrativeCostsRequest} handoutInactiveAdministrativeCostsRequest The users that should be fined
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async handoutInactiveAdministrativeCostsUsers(handoutInactiveAdministrativeCostsRequest: HandoutInactiveAdministrativeCostsRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.handoutInactiveAdministrativeCostsUsers(handoutInactiveAdministrativeCostsRequest, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['InactiveAdministrativeCostsApi.handoutInactiveAdministrativeCostsUsers']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Notify all users which will pay administrative costs within a year
+         * @param {HandoutInactiveAdministrativeCostsRequest} handoutInactiveAdministrativeCostsRequest The users that should be notified
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async notifyInactiveAdministrativeCostsUsers(handoutInactiveAdministrativeCostsRequest: HandoutInactiveAdministrativeCostsRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.notifyInactiveAdministrativeCostsUsers(handoutInactiveAdministrativeCostsRequest, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['InactiveAdministrativeCostsApi.notifyInactiveAdministrativeCostsUsers']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * InactiveAdministrativeCostsApi - factory interface
+ * @export
+ */
+export const InactiveAdministrativeCostsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = InactiveAdministrativeCostsApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Adds and inactive administrative cost to the system.
+         * @param {CreateInactiveAdministrativeCostRequest} createInactiveAdministrativeCostRequest The inactive administrative cost which should be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createInactiveAdministrativeCosts(createInactiveAdministrativeCostRequest: CreateInactiveAdministrativeCostRequest, options?: any): AxiosPromise<BaseInactiveAdministrativeCostResponse> {
+            return localVarFp.createInactiveAdministrativeCosts(createInactiveAdministrativeCostRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Deletes an inactive administrative cost.
+         * @param {number} id The id of the inactive administrative cost which should be deleted.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteInactiveAdministrativeCost(id: number, options?: any): AxiosPromise<void> {
+            return localVarFp.deleteInactiveAdministrativeCost(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Returns all inactive administrative costs in the system.
+         * @param {number} [fromId] Filter on the id of the user
+         * @param {number} [inactiveAdministrativeCostId] Filter on the id of entity
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllInactiveAdministrativeCosts(fromId?: number, inactiveAdministrativeCostId?: number, options?: any): AxiosPromise<PaginatedInactiveAdministrativeCostResponse> {
+            return localVarFp.getAllInactiveAdministrativeCosts(fromId, inactiveAdministrativeCostId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Returns a single inactive administrative cost entity
+         * @param {number} id The id of the requested inactive administrative cost
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getInactiveAdministrativeCosts(id: number, options?: any): AxiosPromise<BaseInactiveAdministrativeCostResponse> {
+            return localVarFp.getInactiveAdministrativeCosts(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Find all users who are eligible for notification or creation of inactive administrative cost
+         * @param {boolean} [notification] Whether to check for notification or for fine.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getInactiveAdministrativeCostsEligibleUsers(notification?: boolean, options?: any): AxiosPromise<Array<UserToInactiveAdministrativeCostResponse>> {
+            return localVarFp.getInactiveAdministrativeCostsEligibleUsers(notification, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Handout inactive administrative costs to all users who are eligible.
+         * @param {HandoutInactiveAdministrativeCostsRequest} handoutInactiveAdministrativeCostsRequest The users that should be fined
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        handoutInactiveAdministrativeCostsUsers(handoutInactiveAdministrativeCostsRequest: HandoutInactiveAdministrativeCostsRequest, options?: any): AxiosPromise<void> {
+            return localVarFp.handoutInactiveAdministrativeCostsUsers(handoutInactiveAdministrativeCostsRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Notify all users which will pay administrative costs within a year
+         * @param {HandoutInactiveAdministrativeCostsRequest} handoutInactiveAdministrativeCostsRequest The users that should be notified
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        notifyInactiveAdministrativeCostsUsers(handoutInactiveAdministrativeCostsRequest: HandoutInactiveAdministrativeCostsRequest, options?: any): AxiosPromise<void> {
+            return localVarFp.notifyInactiveAdministrativeCostsUsers(handoutInactiveAdministrativeCostsRequest, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * InactiveAdministrativeCostsApi - object-oriented interface
+ * @export
+ * @class InactiveAdministrativeCostsApi
+ * @extends {BaseAPI}
+ */
+export class InactiveAdministrativeCostsApi extends BaseAPI {
+    /**
+     * 
+     * @summary Adds and inactive administrative cost to the system.
+     * @param {CreateInactiveAdministrativeCostRequest} createInactiveAdministrativeCostRequest The inactive administrative cost which should be created
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InactiveAdministrativeCostsApi
+     */
+    public createInactiveAdministrativeCosts(createInactiveAdministrativeCostRequest: CreateInactiveAdministrativeCostRequest, options?: RawAxiosRequestConfig) {
+        return InactiveAdministrativeCostsApiFp(this.configuration).createInactiveAdministrativeCosts(createInactiveAdministrativeCostRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Deletes an inactive administrative cost.
+     * @param {number} id The id of the inactive administrative cost which should be deleted.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InactiveAdministrativeCostsApi
+     */
+    public deleteInactiveAdministrativeCost(id: number, options?: RawAxiosRequestConfig) {
+        return InactiveAdministrativeCostsApiFp(this.configuration).deleteInactiveAdministrativeCost(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Returns all inactive administrative costs in the system.
+     * @param {number} [fromId] Filter on the id of the user
+     * @param {number} [inactiveAdministrativeCostId] Filter on the id of entity
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InactiveAdministrativeCostsApi
+     */
+    public getAllInactiveAdministrativeCosts(fromId?: number, inactiveAdministrativeCostId?: number, options?: RawAxiosRequestConfig) {
+        return InactiveAdministrativeCostsApiFp(this.configuration).getAllInactiveAdministrativeCosts(fromId, inactiveAdministrativeCostId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Returns a single inactive administrative cost entity
+     * @param {number} id The id of the requested inactive administrative cost
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InactiveAdministrativeCostsApi
+     */
+    public getInactiveAdministrativeCosts(id: number, options?: RawAxiosRequestConfig) {
+        return InactiveAdministrativeCostsApiFp(this.configuration).getInactiveAdministrativeCosts(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Find all users who are eligible for notification or creation of inactive administrative cost
+     * @param {boolean} [notification] Whether to check for notification or for fine.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InactiveAdministrativeCostsApi
+     */
+    public getInactiveAdministrativeCostsEligibleUsers(notification?: boolean, options?: RawAxiosRequestConfig) {
+        return InactiveAdministrativeCostsApiFp(this.configuration).getInactiveAdministrativeCostsEligibleUsers(notification, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Handout inactive administrative costs to all users who are eligible.
+     * @param {HandoutInactiveAdministrativeCostsRequest} handoutInactiveAdministrativeCostsRequest The users that should be fined
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InactiveAdministrativeCostsApi
+     */
+    public handoutInactiveAdministrativeCostsUsers(handoutInactiveAdministrativeCostsRequest: HandoutInactiveAdministrativeCostsRequest, options?: RawAxiosRequestConfig) {
+        return InactiveAdministrativeCostsApiFp(this.configuration).handoutInactiveAdministrativeCostsUsers(handoutInactiveAdministrativeCostsRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Notify all users which will pay administrative costs within a year
+     * @param {HandoutInactiveAdministrativeCostsRequest} handoutInactiveAdministrativeCostsRequest The users that should be notified
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InactiveAdministrativeCostsApi
+     */
+    public notifyInactiveAdministrativeCostsUsers(handoutInactiveAdministrativeCostsRequest: HandoutInactiveAdministrativeCostsRequest, options?: RawAxiosRequestConfig) {
+        return InactiveAdministrativeCostsApiFp(this.configuration).notifyInactiveAdministrativeCostsUsers(handoutInactiveAdministrativeCostsRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -16653,6 +17727,44 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
         },
         /**
          * 
+         * @summary Get all invoices containing subtransaction rows from this transaction
+         * @param {number} id The transaction ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTransactionInvoices: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getTransactionInvoices', 'id', id)
+            const localVarPath = `/transactions/{id}/invoices`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Updates the requested transaction
          * @param {number} id The id of the transaction which should be updated
          * @param {TransactionRequest} transactionRequest The updated transaction
@@ -16697,7 +17809,7 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
         },
         /**
          * 
-         * @summary Function to validate the transaction immediatly after it is created
+         * @summary Function to validate the transaction before creating it
          * @param {TransactionRequest} transactionRequest The transaction which should be validated
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -16810,6 +17922,19 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get all invoices containing subtransaction rows from this transaction
+         * @param {number} id The transaction ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getTransactionInvoices(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BaseInvoiceResponse>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getTransactionInvoices(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['TransactionsApi.getTransactionInvoices']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Updates the requested transaction
          * @param {number} id The id of the transaction which should be updated
          * @param {TransactionRequest} transactionRequest The updated transaction
@@ -16824,7 +17949,7 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Function to validate the transaction immediatly after it is created
+         * @summary Function to validate the transaction before creating it
          * @param {TransactionRequest} transactionRequest The transaction which should be validated
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -16898,6 +18023,16 @@ export const TransactionsApiFactory = function (configuration?: Configuration, b
         },
         /**
          * 
+         * @summary Get all invoices containing subtransaction rows from this transaction
+         * @param {number} id The transaction ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTransactionInvoices(id: number, options?: any): AxiosPromise<Array<BaseInvoiceResponse>> {
+            return localVarFp.getTransactionInvoices(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Updates the requested transaction
          * @param {number} id The id of the transaction which should be updated
          * @param {TransactionRequest} transactionRequest The updated transaction
@@ -16909,7 +18044,7 @@ export const TransactionsApiFactory = function (configuration?: Configuration, b
         },
         /**
          * 
-         * @summary Function to validate the transaction immediatly after it is created
+         * @summary Function to validate the transaction before creating it
          * @param {TransactionRequest} transactionRequest The transaction which should be validated
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -16988,6 +18123,18 @@ export class TransactionsApi extends BaseAPI {
 
     /**
      * 
+     * @summary Get all invoices containing subtransaction rows from this transaction
+     * @param {number} id The transaction ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TransactionsApi
+     */
+    public getTransactionInvoices(id: number, options?: RawAxiosRequestConfig) {
+        return TransactionsApiFp(this.configuration).getTransactionInvoices(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary Updates the requested transaction
      * @param {number} id The id of the transaction which should be updated
      * @param {TransactionRequest} transactionRequest The updated transaction
@@ -17001,7 +18148,7 @@ export class TransactionsApi extends BaseAPI {
 
     /**
      * 
-     * @summary Function to validate the transaction immediatly after it is created
+     * @summary Function to validate the transaction before creating it
      * @param {TransactionRequest} transactionRequest The transaction which should be validated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}

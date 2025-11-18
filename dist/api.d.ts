@@ -263,6 +263,50 @@ export interface AuthenticationResponse {
 /**
  *
  * @export
+ * @interface AuthenticationSecureNfcRequest
+ */
+export interface AuthenticationSecureNfcRequest {
+    /**
+     *
+     * @type {string}
+     * @memberof AuthenticationSecureNfcRequest
+     */
+    'nfcCode': string;
+    /**
+     * POS identifier
+     * @type {number}
+     * @memberof AuthenticationSecureNfcRequest
+     */
+    'posId': number;
+}
+/**
+ *
+ * @export
+ * @interface AuthenticationSecurePinRequest
+ */
+export interface AuthenticationSecurePinRequest {
+    /**
+     *
+     * @type {number}
+     * @memberof AuthenticationSecurePinRequest
+     */
+    'userId': number;
+    /**
+     *
+     * @type {string}
+     * @memberof AuthenticationSecurePinRequest
+     */
+    'pin': string;
+    /**
+     * POS identifier (required for secure authentication)
+     * @type {number}
+     * @memberof AuthenticationSecurePinRequest
+     */
+    'posId': number;
+}
+/**
+ *
+ * @export
  * @interface BalanceResponse
  */
 export interface BalanceResponse {
@@ -712,6 +756,55 @@ export interface BaseFineHandoutEventResponse {
      * @memberof BaseFineHandoutEventResponse
      */
     'count': number;
+}
+/**
+ *
+ * @export
+ * @interface BaseInactiveAdministrativeCostResponse
+ */
+export interface BaseInactiveAdministrativeCostResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof BaseInactiveAdministrativeCostResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof BaseInactiveAdministrativeCostResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof BaseInactiveAdministrativeCostResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof BaseInactiveAdministrativeCostResponse
+     */
+    'version'?: number;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof BaseInactiveAdministrativeCostResponse
+     */
+    'from': BaseUserResponse;
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof BaseInactiveAdministrativeCostResponse
+     */
+    'amount': DineroObjectResponse;
+    /**
+     *
+     * @type {TransferResponse}
+     * @memberof BaseInactiveAdministrativeCostResponse
+     */
+    'transfer'?: TransferResponse;
 }
 /**
  *
@@ -1509,6 +1602,19 @@ export interface CreateEventRequest {
      * @memberof CreateEventRequest
      */
     'shiftIds': Array<number>;
+}
+/**
+ *
+ * @export
+ * @interface CreateInactiveAdministrativeCostRequest
+ */
+export interface CreateInactiveAdministrativeCostRequest {
+    /**
+     * The user of the inactive administrative cost
+     * @type {number}
+     * @memberof CreateInactiveAdministrativeCostRequest
+     */
+    'forId': number;
 }
 /**
  *
@@ -2356,6 +2462,31 @@ export interface GEWISAuthenticationPinRequest {
 /**
  *
  * @export
+ * @interface GEWISAuthenticationSecurePinRequest
+ */
+export interface GEWISAuthenticationSecurePinRequest {
+    /**
+     *
+     * @type {number}
+     * @memberof GEWISAuthenticationSecurePinRequest
+     */
+    'gewisId': number;
+    /**
+     *
+     * @type {string}
+     * @memberof GEWISAuthenticationSecurePinRequest
+     */
+    'pin': string;
+    /**
+     * POS identifier
+     * @type {number}
+     * @memberof GEWISAuthenticationSecurePinRequest
+     */
+    'posId': number;
+}
+/**
+ *
+ * @export
  * @interface GetAllBalanceUserTypesParameterInner
  */
 export interface GetAllBalanceUserTypesParameterInner {
@@ -2505,6 +2636,19 @@ export interface HandoutFinesRequest {
      * @memberof HandoutFinesRequest
      */
     'referenceDate': string;
+}
+/**
+ *
+ * @export
+ * @interface HandoutInactiveAdministrativeCostsRequest
+ */
+export interface HandoutInactiveAdministrativeCostsRequest {
+    /**
+     * The users that should be handed an inactive administrative cost request.
+     * @type {Array<number>}
+     * @memberof HandoutInactiveAdministrativeCostsRequest
+     */
+    'userIds': Array<number>;
 }
 /**
  *
@@ -3091,6 +3235,25 @@ export interface PaginatedFineHandoutEventResponse {
 /**
  *
  * @export
+ * @interface PaginatedInactiveAdministrativeCostResponse
+ */
+export interface PaginatedInactiveAdministrativeCostResponse {
+    /**
+     *
+     * @type {PaginationResult}
+     * @memberof PaginatedInactiveAdministrativeCostResponse
+     */
+    '_pagination'?: PaginationResult;
+    /**
+     * Returned InactiveAdministrativeCost
+     * @type {Array<BaseInactiveAdministrativeCostResponse>}
+     * @memberof PaginatedInactiveAdministrativeCostResponse
+     */
+    'records'?: Array<BaseInactiveAdministrativeCostResponse>;
+}
+/**
+ *
+ * @export
  * @interface PaginatedInvoiceResponse
  */
 export interface PaginatedInvoiceResponse {
@@ -3522,11 +3685,11 @@ export interface PointOfSaleAssociateUsersResponse {
      */
     'owner': BaseUserResponse;
     /**
-     * Members that belong to the owner
-     * @type {Array<BaseUserResponse>}
+     * Members that belong to the owner with stable indices
+     * @type {Array<UserWithIndex>}
      * @memberof PointOfSaleAssociateUsersResponse
      */
-    'ownerMembers': Array<BaseUserResponse>;
+    'ownerMembers': Array<UserWithIndex>;
     /**
      * Users that belong to at least one cashier role of this point of sale
      * @type {Array<BaseUserResponse>}
@@ -5186,6 +5349,12 @@ export interface TransferResponse {
      * @memberof TransferResponse
      */
     'waivedFines'?: UserFineGroupResponse;
+    /**
+     *
+     * @type {BaseInactiveAdministrativeCostResponse}
+     * @memberof TransferResponse
+     */
+    'inactiveAdministrativeCost'?: BaseInactiveAdministrativeCostResponse;
 }
 /**
  *
@@ -5634,6 +5803,12 @@ export interface UpdateUserRequest {
      * @memberof UpdateUserRequest
      */
     'extensiveDataProcessing'?: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof UpdateUserRequest
+     */
+    'inactiveNotificationSend'?: boolean;
 }
 /**
  *
@@ -5798,6 +5973,19 @@ export interface UserToFineResponse {
 /**
  *
  * @export
+ * @interface UserToInactiveAdministrativeCostResponse
+ */
+export interface UserToInactiveAdministrativeCostResponse {
+    /**
+     * User ID
+     * @type {number}
+     * @memberof UserToInactiveAdministrativeCostResponse
+     */
+    'userId'?: number;
+}
+/**
+ *
+ * @export
  * @interface UserTypeTotalBalanceResponse
  */
 export interface UserTypeTotalBalanceResponse {
@@ -5819,6 +6007,19 @@ export interface UserTypeTotalBalanceResponse {
      * @memberof UserTypeTotalBalanceResponse
      */
     'totalNegative': DineroObjectResponse;
+}
+/**
+ *
+ * @export
+ * @interface UserWithIndex
+ */
+export interface UserWithIndex {
+    /**
+     * Stable position index for sorting
+     * @type {number}
+     * @memberof UserWithIndex
+     */
+    'index': number;
 }
 /**
  *
@@ -6194,6 +6395,13 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
     getGEWISWebPublic: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Get the JWT public key used by SudoSOS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getJWTPublicKey: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Get the status of a QR authentication session
      * @param {string} sessionId The session ID
      * @param {*} [options] Override http request option.
@@ -6274,7 +6482,7 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
     pinAuthentication: (authenticationPinRequest: AuthenticationPinRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary Get a new JWT token, lesser if the existing token is also lesser
+     * @summary Get a new JWT token, maintaining the same access level (posId) as the original token
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -6295,6 +6503,30 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
      * @throws {RequiredError}
      */
     resetLocalWithToken: (authenticationResetTokenRequest: AuthenticationResetTokenRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Secure GEWIS PIN authentication that requires POS user authentication
+     * @param {GEWISAuthenticationSecurePinRequest} gEWISAuthenticationSecurePinRequest The PIN login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    secureGewisPINAuthentication: (gEWISAuthenticationSecurePinRequest: GEWISAuthenticationSecurePinRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Secure NFC authentication that requires POS user authentication
+     * @param {AuthenticationSecureNfcRequest} authenticationSecureNfcRequest The NFC login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    secureNfcAuthentication: (authenticationSecureNfcRequest: AuthenticationSecureNfcRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Secure PIN authentication that requires POS user authentication
+     * @param {AuthenticationSecurePinRequest} authenticationSecurePinRequest The PIN login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    securePINAuthentication: (authenticationSecurePinRequest: AuthenticationSecurePinRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * AuthenticateApi - functional programming interface
@@ -6347,6 +6579,13 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     getGEWISWebPublic(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    /**
+     *
+     * @summary Get the JWT public key used by SudoSOS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getJWTPublicKey(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
     /**
      *
      * @summary Get the status of a QR authentication session
@@ -6429,7 +6668,7 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
     pinAuthentication(authenticationPinRequest: AuthenticationPinRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
     /**
      *
-     * @summary Get a new JWT token, lesser if the existing token is also lesser
+     * @summary Get a new JWT token, maintaining the same access level (posId) as the original token
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -6450,6 +6689,30 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     resetLocalWithToken(authenticationResetTokenRequest: AuthenticationResetTokenRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     *
+     * @summary Secure GEWIS PIN authentication that requires POS user authentication
+     * @param {GEWISAuthenticationSecurePinRequest} gEWISAuthenticationSecurePinRequest The PIN login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    secureGewisPINAuthentication(gEWISAuthenticationSecurePinRequest: GEWISAuthenticationSecurePinRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
+    /**
+     *
+     * @summary Secure NFC authentication that requires POS user authentication
+     * @param {AuthenticationSecureNfcRequest} authenticationSecureNfcRequest The NFC login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    secureNfcAuthentication(authenticationSecureNfcRequest: AuthenticationSecureNfcRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
+    /**
+     *
+     * @summary Secure PIN authentication that requires POS user authentication
+     * @param {AuthenticationSecurePinRequest} authenticationSecurePinRequest The PIN login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    securePINAuthentication(authenticationSecurePinRequest: AuthenticationSecurePinRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
 };
 /**
  * AuthenticateApi - factory interface
@@ -6502,6 +6765,13 @@ export declare const AuthenticateApiFactory: (configuration?: Configuration, bas
      * @throws {RequiredError}
      */
     getGEWISWebPublic(options?: any): AxiosPromise<string>;
+    /**
+     *
+     * @summary Get the JWT public key used by SudoSOS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getJWTPublicKey(options?: any): AxiosPromise<string>;
     /**
      *
      * @summary Get the status of a QR authentication session
@@ -6584,7 +6854,7 @@ export declare const AuthenticateApiFactory: (configuration?: Configuration, bas
     pinAuthentication(authenticationPinRequest: AuthenticationPinRequest, options?: any): AxiosPromise<AuthenticationResponse>;
     /**
      *
-     * @summary Get a new JWT token, lesser if the existing token is also lesser
+     * @summary Get a new JWT token, maintaining the same access level (posId) as the original token
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -6605,6 +6875,30 @@ export declare const AuthenticateApiFactory: (configuration?: Configuration, bas
      * @throws {RequiredError}
      */
     resetLocalWithToken(authenticationResetTokenRequest: AuthenticationResetTokenRequest, options?: any): AxiosPromise<void>;
+    /**
+     *
+     * @summary Secure GEWIS PIN authentication that requires POS user authentication
+     * @param {GEWISAuthenticationSecurePinRequest} gEWISAuthenticationSecurePinRequest The PIN login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    secureGewisPINAuthentication(gEWISAuthenticationSecurePinRequest: GEWISAuthenticationSecurePinRequest, options?: any): AxiosPromise<AuthenticationResponse>;
+    /**
+     *
+     * @summary Secure NFC authentication that requires POS user authentication
+     * @param {AuthenticationSecureNfcRequest} authenticationSecureNfcRequest The NFC login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    secureNfcAuthentication(authenticationSecureNfcRequest: AuthenticationSecureNfcRequest, options?: any): AxiosPromise<AuthenticationResponse>;
+    /**
+     *
+     * @summary Secure PIN authentication that requires POS user authentication
+     * @param {AuthenticationSecurePinRequest} authenticationSecurePinRequest The PIN login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    securePINAuthentication(authenticationSecurePinRequest: AuthenticationSecurePinRequest, options?: any): AxiosPromise<AuthenticationResponse>;
 };
 /**
  * AuthenticateApi - object-oriented interface
@@ -6665,6 +6959,14 @@ export declare class AuthenticateApi extends BaseAPI {
      * @memberof AuthenticateApi
      */
     getGEWISWebPublic(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any, {}>>;
+    /**
+     *
+     * @summary Get the JWT public key used by SudoSOS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    getJWTPublicKey(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any, {}>>;
     /**
      *
      * @summary Get the status of a QR authentication session
@@ -6757,7 +7059,7 @@ export declare class AuthenticateApi extends BaseAPI {
     pinAuthentication(authenticationPinRequest: AuthenticationPinRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
     /**
      *
-     * @summary Get a new JWT token, lesser if the existing token is also lesser
+     * @summary Get a new JWT token, maintaining the same access level (posId) as the original token
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthenticateApi
@@ -6781,6 +7083,33 @@ export declare class AuthenticateApi extends BaseAPI {
      * @memberof AuthenticateApi
      */
     resetLocalWithToken(authenticationResetTokenRequest: AuthenticationResetTokenRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    /**
+     *
+     * @summary Secure GEWIS PIN authentication that requires POS user authentication
+     * @param {GEWISAuthenticationSecurePinRequest} gEWISAuthenticationSecurePinRequest The PIN login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    secureGewisPINAuthentication(gEWISAuthenticationSecurePinRequest: GEWISAuthenticationSecurePinRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
+    /**
+     *
+     * @summary Secure NFC authentication that requires POS user authentication
+     * @param {AuthenticationSecureNfcRequest} authenticationSecureNfcRequest The NFC login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    secureNfcAuthentication(authenticationSecureNfcRequest: AuthenticationSecureNfcRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
+    /**
+     *
+     * @summary Secure PIN authentication that requires POS user authentication
+     * @param {AuthenticationSecurePinRequest} authenticationSecurePinRequest The PIN login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    securePINAuthentication(authenticationSecurePinRequest: AuthenticationSecurePinRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
 }
 /**
  * BalanceApi - axios parameter creator
@@ -7036,10 +7365,13 @@ export declare const BannersApiAxiosParamCreator: (configuration?: Configuration
      * @summary Returns all existing banners
      * @param {number} [take] How many banners the endpoint should return
      * @param {number} [skip] How many banners should be skipped (for pagination)
+     * @param {boolean} [active] Filter by active status
+     * @param {boolean} [expired] Filter by expired status (endDate &lt;&#x3D; now)
+     * @param {string} [order] Sort order by startDate (ASC or DESC, default: DESC)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllBanners: (take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getAllBanners: (take?: number, skip?: number, active?: boolean, expired?: boolean, order?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns all existing banners
@@ -7111,10 +7443,13 @@ export declare const BannersApiFp: (configuration?: Configuration) => {
      * @summary Returns all existing banners
      * @param {number} [take] How many banners the endpoint should return
      * @param {number} [skip] How many banners should be skipped (for pagination)
+     * @param {boolean} [active] Filter by active status
+     * @param {boolean} [expired] Filter by expired status (endDate &lt;&#x3D; now)
+     * @param {string} [order] Sort order by startDate (ASC or DESC, default: DESC)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllBanners(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBannerResponse>>;
+    getAllBanners(take?: number, skip?: number, active?: boolean, expired?: boolean, order?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedBannerResponse>>;
     /**
      *
      * @summary Returns all existing banners
@@ -7186,10 +7521,13 @@ export declare const BannersApiFactory: (configuration?: Configuration, basePath
      * @summary Returns all existing banners
      * @param {number} [take] How many banners the endpoint should return
      * @param {number} [skip] How many banners should be skipped (for pagination)
+     * @param {boolean} [active] Filter by active status
+     * @param {boolean} [expired] Filter by expired status (endDate &lt;&#x3D; now)
+     * @param {string} [order] Sort order by startDate (ASC or DESC, default: DESC)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllBanners(take?: number, skip?: number, options?: any): AxiosPromise<PaginatedBannerResponse>;
+    getAllBanners(take?: number, skip?: number, active?: boolean, expired?: boolean, order?: string, options?: any): AxiosPromise<PaginatedBannerResponse>;
     /**
      *
      * @summary Returns all existing banners
@@ -7266,11 +7604,14 @@ export declare class BannersApi extends BaseAPI {
      * @summary Returns all existing banners
      * @param {number} [take] How many banners the endpoint should return
      * @param {number} [skip] How many banners should be skipped (for pagination)
+     * @param {boolean} [active] Filter by active status
+     * @param {boolean} [expired] Filter by expired status (endDate &lt;&#x3D; now)
+     * @param {string} [order] Sort order by startDate (ASC or DESC, default: DESC)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BannersApi
      */
-    getAllBanners(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBannerResponse, any, {}>>;
+    getAllBanners(take?: number, skip?: number, active?: boolean, expired?: boolean, order?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedBannerResponse, any, {}>>;
     /**
      *
      * @summary Returns all existing banners
@@ -8601,6 +8942,267 @@ export declare class FilesApi extends BaseAPI {
      * @memberof FilesApi
      */
     getFile(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any, {}>>;
+}
+/**
+ * InactiveAdministrativeCostsApi - axios parameter creator
+ * @export
+ */
+export declare const InactiveAdministrativeCostsApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Adds and inactive administrative cost to the system.
+     * @param {CreateInactiveAdministrativeCostRequest} createInactiveAdministrativeCostRequest The inactive administrative cost which should be created
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createInactiveAdministrativeCosts: (createInactiveAdministrativeCostRequest: CreateInactiveAdministrativeCostRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Deletes an inactive administrative cost.
+     * @param {number} id The id of the inactive administrative cost which should be deleted.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteInactiveAdministrativeCost: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Returns all inactive administrative costs in the system.
+     * @param {number} [fromId] Filter on the id of the user
+     * @param {number} [inactiveAdministrativeCostId] Filter on the id of entity
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getAllInactiveAdministrativeCosts: (fromId?: number, inactiveAdministrativeCostId?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Returns a single inactive administrative cost entity
+     * @param {number} id The id of the requested inactive administrative cost
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInactiveAdministrativeCosts: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Find all users who are eligible for notification or creation of inactive administrative cost
+     * @param {boolean} [notification] Whether to check for notification or for fine.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInactiveAdministrativeCostsEligibleUsers: (notification?: boolean, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Handout inactive administrative costs to all users who are eligible.
+     * @param {HandoutInactiveAdministrativeCostsRequest} handoutInactiveAdministrativeCostsRequest The users that should be fined
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    handoutInactiveAdministrativeCostsUsers: (handoutInactiveAdministrativeCostsRequest: HandoutInactiveAdministrativeCostsRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Notify all users which will pay administrative costs within a year
+     * @param {HandoutInactiveAdministrativeCostsRequest} handoutInactiveAdministrativeCostsRequest The users that should be notified
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    notifyInactiveAdministrativeCostsUsers: (handoutInactiveAdministrativeCostsRequest: HandoutInactiveAdministrativeCostsRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+};
+/**
+ * InactiveAdministrativeCostsApi - functional programming interface
+ * @export
+ */
+export declare const InactiveAdministrativeCostsApiFp: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Adds and inactive administrative cost to the system.
+     * @param {CreateInactiveAdministrativeCostRequest} createInactiveAdministrativeCostRequest The inactive administrative cost which should be created
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createInactiveAdministrativeCosts(createInactiveAdministrativeCostRequest: CreateInactiveAdministrativeCostRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseInactiveAdministrativeCostResponse>>;
+    /**
+     *
+     * @summary Deletes an inactive administrative cost.
+     * @param {number} id The id of the inactive administrative cost which should be deleted.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteInactiveAdministrativeCost(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     *
+     * @summary Returns all inactive administrative costs in the system.
+     * @param {number} [fromId] Filter on the id of the user
+     * @param {number} [inactiveAdministrativeCostId] Filter on the id of entity
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getAllInactiveAdministrativeCosts(fromId?: number, inactiveAdministrativeCostId?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedInactiveAdministrativeCostResponse>>;
+    /**
+     *
+     * @summary Returns a single inactive administrative cost entity
+     * @param {number} id The id of the requested inactive administrative cost
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInactiveAdministrativeCosts(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseInactiveAdministrativeCostResponse>>;
+    /**
+     *
+     * @summary Find all users who are eligible for notification or creation of inactive administrative cost
+     * @param {boolean} [notification] Whether to check for notification or for fine.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInactiveAdministrativeCostsEligibleUsers(notification?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UserToInactiveAdministrativeCostResponse>>>;
+    /**
+     *
+     * @summary Handout inactive administrative costs to all users who are eligible.
+     * @param {HandoutInactiveAdministrativeCostsRequest} handoutInactiveAdministrativeCostsRequest The users that should be fined
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    handoutInactiveAdministrativeCostsUsers(handoutInactiveAdministrativeCostsRequest: HandoutInactiveAdministrativeCostsRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     *
+     * @summary Notify all users which will pay administrative costs within a year
+     * @param {HandoutInactiveAdministrativeCostsRequest} handoutInactiveAdministrativeCostsRequest The users that should be notified
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    notifyInactiveAdministrativeCostsUsers(handoutInactiveAdministrativeCostsRequest: HandoutInactiveAdministrativeCostsRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+};
+/**
+ * InactiveAdministrativeCostsApi - factory interface
+ * @export
+ */
+export declare const InactiveAdministrativeCostsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     *
+     * @summary Adds and inactive administrative cost to the system.
+     * @param {CreateInactiveAdministrativeCostRequest} createInactiveAdministrativeCostRequest The inactive administrative cost which should be created
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createInactiveAdministrativeCosts(createInactiveAdministrativeCostRequest: CreateInactiveAdministrativeCostRequest, options?: any): AxiosPromise<BaseInactiveAdministrativeCostResponse>;
+    /**
+     *
+     * @summary Deletes an inactive administrative cost.
+     * @param {number} id The id of the inactive administrative cost which should be deleted.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteInactiveAdministrativeCost(id: number, options?: any): AxiosPromise<void>;
+    /**
+     *
+     * @summary Returns all inactive administrative costs in the system.
+     * @param {number} [fromId] Filter on the id of the user
+     * @param {number} [inactiveAdministrativeCostId] Filter on the id of entity
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getAllInactiveAdministrativeCosts(fromId?: number, inactiveAdministrativeCostId?: number, options?: any): AxiosPromise<PaginatedInactiveAdministrativeCostResponse>;
+    /**
+     *
+     * @summary Returns a single inactive administrative cost entity
+     * @param {number} id The id of the requested inactive administrative cost
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInactiveAdministrativeCosts(id: number, options?: any): AxiosPromise<BaseInactiveAdministrativeCostResponse>;
+    /**
+     *
+     * @summary Find all users who are eligible for notification or creation of inactive administrative cost
+     * @param {boolean} [notification] Whether to check for notification or for fine.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInactiveAdministrativeCostsEligibleUsers(notification?: boolean, options?: any): AxiosPromise<Array<UserToInactiveAdministrativeCostResponse>>;
+    /**
+     *
+     * @summary Handout inactive administrative costs to all users who are eligible.
+     * @param {HandoutInactiveAdministrativeCostsRequest} handoutInactiveAdministrativeCostsRequest The users that should be fined
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    handoutInactiveAdministrativeCostsUsers(handoutInactiveAdministrativeCostsRequest: HandoutInactiveAdministrativeCostsRequest, options?: any): AxiosPromise<void>;
+    /**
+     *
+     * @summary Notify all users which will pay administrative costs within a year
+     * @param {HandoutInactiveAdministrativeCostsRequest} handoutInactiveAdministrativeCostsRequest The users that should be notified
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    notifyInactiveAdministrativeCostsUsers(handoutInactiveAdministrativeCostsRequest: HandoutInactiveAdministrativeCostsRequest, options?: any): AxiosPromise<void>;
+};
+/**
+ * InactiveAdministrativeCostsApi - object-oriented interface
+ * @export
+ * @class InactiveAdministrativeCostsApi
+ * @extends {BaseAPI}
+ */
+export declare class InactiveAdministrativeCostsApi extends BaseAPI {
+    /**
+     *
+     * @summary Adds and inactive administrative cost to the system.
+     * @param {CreateInactiveAdministrativeCostRequest} createInactiveAdministrativeCostRequest The inactive administrative cost which should be created
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InactiveAdministrativeCostsApi
+     */
+    createInactiveAdministrativeCosts(createInactiveAdministrativeCostRequest: CreateInactiveAdministrativeCostRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BaseInactiveAdministrativeCostResponse, any, {}>>;
+    /**
+     *
+     * @summary Deletes an inactive administrative cost.
+     * @param {number} id The id of the inactive administrative cost which should be deleted.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InactiveAdministrativeCostsApi
+     */
+    deleteInactiveAdministrativeCost(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    /**
+     *
+     * @summary Returns all inactive administrative costs in the system.
+     * @param {number} [fromId] Filter on the id of the user
+     * @param {number} [inactiveAdministrativeCostId] Filter on the id of entity
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InactiveAdministrativeCostsApi
+     */
+    getAllInactiveAdministrativeCosts(fromId?: number, inactiveAdministrativeCostId?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedInactiveAdministrativeCostResponse, any, {}>>;
+    /**
+     *
+     * @summary Returns a single inactive administrative cost entity
+     * @param {number} id The id of the requested inactive administrative cost
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InactiveAdministrativeCostsApi
+     */
+    getInactiveAdministrativeCosts(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BaseInactiveAdministrativeCostResponse, any, {}>>;
+    /**
+     *
+     * @summary Find all users who are eligible for notification or creation of inactive administrative cost
+     * @param {boolean} [notification] Whether to check for notification or for fine.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InactiveAdministrativeCostsApi
+     */
+    getInactiveAdministrativeCostsEligibleUsers(notification?: boolean, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserToInactiveAdministrativeCostResponse[], any, {}>>;
+    /**
+     *
+     * @summary Handout inactive administrative costs to all users who are eligible.
+     * @param {HandoutInactiveAdministrativeCostsRequest} handoutInactiveAdministrativeCostsRequest The users that should be fined
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InactiveAdministrativeCostsApi
+     */
+    handoutInactiveAdministrativeCostsUsers(handoutInactiveAdministrativeCostsRequest: HandoutInactiveAdministrativeCostsRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    /**
+     *
+     * @summary Notify all users which will pay administrative costs within a year
+     * @param {HandoutInactiveAdministrativeCostsRequest} handoutInactiveAdministrativeCostsRequest The users that should be notified
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InactiveAdministrativeCostsApi
+     */
+    notifyInactiveAdministrativeCostsUsers(handoutInactiveAdministrativeCostsRequest: HandoutInactiveAdministrativeCostsRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
 }
 /**
  * InvoicesApi - axios parameter creator
@@ -11053,6 +11655,14 @@ export declare const TransactionsApiAxiosParamCreator: (configuration?: Configur
     getSingleTransaction: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Get all invoices containing subtransaction rows from this transaction
+     * @param {number} id The transaction ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getTransactionInvoices: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Updates the requested transaction
      * @param {number} id The id of the transaction which should be updated
      * @param {TransactionRequest} transactionRequest The updated transaction
@@ -11062,7 +11672,7 @@ export declare const TransactionsApiAxiosParamCreator: (configuration?: Configur
     updateTransaction: (id: number, transactionRequest: TransactionRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary Function to validate the transaction immediatly after it is created
+     * @summary Function to validate the transaction before creating it
      * @param {TransactionRequest} transactionRequest The transaction which should be validated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -11119,6 +11729,14 @@ export declare const TransactionsApiFp: (configuration?: Configuration) => {
     getSingleTransaction(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionResponse>>;
     /**
      *
+     * @summary Get all invoices containing subtransaction rows from this transaction
+     * @param {number} id The transaction ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getTransactionInvoices(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BaseInvoiceResponse>>>;
+    /**
+     *
      * @summary Updates the requested transaction
      * @param {number} id The id of the transaction which should be updated
      * @param {TransactionRequest} transactionRequest The updated transaction
@@ -11128,7 +11746,7 @@ export declare const TransactionsApiFp: (configuration?: Configuration) => {
     updateTransaction(id: number, transactionRequest: TransactionRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionResponse>>;
     /**
      *
-     * @summary Function to validate the transaction immediatly after it is created
+     * @summary Function to validate the transaction before creating it
      * @param {TransactionRequest} transactionRequest The transaction which should be validated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -11185,6 +11803,14 @@ export declare const TransactionsApiFactory: (configuration?: Configuration, bas
     getSingleTransaction(id: number, options?: any): AxiosPromise<TransactionResponse>;
     /**
      *
+     * @summary Get all invoices containing subtransaction rows from this transaction
+     * @param {number} id The transaction ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getTransactionInvoices(id: number, options?: any): AxiosPromise<Array<BaseInvoiceResponse>>;
+    /**
+     *
      * @summary Updates the requested transaction
      * @param {number} id The id of the transaction which should be updated
      * @param {TransactionRequest} transactionRequest The updated transaction
@@ -11194,7 +11820,7 @@ export declare const TransactionsApiFactory: (configuration?: Configuration, bas
     updateTransaction(id: number, transactionRequest: TransactionRequest, options?: any): AxiosPromise<TransactionResponse>;
     /**
      *
-     * @summary Function to validate the transaction immediatly after it is created
+     * @summary Function to validate the transaction before creating it
      * @param {TransactionRequest} transactionRequest The transaction which should be validated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -11257,6 +11883,15 @@ export declare class TransactionsApi extends BaseAPI {
     getSingleTransaction(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionResponse, any, {}>>;
     /**
      *
+     * @summary Get all invoices containing subtransaction rows from this transaction
+     * @param {number} id The transaction ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TransactionsApi
+     */
+    getTransactionInvoices(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BaseInvoiceResponse[], any, {}>>;
+    /**
+     *
      * @summary Updates the requested transaction
      * @param {number} id The id of the transaction which should be updated
      * @param {TransactionRequest} transactionRequest The updated transaction
@@ -11267,7 +11902,7 @@ export declare class TransactionsApi extends BaseAPI {
     updateTransaction(id: number, transactionRequest: TransactionRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransactionResponse, any, {}>>;
     /**
      *
-     * @summary Function to validate the transaction immediatly after it is created
+     * @summary Function to validate the transaction before creating it
      * @param {TransactionRequest} transactionRequest The transaction which should be validated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
