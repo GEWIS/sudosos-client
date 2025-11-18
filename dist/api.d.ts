@@ -2499,109 +2499,6 @@ export type GetAllPayoutRequestsRequestedByIdParameter = Array<number> | number;
 /**
  *
  * @export
- * @interface GewisUserResponse
- */
-export interface GewisUserResponse {
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof GewisUserResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof GewisUserResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof GewisUserResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof GewisUserResponse
-     */
-    'version'?: number;
-    /**
-     * The name of the user.
-     * @type {string}
-     * @memberof GewisUserResponse
-     */
-    'firstName': string;
-    /**
-     * The last name of the user
-     * @type {string}
-     * @memberof GewisUserResponse
-     */
-    'lastName': string;
-    /**
-     * The nickname of the user
-     * @type {string}
-     * @memberof GewisUserResponse
-     */
-    'nickname'?: string;
-    /**
-     * Whether the user activated
-     * @type {boolean}
-     * @memberof GewisUserResponse
-     */
-    'active': boolean;
-    /**
-     * Whether the user is deleted
-     * @type {boolean}
-     * @memberof GewisUserResponse
-     */
-    'deleted': boolean;
-    /**
-     * The type of user
-     * @type {string}
-     * @memberof GewisUserResponse
-     */
-    'type': string;
-    /**
-     * If local user, the e-mail of the user
-     * @type {string}
-     * @memberof GewisUserResponse
-     */
-    'email'?: string;
-    /**
-     * Whether this user has accepted the TOS
-     * @type {string}
-     * @memberof GewisUserResponse
-     */
-    'acceptedToS'?: string;
-    /**
-     * Whether data about this user can be used (non-anonymously) for more data science!
-     * @type {boolean}
-     * @memberof GewisUserResponse
-     */
-    'extensiveDataProcessing'?: boolean;
-    /**
-     * Whether someone is old enough to drink beer
-     * @type {boolean}
-     * @memberof GewisUserResponse
-     */
-    'ofAge'?: boolean;
-    /**
-     * Whether this user can get a negative balance
-     * @type {boolean}
-     * @memberof GewisUserResponse
-     */
-    'canGoIntoDebt': boolean;
-    /**
-     * The m-Number of the user
-     * @type {number}
-     * @memberof GewisUserResponse
-     */
-    'gewisId'?: number;
-}
-/**
- *
- * @export
  * @interface GewiswebAuthenticationRequest
  */
 export interface GewiswebAuthenticationRequest {
@@ -5944,6 +5841,18 @@ export interface UserResponse {
      * @memberof UserResponse
      */
     'canGoIntoDebt': boolean;
+    /**
+     * The external id of the user (e.g., GEWIS member ID)
+     * @type {number}
+     * @memberof UserResponse
+     */
+    'externalId'?: number;
+    /**
+     * The m-Number of the user (deprecated, use externalId instead)
+     * @type {number}
+     * @memberof UserResponse
+     */
+    'gewisId'?: number;
 }
 /**
  *
