@@ -5883,9 +5883,9 @@ export interface UserResponse {
      * @type {number}
      * @memberof UserResponse
      */
-    'externalId'?: number;
+    'memberId'?: number;
     /**
-     * The m-Number of the user (deprecated, use externalId instead)
+     * The m-Number of the user (deprecated, use externalId instead. Will be removed after 01/06/2026)
      * @type {number}
      * @memberof UserResponse
      */
@@ -11877,6 +11877,14 @@ export declare const TransfersApiAxiosParamCreator: (configuration?: Configurati
     createTransfer: (transferRequest: TransferRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Deletes a transfer.
+     * @param {number} id The id of the transfer which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteTransfer: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Returns all existing transfers
      * @param {number} [take] How many transfers the endpoint should return
      * @param {number} [skip] How many transfers should be skipped (for pagination)
@@ -11908,6 +11916,14 @@ export declare const TransfersApiFp: (configuration?: Configuration) => {
     createTransfer(transferRequest: TransferRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransferResponse>>;
     /**
      *
+     * @summary Deletes a transfer.
+     * @param {number} id The id of the transfer which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteTransfer(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     *
      * @summary Returns all existing transfers
      * @param {number} [take] How many transfers the endpoint should return
      * @param {number} [skip] How many transfers should be skipped (for pagination)
@@ -11937,6 +11953,14 @@ export declare const TransfersApiFactory: (configuration?: Configuration, basePa
      * @throws {RequiredError}
      */
     createTransfer(transferRequest: TransferRequest, options?: any): AxiosPromise<TransferResponse>;
+    /**
+     *
+     * @summary Deletes a transfer.
+     * @param {number} id The id of the transfer which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteTransfer(id: number, options?: any): AxiosPromise<void>;
     /**
      *
      * @summary Returns all existing transfers
@@ -11971,6 +11995,15 @@ export declare class TransfersApi extends BaseAPI {
      * @memberof TransfersApi
      */
     createTransfer(transferRequest: TransferRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransferResponse, any, {}>>;
+    /**
+     *
+     * @summary Deletes a transfer.
+     * @param {number} id The id of the transfer which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TransfersApi
+     */
+    deleteTransfer(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
     /**
      *
      * @summary Returns all existing transfers

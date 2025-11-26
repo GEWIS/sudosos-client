@@ -5916,9 +5916,9 @@ export interface UserResponse {
      * @type {number}
      * @memberof UserResponse
      */
-    'externalId'?: number;
+    'memberId'?: number;
     /**
-     * The m-Number of the user (deprecated, use externalId instead)
+     * The m-Number of the user (deprecated, use externalId instead. Will be removed after 01/06/2026)
      * @type {number}
      * @memberof UserResponse
      */
@@ -18161,6 +18161,44 @@ export const TransfersApiAxiosParamCreator = function (configuration?: Configura
         },
         /**
          * 
+         * @summary Deletes a transfer.
+         * @param {number} id The id of the transfer which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteTransfer: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('deleteTransfer', 'id', id)
+            const localVarPath = `/transfers/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Returns all existing transfers
          * @param {number} [take] How many transfers the endpoint should return
          * @param {number} [skip] How many transfers should be skipped (for pagination)
@@ -18266,6 +18304,19 @@ export const TransfersApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Deletes a transfer.
+         * @param {number} id The id of the transfer which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteTransfer(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteTransfer(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['TransfersApi.deleteTransfer']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Returns all existing transfers
          * @param {number} [take] How many transfers the endpoint should return
          * @param {number} [skip] How many transfers should be skipped (for pagination)
@@ -18313,6 +18364,16 @@ export const TransfersApiFactory = function (configuration?: Configuration, base
         },
         /**
          * 
+         * @summary Deletes a transfer.
+         * @param {number} id The id of the transfer which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteTransfer(id: number, options?: any): AxiosPromise<void> {
+            return localVarFp.deleteTransfer(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Returns all existing transfers
          * @param {number} [take] How many transfers the endpoint should return
          * @param {number} [skip] How many transfers should be skipped (for pagination)
@@ -18352,6 +18413,18 @@ export class TransfersApi extends BaseAPI {
      */
     public createTransfer(transferRequest: TransferRequest, options?: RawAxiosRequestConfig) {
         return TransfersApiFp(this.configuration).createTransfer(transferRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Deletes a transfer.
+     * @param {number} id The id of the transfer which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TransfersApi
+     */
+    public deleteTransfer(id: number, options?: RawAxiosRequestConfig) {
+        return TransfersApiFp(this.configuration).deleteTransfer(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
