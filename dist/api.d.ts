@@ -4149,6 +4149,12 @@ export interface ReportProductEntryResponse {
      * @memberof ReportProductEntryResponse
      */
     'product': BaseProductResponse;
+    /**
+     * image (nullable)
+     * @type {string}
+     * @memberof ReportProductEntryResponse
+     */
+    'image'?: string;
 }
 /**
  *
@@ -4192,6 +4198,12 @@ export interface ReportResponse {
      * @memberof ReportResponse
      */
     'totalInclVat': DineroObjectResponse;
+    /**
+     * transactionCount
+     * @type {number}
+     * @memberof ReportResponse
+     */
+    'transactionCount'?: number;
 }
 /**
  *
