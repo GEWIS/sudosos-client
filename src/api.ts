@@ -6280,6 +6280,104 @@ export interface WaiveFinesRequest {
 /**
  * 
  * @export
+ * @interface WrappedResponse
+ */
+export interface WrappedResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof WrappedResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof WrappedResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof WrappedResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof WrappedResponse
+     */
+    'version'?: number;
+    /**
+     * The ID of the user
+     * @type {number}
+     * @memberof WrappedResponse
+     */
+    'userId': number;
+    /**
+     * 
+     * @type {WrappedTransactions}
+     * @memberof WrappedResponse
+     */
+    'transactions': WrappedTransactions;
+    /**
+     * The top percentile of the user based on amount spent
+     * @type {number}
+     * @memberof WrappedResponse
+     */
+    'spentPercentile': number;
+    /**
+     * The starting date from which the data was considered
+     * @type {string}
+     * @memberof WrappedResponse
+     */
+    'syncedFrom': string;
+    /**
+     * The last time the data was synced
+     * @type {string}
+     * @memberof WrappedResponse
+     */
+    'syncedTo': string;
+}
+/**
+ * 
+ * @export
+ * @interface WrappedTransactions
+ */
+export interface WrappedTransactions {
+    /**
+     * The total number of transaction in the past year
+     * @type {number}
+     * @memberof WrappedTransactions
+     */
+    'transactionCount': number;
+    /**
+     * The top percentile of the user based on the amount of transactions
+     * @type {number}
+     * @memberof WrappedTransactions
+     */
+    'transactionPercentile': number;
+    /**
+     * The date the user made the highest amount of transactions
+     * @type {string}
+     * @memberof WrappedTransactions
+     */
+    'transactionMaxDate': string;
+    /**
+     * The highest amount of transactions made by the user on a single day
+     * @type {number}
+     * @memberof WrappedTransactions
+     */
+    'transactionMaxAmount': number;
+    /**
+     * Heatmap data representing transaction activity over the year
+     * @type {Array<number>}
+     * @memberof WrappedTransactions
+     */
+    'transactionHeatmap': Array<number>;
+}
+/**
+ * 
+ * @export
  * @interface WriteOffRequest
  */
 export interface WriteOffRequest {
@@ -19715,6 +19813,44 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
+         * @summary Get wrapped for a user
+         * @param {number} id The id of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getWrapped: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getWrapped', 'id', id)
+            const localVarPath = `/users/{id}/wrapped`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Update a user
          * @param {number} id The id of the user
          * @param {UpdateUserRequest} updateUserRequest The user which should be updated
@@ -19921,6 +20057,44 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(updatePinRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Recompute wrapped for a user
+         * @param {number} id The id of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateWrapped: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('updateWrapped', 'id', id)
+            const localVarPath = `/users/{id}/wrapped`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -20359,6 +20533,19 @@ export const UsersApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get wrapped for a user
+         * @param {number} id The id of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getWrapped(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WrappedResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getWrapped(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.getWrapped']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Update a user
          * @param {number} id The id of the user
          * @param {UpdateUserRequest} updateUserRequest The user which should be updated
@@ -20424,6 +20611,19 @@ export const UsersApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateUserPin(id, updatePinRequest, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['UsersApi.updateUserPin']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Recompute wrapped for a user
+         * @param {number} id The id of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updateWrapped(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WrappedResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateWrapped(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.updateWrapped']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
@@ -20755,6 +20955,16 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
+         * @summary Get wrapped for a user
+         * @param {number} id The id of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getWrapped(id: number, options?: any): AxiosPromise<WrappedResponse> {
+            return localVarFp.getWrapped(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Update a user
          * @param {number} id The id of the user
          * @param {UpdateUserRequest} updateUserRequest The user which should be updated
@@ -20806,6 +21016,16 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          */
         updateUserPin(id: number, updatePinRequest: UpdatePinRequest, options?: any): AxiosPromise<void> {
             return localVarFp.updateUserPin(id, updatePinRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Recompute wrapped for a user
+         * @param {number} id The id of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateWrapped(id: number, options?: any): AxiosPromise<WrappedResponse> {
+            return localVarFp.updateWrapped(id, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -21183,6 +21403,18 @@ export class UsersApi extends BaseAPI {
 
     /**
      * 
+     * @summary Get wrapped for a user
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    public getWrapped(id: number, options?: RawAxiosRequestConfig) {
+        return UsersApiFp(this.configuration).getWrapped(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary Update a user
      * @param {number} id The id of the user
      * @param {UpdateUserRequest} updateUserRequest The user which should be updated
@@ -21243,6 +21475,18 @@ export class UsersApi extends BaseAPI {
      */
     public updateUserPin(id: number, updatePinRequest: UpdatePinRequest, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).updateUserPin(id, updatePinRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Recompute wrapped for a user
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    public updateWrapped(id: number, options?: RawAxiosRequestConfig) {
+        return UsersApiFp(this.configuration).updateWrapped(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

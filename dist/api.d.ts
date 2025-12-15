@@ -6247,6 +6247,104 @@ export interface WaiveFinesRequest {
 /**
  *
  * @export
+ * @interface WrappedResponse
+ */
+export interface WrappedResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof WrappedResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof WrappedResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof WrappedResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof WrappedResponse
+     */
+    'version'?: number;
+    /**
+     * The ID of the user
+     * @type {number}
+     * @memberof WrappedResponse
+     */
+    'userId': number;
+    /**
+     *
+     * @type {WrappedTransactions}
+     * @memberof WrappedResponse
+     */
+    'transactions': WrappedTransactions;
+    /**
+     * The top percentile of the user based on amount spent
+     * @type {number}
+     * @memberof WrappedResponse
+     */
+    'spentPercentile': number;
+    /**
+     * The starting date from which the data was considered
+     * @type {string}
+     * @memberof WrappedResponse
+     */
+    'syncedFrom': string;
+    /**
+     * The last time the data was synced
+     * @type {string}
+     * @memberof WrappedResponse
+     */
+    'syncedTo': string;
+}
+/**
+ *
+ * @export
+ * @interface WrappedTransactions
+ */
+export interface WrappedTransactions {
+    /**
+     * The total number of transaction in the past year
+     * @type {number}
+     * @memberof WrappedTransactions
+     */
+    'transactionCount': number;
+    /**
+     * The top percentile of the user based on the amount of transactions
+     * @type {number}
+     * @memberof WrappedTransactions
+     */
+    'transactionPercentile': number;
+    /**
+     * The date the user made the highest amount of transactions
+     * @type {string}
+     * @memberof WrappedTransactions
+     */
+    'transactionMaxDate': string;
+    /**
+     * The highest amount of transactions made by the user on a single day
+     * @type {number}
+     * @memberof WrappedTransactions
+     */
+    'transactionMaxAmount': number;
+    /**
+     * Heatmap data representing transaction activity over the year
+     * @type {Array<number>}
+     * @memberof WrappedTransactions
+     */
+    'transactionHeatmap': Array<number>;
+}
+/**
+ *
+ * @export
  * @interface WriteOffRequest
  */
 export interface WriteOffRequest {
@@ -12296,6 +12394,14 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
     getUsersTransfers: (id: number, take?: number, skip?: number, fromId?: number, toId?: number, id2?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Get wrapped for a user
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getWrapped: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Update a user
      * @param {number} id The id of the user
      * @param {UpdateUserRequest} updateUserRequest The user which should be updated
@@ -12338,6 +12444,14 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @throws {RequiredError}
      */
     updateUserPin: (id: number, updatePinRequest: UpdatePinRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Recompute wrapped for a user
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateWrapped: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Waive all given user\'s fines
@@ -12608,6 +12722,14 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
     getUsersTransfers(id: number, take?: number, skip?: number, fromId?: number, toId?: number, id2?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedTransferResponse>>;
     /**
      *
+     * @summary Get wrapped for a user
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getWrapped(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WrappedResponse>>;
+    /**
+     *
      * @summary Update a user
      * @param {number} id The id of the user
      * @param {UpdateUserRequest} updateUserRequest The user which should be updated
@@ -12650,6 +12772,14 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     updateUserPin(id: number, updatePinRequest: UpdatePinRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     *
+     * @summary Recompute wrapped for a user
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateWrapped(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WrappedResponse>>;
     /**
      *
      * @summary Waive all given user\'s fines
@@ -12920,6 +13050,14 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
     getUsersTransfers(id: number, take?: number, skip?: number, fromId?: number, toId?: number, id2?: number, options?: any): AxiosPromise<PaginatedTransferResponse>;
     /**
      *
+     * @summary Get wrapped for a user
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getWrapped(id: number, options?: any): AxiosPromise<WrappedResponse>;
+    /**
+     *
      * @summary Update a user
      * @param {number} id The id of the user
      * @param {UpdateUserRequest} updateUserRequest The user which should be updated
@@ -12962,6 +13100,14 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
      * @throws {RequiredError}
      */
     updateUserPin(id: number, updatePinRequest: UpdatePinRequest, options?: any): AxiosPromise<void>;
+    /**
+     *
+     * @summary Recompute wrapped for a user
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateWrapped(id: number, options?: any): AxiosPromise<WrappedResponse>;
     /**
      *
      * @summary Waive all given user\'s fines
@@ -13259,6 +13405,15 @@ export declare class UsersApi extends BaseAPI {
     getUsersTransfers(id: number, take?: number, skip?: number, fromId?: number, toId?: number, id2?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedTransferResponse, any, {}>>;
     /**
      *
+     * @summary Get wrapped for a user
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    getWrapped(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<WrappedResponse, any, {}>>;
+    /**
+     *
      * @summary Update a user
      * @param {number} id The id of the user
      * @param {UpdateUserRequest} updateUserRequest The user which should be updated
@@ -13306,6 +13461,15 @@ export declare class UsersApi extends BaseAPI {
      * @memberof UsersApi
      */
     updateUserPin(id: number, updatePinRequest: UpdatePinRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    /**
+     *
+     * @summary Recompute wrapped for a user
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    updateWrapped(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<WrappedResponse, any, {}>>;
     /**
      *
      * @summary Waive all given user\'s fines
