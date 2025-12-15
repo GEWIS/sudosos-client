@@ -5817,6 +5817,19 @@ export interface UpdateVatGroupRequest {
 /**
  * 
  * @export
+ * @interface UpdateWrappedEnabledRequest
+ */
+export interface UpdateWrappedEnabledRequest {
+    /**
+     * Whether wrapped is intended to be enabled
+     * @type {boolean}
+     * @memberof UpdateWrappedEnabledRequest
+     */
+    'enabled': boolean;
+}
+/**
+ * 
+ * @export
  * @interface UserFineGroupResponse
  */
 export interface UserFineGroupResponse {
@@ -6276,6 +6289,19 @@ export interface WaiveFinesRequest {
      * @memberof WaiveFinesRequest
      */
     'amount'?: DineroObjectRequest;
+}
+/**
+ * 
+ * @export
+ * @interface WrappedEnabledResponse
+ */
+export interface WrappedEnabledResponse {
+    /**
+     * Whether wrapped is intended to be enabled
+     * @type {boolean}
+     * @memberof WrappedEnabledResponse
+     */
+    'enabled': boolean;
 }
 /**
  * 
@@ -16957,6 +16983,40 @@ export const ServerSettingsApiAxiosParamCreator = function (configuration?: Conf
     return {
         /**
          * 
+         * @summary Get the wrapped-enabled server setting
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getWrappedEnabled: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/server-settings/wrapped-enabled`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Enable/disable maintenance mode
          * @param {UpdateMaintenanceModeRequest} updateMaintenanceModeRequest 
          * @param {*} [options] Override http request option.
@@ -16995,6 +17055,46 @@ export const ServerSettingsApiAxiosParamCreator = function (configuration?: Conf
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @summary Set the wrapped-enabled server setting
+         * @param {UpdateWrappedEnabledRequest} updateWrappedEnabledRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        setWrappedEnabled: async (updateWrappedEnabledRequest: UpdateWrappedEnabledRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'updateWrappedEnabledRequest' is not null or undefined
+            assertParamExists('setWrappedEnabled', 'updateWrappedEnabledRequest', updateWrappedEnabledRequest)
+            const localVarPath = `/server-settings/wrapped-enabled`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(updateWrappedEnabledRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -17007,6 +17107,18 @@ export const ServerSettingsApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @summary Get the wrapped-enabled server setting
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getWrappedEnabled(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WrappedEnabledResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getWrappedEnabled(options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['ServerSettingsApi.getWrappedEnabled']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Enable/disable maintenance mode
          * @param {UpdateMaintenanceModeRequest} updateMaintenanceModeRequest 
          * @param {*} [options] Override http request option.
@@ -17016,6 +17128,19 @@ export const ServerSettingsApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.setMaintenanceMode(updateMaintenanceModeRequest, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['ServerSettingsApi.setMaintenanceMode']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Set the wrapped-enabled server setting
+         * @param {UpdateWrappedEnabledRequest} updateWrappedEnabledRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async setWrappedEnabled(updateWrappedEnabledRequest: UpdateWrappedEnabledRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.setWrappedEnabled(updateWrappedEnabledRequest, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['ServerSettingsApi.setWrappedEnabled']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
     }
@@ -17030,6 +17155,15 @@ export const ServerSettingsApiFactory = function (configuration?: Configuration,
     return {
         /**
          * 
+         * @summary Get the wrapped-enabled server setting
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getWrappedEnabled(options?: any): AxiosPromise<WrappedEnabledResponse> {
+            return localVarFp.getWrappedEnabled(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Enable/disable maintenance mode
          * @param {UpdateMaintenanceModeRequest} updateMaintenanceModeRequest 
          * @param {*} [options] Override http request option.
@@ -17037,6 +17171,16 @@ export const ServerSettingsApiFactory = function (configuration?: Configuration,
          */
         setMaintenanceMode(updateMaintenanceModeRequest: UpdateMaintenanceModeRequest, options?: any): AxiosPromise<string> {
             return localVarFp.setMaintenanceMode(updateMaintenanceModeRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Set the wrapped-enabled server setting
+         * @param {UpdateWrappedEnabledRequest} updateWrappedEnabledRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        setWrappedEnabled(updateWrappedEnabledRequest: UpdateWrappedEnabledRequest, options?: any): AxiosPromise<string> {
+            return localVarFp.setWrappedEnabled(updateWrappedEnabledRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -17050,6 +17194,17 @@ export const ServerSettingsApiFactory = function (configuration?: Configuration,
 export class ServerSettingsApi extends BaseAPI {
     /**
      * 
+     * @summary Get the wrapped-enabled server setting
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ServerSettingsApi
+     */
+    public getWrappedEnabled(options?: RawAxiosRequestConfig) {
+        return ServerSettingsApiFp(this.configuration).getWrappedEnabled(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary Enable/disable maintenance mode
      * @param {UpdateMaintenanceModeRequest} updateMaintenanceModeRequest 
      * @param {*} [options] Override http request option.
@@ -17058,6 +17213,18 @@ export class ServerSettingsApi extends BaseAPI {
      */
     public setMaintenanceMode(updateMaintenanceModeRequest: UpdateMaintenanceModeRequest, options?: RawAxiosRequestConfig) {
         return ServerSettingsApiFp(this.configuration).setMaintenanceMode(updateMaintenanceModeRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Set the wrapped-enabled server setting
+     * @param {UpdateWrappedEnabledRequest} updateWrappedEnabledRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ServerSettingsApi
+     */
+    public setWrappedEnabled(updateWrappedEnabledRequest: UpdateWrappedEnabledRequest, options?: RawAxiosRequestConfig) {
+        return ServerSettingsApiFp(this.configuration).setWrappedEnabled(updateWrappedEnabledRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

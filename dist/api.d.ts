@@ -5784,6 +5784,19 @@ export interface UpdateVatGroupRequest {
 /**
  *
  * @export
+ * @interface UpdateWrappedEnabledRequest
+ */
+export interface UpdateWrappedEnabledRequest {
+    /**
+     * Whether wrapped is intended to be enabled
+     * @type {boolean}
+     * @memberof UpdateWrappedEnabledRequest
+     */
+    'enabled': boolean;
+}
+/**
+ *
+ * @export
  * @interface UserFineGroupResponse
  */
 export interface UserFineGroupResponse {
@@ -6243,6 +6256,19 @@ export interface WaiveFinesRequest {
      * @memberof WaiveFinesRequest
      */
     'amount'?: DineroObjectRequest;
+}
+/**
+ *
+ * @export
+ * @interface WrappedEnabledResponse
+ */
+export interface WrappedEnabledResponse {
+    /**
+     * Whether wrapped is intended to be enabled
+     * @type {boolean}
+     * @memberof WrappedEnabledResponse
+     */
+    'enabled': boolean;
 }
 /**
  *
@@ -11345,12 +11371,27 @@ export declare class SellerPayoutsApi extends BaseAPI {
 export declare const ServerSettingsApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
+     * @summary Get the wrapped-enabled server setting
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getWrappedEnabled: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Enable/disable maintenance mode
      * @param {UpdateMaintenanceModeRequest} updateMaintenanceModeRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     setMaintenanceMode: (updateMaintenanceModeRequest: UpdateMaintenanceModeRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Set the wrapped-enabled server setting
+     * @param {UpdateWrappedEnabledRequest} updateWrappedEnabledRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    setWrappedEnabled: (updateWrappedEnabledRequest: UpdateWrappedEnabledRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ServerSettingsApi - functional programming interface
@@ -11359,12 +11400,27 @@ export declare const ServerSettingsApiAxiosParamCreator: (configuration?: Config
 export declare const ServerSettingsApiFp: (configuration?: Configuration) => {
     /**
      *
+     * @summary Get the wrapped-enabled server setting
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getWrappedEnabled(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WrappedEnabledResponse>>;
+    /**
+     *
      * @summary Enable/disable maintenance mode
      * @param {UpdateMaintenanceModeRequest} updateMaintenanceModeRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     setMaintenanceMode(updateMaintenanceModeRequest: UpdateMaintenanceModeRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    /**
+     *
+     * @summary Set the wrapped-enabled server setting
+     * @param {UpdateWrappedEnabledRequest} updateWrappedEnabledRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    setWrappedEnabled(updateWrappedEnabledRequest: UpdateWrappedEnabledRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
 };
 /**
  * ServerSettingsApi - factory interface
@@ -11373,12 +11429,27 @@ export declare const ServerSettingsApiFp: (configuration?: Configuration) => {
 export declare const ServerSettingsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
+     * @summary Get the wrapped-enabled server setting
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getWrappedEnabled(options?: any): AxiosPromise<WrappedEnabledResponse>;
+    /**
+     *
      * @summary Enable/disable maintenance mode
      * @param {UpdateMaintenanceModeRequest} updateMaintenanceModeRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     setMaintenanceMode(updateMaintenanceModeRequest: UpdateMaintenanceModeRequest, options?: any): AxiosPromise<string>;
+    /**
+     *
+     * @summary Set the wrapped-enabled server setting
+     * @param {UpdateWrappedEnabledRequest} updateWrappedEnabledRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    setWrappedEnabled(updateWrappedEnabledRequest: UpdateWrappedEnabledRequest, options?: any): AxiosPromise<string>;
 };
 /**
  * ServerSettingsApi - object-oriented interface
@@ -11389,6 +11460,14 @@ export declare const ServerSettingsApiFactory: (configuration?: Configuration, b
 export declare class ServerSettingsApi extends BaseAPI {
     /**
      *
+     * @summary Get the wrapped-enabled server setting
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ServerSettingsApi
+     */
+    getWrappedEnabled(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<WrappedEnabledResponse, any, {}>>;
+    /**
+     *
      * @summary Enable/disable maintenance mode
      * @param {UpdateMaintenanceModeRequest} updateMaintenanceModeRequest
      * @param {*} [options] Override http request option.
@@ -11396,6 +11475,15 @@ export declare class ServerSettingsApi extends BaseAPI {
      * @memberof ServerSettingsApi
      */
     setMaintenanceMode(updateMaintenanceModeRequest: UpdateMaintenanceModeRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any, {}>>;
+    /**
+     *
+     * @summary Set the wrapped-enabled server setting
+     * @param {UpdateWrappedEnabledRequest} updateWrappedEnabledRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ServerSettingsApi
+     */
+    setWrappedEnabled(updateWrappedEnabledRequest: UpdateWrappedEnabledRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any, {}>>;
 }
 /**
  * StripeApi - axios parameter creator
