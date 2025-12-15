@@ -6273,6 +6273,31 @@ export interface WrappedEnabledResponse {
 /**
  *
  * @export
+ * @interface WrappedOrganMemberResponse
+ */
+export interface WrappedOrganMemberResponse {
+    /**
+     * The ID of the organ
+     * @type {number}
+     * @memberof WrappedOrganMemberResponse
+     */
+    'organId': number;
+    /**
+     * 0-based ranking for transaction count created
+     * @type {number}
+     * @memberof WrappedOrganMemberResponse
+     */
+    'ordinalTransactionCreated': number;
+    /**
+     * 0-based ranking for turnover amount created
+     * @type {number}
+     * @memberof WrappedOrganMemberResponse
+     */
+    'ordinalTurnoverCreated': number;
+}
+/**
+ *
+ * @export
  * @interface WrappedResponse
  */
 export interface WrappedResponse {
@@ -6330,6 +6355,12 @@ export interface WrappedResponse {
      * @memberof WrappedResponse
      */
     'syncedTo': string;
+    /**
+     * Organ member statistics for the user
+     * @type {Array<WrappedOrganMemberResponse>}
+     * @memberof WrappedResponse
+     */
+    'organs': Array<WrappedOrganMemberResponse>;
 }
 /**
  *
