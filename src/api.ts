@@ -1005,6 +1005,43 @@ export type BasePayoutRequestResponseStatusEnum = typeof BasePayoutRequestRespon
 /**
  * 
  * @export
+ * @interface BasePointOfSaleInfoResponse
+ */
+export interface BasePointOfSaleInfoResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof BasePointOfSaleInfoResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof BasePointOfSaleInfoResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof BasePointOfSaleInfoResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof BasePointOfSaleInfoResponse
+     */
+    'version'?: number;
+    /**
+     * Revision of the POS
+     * @type {number}
+     * @memberof BasePointOfSaleInfoResponse
+     */
+    'revision': number;
+}
+/**
+ * 
+ * @export
  * @interface BasePointOfSaleResponse
  */
 export interface BasePointOfSaleResponse {
@@ -2514,109 +2551,6 @@ export interface GetAllBalanceUserTypesParameterInner {
  */
 export type GetAllPayoutRequestsRequestedByIdParameter = Array<number> | number;
 
-/**
- * 
- * @export
- * @interface GewisUserResponse
- */
-export interface GewisUserResponse {
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof GewisUserResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof GewisUserResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof GewisUserResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof GewisUserResponse
-     */
-    'version'?: number;
-    /**
-     * The name of the user.
-     * @type {string}
-     * @memberof GewisUserResponse
-     */
-    'firstName': string;
-    /**
-     * The last name of the user
-     * @type {string}
-     * @memberof GewisUserResponse
-     */
-    'lastName': string;
-    /**
-     * The nickname of the user
-     * @type {string}
-     * @memberof GewisUserResponse
-     */
-    'nickname'?: string;
-    /**
-     * Whether the user activated
-     * @type {boolean}
-     * @memberof GewisUserResponse
-     */
-    'active': boolean;
-    /**
-     * Whether the user is deleted
-     * @type {boolean}
-     * @memberof GewisUserResponse
-     */
-    'deleted': boolean;
-    /**
-     * The type of user
-     * @type {string}
-     * @memberof GewisUserResponse
-     */
-    'type': string;
-    /**
-     * If local user, the e-mail of the user
-     * @type {string}
-     * @memberof GewisUserResponse
-     */
-    'email'?: string;
-    /**
-     * Whether this user has accepted the TOS
-     * @type {string}
-     * @memberof GewisUserResponse
-     */
-    'acceptedToS'?: string;
-    /**
-     * Whether data about this user can be used (non-anonymously) for more data science!
-     * @type {boolean}
-     * @memberof GewisUserResponse
-     */
-    'extensiveDataProcessing'?: boolean;
-    /**
-     * Whether someone is old enough to drink beer
-     * @type {boolean}
-     * @memberof GewisUserResponse
-     */
-    'ofAge'?: boolean;
-    /**
-     * Whether this user can get a negative balance
-     * @type {boolean}
-     * @memberof GewisUserResponse
-     */
-    'canGoIntoDebt': boolean;
-    /**
-     * The m-Number of the user
-     * @type {number}
-     * @memberof GewisUserResponse
-     */
-    'gewisId'?: number;
-}
 /**
  * 
  * @export
@@ -4245,6 +4179,12 @@ export interface ReportProductEntryResponse {
      * @memberof ReportProductEntryResponse
      */
     'product': BaseProductResponse;
+    /**
+     * image (nullable)
+     * @type {string}
+     * @memberof ReportProductEntryResponse
+     */
+    'image'?: string;
 }
 /**
  * 
@@ -4288,6 +4228,12 @@ export interface ReportResponse {
      * @memberof ReportResponse
      */
     'totalInclVat': DineroObjectResponse;
+    /**
+     * transactionCount
+     * @type {number}
+     * @memberof ReportResponse
+     */
+    'transactionCount'?: number;
 }
 /**
  * 
@@ -5871,6 +5817,19 @@ export interface UpdateVatGroupRequest {
 /**
  * 
  * @export
+ * @interface UpdateWrappedEnabledRequest
+ */
+export interface UpdateWrappedEnabledRequest {
+    /**
+     * Whether wrapped is intended to be enabled
+     * @type {boolean}
+     * @memberof UpdateWrappedEnabledRequest
+     */
+    'enabled': boolean;
+}
+/**
+ * 
+ * @export
  * @interface UserFineGroupResponse
  */
 export interface UserFineGroupResponse {
@@ -5977,6 +5936,24 @@ export interface UserResponse {
      * @memberof UserResponse
      */
     'canGoIntoDebt': boolean;
+    /**
+     * The external id of the user (e.g., GEWIS member ID)
+     * @type {number}
+     * @memberof UserResponse
+     */
+    'memberId'?: number;
+    /**
+     * The m-Number of the user (deprecated, use externalId instead. Will be removed after 01/06/2026)
+     * @type {number}
+     * @memberof UserResponse
+     */
+    'gewisId'?: number;
+    /**
+     * 
+     * @type {BasePointOfSaleInfoResponse}
+     * @memberof UserResponse
+     */
+    'pos'?: BasePointOfSaleInfoResponse;
 }
 /**
  * 
@@ -6312,6 +6289,148 @@ export interface WaiveFinesRequest {
      * @memberof WaiveFinesRequest
      */
     'amount'?: DineroObjectRequest;
+}
+/**
+ * 
+ * @export
+ * @interface WrappedEnabledResponse
+ */
+export interface WrappedEnabledResponse {
+    /**
+     * Whether wrapped is intended to be enabled
+     * @type {boolean}
+     * @memberof WrappedEnabledResponse
+     */
+    'enabled': boolean;
+}
+/**
+ * 
+ * @export
+ * @interface WrappedOrganMemberResponse
+ */
+export interface WrappedOrganMemberResponse {
+    /**
+     * The ID of the organ
+     * @type {number}
+     * @memberof WrappedOrganMemberResponse
+     */
+    'organId': number;
+    /**
+     * 0-based ranking for transaction count created
+     * @type {number}
+     * @memberof WrappedOrganMemberResponse
+     */
+    'ordinalTransactionCreated': number;
+    /**
+     * 0-based ranking for turnover amount created
+     * @type {number}
+     * @memberof WrappedOrganMemberResponse
+     */
+    'ordinalTurnoverCreated': number;
+}
+/**
+ * 
+ * @export
+ * @interface WrappedResponse
+ */
+export interface WrappedResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof WrappedResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof WrappedResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof WrappedResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof WrappedResponse
+     */
+    'version'?: number;
+    /**
+     * The ID of the user
+     * @type {number}
+     * @memberof WrappedResponse
+     */
+    'userId': number;
+    /**
+     * 
+     * @type {WrappedTransactions}
+     * @memberof WrappedResponse
+     */
+    'transactions': WrappedTransactions;
+    /**
+     * The top percentile of the user based on amount spent
+     * @type {number}
+     * @memberof WrappedResponse
+     */
+    'spentPercentile': number;
+    /**
+     * The starting date from which the data was considered
+     * @type {string}
+     * @memberof WrappedResponse
+     */
+    'syncedFrom': string;
+    /**
+     * The last time the data was synced
+     * @type {string}
+     * @memberof WrappedResponse
+     */
+    'syncedTo': string;
+    /**
+     * Organ member statistics for the user
+     * @type {Array<WrappedOrganMemberResponse>}
+     * @memberof WrappedResponse
+     */
+    'organs': Array<WrappedOrganMemberResponse>;
+}
+/**
+ * 
+ * @export
+ * @interface WrappedTransactions
+ */
+export interface WrappedTransactions {
+    /**
+     * The total number of transaction in the past year
+     * @type {number}
+     * @memberof WrappedTransactions
+     */
+    'transactionCount': number;
+    /**
+     * The top percentile of the user based on the amount of transactions
+     * @type {number}
+     * @memberof WrappedTransactions
+     */
+    'transactionPercentile': number;
+    /**
+     * The date the user made the highest amount of transactions
+     * @type {string}
+     * @memberof WrappedTransactions
+     */
+    'transactionMaxDate': string;
+    /**
+     * The highest amount of transactions made by the user on a single day
+     * @type {number}
+     * @memberof WrappedTransactions
+     */
+    'transactionMaxAmount': number;
+    /**
+     * Heatmap data representing transaction activity over the year
+     * @type {Array<number>}
+     * @memberof WrappedTransactions
+     */
+    'transactionHeatmap': Array<number>;
 }
 /**
  * 
@@ -15559,6 +15678,10 @@ export const RbacApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -15647,6 +15770,10 @@ export const RbacApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
 
     
@@ -16887,6 +17014,40 @@ export const ServerSettingsApiAxiosParamCreator = function (configuration?: Conf
     return {
         /**
          * 
+         * @summary Get the wrapped-enabled server setting
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getWrappedEnabled: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/server-settings/wrapped-enabled`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Enable/disable maintenance mode
          * @param {UpdateMaintenanceModeRequest} updateMaintenanceModeRequest 
          * @param {*} [options] Override http request option.
@@ -16925,6 +17086,46 @@ export const ServerSettingsApiAxiosParamCreator = function (configuration?: Conf
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @summary Set the wrapped-enabled server setting
+         * @param {UpdateWrappedEnabledRequest} updateWrappedEnabledRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        setWrappedEnabled: async (updateWrappedEnabledRequest: UpdateWrappedEnabledRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'updateWrappedEnabledRequest' is not null or undefined
+            assertParamExists('setWrappedEnabled', 'updateWrappedEnabledRequest', updateWrappedEnabledRequest)
+            const localVarPath = `/server-settings/wrapped-enabled`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(updateWrappedEnabledRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -16937,6 +17138,18 @@ export const ServerSettingsApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @summary Get the wrapped-enabled server setting
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getWrappedEnabled(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WrappedEnabledResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getWrappedEnabled(options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['ServerSettingsApi.getWrappedEnabled']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Enable/disable maintenance mode
          * @param {UpdateMaintenanceModeRequest} updateMaintenanceModeRequest 
          * @param {*} [options] Override http request option.
@@ -16946,6 +17159,19 @@ export const ServerSettingsApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.setMaintenanceMode(updateMaintenanceModeRequest, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['ServerSettingsApi.setMaintenanceMode']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Set the wrapped-enabled server setting
+         * @param {UpdateWrappedEnabledRequest} updateWrappedEnabledRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async setWrappedEnabled(updateWrappedEnabledRequest: UpdateWrappedEnabledRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.setWrappedEnabled(updateWrappedEnabledRequest, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['ServerSettingsApi.setWrappedEnabled']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
     }
@@ -16960,6 +17186,15 @@ export const ServerSettingsApiFactory = function (configuration?: Configuration,
     return {
         /**
          * 
+         * @summary Get the wrapped-enabled server setting
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getWrappedEnabled(options?: any): AxiosPromise<WrappedEnabledResponse> {
+            return localVarFp.getWrappedEnabled(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Enable/disable maintenance mode
          * @param {UpdateMaintenanceModeRequest} updateMaintenanceModeRequest 
          * @param {*} [options] Override http request option.
@@ -16967,6 +17202,16 @@ export const ServerSettingsApiFactory = function (configuration?: Configuration,
          */
         setMaintenanceMode(updateMaintenanceModeRequest: UpdateMaintenanceModeRequest, options?: any): AxiosPromise<string> {
             return localVarFp.setMaintenanceMode(updateMaintenanceModeRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Set the wrapped-enabled server setting
+         * @param {UpdateWrappedEnabledRequest} updateWrappedEnabledRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        setWrappedEnabled(updateWrappedEnabledRequest: UpdateWrappedEnabledRequest, options?: any): AxiosPromise<string> {
+            return localVarFp.setWrappedEnabled(updateWrappedEnabledRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -16980,6 +17225,17 @@ export const ServerSettingsApiFactory = function (configuration?: Configuration,
 export class ServerSettingsApi extends BaseAPI {
     /**
      * 
+     * @summary Get the wrapped-enabled server setting
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ServerSettingsApi
+     */
+    public getWrappedEnabled(options?: RawAxiosRequestConfig) {
+        return ServerSettingsApiFp(this.configuration).getWrappedEnabled(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary Enable/disable maintenance mode
      * @param {UpdateMaintenanceModeRequest} updateMaintenanceModeRequest 
      * @param {*} [options] Override http request option.
@@ -16988,6 +17244,18 @@ export class ServerSettingsApi extends BaseAPI {
      */
     public setMaintenanceMode(updateMaintenanceModeRequest: UpdateMaintenanceModeRequest, options?: RawAxiosRequestConfig) {
         return ServerSettingsApiFp(this.configuration).setMaintenanceMode(updateMaintenanceModeRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Set the wrapped-enabled server setting
+     * @param {UpdateWrappedEnabledRequest} updateWrappedEnabledRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ServerSettingsApi
+     */
+    public setWrappedEnabled(updateWrappedEnabledRequest: UpdateWrappedEnabledRequest, options?: RawAxiosRequestConfig) {
+        return ServerSettingsApiFp(this.configuration).setWrappedEnabled(updateWrappedEnabledRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -18209,6 +18477,44 @@ export const TransfersApiAxiosParamCreator = function (configuration?: Configura
         },
         /**
          * 
+         * @summary Deletes a transfer.
+         * @param {number} id The id of the transfer which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteTransfer: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('deleteTransfer', 'id', id)
+            const localVarPath = `/transfers/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Returns all existing transfers
          * @param {number} [take] How many transfers the endpoint should return
          * @param {number} [skip] How many transfers should be skipped (for pagination)
@@ -18314,6 +18620,19 @@ export const TransfersApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Deletes a transfer.
+         * @param {number} id The id of the transfer which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteTransfer(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteTransfer(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['TransfersApi.deleteTransfer']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Returns all existing transfers
          * @param {number} [take] How many transfers the endpoint should return
          * @param {number} [skip] How many transfers should be skipped (for pagination)
@@ -18361,6 +18680,16 @@ export const TransfersApiFactory = function (configuration?: Configuration, base
         },
         /**
          * 
+         * @summary Deletes a transfer.
+         * @param {number} id The id of the transfer which should be deleted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteTransfer(id: number, options?: any): AxiosPromise<void> {
+            return localVarFp.deleteTransfer(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Returns all existing transfers
          * @param {number} [take] How many transfers the endpoint should return
          * @param {number} [skip] How many transfers should be skipped (for pagination)
@@ -18400,6 +18729,18 @@ export class TransfersApi extends BaseAPI {
      */
     public createTransfer(transferRequest: TransferRequest, options?: RawAxiosRequestConfig) {
         return TransfersApiFp(this.configuration).createTransfer(transferRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Deletes a transfer.
+     * @param {number} id The id of the transfer which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TransfersApi
+     */
+    public deleteTransfer(id: number, options?: RawAxiosRequestConfig) {
+        return TransfersApiFp(this.configuration).deleteTransfer(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -19670,6 +20011,44 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
+         * @summary Get wrapped for a user
+         * @param {number} id The id of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getWrapped: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getWrapped', 'id', id)
+            const localVarPath = `/users/{id}/wrapped`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Update a user
          * @param {number} id The id of the user
          * @param {UpdateUserRequest} updateUserRequest The user which should be updated
@@ -19876,6 +20255,44 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(updatePinRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Recompute wrapped for a user
+         * @param {number} id The id of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateWrapped: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('updateWrapped', 'id', id)
+            const localVarPath = `/users/{id}/wrapped`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -20314,6 +20731,19 @@ export const UsersApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get wrapped for a user
+         * @param {number} id The id of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getWrapped(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WrappedResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getWrapped(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.getWrapped']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Update a user
          * @param {number} id The id of the user
          * @param {UpdateUserRequest} updateUserRequest The user which should be updated
@@ -20379,6 +20809,19 @@ export const UsersApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateUserPin(id, updatePinRequest, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['UsersApi.updateUserPin']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Recompute wrapped for a user
+         * @param {number} id The id of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updateWrapped(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WrappedResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateWrapped(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.updateWrapped']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
@@ -20710,6 +21153,16 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
+         * @summary Get wrapped for a user
+         * @param {number} id The id of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getWrapped(id: number, options?: any): AxiosPromise<WrappedResponse> {
+            return localVarFp.getWrapped(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Update a user
          * @param {number} id The id of the user
          * @param {UpdateUserRequest} updateUserRequest The user which should be updated
@@ -20761,6 +21214,16 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          */
         updateUserPin(id: number, updatePinRequest: UpdatePinRequest, options?: any): AxiosPromise<void> {
             return localVarFp.updateUserPin(id, updatePinRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Recompute wrapped for a user
+         * @param {number} id The id of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateWrapped(id: number, options?: any): AxiosPromise<WrappedResponse> {
+            return localVarFp.updateWrapped(id, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -21138,6 +21601,18 @@ export class UsersApi extends BaseAPI {
 
     /**
      * 
+     * @summary Get wrapped for a user
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    public getWrapped(id: number, options?: RawAxiosRequestConfig) {
+        return UsersApiFp(this.configuration).getWrapped(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary Update a user
      * @param {number} id The id of the user
      * @param {UpdateUserRequest} updateUserRequest The user which should be updated
@@ -21198,6 +21673,18 @@ export class UsersApi extends BaseAPI {
      */
     public updateUserPin(id: number, updatePinRequest: UpdatePinRequest, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).updateUserPin(id, updatePinRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Recompute wrapped for a user
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    public updateWrapped(id: number, options?: RawAxiosRequestConfig) {
+        return UsersApiFp(this.configuration).updateWrapped(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

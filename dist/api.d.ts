@@ -992,6 +992,43 @@ export type BasePayoutRequestResponseStatusEnum = typeof BasePayoutRequestRespon
 /**
  *
  * @export
+ * @interface BasePointOfSaleInfoResponse
+ */
+export interface BasePointOfSaleInfoResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof BasePointOfSaleInfoResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof BasePointOfSaleInfoResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof BasePointOfSaleInfoResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof BasePointOfSaleInfoResponse
+     */
+    'version'?: number;
+    /**
+     * Revision of the POS
+     * @type {number}
+     * @memberof BasePointOfSaleInfoResponse
+     */
+    'revision': number;
+}
+/**
+ *
+ * @export
  * @interface BasePointOfSaleResponse
  */
 export interface BasePointOfSaleResponse {
@@ -2496,109 +2533,6 @@ export interface GetAllBalanceUserTypesParameterInner {
  * @export
  */
 export type GetAllPayoutRequestsRequestedByIdParameter = Array<number> | number;
-/**
- *
- * @export
- * @interface GewisUserResponse
- */
-export interface GewisUserResponse {
-    /**
-     * The unique id of the entity.
-     * @type {number}
-     * @memberof GewisUserResponse
-     */
-    'id': number;
-    /**
-     * The creation Date of the entity.
-     * @type {string}
-     * @memberof GewisUserResponse
-     */
-    'createdAt'?: string;
-    /**
-     * The last update Date of the entity.
-     * @type {string}
-     * @memberof GewisUserResponse
-     */
-    'updatedAt'?: string;
-    /**
-     * The version of the entity.
-     * @type {number}
-     * @memberof GewisUserResponse
-     */
-    'version'?: number;
-    /**
-     * The name of the user.
-     * @type {string}
-     * @memberof GewisUserResponse
-     */
-    'firstName': string;
-    /**
-     * The last name of the user
-     * @type {string}
-     * @memberof GewisUserResponse
-     */
-    'lastName': string;
-    /**
-     * The nickname of the user
-     * @type {string}
-     * @memberof GewisUserResponse
-     */
-    'nickname'?: string;
-    /**
-     * Whether the user activated
-     * @type {boolean}
-     * @memberof GewisUserResponse
-     */
-    'active': boolean;
-    /**
-     * Whether the user is deleted
-     * @type {boolean}
-     * @memberof GewisUserResponse
-     */
-    'deleted': boolean;
-    /**
-     * The type of user
-     * @type {string}
-     * @memberof GewisUserResponse
-     */
-    'type': string;
-    /**
-     * If local user, the e-mail of the user
-     * @type {string}
-     * @memberof GewisUserResponse
-     */
-    'email'?: string;
-    /**
-     * Whether this user has accepted the TOS
-     * @type {string}
-     * @memberof GewisUserResponse
-     */
-    'acceptedToS'?: string;
-    /**
-     * Whether data about this user can be used (non-anonymously) for more data science!
-     * @type {boolean}
-     * @memberof GewisUserResponse
-     */
-    'extensiveDataProcessing'?: boolean;
-    /**
-     * Whether someone is old enough to drink beer
-     * @type {boolean}
-     * @memberof GewisUserResponse
-     */
-    'ofAge'?: boolean;
-    /**
-     * Whether this user can get a negative balance
-     * @type {boolean}
-     * @memberof GewisUserResponse
-     */
-    'canGoIntoDebt': boolean;
-    /**
-     * The m-Number of the user
-     * @type {number}
-     * @memberof GewisUserResponse
-     */
-    'gewisId'?: number;
-}
 /**
  *
  * @export
@@ -4215,6 +4149,12 @@ export interface ReportProductEntryResponse {
      * @memberof ReportProductEntryResponse
      */
     'product': BaseProductResponse;
+    /**
+     * image (nullable)
+     * @type {string}
+     * @memberof ReportProductEntryResponse
+     */
+    'image'?: string;
 }
 /**
  *
@@ -4258,6 +4198,12 @@ export interface ReportResponse {
      * @memberof ReportResponse
      */
     'totalInclVat': DineroObjectResponse;
+    /**
+     * transactionCount
+     * @type {number}
+     * @memberof ReportResponse
+     */
+    'transactionCount'?: number;
 }
 /**
  *
@@ -5838,6 +5784,19 @@ export interface UpdateVatGroupRequest {
 /**
  *
  * @export
+ * @interface UpdateWrappedEnabledRequest
+ */
+export interface UpdateWrappedEnabledRequest {
+    /**
+     * Whether wrapped is intended to be enabled
+     * @type {boolean}
+     * @memberof UpdateWrappedEnabledRequest
+     */
+    'enabled': boolean;
+}
+/**
+ *
+ * @export
  * @interface UserFineGroupResponse
  */
 export interface UserFineGroupResponse {
@@ -5944,6 +5903,24 @@ export interface UserResponse {
      * @memberof UserResponse
      */
     'canGoIntoDebt': boolean;
+    /**
+     * The external id of the user (e.g., GEWIS member ID)
+     * @type {number}
+     * @memberof UserResponse
+     */
+    'memberId'?: number;
+    /**
+     * The m-Number of the user (deprecated, use externalId instead. Will be removed after 01/06/2026)
+     * @type {number}
+     * @memberof UserResponse
+     */
+    'gewisId'?: number;
+    /**
+     *
+     * @type {BasePointOfSaleInfoResponse}
+     * @memberof UserResponse
+     */
+    'pos'?: BasePointOfSaleInfoResponse;
 }
 /**
  *
@@ -6279,6 +6256,148 @@ export interface WaiveFinesRequest {
      * @memberof WaiveFinesRequest
      */
     'amount'?: DineroObjectRequest;
+}
+/**
+ *
+ * @export
+ * @interface WrappedEnabledResponse
+ */
+export interface WrappedEnabledResponse {
+    /**
+     * Whether wrapped is intended to be enabled
+     * @type {boolean}
+     * @memberof WrappedEnabledResponse
+     */
+    'enabled': boolean;
+}
+/**
+ *
+ * @export
+ * @interface WrappedOrganMemberResponse
+ */
+export interface WrappedOrganMemberResponse {
+    /**
+     * The ID of the organ
+     * @type {number}
+     * @memberof WrappedOrganMemberResponse
+     */
+    'organId': number;
+    /**
+     * 0-based ranking for transaction count created
+     * @type {number}
+     * @memberof WrappedOrganMemberResponse
+     */
+    'ordinalTransactionCreated': number;
+    /**
+     * 0-based ranking for turnover amount created
+     * @type {number}
+     * @memberof WrappedOrganMemberResponse
+     */
+    'ordinalTurnoverCreated': number;
+}
+/**
+ *
+ * @export
+ * @interface WrappedResponse
+ */
+export interface WrappedResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof WrappedResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof WrappedResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof WrappedResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof WrappedResponse
+     */
+    'version'?: number;
+    /**
+     * The ID of the user
+     * @type {number}
+     * @memberof WrappedResponse
+     */
+    'userId': number;
+    /**
+     *
+     * @type {WrappedTransactions}
+     * @memberof WrappedResponse
+     */
+    'transactions': WrappedTransactions;
+    /**
+     * The top percentile of the user based on amount spent
+     * @type {number}
+     * @memberof WrappedResponse
+     */
+    'spentPercentile': number;
+    /**
+     * The starting date from which the data was considered
+     * @type {string}
+     * @memberof WrappedResponse
+     */
+    'syncedFrom': string;
+    /**
+     * The last time the data was synced
+     * @type {string}
+     * @memberof WrappedResponse
+     */
+    'syncedTo': string;
+    /**
+     * Organ member statistics for the user
+     * @type {Array<WrappedOrganMemberResponse>}
+     * @memberof WrappedResponse
+     */
+    'organs': Array<WrappedOrganMemberResponse>;
+}
+/**
+ *
+ * @export
+ * @interface WrappedTransactions
+ */
+export interface WrappedTransactions {
+    /**
+     * The total number of transaction in the past year
+     * @type {number}
+     * @memberof WrappedTransactions
+     */
+    'transactionCount': number;
+    /**
+     * The top percentile of the user based on the amount of transactions
+     * @type {number}
+     * @memberof WrappedTransactions
+     */
+    'transactionPercentile': number;
+    /**
+     * The date the user made the highest amount of transactions
+     * @type {string}
+     * @memberof WrappedTransactions
+     */
+    'transactionMaxDate': string;
+    /**
+     * The highest amount of transactions made by the user on a single day
+     * @type {number}
+     * @memberof WrappedTransactions
+     */
+    'transactionMaxAmount': number;
+    /**
+     * Heatmap data representing transaction activity over the year
+     * @type {Array<number>}
+     * @memberof WrappedTransactions
+     */
+    'transactionHeatmap': Array<number>;
 }
 /**
  *
@@ -11283,12 +11402,27 @@ export declare class SellerPayoutsApi extends BaseAPI {
 export declare const ServerSettingsApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
+     * @summary Get the wrapped-enabled server setting
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getWrappedEnabled: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Enable/disable maintenance mode
      * @param {UpdateMaintenanceModeRequest} updateMaintenanceModeRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     setMaintenanceMode: (updateMaintenanceModeRequest: UpdateMaintenanceModeRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Set the wrapped-enabled server setting
+     * @param {UpdateWrappedEnabledRequest} updateWrappedEnabledRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    setWrappedEnabled: (updateWrappedEnabledRequest: UpdateWrappedEnabledRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ServerSettingsApi - functional programming interface
@@ -11297,12 +11431,27 @@ export declare const ServerSettingsApiAxiosParamCreator: (configuration?: Config
 export declare const ServerSettingsApiFp: (configuration?: Configuration) => {
     /**
      *
+     * @summary Get the wrapped-enabled server setting
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getWrappedEnabled(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WrappedEnabledResponse>>;
+    /**
+     *
      * @summary Enable/disable maintenance mode
      * @param {UpdateMaintenanceModeRequest} updateMaintenanceModeRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     setMaintenanceMode(updateMaintenanceModeRequest: UpdateMaintenanceModeRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    /**
+     *
+     * @summary Set the wrapped-enabled server setting
+     * @param {UpdateWrappedEnabledRequest} updateWrappedEnabledRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    setWrappedEnabled(updateWrappedEnabledRequest: UpdateWrappedEnabledRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
 };
 /**
  * ServerSettingsApi - factory interface
@@ -11311,12 +11460,27 @@ export declare const ServerSettingsApiFp: (configuration?: Configuration) => {
 export declare const ServerSettingsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
+     * @summary Get the wrapped-enabled server setting
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getWrappedEnabled(options?: any): AxiosPromise<WrappedEnabledResponse>;
+    /**
+     *
      * @summary Enable/disable maintenance mode
      * @param {UpdateMaintenanceModeRequest} updateMaintenanceModeRequest
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     setMaintenanceMode(updateMaintenanceModeRequest: UpdateMaintenanceModeRequest, options?: any): AxiosPromise<string>;
+    /**
+     *
+     * @summary Set the wrapped-enabled server setting
+     * @param {UpdateWrappedEnabledRequest} updateWrappedEnabledRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    setWrappedEnabled(updateWrappedEnabledRequest: UpdateWrappedEnabledRequest, options?: any): AxiosPromise<string>;
 };
 /**
  * ServerSettingsApi - object-oriented interface
@@ -11327,6 +11491,14 @@ export declare const ServerSettingsApiFactory: (configuration?: Configuration, b
 export declare class ServerSettingsApi extends BaseAPI {
     /**
      *
+     * @summary Get the wrapped-enabled server setting
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ServerSettingsApi
+     */
+    getWrappedEnabled(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<WrappedEnabledResponse, any, {}>>;
+    /**
+     *
      * @summary Enable/disable maintenance mode
      * @param {UpdateMaintenanceModeRequest} updateMaintenanceModeRequest
      * @param {*} [options] Override http request option.
@@ -11334,6 +11506,15 @@ export declare class ServerSettingsApi extends BaseAPI {
      * @memberof ServerSettingsApi
      */
     setMaintenanceMode(updateMaintenanceModeRequest: UpdateMaintenanceModeRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any, {}>>;
+    /**
+     *
+     * @summary Set the wrapped-enabled server setting
+     * @param {UpdateWrappedEnabledRequest} updateWrappedEnabledRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ServerSettingsApi
+     */
+    setWrappedEnabled(updateWrappedEnabledRequest: UpdateWrappedEnabledRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any, {}>>;
 }
 /**
  * StripeApi - axios parameter creator
@@ -11925,6 +12106,14 @@ export declare const TransfersApiAxiosParamCreator: (configuration?: Configurati
     createTransfer: (transferRequest: TransferRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Deletes a transfer.
+     * @param {number} id The id of the transfer which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteTransfer: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Returns all existing transfers
      * @param {number} [take] How many transfers the endpoint should return
      * @param {number} [skip] How many transfers should be skipped (for pagination)
@@ -11956,6 +12145,14 @@ export declare const TransfersApiFp: (configuration?: Configuration) => {
     createTransfer(transferRequest: TransferRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransferResponse>>;
     /**
      *
+     * @summary Deletes a transfer.
+     * @param {number} id The id of the transfer which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteTransfer(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     *
      * @summary Returns all existing transfers
      * @param {number} [take] How many transfers the endpoint should return
      * @param {number} [skip] How many transfers should be skipped (for pagination)
@@ -11985,6 +12182,14 @@ export declare const TransfersApiFactory: (configuration?: Configuration, basePa
      * @throws {RequiredError}
      */
     createTransfer(transferRequest: TransferRequest, options?: any): AxiosPromise<TransferResponse>;
+    /**
+     *
+     * @summary Deletes a transfer.
+     * @param {number} id The id of the transfer which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteTransfer(id: number, options?: any): AxiosPromise<void>;
     /**
      *
      * @summary Returns all existing transfers
@@ -12019,6 +12224,15 @@ export declare class TransfersApi extends BaseAPI {
      * @memberof TransfersApi
      */
     createTransfer(transferRequest: TransferRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransferResponse, any, {}>>;
+    /**
+     *
+     * @summary Deletes a transfer.
+     * @param {number} id The id of the transfer which should be deleted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TransfersApi
+     */
+    deleteTransfer(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
     /**
      *
      * @summary Returns all existing transfers
@@ -12299,6 +12513,14 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
     getUsersTransfers: (id: number, take?: number, skip?: number, fromId?: number, toId?: number, id2?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Get wrapped for a user
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getWrapped: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Update a user
      * @param {number} id The id of the user
      * @param {UpdateUserRequest} updateUserRequest The user which should be updated
@@ -12341,6 +12563,14 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @throws {RequiredError}
      */
     updateUserPin: (id: number, updatePinRequest: UpdatePinRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Recompute wrapped for a user
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateWrapped: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Waive all given user\'s fines
@@ -12611,6 +12841,14 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
     getUsersTransfers(id: number, take?: number, skip?: number, fromId?: number, toId?: number, id2?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedTransferResponse>>;
     /**
      *
+     * @summary Get wrapped for a user
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getWrapped(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WrappedResponse>>;
+    /**
+     *
      * @summary Update a user
      * @param {number} id The id of the user
      * @param {UpdateUserRequest} updateUserRequest The user which should be updated
@@ -12653,6 +12891,14 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     updateUserPin(id: number, updatePinRequest: UpdatePinRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     *
+     * @summary Recompute wrapped for a user
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateWrapped(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WrappedResponse>>;
     /**
      *
      * @summary Waive all given user\'s fines
@@ -12923,6 +13169,14 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
     getUsersTransfers(id: number, take?: number, skip?: number, fromId?: number, toId?: number, id2?: number, options?: any): AxiosPromise<PaginatedTransferResponse>;
     /**
      *
+     * @summary Get wrapped for a user
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getWrapped(id: number, options?: any): AxiosPromise<WrappedResponse>;
+    /**
+     *
      * @summary Update a user
      * @param {number} id The id of the user
      * @param {UpdateUserRequest} updateUserRequest The user which should be updated
@@ -12965,6 +13219,14 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
      * @throws {RequiredError}
      */
     updateUserPin(id: number, updatePinRequest: UpdatePinRequest, options?: any): AxiosPromise<void>;
+    /**
+     *
+     * @summary Recompute wrapped for a user
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateWrapped(id: number, options?: any): AxiosPromise<WrappedResponse>;
     /**
      *
      * @summary Waive all given user\'s fines
@@ -13262,6 +13524,15 @@ export declare class UsersApi extends BaseAPI {
     getUsersTransfers(id: number, take?: number, skip?: number, fromId?: number, toId?: number, id2?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedTransferResponse, any, {}>>;
     /**
      *
+     * @summary Get wrapped for a user
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    getWrapped(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<WrappedResponse, any, {}>>;
+    /**
+     *
      * @summary Update a user
      * @param {number} id The id of the user
      * @param {UpdateUserRequest} updateUserRequest The user which should be updated
@@ -13309,6 +13580,15 @@ export declare class UsersApi extends BaseAPI {
      * @memberof UsersApi
      */
     updateUserPin(id: number, updatePinRequest: UpdatePinRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    /**
+     *
+     * @summary Recompute wrapped for a user
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    updateWrapped(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<WrappedResponse, any, {}>>;
     /**
      *
      * @summary Waive all given user\'s fines
