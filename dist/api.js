@@ -10924,12 +10924,14 @@ const TransfersApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Returns all existing transfers
+         * @param {string} [fromDate] Start date for selected transfers (inclusive)
+         * @param {string} [tillDate] End date for selected transfers (exclusive)
          * @param {number} [take] How many transfers the endpoint should return
          * @param {number} [skip] How many transfers should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllTransfers: async (take, skip, options = {}) => {
+        getAllTransfers: async (fromDate, tillDate, take, skip, options = {}) => {
             const localVarPath = `/transfers`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -10943,6 +10945,12 @@ const TransfersApiAxiosParamCreator = function (configuration) {
             // authentication JWT required
             // http bearer authentication required
             await (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            if (fromDate !== undefined) {
+                localVarQueryParameter['fromDate'] = fromDate;
+            }
+            if (tillDate !== undefined) {
+                localVarQueryParameter['tillDate'] = tillDate;
+            }
             if (take !== undefined) {
                 localVarQueryParameter['take'] = take;
             }
@@ -11028,13 +11036,15 @@ const TransfersApiFp = function (configuration) {
         /**
          *
          * @summary Returns all existing transfers
+         * @param {string} [fromDate] Start date for selected transfers (inclusive)
+         * @param {string} [tillDate] End date for selected transfers (exclusive)
          * @param {number} [take] How many transfers the endpoint should return
          * @param {number} [skip] How many transfers should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllTransfers(take, skip, options) {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllTransfers(take, skip, options);
+        async getAllTransfers(fromDate, tillDate, take, skip, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllTransfers(fromDate, tillDate, take, skip, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = base_1.operationServerMap['TransfersApi.getAllTransfers']?.[index]?.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
@@ -11085,13 +11095,15 @@ const TransfersApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Returns all existing transfers
+         * @param {string} [fromDate] Start date for selected transfers (inclusive)
+         * @param {string} [tillDate] End date for selected transfers (exclusive)
          * @param {number} [take] How many transfers the endpoint should return
          * @param {number} [skip] How many transfers should be skipped (for pagination)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllTransfers(take, skip, options) {
-            return localVarFp.getAllTransfers(take, skip, options).then((request) => request(axios, basePath));
+        getAllTransfers(fromDate, tillDate, take, skip, options) {
+            return localVarFp.getAllTransfers(fromDate, tillDate, take, skip, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -11138,14 +11150,16 @@ class TransfersApi extends base_1.BaseAPI {
     /**
      *
      * @summary Returns all existing transfers
+     * @param {string} [fromDate] Start date for selected transfers (inclusive)
+     * @param {string} [tillDate] End date for selected transfers (exclusive)
      * @param {number} [take] How many transfers the endpoint should return
      * @param {number} [skip] How many transfers should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TransfersApi
      */
-    getAllTransfers(take, skip, options) {
-        return (0, exports.TransfersApiFp)(this.configuration).getAllTransfers(take, skip, options).then((request) => request(this.axios, this.basePath));
+    getAllTransfers(fromDate, tillDate, take, skip, options) {
+        return (0, exports.TransfersApiFp)(this.configuration).getAllTransfers(fromDate, tillDate, take, skip, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *

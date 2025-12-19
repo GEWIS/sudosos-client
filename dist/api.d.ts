@@ -12115,12 +12115,14 @@ export declare const TransfersApiAxiosParamCreator: (configuration?: Configurati
     /**
      *
      * @summary Returns all existing transfers
+     * @param {string} [fromDate] Start date for selected transfers (inclusive)
+     * @param {string} [tillDate] End date for selected transfers (exclusive)
      * @param {number} [take] How many transfers the endpoint should return
      * @param {number} [skip] How many transfers should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllTransfers: (take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getAllTransfers: (fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns the requested transfer
@@ -12154,12 +12156,14 @@ export declare const TransfersApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Returns all existing transfers
+     * @param {string} [fromDate] Start date for selected transfers (inclusive)
+     * @param {string} [tillDate] End date for selected transfers (exclusive)
      * @param {number} [take] How many transfers the endpoint should return
      * @param {number} [skip] How many transfers should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllTransfers(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TransferResponse>>>;
+    getAllTransfers(fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TransferResponse>>>;
     /**
      *
      * @summary Returns the requested transfer
@@ -12193,12 +12197,14 @@ export declare const TransfersApiFactory: (configuration?: Configuration, basePa
     /**
      *
      * @summary Returns all existing transfers
+     * @param {string} [fromDate] Start date for selected transfers (inclusive)
+     * @param {string} [tillDate] End date for selected transfers (exclusive)
      * @param {number} [take] How many transfers the endpoint should return
      * @param {number} [skip] How many transfers should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllTransfers(take?: number, skip?: number, options?: any): AxiosPromise<Array<TransferResponse>>;
+    getAllTransfers(fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: any): AxiosPromise<Array<TransferResponse>>;
     /**
      *
      * @summary Returns the requested transfer
@@ -12236,13 +12242,15 @@ export declare class TransfersApi extends BaseAPI {
     /**
      *
      * @summary Returns all existing transfers
+     * @param {string} [fromDate] Start date for selected transfers (inclusive)
+     * @param {string} [tillDate] End date for selected transfers (exclusive)
      * @param {number} [take] How many transfers the endpoint should return
      * @param {number} [skip] How many transfers should be skipped (for pagination)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TransfersApi
      */
-    getAllTransfers(take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransferResponse[], any, {}>>;
+    getAllTransfers(fromDate?: string, tillDate?: string, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransferResponse[], any, {}>>;
     /**
      *
      * @summary Returns the requested transfer
