@@ -1232,6 +1232,61 @@ export interface BaseTransactionResponse {
 /**
  * 
  * @export
+ * @interface BaseUserNotificationPreferenceResponse
+ */
+export interface BaseUserNotificationPreferenceResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof BaseUserNotificationPreferenceResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof BaseUserNotificationPreferenceResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof BaseUserNotificationPreferenceResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof BaseUserNotificationPreferenceResponse
+     */
+    'version'?: number;
+    /**
+     * 
+     * @type {BaseUserResponse}
+     * @memberof BaseUserNotificationPreferenceResponse
+     */
+    'user'?: BaseUserResponse;
+    /**
+     * The notification type
+     * @type {string}
+     * @memberof BaseUserNotificationPreferenceResponse
+     */
+    'type'?: string;
+    /**
+     * The notification channel
+     * @type {string}
+     * @memberof BaseUserNotificationPreferenceResponse
+     */
+    'channel'?: string;
+    /**
+     * Whether the preference is enabled
+     * @type {boolean}
+     * @memberof BaseUserNotificationPreferenceResponse
+     */
+    'enabled'?: boolean;
+}
+/**
+ * 
+ * @export
  * @interface BaseUserResponse
  */
 export interface BaseUserResponse {
@@ -3319,6 +3374,25 @@ export interface PaginatedTransferResponse {
      * @memberof PaginatedTransferResponse
      */
     'records': Array<TransferResponse>;
+}
+/**
+ * 
+ * @export
+ * @interface PaginatedUserNotificationPreferenceResponse
+ */
+export interface PaginatedUserNotificationPreferenceResponse {
+    /**
+     * 
+     * @type {PaginationResult}
+     * @memberof PaginatedUserNotificationPreferenceResponse
+     */
+    '_pagination': PaginationResult;
+    /**
+     * Returned UserNotificationPreference
+     * @type {Array<BaseUserNotificationPreferenceResponse>}
+     * @memberof PaginatedUserNotificationPreferenceResponse
+     */
+    'records': Array<BaseUserNotificationPreferenceResponse>;
 }
 /**
  * 
@@ -5839,6 +5913,56 @@ export interface UserFineGroupResponse {
      * @memberof UserFineGroupResponse
      */
     'fines': Array<FineResponse>;
+}
+/**
+ * 
+ * @export
+ * @interface UserNotificationPreferenceRequest
+ */
+export interface UserNotificationPreferenceRequest {
+    /**
+     * The user
+     * @type {number}
+     * @memberof UserNotificationPreferenceRequest
+     */
+    'userId': number;
+    /**
+     * The notification type code
+     * @type {string}
+     * @memberof UserNotificationPreferenceRequest
+     */
+    'type': string;
+    /**
+     * The notification channel
+     * @type {string}
+     * @memberof UserNotificationPreferenceRequest
+     */
+    'channel': string;
+    /**
+     * Whether the preference is enabled
+     * @type {boolean}
+     * @memberof UserNotificationPreferenceRequest
+     */
+    'enabled'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface UserNotificationPreferenceUpdateRequest
+ */
+export interface UserNotificationPreferenceUpdateRequest {
+    /**
+     * The user notification preference id
+     * @type {number}
+     * @memberof UserNotificationPreferenceUpdateRequest
+     */
+    'userNotificationPreferenceId': number;
+    /**
+     * Whether the preference should be enabled or not
+     * @type {boolean}
+     * @memberof UserNotificationPreferenceUpdateRequest
+     */
+    'enabled': boolean;
 }
 /**
  * 
@@ -18033,6 +18157,44 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
         },
         /**
          * 
+         * @summary Get the PDF of the transaction
+         * @param {number} id The transaction ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTransactionPdf: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getTransactionPdf', 'id', id)
+            const localVarPath = `/transactions/{id}/pdf`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Updates the requested transaction
          * @param {number} id The id of the transaction which should be updated
          * @param {TransactionRequest} transactionRequest The updated transaction
@@ -18203,6 +18365,19 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get the PDF of the transaction
+         * @param {number} id The transaction ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getTransactionPdf(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getTransactionPdf(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['TransactionsApi.getTransactionPdf']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Updates the requested transaction
          * @param {number} id The id of the transaction which should be updated
          * @param {TransactionRequest} transactionRequest The updated transaction
@@ -18298,6 +18473,16 @@ export const TransactionsApiFactory = function (configuration?: Configuration, b
          */
         getTransactionInvoices(id: number, options?: any): AxiosPromise<Array<BaseInvoiceResponse>> {
             return localVarFp.getTransactionInvoices(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get the PDF of the transaction
+         * @param {number} id The transaction ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTransactionPdf(id: number, options?: any): AxiosPromise<string> {
+            return localVarFp.getTransactionPdf(id, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -18399,6 +18584,18 @@ export class TransactionsApi extends BaseAPI {
      */
     public getTransactionInvoices(id: number, options?: RawAxiosRequestConfig) {
         return TransactionsApiFp(this.configuration).getTransactionInvoices(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get the PDF of the transaction
+     * @param {number} id The transaction ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TransactionsApi
+     */
+    public getTransactionPdf(id: number, options?: RawAxiosRequestConfig) {
+        return TransactionsApiFp(this.configuration).getTransactionPdf(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -18605,6 +18802,44 @@ export const TransfersApiAxiosParamCreator = function (configuration?: Configura
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @summary Get the PDF of the transfer
+         * @param {number} id The transfer ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTransferPdf: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getTransferPdf', 'id', id)
+            const localVarPath = `/transfers/{id}/pdf`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -18670,6 +18905,19 @@ export const TransfersApiFp = function(configuration?: Configuration) {
             const operationBasePath = operationServerMap['TransfersApi.getSingleTransfer']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
+        /**
+         * 
+         * @summary Get the PDF of the transfer
+         * @param {number} id The transfer ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getTransferPdf(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getTransferPdf(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['TransfersApi.getTransferPdf']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
     }
 };
 
@@ -18722,6 +18970,16 @@ export const TransfersApiFactory = function (configuration?: Configuration, base
          */
         getSingleTransfer(id: number, options?: any): AxiosPromise<TransferResponse> {
             return localVarFp.getSingleTransfer(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get the PDF of the transfer
+         * @param {number} id The transfer ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTransferPdf(id: number, options?: any): AxiosPromise<string> {
+            return localVarFp.getTransferPdf(id, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -18782,6 +19040,318 @@ export class TransfersApi extends BaseAPI {
      */
     public getSingleTransfer(id: number, options?: RawAxiosRequestConfig) {
         return TransfersApiFp(this.configuration).getSingleTransfer(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get the PDF of the transfer
+     * @param {number} id The transfer ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TransfersApi
+     */
+    public getTransferPdf(id: number, options?: RawAxiosRequestConfig) {
+        return TransfersApiFp(this.configuration).getTransferPdf(id, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
+ * UserNotificationPreferencesApi - axios parameter creator
+ * @export
+ */
+export const UserNotificationPreferencesApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Returns all user notification preferences in the system.
+         * @param {number} [userNotificationPreferenceId] Filter on the user notification preference id
+         * @param {number} [userId] Filter on the user id
+         * @param {string} [type] Filter on the notification type
+         * @param {string} [channel] Filter on the notification channel
+         * @param {boolean} [enabled] Filter on enabled preferences
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllUserNotificationPreferences: async (userNotificationPreferenceId?: number, userId?: number, type?: string, channel?: string, enabled?: boolean, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/user-notification-preferences`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (userNotificationPreferenceId !== undefined) {
+                localVarQueryParameter['userNotificationPreferenceId'] = userNotificationPreferenceId;
+            }
+
+            if (userId !== undefined) {
+                localVarQueryParameter['userId'] = userId;
+            }
+
+            if (type !== undefined) {
+                localVarQueryParameter['type'] = type;
+            }
+
+            if (channel !== undefined) {
+                localVarQueryParameter['channel'] = channel;
+            }
+
+            if (enabled !== undefined) {
+                localVarQueryParameter['enabled'] = enabled;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Return a single user notification preferences in the system.
+         * @param {number} id The id of the user notification preference
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSingleUserNotificationPreference: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getSingleUserNotificationPreference', 'id', id)
+            const localVarPath = `/user-notification-preferences/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Update a user notification preferences in the system.
+         * @param {number} id The id of the user notification preference
+         * @param {UserNotificationPreferenceUpdateRequest} userNotificationPreferenceUpdateRequest The user notification preference update to process
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateUserNotificationPreference: async (id: number, userNotificationPreferenceUpdateRequest: UserNotificationPreferenceUpdateRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('updateUserNotificationPreference', 'id', id)
+            // verify required parameter 'userNotificationPreferenceUpdateRequest' is not null or undefined
+            assertParamExists('updateUserNotificationPreference', 'userNotificationPreferenceUpdateRequest', userNotificationPreferenceUpdateRequest)
+            const localVarPath = `/user-notification-preferences/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(userNotificationPreferenceUpdateRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * UserNotificationPreferencesApi - functional programming interface
+ * @export
+ */
+export const UserNotificationPreferencesApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = UserNotificationPreferencesApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Returns all user notification preferences in the system.
+         * @param {number} [userNotificationPreferenceId] Filter on the user notification preference id
+         * @param {number} [userId] Filter on the user id
+         * @param {string} [type] Filter on the notification type
+         * @param {string} [channel] Filter on the notification channel
+         * @param {boolean} [enabled] Filter on enabled preferences
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getAllUserNotificationPreferences(userNotificationPreferenceId?: number, userId?: number, type?: string, channel?: string, enabled?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUserNotificationPreferenceResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllUserNotificationPreferences(userNotificationPreferenceId, userId, type, channel, enabled, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UserNotificationPreferencesApi.getAllUserNotificationPreferences']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Return a single user notification preferences in the system.
+         * @param {number} id The id of the user notification preference
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getSingleUserNotificationPreference(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseUserNotificationPreferenceResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSingleUserNotificationPreference(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UserNotificationPreferencesApi.getSingleUserNotificationPreference']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Update a user notification preferences in the system.
+         * @param {number} id The id of the user notification preference
+         * @param {UserNotificationPreferenceUpdateRequest} userNotificationPreferenceUpdateRequest The user notification preference update to process
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updateUserNotificationPreference(id: number, userNotificationPreferenceUpdateRequest: UserNotificationPreferenceUpdateRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseUserNotificationPreferenceResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateUserNotificationPreference(id, userNotificationPreferenceUpdateRequest, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UserNotificationPreferencesApi.updateUserNotificationPreference']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * UserNotificationPreferencesApi - factory interface
+ * @export
+ */
+export const UserNotificationPreferencesApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = UserNotificationPreferencesApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Returns all user notification preferences in the system.
+         * @param {number} [userNotificationPreferenceId] Filter on the user notification preference id
+         * @param {number} [userId] Filter on the user id
+         * @param {string} [type] Filter on the notification type
+         * @param {string} [channel] Filter on the notification channel
+         * @param {boolean} [enabled] Filter on enabled preferences
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllUserNotificationPreferences(userNotificationPreferenceId?: number, userId?: number, type?: string, channel?: string, enabled?: boolean, options?: any): AxiosPromise<PaginatedUserNotificationPreferenceResponse> {
+            return localVarFp.getAllUserNotificationPreferences(userNotificationPreferenceId, userId, type, channel, enabled, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Return a single user notification preferences in the system.
+         * @param {number} id The id of the user notification preference
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSingleUserNotificationPreference(id: number, options?: any): AxiosPromise<BaseUserNotificationPreferenceResponse> {
+            return localVarFp.getSingleUserNotificationPreference(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Update a user notification preferences in the system.
+         * @param {number} id The id of the user notification preference
+         * @param {UserNotificationPreferenceUpdateRequest} userNotificationPreferenceUpdateRequest The user notification preference update to process
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateUserNotificationPreference(id: number, userNotificationPreferenceUpdateRequest: UserNotificationPreferenceUpdateRequest, options?: any): AxiosPromise<BaseUserNotificationPreferenceResponse> {
+            return localVarFp.updateUserNotificationPreference(id, userNotificationPreferenceUpdateRequest, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * UserNotificationPreferencesApi - object-oriented interface
+ * @export
+ * @class UserNotificationPreferencesApi
+ * @extends {BaseAPI}
+ */
+export class UserNotificationPreferencesApi extends BaseAPI {
+    /**
+     * 
+     * @summary Returns all user notification preferences in the system.
+     * @param {number} [userNotificationPreferenceId] Filter on the user notification preference id
+     * @param {number} [userId] Filter on the user id
+     * @param {string} [type] Filter on the notification type
+     * @param {string} [channel] Filter on the notification channel
+     * @param {boolean} [enabled] Filter on enabled preferences
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserNotificationPreferencesApi
+     */
+    public getAllUserNotificationPreferences(userNotificationPreferenceId?: number, userId?: number, type?: string, channel?: string, enabled?: boolean, options?: RawAxiosRequestConfig) {
+        return UserNotificationPreferencesApiFp(this.configuration).getAllUserNotificationPreferences(userNotificationPreferenceId, userId, type, channel, enabled, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Return a single user notification preferences in the system.
+     * @param {number} id The id of the user notification preference
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserNotificationPreferencesApi
+     */
+    public getSingleUserNotificationPreference(id: number, options?: RawAxiosRequestConfig) {
+        return UserNotificationPreferencesApiFp(this.configuration).getSingleUserNotificationPreference(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Update a user notification preferences in the system.
+     * @param {number} id The id of the user notification preference
+     * @param {UserNotificationPreferenceUpdateRequest} userNotificationPreferenceUpdateRequest The user notification preference update to process
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserNotificationPreferencesApi
+     */
+    public updateUserNotificationPreference(id: number, userNotificationPreferenceUpdateRequest: UserNotificationPreferenceUpdateRequest, options?: RawAxiosRequestConfig) {
+        return UserNotificationPreferencesApiFp(this.configuration).updateUserNotificationPreference(id, userNotificationPreferenceUpdateRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
