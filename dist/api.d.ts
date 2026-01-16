@@ -1270,6 +1270,12 @@ export interface BaseUserNotificationPreferenceResponse {
      * @memberof BaseUserNotificationPreferenceResponse
      */
     'enabled'?: boolean;
+    /**
+     * Whether the type is mandatory
+     * @type {boolean}
+     * @memberof BaseUserNotificationPreferenceResponse
+     */
+    'isMandatory'?: boolean;
 }
 /**
  *
