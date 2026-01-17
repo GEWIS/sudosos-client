@@ -6084,11 +6084,47 @@ export interface UserToFineResponse {
  */
 export interface UserToInactiveAdministrativeCostResponse {
     /**
-     * User ID
+     * The unique id of the entity.
      * @type {number}
      * @memberof UserToInactiveAdministrativeCostResponse
      */
-    'userId'?: number;
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof UserToInactiveAdministrativeCostResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof UserToInactiveAdministrativeCostResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof UserToInactiveAdministrativeCostResponse
+     */
+    'version'?: number;
+    /**
+     * The name of the user.
+     * @type {string}
+     * @memberof UserToInactiveAdministrativeCostResponse
+     */
+    'firstName': string;
+    /**
+     * The last name of the user
+     * @type {string}
+     * @memberof UserToInactiveAdministrativeCostResponse
+     */
+    'lastName': string;
+    /**
+     * The nickname of the user
+     * @type {string}
+     * @memberof UserToInactiveAdministrativeCostResponse
+     */
+    'nickname'?: string;
 }
 /**
  *
