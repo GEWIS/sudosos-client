@@ -2648,6 +2648,55 @@ export interface HandoutInactiveAdministrativeCostsRequest {
 /**
  *
  * @export
+ * @interface InactiveAdministrativeCostReportResponse
+ */
+export interface InactiveAdministrativeCostReportResponse {
+    /**
+     * The start date of the report (ISO string)
+     * @type {string}
+     * @memberof InactiveAdministrativeCostReportResponse
+     */
+    'fromDate': string;
+    /**
+     * The end date of the report (ISO string)
+     * @type {string}
+     * @memberof InactiveAdministrativeCostReportResponse
+     */
+    'toDate': string;
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof InactiveAdministrativeCostReportResponse
+     */
+    'totalAmountInclVat': DineroObjectResponse;
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof InactiveAdministrativeCostReportResponse
+     */
+    'totalAmountExclVat': DineroObjectResponse;
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof InactiveAdministrativeCostReportResponse
+     */
+    'vatAmount': DineroObjectResponse;
+    /**
+     * VAT percentage
+     * @type {number}
+     * @memberof InactiveAdministrativeCostReportResponse
+     */
+    'vatPercentage': number;
+    /**
+     * Number of inactive administrative costs transactions in the report
+     * @type {number}
+     * @memberof InactiveAdministrativeCostReportResponse
+     */
+    'count': number;
+}
+/**
+ *
+ * @export
  * @interface InvoiceEntryRequest
  */
 export interface InvoiceEntryRequest {
@@ -3480,6 +3529,37 @@ export interface PaginationResult {
      */
     'count': number;
 }
+/**
+ *
+ * @export
+ * @interface PatchUserSettingsRequest
+ */
+export interface PatchUserSettingsRequest {
+    /**
+     * Whether beta features are enabled
+     * @type {boolean}
+     * @memberof PatchUserSettingsRequest
+     */
+    'betaEnabled'?: boolean;
+    /**
+     * Dashboard theme configuration with organId and organName, or null
+     * @type {object}
+     * @memberof PatchUserSettingsRequest
+     */
+    'dashboardTheme'?: object;
+    /**
+     * ISO language code or undefined
+     * @type {string}
+     * @memberof PatchUserSettingsRequest
+     */
+    'language'?: PatchUserSettingsRequestLanguageEnum;
+}
+export declare const PatchUserSettingsRequestLanguageEnum: {
+    readonly NlNl: "nl-NL";
+    readonly EnUs: "en-US";
+    readonly PlPl: "pl-PL";
+};
+export type PatchUserSettingsRequestLanguageEnum = typeof PatchUserSettingsRequestLanguageEnum[keyof typeof PatchUserSettingsRequestLanguageEnum];
 /**
  *
  * @export
@@ -6052,6 +6132,37 @@ export interface UserResponse {
      */
     'pos'?: BasePointOfSaleInfoResponse;
 }
+/**
+ *
+ * @export
+ * @interface UserSettingsResponse
+ */
+export interface UserSettingsResponse {
+    /**
+     * Whether beta features are enabled
+     * @type {boolean}
+     * @memberof UserSettingsResponse
+     */
+    'betaEnabled': boolean;
+    /**
+     * Dashboard theme configuration with organId and organName, or null
+     * @type {object}
+     * @memberof UserSettingsResponse
+     */
+    'dashboardTheme': object;
+    /**
+     * ISO language code (e.g., \"nl-NL\", \"en-US\", \"pl-PL\") or undefined
+     * @type {string}
+     * @memberof UserSettingsResponse
+     */
+    'language'?: UserSettingsResponseLanguageEnum;
+}
+export declare const UserSettingsResponseLanguageEnum: {
+    readonly NlNl: "nl-NL";
+    readonly EnUs: "en-US";
+    readonly PlPl: "pl-PL";
+};
+export type UserSettingsResponseLanguageEnum = typeof UserSettingsResponseLanguageEnum[keyof typeof UserSettingsResponseLanguageEnum];
 /**
  *
  * @export
@@ -9260,6 +9371,24 @@ export declare const InactiveAdministrativeCostsApiAxiosParamCreator: (configura
     getAllInactiveAdministrativeCosts: (fromId?: number, inactiveAdministrativeCostId?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Get a report of all inactive administrative costs
+     * @param {string} [fromDate] The start date of the report, inclusive
+     * @param {string} [toDate] The end date of the report, exclusive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInactiveAdministrativeCostReport: (fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get a report of all inactive administrative costs in pdf format
+     * @param {string} fromDate The start date of the report, inclusive
+     * @param {string} toDate The end date of the report, exclusive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInactiveAdministrativeCostReportPdf: (fromDate: string, toDate: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Returns a single inactive administrative cost entity
      * @param {number} id The id of the requested inactive administrative cost
      * @param {*} [options] Override http request option.
@@ -9323,6 +9452,24 @@ export declare const InactiveAdministrativeCostsApiFp: (configuration?: Configur
     getAllInactiveAdministrativeCosts(fromId?: number, inactiveAdministrativeCostId?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedInactiveAdministrativeCostResponse>>;
     /**
      *
+     * @summary Get a report of all inactive administrative costs
+     * @param {string} [fromDate] The start date of the report, inclusive
+     * @param {string} [toDate] The end date of the report, exclusive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInactiveAdministrativeCostReport(fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InactiveAdministrativeCostReportResponse>>;
+    /**
+     *
+     * @summary Get a report of all inactive administrative costs in pdf format
+     * @param {string} fromDate The start date of the report, inclusive
+     * @param {string} toDate The end date of the report, exclusive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInactiveAdministrativeCostReportPdf(fromDate: string, toDate: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    /**
+     *
      * @summary Returns a single inactive administrative cost entity
      * @param {number} id The id of the requested inactive administrative cost
      * @param {*} [options] Override http request option.
@@ -9384,6 +9531,24 @@ export declare const InactiveAdministrativeCostsApiFactory: (configuration?: Con
      * @throws {RequiredError}
      */
     getAllInactiveAdministrativeCosts(fromId?: number, inactiveAdministrativeCostId?: number, options?: any): AxiosPromise<PaginatedInactiveAdministrativeCostResponse>;
+    /**
+     *
+     * @summary Get a report of all inactive administrative costs
+     * @param {string} [fromDate] The start date of the report, inclusive
+     * @param {string} [toDate] The end date of the report, exclusive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInactiveAdministrativeCostReport(fromDate?: string, toDate?: string, options?: any): AxiosPromise<InactiveAdministrativeCostReportResponse>;
+    /**
+     *
+     * @summary Get a report of all inactive administrative costs in pdf format
+     * @param {string} fromDate The start date of the report, inclusive
+     * @param {string} toDate The end date of the report, exclusive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInactiveAdministrativeCostReportPdf(fromDate: string, toDate: string, options?: any): AxiosPromise<string>;
     /**
      *
      * @summary Returns a single inactive administrative cost entity
@@ -9452,6 +9617,26 @@ export declare class InactiveAdministrativeCostsApi extends BaseAPI {
      * @memberof InactiveAdministrativeCostsApi
      */
     getAllInactiveAdministrativeCosts(fromId?: number, inactiveAdministrativeCostId?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedInactiveAdministrativeCostResponse, any, {}>>;
+    /**
+     *
+     * @summary Get a report of all inactive administrative costs
+     * @param {string} [fromDate] The start date of the report, inclusive
+     * @param {string} [toDate] The end date of the report, exclusive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InactiveAdministrativeCostsApi
+     */
+    getInactiveAdministrativeCostReport(fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<InactiveAdministrativeCostReportResponse, any, {}>>;
+    /**
+     *
+     * @summary Get a report of all inactive administrative costs in pdf format
+     * @param {string} fromDate The start date of the report, inclusive
+     * @param {string} toDate The end date of the report, exclusive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InactiveAdministrativeCostsApi
+     */
+    getInactiveAdministrativeCostReportPdf(fromDate: string, toDate: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any, {}>>;
     /**
      *
      * @summary Returns a single inactive administrative cost entity
@@ -12761,6 +12946,14 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
     getUserRoles: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Get all user settings
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserSettings: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Returns the user\'s containers
      * @param {number} id The id of the user
      * @param {number} [take] How many containers the endpoint should return
@@ -12904,6 +13097,15 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @throws {RequiredError}
      */
     getWrapped: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Update user settings
+     * @param {number} id The id of the user
+     * @param {PatchUserSettingsRequest} patchUserSettingsRequest The settings to update
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    patchUserSettings: (id: number, patchUserSettingsRequest: PatchUserSettingsRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Update a user
@@ -13089,6 +13291,14 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
     getUserRoles(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RoleWithPermissionsResponse>>>;
     /**
      *
+     * @summary Get all user settings
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserSettings(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserSettingsResponse>>;
+    /**
+     *
      * @summary Returns the user\'s containers
      * @param {number} id The id of the user
      * @param {number} [take] How many containers the endpoint should return
@@ -13232,6 +13442,15 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     getWrapped(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WrappedResponse>>;
+    /**
+     *
+     * @summary Update user settings
+     * @param {number} id The id of the user
+     * @param {PatchUserSettingsRequest} patchUserSettingsRequest The settings to update
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    patchUserSettings(id: number, patchUserSettingsRequest: PatchUserSettingsRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserSettingsResponse>>;
     /**
      *
      * @summary Update a user
@@ -13417,6 +13636,14 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
     getUserRoles(id: number, options?: any): AxiosPromise<Array<RoleWithPermissionsResponse>>;
     /**
      *
+     * @summary Get all user settings
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserSettings(id: number, options?: any): AxiosPromise<UserSettingsResponse>;
+    /**
+     *
      * @summary Returns the user\'s containers
      * @param {number} id The id of the user
      * @param {number} [take] How many containers the endpoint should return
@@ -13560,6 +13787,15 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
      * @throws {RequiredError}
      */
     getWrapped(id: number, options?: any): AxiosPromise<WrappedResponse>;
+    /**
+     *
+     * @summary Update user settings
+     * @param {number} id The id of the user
+     * @param {PatchUserSettingsRequest} patchUserSettingsRequest The settings to update
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    patchUserSettings(id: number, patchUserSettingsRequest: PatchUserSettingsRequest, options?: any): AxiosPromise<UserSettingsResponse>;
     /**
      *
      * @summary Update a user
@@ -13760,6 +13996,15 @@ export declare class UsersApi extends BaseAPI {
     getUserRoles(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RoleWithPermissionsResponse[], any, {}>>;
     /**
      *
+     * @summary Get all user settings
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    getUserSettings(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserSettingsResponse, any, {}>>;
+    /**
+     *
      * @summary Returns the user\'s containers
      * @param {number} id The id of the user
      * @param {number} [take] How many containers the endpoint should return
@@ -13916,6 +14161,16 @@ export declare class UsersApi extends BaseAPI {
      * @memberof UsersApi
      */
     getWrapped(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<WrappedResponse, any, {}>>;
+    /**
+     *
+     * @summary Update user settings
+     * @param {number} id The id of the user
+     * @param {PatchUserSettingsRequest} patchUserSettingsRequest The settings to update
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    patchUserSettings(id: number, patchUserSettingsRequest: PatchUserSettingsRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserSettingsResponse, any, {}>>;
     /**
      *
      * @summary Update a user
