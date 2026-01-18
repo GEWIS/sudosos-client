@@ -13,9 +13,9 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PayoutRequestsApiFactory = exports.PayoutRequestsApiFp = exports.PayoutRequestsApiAxiosParamCreator = exports.GetAllInvoicesCurrentStateEnum = exports.InvoicesApi = exports.InvoicesApiFactory = exports.InvoicesApiFp = exports.InvoicesApiAxiosParamCreator = exports.InactiveAdministrativeCostsApi = exports.InactiveAdministrativeCostsApiFactory = exports.InactiveAdministrativeCostsApiFp = exports.InactiveAdministrativeCostsApiAxiosParamCreator = exports.FilesApi = exports.FilesApiFactory = exports.FilesApiFp = exports.FilesApiAxiosParamCreator = exports.EventsApi = exports.EventsApiFactory = exports.EventsApiFp = exports.EventsApiAxiosParamCreator = exports.GetFineReportPdfFileTypeEnum = exports.DebtorsApi = exports.DebtorsApiFactory = exports.DebtorsApiFp = exports.DebtorsApiAxiosParamCreator = exports.ContainersApi = exports.ContainersApiFactory = exports.ContainersApiFp = exports.ContainersApiAxiosParamCreator = exports.BannersApi = exports.BannersApiFactory = exports.BannersApiFp = exports.BannersApiAxiosParamCreator = exports.GetAllBalanceOrderDirectionEnum = exports.GetAllBalanceUserTypesEnum = exports.BalanceApi = exports.BalanceApiFactory = exports.BalanceApiFp = exports.BalanceApiAxiosParamCreator = exports.AuthenticateApi = exports.AuthenticateApiFactory = exports.AuthenticateApiFp = exports.AuthenticateApiAxiosParamCreator = exports.UpdateInvoiceRequestStateEnum = exports.QRStatusResponseStatusEnum = exports.PayoutRequestStatusRequestStateEnum = exports.PayoutRequestResponseStatusEnum = exports.InvoiceStatusResponseStateEnum = exports.FinancialMutationResponseTypeEnum = exports.BasePayoutRequestResponseStatusEnum = void 0;
-exports.TransactionsApi = exports.TransactionsApiFactory = exports.TransactionsApiFp = exports.TransactionsApiAxiosParamCreator = exports.TransactionSummariesApi = exports.TransactionSummariesApiFactory = exports.TransactionSummariesApiFp = exports.TransactionSummariesApiAxiosParamCreator = exports.TestOperationsOfTheTestControllerApi = exports.TestOperationsOfTheTestControllerApiFactory = exports.TestOperationsOfTheTestControllerApiFp = exports.TestOperationsOfTheTestControllerApiAxiosParamCreator = exports.GetUserSyncResultsServiceEnum = exports.SyncApi = exports.SyncApiFactory = exports.SyncApiFp = exports.SyncApiAxiosParamCreator = exports.StripeApi = exports.StripeApiFactory = exports.StripeApiFp = exports.StripeApiAxiosParamCreator = exports.ServerSettingsApi = exports.ServerSettingsApiFactory = exports.ServerSettingsApiFp = exports.ServerSettingsApiAxiosParamCreator = exports.SellerPayoutsApi = exports.SellerPayoutsApiFactory = exports.SellerPayoutsApiFp = exports.SellerPayoutsApiAxiosParamCreator = exports.RootApi = exports.RootApiFactory = exports.RootApiFp = exports.RootApiAxiosParamCreator = exports.RbacApi = exports.RbacApiFactory = exports.RbacApiFp = exports.RbacApiAxiosParamCreator = exports.ProductsApi = exports.ProductsApiFactory = exports.ProductsApiFp = exports.ProductsApiAxiosParamCreator = exports.ProductCategoriesApi = exports.ProductCategoriesApiFactory = exports.ProductCategoriesApiFp = exports.ProductCategoriesApiAxiosParamCreator = exports.PointofsaleApi = exports.PointofsaleApiFactory = exports.PointofsaleApiFp = exports.PointofsaleApiAxiosParamCreator = exports.PayoutRequestsApi = void 0;
-exports.WriteoffsApi = exports.WriteoffsApiFactory = exports.WriteoffsApiFp = exports.WriteoffsApiAxiosParamCreator = exports.VouchergroupsApi = exports.VouchergroupsApiFactory = exports.VouchergroupsApiFp = exports.VouchergroupsApiAxiosParamCreator = exports.VatGroupsApi = exports.VatGroupsApiFactory = exports.VatGroupsApiFp = exports.VatGroupsApiAxiosParamCreator = exports.GetUsersSalesReportPdfFileTypeEnum = exports.GetUsersPurchaseReportPdfFileTypeEnum = exports.GetAllUsersTypeEnum = exports.UsersApi = exports.UsersApiFactory = exports.UsersApiFp = exports.UsersApiAxiosParamCreator = exports.UserNotificationPreferencesApi = exports.UserNotificationPreferencesApiFactory = exports.UserNotificationPreferencesApiFp = exports.UserNotificationPreferencesApiAxiosParamCreator = exports.TransfersApi = exports.TransfersApiFactory = exports.TransfersApiFp = exports.TransfersApiAxiosParamCreator = void 0;
+exports.PayoutRequestsApiAxiosParamCreator = exports.GetAllInvoicesCurrentStateEnum = exports.InvoicesApi = exports.InvoicesApiFactory = exports.InvoicesApiFp = exports.InvoicesApiAxiosParamCreator = exports.InactiveAdministrativeCostsApi = exports.InactiveAdministrativeCostsApiFactory = exports.InactiveAdministrativeCostsApiFp = exports.InactiveAdministrativeCostsApiAxiosParamCreator = exports.FilesApi = exports.FilesApiFactory = exports.FilesApiFp = exports.FilesApiAxiosParamCreator = exports.EventsApi = exports.EventsApiFactory = exports.EventsApiFp = exports.EventsApiAxiosParamCreator = exports.GetFineReportPdfFileTypeEnum = exports.DebtorsApi = exports.DebtorsApiFactory = exports.DebtorsApiFp = exports.DebtorsApiAxiosParamCreator = exports.ContainersApi = exports.ContainersApiFactory = exports.ContainersApiFp = exports.ContainersApiAxiosParamCreator = exports.BannersApi = exports.BannersApiFactory = exports.BannersApiFp = exports.BannersApiAxiosParamCreator = exports.GetAllBalanceOrderDirectionEnum = exports.GetAllBalanceUserTypesEnum = exports.BalanceApi = exports.BalanceApiFactory = exports.BalanceApiFp = exports.BalanceApiAxiosParamCreator = exports.AuthenticateApi = exports.AuthenticateApiFactory = exports.AuthenticateApiFp = exports.AuthenticateApiAxiosParamCreator = exports.UserSettingsResponseLanguageEnum = exports.UpdateInvoiceRequestStateEnum = exports.QRStatusResponseStatusEnum = exports.PayoutRequestStatusRequestStateEnum = exports.PayoutRequestResponseStatusEnum = exports.PatchUserSettingsRequestLanguageEnum = exports.InvoiceStatusResponseStateEnum = exports.FinancialMutationResponseTypeEnum = exports.BasePayoutRequestResponseStatusEnum = void 0;
+exports.TransactionsApiFp = exports.TransactionsApiAxiosParamCreator = exports.TransactionSummariesApi = exports.TransactionSummariesApiFactory = exports.TransactionSummariesApiFp = exports.TransactionSummariesApiAxiosParamCreator = exports.TestOperationsOfTheTestControllerApi = exports.TestOperationsOfTheTestControllerApiFactory = exports.TestOperationsOfTheTestControllerApiFp = exports.TestOperationsOfTheTestControllerApiAxiosParamCreator = exports.GetUserSyncResultsServiceEnum = exports.SyncApi = exports.SyncApiFactory = exports.SyncApiFp = exports.SyncApiAxiosParamCreator = exports.StripeApi = exports.StripeApiFactory = exports.StripeApiFp = exports.StripeApiAxiosParamCreator = exports.ServerSettingsApi = exports.ServerSettingsApiFactory = exports.ServerSettingsApiFp = exports.ServerSettingsApiAxiosParamCreator = exports.SellerPayoutsApi = exports.SellerPayoutsApiFactory = exports.SellerPayoutsApiFp = exports.SellerPayoutsApiAxiosParamCreator = exports.RootApi = exports.RootApiFactory = exports.RootApiFp = exports.RootApiAxiosParamCreator = exports.RbacApi = exports.RbacApiFactory = exports.RbacApiFp = exports.RbacApiAxiosParamCreator = exports.ProductsApi = exports.ProductsApiFactory = exports.ProductsApiFp = exports.ProductsApiAxiosParamCreator = exports.ProductCategoriesApi = exports.ProductCategoriesApiFactory = exports.ProductCategoriesApiFp = exports.ProductCategoriesApiAxiosParamCreator = exports.PointofsaleApi = exports.PointofsaleApiFactory = exports.PointofsaleApiFp = exports.PointofsaleApiAxiosParamCreator = exports.PayoutRequestsApi = exports.PayoutRequestsApiFactory = exports.PayoutRequestsApiFp = void 0;
+exports.WriteoffsApi = exports.WriteoffsApiFactory = exports.WriteoffsApiFp = exports.WriteoffsApiAxiosParamCreator = exports.VouchergroupsApi = exports.VouchergroupsApiFactory = exports.VouchergroupsApiFp = exports.VouchergroupsApiAxiosParamCreator = exports.VatGroupsApi = exports.VatGroupsApiFactory = exports.VatGroupsApiFp = exports.VatGroupsApiAxiosParamCreator = exports.GetUsersSalesReportPdfFileTypeEnum = exports.GetUsersPurchaseReportPdfFileTypeEnum = exports.GetAllUsersTypeEnum = exports.UsersApi = exports.UsersApiFactory = exports.UsersApiFp = exports.UsersApiAxiosParamCreator = exports.UserNotificationPreferencesApi = exports.UserNotificationPreferencesApiFactory = exports.UserNotificationPreferencesApiFp = exports.UserNotificationPreferencesApiAxiosParamCreator = exports.TransfersApi = exports.TransfersApiFactory = exports.TransfersApiFp = exports.TransfersApiAxiosParamCreator = exports.TransactionsApi = exports.TransactionsApiFactory = void 0;
 const axios_1 = require("axios");
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -37,6 +37,11 @@ exports.InvoiceStatusResponseStateEnum = {
     Sent: 'SENT',
     Paid: 'PAID',
     Deleted: 'DELETED'
+};
+exports.PatchUserSettingsRequestLanguageEnum = {
+    NlNl: 'nl-NL',
+    EnUs: 'en-US',
+    PlPl: 'pl-PL'
 };
 exports.PayoutRequestResponseStatusEnum = {
     Created: 'CREATED',
@@ -61,6 +66,11 @@ exports.UpdateInvoiceRequestStateEnum = {
     Sent: 'SENT',
     Paid: 'PAID',
     Deleted: 'DELETED'
+};
+exports.UserSettingsResponseLanguageEnum = {
+    NlNl: 'nl-NL',
+    EnUs: 'en-US',
+    PlPl: 'pl-PL'
 };
 /**
  * AuthenticateApi - axios parameter creator
@@ -5154,6 +5164,82 @@ const InactiveAdministrativeCostsApiAxiosParamCreator = function (configuration)
         },
         /**
          *
+         * @summary Get a report of all inactive administrative costs
+         * @param {string} [fromDate] The start date of the report, inclusive
+         * @param {string} [toDate] The end date of the report, exclusive
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getInactiveAdministrativeCostReport: async (fromDate, toDate, options = {}) => {
+            const localVarPath = `/inactive-administrative-costs/report`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            await (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            if (fromDate !== undefined) {
+                localVarQueryParameter['fromDate'] = fromDate;
+            }
+            if (toDate !== undefined) {
+                localVarQueryParameter['toDate'] = toDate;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get a report of all inactive administrative costs in pdf format
+         * @param {string} fromDate The start date of the report, inclusive
+         * @param {string} toDate The end date of the report, exclusive
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getInactiveAdministrativeCostReportPdf: async (fromDate, toDate, options = {}) => {
+            // verify required parameter 'fromDate' is not null or undefined
+            (0, common_1.assertParamExists)('getInactiveAdministrativeCostReportPdf', 'fromDate', fromDate);
+            // verify required parameter 'toDate' is not null or undefined
+            (0, common_1.assertParamExists)('getInactiveAdministrativeCostReportPdf', 'toDate', toDate);
+            const localVarPath = `/inactive-administrative-costs/report/pdf`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            await (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            if (fromDate !== undefined) {
+                localVarQueryParameter['fromDate'] = fromDate;
+            }
+            if (toDate !== undefined) {
+                localVarQueryParameter['toDate'] = toDate;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
          * @summary Returns a single inactive administrative cost entity
          * @param {number} id The id of the requested inactive administrative cost
          * @param {*} [options] Override http request option.
@@ -5334,6 +5420,34 @@ const InactiveAdministrativeCostsApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Get a report of all inactive administrative costs
+         * @param {string} [fromDate] The start date of the report, inclusive
+         * @param {string} [toDate] The end date of the report, exclusive
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getInactiveAdministrativeCostReport(fromDate, toDate, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getInactiveAdministrativeCostReport(fromDate, toDate, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = base_1.operationServerMap['InactiveAdministrativeCostsApi.getInactiveAdministrativeCostReport']?.[index]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Get a report of all inactive administrative costs in pdf format
+         * @param {string} fromDate The start date of the report, inclusive
+         * @param {string} toDate The end date of the report, exclusive
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getInactiveAdministrativeCostReportPdf(fromDate, toDate, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getInactiveAdministrativeCostReportPdf(fromDate, toDate, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = base_1.operationServerMap['InactiveAdministrativeCostsApi.getInactiveAdministrativeCostReportPdf']?.[index]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         *
          * @summary Returns a single inactive administrative cost entity
          * @param {number} id The id of the requested inactive administrative cost
          * @param {*} [options] Override http request option.
@@ -5427,6 +5541,28 @@ const InactiveAdministrativeCostsApiFactory = function (configuration, basePath,
         },
         /**
          *
+         * @summary Get a report of all inactive administrative costs
+         * @param {string} [fromDate] The start date of the report, inclusive
+         * @param {string} [toDate] The end date of the report, exclusive
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getInactiveAdministrativeCostReport(fromDate, toDate, options) {
+            return localVarFp.getInactiveAdministrativeCostReport(fromDate, toDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get a report of all inactive administrative costs in pdf format
+         * @param {string} fromDate The start date of the report, inclusive
+         * @param {string} toDate The end date of the report, exclusive
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getInactiveAdministrativeCostReportPdf(fromDate, toDate, options) {
+            return localVarFp.getInactiveAdministrativeCostReportPdf(fromDate, toDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Returns a single inactive administrative cost entity
          * @param {number} id The id of the requested inactive administrative cost
          * @param {*} [options] Override http request option.
@@ -5508,6 +5644,30 @@ class InactiveAdministrativeCostsApi extends base_1.BaseAPI {
      */
     getAllInactiveAdministrativeCosts(fromId, inactiveAdministrativeCostId, options) {
         return (0, exports.InactiveAdministrativeCostsApiFp)(this.configuration).getAllInactiveAdministrativeCosts(fromId, inactiveAdministrativeCostId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get a report of all inactive administrative costs
+     * @param {string} [fromDate] The start date of the report, inclusive
+     * @param {string} [toDate] The end date of the report, exclusive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InactiveAdministrativeCostsApi
+     */
+    getInactiveAdministrativeCostReport(fromDate, toDate, options) {
+        return (0, exports.InactiveAdministrativeCostsApiFp)(this.configuration).getInactiveAdministrativeCostReport(fromDate, toDate, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get a report of all inactive administrative costs in pdf format
+     * @param {string} fromDate The start date of the report, inclusive
+     * @param {string} toDate The end date of the report, exclusive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InactiveAdministrativeCostsApi
+     */
+    getInactiveAdministrativeCostReportPdf(fromDate, toDate, options) {
+        return (0, exports.InactiveAdministrativeCostsApiFp)(this.configuration).getInactiveAdministrativeCostReportPdf(fromDate, toDate, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -12056,6 +12216,38 @@ const UsersApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
+         * @summary Get all user settings
+         * @param {number} id The id of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUserSettings: async (id, options = {}) => {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('getUserSettings', 'id', id);
+            const localVarPath = `/users/{id}/settings`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            await (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
          * @summary Returns the user\'s containers
          * @param {number} id The id of the user
          * @param {number} [take] How many containers the endpoint should return
@@ -12649,6 +12841,43 @@ const UsersApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
+         * @summary Update user settings
+         * @param {number} id The id of the user
+         * @param {PatchUserSettingsRequest} patchUserSettingsRequest The settings to update
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        patchUserSettings: async (id, patchUserSettingsRequest, options = {}) => {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('patchUserSettings', 'id', id);
+            // verify required parameter 'patchUserSettingsRequest' is not null or undefined
+            (0, common_1.assertParamExists)('patchUserSettings', 'patchUserSettingsRequest', patchUserSettingsRequest);
+            const localVarPath = `/users/{id}/settings`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            await (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(patchUserSettingsRequest, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
          * @summary Update a user
          * @param {number} id The id of the user
          * @param {UpdateUserRequest} updateUserRequest The user which should be updated
@@ -13087,6 +13316,19 @@ const UsersApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Get all user settings
+         * @param {number} id The id of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getUserSettings(id, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserSettings(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = base_1.operationServerMap['UsersApi.getUserSettings']?.[index]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         *
          * @summary Returns the user\'s containers
          * @param {number} id The id of the user
          * @param {number} [take] How many containers the endpoint should return
@@ -13293,6 +13535,20 @@ const UsersApiFp = function (configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getWrapped(id, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = base_1.operationServerMap['UsersApi.getWrapped']?.[index]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Update user settings
+         * @param {number} id The id of the user
+         * @param {PatchUserSettingsRequest} patchUserSettingsRequest The settings to update
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async patchUserSettings(id, patchUserSettingsRequest, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.patchUserSettings(id, patchUserSettingsRequest, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = base_1.operationServerMap['UsersApi.patchUserSettings']?.[index]?.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
@@ -13545,6 +13801,16 @@ const UsersApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary Get all user settings
+         * @param {number} id The id of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUserSettings(id, options) {
+            return localVarFp.getUserSettings(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Returns the user\'s containers
          * @param {number} id The id of the user
          * @param {number} [take] How many containers the endpoint should return
@@ -13713,6 +13979,17 @@ const UsersApiFactory = function (configuration, basePath, axios) {
          */
         getWrapped(id, options) {
             return localVarFp.getWrapped(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Update user settings
+         * @param {number} id The id of the user
+         * @param {PatchUserSettingsRequest} patchUserSettingsRequest The settings to update
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        patchUserSettings(id, patchUserSettingsRequest, options) {
+            return localVarFp.patchUserSettings(id, patchUserSettingsRequest, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -13956,6 +14233,17 @@ class UsersApi extends base_1.BaseAPI {
     }
     /**
      *
+     * @summary Get all user settings
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    getUserSettings(id, options) {
+        return (0, exports.UsersApiFp)(this.configuration).getUserSettings(id, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
      * @summary Returns the user\'s containers
      * @param {number} id The id of the user
      * @param {number} [take] How many containers the endpoint should return
@@ -14137,6 +14425,18 @@ class UsersApi extends base_1.BaseAPI {
      */
     getWrapped(id, options) {
         return (0, exports.UsersApiFp)(this.configuration).getWrapped(id, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Update user settings
+     * @param {number} id The id of the user
+     * @param {PatchUserSettingsRequest} patchUserSettingsRequest The settings to update
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    patchUserSettings(id, patchUserSettingsRequest, options) {
+        return (0, exports.UsersApiFp)(this.configuration).patchUserSettings(id, patchUserSettingsRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
