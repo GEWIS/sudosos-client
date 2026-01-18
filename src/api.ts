@@ -1283,6 +1283,12 @@ export interface BaseUserNotificationPreferenceResponse {
      * @memberof BaseUserNotificationPreferenceResponse
      */
     'enabled'?: boolean;
+    /**
+     * Whether the type is mandatory
+     * @type {boolean}
+     * @memberof BaseUserNotificationPreferenceResponse
+     */
+    'isMandatory'?: boolean;
 }
 /**
  * 
@@ -2660,6 +2666,55 @@ export interface HandoutInactiveAdministrativeCostsRequest {
 /**
  * 
  * @export
+ * @interface InactiveAdministrativeCostReportResponse
+ */
+export interface InactiveAdministrativeCostReportResponse {
+    /**
+     * The start date of the report (ISO string)
+     * @type {string}
+     * @memberof InactiveAdministrativeCostReportResponse
+     */
+    'fromDate': string;
+    /**
+     * The end date of the report (ISO string)
+     * @type {string}
+     * @memberof InactiveAdministrativeCostReportResponse
+     */
+    'toDate': string;
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof InactiveAdministrativeCostReportResponse
+     */
+    'totalAmountInclVat': DineroObjectResponse;
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof InactiveAdministrativeCostReportResponse
+     */
+    'totalAmountExclVat': DineroObjectResponse;
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof InactiveAdministrativeCostReportResponse
+     */
+    'vatAmount': DineroObjectResponse;
+    /**
+     * VAT percentage
+     * @type {number}
+     * @memberof InactiveAdministrativeCostReportResponse
+     */
+    'vatPercentage': number;
+    /**
+     * Number of inactive administrative costs transactions in the report
+     * @type {number}
+     * @memberof InactiveAdministrativeCostReportResponse
+     */
+    'count': number;
+}
+/**
+ * 
+ * @export
  * @interface InvoiceEntryRequest
  */
 export interface InvoiceEntryRequest {
@@ -3495,6 +3550,40 @@ export interface PaginationResult {
      */
     'count': number;
 }
+/**
+ * 
+ * @export
+ * @interface PatchUserSettingsRequest
+ */
+export interface PatchUserSettingsRequest {
+    /**
+     * Whether beta features are enabled
+     * @type {boolean}
+     * @memberof PatchUserSettingsRequest
+     */
+    'betaEnabled'?: boolean;
+    /**
+     * Dashboard theme configuration with organId and organName, or null
+     * @type {object}
+     * @memberof PatchUserSettingsRequest
+     */
+    'dashboardTheme'?: object;
+    /**
+     * ISO language code or undefined
+     * @type {string}
+     * @memberof PatchUserSettingsRequest
+     */
+    'language'?: PatchUserSettingsRequestLanguageEnum;
+}
+
+export const PatchUserSettingsRequestLanguageEnum = {
+    NlNl: 'nl-NL',
+    EnUs: 'en-US',
+    PlPl: 'pl-PL'
+} as const;
+
+export type PatchUserSettingsRequestLanguageEnum = typeof PatchUserSettingsRequestLanguageEnum[keyof typeof PatchUserSettingsRequestLanguageEnum];
+
 /**
  * 
  * @export
@@ -6082,6 +6171,40 @@ export interface UserResponse {
 /**
  * 
  * @export
+ * @interface UserSettingsResponse
+ */
+export interface UserSettingsResponse {
+    /**
+     * Whether beta features are enabled
+     * @type {boolean}
+     * @memberof UserSettingsResponse
+     */
+    'betaEnabled': boolean;
+    /**
+     * Dashboard theme configuration with organId and organName, or null
+     * @type {object}
+     * @memberof UserSettingsResponse
+     */
+    'dashboardTheme': object;
+    /**
+     * ISO language code (e.g., \"nl-NL\", \"en-US\", \"pl-PL\") or undefined
+     * @type {string}
+     * @memberof UserSettingsResponse
+     */
+    'language'?: UserSettingsResponseLanguageEnum;
+}
+
+export const UserSettingsResponseLanguageEnum = {
+    NlNl: 'nl-NL',
+    EnUs: 'en-US',
+    PlPl: 'pl-PL'
+} as const;
+
+export type UserSettingsResponseLanguageEnum = typeof UserSettingsResponseLanguageEnum[keyof typeof UserSettingsResponseLanguageEnum];
+
+/**
+ * 
+ * @export
  * @interface UserToFineResponse
  */
 export interface UserToFineResponse {
@@ -6111,11 +6234,47 @@ export interface UserToFineResponse {
  */
 export interface UserToInactiveAdministrativeCostResponse {
     /**
-     * User ID
+     * The unique id of the entity.
      * @type {number}
      * @memberof UserToInactiveAdministrativeCostResponse
      */
-    'userId'?: number;
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof UserToInactiveAdministrativeCostResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof UserToInactiveAdministrativeCostResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof UserToInactiveAdministrativeCostResponse
+     */
+    'version'?: number;
+    /**
+     * The name of the user.
+     * @type {string}
+     * @memberof UserToInactiveAdministrativeCostResponse
+     */
+    'firstName': string;
+    /**
+     * The last name of the user
+     * @type {string}
+     * @memberof UserToInactiveAdministrativeCostResponse
+     */
+    'lastName': string;
+    /**
+     * The nickname of the user
+     * @type {string}
+     * @memberof UserToInactiveAdministrativeCostResponse
+     */
+    'nickname'?: string;
 }
 /**
  * 
@@ -12269,6 +12428,98 @@ export const InactiveAdministrativeCostsApiAxiosParamCreator = function (configu
         },
         /**
          * 
+         * @summary Get a report of all inactive administrative costs
+         * @param {string} [fromDate] The start date of the report, inclusive
+         * @param {string} [toDate] The end date of the report, exclusive
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getInactiveAdministrativeCostReport: async (fromDate?: string, toDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/inactive-administrative-costs/report`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (fromDate !== undefined) {
+                localVarQueryParameter['fromDate'] = fromDate;
+            }
+
+            if (toDate !== undefined) {
+                localVarQueryParameter['toDate'] = toDate;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get a report of all inactive administrative costs in pdf format
+         * @param {string} fromDate The start date of the report, inclusive
+         * @param {string} toDate The end date of the report, exclusive
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getInactiveAdministrativeCostReportPdf: async (fromDate: string, toDate: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'fromDate' is not null or undefined
+            assertParamExists('getInactiveAdministrativeCostReportPdf', 'fromDate', fromDate)
+            // verify required parameter 'toDate' is not null or undefined
+            assertParamExists('getInactiveAdministrativeCostReportPdf', 'toDate', toDate)
+            const localVarPath = `/inactive-administrative-costs/report/pdf`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (fromDate !== undefined) {
+                localVarQueryParameter['fromDate'] = fromDate;
+            }
+
+            if (toDate !== undefined) {
+                localVarQueryParameter['toDate'] = toDate;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Returns a single inactive administrative cost entity
          * @param {number} id The id of the requested inactive administrative cost
          * @param {*} [options] Override http request option.
@@ -12476,6 +12727,34 @@ export const InactiveAdministrativeCostsApiFp = function(configuration?: Configu
         },
         /**
          * 
+         * @summary Get a report of all inactive administrative costs
+         * @param {string} [fromDate] The start date of the report, inclusive
+         * @param {string} [toDate] The end date of the report, exclusive
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getInactiveAdministrativeCostReport(fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InactiveAdministrativeCostReportResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getInactiveAdministrativeCostReport(fromDate, toDate, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['InactiveAdministrativeCostsApi.getInactiveAdministrativeCostReport']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get a report of all inactive administrative costs in pdf format
+         * @param {string} fromDate The start date of the report, inclusive
+         * @param {string} toDate The end date of the report, exclusive
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getInactiveAdministrativeCostReportPdf(fromDate: string, toDate: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getInactiveAdministrativeCostReportPdf(fromDate, toDate, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['InactiveAdministrativeCostsApi.getInactiveAdministrativeCostReportPdf']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Returns a single inactive administrative cost entity
          * @param {number} id The id of the requested inactive administrative cost
          * @param {*} [options] Override http request option.
@@ -12569,6 +12848,28 @@ export const InactiveAdministrativeCostsApiFactory = function (configuration?: C
         },
         /**
          * 
+         * @summary Get a report of all inactive administrative costs
+         * @param {string} [fromDate] The start date of the report, inclusive
+         * @param {string} [toDate] The end date of the report, exclusive
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getInactiveAdministrativeCostReport(fromDate?: string, toDate?: string, options?: any): AxiosPromise<InactiveAdministrativeCostReportResponse> {
+            return localVarFp.getInactiveAdministrativeCostReport(fromDate, toDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get a report of all inactive administrative costs in pdf format
+         * @param {string} fromDate The start date of the report, inclusive
+         * @param {string} toDate The end date of the report, exclusive
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getInactiveAdministrativeCostReportPdf(fromDate: string, toDate: string, options?: any): AxiosPromise<string> {
+            return localVarFp.getInactiveAdministrativeCostReportPdf(fromDate, toDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Returns a single inactive administrative cost entity
          * @param {number} id The id of the requested inactive administrative cost
          * @param {*} [options] Override http request option.
@@ -12652,6 +12953,32 @@ export class InactiveAdministrativeCostsApi extends BaseAPI {
      */
     public getAllInactiveAdministrativeCosts(fromId?: number, inactiveAdministrativeCostId?: number, options?: RawAxiosRequestConfig) {
         return InactiveAdministrativeCostsApiFp(this.configuration).getAllInactiveAdministrativeCosts(fromId, inactiveAdministrativeCostId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get a report of all inactive administrative costs
+     * @param {string} [fromDate] The start date of the report, inclusive
+     * @param {string} [toDate] The end date of the report, exclusive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InactiveAdministrativeCostsApi
+     */
+    public getInactiveAdministrativeCostReport(fromDate?: string, toDate?: string, options?: RawAxiosRequestConfig) {
+        return InactiveAdministrativeCostsApiFp(this.configuration).getInactiveAdministrativeCostReport(fromDate, toDate, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get a report of all inactive administrative costs in pdf format
+     * @param {string} fromDate The start date of the report, inclusive
+     * @param {string} toDate The end date of the report, exclusive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InactiveAdministrativeCostsApi
+     */
+    public getInactiveAdministrativeCostReportPdf(fromDate: string, toDate: string, options?: RawAxiosRequestConfig) {
+        return InactiveAdministrativeCostsApiFp(this.configuration).getInactiveAdministrativeCostReportPdf(fromDate, toDate, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -19928,6 +20255,44 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
+         * @summary Get all user settings
+         * @param {number} id The id of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUserSettings: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getUserSettings', 'id', id)
+            const localVarPath = `/users/{id}/settings`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Returns the user\'s containers
          * @param {number} id The id of the user
          * @param {number} [take] How many containers the endpoint should return
@@ -20639,6 +21004,50 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
+         * @summary Update user settings
+         * @param {number} id The id of the user
+         * @param {PatchUserSettingsRequest} patchUserSettingsRequest The settings to update
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        patchUserSettings: async (id: number, patchUserSettingsRequest: PatchUserSettingsRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('patchUserSettings', 'id', id)
+            // verify required parameter 'patchUserSettingsRequest' is not null or undefined
+            assertParamExists('patchUserSettings', 'patchUserSettingsRequest', patchUserSettingsRequest)
+            const localVarPath = `/users/{id}/settings`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(patchUserSettingsRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Update a user
          * @param {number} id The id of the user
          * @param {UpdateUserRequest} updateUserRequest The user which should be updated
@@ -21124,6 +21533,19 @@ export const UsersApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get all user settings
+         * @param {number} id The id of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getUserSettings(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserSettingsResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserSettings(id, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.getUserSettings']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Returns the user\'s containers
          * @param {number} id The id of the user
          * @param {number} [take] How many containers the endpoint should return
@@ -21330,6 +21752,20 @@ export const UsersApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getWrapped(id, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['UsersApi.getWrapped']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Update user settings
+         * @param {number} id The id of the user
+         * @param {PatchUserSettingsRequest} patchUserSettingsRequest The settings to update
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async patchUserSettings(id: number, patchUserSettingsRequest: PatchUserSettingsRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserSettingsResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.patchUserSettings(id, patchUserSettingsRequest, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.patchUserSettings']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
@@ -21582,6 +22018,16 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
+         * @summary Get all user settings
+         * @param {number} id The id of the user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUserSettings(id: number, options?: any): AxiosPromise<UserSettingsResponse> {
+            return localVarFp.getUserSettings(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Returns the user\'s containers
          * @param {number} id The id of the user
          * @param {number} [take] How many containers the endpoint should return
@@ -21750,6 +22196,17 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          */
         getWrapped(id: number, options?: any): AxiosPromise<WrappedResponse> {
             return localVarFp.getWrapped(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Update user settings
+         * @param {number} id The id of the user
+         * @param {PatchUserSettingsRequest} patchUserSettingsRequest The settings to update
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        patchUserSettings(id: number, patchUserSettingsRequest: PatchUserSettingsRequest, options?: any): AxiosPromise<UserSettingsResponse> {
+            return localVarFp.patchUserSettings(id, patchUserSettingsRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -22006,6 +22463,18 @@ export class UsersApi extends BaseAPI {
 
     /**
      * 
+     * @summary Get all user settings
+     * @param {number} id The id of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    public getUserSettings(id: number, options?: RawAxiosRequestConfig) {
+        return UsersApiFp(this.configuration).getUserSettings(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary Returns the user\'s containers
      * @param {number} id The id of the user
      * @param {number} [take] How many containers the endpoint should return
@@ -22199,6 +22668,19 @@ export class UsersApi extends BaseAPI {
      */
     public getWrapped(id: number, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).getWrapped(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Update user settings
+     * @param {number} id The id of the user
+     * @param {PatchUserSettingsRequest} patchUserSettingsRequest The settings to update
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    public patchUserSettings(id: number, patchUserSettingsRequest: PatchUserSettingsRequest, options?: RawAxiosRequestConfig) {
+        return UsersApiFp(this.configuration).patchUserSettings(id, patchUserSettingsRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
