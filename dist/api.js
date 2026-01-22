@@ -179,6 +179,7 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
          * @summary EAN login and hand out token
          * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         eanAuthentication: async (authenticationEanRequest, options = {}) => {
@@ -523,6 +524,7 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
          * @summary NFC login and hand out token
          * @param {AuthenticationNfcRequest} authenticationNfcRequest The NFC login.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         nfcAuthentication: async (authenticationNfcRequest, options = {}) => {
@@ -553,6 +555,7 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
          * @summary PIN login and hand out token
          * @param {AuthenticationPinRequest} authenticationPinRequest The PIN login.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         pinAuthentication: async (authenticationPinRequest, options = {}) => {
@@ -661,6 +664,39 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
             localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(authenticationResetTokenRequest, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Secure EAN authentication that requires POS user authentication
+         * @param {AuthenticationSecureEanRequest} authenticationSecureEanRequest The EAN login request with posId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        secureEanAuthentication: async (authenticationSecureEanRequest, options = {}) => {
+            // verify required parameter 'authenticationSecureEanRequest' is not null or undefined
+            (0, common_1.assertParamExists)('secureEanAuthentication', 'authenticationSecureEanRequest', authenticationSecureEanRequest);
+            const localVarPath = `/authentication/ean-secure`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            await (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(authenticationSecureEanRequest, localVarRequestOptions, configuration);
             return {
                 url: (0, common_1.toPathString)(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -819,6 +855,7 @@ const AuthenticateApiFp = function (configuration) {
          * @summary EAN login and hand out token
          * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         async eanAuthentication(authenticationEanRequest, options) {
@@ -972,6 +1009,7 @@ const AuthenticateApiFp = function (configuration) {
          * @summary NFC login and hand out token
          * @param {AuthenticationNfcRequest} authenticationNfcRequest The NFC login.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         async nfcAuthentication(authenticationNfcRequest, options) {
@@ -985,6 +1023,7 @@ const AuthenticateApiFp = function (configuration) {
          * @summary PIN login and hand out token
          * @param {AuthenticationPinRequest} authenticationPinRequest The PIN login.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         async pinAuthentication(authenticationPinRequest, options) {
@@ -1029,6 +1068,19 @@ const AuthenticateApiFp = function (configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.resetLocalWithToken(authenticationResetTokenRequest, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = base_1.operationServerMap['AuthenticateApi.resetLocalWithToken']?.[index]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Secure EAN authentication that requires POS user authentication
+         * @param {AuthenticationSecureEanRequest} authenticationSecureEanRequest The EAN login request with posId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async secureEanAuthentication(authenticationSecureEanRequest, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.secureEanAuthentication(authenticationSecureEanRequest, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = base_1.operationServerMap['AuthenticateApi.secureEanAuthentication']?.[index]?.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
@@ -1115,6 +1167,7 @@ const AuthenticateApiFactory = function (configuration, basePath, axios) {
          * @summary EAN login and hand out token
          * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         eanAuthentication(authenticationEanRequest, options) {
@@ -1232,6 +1285,7 @@ const AuthenticateApiFactory = function (configuration, basePath, axios) {
          * @summary NFC login and hand out token
          * @param {AuthenticationNfcRequest} authenticationNfcRequest The NFC login.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         nfcAuthentication(authenticationNfcRequest, options) {
@@ -1242,6 +1296,7 @@ const AuthenticateApiFactory = function (configuration, basePath, axios) {
          * @summary PIN login and hand out token
          * @param {AuthenticationPinRequest} authenticationPinRequest The PIN login.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         pinAuthentication(authenticationPinRequest, options) {
@@ -1275,6 +1330,16 @@ const AuthenticateApiFactory = function (configuration, basePath, axios) {
          */
         resetLocalWithToken(authenticationResetTokenRequest, options) {
             return localVarFp.resetLocalWithToken(authenticationResetTokenRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Secure EAN authentication that requires POS user authentication
+         * @param {AuthenticationSecureEanRequest} authenticationSecureEanRequest The EAN login request with posId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        secureEanAuthentication(authenticationSecureEanRequest, options) {
+            return localVarFp.secureEanAuthentication(authenticationSecureEanRequest, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -1354,6 +1419,7 @@ class AuthenticateApi extends base_1.BaseAPI {
      * @summary EAN login and hand out token
      * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
@@ -1483,6 +1549,7 @@ class AuthenticateApi extends base_1.BaseAPI {
      * @summary NFC login and hand out token
      * @param {AuthenticationNfcRequest} authenticationNfcRequest The NFC login.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
@@ -1494,6 +1561,7 @@ class AuthenticateApi extends base_1.BaseAPI {
      * @summary PIN login and hand out token
      * @param {AuthenticationPinRequest} authenticationPinRequest The PIN login.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
@@ -1531,6 +1599,17 @@ class AuthenticateApi extends base_1.BaseAPI {
      */
     resetLocalWithToken(authenticationResetTokenRequest, options) {
         return (0, exports.AuthenticateApiFp)(this.configuration).resetLocalWithToken(authenticationResetTokenRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Secure EAN authentication that requires POS user authentication
+     * @param {AuthenticationSecureEanRequest} authenticationSecureEanRequest The EAN login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    secureEanAuthentication(authenticationSecureEanRequest, options) {
+        return (0, exports.AuthenticateApiFp)(this.configuration).secureEanAuthentication(authenticationSecureEanRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
