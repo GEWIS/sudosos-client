@@ -828,12 +828,6 @@ export interface BaseInactiveAdministrativeCostResponse {
      * @memberof BaseInactiveAdministrativeCostResponse
      */
     'amount': DineroObjectResponse;
-    /**
-     * 
-     * @type {TransferResponse}
-     * @memberof BaseInactiveAdministrativeCostResponse
-     */
-    'transfer'?: TransferResponse;
 }
 /**
  * 
@@ -2734,6 +2728,55 @@ export interface InactiveAdministrativeCostReportResponse {
 /**
  * 
  * @export
+ * @interface InactiveAdministrativeCostResponse
+ */
+export interface InactiveAdministrativeCostResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof InactiveAdministrativeCostResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof InactiveAdministrativeCostResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof InactiveAdministrativeCostResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof InactiveAdministrativeCostResponse
+     */
+    'version'?: number;
+    /**
+     * 
+     * @type {BaseUserResponse}
+     * @memberof InactiveAdministrativeCostResponse
+     */
+    'from': BaseUserResponse;
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof InactiveAdministrativeCostResponse
+     */
+    'amount': DineroObjectResponse;
+    /**
+     * 
+     * @type {TransferResponse}
+     * @memberof InactiveAdministrativeCostResponse
+     */
+    'transfer': TransferResponse;
+}
+/**
+ * 
+ * @export
  * @interface InvoiceEntryRequest
  */
 export interface InvoiceEntryRequest {
@@ -3330,10 +3373,10 @@ export interface PaginatedInactiveAdministrativeCostResponse {
     '_pagination'?: PaginationResult;
     /**
      * Returned InactiveAdministrativeCost
-     * @type {Array<BaseInactiveAdministrativeCostResponse>}
+     * @type {Array<InactiveAdministrativeCostResponse>}
      * @memberof PaginatedInactiveAdministrativeCostResponse
      */
-    'records'?: Array<BaseInactiveAdministrativeCostResponse>;
+    'records'?: Array<InactiveAdministrativeCostResponse>;
 }
 /**
  * 
@@ -12798,7 +12841,7 @@ export const InactiveAdministrativeCostsApiFp = function(configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createInactiveAdministrativeCosts(createInactiveAdministrativeCostRequest: CreateInactiveAdministrativeCostRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseInactiveAdministrativeCostResponse>> {
+        async createInactiveAdministrativeCosts(createInactiveAdministrativeCostRequest: CreateInactiveAdministrativeCostRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InactiveAdministrativeCostResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createInactiveAdministrativeCosts(createInactiveAdministrativeCostRequest, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['InactiveAdministrativeCostsApi.createInactiveAdministrativeCosts']?.[index]?.url;
@@ -12866,7 +12909,7 @@ export const InactiveAdministrativeCostsApiFp = function(configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getInactiveAdministrativeCosts(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseInactiveAdministrativeCostResponse>> {
+        async getInactiveAdministrativeCosts(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InactiveAdministrativeCostResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getInactiveAdministrativeCosts(id, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['InactiveAdministrativeCostsApi.getInactiveAdministrativeCosts']?.[index]?.url;
@@ -12928,7 +12971,7 @@ export const InactiveAdministrativeCostsApiFactory = function (configuration?: C
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createInactiveAdministrativeCosts(createInactiveAdministrativeCostRequest: CreateInactiveAdministrativeCostRequest, options?: any): AxiosPromise<BaseInactiveAdministrativeCostResponse> {
+        createInactiveAdministrativeCosts(createInactiveAdministrativeCostRequest: CreateInactiveAdministrativeCostRequest, options?: any): AxiosPromise<InactiveAdministrativeCostResponse> {
             return localVarFp.createInactiveAdministrativeCosts(createInactiveAdministrativeCostRequest, options).then((request) => request(axios, basePath));
         },
         /**
@@ -12981,7 +13024,7 @@ export const InactiveAdministrativeCostsApiFactory = function (configuration?: C
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInactiveAdministrativeCosts(id: number, options?: any): AxiosPromise<BaseInactiveAdministrativeCostResponse> {
+        getInactiveAdministrativeCosts(id: number, options?: any): AxiosPromise<InactiveAdministrativeCostResponse> {
             return localVarFp.getInactiveAdministrativeCosts(id, options).then((request) => request(axios, basePath));
         },
         /**
