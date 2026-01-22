@@ -263,6 +263,25 @@ export interface AuthenticationResponse {
 /**
  *
  * @export
+ * @interface AuthenticationSecureEanRequest
+ */
+export interface AuthenticationSecureEanRequest {
+    /**
+     *
+     * @type {string}
+     * @memberof AuthenticationSecureEanRequest
+     */
+    'eanCode': string;
+    /**
+     * POS identifier
+     * @type {number}
+     * @memberof AuthenticationSecureEanRequest
+     */
+    'posId': number;
+}
+/**
+ *
+ * @export
  * @interface AuthenticationSecureNfcRequest
  */
 export interface AuthenticationSecureNfcRequest {
@@ -6772,6 +6791,7 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
      * @summary EAN login and hand out token
      * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      */
     eanAuthentication: (authenticationEanRequest: AuthenticationEanRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
@@ -6865,6 +6885,7 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
      * @summary NFC login and hand out token
      * @param {AuthenticationNfcRequest} authenticationNfcRequest The NFC login.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      */
     nfcAuthentication: (authenticationNfcRequest: AuthenticationNfcRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
@@ -6873,6 +6894,7 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
      * @summary PIN login and hand out token
      * @param {AuthenticationPinRequest} authenticationPinRequest The PIN login.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      */
     pinAuthentication: (authenticationPinRequest: AuthenticationPinRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
@@ -6899,6 +6921,14 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
      * @throws {RequiredError}
      */
     resetLocalWithToken: (authenticationResetTokenRequest: AuthenticationResetTokenRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Secure EAN authentication that requires POS user authentication
+     * @param {AuthenticationSecureEanRequest} authenticationSecureEanRequest The EAN login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    secureEanAuthentication: (authenticationSecureEanRequest: AuthenticationSecureEanRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Secure GEWIS PIN authentication that requires POS user authentication
@@ -6958,6 +6988,7 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
      * @summary EAN login and hand out token
      * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      */
     eanAuthentication(authenticationEanRequest: AuthenticationEanRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
@@ -7051,6 +7082,7 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
      * @summary NFC login and hand out token
      * @param {AuthenticationNfcRequest} authenticationNfcRequest The NFC login.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      */
     nfcAuthentication(authenticationNfcRequest: AuthenticationNfcRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
@@ -7059,6 +7091,7 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
      * @summary PIN login and hand out token
      * @param {AuthenticationPinRequest} authenticationPinRequest The PIN login.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      */
     pinAuthentication(authenticationPinRequest: AuthenticationPinRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
@@ -7085,6 +7118,14 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     resetLocalWithToken(authenticationResetTokenRequest: AuthenticationResetTokenRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     *
+     * @summary Secure EAN authentication that requires POS user authentication
+     * @param {AuthenticationSecureEanRequest} authenticationSecureEanRequest The EAN login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    secureEanAuthentication(authenticationSecureEanRequest: AuthenticationSecureEanRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
     /**
      *
      * @summary Secure GEWIS PIN authentication that requires POS user authentication
@@ -7144,6 +7185,7 @@ export declare const AuthenticateApiFactory: (configuration?: Configuration, bas
      * @summary EAN login and hand out token
      * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      */
     eanAuthentication(authenticationEanRequest: AuthenticationEanRequest, options?: any): AxiosPromise<AuthenticationResponse>;
@@ -7237,6 +7279,7 @@ export declare const AuthenticateApiFactory: (configuration?: Configuration, bas
      * @summary NFC login and hand out token
      * @param {AuthenticationNfcRequest} authenticationNfcRequest The NFC login.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      */
     nfcAuthentication(authenticationNfcRequest: AuthenticationNfcRequest, options?: any): AxiosPromise<AuthenticationResponse>;
@@ -7245,6 +7288,7 @@ export declare const AuthenticateApiFactory: (configuration?: Configuration, bas
      * @summary PIN login and hand out token
      * @param {AuthenticationPinRequest} authenticationPinRequest The PIN login.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      */
     pinAuthentication(authenticationPinRequest: AuthenticationPinRequest, options?: any): AxiosPromise<AuthenticationResponse>;
@@ -7271,6 +7315,14 @@ export declare const AuthenticateApiFactory: (configuration?: Configuration, bas
      * @throws {RequiredError}
      */
     resetLocalWithToken(authenticationResetTokenRequest: AuthenticationResetTokenRequest, options?: any): AxiosPromise<void>;
+    /**
+     *
+     * @summary Secure EAN authentication that requires POS user authentication
+     * @param {AuthenticationSecureEanRequest} authenticationSecureEanRequest The EAN login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    secureEanAuthentication(authenticationSecureEanRequest: AuthenticationSecureEanRequest, options?: any): AxiosPromise<AuthenticationResponse>;
     /**
      *
      * @summary Secure GEWIS PIN authentication that requires POS user authentication
@@ -7335,6 +7387,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @summary EAN login and hand out token
      * @param {AuthenticationEanRequest} authenticationEanRequest The EAN login.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
@@ -7440,6 +7493,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @summary NFC login and hand out token
      * @param {AuthenticationNfcRequest} authenticationNfcRequest The NFC login.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
@@ -7449,6 +7503,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @summary PIN login and hand out token
      * @param {AuthenticationPinRequest} authenticationPinRequest The PIN login.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
@@ -7479,6 +7534,15 @@ export declare class AuthenticateApi extends BaseAPI {
      * @memberof AuthenticateApi
      */
     resetLocalWithToken(authenticationResetTokenRequest: AuthenticationResetTokenRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    /**
+     *
+     * @summary Secure EAN authentication that requires POS user authentication
+     * @param {AuthenticationSecureEanRequest} authenticationSecureEanRequest The EAN login request with posId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    secureEanAuthentication(authenticationSecureEanRequest: AuthenticationSecureEanRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
     /**
      *
      * @summary Secure GEWIS PIN authentication that requires POS user authentication
