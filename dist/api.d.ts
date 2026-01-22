@@ -818,12 +818,6 @@ export interface BaseInactiveAdministrativeCostResponse {
      * @memberof BaseInactiveAdministrativeCostResponse
      */
     'amount': DineroObjectResponse;
-    /**
-     *
-     * @type {TransferResponse}
-     * @memberof BaseInactiveAdministrativeCostResponse
-     */
-    'transfer'?: TransferResponse;
 }
 /**
  *
@@ -2716,6 +2710,55 @@ export interface InactiveAdministrativeCostReportResponse {
 /**
  *
  * @export
+ * @interface InactiveAdministrativeCostResponse
+ */
+export interface InactiveAdministrativeCostResponse {
+    /**
+     * The unique id of the entity.
+     * @type {number}
+     * @memberof InactiveAdministrativeCostResponse
+     */
+    'id': number;
+    /**
+     * The creation Date of the entity.
+     * @type {string}
+     * @memberof InactiveAdministrativeCostResponse
+     */
+    'createdAt'?: string;
+    /**
+     * The last update Date of the entity.
+     * @type {string}
+     * @memberof InactiveAdministrativeCostResponse
+     */
+    'updatedAt'?: string;
+    /**
+     * The version of the entity.
+     * @type {number}
+     * @memberof InactiveAdministrativeCostResponse
+     */
+    'version'?: number;
+    /**
+     *
+     * @type {BaseUserResponse}
+     * @memberof InactiveAdministrativeCostResponse
+     */
+    'from': BaseUserResponse;
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof InactiveAdministrativeCostResponse
+     */
+    'amount': DineroObjectResponse;
+    /**
+     *
+     * @type {TransferResponse}
+     * @memberof InactiveAdministrativeCostResponse
+     */
+    'transfer': TransferResponse;
+}
+/**
+ *
+ * @export
  * @interface InvoiceEntryRequest
  */
 export interface InvoiceEntryRequest {
@@ -3309,10 +3352,10 @@ export interface PaginatedInactiveAdministrativeCostResponse {
     '_pagination'?: PaginationResult;
     /**
      * Returned InactiveAdministrativeCost
-     * @type {Array<BaseInactiveAdministrativeCostResponse>}
+     * @type {Array<InactiveAdministrativeCostResponse>}
      * @memberof PaginatedInactiveAdministrativeCostResponse
      */
-    'records'?: Array<BaseInactiveAdministrativeCostResponse>;
+    'records'?: Array<InactiveAdministrativeCostResponse>;
 }
 /**
  *
@@ -9496,7 +9539,7 @@ export declare const InactiveAdministrativeCostsApiFp: (configuration?: Configur
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createInactiveAdministrativeCosts(createInactiveAdministrativeCostRequest: CreateInactiveAdministrativeCostRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseInactiveAdministrativeCostResponse>>;
+    createInactiveAdministrativeCosts(createInactiveAdministrativeCostRequest: CreateInactiveAdministrativeCostRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InactiveAdministrativeCostResponse>>;
     /**
      *
      * @summary Deletes an inactive administrative cost.
@@ -9539,7 +9582,7 @@ export declare const InactiveAdministrativeCostsApiFp: (configuration?: Configur
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getInactiveAdministrativeCosts(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseInactiveAdministrativeCostResponse>>;
+    getInactiveAdministrativeCosts(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InactiveAdministrativeCostResponse>>;
     /**
      *
      * @summary Find all users who are eligible for notification or creation of inactive administrative cost
@@ -9577,7 +9620,7 @@ export declare const InactiveAdministrativeCostsApiFactory: (configuration?: Con
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createInactiveAdministrativeCosts(createInactiveAdministrativeCostRequest: CreateInactiveAdministrativeCostRequest, options?: any): AxiosPromise<BaseInactiveAdministrativeCostResponse>;
+    createInactiveAdministrativeCosts(createInactiveAdministrativeCostRequest: CreateInactiveAdministrativeCostRequest, options?: any): AxiosPromise<InactiveAdministrativeCostResponse>;
     /**
      *
      * @summary Deletes an inactive administrative cost.
@@ -9620,7 +9663,7 @@ export declare const InactiveAdministrativeCostsApiFactory: (configuration?: Con
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getInactiveAdministrativeCosts(id: number, options?: any): AxiosPromise<BaseInactiveAdministrativeCostResponse>;
+    getInactiveAdministrativeCosts(id: number, options?: any): AxiosPromise<InactiveAdministrativeCostResponse>;
     /**
      *
      * @summary Find all users who are eligible for notification or creation of inactive administrative cost
@@ -9661,7 +9704,7 @@ export declare class InactiveAdministrativeCostsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InactiveAdministrativeCostsApi
      */
-    createInactiveAdministrativeCosts(createInactiveAdministrativeCostRequest: CreateInactiveAdministrativeCostRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BaseInactiveAdministrativeCostResponse, any, {}>>;
+    createInactiveAdministrativeCosts(createInactiveAdministrativeCostRequest: CreateInactiveAdministrativeCostRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<InactiveAdministrativeCostResponse, any, {}>>;
     /**
      *
      * @summary Deletes an inactive administrative cost.
@@ -9709,7 +9752,7 @@ export declare class InactiveAdministrativeCostsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InactiveAdministrativeCostsApi
      */
-    getInactiveAdministrativeCosts(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BaseInactiveAdministrativeCostResponse, any, {}>>;
+    getInactiveAdministrativeCosts(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<InactiveAdministrativeCostResponse, any, {}>>;
     /**
      *
      * @summary Find all users who are eligible for notification or creation of inactive administrative cost
