@@ -344,6 +344,7 @@ const AuthenticateApiAxiosParamCreator = function (configuration) {
          * @summary PIN login and hand out token.
          * @param {GEWISAuthenticationPinRequest} gEWISAuthenticationPinRequest The PIN login.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         gewisPinAuthentication: async (gEWISAuthenticationPinRequest, options = {}) => {
@@ -931,6 +932,7 @@ const AuthenticateApiFp = function (configuration) {
          * @summary PIN login and hand out token.
          * @param {GEWISAuthenticationPinRequest} gEWISAuthenticationPinRequest The PIN login.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         async gewisPinAuthentication(gEWISAuthenticationPinRequest, options) {
@@ -1225,6 +1227,7 @@ const AuthenticateApiFactory = function (configuration, basePath, axios) {
          * @summary PIN login and hand out token.
          * @param {GEWISAuthenticationPinRequest} gEWISAuthenticationPinRequest The PIN login.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         gewisPinAuthentication(gEWISAuthenticationPinRequest, options) {
@@ -1483,6 +1486,7 @@ class AuthenticateApi extends base_1.BaseAPI {
      * @summary PIN login and hand out token.
      * @param {GEWISAuthenticationPinRequest} gEWISAuthenticationPinRequest The PIN login.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */

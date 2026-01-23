@@ -6880,6 +6880,7 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
      * @summary PIN login and hand out token.
      * @param {GEWISAuthenticationPinRequest} gEWISAuthenticationPinRequest The PIN login.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      */
     gewisPinAuthentication: (gEWISAuthenticationPinRequest: GEWISAuthenticationPinRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
@@ -7077,6 +7078,7 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
      * @summary PIN login and hand out token.
      * @param {GEWISAuthenticationPinRequest} gEWISAuthenticationPinRequest The PIN login.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      */
     gewisPinAuthentication(gEWISAuthenticationPinRequest: GEWISAuthenticationPinRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
@@ -7274,6 +7276,7 @@ export declare const AuthenticateApiFactory: (configuration?: Configuration, bas
      * @summary PIN login and hand out token.
      * @param {GEWISAuthenticationPinRequest} gEWISAuthenticationPinRequest The PIN login.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      */
     gewisPinAuthentication(gEWISAuthenticationPinRequest: GEWISAuthenticationPinRequest, options?: any): AxiosPromise<AuthenticationResponse>;
@@ -7482,6 +7485,7 @@ export declare class AuthenticateApi extends BaseAPI {
      * @summary PIN login and hand out token.
      * @param {GEWISAuthenticationPinRequest} gEWISAuthenticationPinRequest The PIN login.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
