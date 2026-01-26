@@ -3625,6 +3625,19 @@ export type PatchUserSettingsRequestLanguageEnum = typeof PatchUserSettingsReque
 /**
  *
  * @export
+ * @interface PatchUserTypeRequest
+ */
+export interface PatchUserTypeRequest {
+    /**
+     * New user type
+     * @type {string}
+     * @memberof PatchUserTypeRequest
+     */
+    'userType': string;
+}
+/**
+ *
+ * @export
  * @interface PayoutRequestRequest
  */
 export interface PayoutRequestRequest {
@@ -13219,6 +13232,15 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
     patchUserSettings: (id: number, patchUserSettingsRequest: PatchUserSettingsRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Update user type
+     * @param {number} id The id of the user
+     * @param {PatchUserTypeRequest} patchUserTypeRequest The user type to update to
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    patchUserType: (id: number, patchUserTypeRequest: PatchUserTypeRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Update a user
      * @param {number} id The id of the user
      * @param {UpdateUserRequest} updateUserRequest The user which should be updated
@@ -13564,6 +13586,15 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
     patchUserSettings(id: number, patchUserSettingsRequest: PatchUserSettingsRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserSettingsResponse>>;
     /**
      *
+     * @summary Update user type
+     * @param {number} id The id of the user
+     * @param {PatchUserTypeRequest} patchUserTypeRequest The user type to update to
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    patchUserType(id: number, patchUserTypeRequest: PatchUserTypeRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserResponse>>;
+    /**
+     *
      * @summary Update a user
      * @param {number} id The id of the user
      * @param {UpdateUserRequest} updateUserRequest The user which should be updated
@@ -13907,6 +13938,15 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
      * @throws {RequiredError}
      */
     patchUserSettings(id: number, patchUserSettingsRequest: PatchUserSettingsRequest, options?: any): AxiosPromise<UserSettingsResponse>;
+    /**
+     *
+     * @summary Update user type
+     * @param {number} id The id of the user
+     * @param {PatchUserTypeRequest} patchUserTypeRequest The user type to update to
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    patchUserType(id: number, patchUserTypeRequest: PatchUserTypeRequest, options?: any): AxiosPromise<UserResponse>;
     /**
      *
      * @summary Update a user
@@ -14282,6 +14322,16 @@ export declare class UsersApi extends BaseAPI {
      * @memberof UsersApi
      */
     patchUserSettings(id: number, patchUserSettingsRequest: PatchUserSettingsRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserSettingsResponse, any, {}>>;
+    /**
+     *
+     * @summary Update user type
+     * @param {number} id The id of the user
+     * @param {PatchUserTypeRequest} patchUserTypeRequest The user type to update to
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    patchUserType(id: number, patchUserTypeRequest: PatchUserTypeRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserResponse, any, {}>>;
     /**
      *
      * @summary Update a user
