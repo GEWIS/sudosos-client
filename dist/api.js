@@ -12961,6 +12961,43 @@ const UsersApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
+         * @summary Update user type
+         * @param {number} id The id of the user
+         * @param {PatchUserTypeRequest} patchUserTypeRequest The user type to update to
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        patchUserType: async (id, patchUserTypeRequest, options = {}) => {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('patchUserType', 'id', id);
+            // verify required parameter 'patchUserTypeRequest' is not null or undefined
+            (0, common_1.assertParamExists)('patchUserType', 'patchUserTypeRequest', patchUserTypeRequest);
+            const localVarPath = `/users/{id}/usertype`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            await (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(patchUserTypeRequest, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
          * @summary Update a user
          * @param {number} id The id of the user
          * @param {UpdateUserRequest} updateUserRequest The user which should be updated
@@ -13636,6 +13673,20 @@ const UsersApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Update user type
+         * @param {number} id The id of the user
+         * @param {PatchUserTypeRequest} patchUserTypeRequest The user type to update to
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async patchUserType(id, patchUserTypeRequest, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.patchUserType(id, patchUserTypeRequest, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = base_1.operationServerMap['UsersApi.patchUserType']?.[index]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         *
          * @summary Update a user
          * @param {number} id The id of the user
          * @param {UpdateUserRequest} updateUserRequest The user which should be updated
@@ -14073,6 +14124,17 @@ const UsersApiFactory = function (configuration, basePath, axios) {
          */
         patchUserSettings(id, patchUserSettingsRequest, options) {
             return localVarFp.patchUserSettings(id, patchUserSettingsRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Update user type
+         * @param {number} id The id of the user
+         * @param {PatchUserTypeRequest} patchUserTypeRequest The user type to update to
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        patchUserType(id, patchUserTypeRequest, options) {
+            return localVarFp.patchUserType(id, patchUserTypeRequest, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -14520,6 +14582,18 @@ class UsersApi extends base_1.BaseAPI {
      */
     patchUserSettings(id, patchUserSettingsRequest, options) {
         return (0, exports.UsersApiFp)(this.configuration).patchUserSettings(id, patchUserSettingsRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Update user type
+     * @param {number} id The id of the user
+     * @param {PatchUserTypeRequest} patchUserTypeRequest The user type to update to
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    patchUserType(id, patchUserTypeRequest, options) {
+        return (0, exports.UsersApiFp)(this.configuration).patchUserType(id, patchUserTypeRequest, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
