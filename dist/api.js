@@ -12102,7 +12102,7 @@ const UsersApiAxiosParamCreator = function (configuration) {
          * @summary Get a list of all users
          * @param {number} [take] How many users the endpoint should return
          * @param {number} [skip] How many users should be skipped (for pagination)
-         * @param {string} [search] Filter based on first name
+         * @param {string} [search] Filter based on first name, last name, nickname &amp; email
          * @param {boolean} [active] Filter based if the user is active
          * @param {boolean} [ofAge] Filter based if the user is 18+
          * @param {number} [id] Filter based on user ID
@@ -13364,7 +13364,7 @@ const UsersApiFp = function (configuration) {
          * @summary Get a list of all users
          * @param {number} [take] How many users the endpoint should return
          * @param {number} [skip] How many users should be skipped (for pagination)
-         * @param {string} [search] Filter based on first name
+         * @param {string} [search] Filter based on first name, last name, nickname &amp; email
          * @param {boolean} [active] Filter based if the user is active
          * @param {boolean} [ofAge] Filter based if the user is 18+
          * @param {number} [id] Filter based on user ID
@@ -13878,7 +13878,7 @@ const UsersApiFactory = function (configuration, basePath, axios) {
          * @summary Get a list of all users
          * @param {number} [take] How many users the endpoint should return
          * @param {number} [skip] How many users should be skipped (for pagination)
-         * @param {string} [search] Filter based on first name
+         * @param {string} [search] Filter based on first name, last name, nickname &amp; email
          * @param {boolean} [active] Filter based if the user is active
          * @param {boolean} [ofAge] Filter based if the user is 18+
          * @param {number} [id] Filter based on user ID
@@ -14316,7 +14316,7 @@ class UsersApi extends base_1.BaseAPI {
      * @summary Get a list of all users
      * @param {number} [take] How many users the endpoint should return
      * @param {number} [skip] How many users should be skipped (for pagination)
-     * @param {string} [search] Filter based on first name
+     * @param {string} [search] Filter based on first name, last name, nickname &amp; email
      * @param {boolean} [active] Filter based if the user is active
      * @param {boolean} [ofAge] Filter based if the user is 18+
      * @param {number} [id] Filter based on user ID
