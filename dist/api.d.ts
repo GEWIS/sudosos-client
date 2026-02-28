@@ -5031,6 +5031,25 @@ export interface SubTransactionRowResponse {
 /**
  *
  * @export
+ * @interface TermsOfServiceResponse
+ */
+export interface TermsOfServiceResponse {
+    /**
+     * The terms of service version number.
+     * @type {string}
+     * @memberof TermsOfServiceResponse
+     */
+    'versionNumber': string;
+    /**
+     * The terms of service content.
+     * @type {string}
+     * @memberof TermsOfServiceResponse
+     */
+    'content': string;
+}
+/**
+ *
+ * @export
  * @interface TotalBalanceResponse
  */
 export interface TotalBalanceResponse {
@@ -12143,6 +12162,94 @@ export declare class SyncApi extends BaseAPI {
  */
 export declare const GetUserSyncResultsServiceEnum: {};
 export type GetUserSyncResultsServiceEnum = typeof GetUserSyncResultsServiceEnum[keyof typeof GetUserSyncResultsServiceEnum];
+/**
+ * TermsOfServiceApi - axios parameter creator
+ * @export
+ */
+export declare const TermsOfServiceApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Get the latest terms of service version
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getLatestTermsOfService: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get a terms of service version by version number
+     * @param {string} version The version of the terms of service to retrieve (e.g. \&quot;1.0\&quot;)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getTermsOfService: (version: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+};
+/**
+ * TermsOfServiceApi - functional programming interface
+ * @export
+ */
+export declare const TermsOfServiceApiFp: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Get the latest terms of service version
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getLatestTermsOfService(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TermsOfServiceResponse>>;
+    /**
+     *
+     * @summary Get a terms of service version by version number
+     * @param {string} version The version of the terms of service to retrieve (e.g. \&quot;1.0\&quot;)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getTermsOfService(version: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TermsOfServiceResponse>>;
+};
+/**
+ * TermsOfServiceApi - factory interface
+ * @export
+ */
+export declare const TermsOfServiceApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     *
+     * @summary Get the latest terms of service version
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getLatestTermsOfService(options?: any): AxiosPromise<TermsOfServiceResponse>;
+    /**
+     *
+     * @summary Get a terms of service version by version number
+     * @param {string} version The version of the terms of service to retrieve (e.g. \&quot;1.0\&quot;)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getTermsOfService(version: string, options?: any): AxiosPromise<TermsOfServiceResponse>;
+};
+/**
+ * TermsOfServiceApi - object-oriented interface
+ * @export
+ * @class TermsOfServiceApi
+ * @extends {BaseAPI}
+ */
+export declare class TermsOfServiceApi extends BaseAPI {
+    /**
+     *
+     * @summary Get the latest terms of service version
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TermsOfServiceApi
+     */
+    getLatestTermsOfService(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TermsOfServiceResponse, any, {}>>;
+    /**
+     *
+     * @summary Get a terms of service version by version number
+     * @param {string} version The version of the terms of service to retrieve (e.g. \&quot;1.0\&quot;)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TermsOfServiceApi
+     */
+    getTermsOfService(version: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TermsOfServiceResponse, any, {}>>;
+}
 /**
  * TestOperationsOfTheTestControllerApi - axios parameter creator
  * @export
