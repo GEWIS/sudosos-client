@@ -14,8 +14,8 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PayoutRequestsApiAxiosParamCreator = exports.GetAllInvoicesCurrentStateEnum = exports.InvoicesApi = exports.InvoicesApiFactory = exports.InvoicesApiFp = exports.InvoicesApiAxiosParamCreator = exports.InactiveAdministrativeCostsApi = exports.InactiveAdministrativeCostsApiFactory = exports.InactiveAdministrativeCostsApiFp = exports.InactiveAdministrativeCostsApiAxiosParamCreator = exports.FilesApi = exports.FilesApiFactory = exports.FilesApiFp = exports.FilesApiAxiosParamCreator = exports.EventsApi = exports.EventsApiFactory = exports.EventsApiFp = exports.EventsApiAxiosParamCreator = exports.GetFineReportPdfFileTypeEnum = exports.DebtorsApi = exports.DebtorsApiFactory = exports.DebtorsApiFp = exports.DebtorsApiAxiosParamCreator = exports.ContainersApi = exports.ContainersApiFactory = exports.ContainersApiFp = exports.ContainersApiAxiosParamCreator = exports.BannersApi = exports.BannersApiFactory = exports.BannersApiFp = exports.BannersApiAxiosParamCreator = exports.GetAllBalanceOrderDirectionEnum = exports.GetAllBalanceUserTypesEnum = exports.BalanceApi = exports.BalanceApiFactory = exports.BalanceApiFp = exports.BalanceApiAxiosParamCreator = exports.AuthenticateApi = exports.AuthenticateApiFactory = exports.AuthenticateApiFp = exports.AuthenticateApiAxiosParamCreator = exports.UserSettingsResponseLanguageEnum = exports.UpdateInvoiceRequestStateEnum = exports.QRStatusResponseStatusEnum = exports.PayoutRequestStatusRequestStateEnum = exports.PayoutRequestResponseStatusEnum = exports.PatchUserSettingsRequestLanguageEnum = exports.InvoiceStatusResponseStateEnum = exports.FinancialMutationResponseTypeEnum = exports.BasePayoutRequestResponseStatusEnum = void 0;
-exports.TransactionsApiFp = exports.TransactionsApiAxiosParamCreator = exports.TransactionSummariesApi = exports.TransactionSummariesApiFactory = exports.TransactionSummariesApiFp = exports.TransactionSummariesApiAxiosParamCreator = exports.TestOperationsOfTheTestControllerApi = exports.TestOperationsOfTheTestControllerApiFactory = exports.TestOperationsOfTheTestControllerApiFp = exports.TestOperationsOfTheTestControllerApiAxiosParamCreator = exports.GetUserSyncResultsServiceEnum = exports.SyncApi = exports.SyncApiFactory = exports.SyncApiFp = exports.SyncApiAxiosParamCreator = exports.StripeApi = exports.StripeApiFactory = exports.StripeApiFp = exports.StripeApiAxiosParamCreator = exports.ServerSettingsApi = exports.ServerSettingsApiFactory = exports.ServerSettingsApiFp = exports.ServerSettingsApiAxiosParamCreator = exports.SellerPayoutsApi = exports.SellerPayoutsApiFactory = exports.SellerPayoutsApiFp = exports.SellerPayoutsApiAxiosParamCreator = exports.RootApi = exports.RootApiFactory = exports.RootApiFp = exports.RootApiAxiosParamCreator = exports.RbacApi = exports.RbacApiFactory = exports.RbacApiFp = exports.RbacApiAxiosParamCreator = exports.ProductsApi = exports.ProductsApiFactory = exports.ProductsApiFp = exports.ProductsApiAxiosParamCreator = exports.ProductCategoriesApi = exports.ProductCategoriesApiFactory = exports.ProductCategoriesApiFp = exports.ProductCategoriesApiAxiosParamCreator = exports.PointofsaleApi = exports.PointofsaleApiFactory = exports.PointofsaleApiFp = exports.PointofsaleApiAxiosParamCreator = exports.PayoutRequestsApi = exports.PayoutRequestsApiFactory = exports.PayoutRequestsApiFp = void 0;
-exports.WriteoffsApi = exports.WriteoffsApiFactory = exports.WriteoffsApiFp = exports.WriteoffsApiAxiosParamCreator = exports.VouchergroupsApi = exports.VouchergroupsApiFactory = exports.VouchergroupsApiFp = exports.VouchergroupsApiAxiosParamCreator = exports.VatGroupsApi = exports.VatGroupsApiFactory = exports.VatGroupsApiFp = exports.VatGroupsApiAxiosParamCreator = exports.GetUsersSalesReportPdfFileTypeEnum = exports.GetUsersPurchaseReportPdfFileTypeEnum = exports.GetAllUsersTypeEnum = exports.UsersApi = exports.UsersApiFactory = exports.UsersApiFp = exports.UsersApiAxiosParamCreator = exports.UserNotificationPreferencesApi = exports.UserNotificationPreferencesApiFactory = exports.UserNotificationPreferencesApiFp = exports.UserNotificationPreferencesApiAxiosParamCreator = exports.TransfersApi = exports.TransfersApiFactory = exports.TransfersApiFp = exports.TransfersApiAxiosParamCreator = exports.TransactionsApi = exports.TransactionsApiFactory = void 0;
+exports.TransactionSummariesApiFp = exports.TransactionSummariesApiAxiosParamCreator = exports.TestOperationsOfTheTestControllerApi = exports.TestOperationsOfTheTestControllerApiFactory = exports.TestOperationsOfTheTestControllerApiFp = exports.TestOperationsOfTheTestControllerApiAxiosParamCreator = exports.TermsOfServiceApi = exports.TermsOfServiceApiFactory = exports.TermsOfServiceApiFp = exports.TermsOfServiceApiAxiosParamCreator = exports.GetUserSyncResultsServiceEnum = exports.SyncApi = exports.SyncApiFactory = exports.SyncApiFp = exports.SyncApiAxiosParamCreator = exports.StripeApi = exports.StripeApiFactory = exports.StripeApiFp = exports.StripeApiAxiosParamCreator = exports.ServerSettingsApi = exports.ServerSettingsApiFactory = exports.ServerSettingsApiFp = exports.ServerSettingsApiAxiosParamCreator = exports.SellerPayoutsApi = exports.SellerPayoutsApiFactory = exports.SellerPayoutsApiFp = exports.SellerPayoutsApiAxiosParamCreator = exports.RootApi = exports.RootApiFactory = exports.RootApiFp = exports.RootApiAxiosParamCreator = exports.RbacApi = exports.RbacApiFactory = exports.RbacApiFp = exports.RbacApiAxiosParamCreator = exports.ProductsApi = exports.ProductsApiFactory = exports.ProductsApiFp = exports.ProductsApiAxiosParamCreator = exports.ProductCategoriesApi = exports.ProductCategoriesApiFactory = exports.ProductCategoriesApiFp = exports.ProductCategoriesApiAxiosParamCreator = exports.PointofsaleApi = exports.PointofsaleApiFactory = exports.PointofsaleApiFp = exports.PointofsaleApiAxiosParamCreator = exports.PayoutRequestsApi = exports.PayoutRequestsApiFactory = exports.PayoutRequestsApiFp = void 0;
+exports.WriteoffsApi = exports.WriteoffsApiFactory = exports.WriteoffsApiFp = exports.WriteoffsApiAxiosParamCreator = exports.VouchergroupsApi = exports.VouchergroupsApiFactory = exports.VouchergroupsApiFp = exports.VouchergroupsApiAxiosParamCreator = exports.VatGroupsApi = exports.VatGroupsApiFactory = exports.VatGroupsApiFp = exports.VatGroupsApiAxiosParamCreator = exports.GetUsersSalesReportPdfFileTypeEnum = exports.GetUsersPurchaseReportPdfFileTypeEnum = exports.GetAllUsersTypeEnum = exports.UsersApi = exports.UsersApiFactory = exports.UsersApiFp = exports.UsersApiAxiosParamCreator = exports.UserNotificationPreferencesApi = exports.UserNotificationPreferencesApiFactory = exports.UserNotificationPreferencesApiFp = exports.UserNotificationPreferencesApiAxiosParamCreator = exports.TransfersApi = exports.TransfersApiFactory = exports.TransfersApiFp = exports.TransfersApiAxiosParamCreator = exports.TransactionsApi = exports.TransactionsApiFactory = exports.TransactionsApiFp = exports.TransactionsApiAxiosParamCreator = exports.TransactionSummariesApi = exports.TransactionSummariesApiFactory = void 0;
 const axios_1 = require("axios");
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -10304,6 +10304,168 @@ exports.SyncApi = SyncApi;
  * @export
  */
 exports.GetUserSyncResultsServiceEnum = {};
+/**
+ * TermsOfServiceApi - axios parameter creator
+ * @export
+ */
+const TermsOfServiceApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         *
+         * @summary Get the latest terms of service version
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getLatestTermsOfService: async (options = {}) => {
+            const localVarPath = `/terms-of-service/latest`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get a terms of service version by version number
+         * @param {string} version The version of the terms of service to retrieve (e.g. \&quot;1.0\&quot;)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTermsOfService: async (version, options = {}) => {
+            // verify required parameter 'version' is not null or undefined
+            (0, common_1.assertParamExists)('getTermsOfService', 'version', version);
+            const localVarPath = `/terms-of-service`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication JWT required
+            // http bearer authentication required
+            await (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            if (version !== undefined) {
+                localVarQueryParameter['version'] = version;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    };
+};
+exports.TermsOfServiceApiAxiosParamCreator = TermsOfServiceApiAxiosParamCreator;
+/**
+ * TermsOfServiceApi - functional programming interface
+ * @export
+ */
+const TermsOfServiceApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.TermsOfServiceApiAxiosParamCreator)(configuration);
+    return {
+        /**
+         *
+         * @summary Get the latest terms of service version
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getLatestTermsOfService(options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getLatestTermsOfService(options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = base_1.operationServerMap['TermsOfServiceApi.getLatestTermsOfService']?.[index]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Get a terms of service version by version number
+         * @param {string} version The version of the terms of service to retrieve (e.g. \&quot;1.0\&quot;)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getTermsOfService(version, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getTermsOfService(version, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = base_1.operationServerMap['TermsOfServiceApi.getTermsOfService']?.[index]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+    };
+};
+exports.TermsOfServiceApiFp = TermsOfServiceApiFp;
+/**
+ * TermsOfServiceApi - factory interface
+ * @export
+ */
+const TermsOfServiceApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.TermsOfServiceApiFp)(configuration);
+    return {
+        /**
+         *
+         * @summary Get the latest terms of service version
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getLatestTermsOfService(options) {
+            return localVarFp.getLatestTermsOfService(options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get a terms of service version by version number
+         * @param {string} version The version of the terms of service to retrieve (e.g. \&quot;1.0\&quot;)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTermsOfService(version, options) {
+            return localVarFp.getTermsOfService(version, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+exports.TermsOfServiceApiFactory = TermsOfServiceApiFactory;
+/**
+ * TermsOfServiceApi - object-oriented interface
+ * @export
+ * @class TermsOfServiceApi
+ * @extends {BaseAPI}
+ */
+class TermsOfServiceApi extends base_1.BaseAPI {
+    /**
+     *
+     * @summary Get the latest terms of service version
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TermsOfServiceApi
+     */
+    getLatestTermsOfService(options) {
+        return (0, exports.TermsOfServiceApiFp)(this.configuration).getLatestTermsOfService(options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get a terms of service version by version number
+     * @param {string} version The version of the terms of service to retrieve (e.g. \&quot;1.0\&quot;)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TermsOfServiceApi
+     */
+    getTermsOfService(version, options) {
+        return (0, exports.TermsOfServiceApiFp)(this.configuration).getTermsOfService(version, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+exports.TermsOfServiceApi = TermsOfServiceApi;
 /**
  * TestOperationsOfTheTestControllerApi - axios parameter creator
  * @export
