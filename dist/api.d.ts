@@ -431,6 +431,12 @@ export interface BalanceResponse {
      * @memberof BalanceResponse
      */
     'lastTransferId'?: number;
+    /**
+     * The external member ID of the user (e.g., GEWIS member ID), if any
+     * @type {number}
+     * @memberof BalanceResponse
+     */
+    'memberId'?: number;
 }
 /**
  * API Request for creating a `banner` entity.
