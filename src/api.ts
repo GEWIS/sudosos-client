@@ -441,6 +441,12 @@ export interface BalanceResponse {
      * @memberof BalanceResponse
      */
     'lastTransferId'?: number;
+    /**
+     * The external member ID of the user (e.g., GEWIS member ID), if any
+     * @type {number}
+     * @memberof BalanceResponse
+     */
+    'memberId'?: number;
 }
 /**
  * API Request for creating a `banner` entity.
@@ -5060,6 +5066,25 @@ export interface SubTransactionRowResponse {
      * @memberof SubTransactionRowResponse
      */
     'totalPriceInclVat': DineroObjectResponse;
+}
+/**
+ * 
+ * @export
+ * @interface TermsOfServiceResponse
+ */
+export interface TermsOfServiceResponse {
+    /**
+     * The terms of service version number.
+     * @type {string}
+     * @memberof TermsOfServiceResponse
+     */
+    'versionNumber': string;
+    /**
+     * The terms of service content.
+     * @type {string}
+     * @memberof TermsOfServiceResponse
+     */
+    'content': string;
 }
 /**
  * 
@@ -18175,6 +18200,183 @@ export class SyncApi extends BaseAPI {
 export const GetUserSyncResultsServiceEnum = {
 } as const;
 export type GetUserSyncResultsServiceEnum = typeof GetUserSyncResultsServiceEnum[keyof typeof GetUserSyncResultsServiceEnum];
+
+
+/**
+ * TermsOfServiceApi - axios parameter creator
+ * @export
+ */
+export const TermsOfServiceApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Get the latest terms of service version
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getLatestTermsOfService: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/terms-of-service/latest`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get a terms of service version by version number
+         * @param {string} version The version of the terms of service to retrieve (e.g. \&quot;1.0\&quot;)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTermsOfService: async (version: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'version' is not null or undefined
+            assertParamExists('getTermsOfService', 'version', version)
+            const localVarPath = `/terms-of-service`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (version !== undefined) {
+                localVarQueryParameter['version'] = version;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * TermsOfServiceApi - functional programming interface
+ * @export
+ */
+export const TermsOfServiceApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = TermsOfServiceApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Get the latest terms of service version
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getLatestTermsOfService(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TermsOfServiceResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getLatestTermsOfService(options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['TermsOfServiceApi.getLatestTermsOfService']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get a terms of service version by version number
+         * @param {string} version The version of the terms of service to retrieve (e.g. \&quot;1.0\&quot;)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getTermsOfService(version: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TermsOfServiceResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getTermsOfService(version, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['TermsOfServiceApi.getTermsOfService']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * TermsOfServiceApi - factory interface
+ * @export
+ */
+export const TermsOfServiceApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = TermsOfServiceApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Get the latest terms of service version
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getLatestTermsOfService(options?: any): AxiosPromise<TermsOfServiceResponse> {
+            return localVarFp.getLatestTermsOfService(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get a terms of service version by version number
+         * @param {string} version The version of the terms of service to retrieve (e.g. \&quot;1.0\&quot;)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTermsOfService(version: string, options?: any): AxiosPromise<TermsOfServiceResponse> {
+            return localVarFp.getTermsOfService(version, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * TermsOfServiceApi - object-oriented interface
+ * @export
+ * @class TermsOfServiceApi
+ * @extends {BaseAPI}
+ */
+export class TermsOfServiceApi extends BaseAPI {
+    /**
+     * 
+     * @summary Get the latest terms of service version
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TermsOfServiceApi
+     */
+    public getLatestTermsOfService(options?: RawAxiosRequestConfig) {
+        return TermsOfServiceApiFp(this.configuration).getLatestTermsOfService(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get a terms of service version by version number
+     * @param {string} version The version of the terms of service to retrieve (e.g. \&quot;1.0\&quot;)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TermsOfServiceApi
+     */
+    public getTermsOfService(version: string, options?: RawAxiosRequestConfig) {
+        return TermsOfServiceApiFp(this.configuration).getTermsOfService(version, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
 
 
 /**
