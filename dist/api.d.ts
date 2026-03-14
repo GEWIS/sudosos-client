@@ -2560,50 +2560,6 @@ export interface FineResponse {
 /**
  *
  * @export
- * @interface GEWISAuthenticationPinRequest
- */
-export interface GEWISAuthenticationPinRequest {
-    /**
-     *
-     * @type {number}
-     * @memberof GEWISAuthenticationPinRequest
-     */
-    'gewisId': number;
-    /**
-     *
-     * @type {string}
-     * @memberof GEWISAuthenticationPinRequest
-     */
-    'pin': string;
-}
-/**
- *
- * @export
- * @interface GEWISAuthenticationSecurePinRequest
- */
-export interface GEWISAuthenticationSecurePinRequest {
-    /**
-     *
-     * @type {number}
-     * @memberof GEWISAuthenticationSecurePinRequest
-     */
-    'gewisId': number;
-    /**
-     *
-     * @type {string}
-     * @memberof GEWISAuthenticationSecurePinRequest
-     */
-    'pin': string;
-    /**
-     * POS identifier
-     * @type {number}
-     * @memberof GEWISAuthenticationSecurePinRequest
-     */
-    'posId': number;
-}
-/**
- *
- * @export
  * @interface GetAllBalanceUserTypesParameterInner
  */
 export interface GetAllBalanceUserTypesParameterInner {
@@ -3140,6 +3096,50 @@ export interface InvoiceUserResponse {
      * @memberof InvoiceUserResponse
      */
     'automatic': boolean;
+}
+/**
+ *
+ * @export
+ * @interface MemberAuthenticationPinRequest
+ */
+export interface MemberAuthenticationPinRequest {
+    /**
+     *
+     * @type {number}
+     * @memberof MemberAuthenticationPinRequest
+     */
+    'memberId': number;
+    /**
+     *
+     * @type {string}
+     * @memberof MemberAuthenticationPinRequest
+     */
+    'pin': string;
+}
+/**
+ *
+ * @export
+ * @interface MemberAuthenticationSecurePinRequest
+ */
+export interface MemberAuthenticationSecurePinRequest {
+    /**
+     *
+     * @type {number}
+     * @memberof MemberAuthenticationSecurePinRequest
+     */
+    'memberId': number;
+    /**
+     *
+     * @type {string}
+     * @memberof MemberAuthenticationSecurePinRequest
+     */
+    'pin': string;
+    /**
+     * POS identifier
+     * @type {number}
+     * @memberof MemberAuthenticationSecurePinRequest
+     */
+    'posId': number;
 }
 /**
  *
@@ -6915,15 +6915,6 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
     gewisLDAPAuthentication: (authenticationLDAPRequest: AuthenticationLDAPRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary PIN login and hand out token.
-     * @param {GEWISAuthenticationPinRequest} gEWISAuthenticationPinRequest The PIN login.
-     * @param {*} [options] Override http request option.
-     * @deprecated
-     * @throws {RequiredError}
-     */
-    gewisPinAuthentication: (gEWISAuthenticationPinRequest: GEWISAuthenticationPinRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
      * @summary GEWIS login verification based on gewisweb JWT tokens. This method verifies the validity of the gewisweb JWT token, and returns a SudoSOS token if the GEWIS token is valid.
      * @param {GewiswebAuthenticationRequest} gewiswebAuthenticationRequest The mock login.
      * @param {*} [options] Override http request option.
@@ -6954,6 +6945,15 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
      * @throws {RequiredError}
      */
     localAuthentication: (authenticationLocalRequest: AuthenticationLocalRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary PIN login for members using memberId.
+     * @param {MemberAuthenticationPinRequest} memberAuthenticationPinRequest The PIN login.
+     * @param {*} [options] Override http request option.
+     * @deprecated
+     * @throws {RequiredError}
+     */
+    memberPinAuthentication: (memberAuthenticationPinRequest: MemberAuthenticationPinRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Mock login and hand out token.
@@ -7013,12 +7013,12 @@ export declare const AuthenticateApiAxiosParamCreator: (configuration?: Configur
     secureEanAuthentication: (authenticationSecureEanRequest: AuthenticationSecureEanRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary Secure GEWIS PIN authentication that requires POS user authentication
-     * @param {GEWISAuthenticationSecurePinRequest} gEWISAuthenticationSecurePinRequest The PIN login request with posId
+     * @summary Secure member PIN authentication that requires POS user authentication
+     * @param {MemberAuthenticationSecurePinRequest} memberAuthenticationSecurePinRequest The PIN login request with posId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    secureGewisPINAuthentication: (gEWISAuthenticationSecurePinRequest: GEWISAuthenticationSecurePinRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    secureMemberPINAuthentication: (memberAuthenticationSecurePinRequest: MemberAuthenticationSecurePinRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Secure NFC authentication that requires POS user authentication
@@ -7113,15 +7113,6 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
     gewisLDAPAuthentication(authenticationLDAPRequest: AuthenticationLDAPRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
     /**
      *
-     * @summary PIN login and hand out token.
-     * @param {GEWISAuthenticationPinRequest} gEWISAuthenticationPinRequest The PIN login.
-     * @param {*} [options] Override http request option.
-     * @deprecated
-     * @throws {RequiredError}
-     */
-    gewisPinAuthentication(gEWISAuthenticationPinRequest: GEWISAuthenticationPinRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
-    /**
-     *
      * @summary GEWIS login verification based on gewisweb JWT tokens. This method verifies the validity of the gewisweb JWT token, and returns a SudoSOS token if the GEWIS token is valid.
      * @param {GewiswebAuthenticationRequest} gewiswebAuthenticationRequest The mock login.
      * @param {*} [options] Override http request option.
@@ -7152,6 +7143,15 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     localAuthentication(authenticationLocalRequest: AuthenticationLocalRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
+    /**
+     *
+     * @summary PIN login for members using memberId.
+     * @param {MemberAuthenticationPinRequest} memberAuthenticationPinRequest The PIN login.
+     * @param {*} [options] Override http request option.
+     * @deprecated
+     * @throws {RequiredError}
+     */
+    memberPinAuthentication(memberAuthenticationPinRequest: MemberAuthenticationPinRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
     /**
      *
      * @summary Mock login and hand out token.
@@ -7211,12 +7211,12 @@ export declare const AuthenticateApiFp: (configuration?: Configuration) => {
     secureEanAuthentication(authenticationSecureEanRequest: AuthenticationSecureEanRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
     /**
      *
-     * @summary Secure GEWIS PIN authentication that requires POS user authentication
-     * @param {GEWISAuthenticationSecurePinRequest} gEWISAuthenticationSecurePinRequest The PIN login request with posId
+     * @summary Secure member PIN authentication that requires POS user authentication
+     * @param {MemberAuthenticationSecurePinRequest} memberAuthenticationSecurePinRequest The PIN login request with posId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    secureGewisPINAuthentication(gEWISAuthenticationSecurePinRequest: GEWISAuthenticationSecurePinRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
+    secureMemberPINAuthentication(memberAuthenticationSecurePinRequest: MemberAuthenticationSecurePinRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationResponse>>;
     /**
      *
      * @summary Secure NFC authentication that requires POS user authentication
@@ -7311,15 +7311,6 @@ export declare const AuthenticateApiFactory: (configuration?: Configuration, bas
     gewisLDAPAuthentication(authenticationLDAPRequest: AuthenticationLDAPRequest, options?: any): AxiosPromise<AuthenticationResponse>;
     /**
      *
-     * @summary PIN login and hand out token.
-     * @param {GEWISAuthenticationPinRequest} gEWISAuthenticationPinRequest The PIN login.
-     * @param {*} [options] Override http request option.
-     * @deprecated
-     * @throws {RequiredError}
-     */
-    gewisPinAuthentication(gEWISAuthenticationPinRequest: GEWISAuthenticationPinRequest, options?: any): AxiosPromise<AuthenticationResponse>;
-    /**
-     *
      * @summary GEWIS login verification based on gewisweb JWT tokens. This method verifies the validity of the gewisweb JWT token, and returns a SudoSOS token if the GEWIS token is valid.
      * @param {GewiswebAuthenticationRequest} gewiswebAuthenticationRequest The mock login.
      * @param {*} [options] Override http request option.
@@ -7350,6 +7341,15 @@ export declare const AuthenticateApiFactory: (configuration?: Configuration, bas
      * @throws {RequiredError}
      */
     localAuthentication(authenticationLocalRequest: AuthenticationLocalRequest, options?: any): AxiosPromise<AuthenticationResponse>;
+    /**
+     *
+     * @summary PIN login for members using memberId.
+     * @param {MemberAuthenticationPinRequest} memberAuthenticationPinRequest The PIN login.
+     * @param {*} [options] Override http request option.
+     * @deprecated
+     * @throws {RequiredError}
+     */
+    memberPinAuthentication(memberAuthenticationPinRequest: MemberAuthenticationPinRequest, options?: any): AxiosPromise<AuthenticationResponse>;
     /**
      *
      * @summary Mock login and hand out token.
@@ -7409,12 +7409,12 @@ export declare const AuthenticateApiFactory: (configuration?: Configuration, bas
     secureEanAuthentication(authenticationSecureEanRequest: AuthenticationSecureEanRequest, options?: any): AxiosPromise<AuthenticationResponse>;
     /**
      *
-     * @summary Secure GEWIS PIN authentication that requires POS user authentication
-     * @param {GEWISAuthenticationSecurePinRequest} gEWISAuthenticationSecurePinRequest The PIN login request with posId
+     * @summary Secure member PIN authentication that requires POS user authentication
+     * @param {MemberAuthenticationSecurePinRequest} memberAuthenticationSecurePinRequest The PIN login request with posId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    secureGewisPINAuthentication(gEWISAuthenticationSecurePinRequest: GEWISAuthenticationSecurePinRequest, options?: any): AxiosPromise<AuthenticationResponse>;
+    secureMemberPINAuthentication(memberAuthenticationSecurePinRequest: MemberAuthenticationSecurePinRequest, options?: any): AxiosPromise<AuthenticationResponse>;
     /**
      *
      * @summary Secure NFC authentication that requires POS user authentication
@@ -7520,16 +7520,6 @@ export declare class AuthenticateApi extends BaseAPI {
     gewisLDAPAuthentication(authenticationLDAPRequest: AuthenticationLDAPRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
     /**
      *
-     * @summary PIN login and hand out token.
-     * @param {GEWISAuthenticationPinRequest} gEWISAuthenticationPinRequest The PIN login.
-     * @param {*} [options] Override http request option.
-     * @deprecated
-     * @throws {RequiredError}
-     * @memberof AuthenticateApi
-     */
-    gewisPinAuthentication(gEWISAuthenticationPinRequest: GEWISAuthenticationPinRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
-    /**
-     *
      * @summary GEWIS login verification based on gewisweb JWT tokens. This method verifies the validity of the gewisweb JWT token, and returns a SudoSOS token if the GEWIS token is valid.
      * @param {GewiswebAuthenticationRequest} gewiswebAuthenticationRequest The mock login.
      * @param {*} [options] Override http request option.
@@ -7564,6 +7554,16 @@ export declare class AuthenticateApi extends BaseAPI {
      * @memberof AuthenticateApi
      */
     localAuthentication(authenticationLocalRequest: AuthenticationLocalRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
+    /**
+     *
+     * @summary PIN login for members using memberId.
+     * @param {MemberAuthenticationPinRequest} memberAuthenticationPinRequest The PIN login.
+     * @param {*} [options] Override http request option.
+     * @deprecated
+     * @throws {RequiredError}
+     * @memberof AuthenticateApi
+     */
+    memberPinAuthentication(memberAuthenticationPinRequest: MemberAuthenticationPinRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
     /**
      *
      * @summary Mock login and hand out token.
@@ -7630,13 +7630,13 @@ export declare class AuthenticateApi extends BaseAPI {
     secureEanAuthentication(authenticationSecureEanRequest: AuthenticationSecureEanRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
     /**
      *
-     * @summary Secure GEWIS PIN authentication that requires POS user authentication
-     * @param {GEWISAuthenticationSecurePinRequest} gEWISAuthenticationSecurePinRequest The PIN login request with posId
+     * @summary Secure member PIN authentication that requires POS user authentication
+     * @param {MemberAuthenticationSecurePinRequest} memberAuthenticationSecurePinRequest The PIN login request with posId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthenticateApi
      */
-    secureGewisPINAuthentication(gEWISAuthenticationSecurePinRequest: GEWISAuthenticationSecurePinRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
+    secureMemberPINAuthentication(memberAuthenticationSecurePinRequest: MemberAuthenticationSecurePinRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthenticationResponse, any, {}>>;
     /**
      *
      * @summary Secure NFC authentication that requires POS user authentication
