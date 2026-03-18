@@ -13175,6 +13175,14 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
     getOrganMembers: (id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Get users recently charged by the caller via an authenticated point of sale. Returns distinct buyers ordered by most recent transaction first, intended for quick suggestions in the authenticated POS flow.
+     * @param {number} [take] Maximum number of users to return (default 50)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getRecentlyChargedUsers: (take?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Get all roles assigned to the user.
      * @param {number} id The id of the user to get the roles from
      * @param {*} [options] Override http request option.
@@ -13529,6 +13537,14 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
     getOrganMembers(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUserResponse>>;
     /**
      *
+     * @summary Get users recently charged by the caller via an authenticated point of sale. Returns distinct buyers ordered by most recent transaction first, intended for quick suggestions in the authenticated POS flow.
+     * @param {number} [take] Maximum number of users to return (default 50)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getRecentlyChargedUsers(take?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UserResponse>>>;
+    /**
+     *
      * @summary Get all roles assigned to the user.
      * @param {number} id The id of the user to get the roles from
      * @param {*} [options] Override http request option.
@@ -13881,6 +13897,14 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
      * @throws {RequiredError}
      */
     getOrganMembers(id: number, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedUserResponse>;
+    /**
+     *
+     * @summary Get users recently charged by the caller via an authenticated point of sale. Returns distinct buyers ordered by most recent transaction first, intended for quick suggestions in the authenticated POS flow.
+     * @param {number} [take] Maximum number of users to return (default 50)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getRecentlyChargedUsers(take?: number, options?: any): AxiosPromise<Array<UserResponse>>;
     /**
      *
      * @summary Get all roles assigned to the user.
@@ -14249,6 +14273,15 @@ export declare class UsersApi extends BaseAPI {
      * @memberof UsersApi
      */
     getOrganMembers(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedUserResponse, any, {}>>;
+    /**
+     *
+     * @summary Get users recently charged by the caller via an authenticated point of sale. Returns distinct buyers ordered by most recent transaction first, intended for quick suggestions in the authenticated POS flow.
+     * @param {number} [take] Maximum number of users to return (default 50)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    getRecentlyChargedUsers(take?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserResponse[], any, {}>>;
     /**
      *
      * @summary Get all roles assigned to the user.
