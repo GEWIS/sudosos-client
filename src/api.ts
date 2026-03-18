@@ -5446,6 +5446,25 @@ export interface TransactionResponse {
 /**
  * 
  * @export
+ * @interface TransferAggregateResponse
+ */
+export interface TransferAggregateResponse {
+    /**
+     * 
+     * @type {DineroObjectResponse}
+     * @memberof TransferAggregateResponse
+     */
+    'total': DineroObjectResponse;
+    /**
+     * The number of matching transfers
+     * @type {number}
+     * @memberof TransferAggregateResponse
+     */
+    'count': number;
+}
+/**
+ * 
+ * @export
  * @interface TransferRequest
  */
 export interface TransferRequest {
@@ -19503,6 +19522,65 @@ export const TransfersApiAxiosParamCreator = function (configuration?: Configura
         },
         /**
          * 
+         * @summary Returns the aggregate (sum and count) of transfers matching the given filters
+         * @param {string} [fromDate] Start date for selected transfers (inclusive)
+         * @param {string} [tillDate] End date for selected transfers (exclusive)
+         * @param {number} [fromId] Filter transfers from this user ID
+         * @param {number} [toId] Filter transfers to this user ID
+         * @param {string} [category] Restrict to a specific transfer category: deposit, payoutRequest, invoice, fine, waivedFines, writeOff, inactiveAdministrativeCost
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTransferAggregate: async (fromDate?: string, tillDate?: string, fromId?: number, toId?: number, category?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/transfers/aggregate`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (fromDate !== undefined) {
+                localVarQueryParameter['fromDate'] = fromDate;
+            }
+
+            if (tillDate !== undefined) {
+                localVarQueryParameter['tillDate'] = tillDate;
+            }
+
+            if (fromId !== undefined) {
+                localVarQueryParameter['fromId'] = fromId;
+            }
+
+            if (toId !== undefined) {
+                localVarQueryParameter['toId'] = toId;
+            }
+
+            if (category !== undefined) {
+                localVarQueryParameter['category'] = category;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Get the PDF of the transfer
          * @param {number} id The transfer ID
          * @param {*} [options] Override http request option.
@@ -19606,6 +19684,23 @@ export const TransfersApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Returns the aggregate (sum and count) of transfers matching the given filters
+         * @param {string} [fromDate] Start date for selected transfers (inclusive)
+         * @param {string} [tillDate] End date for selected transfers (exclusive)
+         * @param {number} [fromId] Filter transfers from this user ID
+         * @param {number} [toId] Filter transfers to this user ID
+         * @param {string} [category] Restrict to a specific transfer category: deposit, payoutRequest, invoice, fine, waivedFines, writeOff, inactiveAdministrativeCost
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getTransferAggregate(fromDate?: string, tillDate?: string, fromId?: number, toId?: number, category?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransferAggregateResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getTransferAggregate(fromDate, tillDate, fromId, toId, category, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['TransfersApi.getTransferAggregate']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Get the PDF of the transfer
          * @param {number} id The transfer ID
          * @param {*} [options] Override http request option.
@@ -19669,6 +19764,20 @@ export const TransfersApiFactory = function (configuration?: Configuration, base
          */
         getSingleTransfer(id: number, options?: any): AxiosPromise<TransferResponse> {
             return localVarFp.getSingleTransfer(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Returns the aggregate (sum and count) of transfers matching the given filters
+         * @param {string} [fromDate] Start date for selected transfers (inclusive)
+         * @param {string} [tillDate] End date for selected transfers (exclusive)
+         * @param {number} [fromId] Filter transfers from this user ID
+         * @param {number} [toId] Filter transfers to this user ID
+         * @param {string} [category] Restrict to a specific transfer category: deposit, payoutRequest, invoice, fine, waivedFines, writeOff, inactiveAdministrativeCost
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTransferAggregate(fromDate?: string, tillDate?: string, fromId?: number, toId?: number, category?: string, options?: any): AxiosPromise<TransferAggregateResponse> {
+            return localVarFp.getTransferAggregate(fromDate, tillDate, fromId, toId, category, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -19739,6 +19848,22 @@ export class TransfersApi extends BaseAPI {
      */
     public getSingleTransfer(id: number, options?: RawAxiosRequestConfig) {
         return TransfersApiFp(this.configuration).getSingleTransfer(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Returns the aggregate (sum and count) of transfers matching the given filters
+     * @param {string} [fromDate] Start date for selected transfers (inclusive)
+     * @param {string} [tillDate] End date for selected transfers (exclusive)
+     * @param {number} [fromId] Filter transfers from this user ID
+     * @param {number} [toId] Filter transfers to this user ID
+     * @param {string} [category] Restrict to a specific transfer category: deposit, payoutRequest, invoice, fine, waivedFines, writeOff, inactiveAdministrativeCost
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TransfersApi
+     */
+    public getTransferAggregate(fromDate?: string, tillDate?: string, fromId?: number, toId?: number, category?: string, options?: RawAxiosRequestConfig) {
+        return TransfersApiFp(this.configuration).getTransferAggregate(fromDate, tillDate, fromId, toId, category, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
