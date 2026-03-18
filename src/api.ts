@@ -20585,6 +20585,45 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
+         * @summary Get users recently charged by the caller via an authenticated point of sale. Returns distinct buyers ordered by most recent transaction first, intended for quick suggestions in the authenticated POS flow.
+         * @param {number} [take] Maximum number of users to return (default 50)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getRecentlyChargedUsers: async (take?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/users/recently-charged`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (take !== undefined) {
+                localVarQueryParameter['take'] = take;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Get all roles assigned to the user.
          * @param {number} id The id of the user to get the roles from
          * @param {*} [options] Override http request option.
@@ -21932,6 +21971,19 @@ export const UsersApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get users recently charged by the caller via an authenticated point of sale. Returns distinct buyers ordered by most recent transaction first, intended for quick suggestions in the authenticated POS flow.
+         * @param {number} [take] Maximum number of users to return (default 50)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getRecentlyChargedUsers(take?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UserResponse>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getRecentlyChargedUsers(take, options);
+            const index = configuration?.serverIndex ?? 0;
+            const operationBasePath = operationServerMap['UsersApi.getRecentlyChargedUsers']?.[index]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Get all roles assigned to the user.
          * @param {number} id The id of the user to get the roles from
          * @param {*} [options] Override http request option.
@@ -22434,6 +22486,16 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
+         * @summary Get users recently charged by the caller via an authenticated point of sale. Returns distinct buyers ordered by most recent transaction first, intended for quick suggestions in the authenticated POS flow.
+         * @param {number} [take] Maximum number of users to return (default 50)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getRecentlyChargedUsers(take?: number, options?: any): AxiosPromise<Array<UserResponse>> {
+            return localVarFp.getRecentlyChargedUsers(take, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Get all roles assigned to the user.
          * @param {number} id The id of the user to get the roles from
          * @param {*} [options] Override http request option.
@@ -22884,6 +22946,18 @@ export class UsersApi extends BaseAPI {
      */
     public getOrganMembers(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).getOrganMembers(id, take, skip, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get users recently charged by the caller via an authenticated point of sale. Returns distinct buyers ordered by most recent transaction first, intended for quick suggestions in the authenticated POS flow.
+     * @param {number} [take] Maximum number of users to return (default 50)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    public getRecentlyChargedUsers(take?: number, options?: RawAxiosRequestConfig) {
+        return UsersApiFp(this.configuration).getRecentlyChargedUsers(take, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
