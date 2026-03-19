@@ -938,6 +938,12 @@ export interface BaseInvoiceResponse {
      */
     'transfer'?: TransferResponse;
     /**
+     * 
+     * @type {TransferResponse}
+     * @memberof BaseInvoiceResponse
+     */
+    'creditTransfer'?: TransferResponse;
+    /**
      * Pdf url path linked to the invoice
      * @type {string}
      * @memberof BaseInvoiceResponse
@@ -2907,6 +2913,12 @@ export interface InvoiceResponse {
      */
     'transfer'?: TransferResponse;
     /**
+     * 
+     * @type {TransferResponse}
+     * @memberof InvoiceResponse
+     */
+    'creditTransfer'?: TransferResponse;
+    /**
      * Pdf url path linked to the invoice
      * @type {string}
      * @memberof InvoiceResponse
@@ -3027,6 +3039,12 @@ export interface InvoiceResponseTypes {
      * @memberof InvoiceResponseTypes
      */
     'transfer'?: TransferResponse;
+    /**
+     * 
+     * @type {TransferResponse}
+     * @memberof InvoiceResponseTypes
+     */
+    'creditTransfer'?: TransferResponse;
     /**
      * Pdf url path linked to the invoice
      * @type {string}
