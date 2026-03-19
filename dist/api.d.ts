@@ -5413,6 +5413,25 @@ export interface TransactionResponse {
 /**
  *
  * @export
+ * @interface TransferAggregateResponse
+ */
+export interface TransferAggregateResponse {
+    /**
+     *
+     * @type {DineroObjectResponse}
+     * @memberof TransferAggregateResponse
+     */
+    'total': DineroObjectResponse;
+    /**
+     * The number of matching transfers
+     * @type {number}
+     * @memberof TransferAggregateResponse
+     */
+    'count': number;
+}
+/**
+ *
+ * @export
  * @interface TransferRequest
  */
 export interface TransferRequest {
@@ -12754,6 +12773,18 @@ export declare const TransfersApiAxiosParamCreator: (configuration?: Configurati
     getSingleTransfer: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Returns the aggregate (sum and count) of transfers matching the given filters
+     * @param {string} [fromDate] Start date for selected transfers (inclusive)
+     * @param {string} [tillDate] End date for selected transfers (exclusive)
+     * @param {number} [fromId] Filter transfers from this user ID
+     * @param {number} [toId] Filter transfers to this user ID
+     * @param {string} [category] Restrict to a specific transfer category: deposit, payoutRequest, invoice, fine, waivedFines, writeOff, inactiveAdministrativeCost
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getTransferAggregate: (fromDate?: string, tillDate?: string, fromId?: number, toId?: number, category?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Get the PDF of the transfer
      * @param {number} id The transfer ID
      * @param {*} [options] Override http request option.
@@ -12803,6 +12834,18 @@ export declare const TransfersApiFp: (configuration?: Configuration) => {
     getSingleTransfer(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransferResponse>>;
     /**
      *
+     * @summary Returns the aggregate (sum and count) of transfers matching the given filters
+     * @param {string} [fromDate] Start date for selected transfers (inclusive)
+     * @param {string} [tillDate] End date for selected transfers (exclusive)
+     * @param {number} [fromId] Filter transfers from this user ID
+     * @param {number} [toId] Filter transfers to this user ID
+     * @param {string} [category] Restrict to a specific transfer category: deposit, payoutRequest, invoice, fine, waivedFines, writeOff, inactiveAdministrativeCost
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getTransferAggregate(fromDate?: string, tillDate?: string, fromId?: number, toId?: number, category?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransferAggregateResponse>>;
+    /**
+     *
      * @summary Get the PDF of the transfer
      * @param {number} id The transfer ID
      * @param {*} [options] Override http request option.
@@ -12850,6 +12893,18 @@ export declare const TransfersApiFactory: (configuration?: Configuration, basePa
      * @throws {RequiredError}
      */
     getSingleTransfer(id: number, options?: any): AxiosPromise<TransferResponse>;
+    /**
+     *
+     * @summary Returns the aggregate (sum and count) of transfers matching the given filters
+     * @param {string} [fromDate] Start date for selected transfers (inclusive)
+     * @param {string} [tillDate] End date for selected transfers (exclusive)
+     * @param {number} [fromId] Filter transfers from this user ID
+     * @param {number} [toId] Filter transfers to this user ID
+     * @param {string} [category] Restrict to a specific transfer category: deposit, payoutRequest, invoice, fine, waivedFines, writeOff, inactiveAdministrativeCost
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getTransferAggregate(fromDate?: string, tillDate?: string, fromId?: number, toId?: number, category?: string, options?: any): AxiosPromise<TransferAggregateResponse>;
     /**
      *
      * @summary Get the PDF of the transfer
@@ -12905,6 +12960,19 @@ export declare class TransfersApi extends BaseAPI {
      * @memberof TransfersApi
      */
     getSingleTransfer(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransferResponse, any, {}>>;
+    /**
+     *
+     * @summary Returns the aggregate (sum and count) of transfers matching the given filters
+     * @param {string} [fromDate] Start date for selected transfers (inclusive)
+     * @param {string} [tillDate] End date for selected transfers (exclusive)
+     * @param {number} [fromId] Filter transfers from this user ID
+     * @param {number} [toId] Filter transfers to this user ID
+     * @param {string} [category] Restrict to a specific transfer category: deposit, payoutRequest, invoice, fine, waivedFines, writeOff, inactiveAdministrativeCost
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TransfersApi
+     */
+    getTransferAggregate(fromDate?: string, tillDate?: string, fromId?: number, toId?: number, category?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TransferAggregateResponse, any, {}>>;
     /**
      *
      * @summary Get the PDF of the transfer
@@ -13173,6 +13241,14 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
      * @throws {RequiredError}
      */
     getOrganMembers: (id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get users recently charged by the caller via an authenticated point of sale. Returns distinct buyers ordered by most recent transaction first, intended for quick suggestions in the authenticated POS flow.
+     * @param {number} [take] Maximum number of users to return (default 50)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getRecentlyChargedUsers: (take?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get all roles assigned to the user.
@@ -13529,6 +13605,14 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
     getOrganMembers(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedUserResponse>>;
     /**
      *
+     * @summary Get users recently charged by the caller via an authenticated point of sale. Returns distinct buyers ordered by most recent transaction first, intended for quick suggestions in the authenticated POS flow.
+     * @param {number} [take] Maximum number of users to return (default 50)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getRecentlyChargedUsers(take?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UserResponse>>>;
+    /**
+     *
      * @summary Get all roles assigned to the user.
      * @param {number} id The id of the user to get the roles from
      * @param {*} [options] Override http request option.
@@ -13881,6 +13965,14 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
      * @throws {RequiredError}
      */
     getOrganMembers(id: number, take?: number, skip?: number, options?: any): AxiosPromise<PaginatedUserResponse>;
+    /**
+     *
+     * @summary Get users recently charged by the caller via an authenticated point of sale. Returns distinct buyers ordered by most recent transaction first, intended for quick suggestions in the authenticated POS flow.
+     * @param {number} [take] Maximum number of users to return (default 50)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getRecentlyChargedUsers(take?: number, options?: any): AxiosPromise<Array<UserResponse>>;
     /**
      *
      * @summary Get all roles assigned to the user.
@@ -14249,6 +14341,15 @@ export declare class UsersApi extends BaseAPI {
      * @memberof UsersApi
      */
     getOrganMembers(id: number, take?: number, skip?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedUserResponse, any, {}>>;
+    /**
+     *
+     * @summary Get users recently charged by the caller via an authenticated point of sale. Returns distinct buyers ordered by most recent transaction first, intended for quick suggestions in the authenticated POS flow.
+     * @param {number} [take] Maximum number of users to return (default 50)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    getRecentlyChargedUsers(take?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserResponse[], any, {}>>;
     /**
      *
      * @summary Get all roles assigned to the user.
