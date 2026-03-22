@@ -5631,6 +5631,12 @@ export interface TransferResponse {
      * @memberof TransferResponse
      */
     'inactiveAdministrativeCost'?: BaseInactiveAdministrativeCostResponse;
+    /**
+     * 
+     * @type {SellerPayoutResponse}
+     * @memberof TransferResponse
+     */
+    'sellerPayout'?: SellerPayoutResponse;
 }
 /**
  * 
