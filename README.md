@@ -1,5 +1,6 @@
 # SudoSOS Client
 
+> [!WARNING]  
 > **This repository has been archived as of April 2, 2026.** The SudoSOS client is now generated and published as part of the [SudoSOS Backend](https://github.com/GEWIS/sudosos-backend/tree/develop/client) repository and distributed via npm as [`@gewis/sudosos-client`](https://www.npmjs.com/package/@gewis/sudosos-client). Please use the npm package going forward.
 
 ---
