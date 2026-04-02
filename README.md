@@ -1,49 +1,119 @@
 # SudoSOS Client
-Frontend client for the SudoSOS barsystem
 
-## Description
-This repository contains the frontend client for the SudoSOS barsystem. It is built using TypeScript and Axios, and utilizes the Swagger API specification for generating code.
+> **This repository has been archived as of April 2, 2026.** The SudoSOS client is now generated and published as part of the [SudoSOS Backend](https://github.com/GEWIS/sudosos-backend/tree/develop/client) repository and distributed via npm as [`@gewis/sudosos-client`](https://www.npmjs.com/package/@gewis/sudosos-client). Please use the npm package going forward.
 
-The `main` and the `develop` branch are not regular development workflow branches. They represent the state of the backend for these branches. I.e, the `main` client branch shadows the `main` SudoSOS backend branch
+---
 
-Therefore, if any changes are made to this repo you will have to drop the development branch and force push a new version. You can do this as following:
-```shell
-#!/bin/bash
+## Migration Guide
 
-# Ensure you're on the main branch
-git checkout main
+If you are currently using the GitHub-hosted client (this repo), follow the steps below to migrate to the new `@gewis/sudosos-client` npm package.
 
-# Fetch the latest changes from the remote repository
-git fetch origin main
+### 1. Update your dependency
 
-# Resetting the main branch to the latest changes from remote
-git reset --hard origin/main
+Remove the old GitHub-based dependency and install the new npm package.
 
-# Checkout a new branch named 'develop' from 'main'
-git checkout -b develop
-
-# Execute the necessary npm commands
-npm run update-swagger:dev && npm run genbuild
-
-# Commit changes with a specific message
-git commit -m "Updated development from main"
-
-# Push the changes to the remote 'develop' branch
-git push -f origin develop
+**Before (package.json):**
+```json
+"@sudosos/sudosos-client": "github:GEWIS/sudosos-client#<commit-sha>"
 ```
 
-## Installation
-To install and use this client, follow these steps:
-1. Clone the repository: `git clone https://gitlab.com/sudosos/sudosos-client.git`
+**After (package.json):**
+```json
+"@gewis/sudosos-client": "<version>"
+```
+
+Or install directly:
+```bash
+npm install @gewis/sudosos-client
+# or
+yarn add @gewis/sudosos-client
+```
+
+### 2. Update all imports
+
+The package scope has changed from `@sudosos` to `@gewis`. Update every import across your codebase:
+
+**Before:**
+```typescript
+import { type UserResponse, BalanceApi, Configuration } from '@sudosos/sudosos-client';
+```
+
+**After:**
+```typescript
+import { type UserResponse, BalanceApi, Configuration } from '@gewis/sudosos-client';
+```
+
+You can do this in bulk with a find-and-replace:
+```bash
+# Using sed
+find . -type f -name '*.ts' -o -name '*.vue' | xargs sed -i "s/@sudosos\/sudosos-client/@gewis\/sudosos-client/g"
+```
+
+### 3. Refactor API calls to use single-parameter object syntax
+
+The new client uses a single object parameter instead of positional arguments. This is the most significant change and affects all API method calls.
+
+**Before (positional arguments):**
+```typescript
+// Multiple positional args, many of which may be undefined
+apiService.user.getAllUsers(take, skip, search, undefined, undefined, undefined, type);
+apiService.user.getIndividualUser(userId);
+apiService.user.getUsersTransfers(userId, take, skip);
+apiService.user.updateUserNfc(userId, { nfcCode });
+apiService.debtor.deleteFine(fineId);
+apiService.rbac.deletePermission(id, entity, action, relation);
+```
+
+**After (single object parameter):**
+```typescript
+// Named parameters in an object, no need for undefined placeholders
+apiService.user.getAllUsers({ take, skip, search, type });
+apiService.user.getIndividualUser({ id: userId });
+apiService.user.getUsersTransfers({ id: userId, take, skip });
+apiService.user.updateUserNfc({ id: userId, updateNfcRequest: { nfcCode } });
+apiService.debtor.deleteFine({ id: fineId });
+apiService.rbac.deletePermission({ id, entity, action, relation });
+```
+
+Key things to note:
+
+- Positional arguments become named properties in a single object.
+- You no longer need to pass `undefined` as a placeholder for optional parameters you want to skip.
+- Request body parameters are now passed as a named property (e.g. `updateNfcRequest: { nfcCode }` instead of just `{ nfcCode }` as a second argument).
+
+### 4. Verify everything works
+
+After making the changes, run your type checker and tests to verify nothing was missed:
+```bash
+npm run type-check
+npm run test
+```
+
+---
+
+For a reference implementation of this migration, see [GEWIS/sudosos-frontend PR #812](https://github.com/GEWIS/sudosos-frontend/pull/812).
+
+---
+
+## Legacy Documentation
+
+<details>
+<summary>Click to expand the original README</summary>
+
+### Description
+This repository contained the frontend client for the SudoSOS barsystem. It was built using TypeScript and Axios, and utilized the Swagger API specification for generating code.
+
+### Installation
+1. Clone the repository: `git clone https://github.com/GEWIS/sudosos-client.git`
 2. Install dependencies: `npm install`
 
-## Usage
-To build the client, run `npm run gen-build`
-This will first generate the TypeScript code under ./src and then generate the necessary files in the `dist/` directory.
+### Usage
+To build the client, run `npm run gen-build`.
+This generates the TypeScript code under `./src` and the necessary files in the `dist/` directory.
 
-## Example Usage
+### Example Usage
 
-### Unauthorized API Usage
+#### Unauthorized API Usage
 ```typescript
 const basePath = 'https://sudosos.gewis.nl/api/v1'
 const configuration = new Configuration({ basePath });
@@ -56,22 +126,17 @@ bannersApi.getAllOpenBanners().then((res) => {
 });
 ```
 
-### Authorized API Usage
+#### Authorized API Usage
 ```typescript
-import {AuthenticateApi, BalanceApi, BannersApi, Configuration, UsersApi} from "@sudosos/sudosos-client";
+import { AuthenticateApi, BalanceApi, Configuration } from "@sudosos/sudosos-client";
 
 const basePath = 'https://sudosos.gewis.nl/api/v1'
 const configuration = new Configuration({ basePath });
 
 let jwtToken: string = null;
-
-// Your API key
 const key: string = "API_KEY";
-
-// Your UserId
 const userId: number = 0;
 
-// First we get a jwtToken using our ApiKey
 const authApi = new AuthenticateApi(configuration).keyAuthentication({
   key,
   userId,
@@ -79,13 +144,11 @@ const authApi = new AuthenticateApi(configuration).keyAuthentication({
   jwtToken = res.data.token;
 })
 
-// Construct axios config
 const withKeyConfiguration = new Configuration({
   basePath,
   accessToken: () => jwtToken,
 });
 
-// Now we can make authenticated API requests
 const balanceApi = new BalanceApi(withKeyConfiguration);
 balanceApi.getBalances().then((res) => {
   console.log(res.data);
@@ -93,7 +156,7 @@ balanceApi.getBalances().then((res) => {
   console.error(err);
 });
 ```
-For a implementation and more info see the [sudosos-frontend-common](https://github.com/GEWIS/sudosos-frontend-common#README) repo.
 
-## Contributing
-Contributions are welcome! If you encounter any issues or have suggestions for improvements, please open an issue on the [issue tracker](https://gitlab.com/sudosos/sudosos-client/issues).
+For more info see the [sudosos-frontend-common](https://github.com/GEWIS/sudosos-frontend-common#README) repo.
+
+</details>
